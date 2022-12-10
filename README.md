@@ -1,20 +1,19 @@
-# create-svelte
+# Website NIAEFEUP - FrontEnd
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+The frontend of the website for NIAEFEUP, a student branch in FEUP.
 
-## Creating a project
+## Technologies used
+- [SvelteKit](https://kit.svelte.dev/) - Frontend framework
+- [TailwindCSS](https://tailwindcss.com/) - CSS framework
+- [Vite](https://vitejs.dev/) - Build tool
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Development setup
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### Prerequisites
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- [Node 19+](https://nodejs.org)
 
-## Developing
+### Running
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -23,6 +22,34 @@ npm run dev
 
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
+```
+
+### Linting
+
+We use [ESLint](https://eslint.org/) for code conventions and [Prettier](https://prettier.io/) for formatting, to ensure a consistent coding style. The respective configurations can be found in `.eslintrc.cjs` and `.prettierrc`.
+
+We strongly recommend the use of the [VSCode extension for Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and, optionally, the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+Alternatively, you can run the linters manually:
+
+```bash
+npm run lint
+npm run format
+```
+
+If you wish, you can activate the formatter to run automatically on save by adding the following fields to your VSCode settings:
+
+```json
+"editor.formatOnPaste": true,
+"editor.formatOnSave": true,
+```
+
+### Testing
+
+You can run the unit tests with:
+
+```bash
+npm run test:unit
 ```
 
 ## Building
@@ -36,3 +63,9 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Project Details
+
+### Project Structure
+
+The project follow the structure recommended by SvelteKit: https://kit.svelte.dev/docs/project-structure
