@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+.bg-ni-primary {
+    background-image: url('/images/outline_white.png'), linear-gradient(180deg, rgba(137,33,33,1) 0%, rgba(65,19,21,1) 25rem, rgba(65,19,21,1) 100%);
+    @apply bg-no-repeat;
+    @apply bg-right-top;
+}
