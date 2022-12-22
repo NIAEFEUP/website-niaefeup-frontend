@@ -29,4 +29,3 @@
 <div class="flex-grow bg-ni-primary">
   <slot />
 </div>
->>>>>>> feat: background and navbar
