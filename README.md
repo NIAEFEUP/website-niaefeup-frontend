@@ -1,5 +1,7 @@
 # Website NIAEFEUP - FrontEnd
 
+[![Build Preview](https://api.netlify.com/api/v1/badges/8ddc6c12-c861-4fd5-8087-2c076d090c5a/deploy-status?branch=develop)](https://develop--niaefeup-frontend.netlify.app/)
+
 The frontend of the website for NIAEFEUP, a student branch in FEUP.
 
 ## Technologies used
