@@ -3,6 +3,7 @@
 The frontend of the website for NIAEFEUP, a student branch in FEUP.
 
 ## Technologies used
+
 - [SvelteKit](https://kit.svelte.dev/) - Frontend framework
 - [TailwindCSS](https://tailwindcss.com/) - CSS framework
 - [Vite](https://vitejs.dev/) - Build tool
