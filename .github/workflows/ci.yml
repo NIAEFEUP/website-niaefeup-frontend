@@ -64,6 +64,9 @@ jobs:
             **/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Lint Code
         run: npm run lint
 
