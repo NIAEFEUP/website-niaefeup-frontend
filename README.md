@@ -55,6 +55,17 @@ You can run the unit tests with:
 npm run test:unit
 ```
 
+### Storybook
+
+We use [Storybook](https://storybook.js.org/) as a way to interactively preview widgets in isolation.
+To run storybook:
+
+```bash
+npm run storybook
+```
+
+To write new stories refer to the [official documentation](https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction).
+
 ## Building
 
 To create a production version of your app:
