@@ -12,8 +12,13 @@ module.exports = {
       },
 
       fontFamily: {
-        'raleway': ['Raleway', 'sans-serif']
+        'raleway': ['Raleway', 'sans-serif'],
+        'source-code-pro': ['Source Code Pro', 'sans-serif'],
       },
+
+      fontSize: {
+        'huge': '10rem',
+      }
     },
   },
   plugins: [],
