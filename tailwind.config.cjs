@@ -16,10 +16,14 @@ module.exports = {
       },
 
       fontFamily: {
-        raleway: ['Raleway', 'sans-serif'],
-        'source-code': ['Source Code Pro', 'sanf-serif']
+        'raleway': ['Raleway', 'sans-serif'],
+        'source-code-pro': ['Source Code Pro', 'sans-serif'],
+      },
+
+      fontSize: {
+        'huge': '10rem',
       }
-    }
+    },
   },
   plugins: []
 };
