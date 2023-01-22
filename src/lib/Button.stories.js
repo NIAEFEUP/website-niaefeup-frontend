@@ -1,12 +1,11 @@
-import Button from '$lib/common/Button.svelte';
+import Button from 'src/components/Button.svelte';
 
 export default {
   title: 'Button',
   component: Button,
   argTypes: {
     color: { control: 'text' },
-    hover: { control: 'text' },
-    href: { control: 'text' },
+    hoverColor: { control: 'text' },
     text: { control: 'text' },
     width: { control: 'text' }
   },
@@ -17,9 +16,8 @@ export default {
 
 export const ErrorPageButton = {
   args: {
-    color: 'bg-primary',
-    hover: 'hover:bg-secondary',
-    href: '/',
+    color: 'primary',
+    hoverColor: 'secondary',
     text: 'Button',
     width: 'w-32'
   }
