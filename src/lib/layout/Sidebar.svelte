@@ -19,7 +19,7 @@
     <ul class="row-start-2 col-start-1 col-span-3 pl-4 text-white text-4xl font-source-code flex flex-col gap-12">
         {#each items as item, i}
             <NavItem selected={selectedIndex === i} onSelect={() => {selectedIndex = i}}>
-                <a href="">{item}</a>
+                <a href="/#">{item}</a>
             </NavItem>
         {/each}
     </ul>
