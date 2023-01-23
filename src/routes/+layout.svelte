@@ -3,8 +3,7 @@
   import Navbar from '$lib/layout/Navbar.svelte';
 <<<<<<< HEAD
   import Footer from '$lib/layout/Footer.svelte';
-=======
->>>>>>> feat: background and navbar
+  import Sidebar from '$lib/layout/Sidebar.svelte';
 </script>
 
 <style>
@@ -19,8 +18,8 @@
   }
 </style>
 
-<Navbar/>
-<<<<<<< HEAD
+<Navbar />
+<Sidebar />
 <main class="flex-grow bg-ni-primary">
   <slot />
 </main>
