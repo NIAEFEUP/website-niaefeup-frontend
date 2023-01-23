@@ -12,7 +12,8 @@ module.exports = {
       },
 
       fontFamily: {
-        'raleway': ['Raleway', 'sans-serif']
+        'raleway': ['Raleway', 'sans-serif'],
+        'source-code': ['Source Code Pro', 'sanf-serif']
       },
     },
   },

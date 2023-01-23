@@ -2,6 +2,7 @@
   import '../app.css';
   import Navbar from '$lib/layout/Navbar.svelte';
   import Footer from '$lib/layout/Footer.svelte';
+  import Sidebar from '$lib/layout/Sidebar.svelte';
 </script>
 
 <style>
@@ -16,7 +17,8 @@
   }
 </style>
 
-<Navbar/>
+<Navbar />
+<Sidebar />
 <main class="flex-grow bg-ni-primary">
   <slot />
 </main>

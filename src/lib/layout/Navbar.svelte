@@ -1,4 +1,4 @@
-<nav class="bg-secondary text-white text-xs sm:text-base font-raleway flex justify-between items-center h-min px-7 py-1">
+<nav class="bg-secondary text-white collapse sm:visible font-raleway flex justify-between items-center h-min px-7 py-1">
     <div class="flex gap-7">
         <a href="">Equipa</a>
         <a href="">Projetos</a>
