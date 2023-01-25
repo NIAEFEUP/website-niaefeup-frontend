@@ -18,9 +18,12 @@
   }
 </style>
 
-<Navbar />
-<Sidebar />
-<main class="flex-grow bg-ni-primary">
+
+<!-- Uncomment <Sidebar /> and comment main + navbar + footer to correctly see the sidebar  -->
+<!-- <Sidebar /> -->
+<Navbar/>
+<main class="min-h-[200vh] flex-grow bg-ni-primary">
+  <img alt="NIAEFEUP hexagon logo" class="py-11 fixed h-full z-1 overflow-hidden right-0" src="/images/outline_white.png">
   <slot />
 </main>
 <Footer/>

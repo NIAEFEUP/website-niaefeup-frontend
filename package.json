@@ -48,6 +48,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@sveltejs/adapter-auto": "^2.0.0"
+    "@sveltejs/adapter-auto": "^2.0.0",
+    "svelte-icons-pack": "^2.0.0"
   }
 }

@@ -1,5 +1,7 @@
-const primaryColor = "#872020";
-const secondaryColor = "#B33636";
+const primaryColor = "#872020FF";
+const secondaryColor = "#B33636FF";
+const tertiaryColor = "#C04343FF"
+const tertiary60Color = "#C0434399"
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -9,6 +11,8 @@ module.exports = {
       colors: {
         "primary": primaryColor,
         "secondary": secondaryColor,
+        "tertiary": tertiaryColor,
+        "tertiary60": tertiary60Color,
       },
 
       fontFamily: {
