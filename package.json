@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npm run dev",
-    "dev": "vite dev --port 3000",
+    "dev": "vite dev --port 3000 --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

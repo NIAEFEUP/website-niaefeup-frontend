@@ -1,0 +1,12 @@
+version: "3"
+services:
+  website-niaefeup-frontend:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/usr/src/website-niaefeup-frontend/src
+      - ./static:/usr/src/website-niaefeup-frontend/static
+    environment:
+      - PORT=3000
