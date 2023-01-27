@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "npm run dev",
+    "start": "node ./build",
     "dev": "vite dev --port 3000 --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
@@ -23,7 +23,7 @@
     "@storybook/svelte": "^7.0.0-beta.8",
     "@storybook/sveltekit": "^7.0.0-beta.8",
     "@storybook/testing-library": "^0.0.13",
-    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/adapter-node": "next",
     "@sveltejs/kit": "next",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",

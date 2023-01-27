@@ -1,0 +1,36 @@
+FROM node:19.5.0-alpine AS build
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY package.json ./
+COPY package-lock.json ./
+
+ENV NPM_CONFIG_COLOR=false
+
+RUN npm install
+
+COPY .storybook/ .storybook/
+COPY .svelte-kit/ .svelte-kit/
+COPY static/ static/
+COPY postcss.config.cjs postcss.config.cjs
+COPY svelte.config.js svelte.config.js
+COPY tailwind.config.cjs tailwind.config.cjs
+COPY tsconfig.json tsconfig.json
+COPY vite.config.js vite.config.js
+
+COPY src/ src/
+
+RUN npm run build
+
+FROM node:19.5.0-alpine
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY --from=build /usr/src/app/package.json ./package.json
+COPY --from=build /usr/src/app/build build/
+RUN npm install --production
+
+EXPOSE $PORT
+CMD ["npm", "run", "start"]
