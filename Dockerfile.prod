@@ -32,5 +32,5 @@ COPY --from=build /usr/src/app/package.json ./package.json
 COPY --from=build /usr/src/app/build build/
 RUN npm install --production
 
-EXPOSE $PORT
+EXPOSE 80
 CMD ["npm", "run", "start"]

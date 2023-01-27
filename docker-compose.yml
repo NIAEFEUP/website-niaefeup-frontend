@@ -1,6 +1,6 @@
 version: "3"
 services:
-  website-niaefeup-frontend:
+  website-niaefeup-frontend-dev:
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -12,11 +12,21 @@ services:
     environment:
       - PORT=3000
 
+  website-niaefeup-frontend-storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile.storybook
+    ports:
+      - 6006:6006
+    volumes:
+      - ./src:/usr/src/website-niaefeup-frontend/src
+      - ./static:/usr/src/website-niaefeup-frontend/static
+    environment:
+      - PORT=6006
+
   website-niaefeup-frontend-prod:
     build:
       context: .
       dockerfile: Dockerfile.prod
     ports:
       - 5000:80
-    environment:
-      - PORT=80
