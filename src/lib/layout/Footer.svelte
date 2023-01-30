@@ -12,12 +12,12 @@
 <div class="w-full bg-transparent p-3 max-sm:hidden z-10">
     <footer class="p-2 text-white grid grid-cols-3 justify-between border-t-2 border-secondary">
         <div class="flex p-3 self-center gap-3">
-            <a href="https://www.instagram.com"><Icon src={FaBrandsInstagram} color="white" size="24px" /></a>
-            <a href="https://www.twitter.com"><Icon src={FaBrandsTwitter} color="white" size="24px" /></a>
-            <a href="https://www.facebook.com"><Icon src={FaBrandsFacebook} color="white" size="24px" /></a>
-            <a href="https://www.github.com"><Icon src={FaBrandsGithub} color="white" size="24px" /></a>
-            <a href="https://www.linkedin.com"><Icon src={FaBrandsLinkedin} color="white" size="24px" /></a>
-            <a href="https://www.google.com"><Icon src={IoMail} color="white" size="24px" /></a>
+            <a href="https://www.instagram.com/niaefeup/"><Icon src={FaBrandsInstagram} color="white" size="24px" /></a>
+            <a href="https://twitter.com/niaefeup"><Icon src={FaBrandsTwitter} color="white" size="24px" /></a>
+            <a href="https://www.facebook.com/NIAEFEUP"><Icon src={FaBrandsFacebook} color="white" size="24px" /></a>
+            <a href="https://github.com/NIAEFEUP"><Icon src={FaBrandsGithub} color="white" size="24px" /></a>
+            <a href="https://www.linkedin.com/company/nifeup"><Icon src={FaBrandsLinkedin} color="white" size="24px" /></a>
+            <a href="mailto: ni@aefeup.pt"><Icon src={IoMail} color="white" size="24px" /></a>
         </div>
         <div class="flex flex-col items-center gap-1">
             <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="w-11 h-auto">
@@ -51,12 +51,12 @@
             </div>
         </div>
         <div class="grid grid-cols-3 grid-rows-2 items-center p-2 gap-2 justify-items-center">
-            <a href="https://www.instagram.com"><Icon src={FaBrandsInstagram} color="white" size="24px" /></a>
-            <a href="https://www.twitter.com"><Icon src={FaBrandsTwitter} color="white" size="24px" /></a>
-            <a href="https://www.facebook.com"><Icon src={FaBrandsFacebook} color="white" size="24px" /></a>
-            <a href="https://www.github.com"><Icon src={FaBrandsGithub} color="white" size="24px" /></a>
-            <a href="https://www.linkedin.com"><Icon src={FaBrandsLinkedin} color="white" size="24px" /></a>
-            <a href="https://www.google.com"><Icon src={IoMail} color="white" size="24px" /></a>
+            <a href="https://www.instagram.com/niaefeup/"><Icon src={FaBrandsInstagram} color="white" size="24px" /></a>
+            <a href="https://twitter.com/niaefeup"><Icon src={FaBrandsTwitter} color="white" size="24px" /></a>
+            <a href="https://www.facebook.com/NIAEFEUP"><Icon src={FaBrandsFacebook} color="white" size="24px" /></a>
+            <a href="https://github.com/NIAEFEUP"><Icon src={FaBrandsGithub} color="white" size="24px" /></a>
+            <a href="https://www.linkedin.com/company/nifeup"><Icon src={FaBrandsLinkedin} color="white" size="24px" /></a>
+            <a href="mailto: ni@aefeup.pt"><Icon src={IoMail} color="white" size="24px" /></a>
         </div>
         <div class="relative flex flex-row self-center items-center gap-1 bg-tertiary60 w-30 justify-between rounded-md content-center h-10 cursor-pointer">
             <div class="flex content-center pl-11">
