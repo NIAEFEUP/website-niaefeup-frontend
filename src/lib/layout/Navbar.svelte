@@ -8,6 +8,6 @@
     </div>
     <div class="flex gap-7 justify-end">
         <a href="">Eventos</a>
-        <a href="">Contactos</a>
+        <a href="/contacts">Contactos</a>
     </div>
 </nav>
