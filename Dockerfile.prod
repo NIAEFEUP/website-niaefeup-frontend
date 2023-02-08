@@ -20,6 +20,5 @@ COPY --from=build /usr/src/app/package-lock.json ./package-lock.json
 COPY --from=build /usr/src/app/build build/
 RUN npm install --omit=dev
 
-ENV PORT=80
-EXPOSE 80
+EXPOSE $PORT
 CMD ["npm", "run", "prod"]

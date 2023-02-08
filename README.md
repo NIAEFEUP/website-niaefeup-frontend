@@ -15,17 +15,28 @@ The frontend of the website for NIAEFEUP, a student branch in FEUP.
 ### Prerequisites
 
 - [Node 19+](https://nodejs.org)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://www.docker.com/)
+
+### Installing Docker and Docker Compose
+
+To install docker you can follow the instructions on the [Docker docs](https://docs.docker.com/engine/install/) (Select your Linux distribution on the Server section)
+
+Follow [these](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user/) instructions to run Docker as a non root user.
+
+After installing Docker follow these instructions on the [Docker docs](https://docs.docker.com/compose/install/) to install Docker Composer.
+
 
 ### Running
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+To run the development environment do:
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+./dev.sh
 ```
+
+This will build the Docker image the first time you run and start the development server at port `3000` and storybook at port `6006`.
+
+To stop press Ctrl-C and it will remove all related containers.
 
 ### Linting
 
@@ -52,17 +63,14 @@ If you wish, you can activate the formatter to run automatically on save by addi
 You can run the unit tests with:
 
 ```bash
-npm run test:unit
+./test.sh
 ```
 
 ### Storybook
 
 We use [Storybook](https://storybook.js.org/) as a way to interactively preview widgets in isolation.
-To run storybook:
 
-```bash
-npm run storybook
-```
+Storybook should be already running on port `6006` if you started `dev.sh` script.
 
 To write new stories refer to the [official documentation](https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction).
 
@@ -71,7 +79,8 @@ To write new stories refer to the [official documentation](https://storybook.js.
 To create a production version of your app:
 
 ```bash
-npm run build
+docker build -t {IMAGE_NAME} -f Dockerfile.prod .
+docker run --env PORT=80 -p {YOUR_PORT}:80 {IMAGE_NAME}
 ```
 
 You can preview the production build with `npm run preview`.
