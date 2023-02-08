@@ -3,7 +3,7 @@ services:
   website-niaefeup-frontend-dev:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
       - 3000:3000
     volumes:
@@ -31,3 +31,5 @@ services:
     volumes:
       - ./src:/usr/src/website-niaefeup-frontend/src
       - ./static:/usr/src/website-niaefeup-frontend/static
+    stdin_open: true
+    tty: true
