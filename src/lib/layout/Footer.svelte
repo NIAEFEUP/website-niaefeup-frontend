@@ -58,7 +58,7 @@
             <a href="https://www.linkedin.com/company/nifeup"><Icon src={FaBrandsLinkedin} color="white" size="24px" /></a>
             <a href="mailto: ni@aefeup.pt"><Icon src={IoMail} color="white" size="24px" /></a>
         </div>
-        <div class="relative flex flex-row self-center items-center gap-1 bg-tertiary60 w-30 justify-between rounded-md content-center h-10 cursor-pointer">
+        <div class="relative flex flex-row self-center items-center gap-1 bg-tertiary60 w-30 justify-between rounded-md content-center h-10 cursor-pointer z-[-1]">
             <div class="flex content-center pl-11">
                 <a href="" class="pr-1 w-full font-source-code">Área Membro</a>
             </div>
