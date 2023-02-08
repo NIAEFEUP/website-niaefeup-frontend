@@ -24,7 +24,7 @@
     </nav>
 {:else}
     <nav class="bg-ni-sidebar grid grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center sm:invisible py-2 px-2 absolute w-screen h-screen">
-        <img alt="NIAEFEUP hexagon logo" class="fixed h-full overflow-hidden -left-24 pt-24 pb-40" src="/images/outline_white_180.png">
+        <img alt="NIAEFEUP hexagon logo" class="fixed h-full overflow-hidden -left-24 pt-20 pb-40" src="/images/outline_white_180.png">
         <button class="text-white w-1/2 col-start-2" on:click={() => sidebarOpen = !sidebarOpen}>
             <FaTimes  />
         </button>

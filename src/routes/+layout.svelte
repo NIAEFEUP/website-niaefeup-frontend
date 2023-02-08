@@ -23,11 +23,10 @@
 <Sidebar />
 <Navbar/>
 <main class="flex-grow bg-ni-primary -z-10">
-  <img alt="NIAEFEUP hexagon logo" class="fixed h-full pb-60 sm:pb-32 overflow-hidden -right-24 sm:right-0 py-11" src="/images/outline_white.png">
+  <img alt="NIAEFEUP hexagon logo" class="fixed h-full sm:pb-32 overflow-hidden -right-24 sm:right-0 pt-20 pb-40" src="/images/outline_white.png">
   <slot />
 </main>
-<Footer/>
-=======
+<Footer/>=======
 <div class="flex-grow bg-ni-primary">
   <slot />
 </div>
