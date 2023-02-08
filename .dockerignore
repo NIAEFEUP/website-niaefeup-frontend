@@ -1,0 +1,13 @@
+.github/
+.svelte-kit/
+node_modules/
+.eslintignore
+.eslint.cjs
+.gitignore
+.npmrc
+.prettierignore
+.prettierrc
+docker-compose.yml
+Dockerfile*
+*.md
+*.sh
