@@ -7,8 +7,8 @@ if [ $? -ne 0 ]; then
     exit
 fi
 
-docker-compose up website-niaefeup-frontend-dev -d
-docker-compose up website-niaefeup-frontend-storybook -d
+docker-compose up -d website-niaefeup-frontend-dev
+docker-compose up -d website-niaefeup-frontend-storybook
 
 trap_ctrl_c() {
     docker-compose down
