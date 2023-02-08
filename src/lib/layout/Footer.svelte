@@ -6,7 +6,7 @@
     import FaBrandsGithub from "svelte-icons-pack/fa/FaBrandsGithub"; 
     import IoMail from "svelte-icons-pack/io/IoMail"; 
     import FaBrandsLinkedin from "svelte-icons-pack/fa/FaBrandsLinkedin";
-    import FaSolidUser from "svelte-icons-pack/fa/FaSolidUser"; 
+    import FaSolidUser from "svelte-icons-pack/fa/FaSolidUser";
 </script>
 
 <div class="w-full bg-transparent p-3 max-sm:hidden z-10">
@@ -41,7 +41,7 @@
 </div>
 
 <div class="hidden w-full bg-transparent p-3 max-sm:block">
-    <footer class="p-2 text-white flex flex-col justify-between border-t-2 text-sm">
+    <footer class="p-2 text-white flex flex-col justify-between border-t-2 text-sm border-secondary">
         <div class="flex flex-row p-3 self-center justify-between w-full items-center">
             <span>NIAEFEUP</span>
             <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="w-11 h-auto">

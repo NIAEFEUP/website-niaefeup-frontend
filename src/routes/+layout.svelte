@@ -20,10 +20,10 @@
 
 
 <!-- Uncomment <Sidebar /> and comment main + navbar + footer to correctly see the sidebar  -->
-<!-- <Sidebar /> -->
+<Sidebar />
 <Navbar/>
-<main class="min-h-[200vh] flex-grow bg-ni-primary">
-  <img alt="NIAEFEUP hexagon logo" class="py-11 fixed h-full z-1 overflow-hidden right-0" src="/images/outline_white.png">
+<main class="flex-grow bg-ni-primary -z-10">
+  <img alt="NIAEFEUP hexagon logo" class="fixed h-full pb-60 sm:pb-32 overflow-hidden -right-24 sm:right-0 py-11" src="/images/outline_white.png">
   <slot />
 </main>
 <Footer/>

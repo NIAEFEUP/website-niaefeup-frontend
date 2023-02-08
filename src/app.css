@@ -12,7 +12,5 @@ body {
 }
 
 .bg-ni-sidebar {
-    background-image: url('/images/outline_white.png'), linear-gradient(180deg, rgba(56,0,2,1), rgba(97,14,17,1));
-    @apply bg-no-repeat;
-    @apply bg-right-top;
+    background: -12rem 0 / cover no-repeat, linear-gradient(180deg, rgba(56,0,2,1), rgba(97,14,17,1));
 }
