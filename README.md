@@ -29,7 +29,7 @@ After installing Docker follow these instructions on the [Docker docs](https://d
 
 ### Running
 
-To run the development environment do:
+To run the development environment using Docker do:
 ```bash
 ./dev.sh
 ```
@@ -37,6 +37,17 @@ To run the development environment do:
 This will build the Docker image the first time you run and start the development server at port `3000` and storybook at port `6006`.
 
 To stop press Ctrl-C and it will remove all related containers.
+
+To run with npm (or pnpm or yarn) do:
+```bash
+# install project dependencies
+npm install
+
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
 ### Linting
 
@@ -60,10 +71,15 @@ If you wish, you can activate the formatter to run automatically on save by addi
 
 ### Testing
 
-You can run the unit tests with:
+You can run the unit tests using Docker with:
 
 ```bash
 ./test.sh
+```
+
+Alternatively you can use npm (or other package managers already mentioned) and do:
+```bash
+npm run test
 ```
 
 ### Storybook
@@ -71,6 +87,11 @@ You can run the unit tests with:
 We use [Storybook](https://storybook.js.org/) as a way to interactively preview widgets in isolation.
 
 Storybook should be already running on port `6006` if you started `dev.sh` script.
+
+Alternatively you can use npm (or other package managers already mentioned) and do:
+```bash
+npm run storybook
+```
 
 To write new stories refer to the [official documentation](https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction).
 
@@ -81,6 +102,11 @@ To create a production version of your app:
 ```bash
 docker build -t {IMAGE_NAME} -f Dockerfile.prod .
 docker run --env PORT=80 -p {YOUR_PORT}:80 {IMAGE_NAME}
+```
+
+Or with npm:
+```bash
+npm run build
 ```
 
 You can preview the production build with `npm run preview`.
