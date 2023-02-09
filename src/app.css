@@ -4,13 +4,19 @@
 @tailwind utilities;
 
 body {
-    background-image: linear-gradient(180deg, rgba(179, 54, 54,1) 0%, rgba(65,19,21,1) 25rem, rgba(65,19,21,1) 100%);
-    @apply bg-no-repeat;
-    @apply bg-right-top;
-    background-size: cover;
-    background-position-y: 50%;
+  background-image: linear-gradient(
+    180deg,
+    rgba(179, 54, 54, 1) 0%,
+    rgba(65, 19, 21, 1) 25rem,
+    rgba(65, 19, 21, 1) 100%
+  );
+  @apply bg-no-repeat;
+  @apply bg-right-top;
+  background-size: cover;
+  background-position-y: 50%;
 }
 
 .bg-ni-sidebar {
-    background: -12rem 0 / cover no-repeat, linear-gradient(180deg, rgba(56,0,2,1), rgba(97,14,17,1));
+  background: -12rem 0 / cover no-repeat,
+    linear-gradient(180deg, rgba(56, 0, 2, 1), rgba(97, 14, 17, 1));
 }

@@ -1,10 +1,22 @@
 <script>
   import '../app.css';
   import Navbar from '$lib/layout/Navbar.svelte';
-<<<<<<< HEAD
   import Footer from '$lib/layout/Footer.svelte';
   import Sidebar from '$lib/layout/Sidebar.svelte';
 </script>
+
+<!-- Uncomment <Sidebar /> and comment main + navbar + footer to correctly see the sidebar  -->
+<Sidebar />
+<Navbar />
+<main class="flex-grow bg-ni-primary -z-10">
+  <img
+    alt="NIAEFEUP hexagon logo"
+    class="fixed h-full sm:pb-32 overflow-hidden -right-24 sm:right-0 pt-20 pb-40"
+    src="/images/outline_white.png"
+  />
+  <slot />
+</main>
+<Footer />
 
 <style>
   :global(html) {
@@ -26,7 +38,4 @@
   <img alt="NIAEFEUP hexagon logo" class="fixed h-full sm:pb-32 overflow-hidden -right-24 sm:right-0 pt-20 pb-40" src="/images/outline_white.png">
   <slot />
 </main>
-<Footer/>=======
-<div class="flex-grow bg-ni-primary">
-  <slot />
-</div>
+<Footer/>
