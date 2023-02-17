@@ -1,35 +1,34 @@
 <script lang="ts">
   import NavItem from '$lib/navbar/NavItem.svelte';
-  import Icon from 'svelte-icons-pack/Icon.svelte';
-  import FaBars from 'svelte-icons-pack/fa/FaSolidBars';
-  import FaTimes from 'svelte-icons-pack/fa/FaSolidTimes';
+  import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
+  import Icon from '$lib/component/Icon.svelte';
+  import Icons from '$lib/component/Icons';
 
   let selectedIndex: number | null = null;
 
   const items = ['Início', 'Eventos', 'Projetos', 'Equipa', 'Contactos'];
 
-  let sidebarOpen = false;
+  let sidebarClosed = true;
 </script>
 
-{#if !sidebarOpen}
+{#if sidebarClosed}
   <nav
     class="fixed bg-transperent text-white w-full grid grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center py-2 px-2 h-screen"
   >
-    <button class="w-1/2 col-start-2 sm:invisible" on:click={() => (sidebarOpen = !sidebarOpen)}>
-      <Icon src={FaBars} color="#411315" size="31px" />
+    <button
+      class="w-1/2 col-start-2 sm:invisible"
+      on:click={() => (sidebarClosed = !sidebarClosed)}
+    >
+      <Icon src={Icons.Bars} color="#411315" size="31px" href={undefined} />
     </button>
   </nav>
 {:else}
   <nav
     class="bg-ni-sidebar grid grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center sm:invisible py-2 px-2 absolute w-screen h-screen"
   >
-    <img
-      alt="NIAEFEUP hexagon logo"
-      class="fixed h-full overflow-hidden -left-24 pt-20 pb-40 pointer-events-none"
-      src="/images/outline_white_180.png"
-    />
-    <button class="text-white w-1/2 col-start-2" on:click={() => (sidebarOpen = !sidebarOpen)}>
-      <Icon src={FaTimes} color="#411315" size="31px" />
+    <BackgroundHexagon position="left" />
+    <button class="text-white w-1/2 col-start-2" on:click={() => (sidebarClosed = !sidebarClosed)}>
+      <Icon src={Icons.Times} color="white" size="31px" href={undefined} />
     </button>
     <ul
       class="flex flex-col pt-12 items-start gap-10 text-white text-3xl font-source-code w-full col-start-1 col-span-2"
