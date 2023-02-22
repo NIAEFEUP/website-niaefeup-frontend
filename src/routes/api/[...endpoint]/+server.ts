@@ -1,5 +1,4 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import type { RequestEvent } from '../$types';
 import { fetchWithAuth } from './proxy';
 
 function endpoint(url: URL) {
@@ -8,13 +7,11 @@ function endpoint(url: URL) {
 }
 
 async function dispatchToBackend(event: any, method: string) {
-  return fetchWithAuth(
-    event.cookies,
-    endpoint(event.url),
-    method,
-    undefined,
-    await event.request.json()
-  );
+  let body = undefined;
+  if (method !== 'GET') {
+    body = await event.request.text();
+  }
+  return fetchWithAuth(event.cookies, endpoint(event.url), method, undefined, body);
 }
 
 export const GET: RequestHandler = async (event) => dispatchToBackend(event, 'GET');

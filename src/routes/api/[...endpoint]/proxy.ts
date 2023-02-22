@@ -1,19 +1,6 @@
 import { PUBLIC_API_URL } from '$env/static/public';
 import type { Cookies } from '@sveltejs/kit';
-
-const JWT_ACCESS_KEY = 'jwt';
-const JWT_REFRESH_KEY = 'jwt-refresh';
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
-
-async function _setSecureCookie(cookies: Cookies, name: string, value: string) {
-  cookies.set(name, value, {
-    path: '/',
-    maxAge: COOKIE_MAX_AGE,
-    sameSite: 'strict',
-    httpOnly: true,
-    secure: true
-  });
-}
+import { JWT_REFRESH_KEY, JWT_ACCESS_KEY } from '$lib/auth';
 
 async function _refreshAccessToken(cookies: Cookies): Promise<boolean> {
   const refreshToken = cookies.get(JWT_REFRESH_KEY);
@@ -24,15 +11,7 @@ async function _refreshAccessToken(cookies: Cookies): Promise<boolean> {
     },
     body: JSON.stringify({ token: refreshToken })
   });
-
-  if (response.status !== 200) {
-    return false;
-  }
-
-  const json = await response.json();
-  const accessToken = json['access_token'];
-  _setSecureCookie(cookies, JWT_ACCESS_KEY, accessToken);
-  return true;
+  return response.ok;
 }
 
 async function _fetchWithAuth(
@@ -41,7 +20,7 @@ async function _fetchWithAuth(
   relativeUrl: URL | string,
   method: string,
   headers?: HeadersInit,
-  body?: any
+  body?: string | undefined
 ): Promise<Response> {
   const fetchAdapter = (
     relativeUrl: URL | string,
@@ -51,7 +30,7 @@ async function _fetchWithAuth(
   ) => {
     const url = new URL(relativeUrl, PUBLIC_API_URL);
     headers.append('Content-Type', 'application/json');
-    return fetch(url, { method: method, body: JSON.stringify(body), headers });
+    return fetch(url, { method: method, body, headers });
   };
 
   const jwt = cookies.get(JWT_ACCESS_KEY);
@@ -77,32 +56,33 @@ export async function fetchWithAuth(
   relativeUrl: URL | string,
   method: string = 'GET',
   headers?: HeadersInit,
-  body?: any
+  body?: string | undefined
 ): Promise<Response> {
+  console.log('here');
   console.log(body);
   return _fetchWithAuth(true, cookies, relativeUrl, method, headers, body);
 }
 
-export async function login(cookies: Cookies, email: string, password: string): Promise<boolean> {
-  const response = await fetch(`${PUBLIC_API_URL}/auth/new`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email, password })
-  });
+// export async function login(cookies: Cookies, email: string, password: string): Promise<boolean> {
+//   const response = await fetch(`${PUBLIC_API_URL}/auth/new`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ email, password })
+//   });
 
-  if (response.status !== 200) {
-    return false;
-  }
+//   if (response.status !== 200) {
+//     return false;
+//   }
 
-  const json = await response.json();
-  _setSecureCookie(cookies, JWT_ACCESS_KEY, json['access_token']);
-  _setSecureCookie(cookies, JWT_REFRESH_KEY, json['refresh_token']);
-  return true;
-}
+//   const json = await response.json();
+//   _setSecureCookie(cookies, JWT_ACCESS_KEY, json['access_token']);
+//   _setSecureCookie(cookies, JWT_REFRESH_KEY, json['refresh_token']);
+//   return true;
+// }
 
-export function logout(cookies: Cookies): void {
-  cookies.delete(JWT_ACCESS_KEY);
-  cookies.delete(JWT_REFRESH_KEY);
-}
+// export function logout(cookies: Cookies): void {
+//   cookies.delete(JWT_ACCESS_KEY);
+//   cookies.delete(JWT_REFRESH_KEY);
+// }
