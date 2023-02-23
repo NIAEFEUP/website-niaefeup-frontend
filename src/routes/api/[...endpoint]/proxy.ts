@@ -26,7 +26,7 @@ async function _fetchWithAuth(
     relativeUrl: URL | string,
     method: string,
     headers: Headers,
-    body?: any
+    body?: string | undefined
   ) => {
     const url = new URL(relativeUrl, PUBLIC_API_URL);
     headers.append('Content-Type', 'application/json');
@@ -42,7 +42,7 @@ async function _fetchWithAuth(
   authHeaders.append('Authorization', `Bearer ${jwt}`);
 
   const response = await fetchAdapter(relativeUrl, method, authHeaders, body);
-  if (response.status === 401 && allowRefresh) {
+  if (response.status >= 400 && response.status < 500 && allowRefresh) {
     const refreshedAccessTokenSuccessful = await _refreshAccessToken(cookies);
     if (refreshedAccessTokenSuccessful) {
       return _fetchWithAuth(false, cookies, relativeUrl, method, headers, body);
@@ -54,35 +54,9 @@ async function _fetchWithAuth(
 export async function fetchWithAuth(
   cookies: Cookies,
   relativeUrl: URL | string,
-  method: string = 'GET',
+  method = 'GET',
   headers?: HeadersInit,
   body?: string | undefined
 ): Promise<Response> {
-  console.log('here');
-  console.log(body);
   return _fetchWithAuth(true, cookies, relativeUrl, method, headers, body);
 }
-
-// export async function login(cookies: Cookies, email: string, password: string): Promise<boolean> {
-//   const response = await fetch(`${PUBLIC_API_URL}/auth/new`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ email, password })
-//   });
-
-//   if (response.status !== 200) {
-//     return false;
-//   }
-
-//   const json = await response.json();
-//   _setSecureCookie(cookies, JWT_ACCESS_KEY, json['access_token']);
-//   _setSecureCookie(cookies, JWT_REFRESH_KEY, json['refresh_token']);
-//   return true;
-// }
-
-// export function logout(cookies: Cookies): void {
-//   cookies.delete(JWT_ACCESS_KEY);
-//   cookies.delete(JWT_REFRESH_KEY);
-// }

@@ -15,32 +15,23 @@ async function _handleAuthentication(apiResponse: Response): Promise<Response> {
     return apiResponse;
   }
 
-  const newResponse = new Response(apiResponse.clone().body, apiResponse);
-  try {
-    const json = await apiResponse.json();
+  const serverResponse = new Response(apiResponse.clone().body, apiResponse);
+  const json = await apiResponse.json();
 
-    const accessToken = json[JWT_ACCESS_KEY];
-    if (accessToken) {
-      _appendCookieHeader(newResponse, JWT_ACCESS_KEY, accessToken);
-    }
-
-    const refreshToken = json[JWT_REFRESH_KEY];
-    if (refreshToken) {
-      _appendCookieHeader(newResponse, JWT_REFRESH_KEY, refreshToken);
-    }
-  } catch (e) {
-    console.log(e);
+  const accessToken = json[JWT_ACCESS_KEY];
+  if (accessToken) {
+    _appendCookieHeader(serverResponse, JWT_ACCESS_KEY, accessToken);
   }
 
-  return newResponse;
+  const refreshToken = json[JWT_REFRESH_KEY];
+  if (refreshToken) {
+    _appendCookieHeader(serverResponse, JWT_REFRESH_KEY, refreshToken);
+  }
+
+  return serverResponse;
 }
 
 export const handle: Handle = async function ({ event, resolve }) {
   const response = await resolve(event);
-
-  if (event.url.pathname.includes('api/auth')) {
-    return _handleAuthentication(response);
-  }
-
-  return response;
+  return event.url.pathname.includes('api/auth') ? _handleAuthentication(response) : response;
 };
