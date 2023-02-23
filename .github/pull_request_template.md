@@ -10,4 +10,4 @@ Closes #[issue number]
 
 - [ ] Contains enough appropriate tests
 - [ ] Behavior is as expected
-- [ ] Clean, well structured code
+- [ ] Clean, well-structured code

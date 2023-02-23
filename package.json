@@ -24,7 +24,6 @@
     "@storybook/svelte": "^7.0.0-beta.8",
     "@storybook/sveltekit": "^7.0.0-beta.8",
     "@storybook/testing-library": "^0.0.13",
-    "@sveltejs/adapter-node": "next",
     "@sveltejs/kit": "next",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
@@ -47,5 +46,8 @@
     "vite": "^4.0.0",
     "vitest": "^0.25.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@sveltejs/adapter-auto": "^2.0.0"
+  }
 }
