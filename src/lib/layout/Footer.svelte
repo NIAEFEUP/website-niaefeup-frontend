@@ -1,6 +1,10 @@
-<script>
+<script lang="ts">
   import Icon from '$lib/component/Icon.svelte';
   import Icons from '$lib/component/Icons';
+
+  function copyToClipboard(content: string) {
+    navigator.clipboard.writeText(content);
+  }
 </script>
 
 <div class="w-full bg-transparent p-3 max-sm:hidden z-10">
@@ -26,23 +30,24 @@
         size="24px"
         href="https://www.linkedin.com/company/nifeup"
       />
-      <Icon src={Icons.Mail} color="white" size="24px" href="mailto: ni@aefeup.pt" />
+      <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
+        <Icon src={Icons.Mail} color="white" size="24px" href={undefined} />
+      </div>
     </div>
     <div class="flex flex-col items-center gap-1">
       <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="w-11 h-auto" />
-      <p class="text-sm">&copy; NIAEFEUP 2022</p>
+      <p class="text-sm">NIAEFEUP &copy; 2022</p>
     </div>
     <div class="flex flex-row justify-end p-3 self-center items-center gap-4">
-      <div
-        class="relative flex flex-row self-center items-center gap-1 bg-tertiary60 w-40 justify-between rounded-md content-center h-10 cursor-pointer"
+      <a
+        href="/#"
+        class="grid grid-cols-[1fr_fit-content(100%)] items-center gap-3 bg-tertiary60 rounded-md"
       >
-        <div class="flex content-center pl-2">
-          <a href="#/" class="pr-1 w-full font-source-code">Área Membro</a>
+        <p class="pl-2 font-source-code text-sm w-full">Área Membro</p>
+        <div class="bg-tertiary rounded-md pt-1 px-1">
+          <Icon src={Icons.User} color="#411315" size="32px" href={undefined} />
         </div>
-        <div class="absolute bg-tertiary rounded-md w-fit p-1 pb-0 pt-2 h-fit right-0 ">
-          <Icon src={Icons.User} color="#411315" size="31px" href={undefined} />
-        </div>
-      </div>
+      </a>
       <div class="text-sm text-right">
         <p class="font-bold">FEUP</p>
         <p>Sala B315</p>
@@ -61,7 +66,7 @@
         <span>B315</span>
       </div>
     </div>
-    <div class="grid grid-cols-3 grid-rows-2 items-center p-2 gap-2 justify-items-center">
+    <div class="grid grid-cols-3 grid-rows-2 items-center px-6 gap-4 py-5 justify-items-center">
       <Icon
         src={Icons.Instagram}
         color="white"
@@ -82,18 +87,20 @@
         size="24px"
         href="https://www.linkedin.com/company/nifeup"
       />
-      <Icon src={Icons.Mail} color="white" size="24px" href="mailto: ni@aefeup.pt" />
-    </div>
-    <div
-      class="relative flex flex-row self-center items-center gap-1 bg-tertiary60 w-30 justify-between rounded-md content-center h-10 cursor-pointer z-[-1]"
-    >
-      <div class="flex content-center pl-11">
-        <a href="#/" class="pr-1 w-full font-source-code">Área Membro</a>
-      </div>
-      <div class="absolute bg-tertiary rounded-md w-fit p-1 pb-0 pt-2 h-fit left-0 ">
-        <Icon src={Icons.User} color="#411315" size="31px" href={undefined} />
+      <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
+        <Icon src={Icons.Mail} color="white" size="24px" href={undefined} />
       </div>
     </div>
-    <span class="self-center pt-4">&copy; NIAEFEUP 2022</span>
+    <div class="flex flex-row justify-end p-3 self-center items-center gap-4">
+      <a
+        href="/#"
+        class="grid grid-cols-[fit-content(100%)_1fr] items-center gap-3 bg-tertiary60 rounded-md"
+      >
+        <div class="bg-tertiary rounded-md pt-1 px-1">
+          <Icon src={Icons.User} color="#411315" size="32px" href={undefined} />
+        </div>
+        <p class="pr-2 font-source-code text-sm w-full">Área Membro</p>
+      </a>
+    </div>
   </footer>
 </div>
