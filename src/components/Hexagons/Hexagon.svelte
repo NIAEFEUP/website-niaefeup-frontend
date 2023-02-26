@@ -10,7 +10,7 @@
 
 <style>
   .clip-background, .clip-foreground {
-    aspect-ratio: 316 / 270; 
+    aspect-ratio: 316 / 270; /* from Figma */
     mask-size: cover;
   }
 
