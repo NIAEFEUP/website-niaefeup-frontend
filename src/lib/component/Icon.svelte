@@ -11,7 +11,7 @@
 </script>
 
 {#if link}
-  <a {href} target="_blank" rel="noreferrer">
+  <a {href} target="_blank" rel="noreferrer" class="w-min">
     <Icon {src} {color} {size} />
   </a>
 {:else}

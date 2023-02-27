@@ -20,3 +20,12 @@ body {
   background: -12rem 0 / cover no-repeat,
     linear-gradient(180deg, rgba(56, 0, 2, 1), rgba(97, 14, 17, 1));
 }
+
+.footer-icons svg,
+.footer-icons path {
+  pointer-events: none;
+}
+
+.footer-icons * {
+  transition: opacity 0.2s ease-in-out;
+}

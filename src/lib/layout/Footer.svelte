@@ -1,15 +1,51 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import Icon from '$lib/component/Icon.svelte';
   import Icons from '$lib/component/Icons';
 
   function copyToClipboard(content: string) {
     navigator.clipboard.writeText(content);
   }
+
+  onMount(() => {
+    const iconsContainer: NodeListOf<Element> | null = document.querySelectorAll('.footer-icons');
+    if (iconsContainer !== null) {
+      iconsContainer.forEach((container) => {
+        const icons: HTMLCollection = container.children;
+
+        for (let i of icons) {
+          i.addEventListener('mouseover', (e) => {
+            const el = e.target as HTMLElement;
+            if (el !== null) {
+              el.style.opacity = '1.0';
+              for (let j of icons) {
+                if (j !== el) {
+                  (j as HTMLElement).style.opacity = '0.5';
+                }
+              }
+            }
+          });
+
+          i.addEventListener('mouseleave', (e) => {
+            const el = e.target as HTMLElement;
+            if (el !== null) {
+              el.style.opacity = '1.0';
+              for (let j of icons) {
+                if (j !== el) {
+                  (j as HTMLElement).style.opacity = '1.0';
+                }
+              }
+            }
+          });
+        }
+      });
+    }
+  });
 </script>
 
 <div class="w-full bg-transparent p-3 max-sm:hidden z-10">
   <footer class="p-2 text-white grid grid-cols-3 justify-between border-t-2 border-secondary">
-    <div class="flex p-3 self-center gap-3">
+    <div class="grid grid-cols-6 w-fit p-3 self-center gap-4 footer-icons">
       <Icon
         src={Icons.Instagram}
         color="white"
@@ -66,7 +102,9 @@
         <span>B315</span>
       </div>
     </div>
-    <div class="grid grid-cols-3 grid-rows-2 items-center px-6 gap-4 py-5 justify-items-center">
+    <div
+      class="grid grid-cols-3 grid-rows-2 items-center px-6 gap-4 py-5 justify-items-center footer-icons"
+    >
       <Icon
         src={Icons.Instagram}
         color="white"

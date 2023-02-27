@@ -13,10 +13,10 @@
 
 {#if sidebarClosed}
   <nav
-    class="fixed bg-transperent text-white w-full grid grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center py-2 px-2 h-screen"
+    class="fixed bg-transperent text-white w-full grid grid-cols-[1fr_4em] grid-rows-1 justify-items-center py-4 px-2 h-fit"
   >
     <button
-      class="w-1/2 col-start-2 sm:invisible"
+      class="w-1/2 col-start-2 sm:invisible h-fit"
       on:click={() => (sidebarClosed = !sidebarClosed)}
     >
       <Icon src={Icons.Bars} color="#411315" size="31px" href={undefined} />
@@ -24,10 +24,13 @@
   </nav>
 {:else}
   <nav
-    class="bg-ni-sidebar grid grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center sm:invisible py-2 px-2 absolute w-screen h-screen"
+    class="bg-ni-sidebar grid grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center sm:invisible py-4 px-2 absolute w-screen h-screen"
   >
     <BackgroundHexagon position="left" />
-    <button class="text-white w-1/2 col-start-2" on:click={() => (sidebarClosed = !sidebarClosed)}>
+    <button
+      class="text-white w-1/2 col-start-2 h-fit"
+      on:click={() => (sidebarClosed = !sidebarClosed)}
+    >
       <Icon src={Icons.Times} color="white" size="31px" href={undefined} />
     </button>
     <ul

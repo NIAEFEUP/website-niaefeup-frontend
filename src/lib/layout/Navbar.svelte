@@ -6,7 +6,9 @@
     <a href="#/">Projetos</a>
   </div>
   <div class="flex w-full justify-center">
-    <img src="/images/ni_logo.png" alt="NIAEFEUP's logo" width="40" height="40" />
+    <a href="#/">
+      <img src="/images/ni_logo.png" alt="NIAEFEUP's logo" width="40" height="40" />
+    </a>
   </div>
   <div class="flex gap-7 justify-end">
     <a href="#/">Eventos</a>
