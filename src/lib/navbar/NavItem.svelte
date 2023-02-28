@@ -2,7 +2,6 @@
   export let selected: boolean;
 </script>
 
-<!-- svelte-ignore a11y-clickw-events-have-key-events -->
 <li class="grid grid-cols-[2ch_1fr_3ch] pl-4 cursor-pointer">
   {#if selected}
     <strong class="contents">
