@@ -2,7 +2,7 @@
   export let selected: boolean;
 </script>
 
-<li class="grid grid-cols-[2ch_1fr_3ch] pl-4 cursor-pointer">
+<li class="grid cursor-pointer grid-cols-[2ch_1fr_3ch] pl-4">
   {#if selected}
     <strong class="contents">
       <span class="justify-self-center">&lt;</span>

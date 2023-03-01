@@ -43,9 +43,9 @@
   });
 </script>
 
-<div class="w-full bg-transparent p-3 max-sm:hidden z-10">
-  <footer class="p-2 text-white grid grid-cols-3 justify-between border-t-2 border-secondary">
-    <div class="grid grid-cols-6 w-fit p-3 self-center gap-4 footer-icons">
+<div class="z-10 w-full bg-transparent p-3 max-sm:hidden">
+  <footer class="grid grid-cols-3 justify-between border-t-2 border-secondary p-2 text-white">
+    <div class="footer-icons grid w-fit grid-cols-6 gap-4 self-center p-3">
       <Icon
         src={Icons.Instagram}
         color="white"
@@ -71,20 +71,20 @@
       </div>
     </div>
     <div class="flex flex-col items-center gap-1">
-      <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="w-11 h-auto" />
+      <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
       <p class="text-sm">NIAEFEUP &copy; 2022</p>
     </div>
-    <div class="flex flex-row justify-end p-3 self-center items-center gap-4">
+    <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
       <a
         href="/#"
-        class="grid grid-cols-[1fr_fit-content(100%)] items-center gap-3 bg-tertiary60 rounded-md"
+        class="grid grid-cols-[1fr_fit-content(100%)] items-center gap-3 rounded-md bg-tertiary60"
       >
-        <p class="pl-2 font-source-code text-sm w-full">Área Membro</p>
-        <div class="bg-tertiary rounded-md pt-1 px-1">
+        <p class="w-full pl-2 font-source-code text-sm">Área Membro</p>
+        <div class="rounded-md bg-tertiary px-1 pt-1">
           <Icon src={Icons.User} color="#411315" size="32px" href={undefined} />
         </div>
       </a>
-      <div class="text-sm text-right">
+      <div class="text-right text-sm">
         <p class="font-bold">FEUP</p>
         <p>Sala B315</p>
       </div>
@@ -93,17 +93,17 @@
 </div>
 
 <div class="hidden w-full bg-transparent p-3 max-sm:block">
-  <footer class="p-2 text-white flex flex-col justify-between border-t-2 text-sm border-secondary">
-    <div class="flex flex-row p-3 self-center justify-between w-full items-center">
+  <footer class="flex flex-col justify-between border-t-2 border-secondary p-2 text-sm text-white">
+    <div class="flex w-full flex-row items-center justify-between self-center p-3">
       <span>NIAEFEUP</span>
-      <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="w-11 h-auto" />
+      <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
       <div class="flex flex-row gap-1">
         <span class="font-bold">FEUP</span>
         <span>B315</span>
       </div>
     </div>
     <div
-      class="grid grid-cols-3 grid-rows-2 items-center px-6 gap-4 py-5 justify-items-center footer-icons"
+      class="footer-icons grid grid-cols-3 grid-rows-2 items-center justify-items-center gap-4 px-6 py-5"
     >
       <Icon
         src={Icons.Instagram}
@@ -129,15 +129,15 @@
         <Icon src={Icons.Mail} color="white" size="24px" href={undefined} />
       </div>
     </div>
-    <div class="flex flex-row justify-end p-3 self-center items-center gap-4">
+    <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
       <a
         href="/#"
-        class="grid grid-cols-[fit-content(100%)_1fr] items-center gap-3 bg-tertiary60 rounded-md"
+        class="grid grid-cols-[fit-content(100%)_1fr] items-center gap-3 rounded-md bg-tertiary60"
       >
-        <div class="bg-tertiary rounded-md pt-1 px-1">
+        <div class="rounded-md bg-tertiary px-1 pt-1">
           <Icon src={Icons.User} color="#411315" size="32px" href={undefined} />
         </div>
-        <p class="pr-2 font-source-code text-sm w-full">Área Membro</p>
+        <p class="w-full pr-2 font-source-code text-sm">Área Membro</p>
       </a>
     </div>
   </footer>

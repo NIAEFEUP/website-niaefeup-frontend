@@ -13,10 +13,10 @@
 
 {#if sidebarClosed}
   <nav
-    class="fixed bg-transperent text-white w-full grid grid-cols-[1fr_4em] grid-rows-1 justify-items-center py-4 px-2 h-fit"
+    class="bg-transperent fixed grid h-fit w-full grid-cols-[1fr_4em] grid-rows-1 justify-items-center py-4 px-2 text-white"
   >
     <button
-      class="w-1/2 col-start-2 sm:invisible h-fit"
+      class="col-start-2 h-fit w-1/2 sm:invisible"
       on:click={() => (sidebarClosed = !sidebarClosed)}
     >
       <Icon src={Icons.Bars} color="#411315" size="31px" href={undefined} />
@@ -24,17 +24,17 @@
   </nav>
 {:else}
   <nav
-    class="bg-ni-sidebar grid grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center sm:invisible py-4 px-2 absolute w-screen h-screen"
+    class="bg-ni-sidebar absolute grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center py-4 px-2 sm:invisible"
   >
     <BackgroundHexagon position="left" />
     <button
-      class="text-white w-1/2 col-start-2 h-fit"
+      class="col-start-2 h-fit w-1/2 text-white"
       on:click={() => (sidebarClosed = !sidebarClosed)}
     >
       <Icon src={Icons.Times} color="white" size="31px" href={undefined} />
     </button>
     <ul
-      class="flex flex-col pt-12 items-start gap-10 text-white text-3xl font-source-code w-full col-start-1 col-span-2"
+      class="col-span-2 col-start-1 flex w-full flex-col items-start gap-10 pt-12 font-source-code text-3xl text-white"
     >
       {#each items as item, i}
         <NavItem selected={selectedIndex === i}>
