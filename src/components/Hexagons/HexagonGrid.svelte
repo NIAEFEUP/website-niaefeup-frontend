@@ -9,8 +9,8 @@
     export let className: string = "";
 </script>
 
-<!-- Warning: Very magic, totally eyeballed magic numbers in the next line -->
-<ul class="grid {className}" style="grid-template-columns: 0.255fr repeat({cols}, 0.49fr 0.255fr); grid-auto-rows: 0.4991fr 0.5fr;"> 
+<!-- Warning: Very magic, totally eyeballed numbers in the next line -->
+<ul class="grid {className}" style="grid-template-columns: 0.255fr repeat({cols}, 0.492fr 0.255fr); grid-auto-rows: 0.4991fr 0.5fr;"> 
     {#each items as item, index}
         {@const col = index % cols}
         {@const row = (index - col) / cols}
