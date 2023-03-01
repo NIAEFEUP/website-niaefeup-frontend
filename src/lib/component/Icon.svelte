@@ -6,7 +6,7 @@
   export let color: string | undefined;
   export let size: string | undefined;
 
-  let link: boolean = false;
+  let link = false;
   if (href) link = true;
 </script>
 

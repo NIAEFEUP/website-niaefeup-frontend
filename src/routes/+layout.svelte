@@ -3,7 +3,6 @@
   import Navbar from '$lib/layout/Navbar.svelte';
   import Footer from '$lib/layout/Footer.svelte';
   import Sidebar from '$lib/layout/Sidebar.svelte';
-  import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
 </script>
 
 <!-- Uncomment <Sidebar /> and comment main + navbar + footer to correctly see the sidebar  -->
