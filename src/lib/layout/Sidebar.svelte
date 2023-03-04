@@ -19,7 +19,7 @@
       class="col-start-2 h-fit w-1/2 sm:invisible"
       on:click={() => (sidebarClosed = !sidebarClosed)}
     >
-      <Icon src={Icons.Bars} color="#411315" size="31px" href={undefined} />
+      <Icon src={Icons.Bars} color="#411315" size="31px" />
     </button>
   </nav>
 {:else}
@@ -31,7 +31,7 @@
       class="col-start-2 h-fit w-1/2 text-white"
       on:click={() => (sidebarClosed = !sidebarClosed)}
     >
-      <Icon src={Icons.Times} color="white" size="31px" href={undefined} />
+      <Icon src={Icons.Times} color="white" size="31px" />
     </button>
     <ul
       class="col-span-2 col-start-1 flex w-full flex-col items-start gap-10 pt-12 font-source-code text-3xl text-white"

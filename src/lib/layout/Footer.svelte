@@ -7,39 +7,34 @@
     navigator.clipboard.writeText(content);
   }
 
+  const iconHoverOpacity = (
+    icon: Element,
+    icons: HTMLCollection,
+    action: string,
+    op_icon: string,
+    op_rest: string
+  ) => {
+    icon.addEventListener(action, (e) => {
+      const el = e.target as HTMLElement;
+      el.style.opacity = op_icon;
+      [...icons]
+        .filter((e) => e !== el)
+        .map((e) => {
+          (e as HTMLElement).style.opacity = op_rest;
+        });
+    });
+  };
+
   onMount(() => {
     const iconsContainer: NodeListOf<Element> | null = document.querySelectorAll('.footer-icons');
-    if (iconsContainer !== null) {
-      iconsContainer.forEach((container) => {
-        const icons: HTMLCollection = container.children;
+    iconsContainer?.forEach((container) => {
+      const icons: HTMLCollection = container.children;
 
-        for (let i of icons) {
-          i.addEventListener('mouseover', (e) => {
-            const el = e.target as HTMLElement;
-            if (el !== null) {
-              el.style.opacity = '1.0';
-              for (let j of icons) {
-                if (j !== el) {
-                  (j as HTMLElement).style.opacity = '0.5';
-                }
-              }
-            }
-          });
-
-          i.addEventListener('mouseleave', (e) => {
-            const el = e.target as HTMLElement;
-            if (el !== null) {
-              el.style.opacity = '1.0';
-              for (let j of icons) {
-                if (j !== el) {
-                  (j as HTMLElement).style.opacity = '1.0';
-                }
-              }
-            }
-          });
-        }
-      });
-    }
+      for (let i of icons) {
+        iconHoverOpacity(i, icons, 'mouseover', '1.0', '0.5');
+        iconHoverOpacity(i, icons, 'mouseleave', '1.0', '1.0');
+      }
+    });
   });
 </script>
 
@@ -67,7 +62,7 @@
         href="https://www.linkedin.com/company/nifeup"
       />
       <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
-        <Icon src={Icons.Mail} color="white" size="24px" href={undefined} />
+        <Icon src={Icons.Mail} color="white" size="24px" />
       </div>
     </div>
     <div class="flex flex-col items-center gap-1">
@@ -81,7 +76,7 @@
       >
         <p class="w-full pl-2 font-source-code text-sm">Área Membro</p>
         <div class="rounded-md bg-tertiary px-1 pt-1">
-          <Icon src={Icons.User} color="#411315" size="32px" href={undefined} />
+          <Icon src={Icons.User} color="#411315" size="32px" />
         </div>
       </a>
       <div class="text-right text-sm">
@@ -126,7 +121,7 @@
         href="https://www.linkedin.com/company/nifeup"
       />
       <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
-        <Icon src={Icons.Mail} color="white" size="24px" href={undefined} />
+        <Icon src={Icons.Mail} color="white" size="24px" />
       </div>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
@@ -135,7 +130,7 @@
         class="grid grid-cols-[fit-content(100%)_1fr] items-center gap-3 rounded-md bg-tertiary60"
       >
         <div class="rounded-md bg-tertiary px-1 pt-1">
-          <Icon src={Icons.User} color="#411315" size="32px" href={undefined} />
+          <Icon src={Icons.User} color="#411315" size="32px" />
         </div>
         <p class="w-full pr-2 font-source-code text-sm">Área Membro</p>
       </a>

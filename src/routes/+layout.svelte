@@ -5,7 +5,6 @@
   import Sidebar from '$lib/layout/Sidebar.svelte';
 </script>
 
-<!-- Uncomment <Sidebar /> and comment main + navbar + footer to correctly see the sidebar  -->
 <Sidebar />
 <Navbar />
 <main class="bg-ni-primary -z-10 flex-grow">
