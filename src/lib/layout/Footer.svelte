@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import Icon from '$lib/component/Icon.svelte';
   import Icons from '$lib/component/Icons';
+  import MemberButton from '$lib/layout/MemberButton.svelte';
 
   function copyToClipboard(content: string) {
     navigator.clipboard.writeText(content);
@@ -70,15 +71,7 @@
       <p class="text-sm">NIAEFEUP &copy; 2022</p>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
-      <a
-        href="/#"
-        class="grid grid-cols-[1fr_fit-content(100%)] items-center gap-3 rounded-md bg-tertiary60"
-      >
-        <p class="w-full pl-2 font-source-code text-sm">Área Membro</p>
-        <div class="rounded-md bg-tertiary px-1 pt-1">
-          <Icon src={Icons.User} color="#411315" size="32px" />
-        </div>
-      </a>
+      <MemberButton />
       <div class="text-right text-sm">
         <p class="font-bold">FEUP</p>
         <p>Sala B315</p>
@@ -125,15 +118,7 @@
       </div>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
-      <a
-        href="/#"
-        class="grid grid-cols-[fit-content(100%)_1fr] items-center gap-3 rounded-md bg-tertiary60"
-      >
-        <div class="rounded-md bg-tertiary px-1 pt-1">
-          <Icon src={Icons.User} color="#411315" size="32px" />
-        </div>
-        <p class="w-full pr-2 font-source-code text-sm">Área Membro</p>
-      </a>
+      <MemberButton />
     </div>
   </footer>
 </div>
