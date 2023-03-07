@@ -1,8 +1,8 @@
-import { PUBLIC_API_URL } from '$env/static/public';
+import { PUBLIC_API_URL, PUBLIC_JWT_REFRESH_KEY, PUBLIC_JWT_ACCESS_KEY } from '$env/static/public';
 import type { Cookies } from '@sveltejs/kit';
-import { JWT_REFRESH_KEY, JWT_ACCESS_KEY, appendCookieHeader } from '$lib/auth';
+import { appendCookieHeader } from '$lib/auth';
 
-async function _fetchAdapter(
+async function _fetchApi(
   relativeUrl: URL | string,
   method: string,
   body?: string | null,
@@ -15,19 +15,15 @@ async function _fetchAdapter(
 }
 
 async function _refreshAccessToken(cookies: Cookies): Promise<string | null> {
-  const refreshToken = cookies.get(JWT_REFRESH_KEY);
-  const response = await _fetchAdapter(
-    'auth/refresh',
-    'POST',
-    JSON.stringify({ token: refreshToken })
-  );
+  const refreshToken = cookies.get(PUBLIC_JWT_REFRESH_KEY);
+  const response = await _fetchApi('auth/refresh', 'POST', JSON.stringify({ token: refreshToken }));
 
   if (!response.ok) {
     return null;
   }
 
   const json = await response.json();
-  return json[JWT_ACCESS_KEY];
+  return json[PUBLIC_JWT_ACCESS_KEY];
 }
 
 export async function fetchWithAuth(
@@ -37,16 +33,16 @@ export async function fetchWithAuth(
   headers?: HeadersInit,
   body?: string | null
 ): Promise<Response> {
-  const jwt = cookies.get(JWT_ACCESS_KEY);
+  const jwt = cookies.get(PUBLIC_JWT_ACCESS_KEY);
 
   if (!jwt) {
-    return _fetchAdapter(relativeUrl, method, body, new Headers(headers));
+    return _fetchApi(relativeUrl, method, body, new Headers(headers));
   }
 
   const authHeaders = new Headers(headers);
   authHeaders.append('Authorization', `Bearer ${jwt}`);
 
-  const response = await _fetchAdapter(relativeUrl, method, body, authHeaders);
+  const response = await _fetchApi(relativeUrl, method, body, authHeaders);
 
   const unauthorized = response.status >= 401 && response.status <= 403;
   if (unauthorized) {
@@ -58,11 +54,11 @@ export async function fetchWithAuth(
     const newAuthHeaders = new Headers(headers);
     newAuthHeaders.set('Authorization', `Bearer ${accessToken}`);
 
-    const newResponse = await _fetchAdapter(relativeUrl, method, body, newAuthHeaders);
+    const newResponse = await _fetchApi(relativeUrl, method, body, newAuthHeaders);
 
     if (newResponse.ok) {
       const newResponseWithCookies = new Response(newResponse.clone().body, newResponse);
-      appendCookieHeader(newResponseWithCookies, JWT_ACCESS_KEY, accessToken);
+      appendCookieHeader(newResponseWithCookies, PUBLIC_JWT_ACCESS_KEY, accessToken);
       return newResponseWithCookies;
     }
   }

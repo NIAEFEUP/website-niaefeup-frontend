@@ -1,9 +1,9 @@
-import { JWT_ACCESS_KEY, JWT_REFRESH_KEY } from '$lib/auth';
+import { PUBLIC_JWT_ACCESS_KEY, PUBLIC_JWT_REFRESH_KEY } from '$env/static/public';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const POST: RequestHandler = async (event) => {
-  const accessToken = event.cookies.get(JWT_ACCESS_KEY);
-  const refreshToken = event.cookies.get(JWT_REFRESH_KEY);
+  const accessToken = event.cookies.get(PUBLIC_JWT_ACCESS_KEY);
+  const refreshToken = event.cookies.get(PUBLIC_JWT_REFRESH_KEY);
   if (!accessToken || !refreshToken) {
     return new Response(
       JSON.stringify({
@@ -23,11 +23,11 @@ export const POST: RequestHandler = async (event) => {
   );
   response.headers.append(
     'Set-Cookie',
-    `${JWT_ACCESS_KEY}=; HttpOnly; Max-Age=0; Path=/; SameSite=Strict`
+    `${PUBLIC_JWT_ACCESS_KEY}=; HttpOnly; Max-Age=0; Path=/; SameSite=Strict`
   );
   response.headers.append(
     'Set-Cookie',
-    `${JWT_REFRESH_KEY}=; HttpOnly; Max-Age=0; Path=/; SameSite=Strict`
+    `${PUBLIC_JWT_REFRESH_KEY}=; HttpOnly; Max-Age=0; Path=/; SameSite=Strict`
   );
   return response;
 };

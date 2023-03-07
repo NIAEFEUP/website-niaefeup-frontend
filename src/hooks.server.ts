@@ -1,4 +1,5 @@
-import { appendCookieHeader, JWT_ACCESS_KEY, JWT_REFRESH_KEY } from '$lib/auth';
+import { appendCookieHeader } from '$lib/auth';
+import { PUBLIC_JWT_ACCESS_KEY, PUBLIC_JWT_REFRESH_KEY } from '$env/static/public';
 import type { Handle } from '@sveltejs/kit';
 
 async function _handleAuthentication(apiResponse: Response): Promise<Response> {
@@ -9,14 +10,14 @@ async function _handleAuthentication(apiResponse: Response): Promise<Response> {
   const serverResponse = new Response(apiResponse.clone().body, apiResponse);
   const json = await apiResponse.json();
 
-  const accessToken = json[JWT_ACCESS_KEY];
+  const accessToken = json[PUBLIC_JWT_ACCESS_KEY];
   if (accessToken) {
-    appendCookieHeader(serverResponse, JWT_ACCESS_KEY, accessToken);
+    appendCookieHeader(serverResponse, PUBLIC_JWT_ACCESS_KEY, accessToken);
   }
 
-  const refreshToken = json[JWT_REFRESH_KEY];
+  const refreshToken = json[PUBLIC_JWT_REFRESH_KEY];
   if (refreshToken) {
-    appendCookieHeader(serverResponse, JWT_REFRESH_KEY, refreshToken);
+    appendCookieHeader(serverResponse, PUBLIC_JWT_REFRESH_KEY, refreshToken);
   }
 
   return serverResponse;
