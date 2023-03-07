@@ -1,4 +1,5 @@
 import { PUBLIC_JWT_ACCESS_KEY, PUBLIC_JWT_REFRESH_KEY } from '$env/static/public';
+import { appendDestroyCookieHeader } from '$lib/auth';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const POST: RequestHandler = async (event) => {
@@ -21,13 +22,7 @@ export const POST: RequestHandler = async (event) => {
       status: 200
     }
   );
-  response.headers.append(
-    'Set-Cookie',
-    `${PUBLIC_JWT_ACCESS_KEY}=; HttpOnly; Max-Age=0; Path=/; SameSite=Strict`
-  );
-  response.headers.append(
-    'Set-Cookie',
-    `${PUBLIC_JWT_REFRESH_KEY}=; HttpOnly; Max-Age=0; Path=/; SameSite=Strict`
-  );
+  appendDestroyCookieHeader(response, PUBLIC_JWT_ACCESS_KEY);
+  appendDestroyCookieHeader(response, PUBLIC_JWT_REFRESH_KEY);
   return response;
 };
