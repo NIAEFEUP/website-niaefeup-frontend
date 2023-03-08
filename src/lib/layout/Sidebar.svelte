@@ -13,7 +13,7 @@
 
 {#if sidebarClosed}
   <nav
-    class="bg-transperent fixed grid h-fit w-full grid-cols-[1fr_4em] grid-rows-1 justify-items-center py-4 px-2 text-white"
+    class="bg-transparent fixed grid h-fit w-full grid-cols-[1fr_4em] grid-rows-1 justify-items-center py-4 px-2 text-white"
   >
     <button
       class="col-start-2 h-fit w-1/2 sm:invisible"
