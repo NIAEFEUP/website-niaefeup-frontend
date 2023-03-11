@@ -3,6 +3,7 @@
   import Navbar from '$lib/layout/Navbar.svelte';
   import Footer from '$lib/layout/Footer.svelte';
   import Sidebar from '$lib/layout/Sidebar.svelte';
+    import SnackbarList from '$lib/notifications/SnackbarList.svelte';
 </script>
 
 <Sidebar />
@@ -16,6 +17,7 @@
   <slot />
 </main>
 <Footer />
+<SnackbarList />
 
 <style>
   :global(html) {
