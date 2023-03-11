@@ -1,7 +1,7 @@
 import { writable, type Writable } from "svelte/store";
 
 const options = {
-    duration: 2000, // ms
+    duration: 4000, // ms
     maxAmount: 3,
 };
 
