@@ -11,7 +11,9 @@
     <div class="ml-3 font-medium text-white m-auto">
         {notification.message}
     </div>
-    <button class="ml-auto rounded-lg p-1.5 hover:bg-secondary" on:click={() => notification.close()} aria-label="Close">
-        <Icon src={Icons.Times} color="white" size="18px" />
-    </button>
+    <div class="flex flex-col justify-center">
+        <button class="ml-auto rounded-lg p-1.5 hover:bg-secondary" on:click={() => notification.close()} aria-label="Close">
+            <Icon src={Icons.Times} color="white" size="18px" />
+        </button>
+    </div>
 </div>
