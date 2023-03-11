@@ -1,10 +1,19 @@
 import { writable, type Writable } from "svelte/store";
 
+const options = {
+    duration: 2000, // ms
+    maxAmount: 3,
+};
+
 export class Notification {
     message: string;
+    duration: number;
 
-    constructor(message: string) {
+    constructor(message: string, duration: number = options.duration) {
         this.message = message;
+        this.duration = duration;
+
+        setTimeout(() => this.close(), this.duration);
     }
 
     close() {
@@ -12,8 +21,17 @@ export class Notification {
     }
 }
 
-export const notifications: Writable<Notification[]> = writable([new Notification("Hello world 2"), new Notification("Hello world")]);
+const limitNotificationAmount = (snackbars: Notification[]) => {
+    if (snackbars.length > options.maxAmount) {
+        snackbars[snackbars.length - 1].close();
+    }
+};
 
-export const createSnackbar = (message: string) => {
-    notifications.update((snackbars) => [new Notification(message), ...snackbars]);
+export const notifications: Writable<Notification[]> = writable([]);
+notifications.subscribe(limitNotificationAmount);
+
+export const createNotification = (message: string) => {
+    notifications.update((snackbars) => {
+        return [new Notification(message), ...snackbars];
+    });
 };
