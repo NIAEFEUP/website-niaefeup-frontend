@@ -4,7 +4,7 @@
 </script>
 
 <div class="fixed bottom-4 right-10 z-20">
-    {#each $notifications as notification}
+    {#each $notifications as notification (notification.id)}
         <Snackbar {notification} />
     {/each}
 </div>

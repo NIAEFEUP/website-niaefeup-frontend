@@ -8,10 +8,12 @@ const options = {
 export class Notification {
     message: string;
     duration: number;
+    id: number;
 
     constructor(message: string, duration: number = options.duration) {
         this.message = message;
         this.duration = duration;
+        this.id = Date.now();
 
         setTimeout(() => this.close(), this.duration);
     }
