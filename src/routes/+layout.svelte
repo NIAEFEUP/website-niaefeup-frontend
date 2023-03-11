@@ -7,7 +7,7 @@
 
 <Sidebar />
 <Navbar />
-<main class="bg-ni-primary -z-10 flex-grow">
+<main class="bg-ni-primary flex-grow">
   <img
     alt="NIAEFEUP hexagon logo"
     class="fixed -right-24 h-full overflow-hidden pt-20 pb-40 sm:right-0 sm:pb-32"
