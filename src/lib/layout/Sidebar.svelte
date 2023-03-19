@@ -19,7 +19,7 @@
       class="col-start-2 h-fit w-1/2 sm:invisible"
       on:click={() => (sidebarClosed = !sidebarClosed)}
     >
-      <Icon src={Icons.Bars} color="#411315" size="31px" />
+      <Icon src={Icons.Bars} color="white" size="31px" />
     </button>
   </nav>
 {:else}
