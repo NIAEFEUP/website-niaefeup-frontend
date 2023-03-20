@@ -16,9 +16,9 @@
   <div class="m-auto ml-3 font-medium text-white">
     {notification.message}
   </div>
-  <div class="flex flex-col">
+  <div class="flex flex-col ml-1">
     <button
-      class="ml-auto rounded-lg p-1.5 hover:bg-secondary"
+      class="rounded-lg p-1.5 hover:bg-secondary"
       on:click={() => notification.close()}
       aria-label="Close"
     >
