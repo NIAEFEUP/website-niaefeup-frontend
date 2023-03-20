@@ -10,13 +10,13 @@
 <div
   out:slide
   in:fly={{ x: 100 }}
-  class="mb-4 flex h-auto w-80 rounded-lg bg-primary px-4 py-2"
+  class="mb-4 flex h-auto w-80 rounded-lg bg-primary px-3 py-2"
   role="status"
 >
   <div class="m-auto ml-3 font-medium text-white">
     {notification.message}
   </div>
-  <div class="flex flex-col justify-center">
+  <div class="flex flex-col">
     <button
       class="ml-auto rounded-lg p-1.5 hover:bg-secondary"
       on:click={() => notification.close()}
