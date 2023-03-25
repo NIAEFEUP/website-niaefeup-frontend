@@ -4,7 +4,6 @@
 
     export let items: T[];
     export let cols: number;
-    // const rows = Math.ceil(items.length / cols);
 
     export let gap: "small" | "medium" | "big" = "medium";
 </script>
