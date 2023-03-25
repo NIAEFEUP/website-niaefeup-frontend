@@ -11,35 +11,36 @@
 <!-- Warning: Very magic, totally eyeballed numbers in the next line -->
 <ul
   class="grid gap-{gap}"
-  style="container-name: hgrid; container-type: inline-size; grid-template-columns: 0.255fr repeat({cols}, 0.492fr 0.255fr); grid-auto-rows: 0.4991fr 0.5fr;"
+  style="grid-template-columns: 0.2425fr repeat({cols}, 0.4805fr 0.2425fr); grid-auto-rows: 0.5fr 0.5fr;"
 >
   {#each items as item, index}
     {@const col = index % cols}
     {@const row = (index - col) / cols}
+    {@const colStart = 2 * col + 1}
+    {@const colEnd = 2 * col + 4}
+    {@const rowStart = 2 * row + 1 + (col % 2)}
+    {@const rowEnd = 2 * row + 3 + (col % 2)}
     <li
-      style="grid-column: {2 * col + 1} / {2 * col + 4}; grid-row: {2 * row + 1 + (col % 2)} / {2 *
-        row +
-        3 +
-        (col % 2)}"
+      style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}"
     >
-      <slot {item} {col} {row} />
+        <slot {item} {col} {row} />
     </li>
   {/each}
 </ul>
 
 <style>
   .gap-small {
-    column-gap: 1%;
-    row-gap: 3%;
+    column-gap: 1.25rem;
+    row-gap: 0.75rem;
   }
 
   .gap-medium {
-    column-gap: 2%;
-    row-gap: 5.5%;
+    column-gap: 1.75rem;
+    row-gap: 1.125rem;
   }
 
   .gap-big {
-    column-gap: 3%;
-    row-gap: 9%;
+    column-gap: 2.25rem;
+    row-gap: 1.5rem;
   }
 </style>

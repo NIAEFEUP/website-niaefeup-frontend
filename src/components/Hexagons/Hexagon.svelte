@@ -1,6 +1,6 @@
-<div class="clip-ring bg-white">
-  <div class="clip-outer-hexagon flex items-center justify-center">
-    <div class="clip-hexagon h-full w-full">
+<div class="clip-ring bg-white w-full h-full">
+  <div class="clip-outer-hexagon w-full h-full">
+    <div class="clip-hexagon w-full h-full">
       <slot />
     </div>
   </div>
