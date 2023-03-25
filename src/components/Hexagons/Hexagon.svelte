@@ -1,31 +1,28 @@
-<script lang="ts">
-  export let className: string = "";
-
-  let isHexagonBeingHovered = false;
-</script>
-
-<div class="clip-background bg-white {className}" on:pointerenter={() => {
-  isHexagonBeingHovered = true
-  }} on:pointerleave={() => {
-  isHexagonBeingHovered = false
-  }}>
-  <div class="clip-foreground flex items-center justify-center">
-    <slot {isHexagonBeingHovered} />
+<div class="clip-ring bg-white">
+  <div class="clip-outer-hexagon flex items-center justify-center">
+    <div class="clip-hexagon w-full h-full">
+        <slot />
+    </div>
   </div>
 </div>
 
 <style>
-  .clip-background, .clip-foreground {
+  .clip-ring, .clip-outer-hexagon {
     aspect-ratio: 316 / 270; /* from Figma */
     mask-size: cover;
   }
   
-  .clip-background {
-    mask-image: url("/masks/hexagon/background.svg");
+  .clip-ring {
     clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+    mask-image: url("/masks/hexagon/background.svg");
   }
   
-  .clip-foreground {
+  .clip-outer-hexagon {
+    padding: 5.8% 6.9%; /* Magic Numbers */
     mask-image: url("/masks/hexagon/foreground.svg");
+  }
+  
+  .clip-hexagon {
+    clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
   }
 </style>
