@@ -20,10 +20,8 @@
     {@const colEnd = 2 * col + 4}
     {@const rowStart = 2 * row + 1 + (col % 2)}
     {@const rowEnd = 2 * row + 3 + (col % 2)}
-    <li
-      style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}"
-    >
-        <slot {item} {col} {row} />
+    <li style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}">
+      <slot {item} {col} {row} />
     </li>
   {/each}
 </ul>
