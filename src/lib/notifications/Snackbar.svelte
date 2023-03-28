@@ -16,7 +16,7 @@
   <div class="m-auto ml-3 font-medium text-white">
     {notification.message}
   </div>
-  <div class="flex flex-col ml-1">
+  <div class="ml-1 flex flex-col">
     <button
       class="rounded-lg p-1.5 hover:bg-secondary"
       on:click={() => notification.close()}
