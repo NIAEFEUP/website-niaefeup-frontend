@@ -3,11 +3,12 @@
   import Navbar from '$lib/layout/Navbar.svelte';
   import Footer from '$lib/layout/Footer.svelte';
   import Sidebar from '$lib/layout/Sidebar.svelte';
+  import SnackbarList from '$lib/notifications/SnackbarList.svelte';
 </script>
 
 <Sidebar />
 <Navbar />
-<main class="bg-ni-primary -z-10 flex-grow">
+<main class="bg-ni-primary flex-grow">
   <img
     alt="NIAEFEUP hexagon logo"
     class="fixed -right-24 h-full overflow-hidden pt-20 pb-40 sm:right-0 sm:pb-32"
@@ -16,6 +17,7 @@
   <slot />
 </main>
 <Footer />
+<SnackbarList />
 
 <style>
   :global(html) {
