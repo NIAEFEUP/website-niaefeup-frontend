@@ -19,6 +19,6 @@ export const ErrorPageButton = {
     color: 'primary',
     hoverColor: 'secondary',
     text: 'Button',
-    width: 'w-32'
+    width: 'medium'
   }
 };
