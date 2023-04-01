@@ -4,7 +4,7 @@
   import Button from '$lib/error-page/Button.svelte';
 </script>
 
-<main class="flex flex-col font-source-code-pro justify-center my-20 mx-10 gap-20">
+<main class="flex flex-col font-source_code_pro justify-center my-20 mx-10 gap-20">
     <section class="flex flex-col text-white text-center break-normal gap-10">
         <h1 class="text-7xl 2xl:text-huge font-extrabold">{$page.status}</h1>
         <h2 class="text-3xl md:text-4xl 2xl:text-6xl font-semibold">missing ; before statement</h2>
