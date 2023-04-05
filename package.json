@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "start": "npm run dev",
-    "dev": "vite dev --port 3000",
+    "dev": "vite dev --port 3000 --host 0.0.0.0",
     "build": "vite build",
+    "prod": "node ./build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -23,21 +24,22 @@
     "@storybook/svelte": "^7.0.0-beta.8",
     "@storybook/sveltekit": "^7.0.0-beta.8",
     "@storybook/testing-library": "^0.0.13",
-    "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-storybook": "^0.6.8",
+    "eslint-plugin-storybook": "^0.6.10",
     "eslint-plugin-svelte3": "^4.0.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.0",
     "prettier-plugin-svelte": "^2.8.1",
+    "prettier-plugin-tailwindcss": "^0.2.3",
     "storybook": "^7.0.0-beta.8",
     "svelte": "^3.55.1",
     "svelte-check": "^2.9.2",
+    "svelte-icons-pack": "^2.0.0",
     "svelte-preprocess": "^5.0.0",
     "tailwindcss": "^3.2.4",
     "tslib": "^2.4.1",
@@ -47,6 +49,7 @@
   },
   "type": "module",
   "dependencies": {
-    "svelte-icons-pack": "^2.0.0"
+    "svelte-icons-pack": "^2.0.0",
+    "@sveltejs/adapter-auto": "^2.0.0"
   }
 }

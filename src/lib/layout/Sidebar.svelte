@@ -1,26 +1,51 @@
 <script lang="ts">
-    import NavItem from "$lib/navbar/NavItem.svelte";
+  import NavItem from '$lib/navbar/NavItem.svelte';
+  import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
+  import Icon from '$lib/component/Icon.svelte';
+  import Icons from '$lib/component/Icons';
 
-    let selectedIndex: number | null = null;
+  let selectedIndex: number | null = null;
 
-    const items = [
-        "Início",
-        "Eventos",
-        "Projetos",
-        "Equipa",
-        "Contactos",
-    ];
+  const items = ['Início', 'Eventos', 'Projetos', 'Equipa', 'Contactos'];
+
+  let sidebarClosed = true;
 </script>
 
-<nav class="bg-ni-sidebar grid grid-cols-4 grid-rows-6 justify-items-center sm:invisible py-4 absolute w-screen h-screen">
-    <div class="col-start-4 flex items-start justify-end">
-        <button class="text-white text-4xl">X</button>
-    </div>
-    <ul class="row-start-2 col-start-1 col-span-3 pl-4 text-white text-4xl font-source-code flex flex-col gap-12">
-        {#each items as item, i}
-            <NavItem selected={selectedIndex === i} onSelect={() => {selectedIndex = i}}>
-                <a href="">{item}</a>
-            </NavItem>
-        {/each}
+{#if sidebarClosed}
+  <nav
+    class="fixed grid h-fit w-full grid-cols-[1fr_4em] grid-rows-1 justify-items-center bg-transparent py-4 px-2 text-white"
+  >
+    <button
+      class="col-start-2 h-fit w-1/2 sm:invisible"
+      on:click={() => (sidebarClosed = !sidebarClosed)}
+    >
+      <Icon src={Icons.Bars} color="white" size="31px" />
+    </button>
+  </nav>
+{:else}
+  <nav
+    class="bg-ni-sidebar absolute grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center py-4 px-2 sm:invisible"
+  >
+    <BackgroundHexagon position="left" />
+    <button
+      class="col-start-2 h-fit w-1/2 text-white"
+      on:click={() => (sidebarClosed = !sidebarClosed)}
+    >
+      <Icon src={Icons.Times} color="white" size="31px" />
+    </button>
+    <ul
+      class="col-span-2 col-start-1 flex w-full flex-col items-start gap-10 pt-12 font-source_code text-3xl text-white"
+    >
+      {#each items as item, i}
+        <NavItem selected={selectedIndex === i}>
+          <a
+            href="#/"
+            on:click={() => {
+              selectedIndex = i;
+            }}>{item}</a
+          >
+        </NavItem>
+      {/each}
     </ul>
-</nav>
+  </nav>
+{/if}

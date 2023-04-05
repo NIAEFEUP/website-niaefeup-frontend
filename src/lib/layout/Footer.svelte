@@ -1,71 +1,126 @@
-<script>
-    import Icon from 'svelte-icons-pack/Icon.svelte';
-    import FaBrandsInstagram from "svelte-icons-pack/fa/FaBrandsInstagram";
-    import FaBrandsTwitter from "svelte-icons-pack/fa/FaBrandsTwitter";
-    import FaBrandsFacebook from "svelte-icons-pack/fa/FaBrandsFacebook";
-    import FaBrandsGithub from "svelte-icons-pack/fa/FaBrandsGithub"; 
-    import IoMail from "svelte-icons-pack/io/IoMail"; 
-    import FaBrandsLinkedin from "svelte-icons-pack/fa/FaBrandsLinkedin";
-    import FaSolidUser from "svelte-icons-pack/fa/FaSolidUser"; 
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import Icon from '$lib/component/Icon.svelte';
+  import Icons from '$lib/component/Icons';
+  import MemberButton from '$lib/layout/MemberButton.svelte';
+  import { createNotification } from '$lib/notifications';
+
+  function copyToClipboard(content: string) {
+    navigator.clipboard.writeText(content);
+    createNotification('O email foi copiado para o teu clipboard :)');
+  }
+
+  const iconHoverOpacity = (
+    icon: Element,
+    icons: HTMLCollection,
+    action: string,
+    op_icon: string,
+    op_rest: string
+  ) => {
+    icon.addEventListener(action, (e) => {
+      const el = e.target as HTMLElement;
+      el.style.opacity = op_icon;
+      [...icons]
+        .filter((e) => e !== el)
+        .map((e) => {
+          (e as HTMLElement).style.opacity = op_rest;
+        });
+    });
+  };
+
+  onMount(() => {
+    const iconsContainer: NodeListOf<Element> | null = document.querySelectorAll('.footer-icons');
+    iconsContainer?.forEach((container) => {
+      const icons: HTMLCollection = container.children;
+
+      for (let i of icons) {
+        iconHoverOpacity(i, icons, 'mouseover', '1.0', '0.5');
+        iconHoverOpacity(i, icons, 'mouseleave', '1.0', '1.0');
+      }
+    });
+  });
 </script>
 
-<div class="w-full bg-transparent p-3 max-sm:hidden z-10">
-    <footer class="p-2 text-white grid grid-cols-3 justify-between border-t-2 border-secondary">
-        <div class="flex p-3 self-center gap-3">
-            <a href="https://www.instagram.com/niaefeup/"><Icon src={FaBrandsInstagram} color="white" size="24px" /></a>
-            <a href="https://twitter.com/niaefeup"><Icon src={FaBrandsTwitter} color="white" size="24px" /></a>
-            <a href="https://www.facebook.com/NIAEFEUP"><Icon src={FaBrandsFacebook} color="white" size="24px" /></a>
-            <a href="https://github.com/NIAEFEUP"><Icon src={FaBrandsGithub} color="white" size="24px" /></a>
-            <a href="https://www.linkedin.com/company/nifeup"><Icon src={FaBrandsLinkedin} color="white" size="24px" /></a>
-            <a href="mailto: ni@aefeup.pt"><Icon src={IoMail} color="white" size="24px" /></a>
-        </div>
-        <div class="flex flex-col items-center gap-1">
-            <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="w-11 h-auto">
-            <p class="text-sm">&copy; NIAEFEUP 2022</p>
-        </div>
-        <div class="flex flex-row justify-end p-3 self-center items-center gap-2">
-            <div class="relative flex flex-row self-center items-center gap-1 bg-tertiary60 w-40 justify-between rounded-md content-center h-10 cursor-pointer">
-                <div class="flex content-center pl-2">
-                    <a href="" class="pr-1 w-full font-source-code">Área Membro</a>
-                </div>
-                <div class="absolute bg-tertiary rounded-md w-fit p-1 pb-0 pt-2 h-fit right-0 ">
-                    <Icon src={FaSolidUser} color="#411315" size="31px" />
-                </div>
-            </div>
-            <div class="text-sm text-right">
-                <p class="font-bold">FEUP</p>
-                <p>Sala B315</p>
-            </div>    
-        </div>
-    </footer>
+<div class="z-10 w-full bg-transparent p-3 max-sm:hidden">
+  <footer class="grid grid-cols-3 justify-between border-t-2 border-secondary p-2 text-white">
+    <div class="footer-icons grid w-fit grid-cols-6 gap-4 self-center p-3">
+      <Icon
+        src={Icons.Instagram}
+        color="white"
+        size="24px"
+        href="https://www.instagram.com/niaefeup/"
+      />
+      <Icon src={Icons.Twitter} color="white" size="24px" href="https://twitter.com/niaefeup" />
+      <Icon
+        src={Icons.Facebook}
+        color="white"
+        size="24px"
+        href="https://www.facebook.com/NIAEFEUP"
+      />
+      <Icon src={Icons.Github} color="white" size="24px" href="https://github.com/NIAEFEUP" />
+      <Icon
+        src={Icons.Linkedin}
+        color="white"
+        size="24px"
+        href="https://www.linkedin.com/company/nifeup"
+      />
+      <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
+        <Icon src={Icons.Mail} color="white" size="24px" />
+      </div>
+    </div>
+    <div class="flex flex-col items-center gap-1">
+      <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
+      <p class="text-sm">NIAEFEUP &copy; 2022</p>
+    </div>
+    <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
+      <MemberButton />
+      <div class="text-right text-sm">
+        <p class="font-bold">FEUP</p>
+        <p>Sala B315</p>
+      </div>
+    </div>
+  </footer>
 </div>
 
 <div class="hidden w-full bg-transparent p-3 max-sm:block">
-    <footer class="p-2 text-white flex flex-col justify-between border-t-2 text-sm">
-        <div class="flex flex-row p-3 self-center justify-between w-full items-center">
-            <span>NIAEFEUP</span>
-            <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="w-11 h-auto">
-            <div class="flex flex-row gap-1">
-                <span class="font-bold">FEUP</span>
-                <span>B315</span>
-            </div>
-        </div>
-        <div class="grid grid-cols-3 grid-rows-2 items-center p-2 gap-2 justify-items-center">
-            <a href="https://www.instagram.com/niaefeup/"><Icon src={FaBrandsInstagram} color="white" size="24px" /></a>
-            <a href="https://twitter.com/niaefeup"><Icon src={FaBrandsTwitter} color="white" size="24px" /></a>
-            <a href="https://www.facebook.com/NIAEFEUP"><Icon src={FaBrandsFacebook} color="white" size="24px" /></a>
-            <a href="https://github.com/NIAEFEUP"><Icon src={FaBrandsGithub} color="white" size="24px" /></a>
-            <a href="https://www.linkedin.com/company/nifeup"><Icon src={FaBrandsLinkedin} color="white" size="24px" /></a>
-            <a href="mailto: ni@aefeup.pt"><Icon src={IoMail} color="white" size="24px" /></a>
-        </div>
-        <div class="relative flex flex-row self-center items-center gap-1 bg-tertiary60 w-30 justify-between rounded-md content-center h-10 cursor-pointer">
-            <div class="flex content-center pl-11">
-                <a href="" class="pr-1 w-full font-source-code">Área Membro</a>
-            </div>
-            <div class="absolute bg-tertiary rounded-md w-fit p-1 pb-0 pt-2 h-fit left-0 ">
-                <Icon src={FaSolidUser} color="#411315" size="31px" />
-            </div>
-        </div>
-    <span class="self-center pt-4">&copy; NIAEFEUP 2022</span>
-    </footer>
+  <footer class="flex flex-col justify-between border-t-2 border-secondary p-2 text-sm text-white">
+    <div class="flex w-full flex-row items-center justify-between self-center p-3">
+      <span>NIAEFEUP</span>
+      <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
+      <div class="flex flex-row gap-1">
+        <span class="font-bold">FEUP</span>
+        <span>B315</span>
+      </div>
+    </div>
+    <div
+      class="footer-icons grid grid-cols-3 grid-rows-2 items-center justify-items-center gap-4 px-6 py-5"
+    >
+      <Icon
+        src={Icons.Instagram}
+        color="white"
+        size="24px"
+        href="https://www.instagram.com/niaefeup/"
+      />
+      <Icon src={Icons.Twitter} color="white" size="24px" href="https://twitter.com/niaefeup" />
+      <Icon
+        src={Icons.Facebook}
+        color="white"
+        size="24px"
+        href="https://www.facebook.com/NIAEFEUP"
+      />
+      <Icon src={Icons.Github} color="white" size="24px" href="https://github.com/NIAEFEUP" />
+      <Icon
+        src={Icons.Linkedin}
+        color="white"
+        size="24px"
+        href="https://www.linkedin.com/company/nifeup"
+      />
+      <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
+        <Icon src={Icons.Mail} color="white" size="24px" />
+      </div>
+    </div>
+    <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
+      <MemberButton />
+    </div>
+  </footer>
 </div>

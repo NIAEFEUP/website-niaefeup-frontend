@@ -1,9 +1,23 @@
-<script>
+<script lang="ts">
   import '../app.css';
   import Navbar from '$lib/layout/Navbar.svelte';
   import Footer from '$lib/layout/Footer.svelte';
   import Sidebar from '$lib/layout/Sidebar.svelte';
+  import SnackbarList from '$lib/notifications/SnackbarList.svelte';
 </script>
+
+<Sidebar />
+<Navbar />
+<main class="bg-ni-primary flex-grow">
+  <img
+    alt="NIAEFEUP hexagon logo"
+    class="fixed -right-24 h-full overflow-hidden pt-20 pb-40 sm:right-0 sm:pb-32"
+    src="/images/outline_white.png"
+  />
+  <slot />
+</main>
+<Footer />
+<SnackbarList />
 
 <style>
   :global(html) {
@@ -16,13 +30,3 @@
     flex-direction: column;
   }
 </style>
-
-
-<!-- Uncomment <Sidebar /> and comment main + navbar + footer to correctly see the sidebar  -->
-<!-- <Sidebar /> -->
-<Navbar/>
-<main class="min-h-[200vh] flex-grow bg-ni-primary">
-  <img alt="NIAEFEUP hexagon logo" class="py-11 fixed h-full z-1 overflow-hidden right-0" src="/images/outline_white.png">
-  <slot />
-</main>
-<Footer/>
