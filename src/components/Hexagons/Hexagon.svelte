@@ -1,29 +1,30 @@
-<div class="clip-ring h-full w-full bg-white">
-  <div class="clip-outer-hexagon h-full w-full">
-    <div class="clip-hexagon h-full w-full">
+<div class="w-full h-full aspect-hexagon bg-white mask-background mask-cover clip-hexagon">
+  <!-- px-[6.9%] and py-[5.8%] are magic numbers that look good with the masks -->
+  <div class="h-full px-[6.9%] py-[5.8%] mask-foreground mask-cover">
+    <div class="h-full clip-hexagon">
       <slot />
     </div>
   </div>
 </div>
 
 <style>
-  .clip-ring,
-  .clip-outer-hexagon {
+  .clip-hexagon {
+    clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+  }
+
+  .aspect-hexagon {
     aspect-ratio: 316 / 270; /* from Figma */
+  }
+
+  .mask-cover {
     mask-size: cover;
   }
 
-  .clip-ring {
-    clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
-    mask-image: url('/masks/hexagon/background.svg');
-  }
-
-  .clip-outer-hexagon {
-    padding: 5.8% 6.9%; /* Magic Numbers */
+  .mask-foreground {
     mask-image: url('/masks/hexagon/foreground.svg');
   }
 
-  .clip-hexagon {
-    clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+  .mask-background {
+    mask-image: url('/masks/hexagon/background.svg');
   }
 </style>

@@ -8,7 +8,7 @@
   export let gap: 'small' | 'medium' | 'big' = 'medium';
 </script>
 
-<!-- Warning: Very magic, totally eyeballed numbers in the next line -->
+<!-- The grid column sizes used are magic numbers that look good with the Hexagon component -->
 <ul
   class="grid gap-{gap}"
   style="grid-template-columns: 0.2425fr repeat({cols}, 0.4805fr 0.2425fr); grid-auto-rows: 0.5fr 0.5fr;"
