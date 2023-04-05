@@ -21,10 +21,10 @@
   }
 
   .mask-foreground {
-    mask-image: url('/masks/hexagon/foreground.svg');
+    mask-image: url('/masks/hexagon/horizontal/foreground.svg');
   }
 
   .mask-background {
-    mask-image: url('/masks/hexagon/background.svg');
+    mask-image: url('/masks/hexagon/horizontal/background.svg');
   }
 </style>
