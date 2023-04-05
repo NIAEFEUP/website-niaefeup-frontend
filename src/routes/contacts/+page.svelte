@@ -6,8 +6,8 @@
     <section class="flex flex-col text-white font-raleway text-center ">
         <h1 class="text-2xl font-bold">&lt; Contacta-nos /&gt;</h1>
     </section>
-    <div class="flex flex-wrap">
-        <form>
+    <div class="md:grid grid-cols-2">
+        <form class="justify-self-end min-w-3/4">
             <label class="m-1 text-white font-source-code" for="email">// Email</label><br>
             <input class="rounded-lg p-1 text-primary placeholder-primary" type="email" id="email" placeholder="xxxxxxxxxxxxx@gmail.com"><br>
             <label class="m-1 text-white font-source-code" for="name">// Nome</label><br>
@@ -19,6 +19,14 @@
 
             <button class="m-1 px-5 py-1 rounded-lg justify-self-start text-white bg-primary" type="submit">Enviar</button>
         </form>
-        <Graph />
+        <div class="px-3 flex justify-center items-center w-full">
+            <Graph />
+        </div>
     </div>
 </main>
+
+<style>
+    form > input {
+        width: 100%;
+    }
+</style>

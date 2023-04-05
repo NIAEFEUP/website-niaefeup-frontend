@@ -23,8 +23,12 @@
     [5, 3],
     [2, 4]
   ];
-  const coefficient = 8;
-  const iconSize = 10;
+  let innerWidth = 0;
+  console.log(innerWidth)
+  let coefficient = 8;
+  //$: coefficient = innerWidth / 10;
+  console.log(coefficient)
+  const iconSize = 8;
 
   const socials = [
     {url: "https://www.instagram.com/niaefeup/", icon: FaBrandsInstagram},
@@ -36,7 +40,9 @@
   ]
 </script>
 
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" >
+<svelte:window bind:innerWidth />
+
+<svg style="height: 400px; min-width: 300px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" >
   <!-- Draw graph edges. -->
   {#each lines as line}
     <line
@@ -51,29 +57,22 @@
   <!-- Draw graph nodes. -->
   {#each coords as coord, index}
     <foreignObject
-      x={coord[0] * coefficient - iconSize / 2}
-      y={coord[1] * coefficient - iconSize / 2}
-      width="{iconSize}"
-      height="{iconSize}"
+      x={coord[0] * coefficient - (iconSize + 2) / 2}
+      y={coord[1] * coefficient - (iconSize + 2) / 2}
+      width="{iconSize + 2}"
+      height="{iconSize + 2}"
     >
-      <a href={socials[index].url}>
+      <div class="bg-white bg-opacity-30 rounded flex justify-center items-center h-full w-full">
+      <a class="" href={socials[index].url}>
         <Icon
           src={socials[index].icon}
           color="white"
-          className="node bg-white rounded-md bg-opacity-20"
+          className="node "
           size="{iconSize.toString()}"
         />
       </a>
+    </div>
     </foreignObject>
   {/each}
 </svg>
 
-<style>
-    svg {
-        max-width: 100;
-    }
-
-    .node {
-        padding: 5px;
-    }
-</style>
