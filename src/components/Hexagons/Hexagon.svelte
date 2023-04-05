@@ -1,7 +1,7 @@
-<div class="w-full h-full aspect-hexagon bg-white mask-background mask-cover clip-hexagon">
+<div class="aspect-hexagon mask-background mask-cover clip-hexagon h-full w-full bg-white">
   <!-- px-[6.9%] and py-[5.8%] are magic numbers that look good with the masks -->
-  <div class="h-full px-[6.9%] py-[5.8%] mask-foreground mask-cover">
-    <div class="h-full clip-hexagon">
+  <div class="mask-foreground mask-cover h-full px-[6.9%] py-[5.8%]">
+    <div class="clip-hexagon h-full">
       <slot />
     </div>
   </div>
