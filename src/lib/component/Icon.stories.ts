@@ -10,9 +10,6 @@ export default {
   },
   parameters: {
     layout: 'centered',
-    backgrounds: {
-      default: 'dark'
-    },
     controls: { exclude: ['src'] }
   }
 };

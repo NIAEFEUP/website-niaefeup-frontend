@@ -6,5 +6,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/
     }
-  }
+  },
+  backgrounds: {
+    default: 'dark'
+  },
 };
