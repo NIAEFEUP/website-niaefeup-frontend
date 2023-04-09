@@ -98,6 +98,8 @@ npm run storybook
 
 To write new stories refer to the [official documentation](https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction).
 
+If you only want to check our current stories, you can do it on the [Storybook Preview](https://develop--niaefeup-frontend-storybook.netlify.app/) (also available in your pull requests).
+
 ## Building
 
 To create a production version of your app:
