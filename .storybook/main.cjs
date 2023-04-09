@@ -12,5 +12,6 @@ module.exports = {
   },
   docs: {
     docsPage: true
-  }
+  },
+  staticDirs: ['../static']
 };
