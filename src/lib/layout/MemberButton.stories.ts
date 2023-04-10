@@ -1,7 +1,7 @@
 import MemberButton from "./MemberButton.svelte";
 
 export default {
-  title: 'MemberButton',
+  title: 'Atoms/Buttons/Member Button',
   component: MemberButton,
   parameters: {
     layout: 'centered'

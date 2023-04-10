@@ -1,7 +1,7 @@
 import Sidebar from "./Sidebar.svelte";
 
 export default {
-  title: 'Sidebar',
+  title: 'Molecules/Layout/Sidebar',
   component: Sidebar,
   parameters: {
     layout: 'fullscreen'

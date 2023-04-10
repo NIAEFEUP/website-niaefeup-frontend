@@ -1,7 +1,7 @@
 import Navbar from "./Navbar.svelte";
 
 export default {
-  title: 'Navbar',
+  title: 'Molecules/Layout/Navbar',
   component: Navbar,
   parameters: {
     layout: 'fullscreen'

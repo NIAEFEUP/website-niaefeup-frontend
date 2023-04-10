@@ -1,7 +1,7 @@
 import Footer from "./Footer.svelte";
 
 export default {
-  title: 'Footer',
+  title: 'Molecules/Layout/Footer',
   component: Footer,
   parameters: {
     layout: 'fullscreen'

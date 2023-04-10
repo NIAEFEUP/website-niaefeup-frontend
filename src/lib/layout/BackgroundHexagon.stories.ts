@@ -1,7 +1,7 @@
 import BackgroundHexagon from "./BackgroundHexagon.svelte";
 
 export default {
-  title: 'BackgroundHexagon',
+  title: 'Molecules/Layout/Background Hexagon',
   component: BackgroundHexagon,
   argTypes: {
     position: { control: 'inline-radio', options: ['left', 'right'] }

@@ -2,7 +2,7 @@ import Icon from './Icon.svelte';
 import Icons from './Icons';
 
 export default {
-  title: 'Icon',
+  title: 'Atoms/Icons',
   component: Icon,
   argTypes: {
     color: { control: 'color' },

@@ -2,7 +2,7 @@ import { Notification } from ".";
 import Snackbar from "./Snackbar.svelte";
 
 export default {
-  title: 'Snackbar',
+  title: 'Molecules/Snackbar',
   component: Snackbar,
   argTypes: {
     notification: { control: 'object' },

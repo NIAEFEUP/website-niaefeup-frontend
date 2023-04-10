@@ -3,7 +3,7 @@ import Button from './Button.svelte';
 const colorList = ['primary', 'secondary', 'red', 'green', 'blue'];
 
 export default {
-  title: 'Button',
+  title: 'Atoms/Buttons/Regular Button',
   component: Button,
   argTypes: {
     color: { control: 'inline-radio', options: colorList },

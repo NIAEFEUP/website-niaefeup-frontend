@@ -10,4 +10,11 @@ export const parameters = {
   backgrounds: {
     default: 'dark'
   },
+  parameters: {
+    options: {
+      storySort: {
+        order: ['Atoms', 'Molecules', 'Organisms', 'Pages']
+      }
+    }
+  }
 };
