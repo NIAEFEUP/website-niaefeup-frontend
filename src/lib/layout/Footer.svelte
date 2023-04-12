@@ -3,12 +3,7 @@
   import Icon from '$lib/component/Icon.svelte';
   import Icons from '$lib/component/Icons';
   import MemberButton from '$lib/layout/MemberButton.svelte';
-  import { createNotification } from '$lib/notifications';
-
-  function copyToClipboard(content: string) {
-    navigator.clipboard.writeText(content);
-    createNotification('O email foi copiado para o teu clipboard :)');
-  }
+  import { copyToClipboard } from '$lib/utils';
 
   const iconHoverOpacity = (
     icon: Element,
