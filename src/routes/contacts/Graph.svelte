@@ -6,7 +6,7 @@
   import FaBrandsGithub from 'svelte-icons-pack/fa/FaBrandsGithub';
   import IoMail from 'svelte-icons-pack/io/IoMail';
   import FaBrandsLinkedin from 'svelte-icons-pack/fa/FaBrandsLinkedin';
-    import { copyToClipboard } from '$lib/utils';
+  import { copyToClipboard } from '$lib/utils';
 
   const coords = [
     [1, 1],
@@ -28,18 +28,18 @@
   const iconSize = 8;
 
   const socials = [
-    {url: "https://www.instagram.com/niaefeup/", icon: FaBrandsInstagram},
-    {url: "https://github.com/NIAEFEUP", icon: FaBrandsGithub},
-    {url: "https://www.facebook.com/NIAEFEUP", icon: FaBrandsFacebook},
-    {url: "ni@aefeup.pt", icon: IoMail},
-    {url: "https://www.linkedin.com/company/nifeup", icon: FaBrandsLinkedin},
-    {url: "https://twitter.com/niaefeup", icon: FaBrandsTwitter}
-  ]
+    { url: 'https://www.instagram.com/niaefeup/', icon: FaBrandsInstagram },
+    { url: 'https://github.com/NIAEFEUP', icon: FaBrandsGithub },
+    { url: 'https://www.facebook.com/NIAEFEUP', icon: FaBrandsFacebook },
+    { url: 'ni@aefeup.pt', icon: IoMail },
+    { url: 'https://www.linkedin.com/company/nifeup', icon: FaBrandsLinkedin },
+    { url: 'https://twitter.com/niaefeup', icon: FaBrandsTwitter }
+  ];
 </script>
 
 <svelte:window bind:innerWidth />
 
-<svg style="height: 400px; min-width: 350px" viewBox="0 0 87 80" xmlns="http://www.w3.org/2000/svg" >
+<svg style="height: 400px; min-width: 350px" viewBox="0 0 87 80" xmlns="http://www.w3.org/2000/svg">
   <!-- Draw graph edges. -->
   {#each lines as line}
     <line
@@ -56,24 +56,27 @@
     <foreignObject
       x={coord[0] * coefficient - (iconSize + 2) / 2}
       y={coord[1] * coefficient - (iconSize + 2) / 2}
-      width="{iconSize + 2}"
-      height="{iconSize + 2}"
+      width={iconSize + 2}
+      height={iconSize + 2}
     >
-    {#if socials[index].url.slice(0, 5) == 'https' }
-      <div class="bg-white bg-opacity-30 rounded flex justify-center items-center h-full w-full">
+      {#if socials[index].url.slice(0, 5) == 'https'}
+        <div class="flex h-full w-full items-center justify-center rounded bg-white bg-opacity-30">
           <Icon
             src={socials[index].icon}
             color="white"
-            size="{iconSize.toString()}"
-            href="{socials[index].url}"
+            size={iconSize.toString()}
+            href={socials[index].url}
           />
-          </div>
-        {:else}
-      <div class="bg-white bg-opacity-30 rounded flex justify-center items-center h-full w-full" on:click={() => copyToClipboard(socials[index].url)} on:keydown>
-            <Icon src={socials[index].icon} color="white" size="{iconSize.toString()}" />
-          </div>
-        {/if}
+        </div>
+      {:else}
+        <div
+          class="flex h-full w-full items-center justify-center rounded bg-white bg-opacity-30"
+          on:click={() => copyToClipboard(socials[index].url)}
+          on:keydown
+        >
+          <Icon src={socials[index].icon} color="white" size={iconSize.toString()} />
+        </div>
+      {/if}
     </foreignObject>
   {/each}
 </svg>
-
