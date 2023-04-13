@@ -17,27 +17,21 @@
 <!-- The grid column sizes used are magic numbers that look good with the Hexagon component -->
 <ul class="grid gap-{orientation}-{gap}" style={gridColumnsStyle}>
   {#each items as item, index}
-    {#if orientation === 'horizontal'}
-      {@const col = index % cols}
-      {@const row = (index - col) / cols}
-      {@const colStart = 2 * col + 1}
-      {@const colEnd = 2 * col + 4}
-      {@const rowStart = 2 * row + 1 + (col % 2)}
-      {@const rowEnd = 2 * row + 3 + (col % 2)}
-      <li style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}">
+{#each items as item, index}
+
+    {@const isHorizontal = orientation === 'horizontal' }
+    {@const col = index % cols}
+    {@const row = (index - col) / cols}
+    {@const horizontalColStart = 2 * col + 1}
+    {@const colStart = horizontalColStart + (isHorizontal ? 0 : (row % 2))}
+    {@const verticalRowStart = 2 * row + 1}
+    {@const rowStart = verticalRowStart + (isHorizontal ? (col % 2) : 0)}
+    {@const colEnd = isHorizontal ? 2 * col + 4 : 2 * col + 3 + (row % 2)}
+    {@const rowEnd = isHorizontal ? 2 * row + 3 + (col % 2) : 2 * row + 4}
+
+    <li style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}">
         <slot {item} {col} {row} />
-      </li>
-    {:else}
-      {@const col = index % cols}
-      {@const row = (index - col) / cols}
-      {@const rowStart = 2 * row + 1}
-      {@const rowEnd = 2 * row + 4}
-      {@const colStart = 2 * col + 1 + (row % 2)}
-      {@const colEnd = 2 * col + 3 + (row % 2)}
-      <li style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}">
-        <slot {item} {col} {row} />
-      </li>
-    {/if}
+    </li>
   {/each}
 </ul>
 
