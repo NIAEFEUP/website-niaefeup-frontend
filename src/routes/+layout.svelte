@@ -4,7 +4,7 @@
   import Footer from '$lib/layout/Footer.svelte';
   import Sidebar from '$lib/layout/Sidebar.svelte';
   import SnackbarList from '$lib/notifications/SnackbarList.svelte';
-    import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
+  import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
 </script>
 
 <Sidebar />
