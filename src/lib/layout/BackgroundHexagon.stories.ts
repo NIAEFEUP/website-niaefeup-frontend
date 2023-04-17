@@ -1,4 +1,4 @@
-import BackgroundHexagon from "./BackgroundHexagon.svelte";
+import BackgroundHexagon from './BackgroundHexagon.svelte';
 
 export default {
   title: 'Molecules/Layout/Background Hexagon',

@@ -1,4 +1,4 @@
-import MemberButton from "./MemberButton.svelte";
+import MemberButton from './MemberButton.svelte';
 
 export default {
   title: 'Atoms/Buttons/Member Button',

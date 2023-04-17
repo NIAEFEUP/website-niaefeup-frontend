@@ -1,6 +1,6 @@
-import LayoutDecorator from "$lib/storybook-utils/LayoutDecorator.svelte";
-import Layout from "./+layout.svelte";
-import Page from "./+page.svelte";
+import LayoutDecorator from '$lib/storybook-utils/LayoutDecorator.svelte';
+import Layout from './+layout.svelte';
+import Page from './+page.svelte';
 
 export default {
   title: 'Pages/HomePage',

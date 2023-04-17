@@ -1,5 +1,5 @@
-import Layout from "./+layout.svelte";
-import LayoutDecorator from "$lib/storybook-utils/LayoutDecorator.svelte";
+import Layout from './+layout.svelte';
+import LayoutDecorator from '$lib/storybook-utils/LayoutDecorator.svelte';
 
 export default {
   title: 'Organisms/Layout',

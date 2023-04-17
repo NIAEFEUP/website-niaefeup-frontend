@@ -1,4 +1,4 @@
-import Navbar from "./Navbar.svelte";
+import Navbar from './Navbar.svelte';
 
 export default {
   title: 'Molecules/Layout/Navbar',

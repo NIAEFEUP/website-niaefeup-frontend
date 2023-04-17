@@ -1,4 +1,4 @@
-import Footer from "./Footer.svelte";
+import Footer from './Footer.svelte';
 
 export default {
   title: 'Molecules/Layout/Footer',
