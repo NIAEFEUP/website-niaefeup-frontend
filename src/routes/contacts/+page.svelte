@@ -2,10 +2,10 @@
   import LabelInput from '$lib/component/LabelInput.svelte';
   import Graph from './Graph.svelte';
   import Icon from 'svelte-icons-pack/Icon.svelte';
-  import BiMap from 'svelte-icons-pack/bi/BiMap';
+  import Icons from '$lib/component/Icons';
 </script>
 
-<main class="-10 my-20 flex flex-col justify-center ">
+<section class="-10 my-20 flex flex-col justify-center">
   <section class="mb-4 flex flex-col text-center font-raleway text-white">
     <h1 class="text-2xl font-bold">&lt; Contacta-nos /&gt;</h1>
   </section>
@@ -38,10 +38,10 @@
     id="location"
     class="ml-3 flex justify-center overflow-x-hidden text-white md:justify-start md:self-center lg:w-[1039px]"
   >
-    <Icon src={BiMap} color="white" size="40" className="py-2 pl-1" />
+    <Icon src={Icons.Pin} color="white" size="40" className="py-2 pl-1" />
     <div>
       <p>Rua Dr. Roberto Frias 4200-465, Porto</p>
       <p>Sala B315</p>
     </div>
   </span>
-</main>
+</section>

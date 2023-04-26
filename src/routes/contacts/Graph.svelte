@@ -1,11 +1,6 @@
 <script>
   import Icon from '$lib/component/Icon.svelte';
-  import FaBrandsInstagram from 'svelte-icons-pack/fa/FaBrandsInstagram';
-  import FaBrandsTwitter from 'svelte-icons-pack/fa/FaBrandsTwitter';
-  import FaBrandsFacebook from 'svelte-icons-pack/fa/FaBrandsFacebook';
-  import FaBrandsGithub from 'svelte-icons-pack/fa/FaBrandsGithub';
-  import IoMail from 'svelte-icons-pack/io/IoMail';
-  import FaBrandsLinkedin from 'svelte-icons-pack/fa/FaBrandsLinkedin';
+  import Icons from '$lib/component/Icons';
   import { copyToClipboard } from '$lib/utils';
 
   const coords = [
@@ -25,15 +20,15 @@
   ];
   let innerWidth = 0;
   let coefficient = 8;
-  const iconSize = 8;
+  let iconSize = 8;
 
   const socials = [
-    { url: 'https://www.instagram.com/niaefeup/', icon: FaBrandsInstagram },
-    { url: 'https://github.com/NIAEFEUP', icon: FaBrandsGithub },
-    { url: 'https://www.facebook.com/NIAEFEUP', icon: FaBrandsFacebook },
-    { url: 'ni@aefeup.pt', icon: IoMail },
-    { url: 'https://www.linkedin.com/company/nifeup', icon: FaBrandsLinkedin },
-    { url: 'https://twitter.com/niaefeup', icon: FaBrandsTwitter }
+    { url: 'https://www.instagram.com/niaefeup/', icon: Icons.Instagram },
+    { url: 'https://github.com/NIAEFEUP', icon: Icons.Github },
+    { url: 'https://www.facebook.com/NIAEFEUP', icon: Icons.Facebook },
+    { url: 'ni@aefeup.pt', icon: Icons.Mail },
+    { url: 'https://www.linkedin.com/company/nifeup', icon: Icons.Linkedin },
+    { url: 'https://twitter.com/niaefeup', icon: Icons.Twitter }
   ];
 </script>
 
@@ -74,7 +69,7 @@
           on:click={() => copyToClipboard(socials[index].url)}
           on:keydown
         >
-          <Icon src={socials[index].icon} color="white" size={iconSize.toString()} />
+          <Icon src={socials[index].icon} color="white" size="{iconSize.toString()}px" />
         </div>
       {/if}
     </foreignObject>
