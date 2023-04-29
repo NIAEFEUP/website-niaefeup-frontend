@@ -64,7 +64,7 @@
         size="24px"
         href="https://www.linkedin.com/company/nifeup"
       />
-      <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
+      <div data-testid="email-icon" on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
         <Icon src={Icons.Mail} color="white" size="24px" />
       </div>
     </div>
