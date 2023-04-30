@@ -1,0 +1,30 @@
+@import 'svelte-select/tailwind.css';
+
+
+.svelte-select {
+    @apply mx-2 flex text-xl h-10 text-white outline-none border-0 rounded-lg bg-stone-400/25;
+}
+
+.svelte-select.list-open {
+    @apply rounded-none rounded-t-lg;
+}
+
+.svelte-select input {
+    @apply text-xl text-white;
+}
+
+.svelte-select .indicators {
+    @apply flex;
+}
+
+.value-container {
+    @apply h-full;
+}
+
+.svelte-select-list {
+    @apply rounded-b-lg bg-stone-400/25 !top-10;
+}
+
+.list-item .item {
+    @apply text-white z-10;
+}

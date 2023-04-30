@@ -3,6 +3,8 @@
     import IconButton from "$lib/component/IconButton.svelte";
     import type { IconsType } from "../Icons";
 
+	let _class = "";
+	export { _class as class };
     export let name: string;
     export let placeholder: string;
     export let value: string;
@@ -19,9 +21,9 @@
     };
 </script>
 
-<div class="m-2 flex text-xl text-white focus-within:outline-none focus-within:ring focus-within:ring-tertiary px-2 rounded-lg bg-stone-400/25">
+<div class="mx-2 flex text-xl h-10 text-white focus-within:outline-none focus-within:ring focus-within:ring-tertiary px-2 rounded-lg bg-stone-400/25 {_class}">
     {#if beforeIcon }
-        <span class="p-1">
+        <span class="p-1 flex items-center">
             {#if beforeIcon.button}
                 <IconButton
                     src={beforeIcon.icon}
@@ -49,7 +51,7 @@
     />
 
     {#if afterIcon }
-        <span class="p-1">
+        <span class="p-1 flex items-center">
             {#if afterIcon.button}
                 <IconButton
                     src={afterIcon.icon}
