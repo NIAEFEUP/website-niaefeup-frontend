@@ -13,6 +13,10 @@
     @apply text-xl text-white;
 }
 
+.svelte-select .selected-item + input {
+    @apply text-xl hidden; /* Remove input when value selected */
+}
+
 .svelte-select .indicators {
     @apply flex;
 }
@@ -22,9 +26,25 @@
 }
 
 .svelte-select-list {
-    @apply rounded-b-lg bg-stone-400/25 !top-10;
+    @apply rounded-b-lg bg-stone-400/25 !top-10; /* Top 10 is the height of the input */
 }
 
 .list-item .item {
-    @apply text-white z-10;
+    @apply text-white;
+}
+
+.list-item .item.hover {
+    @apply bg-stone-200/25;
+}
+
+.list-item .item.active {
+    @apply bg-stone-200/25;
+}
+
+.list-item .item.first {
+    @apply rounded-none;
+}
+
+.svelte-select-list>:last-child .item {
+    @apply rounded-b-lg;
 }
