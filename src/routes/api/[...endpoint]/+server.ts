@@ -1,10 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import { fetchWithAuth } from './proxy';
-
-function endpoint(url: URL) {
-  const pathName = url.pathname.replace('/api', '');
-  return pathName.startsWith('/') ? pathName.substring(1) : pathName;
-}
+import { endpoint } from '../../../lib/api/proxy';
 
 const dispatchToBackend: RequestHandler = async (event) => {
   const body = event.request.method === 'GET' ? undefined : await event.request.text();

@@ -19,15 +19,15 @@ export const MobileSidebar = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step("Open sidebar", async () => {
-      await userEvent.click(await canvas.findByRole("button"));
-      const menuOption = canvas.queryByText("Início");
+    await step('Open sidebar', async () => {
+      await userEvent.click(await canvas.findByRole('button'));
+      const menuOption = canvas.queryByText('Início');
       await expect(menuOption).toBeTruthy();
     });
 
-    await step("Close sidebar", async () => {
-      await userEvent.click(await canvas.findByRole("button"));
-      const menuOption = canvas.queryByText("Início");
+    await step('Close sidebar', async () => {
+      await userEvent.click(await canvas.findByRole('button'));
+      const menuOption = canvas.queryByText('Início');
       await expect(menuOption).toBeNull();
     });
   }

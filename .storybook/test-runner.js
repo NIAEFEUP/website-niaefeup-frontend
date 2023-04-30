@@ -15,11 +15,11 @@ module.exports = {
       Object.entries(selectedViewport).reduce(
         (acc, [screen, size]) => ({
           ...acc,
-          [screen]: parseInt(size),
+          [screen]: parseInt(size)
         }),
-        {},
+        {}
       );
 
     if (parsedViewportSizes) page.setViewportSize(parsedViewportSizes);
-  },
+  }
 };
