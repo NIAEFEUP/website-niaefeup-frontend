@@ -37,7 +37,7 @@ jobs:
         run: npm install
 
       - name: Test
-        run: CI=true npm run test-vite
+        run: CI=true npm run test-vite:coverage
 
       - name: Upload code coverage to Codecov
         uses: codecov/codecov-action@v3
@@ -80,9 +80,9 @@ jobs:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
 
       - name: Test
-        run: npm run test-storybook -- --url ${{ steps.waitForNetlify.outputs.url }} --ci
+        run: npm run test-storybook:coverage -- --url ${{ steps.waitForNetlify.outputs.url }} --ci
 
-      - name: Upload code coverage to Codecov # TODO: Check if codecov works with storybook
+      - name: Upload code coverage to Codecov
         uses: codecov/codecov-action@v3
 
   lint:
