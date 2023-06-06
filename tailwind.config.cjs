@@ -5,7 +5,7 @@ const tertiary60Color = '#C0434399';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
+  content: ['./src/**/*.{html,js,svelte,ts,stories.js,stories.ts}'],
   theme: {
     extend: {
       colors: {

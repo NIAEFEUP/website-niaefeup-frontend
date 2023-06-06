@@ -6,5 +6,15 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/
     }
+  },
+  backgrounds: {
+    default: 'dark'
+  },
+  parameters: {
+    options: {
+      storySort: {
+        order: ['Atoms', 'Molecules', 'Organisms', 'Pages']
+      }
+    }
   }
 };
