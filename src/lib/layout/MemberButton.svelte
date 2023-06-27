@@ -4,7 +4,7 @@
 </script>
 
 <a
-  href="/#"
+  href="/login"
   class="grid grid-cols-[1fr_fit-content(100%)] items-center gap-3 rounded-md bg-tertiary60"
 >
   <p class="w-full whitespace-nowrap pl-2 font-source_code text-sm text-white">Área Membro</p>
