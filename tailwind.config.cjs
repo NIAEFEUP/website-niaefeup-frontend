@@ -2,6 +2,9 @@ const primaryColor = '#872020FF';
 const secondaryColor = '#B33636FF';
 const tertiaryColor = '#C04343FF';
 const tertiary60Color = '#C0434399';
+const quaternaryColor = '#411315FF';
+const quaternary54Color = '#4113158A';
+const lightRedColor = '#FFE9E9FF';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,7 +15,10 @@ module.exports = {
         primary: primaryColor,
         secondary: secondaryColor,
         tertiary: tertiaryColor,
-        tertiary60: tertiary60Color
+        tertiary60: tertiary60Color,
+        quaternary: quaternaryColor,
+        quaternary54: quaternary54Color,
+        lightRed: lightRedColor
       },
 
       fontFamily: {
