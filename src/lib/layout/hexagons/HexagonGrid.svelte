@@ -1,4 +1,7 @@
 <script lang="ts">
+  import type RedExampleHexagon from './RedExampleHexagon.svelte';
+  import type BlueExampleHexagon from './RedExampleHexagon.svelte';
+
   // Inspired by https://github.com/sveltejs/svelte-virtual-list/blob/master/VirtualList.svelte
   type T = $$Generic;
 
@@ -7,6 +10,7 @@
 
   export let gap: 'small' | 'medium' | 'big' = 'medium';
   export let orientation: 'horizontal' | 'vertical';
+  export let component: typeof BlueExampleHexagon | typeof RedExampleHexagon;
 
   const gridColumnsStyle =
     orientation === 'horizontal'
@@ -17,21 +21,19 @@
 <!-- The grid column sizes used are magic numbers that look good with the Hexagon component -->
 <ul class="grid gap-{orientation}-{gap}" style={gridColumnsStyle}>
   {#each items as item, index}
-    {#each items as item, index}
-      {@const isHorizontal = orientation === 'horizontal'}
-      {@const col = index % cols}
-      {@const row = (index - col) / cols}
-      {@const horizontalColStart = 2 * col + 1}
-      {@const colStart = horizontalColStart + (isHorizontal ? 0 : row % 2)}
-      {@const verticalRowStart = 2 * row + 1}
-      {@const rowStart = verticalRowStart + (isHorizontal ? col % 2 : 0)}
-      {@const colEnd = isHorizontal ? 2 * col + 4 : 2 * col + 3 + (row % 2)}
-      {@const rowEnd = isHorizontal ? 2 * row + 3 + (col % 2) : 2 * row + 4}
+    {@const isHorizontal = orientation === 'horizontal'}
+    {@const col = index % cols}
+    {@const row = (index - col) / cols}
+    {@const horizontalColStart = 2 * col + 1}
+    {@const colStart = horizontalColStart + (isHorizontal ? 0 : row % 2)}
+    {@const verticalRowStart = 2 * row + 1}
+    {@const rowStart = verticalRowStart + (isHorizontal ? col % 2 : 0)}
+    {@const colEnd = isHorizontal ? 2 * col + 4 : 2 * col + 3 + (row % 2)}
+    {@const rowEnd = isHorizontal ? 2 * row + 3 + (col % 2) : 2 * row + 4}
 
-      <li style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}">
-        <slot {item} {col} {row} />
-      </li>
-    {/each}
+    <li style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}">
+      <svelte:component this={component} {orientation} data={item} />
+    </li>
   {/each}
 </ul>
 
