@@ -1,6 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import { fetchWithAuth } from './proxy';
-import { endpoint } from '../../../lib/api/proxy';
+import { endpoint } from '$lib/api/proxy';
 
 const dispatchToBackend: RequestHandler = async (event) => {
   const body = event.request.method === 'GET' ? undefined : await event.request.text();
