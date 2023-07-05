@@ -3,11 +3,9 @@
   import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
   import Icon from '$lib/component/Icon.svelte';
   import Icons from '$lib/component/Icons';
+  import SidebarItems from './SidebarItems';
 
   let selectedIndex: number | null = null;
-
-  const items = ['Início', 'Eventos', 'Projetos', 'Equipa', 'Contactos'];
-
   let sidebarClosed = true;
 </script>
 
@@ -36,7 +34,7 @@
     <ul
       class="col-span-2 col-start-1 flex w-full flex-col items-start gap-10 pt-12 font-source_code text-3xl text-white"
     >
-      {#each items as item, i}
+      {#each SidebarItems as item, i}
         <NavItem selected={selectedIndex === i}>
           <a
             href="#/"

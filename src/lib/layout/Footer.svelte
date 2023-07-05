@@ -4,10 +4,11 @@
   import Icons from '$lib/component/Icons';
   import MemberButton from '$lib/layout/MemberButton.svelte';
   import { createNotification } from '$lib/notifications';
+  import NotificationMessages from '$lib/notifications/NotificationMessages';
 
   function copyToClipboard(content: string) {
     navigator.clipboard.writeText(content);
-    createNotification('O email foi copiado para o teu clipboard :)');
+    createNotification(NotificationMessages.COPY_EMAIL);
   }
 
   const iconHoverOpacity = (

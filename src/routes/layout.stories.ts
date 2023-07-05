@@ -2,6 +2,7 @@ import Layout from './+layout.svelte';
 import LayoutDecorator from '$lib/storybook-utils/LayoutDecorator.svelte';
 import { userEvent, waitFor, waitForElementToBeRemoved, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
+import NotificationMessages from '$lib/notifications/NotificationMessages';
 
 export default {
   title: 'Organisms/Layout',
@@ -18,20 +19,18 @@ export const Default = {
 
     await step('Copy email and check notification', async () => {
       await userEvent.click(await canvas.findByTestId('email-icon'));
-      const notification = canvas.queryByText('O email foi copiado para o teu clipboard :)');
+      const notification = canvas.queryByText(NotificationMessages.COPY_EMAIL);
       await expect(notification).toBeTruthy();
     });
 
     await step('Close notification', async () => {
-      const notification = canvas.queryByText('O email foi copiado para o teu clipboard :)');
+      const notification = canvas.queryByText(NotificationMessages.COPY_EMAIL);
       const closeButton = notification?.nextElementSibling?.firstElementChild;
 
       if (closeButton) await userEvent.click(closeButton);
       await waitForElementToBeRemoved(notification);
 
-      const notificationAfterClose = canvas.queryByText(
-        'O email foi copiado para o teu clipboard :)'
-      );
+      const notificationAfterClose = canvas.queryByText(NotificationMessages.COPY_EMAIL);
       await expect(notificationAfterClose).toBeNull();
     });
 
@@ -40,7 +39,7 @@ export const Default = {
       await userEvent.click(canvas.getByTestId('email-icon'));
       await userEvent.click(canvas.getByTestId('email-icon'));
 
-      const notifications = canvas.getAllByText('O email foi copiado para o teu clipboard :)');
+      const notifications = canvas.getAllByText(NotificationMessages.COPY_EMAIL);
       await expect(notifications).toHaveLength(3);
     });
 
@@ -48,13 +47,13 @@ export const Default = {
       await userEvent.click(canvas.getByTestId('email-icon'));
 
       await waitFor(async () => {
-        const notifications = canvas.getAllByText('O email foi copiado para o teu clipboard :)');
+        const notifications = canvas.getAllByText(NotificationMessages.COPY_EMAIL);
         await expect(notifications).toHaveLength(3);
       });
     });
 
     await step('Close all notifications', async () => {
-      const notifications = canvas.getAllByText('O email foi copiado para o teu clipboard :)');
+      const notifications = canvas.getAllByText(NotificationMessages.COPY_EMAIL);
       await notifications.forEach(async (notification) => {
         const closeButton = notification.nextElementSibling?.firstElementChild;
 
@@ -63,9 +62,7 @@ export const Default = {
       });
 
       await waitFor(async () => {
-        const notificationsAfterClose = canvas.queryByText(
-          'O email foi copiado para o teu clipboard :)'
-        );
+        const notificationsAfterClose = canvas.queryByText(NotificationMessages.COPY_EMAIL);
         await expect(notificationsAfterClose).toBeNull();
       });
     });
