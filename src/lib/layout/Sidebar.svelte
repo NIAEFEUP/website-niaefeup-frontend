@@ -16,6 +16,7 @@
     <button
       class="col-start-2 h-fit w-1/2 sm:invisible"
       on:click={() => (sidebarClosed = !sidebarClosed)}
+      aria-label="Open sidebar"
     >
       <Icon src={Icons.Bars} color="white" size="31px" />
     </button>

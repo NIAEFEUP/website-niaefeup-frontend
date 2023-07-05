@@ -4,7 +4,8 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@storybook/addon-coverage'
+    '@storybook/addon-coverage',
+    '@storybook/addon-a11y'
   ],
   framework: {
     name: '@storybook/sveltekit',
