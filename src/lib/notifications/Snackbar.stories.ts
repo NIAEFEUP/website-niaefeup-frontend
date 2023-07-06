@@ -1,5 +1,5 @@
-import { Notification } from '.';
 import Snackbar from './Snackbar.svelte';
+import { Notification } from '.';
 
 export default {
   title: 'Molecules/Snackbar',

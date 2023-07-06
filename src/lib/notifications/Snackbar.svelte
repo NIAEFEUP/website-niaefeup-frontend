@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Icon from '$lib/component/Icon.svelte';
-  import Icons from '$lib/component/Icons';
   import { slide, fly } from 'svelte/transition';
   import type { Notification } from '.';
+  import Icon from '$lib/component/Icon.svelte';
+  import Icons from '$lib/component/Icons';
 
   export let notification: Notification;
 </script>

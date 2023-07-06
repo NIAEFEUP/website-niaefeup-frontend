@@ -1,5 +1,5 @@
-import { PUBLIC_API_URL, PUBLIC_JWT_REFRESH_KEY, PUBLIC_JWT_ACCESS_KEY } from '$env/static/public';
 import type { Cookies } from '@sveltejs/kit';
+import { PUBLIC_API_URL, PUBLIC_JWT_REFRESH_KEY, PUBLIC_JWT_ACCESS_KEY } from '$env/static/public';
 import { appendSetCookieHeader } from '$lib/api/auth';
 
 async function _fetchApi(

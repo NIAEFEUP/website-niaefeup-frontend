@@ -1,6 +1,6 @@
+import type { Handle } from '@sveltejs/kit';
 import { appendSetCookieHeader } from '$lib/api/auth';
 import { PUBLIC_JWT_ACCESS_KEY, PUBLIC_JWT_REFRESH_KEY } from '$env/static/public';
-import type { Handle } from '@sveltejs/kit';
 
 async function _handleAuthentication(apiResponse: Response): Promise<Response> {
   if (!apiResponse.ok) {
