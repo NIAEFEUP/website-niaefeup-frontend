@@ -1,6 +1,6 @@
 <script lang="ts">
   import type RedExampleHexagon from './RedExampleHexagon.svelte';
-  import type BlueExampleHexagon from './RedExampleHexagon.svelte';
+  import type BlueExampleHexagon from './BlueExampleHexagon.svelte';
 
   // Inspired by https://github.com/sveltejs/svelte-virtual-list/blob/master/VirtualList.svelte
   type T = $$Generic;

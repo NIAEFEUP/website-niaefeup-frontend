@@ -7,8 +7,20 @@ module.exports = {
     'prettier',
     'plugin:storybook/recommended'
   ],
-  plugins: ['svelte3', '@typescript-eslint'],
+  plugins: ['svelte3', '@typescript-eslint', 'import'],
   ignorePatterns: ['*.cjs'],
+  rules: {
+    'import/no-relative-parent-imports': 'error',
+    'import/export': 'error',
+    'import/no-empty-named-blocks': 'error',
+    'import/named': 'error',
+    'import/no-absolute-path': 'error',
+    'import/no-self-import': 'error',
+    'import/no-useless-path-segments': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
+    'import/order': 'error'
+  },
   overrides: [
     {
       files: ['*.svelte'],
@@ -19,7 +31,13 @@ module.exports = {
     }
   ],
   settings: {
-    'svelte3/typescript': () => require('typescript')
+    'svelte3/typescript': () => require('typescript'),
+    'import/extensions': ['.js', '.ts', '.svelte', '.stories.ts'],
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true
+      }
+    }
   },
   parserOptions: {
     sourceType: 'module',

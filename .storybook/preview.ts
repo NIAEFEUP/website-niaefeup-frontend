@@ -10,11 +10,15 @@ export const parameters = {
   backgrounds: {
     default: 'dark'
   },
-  parameters: {
-    options: {
-      storySort: {
-        order: ['Atoms', 'Molecules', 'Organisms', 'Pages']
-      }
+  options: {
+    storySort: {
+      order: ['Atoms', 'Molecules', 'Organisms', 'Pages']
+    }
+  },
+  a11y: {
+    element: '#storybook-root',
+    config: {
+      rules: [{ id: 'color-contrast', reviewOnFail: true }]
     }
   }
 };

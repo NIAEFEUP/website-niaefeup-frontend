@@ -4,10 +4,11 @@
   import Icons from '$lib/component/Icons';
   import MemberButton from '$lib/layout/MemberButton.svelte';
   import { createNotification } from '$lib/notifications';
+  import NotificationMessages from '$lib/notifications/NotificationMessages';
 
   function copyToClipboard(content: string) {
     navigator.clipboard.writeText(content);
-    createNotification('O email foi copiado para o teu clipboard :)');
+    createNotification(NotificationMessages.COPY_EMAIL);
   }
 
   const iconHoverOpacity = (
@@ -49,22 +50,42 @@
         color="white"
         size="24px"
         href="https://www.instagram.com/niaefeup/"
+        ariaLabel="Instagram"
       />
-      <Icon src={Icons.Twitter} color="white" size="24px" href="https://twitter.com/niaefeup" />
+      <Icon
+        src={Icons.Twitter}
+        color="white"
+        size="24px"
+        href="https://twitter.com/niaefeup"
+        ariaLabel="Twitter"
+      />
       <Icon
         src={Icons.Facebook}
         color="white"
         size="24px"
         href="https://www.facebook.com/NIAEFEUP"
+        ariaLabel="Facebook"
       />
-      <Icon src={Icons.Github} color="white" size="24px" href="https://github.com/NIAEFEUP" />
+      <Icon
+        src={Icons.Github}
+        color="white"
+        size="24px"
+        href="https://github.com/NIAEFEUP"
+        ariaLabel="Github"
+      />
       <Icon
         src={Icons.Linkedin}
         color="white"
         size="24px"
         href="https://www.linkedin.com/company/nifeup"
+        ariaLabel="Linkedin"
       />
-      <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
+      <div
+        data-testid="email-icon"
+        on:click={() => copyToClipboard('ni@aefeup.pt')}
+        on:keydown
+        class="cursor-pointer"
+      >
         <Icon src={Icons.Mail} color="white" size="24px" />
       </div>
     </div>
@@ -100,20 +121,35 @@
         color="white"
         size="24px"
         href="https://www.instagram.com/niaefeup/"
+        ariaLabel="Instagram"
       />
-      <Icon src={Icons.Twitter} color="white" size="24px" href="https://twitter.com/niaefeup" />
+      <Icon
+        src={Icons.Twitter}
+        color="white"
+        size="24px"
+        href="https://twitter.com/niaefeup"
+        ariaLabel="Twitter"
+      />
       <Icon
         src={Icons.Facebook}
         color="white"
         size="24px"
         href="https://www.facebook.com/NIAEFEUP"
+        ariaLabel="Facebook"
       />
-      <Icon src={Icons.Github} color="white" size="24px" href="https://github.com/NIAEFEUP" />
+      <Icon
+        src={Icons.Github}
+        color="white"
+        size="24px"
+        href="https://github.com/NIAEFEUP"
+        ariaLabel="Github"
+      />
       <Icon
         src={Icons.Linkedin}
         color="white"
         size="24px"
         href="https://www.linkedin.com/company/nifeup"
+        ariaLabel="Linkedin"
       />
       <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
         <Icon src={Icons.Mail} color="white" size="24px" />
