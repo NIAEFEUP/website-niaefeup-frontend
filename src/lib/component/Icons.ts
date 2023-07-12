@@ -7,6 +7,9 @@ import FaBrandsLinkedin from 'svelte-icons-pack/fa/FaBrandsLinkedin';
 import FaSolidUser from 'svelte-icons-pack/fa/FaSolidUser';
 import FaBars from 'svelte-icons-pack/fa/FaSolidBars';
 import FaTimes from 'svelte-icons-pack/fa/FaSolidTimes';
+import IoEye from 'svelte-icons-pack/io/IoEye';
+import IoEyeOff from 'svelte-icons-pack/io/IoEyeOff';
+
 
 const Icons = {
   Instagram: FaBrandsInstagram,
@@ -17,7 +20,9 @@ const Icons = {
   Linkedin: FaBrandsLinkedin,
   User: FaSolidUser,
   Bars: FaBars,
-  Times: FaTimes
+  Times: FaTimes,
+  Visible: IoEye,
+  Hidden: IoEyeOff
 };
 
 export default Icons;
