@@ -9,13 +9,13 @@
   $: icon = visible ? Icons.Hidden : Icons.Visible;
 </script>
 
-<div class="relative flex flex-row items-stretch">
-  <input {type} {...$$restProps} />
+<div class="grid">
+  <input {type} {...$$restProps} class="col-start-1 col-end-3 row-start-1 {$$props.class}" />
   <button
     type="button"
-    class=" {'fill-' + iconColor} absolute right-[10%] top-[40%] z-40"
-    on:click="{() => (visible = !visible)}"
+    class="{'fill-' + iconColor} z-40 col-start-2 col-end-3 row-start-1 m-4"
+    on:click={() => (visible = !visible)}
   >
-    <Icon src={icon} size="1.5em" />
+    <Icon src={icon} size="1.5em"/>
   </button>
 </div>

@@ -9,7 +9,7 @@
 
 <Sidebar />
 <Navbar />
-<main class="bg-ni-primary flex-grow relative">
+<main class="bg-ni-primary relative flex-grow">
   <BackgroundHexagon position="right" />
   <slot />
 </main>

@@ -10,7 +10,6 @@ import FaTimes from 'svelte-icons-pack/fa/FaSolidTimes';
 import IoEye from 'svelte-icons-pack/io/IoEye';
 import IoEyeOff from 'svelte-icons-pack/io/IoEyeOff';
 
-
 const Icons = {
   Instagram: FaBrandsInstagram,
   Twitter: FaBrandsTwitter,

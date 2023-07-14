@@ -10,7 +10,7 @@
 
 {#if href}
   <a {href} target="_blank" rel="noreferrer" class="w-min" aria-label={ariaLabel}>
-    <Icon {src} {color} {size}/>
+    <Icon {src} {color} {size} />
   </a>
 {:else}
   <Icon {src} {color} {size} />
