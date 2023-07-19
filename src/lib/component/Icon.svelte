@@ -13,5 +13,5 @@
     <Icon {src} {color} {size} />
   </a>
 {:else}
-  <Icon {src} {color} {size} />
+  <Icon {src} {size} color="currentcolor" className="{$$props.color}"/>
 {/if}
