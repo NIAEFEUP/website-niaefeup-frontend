@@ -19,7 +19,9 @@ export const TeamHexagon = {
       photoPath: 'images/previews/bruno-rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
       gitHub: 'https://github.com/',
-      customWebsites: [{ iconPath: 'images/previews/facebook.png', url: 'https://www.facebook.com/' }]
+      customWebsites: [
+        { iconPath: 'images/previews/facebook.png', url: 'https://www.facebook.com/' }
+      ]
     }
   },
   play: async ({ canvasElement, step }) => {
