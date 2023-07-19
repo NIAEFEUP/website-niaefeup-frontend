@@ -4,44 +4,55 @@
   import Icons from '$lib/component/Icons';
   import type { TeamMember } from '@/model/TeamMember';
 
-  export let orientation: 'horizontal' | 'vertical';
   export let teamMember: TeamMember;
 </script>
 
-<Hexagon {orientation}>
-  <div class="group relative">
+<Hexagon orientation="horizontal">
+  <div class="group relative" data-testid="hexagon">
     <div
       class="
-       absolute top-full z-20 w-full -translate-y-8 pb-4 pl-4 pr-4 duration-500 group-hover:top-1/2 group-hover:-translate-y-1/2"
+       absolute top-full z-20 w-full -translate-y-16 px-4 pb-4 duration-500 group-hover:top-1/2 group-hover:-translate-y-1/2"
     >
       <p
-        class="mx-auto text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-xs lg:text-base xl:text-xl"
+        class="mx-auto text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-sm lg:text-base xl:text-xl"
       >
-        {teamMember.name}
+        {teamMember.name.split(' ')[0]}
+        <br />
+        {teamMember.name.split(' ')[1]}
       </p>
       <p
         class="mx-auto
-        text-center text-xs leading-tight text-gray-100 opacity-0 transition-all ease-in group-hover:opacity-100 lg:text-base xl:text-xl"
+        text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {teamMember.role}
       </p>
       <div class="mt-1 flex justify-center space-x-1">
         {#if teamMember.linkedin}
-          <a href={teamMember.linkedin}>
+          <a
+            href={teamMember.linkedin}
+            class="opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+          >
             <Icon src={Icons.Linkedin} color="white" size="2.5vw" /></a
           >
         {/if}
         {#if teamMember.gitHub}
-          <a href={teamMember.gitHub}><Icon src={Icons.Github} color="white" size="2.5vw" /></a>
+          <a
+            href={teamMember.gitHub}
+            class="opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+            ><Icon src={Icons.Github} color="white" size="2.5vw" /></a
+          >
         {/if}
         {#if teamMember.customWebsites}
           {#each teamMember.customWebsites as customWebsite}
-            <a href={customWebsite.url}>
+            <a
+              href={customWebsite.url}
+              class="opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+            >
               {#if customWebsite.iconPath}
                 <img
                   src={customWebsite.iconPath}
                   alt="Icon of of a custom social website"
-                  class="h-[2.5vw] w-[2.5vw] object-scale-down"
+                  class="h-[2.5vw] w-[2.5w] object-scale-down"
                 />
               {:else}
                 <Icon src={Icons.Globe} color="white" size="2.5vw" />
