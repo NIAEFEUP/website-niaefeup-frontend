@@ -31,6 +31,7 @@
           <a
             href={teamMember.linkedin}
             class="opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+            aria-label="{teamMember.name}'s LinkdIn"
           >
             <Icon src={Icons.Linkedin} color="white" size="2.5vw" /></a
           >
@@ -39,6 +40,7 @@
           <a
             href={teamMember.gitHub}
             class="opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+            aria-label="{teamMember.name}'s GitHub"
             ><Icon src={Icons.Github} color="white" size="2.5vw" /></a
           >
         {/if}
