@@ -2,8 +2,6 @@
   import Icon from './Icon.svelte';
   import Icons from './Icons';
 
-  export let iconColor: string | undefined = 'quaternary54';
-
   let visible = false;
   $: type = visible ? 'text' : 'password';
   $: icon = visible ? Icons.Hidden : Icons.Visible;
@@ -16,6 +14,6 @@
     class="z-40 col-start-2 col-end-3 row-start-1 mr-4"
     on:click={() => (visible = !visible)}
   >
-    <Icon src={icon} size="1.5em" color="fill-quaternary54"/>
+    <Icon src={icon} size="1.5em" color="fill-quaternary54" />
   </button>
 </div>
