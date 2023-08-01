@@ -6,11 +6,26 @@ export default {
   title: 'Atoms/Hexagons/Team Member Hexagon',
   component: TeamMemberHexagon,
   parameters: {
-    layout: 'centered',
+    layout: 'centered'
   }
 };
 
-export const TeamHexagon = {
+export const CustomIconHexagon = {
+  args: {
+    teamMember: {
+      name: 'Bruno Rosendo',
+      role: 'Co-Gestor de Projetos',
+      photoPath: 'images/previews/bruno-rosendo.png',
+      linkedin: 'https://pt.linkedin.com/',
+      gitHub: 'https://github.com/',
+      customWebsites: [
+        { iconPath: 'images/previews/facebook.png', url: 'https://www.facebook.com/' }
+      ]
+    }
+  }
+};
+
+export const HoveredCustomIconHexagon = {
   args: {
     teamMember: {
       name: 'Bruno Rosendo',
@@ -23,13 +38,36 @@ export const TeamHexagon = {
       ]
     }
   },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
+  parameters: {
+    pseudo: { hover: true }
+  }
+};
 
-    await step('Hover over hexagon', async () => {
-      await userEvent.hover(await canvas.findByTestId('hexagon'));
-      const role = canvas.queryByText('Co-Gestor de Projetos');
-      await expect(role).toBeTruthy();
-    });
+export const DefaultIconHexagon = {
+  args: {
+    teamMember: {
+      name: 'Bruno Rosendo',
+      role: 'Co-Gestor de Projetos',
+      photoPath: 'images/previews/bruno-rosendo.png',
+      linkedin: 'https://pt.linkedin.com/',
+      gitHub: 'https://github.com/',
+      customWebsites: [{ url: 'https://www.facebook.com/' }]
+    }
+  }
+};
+
+export const HoveredDefaultIconHexagon = {
+  args: {
+    teamMember: {
+      name: 'Bruno Rosendo',
+      role: 'Co-Gestor de Projetos',
+      photoPath: 'images/previews/bruno-rosendo.png',
+      linkedin: 'https://pt.linkedin.com/',
+      gitHub: 'https://github.com/',
+      customWebsites: [{ url: 'https://www.facebook.com/' }]
+    }
+  },
+  parameters: {
+    pseudo: { hover: true }
   }
 };
