@@ -17,7 +17,7 @@
 
     let clickToggle = 0;
 
-    target?.addEventListener('touchstart', (e) => {
+    target?.addEventListener('touchstart', () => {
       if (!clickToggle) {
         if (container) {
           container.style.top = '50%';

@@ -2,7 +2,7 @@
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts,stories.js,stories.ts}'],
   future: {
-    hoverOnlyWhenSupported: true,
+    hoverOnlyWhenSupported: true
   },
   theme: {
     extend: {

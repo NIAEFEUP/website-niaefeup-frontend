@@ -1,5 +1,3 @@
-import { userEvent, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
 import TeamMemberHexagon from './TeamMemberHexagon.svelte';
 
 export default {
