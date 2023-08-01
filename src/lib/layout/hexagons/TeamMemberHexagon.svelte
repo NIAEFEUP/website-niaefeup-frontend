@@ -30,34 +30,35 @@
         {#if teamMember.linkedin}
           <a
             href={teamMember.linkedin}
-            class="opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
-            aria-label="{teamMember.name}'s LinkdIn"
+            class="h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+            aria-label="{teamMember.name}'s LinkedIn"
           >
-            <Icon src={Icons.Linkedin} color="white" size="2.5vw" /></a
+            <Icon src={Icons.Linkedin} color="white" size="100%" /></a
           >
         {/if}
         {#if teamMember.gitHub}
           <a
             href={teamMember.gitHub}
-            class="opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+            class="h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
             aria-label="{teamMember.name}'s GitHub"
-            ><Icon src={Icons.Github} color="white" size="2.5vw" /></a
+            ><Icon src={Icons.Github} color="white" size="100%" /></a
           >
         {/if}
         {#if teamMember.customWebsites}
           {#each teamMember.customWebsites as customWebsite}
             <a
               href={customWebsite.url}
-              class="opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+              class="h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+              aria-label="{teamMember.name}'s custom website"
             >
               {#if customWebsite.iconPath}
                 <img
                   src={customWebsite.iconPath}
-                  alt="Icon of of a custom social website"
-                  class="h-[2.5vw] w-[2.5w] object-scale-down"
+                  alt="Icon of {teamMember.name}'s custom website"
+                  class="h-full w-full object-cover"
                 />
               {:else}
-                <Icon src={Icons.Globe} color="white" size="2.5vw" />
+                <Icon src={Icons.Globe} color="white" size="100%" />
               {/if}
             </a>
           {/each}
@@ -70,7 +71,7 @@
     />
     <img
       src={teamMember.photoPath}
-      alt="NI member {teamMember.name}"
+      alt="NIAFEUP member {teamMember.name}"
       class="z-0 h-full w-full object-cover"
     />
   </div>

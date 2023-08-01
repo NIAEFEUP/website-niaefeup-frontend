@@ -3,11 +3,10 @@ import { expect } from '@storybook/jest';
 import TeamMemberHexagon from './TeamMemberHexagon.svelte';
 
 export default {
-  title: 'Atoms/Hexagons/TeamMemberHexagon',
+  title: 'Atoms/Hexagons/Team Member Hexagon',
   component: TeamMemberHexagon,
   parameters: {
     layout: 'centered',
-    controls: { exclude: ['teamMember'] }
   }
 };
 
