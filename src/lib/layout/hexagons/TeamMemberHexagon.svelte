@@ -1,16 +1,62 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import Hexagon from './Hexagon.svelte';
   import Icon from '$lib/component/Icon.svelte';
   import Icons from '$lib/component/Icons';
   import type { TeamMember } from '@/model/TeamMember';
 
   export let teamMember: TeamMember;
+
+  onMount(() => {
+    const target: HTMLElement | null = document.querySelector('.target');
+    const container: HTMLElement | null = document.querySelector('.container');
+    const fullOpacityContainers: NodeListOf<HTMLElement> | null =
+      document.querySelectorAll('.full-opacity');
+    const variableOpacityContainer: HTMLElement | null =
+      document.querySelector('.variable-opacity');
+
+    let clickToggle = 0;
+
+    target?.addEventListener('touchstart', (e) => {
+      if (!clickToggle) {
+        if (container) {
+          container.style.top = '50%';
+          container.style.transform = 'translateY(-50%)';
+        }
+
+        fullOpacityContainers.forEach((i) => {
+          i.style.opacity = '100%';
+        });
+
+        if (variableOpacityContainer) {
+          variableOpacityContainer.style.opacity = '30%';
+        }
+
+        clickToggle++;
+      } else {
+        if (container) {
+          container.style.top = '';
+          container.style.transform = '';
+        }
+
+        fullOpacityContainers.forEach((i) => {
+          i.style.opacity = '0%';
+        });
+
+        if (variableOpacityContainer) {
+          variableOpacityContainer.style.opacity = '0%';
+        }
+
+        clickToggle = 0;
+      }
+    });
+  });
 </script>
 
 <Hexagon orientation="horizontal">
-  <div class="group relative" data-testid="hexagon">
+  <div class="target group relative" data-testid="hexagon">
     <div
-      class="
+      class="container
        absolute top-full z-20 w-full -translate-y-16 px-4 pb-4 duration-500 group-hover:top-1/2 group-hover:-translate-y-1/2"
     >
       <p
@@ -21,7 +67,7 @@
         {teamMember.name.split(' ')[1]}
       </p>
       <p
-        class="mx-auto
+        class="full-opacity mx-auto
         text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {teamMember.role}
@@ -30,7 +76,7 @@
         {#if teamMember.linkedin}
           <a
             href={teamMember.linkedin}
-            class="h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+            class="full-opacity h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
             aria-label="{teamMember.name}'s LinkedIn"
           >
             <Icon src={Icons.Linkedin} color="white" size="100%" /></a
@@ -39,7 +85,7 @@
         {#if teamMember.gitHub}
           <a
             href={teamMember.gitHub}
-            class="h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+            class="full-opacity h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
             aria-label="{teamMember.name}'s GitHub"
             ><Icon src={Icons.Github} color="white" size="100%" /></a
           >
@@ -48,7 +94,7 @@
           {#each teamMember.customWebsites as customWebsite}
             <a
               href={customWebsite.url}
-              class="h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+              class="full-opacity h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
               aria-label="{teamMember.name}'s custom website"
             >
               {#if customWebsite.iconPath}
@@ -67,7 +113,7 @@
     </div>
 
     <div
-      class="absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-30"
+      class="variable-opacity absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-30"
     />
     <img
       src={teamMember.photoPath}
