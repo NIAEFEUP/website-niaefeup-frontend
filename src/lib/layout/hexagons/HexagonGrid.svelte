@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type RedExampleHexagon from './RedExampleHexagon.svelte';
-  import type BlueExampleHexagon from './BlueExampleHexagon.svelte';
+  import type TeamMemberHexagon from './TeamMemberHexagon.svelte';
 
   // Inspired by https://github.com/sveltejs/svelte-virtual-list/blob/master/VirtualList.svelte
   type T = $$Generic;
@@ -10,7 +9,7 @@
 
   export let gap: 'small' | 'medium' | 'big' = 'medium';
   export let orientation: 'horizontal' | 'vertical';
-  export let component: typeof BlueExampleHexagon | typeof RedExampleHexagon;
+  export let component: typeof TeamMemberHexagon;
 
   const gridColumnsStyle =
     orientation === 'horizontal'

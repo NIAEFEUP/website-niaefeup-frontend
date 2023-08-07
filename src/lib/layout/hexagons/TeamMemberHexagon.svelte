@@ -5,55 +5,60 @@
   import Icons from '$lib/component/Icons';
   import type { TeamMember } from '@/model/TeamMember';
 
-  export let teamMember: TeamMember;
+  export let data;
+  export const orientation = 'horizontal';
+  export let teamMember = data as TeamMember;
 
   onMount(() => {
-    const target: HTMLElement | null = document.querySelector('.target');
-    const container: HTMLElement | null = document.querySelector('.container');
-    const fullOpacityContainers: NodeListOf<HTMLElement> | null =
-      document.querySelectorAll('.full-opacity');
-    const variableOpacityContainer: HTMLElement | null =
-      document.querySelector('.variable-opacity');
+    const listTargets: NodeListOf<HTMLElement> | null = document.querySelectorAll('.target');
 
     let clickToggle = 0;
 
-    target?.addEventListener('touchstart', () => {
-      if (!clickToggle) {
-        if (container) {
-          container.style.top = '50%';
-          container.style.transform = 'translateY(-50%)';
+    for (let target of listTargets) {
+      const container: HTMLElement | null = target.querySelector('.container');
+      const fullOpacityContainers: NodeListOf<HTMLElement> | null =
+        target.querySelectorAll('.full-opacity');
+      const variableOpacityContainer: HTMLElement | null =
+        target.querySelector('.variable-opacity');
+
+      target.addEventListener('touchstart', () => {
+        if (!clickToggle) {
+          if (container) {
+            container.style.top = '50%';
+            container.style.transform = 'translateY(-50%)';
+          }
+
+          fullOpacityContainers.forEach((i) => {
+            i.style.opacity = '100%';
+          });
+
+          if (variableOpacityContainer) {
+            variableOpacityContainer.style.opacity = '30%';
+          }
+
+          clickToggle++;
+        } else {
+          if (container) {
+            container.style.top = '';
+            container.style.transform = '';
+          }
+
+          fullOpacityContainers.forEach((i) => {
+            i.style.opacity = '0%';
+          });
+
+          if (variableOpacityContainer) {
+            variableOpacityContainer.style.opacity = '0%';
+          }
+
+          clickToggle = 0;
         }
-
-        fullOpacityContainers.forEach((i) => {
-          i.style.opacity = '100%';
-        });
-
-        if (variableOpacityContainer) {
-          variableOpacityContainer.style.opacity = '30%';
-        }
-
-        clickToggle++;
-      } else {
-        if (container) {
-          container.style.top = '';
-          container.style.transform = '';
-        }
-
-        fullOpacityContainers.forEach((i) => {
-          i.style.opacity = '0%';
-        });
-
-        if (variableOpacityContainer) {
-          variableOpacityContainer.style.opacity = '0%';
-        }
-
-        clickToggle = 0;
-      }
-    });
+      });
+    }
   });
 </script>
 
-<Hexagon orientation="horizontal">
+<Hexagon {orientation}>
   <div class="target group relative" data-testid="hexagon">
     <div
       class="container
