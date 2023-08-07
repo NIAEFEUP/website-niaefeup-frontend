@@ -4,13 +4,14 @@ export default {
   title: 'Atoms/Hexagons/Team Member Hexagon',
   component: TeamMemberHexagon,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    controls: { exclude: ['orientation', 'teamMember'] }
   }
 };
 
 export const CustomIconHexagon = {
   args: {
-    teamMember: {
+    data: {
       name: 'Bruno Rosendo',
       role: 'Co-Gestor de Projetos',
       photoPath: 'images/previews/bruno-rosendo.png',
@@ -25,7 +26,7 @@ export const CustomIconHexagon = {
 
 export const HoveredCustomIconHexagon = {
   args: {
-    teamMember: {
+    data: {
       name: 'Bruno Rosendo',
       role: 'Co-Gestor de Projetos',
       photoPath: 'images/previews/bruno-rosendo.png',
@@ -43,7 +44,7 @@ export const HoveredCustomIconHexagon = {
 
 export const DefaultIconHexagon = {
   args: {
-    teamMember: {
+    data: {
       name: 'Bruno Rosendo',
       role: 'Co-Gestor de Projetos',
       photoPath: 'images/previews/bruno-rosendo.png',
@@ -56,7 +57,7 @@ export const DefaultIconHexagon = {
 
 export const HoveredDefaultIconHexagon = {
   args: {
-    teamMember: {
+    data: {
       name: 'Bruno Rosendo',
       role: 'Co-Gestor de Projetos',
       photoPath: 'images/previews/bruno-rosendo.png',
