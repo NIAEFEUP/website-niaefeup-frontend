@@ -5,8 +5,8 @@
     width: keyof typeof widthList,
     text: string;
   const colorList = {
-    primary: { main: 'bg-primary', hover: 'hover:bg-primary' },
-    secondary: { main: 'bg-secondary', hover: 'hover:bg-secondary' },
+    primary: { main: 'bg-muted-red-700', hover: 'hover:bg-muted-red-500' },
+    secondary: { main: 'bg-muted-red-500', hover: 'hover:bg-muted-red-500' },
     red: { main: 'bg-red-500', hover: 'hover:bg-red-500' },
     green: { main: 'bg-green-500', hover: 'hover:bg-green-500' },
     blue: { main: 'bg-blue-500', hover: 'hover:bg-blue-500' }
