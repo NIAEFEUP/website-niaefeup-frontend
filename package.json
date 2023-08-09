@@ -35,7 +35,7 @@
     "@storybook/test-runner": "^0.10.0",
     "@storybook/testing-library": "^0.1.0",
     "@sveltejs/adapter-auto": "^2.0.1",
-    "@sveltejs/kit": "next",
+    "@sveltejs/kit": "^1.22.4",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "@vitest/coverage-c8": "^0.31.4",
