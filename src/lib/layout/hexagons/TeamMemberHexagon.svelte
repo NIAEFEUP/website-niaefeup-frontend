@@ -45,40 +45,27 @@
   };
 
   onMount(() => {
-    const listTargets: NodeListOf<HTMLElement> | null = document.querySelectorAll('.target');
+    const target: HTMLElement = document.getElementById(teamMember.email) as HTMLElement;
 
-    for (let target of listTargets) {
-      const container: HTMLElement | null = target.querySelector('.container');
-      const fullOpacityContainers: NodeListOf<HTMLElement> | null =
-        target.querySelectorAll('.full-opacity');
-      const variableOpacityContainer: HTMLElement | null =
-        target.querySelector('.variable-opacity');
+    const container: HTMLElement | null = target.querySelector('.container');
+    const fullOpacityContainers: NodeListOf<HTMLElement> | null =
+      target.querySelectorAll('.full-opacity');
+    const variableOpacityContainer: HTMLElement | null = target.querySelector('.variable-opacity');
 
-      target.addEventListener('touchstart', () => {
-        if (container && fullOpacityContainers && variableOpacityContainer) {
-          if (target.dataset.state == 'closed') {
-            openHexagonAnimation(
-              target,
-              container,
-              fullOpacityContainers,
-              variableOpacityContainer
-            );
-          } else {
-            closeHexagonAnimation(
-              target,
-              container,
-              fullOpacityContainers,
-              variableOpacityContainer
-            );
-          }
+    target.addEventListener('touchstart', () => {
+      if (container && fullOpacityContainers && variableOpacityContainer) {
+        if (target.dataset.state == 'closed') {
+          openHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
+        } else {
+          closeHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
         }
-      });
-    }
+      }
+    });
   });
 </script>
 
 <Hexagon {orientation}>
-  <div class="target group relative" data-testid="hexagon" data-state="closed">
+  <div id={teamMember.email} class="group relative" data-testid="hexagon" data-state="closed">
     <div
       class="container        absolute top-full z-20 w-full -translate-y-16 px-4 pb-4 duration-500 group-hover:top-1/2 group-hover:-translate-y-1/2"
     >
@@ -111,8 +98,8 @@
             ><Icon src={Icons.Github} color="white" size="100%" /></a
           >
         {/if}
-        {#if teamMember.customWebsites}
-          {#each teamMember.customWebsites as customWebsite}
+        {#if teamMember.websites}
+          {#each teamMember.websites as customWebsite}
             <a
               href={customWebsite.url}
               class="full-opacity h-[15%] w-[15%] opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
@@ -136,7 +123,7 @@
       class="variable-opacity absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-30"
     />
     <img
-      src={teamMember.photoPath}
+      src={teamMember.photo ? teamMember.photo : 'images/default_profile_pic.jpg'}
       alt="NIAFEUP member {teamMember.name}"
       class="z-0 h-full w-full object-cover"
     />

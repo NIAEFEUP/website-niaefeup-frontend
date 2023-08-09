@@ -2,9 +2,10 @@ import type { CustomWebsite } from './CustomWebsite';
 
 export type TeamMember = {
   name: string;
+  email: string;
   role: string;
-  photoPath: string;
+  photo?: string;
   linkedin?: string;
   gitHub?: string;
-  customWebsites?: CustomWebsite[];
+  websites?: CustomWebsite[];
 };

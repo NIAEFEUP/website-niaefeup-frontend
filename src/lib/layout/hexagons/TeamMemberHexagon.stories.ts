@@ -13,13 +13,12 @@ export const CustomIconHexagon = {
   args: {
     data: {
       name: 'Bruno Rosendo',
+      email: 'brunorosendo@gmail.com',
       role: 'Co-Gestor de Projetos',
-      photoPath: 'images/previews/bruno-rosendo.png',
+      photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
       gitHub: 'https://github.com/',
-      customWebsites: [
-        { iconPath: 'images/previews/facebook.png', url: 'https://www.facebook.com/' }
-      ]
+      websites: [{ iconPath: 'images/previews/facebook.png', url: 'https://www.facebook.com/' }]
     }
   }
 };
@@ -28,13 +27,12 @@ export const HoveredCustomIconHexagon = {
   args: {
     data: {
       name: 'Bruno Rosendo',
+      email: 'brunorosendo@gmail.com',
       role: 'Co-Gestor de Projetos',
-      photoPath: 'images/previews/bruno-rosendo.png',
+      photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
       gitHub: 'https://github.com/',
-      customWebsites: [
-        { iconPath: 'images/previews/facebook.png', url: 'https://www.facebook.com/' }
-      ]
+      websites: [{ iconPath: 'images/previews/facebook.png', url: 'https://www.facebook.com/' }]
     }
   },
   parameters: {
@@ -46,11 +44,12 @@ export const DefaultIconHexagon = {
   args: {
     data: {
       name: 'Bruno Rosendo',
+      email: 'brunorosendo@gmail.com',
       role: 'Co-Gestor de Projetos',
-      photoPath: 'images/previews/bruno-rosendo.png',
+      photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
       gitHub: 'https://github.com/',
-      customWebsites: [{ url: 'https://www.facebook.com/' }]
+      websites: [{ url: 'https://www.facebook.com/' }]
     }
   }
 };
@@ -59,11 +58,12 @@ export const HoveredDefaultIconHexagon = {
   args: {
     data: {
       name: 'Bruno Rosendo',
+      email: 'brunorosendo@gmail.com',
       role: 'Co-Gestor de Projetos',
-      photoPath: 'images/previews/bruno-rosendo.png',
+      photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
       gitHub: 'https://github.com/',
-      customWebsites: [{ url: 'https://www.facebook.com/' }]
+      websites: [{ url: 'https://www.facebook.com/' }]
     }
   },
   parameters: {
