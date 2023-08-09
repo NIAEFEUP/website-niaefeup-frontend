@@ -7,14 +7,14 @@
   import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
 </script>
 
-<Sidebar />
-<Navbar />
+<!-- <Sidebar /> -->
+<!-- <Navbar /> -->
 <main class="bg-ni-primary flex-grow">
   <BackgroundHexagon position="right" />
   <slot />
 </main>
-<Footer />
-<SnackbarList />
+<!-- <Footer /> -->
+<!-- <SnackbarList /> -->
 
 <style>
   :global(html) {
