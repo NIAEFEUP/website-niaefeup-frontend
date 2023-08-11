@@ -5,32 +5,42 @@
     ListboxOption,
     ListboxOptions
   } from '@rgossiaux/svelte-headlessui';
-  import type { SupportedAs } from '@rgossiaux/svelte-headlessui/internal/elements';
-  import { onMount } from 'svelte';
 
-  const items = [
-    { value: 1, label: 'Ola' },
-    { value: 2, label: 'Deus' },
-    { value: 3, label: 'Siuuuyuuuuu' }
-  ];
-
-  let selectedItem: { label: any } | null = null;
+  export let value: string | number;
+  export let name: string;
+  export let options: { value: string | number; label: string }[] = [];
 
   let _class = '';
   export { _class as class };
 </script>
 
-<Listbox bind:value={selectedItem} class={_class}>
+<Listbox bind:value class={_class}>
+  <input hidden {name} bind:value />
   <ListboxButton
     class="relative flex h-10 w-full rounded-lg border-0 bg-stone-400/25 px-5 text-xl text-white outline-none aria-expanded:rounded-none aria-expanded:rounded-t-lg"
   >
-    <div class={`flex h-full flex-col justify-center ${selectedItem ? '' : 'text-gray-400'}`}>
-      {selectedItem?.label || 'Placeholder'}
+    <div
+      class={`flex h-full flex-col justify-center overflow-hidden text-ellipsis whitespace-nowrap ${
+        value ? '' : 'text-gray-400'
+      }`}
+    >
+      {options.find((v) => v.value == value)?.label || 'Placeholder'}
     </div>
   </ListboxButton>
-  <ListboxOptions class="bottom-full w-full rounded-b-lg bg-stone-400/25 last:rounded-b-lg">
-    {#each items as item (item.value)}
-      <ListboxOption class="cursor-pointer text-xl text-white hover:bg-stone-200/25" value={item}>
+  <ListboxOptions class="bottom-full w-full rounded-b-lg bg-stone-400/25 ">
+    {#if options.length === 0}
+      <div class="text-md cursor-pointer p-2 text-white">
+        {'No options to show'}
+      </div>
+    {/if}
+    {#each options as item, i}
+      {@const rounded = i === options.length - 1 ? 'rounded-b-lg' : ''}
+      {@const color = item.value === value ? 'bg-stone-200/25' : ''}
+
+      <ListboxOption
+        class={`cursor-pointer p-2 text-xl text-white hover:bg-stone-200/25 ${rounded} ${color}`}
+        value={item.value}
+      >
         {item.label}
       </ListboxOption>
     {/each}

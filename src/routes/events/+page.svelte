@@ -7,6 +7,13 @@
   const searchEvents = (e: SubmitEvent) => {
     console.log(new FormData(e.target as HTMLFormElement));
   };
+
+  const filterOptions = [
+    { value: 'sinf', label: 'SINF' },
+    { value: 'workshop', label: 'Workshop' },
+    { value: 'dinner', label: 'Jantar de curso' }
+  ];
+  let filterValue = null;
 </script>
 
 <div class="my-20">
@@ -23,6 +30,6 @@
       value=""
     />
 
-    <Select />
+    <Select bind:value={filterValue} options={filterOptions} class="w-52" />
   </form>
 </div>
