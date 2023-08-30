@@ -13,6 +13,7 @@
     { value: 'workshop', label: 'Workshop' },
     { value: 'dinner', label: 'Jantar de curso' }
   ];
+
   let filterValue = null;
 </script>
 
@@ -30,6 +31,12 @@
       value=""
     />
 
-    <Select bind:value={filterValue} options={filterOptions} class="w-52" />
+    <Select
+      name="filter"
+      placeholder="Filtros"
+      bind:value={filterValue}
+      options={filterOptions}
+      class="w-52"
+    />
   </form>
 </div>
