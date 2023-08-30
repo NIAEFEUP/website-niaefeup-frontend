@@ -32,7 +32,7 @@ module.exports = {
       },
 
       fontFamily: {
-        raleway: ['Raleway', 'sans-serif'],
+        sans: ['Raleway', 'sans-serif'],
         source_code: ['Source Code Pro', 'sans-serif']
       },
 

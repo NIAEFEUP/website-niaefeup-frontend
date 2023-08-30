@@ -7,6 +7,8 @@ import FaBrandsLinkedin from 'svelte-icons-pack/fa/FaBrandsLinkedin';
 import FaSolidUser from 'svelte-icons-pack/fa/FaSolidUser';
 import FaBars from 'svelte-icons-pack/fa/FaSolidBars';
 import FaTimes from 'svelte-icons-pack/fa/FaSolidTimes';
+import AiOutlineSearch from 'svelte-icons-pack/ai/AiOutlineSearch';
+import FaAngleDown from 'svelte-icons-pack/fa/FaSolidAngleDown';
 
 const Icons = {
   Instagram: FaBrandsInstagram,
@@ -17,7 +19,12 @@ const Icons = {
   Linkedin: FaBrandsLinkedin,
   User: FaSolidUser,
   Bars: FaBars,
-  Times: FaTimes
+  Times: FaTimes,
+  Search: AiOutlineSearch,
+  ArrowDown: FaAngleDown
 };
+
+type Keys = keyof typeof Icons;
+export type IconsType = typeof Icons[Keys];
 
 export default Icons;

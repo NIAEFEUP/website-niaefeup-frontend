@@ -11,7 +11,7 @@
   <div class="flex justify-end gap-7">
     <a href="#/">Equipa</a>
     <a href="#/">Projetos</a>
-    <a href="#/">Eventos</a>
+    <a href="/events">Eventos</a>
     <a href="#/">Contactos</a>
   </div>
 </nav>
