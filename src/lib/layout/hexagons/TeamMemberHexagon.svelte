@@ -65,9 +65,9 @@
 </script>
 
 <Hexagon {orientation}>
-  <div id={teamMember.email} class="group relative" data-testid="hexagon" data-state="closed">
+  <div id={teamMember.email} class="h-full group relative" data-testid="hexagon" data-state="closed">
     <div
-      class="container absolute bottom-0 z-20 w-full translate-y-16 px-4 pb-4 duration-500 group-hover:bottom-1/2 group-hover:translate-y-1/2"
+      class="container absolute bottom-0 z-20 w-full translate-y-14 px-4 duration-500 group-hover:bottom-1/2 group-hover:translate-y-1/2"
     >
       <p
         class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-sm lg:text-base xl:text-xl"
@@ -122,7 +122,7 @@
       class="variable-opacity absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-30"
     />
     <img
-      src={teamMember.photo ? teamMember.photo : 'images/default_profile_pic.jpg'}
+      src={teamMember.photo ? teamMember.photo : 'images/default_profile_pic.png'}
       alt="NIAFEUP member {teamMember.name}"
       class="z-0 h-full w-full object-cover"
     />

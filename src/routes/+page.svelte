@@ -13,7 +13,6 @@
   let teamMember2: TeamMember = {
     name: 'Bruno Rosendo',
     email: 'brunorosendo@gmail.com',
-    photo: 'images/previews/bruno_rosendo.png',
     role: 'Co-Gestor de Projetos'
   };
 </script>

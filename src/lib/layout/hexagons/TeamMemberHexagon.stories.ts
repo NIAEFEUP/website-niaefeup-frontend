@@ -70,3 +70,32 @@ export const HoveredDefaultIconHexagon = {
     pseudo: { hover: true }
   }
 };
+
+export const DefaultProfilePicHexagon = {
+  args: {
+    data: {
+      name: 'Bruno Rosendo',
+      email: 'brunorosendo@gmail.com',
+      role: 'Co-Gestor de Projetos',
+      linkedin: 'https://pt.linkedin.com/',
+      gitHub: 'https://github.com/',
+      websites: [{ url: 'https://www.facebook.com/' }]
+    }
+  }
+};
+
+export const HoveredDefaultProfilePicHexagon = {
+  args: {
+    data: {
+      name: 'Bruno Rosendo',
+      email: 'brunorosendo@gmail.com',
+      role: 'Co-Gestor de Projetos',
+      linkedin: 'https://pt.linkedin.com/',
+      gitHub: 'https://github.com/',
+      websites: [{ url: 'https://www.facebook.com/' }]
+    }
+  },
+  parameters: {
+    pseudo: { hover: true }
+  }
+};
