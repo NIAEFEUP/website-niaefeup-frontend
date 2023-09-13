@@ -8,11 +8,13 @@
     email: 'brunorosendo@gmail.com',
     photo: 'images/previews/bruno_rosendo.png',
     role: 'Co-Gestor de Projetos',
-    linkedin: 'hjfhbd'
+    linkedin: 'hjfhbd',
+    gitHub: 'sdjhfbfr',
+    websites: [{ url: 'guhrutgh' }]
   };
   let teamMember2: TeamMember = {
     name: 'Bruno Rosendo',
-    email: 'brunorosendo@gmail.com',
+    email: 'brunorosendo2@gmail.com',
     role: 'Co-Gestor de Projetos'
   };
 </script>
@@ -21,6 +23,6 @@
   gap="medium"
   orientation="horizontal"
   cols={2}
-  items={[teamMember, teamMember2, teamMember, teamMember]}
+  items={[teamMember, teamMember2]}
   component={TeamMemberHexagon}
 />
