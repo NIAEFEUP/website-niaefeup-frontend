@@ -85,24 +85,24 @@
     data-state="closed"
   >
     <div
-      class="container absolute bottom-0 z-20 w-full px-4 duration-500 group-hover:bottom-1/2 group-hover:translate-y-1/2"
+      class="container absolute bottom-0 z-20 w-full px-4 duration-500 group-hover:bottom-1/2 group-hover:translate-y-1/3"
     >
       <p
-        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-sm lg:text-base xl:text-xl 2xl:text-2xl"
+        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl"
       >
         {teamMember.name}
       </p>
       <p
-        class="full-opacity mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-2xl"
+        class="full-opacity mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {teamMember.role}
       </p>
       <div class="relative mt-1">
-        <div class="absolute w-full flex justify-center gap-2">
+        <div class="absolute w-full flex justify-center gap-1 md:gap-2">
           {#if teamMember.linkedin}
             <a
               href={teamMember.linkedin}
-              class="icon h-6 full-opacity opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+              class="icon h-6 full-opacity opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s LinkedIn"
             >
               <Icon src={Icons.Linkedin} color="white" size="100%" /></a
@@ -110,8 +110,8 @@
           {/if}
           {#if teamMember.gitHub}
             <a
-              href={teamMember.gitHub}
-              class="icon h-6 full-opacity opacity-0 transition-all duration-500 ease-out group-hover:static group-hover:opacity-100"
+              href={teamMember.gitHub} 
+              class="icon h-6 full-opacity opacity-0 transition-all duration-500 ease-out group-hover:static group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s GitHub"
               ><Icon src={Icons.Github} color="white" size="100%" /></a
             >
@@ -120,7 +120,7 @@
             {#each teamMember.websites as customWebsite}
               <a
                 href={customWebsite.url}
-                class="h-6 full-opacity opacity-0 transition-all duration-500 ease-out group-hover:opacity-100"
+                class="h-5 full-opacity opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
                 aria-label="{teamMember.name}'s custom website"
               >
                 {#if customWebsite.iconPath}
