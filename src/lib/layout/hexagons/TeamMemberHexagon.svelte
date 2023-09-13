@@ -44,11 +44,9 @@
     target.dataset.state = 'closed';
   };
 
-
   onMount(() => {
     const target: HTMLElement = document.getElementById(teamMember.email) as HTMLElement;
 
-    const icons: NodeListOf<HTMLElement> | null = target.querySelectorAll('.icon');
     const container: HTMLElement | null = target.querySelector('.container');
     const fullOpacityContainers: NodeListOf<HTMLElement> | null =
       target.querySelectorAll('.full-opacity');
@@ -57,20 +55,9 @@
     target.addEventListener('touchstart', () => {
       if (container && fullOpacityContainers && variableOpacityContainer) {
         if (target.dataset.state == 'closed') {
-          openHexagonAnimation(
-            target,
-            container,
-            fullOpacityContainers,
-            variableOpacityContainer
-            
-          );
+          openHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
         } else {
-          closeHexagonAnimation(
-            target,
-            container,
-            fullOpacityContainers,
-            variableOpacityContainer
-          );
+          closeHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
         }
       }
     });
@@ -98,11 +85,11 @@
         {teamMember.role}
       </p>
       <div class="relative mt-1">
-        <div class="absolute w-full flex justify-center gap-1 md:gap-2">
+        <div class="absolute flex w-full justify-center gap-1 md:gap-2">
           {#if teamMember.linkedin}
             <a
               href={teamMember.linkedin}
-              class="icon h-6 full-opacity opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="full-opacity h-6 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s LinkedIn"
             >
               <Icon src={Icons.Linkedin} color="white" size="100%" /></a
@@ -110,8 +97,8 @@
           {/if}
           {#if teamMember.gitHub}
             <a
-              href={teamMember.gitHub} 
-              class="icon h-6 full-opacity opacity-0 transition-all duration-500 ease-out group-hover:static group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              href={teamMember.gitHub}
+              class="full-opacity h-6 opacity-0 transition-all duration-500 ease-out group-hover:static group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s GitHub"
               ><Icon src={Icons.Github} color="white" size="100%" /></a
             >
@@ -120,7 +107,7 @@
             {#each teamMember.websites as customWebsite}
               <a
                 href={customWebsite.url}
-                class="h-5 full-opacity opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+                class="full-opacity h-5 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
                 aria-label="{teamMember.name}'s custom website"
               >
                 {#if customWebsite.iconPath}
