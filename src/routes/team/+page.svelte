@@ -4,5 +4,13 @@
 </script>
 <section class="absolute mx-auto flex flex-col items-center h-screen w-full min-w-[40%] justify-center gap-10">
     <h1 class="text-white font-source_code text-3xl font-medium">&lt; <span class="font-bold">Equipa</span> /&gt;</h1>
-    <HorizontalTimeline></HorizontalTimeline>
+    <HorizontalTimeline generations={
+        [
+            {schoolYear: "18/19"},
+            {schoolYear: "19/20"},
+            {schoolYear: "20/21"},
+            {schoolYear: "21/22"},
+            {schoolYear: "22/23"},
+        ]
+    }></HorizontalTimeline>
 </section>
