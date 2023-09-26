@@ -1,3 +1,5 @@
+import { fireEvent, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 import TeamMemberHexagon from './TeamMemberHexagon.svelte';
 
 export default {
@@ -6,6 +8,42 @@ export default {
   parameters: {
     layout: 'centered',
     controls: { exclude: ['orientation', 'teamMember'] }
+  }
+};
+
+export const MobileHexagon = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile2'
+    }
+  },
+  args: {
+    data: {
+      name: 'Bruno Rosendo',
+      email: 'brunorosendo@gmail.com',
+      role: 'Co-Gestor de Projetos',
+      photo: 'images/previews/bruno_rosendo.png',
+      linkedin: 'https://pt.linkedin.com/',
+      gitHub: 'https://github.com/',
+      websites: [{ url: 'https://www.facebook.com/' }]
+    }
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('Open Hexagon', async () => {
+      const container = await canvas.findByTestId('container');
+      const role = await canvas.findByTestId('role');
+      await fireEvent.touchStart(container);
+      await expect(role).toHaveAttribute('style', 'opacity: 1;');
+    });
+
+    await step('Close Hexagon', async () => {
+      const container = await canvas.findByTestId('container');
+      const role = await canvas.findByTestId('role');
+      await fireEvent.touchStart(container);
+      await expect(role).toHaveAttribute('style', 'opacity: 0;');
+    });
   }
 };
 

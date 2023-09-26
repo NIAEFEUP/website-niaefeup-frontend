@@ -72,6 +72,7 @@
     data-state="closed"
   >
     <div
+      data-testid="container"
       class="container absolute bottom-0 z-20 w-full px-4 duration-500 group-hover:bottom-1/2 group-hover:translate-y-1/3"
     >
       <p
@@ -80,6 +81,7 @@
         {teamMember.name}
       </p>
       <p
+        data-testid="role"
         class="full-opacity mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {teamMember.role}
