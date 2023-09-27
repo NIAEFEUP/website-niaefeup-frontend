@@ -1,13 +1,11 @@
 <script lang="ts">
+  import SidebarItems from './SidebarItems';
   import NavItem from '$lib/navbar/NavItem.svelte';
   import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
   import Icon from '$lib/component/Icon.svelte';
   import Icons from '$lib/component/Icons';
 
   let selectedIndex: number | null = null;
-
-  const items = ['Início', 'Eventos', 'Projetos', 'Equipa', 'Contactos'];
-
   let sidebarClosed = true;
 </script>
 
@@ -18,6 +16,7 @@
     <button
       class="col-start-2 h-fit w-1/2 sm:invisible"
       on:click={() => (sidebarClosed = !sidebarClosed)}
+      aria-label="Open sidebar"
     >
       <Icon src={Icons.Bars} color="white" size="31px" />
     </button>
@@ -36,7 +35,7 @@
     <ul
       class="col-span-2 col-start-1 flex w-full flex-col items-start gap-10 pt-12 font-source_code text-3xl text-white"
     >
-      {#each items as item, i}
+      {#each SidebarItems as item, i}
         <NavItem selected={selectedIndex === i}>
           <a
             href="#/"

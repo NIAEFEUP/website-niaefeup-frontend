@@ -3,7 +3,13 @@
   import Icon from '$lib/component/Icon.svelte';
   import Icons from '$lib/component/Icons';
   import MemberButton from '$lib/layout/MemberButton.svelte';
-  import { copyToClipboard } from '$lib/utils';
+  import { createNotification } from '$lib/notifications';
+  import NotificationMessages from '$lib/notifications/NotificationMessages';
+
+  function copyToClipboard(content: string) {
+    navigator.clipboard.writeText(content);
+    createNotification(NotificationMessages.COPY_EMAIL);
+  }
 
   const iconHoverOpacity = (
     icon: Element,
@@ -37,29 +43,49 @@
 </script>
 
 <div class="z-10 w-full bg-transparent p-3 max-sm:hidden">
-  <footer class="grid grid-cols-3 justify-between border-t-2 border-secondary p-2 text-white">
+  <footer class="grid grid-cols-3 justify-between border-t-2 border-muted-red-500 p-2 text-white">
     <div class="footer-icons grid w-fit grid-cols-6 gap-4 self-center p-3">
       <Icon
         src={Icons.Instagram}
         color="white"
         size="24px"
         href="https://www.instagram.com/niaefeup/"
+        ariaLabel="Instagram"
       />
-      <Icon src={Icons.Twitter} color="white" size="24px" href="https://twitter.com/niaefeup" />
+      <Icon
+        src={Icons.Twitter}
+        color="white"
+        size="24px"
+        href="https://twitter.com/niaefeup"
+        ariaLabel="Twitter"
+      />
       <Icon
         src={Icons.Facebook}
         color="white"
         size="24px"
         href="https://www.facebook.com/NIAEFEUP"
+        ariaLabel="Facebook"
       />
-      <Icon src={Icons.Github} color="white" size="24px" href="https://github.com/NIAEFEUP" />
+      <Icon
+        src={Icons.Github}
+        color="white"
+        size="24px"
+        href="https://github.com/NIAEFEUP"
+        ariaLabel="Github"
+      />
       <Icon
         src={Icons.Linkedin}
         color="white"
         size="24px"
         href="https://www.linkedin.com/company/nifeup"
+        ariaLabel="Linkedin"
       />
-      <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
+      <div
+        data-testid="email-icon"
+        on:click={() => copyToClipboard('ni@aefeup.pt')}
+        on:keydown
+        class="cursor-pointer"
+      >
         <Icon src={Icons.Mail} color="white" size="24px" />
       </div>
     </div>
@@ -78,7 +104,9 @@
 </div>
 
 <div class="hidden w-full bg-transparent p-3 max-sm:block">
-  <footer class="flex flex-col justify-between border-t-2 border-secondary p-2 text-sm text-white">
+  <footer
+    class="flex flex-col justify-between border-t-2 border-muted-red-500 p-2 text-sm text-white"
+  >
     <div class="flex w-full flex-row items-center justify-between self-center p-3">
       <span>NIAEFEUP</span>
       <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
@@ -95,20 +123,35 @@
         color="white"
         size="24px"
         href="https://www.instagram.com/niaefeup/"
+        ariaLabel="Instagram"
       />
-      <Icon src={Icons.Twitter} color="white" size="24px" href="https://twitter.com/niaefeup" />
+      <Icon
+        src={Icons.Twitter}
+        color="white"
+        size="24px"
+        href="https://twitter.com/niaefeup"
+        ariaLabel="Twitter"
+      />
       <Icon
         src={Icons.Facebook}
         color="white"
         size="24px"
         href="https://www.facebook.com/NIAEFEUP"
+        ariaLabel="Facebook"
       />
-      <Icon src={Icons.Github} color="white" size="24px" href="https://github.com/NIAEFEUP" />
+      <Icon
+        src={Icons.Github}
+        color="white"
+        size="24px"
+        href="https://github.com/NIAEFEUP"
+        ariaLabel="Github"
+      />
       <Icon
         src={Icons.Linkedin}
         color="white"
         size="24px"
         href="https://www.linkedin.com/company/nifeup"
+        ariaLabel="Linkedin"
       />
       <div on:click={() => copyToClipboard('ni@aefeup.pt')} on:keydown class="cursor-pointer">
         <Icon src={Icons.Mail} color="white" size="24px" />

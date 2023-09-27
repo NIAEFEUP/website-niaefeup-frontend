@@ -1,0 +1,7 @@
+coverage:
+  token: ${{ secrets.CODECOV_TOKEN }}
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: 5%

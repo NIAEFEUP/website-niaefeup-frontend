@@ -1,6 +1,6 @@
-import { PUBLIC_API_URL, PUBLIC_JWT_REFRESH_KEY, PUBLIC_JWT_ACCESS_KEY } from '$env/static/public';
 import type { Cookies } from '@sveltejs/kit';
-import { appendSetCookieHeader } from '$lib/auth';
+import { PUBLIC_API_URL, PUBLIC_JWT_REFRESH_KEY, PUBLIC_JWT_ACCESS_KEY } from '$env/static/public';
+import { appendSetCookieHeader } from '$lib/api/auth';
 
 async function _fetchApi(
   relativeUrl: URL | string,
@@ -11,6 +11,10 @@ async function _fetchApi(
   const url = new URL(relativeUrl, PUBLIC_API_URL);
   headers ??= new Headers();
   headers.append('Content-Type', 'application/json');
+  headers.append('Accept', 'application/json');
+  if (window?.location?.origin) {
+    headers.append('Origin', window.location.origin);
+  }
   return fetch(url, { method: method, body, headers });
 }
 
