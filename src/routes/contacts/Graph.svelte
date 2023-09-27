@@ -42,7 +42,7 @@
       y1={coords[line[0]][1] * coefficient}
       x2={coords[line[1]][0] * coefficient}
       y2={coords[line[1]][1] * coefficient}
-      class="stroke-primary"
+      class="stroke-vivid-red-900"
     />
   {/each}
 
@@ -54,12 +54,12 @@
       width={iconSize + 2}
       height={iconSize + 2}
     >
-      {#if socials[index].url.slice(0, 5) == 'https'}
+      {#if socials[index].url.startsWith('https')}
         <div class="flex h-full w-full items-center justify-center rounded bg-white bg-opacity-30">
           <Icon
             src={socials[index].icon}
             color="white"
-            size={iconSize.toString()}
+            size="{iconSize.toString()}px"
             href={socials[index].url}
           />
         </div>

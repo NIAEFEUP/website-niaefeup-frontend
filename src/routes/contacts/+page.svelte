@@ -17,7 +17,7 @@
       <LabelInput label="// Mensagem" id="message" type="text" isTextArea={true} />
 
       <button
-        class="m-1 justify-self-start rounded-lg bg-primary px-5 py-1 text-white"
+        class="m-1 justify-self-start rounded-lg bg-vivid-red-900 px-5 py-1 text-white"
         type="submit">Enviar</button
       >
     </form>
@@ -26,8 +26,8 @@
     </div>
   </div>
   <picture>
-    <source media="(max-width: 768px)" srcset="/images/feup_buildings.svg" />
-    <source media="(min-width: 769px)" srcset="/images/feup_buildings_md.svg" />
+    <source media="(max-width: 767px)" srcset="/images/feup_buildings.svg" />
+    <source media="(min-width: 767px)" srcset="/images/feup_buildings_md.svg" />
     <img
       src="/images/feup_buildings.svg"
       alt="Feup Buildings Outline"
