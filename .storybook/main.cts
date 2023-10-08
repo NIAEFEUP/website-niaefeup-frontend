@@ -5,7 +5,8 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-coverage',
-    '@storybook/addon-a11y'
+    '@storybook/addon-a11y',
+    'storybook-addon-pseudo-states'
   ],
   framework: {
     name: '@storybook/sveltekit',
