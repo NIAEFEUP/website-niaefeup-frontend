@@ -7,7 +7,7 @@
   // by default we select the last generation but we can change it to any generation
   // that is on the list
   export let selectedGeneration: Generation | undefined = generations.at(-1);
-  
+
   //TODO (luisd): make this size reactive?
   const displayedSize = 3;
   let offset =
@@ -26,12 +26,15 @@
     }
     offset += i;
   };
-
-
 </script>
 
 <div class="flex w-full flex-row items-center justify-center gap-1">
-  <button data-end={offset == 0 || null} class="[&>svg]:text-taupe-300 [&>svg]:data-[end=true]:text-white" on:click={() => changeDisplayedGenerations(-1)}>
+  <button
+    data-end={offset == 0 || null}
+    aria-label="See previous generations"
+    class="[&>svg]:text-taupe-300 [&>svg]:data-[end=true]:text-white"
+    on:click={() => changeDisplayedGenerations(-1)}
+  >
     <Icon src={Icons.AngleLeft} size="3em" color="white" />
   </button>
   <div class="grid w-9/12 grid-cols-1 grid-rows-1">
@@ -63,7 +66,12 @@
       {/each}
     </div>
   </div>
-  <button data-end={offset == generations.length - displayedSize || null} class="[&>svg]:text-taupe-300 [&>svg]:data-[end=true]:text-white" on:click={() => changeDisplayedGenerations(1)}>
+  <button
+    data-end={offset == generations.length - displayedSize || null}
+    aria-label="See newer generations"
+    class="[&>svg]:text-taupe-300 [&>svg]:data-[end=true]:text-white"
+    on:click={() => changeDisplayedGenerations(1)}
+  >
     <Icon src={Icons.AngleRight} size="3em" color="white" />
   </button>
 </div>

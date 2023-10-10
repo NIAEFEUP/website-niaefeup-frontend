@@ -8,8 +8,8 @@ import FaSolidUser from 'svelte-icons-pack/fa/FaSolidUser';
 import FaBars from 'svelte-icons-pack/fa/FaSolidBars';
 import FaTimes from 'svelte-icons-pack/fa/FaSolidTimes';
 import FaSolidGlobe from 'svelte-icons-pack/fa/FaSolidGlobe';
-import CgChevronLeft from "svelte-icons-pack/cg/CgChevronLeft"; 
-import CgChevronRight from "svelte-icons-pack/cg/CgChevronRight"; 
+import CgChevronLeft from 'svelte-icons-pack/cg/CgChevronLeft';
+import CgChevronRight from 'svelte-icons-pack/cg/CgChevronRight';
 
 const Icons = {
   Instagram: FaBrandsInstagram,
@@ -24,7 +24,6 @@ const Icons = {
   Globe: FaSolidGlobe,
   AngleRight: CgChevronRight,
   AngleLeft: CgChevronLeft
-
 };
 
 export default Icons;

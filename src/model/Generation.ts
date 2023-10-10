@@ -1,3 +1,3 @@
 export type Generation = {
-    schoolYear: String
+  schoolYear: String;
 };
