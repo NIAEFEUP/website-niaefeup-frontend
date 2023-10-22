@@ -3,9 +3,11 @@ import type { CustomWebsite } from './CustomWebsite';
 export type TeamMember = {
   name: string;
   email: string;
-  role: string;
+  bio: string;
+  birthDate: string;
   photo?: string;
   linkedin?: string;
-  gitHub?: string;
+  github?: string;
   websites?: CustomWebsite[];
+  id: number;
 };

@@ -2,6 +2,13 @@
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts,stories.js,stories.ts}'],
   theme: {
+    container: {
+      center: true,
+      padding: '1rem',
+      screens: {
+        '2xl': '1400px'
+      }
+    },
     extend: {
       colors: {
         taupe: {
