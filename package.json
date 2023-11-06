@@ -23,7 +23,7 @@
     "build-storybook": "storybook build"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^7.2.2",
+    "@storybook/addon-a11y": "^7.5.3",
     "@storybook/addon-coverage": "^0.0.8",
     "@storybook/addon-essentials": "^7.2.2",
     "@storybook/addon-interactions": "^7.2.2",
