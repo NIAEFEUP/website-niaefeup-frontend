@@ -7,7 +7,7 @@ export default {
   component: EventHexagon,
   parameters: {
     layout: 'centered',
-    controls: {exclude: ['orientation', 'event']}
+    controls: { exclude: ['orientation', 'event'] }
   }
 };
 
@@ -19,9 +19,9 @@ export const DateIntervalHexagon = {
       description: 'Muito fixe',
       teamMemberIds: [],
       registerUrl: 'https://www.google.com/intl/pt-PT/forms/about/',
-      dateInterval: { startDate: new Date('2023-12-10'), endDate: new Date('2023-12-05') },
+      dateInterval: { startDate: new Date('2023-12-10'), endDate: new Date('2024-01-01') },
       location: 'Cervejaria Diu',
-      thumbnailPath: 'images/previews/bruno_rosendo.png'
+      thumbnailPath: 'images/previews/evento.png'
     }
   }
 };
@@ -35,7 +35,45 @@ export const SingleDateHexagon = {
       registerUrl: 'https://www.google.com/intl/pt-PT/forms/about/',
       dateInterval: { startDate: new Date('2023-12-10') },
       location: 'Cervejaria Diu',
-      thumbnailPath: 'images/previews/bruno_rosendo.png'
+      thumbnailPath: 'images/previews/evento.png'
+    }
+  }
+};
+
+export const HoveredHexagon = {
+  args: {
+    title: { control: 'text' },
+    data: {
+      title: 'Jantar de Curso',
+      description: 'Muito fixe',
+      teamMemberIds: [],
+      registerUrl: 'https://www.google.com/intl/pt-PT/forms/about/',
+      dateInterval: { startDate: new Date('2023-12-10'), endDate: new Date('2024-01-01') },
+      location: 'Cervejaria Diu',
+      thumbnailPath: 'images/previews/evento.png'
+    }
+  },
+  parameters: {
+    pseudo: { hover: true }
+  }
+};
+
+export const MobileHexagon = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile2'
+    }
+  },
+  args: {
+    title: { control: 'text' },
+    data: {
+      title: 'Jantar de Curso',
+      description: 'Muito fixe',
+      teamMemberIds: [],
+      registerUrl: 'https://www.google.com/intl/pt-PT/forms/about/',
+      dateInterval: { startDate: new Date('2023-12-10'), endDate: new Date('2023-12-05') },
+      location: 'Cervejaria Diu',
+      thumbnailPath: 'images/previews/evento.png'
     }
   }
 };

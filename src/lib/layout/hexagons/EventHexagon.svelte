@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import Hexagon from '@/lib/layout/hexagons/Hexagon.svelte';
   import type { Event } from '@/model/Event';
 
@@ -9,12 +10,12 @@
 
 <Hexagon orientation="vertical">
   <div
-    class="group relative flex justify-center h-full w-full shadow-black/[.58] text-shadow box-content"
+    class="group relative box-content flex h-full w-full justify-center md:shadow-black/[.58] md:text-shadow"
     data-testid="event-hexagon"
   >
-    <div class="flex flex-col w-fit content-center justify-center">
+    <div class="flex w-fit flex-col content-center justify-center">
       <p
-        class="xs:text-[0.5em] px-6 z-20 w-full whitespace-nowrap text-center text-xs text-gray-100 sm:text-sm md:text-base lg:text-lg xl:text-xl"
+        class="z-20 w-full whitespace-nowrap px-8 text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {#if !event.dateInterval.endDate}
           {event.dateInterval.startDate
@@ -43,12 +44,12 @@
         {/if}
       </p>
       <p
-        class="xs:text-xs z-20 my-1.5 w-full text-center text-xs font-semibold text-gray-100 outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline group-hover:text-shadow-none sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
+        class="z-20 my-1.5 w-full bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl"
       >
         {event.title}
       </p>
       <p
-        class="xs:text-[0.5em] z-20 w-full whitespace-nowrap text-center text-xs text-gray-100 transition-all sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl"
+        class="z-20 w-full whitespace-nowrap text-center text-xs text-gray-100 transition-all sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {event.location}
       </p>
