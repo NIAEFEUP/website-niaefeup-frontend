@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import Hexagon from '@/lib/layout/hexagons/Hexagon.svelte';
   import type { Event } from '@/model/Event';
 

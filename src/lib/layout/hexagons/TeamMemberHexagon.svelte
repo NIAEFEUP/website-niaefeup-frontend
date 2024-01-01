@@ -64,7 +64,7 @@
   });
 </script>
 
-<Hexagon orientation={orientation}>
+<Hexagon {orientation}>
   <div
     id={teamMember.email}
     class="group relative h-full w-full"
