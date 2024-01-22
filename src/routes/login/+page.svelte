@@ -6,7 +6,7 @@
   let message = '';
 
   async function submitLogin() {
-    const success = await fetch('/api/auth/new', {
+    const success = await fetch('/api/auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

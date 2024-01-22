@@ -85,3 +85,11 @@ export const TimesIcon = {
     size: '50px'
   }
 };
+
+export const GlobeIcon = {
+  args: {
+    src: Icons.Globe,
+    color: 'white',
+    size: '50px'
+  }
+};
