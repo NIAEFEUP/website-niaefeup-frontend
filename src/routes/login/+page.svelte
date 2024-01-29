@@ -20,8 +20,10 @@
   }
 </script>
 
+<!-- Colocar a página toda scrollable incluindo footer, ver container queries -->
+
 <section
-  class="absolute mx-auto my-auto flex h-full w-full min-w-[40%] flex-col items-center justify-center font-raleway text-base font-[700] sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
+  class="z-50 flex h-full w-full flex-col items-center justify-center font-raleway text-base font-[700] sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
 >
   <form on:submit={submitLogin}>
     <div class="grid justify-center rounded-[15px] bg-muted-red-500 p-[5dvh] lg:min-w-[60%]">
@@ -44,7 +46,7 @@
     </div>
     <button
       type="submit"
-      class="my-4 w-full rounded-[15px] bg-taupe-100 p-[2dvh] text-muted-red-700"
+      class="z-20 my-4 w-full rounded-[15px] bg-taupe-100 p-[2dvh] text-muted-red-700"
       >Iniciar Sessão</button
     >
     <br />
