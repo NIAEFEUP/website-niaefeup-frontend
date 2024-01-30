@@ -7,16 +7,14 @@
   import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
 </script>
 
-<div class="flex h-screen w-screen flex-col overflow-scroll">
-  <Sidebar />
-  <Navbar />
-  <main class="mt-20 grow">
-    <BackgroundHexagon position="right" />
-    <slot />
-  </main>
-  <Footer />
-  <SnackbarList />
-</div>
+<Sidebar />
+<Navbar />
+<main class="mt-20 flex flex-grow">
+  <BackgroundHexagon position="right" />
+  <slot />
+</main>
+<Footer />
+<SnackbarList />
 
 <style>
   :global(html) {
@@ -25,7 +23,9 @@
 
   :global(body) {
     min-height: 100vh;
+    min-width: 100vw;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
   }
 </style>

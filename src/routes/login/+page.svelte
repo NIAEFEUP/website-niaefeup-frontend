@@ -23,7 +23,7 @@
 <!-- Colocar a página toda scrollable incluindo footer, ver container queries -->
 
 <section
-  class="z-50 flex h-full w-full flex-col items-center justify-center font-raleway text-base font-[700] sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
+  class="flex w-full flex-col items-center justify-center font-raleway text-base font-[700] sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
 >
   <form on:submit={submitLogin}>
     <div class="grid justify-center rounded-[15px] bg-muted-red-500 p-[5dvh] lg:min-w-[60%]">
