@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import Icon from '$lib/component/Icon.svelte';
-  import Icons from '$lib/component/Icons';
-  import MemberButton from '$lib/layout/MemberButton.svelte';
-  import { createNotification } from '$lib/notifications';
+  import MemberButton from '$lib/components/layout/MemberButton.svelte';
   import NotificationMessages from '$lib/notifications/NotificationMessages';
+  import Icon from '@/lib/components/icon/Icon.svelte';
+  import Icons from '@/lib/components/icon/Icons';
+  import { createNotification } from '@/lib/notifications';
+  import { onMount } from 'svelte';
 
   function copyToClipboard(content: string) {
     navigator.clipboard.writeText(content);

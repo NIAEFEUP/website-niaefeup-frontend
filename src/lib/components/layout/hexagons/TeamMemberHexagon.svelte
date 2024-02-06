@@ -1,9 +1,9 @@
 <script lang="ts">
+  import Icon from '@/lib/components/icon/Icon.svelte';
+  import Icons from '@/lib/components/icon/Icons';
+  import type { TeamMember } from '@/model/TeamMember';
   import { onMount } from 'svelte';
   import Hexagon from './Hexagon.svelte';
-  import Icon from '$lib/component/Icon.svelte';
-  import Icons from '$lib/component/Icons';
-  import type { TeamMember } from '@/model/TeamMember';
 
   export let data;
   export const orientation = 'horizontal';

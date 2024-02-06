@@ -1,10 +1,10 @@
 <script lang="ts">
-  import '@/app.css';
-  import Navbar from '$lib/layout/Navbar.svelte';
-  import Footer from '$lib/layout/Footer.svelte';
-  import Sidebar from '$lib/layout/Sidebar.svelte';
+  import BackgroundHexagon from '$lib/components/layout/BackgroundHexagon.svelte';
+  import Footer from '$lib/components/layout/Footer.svelte';
+  import Navbar from '$lib/components/layout/Navbar.svelte';
+  import Sidebar from '$lib/components/layout/Sidebar.svelte';
   import SnackbarList from '$lib/notifications/SnackbarList.svelte';
-  import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
+  import '@/app.pcss';
 </script>
 
 <Sidebar />

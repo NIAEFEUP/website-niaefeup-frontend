@@ -1,9 +1,9 @@
 <script lang="ts">
+  import BackgroundHexagon from '$lib/components/layout/BackgroundHexagon.svelte';
+  import NavItem from '$lib/components/navbar/NavItem.svelte';
+  import Icon from '@/lib/components/icon/Icon.svelte';
+  import Icons from '@/lib/components/icon/Icons';
   import SidebarItems from './SidebarItems';
-  import NavItem from '$lib/navbar/NavItem.svelte';
-  import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
-  import Icon from '$lib/component/Icon.svelte';
-  import Icons from '$lib/component/Icons';
 
   let selectedIndex: number | null = null;
   let sidebarClosed = true;

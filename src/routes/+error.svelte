@@ -1,7 +1,7 @@
 <script>
   import { page } from '$app/stores';
-  import ErrorSection from '$lib/error-page/ErrorSection.svelte';
-  import Button from '$lib/error-page/Button.svelte';
+  import Button from '$lib/components/error-page/Button.svelte';
+  import ErrorSection from '$lib/components/error-page/ErrorSection.svelte';
 </script>
 
 <main class="my-20 mx-10 flex flex-col justify-center gap-20 font-source_code">
