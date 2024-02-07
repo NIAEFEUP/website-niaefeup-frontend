@@ -1,6 +1,6 @@
 <script>
-  import Icon from '@/lib/components/icon/Icon.svelte';
-  import Icons from '@/lib/components/icon/Icons';
+  import Icon from '@/lib/icons/Icon.svelte';
+  import Icons from '@/lib/icons/Icons';
 </script>
 
 <a

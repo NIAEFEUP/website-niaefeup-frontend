@@ -1,8 +1,8 @@
 <script lang="ts">
   import MemberButton from '$lib/components/layout/MemberButton.svelte';
   import NotificationMessages from '$lib/notifications/NotificationMessages';
-  import Icon from '@/lib/components/icon/Icon.svelte';
-  import Icons from '@/lib/components/icon/Icons';
+  import Icon from '@/lib/icons/Icon.svelte';
+  import Icons from '@/lib/icons/Icons';
   import { createNotification } from '@/lib/notifications';
   import { onMount } from 'svelte';
 

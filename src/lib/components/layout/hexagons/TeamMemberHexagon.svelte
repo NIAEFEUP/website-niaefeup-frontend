@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Icon from '@/lib/components/icon/Icon.svelte';
-  import Icons from '@/lib/components/icon/Icons';
+  import Icon from '@/lib/icons/Icon.svelte';
+  import Icons from '@/lib/icons/Icons';
   import type { TeamMember } from '@/model/TeamMember';
   import { onMount } from 'svelte';
   import Hexagon from './Hexagon.svelte';
