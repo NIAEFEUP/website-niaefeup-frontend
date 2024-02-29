@@ -22,7 +22,7 @@
   {type}
   class="flex {colorList[color]['main']} {colorList[hoverColor][
     'hover'
-  ]} justify-center font-raleway font-bold text-white {widthList[width]} min-w-0 rounded py-2 px-4"
+  ]} justify-center font-raleway font-bold text-white {widthList[width]} min-w-0 rounded px-4 py-2"
 >
   <p class="px-5">{text}</p>
 </button>
