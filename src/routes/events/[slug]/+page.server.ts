@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 
 export async function load({ params }) {
   const event = {
-    title: 'Great event',
+    title: 'Jantar de Curso Informática',
     description: 'This was a nice and iconic event',
     teamMembers: [
       {
@@ -28,8 +28,8 @@ export async function load({ params }) {
     image: 'https://i.imgur.com/G4eBNi3.png',
     registerUrl: 'https://docs.google.com/forms',
     dateInterval: {
-      startDate: '28-07-2022',
-      endDate: '30-07-2022'
+      startDate: '2022-07-28T14:30:00Z',
+      endDate: '2022-07-30T16:30:00Z'
     },
     location: 'FEUP',
     category: 'Great Events',
