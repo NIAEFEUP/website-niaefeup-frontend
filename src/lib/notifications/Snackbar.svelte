@@ -8,8 +8,8 @@
 </script>
 
 <div
-  out:slide
-  in:fly={{ x: 100 }}
+  out:slide|global
+  in:fly|global={{ x: 100 }}
   class="mb-4 flex h-auto w-80 rounded-lg bg-muted-red-700 px-3 py-2"
   role="status"
 >
