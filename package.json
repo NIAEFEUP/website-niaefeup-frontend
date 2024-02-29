@@ -64,5 +64,8 @@
     "vite": "^4.4.9",
     "vitest": "^0.31.4"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "storybook-addon-pseudo-states": "^2.1.0"
+  }
 }

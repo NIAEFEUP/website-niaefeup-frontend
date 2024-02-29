@@ -1,7 +1,7 @@
 <script>
-  import LabelInput from '$lib/component/LabelInput.svelte';
-  import Graph from './Graph.svelte';
   import Icon from 'svelte-icons-pack/Icon.svelte';
+  import Graph from './Graph.svelte';
+  import LabelInput from '$lib/component/LabelInput.svelte';
   import Icons from '$lib/component/Icons';
 </script>
 
