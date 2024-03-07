@@ -17,7 +17,8 @@ body {
 }
 
 .bg-ni-sidebar {
-  background: -12rem 0 / cover no-repeat,
+  background:
+    -12rem 0 / cover no-repeat,
     linear-gradient(180deg, rgba(56, 0, 2, 1), rgba(97, 14, 17, 1));
 }
 
