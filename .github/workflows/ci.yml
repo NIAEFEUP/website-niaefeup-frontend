@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Build site
+        run: npm run build
+
       - name: Test
         run: CI=true npm run test-vite:coverage
 
@@ -66,6 +69,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Build site
+        run: npm run build
 
       - name: Install Playwright
         run: npx playwright install
@@ -109,6 +115,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Build site
+        run: npm run build
 
       - name: Lint Code
         run: npm run lint
