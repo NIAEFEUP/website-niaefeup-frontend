@@ -9,7 +9,7 @@
 
 <Sidebar />
 <Navbar />
-<main class="bg-ni-primary flex-grow">
+<main class="mt-20 flex flex-grow">
   <BackgroundHexagon position="right" />
   <slot />
 </main>
@@ -23,7 +23,9 @@
 
   :global(body) {
     min-height: 100vh;
+    min-width: 100vw;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
   }
 </style>

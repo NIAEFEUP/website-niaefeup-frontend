@@ -7,6 +7,8 @@ import FaBrandsLinkedin from 'svelte-icons-pack/fa/FaBrandsLinkedin';
 import FaSolidUser from 'svelte-icons-pack/fa/FaSolidUser';
 import FaBars from 'svelte-icons-pack/fa/FaSolidBars';
 import FaTimes from 'svelte-icons-pack/fa/FaSolidTimes';
+import IoEye from 'svelte-icons-pack/io/IoEye';
+import IoEyeOff from 'svelte-icons-pack/io/IoEyeOff';
 import FaSolidGlobe from 'svelte-icons-pack/fa/FaSolidGlobe';
 
 const Icons = {
@@ -19,6 +21,8 @@ const Icons = {
   User: FaSolidUser,
   Bars: FaBars,
   Times: FaTimes,
+  Visible: IoEye,
+  Hidden: IoEyeOff,
   Globe: FaSolidGlobe
 };
 

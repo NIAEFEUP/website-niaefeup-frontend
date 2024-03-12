@@ -8,7 +8,8 @@ export default {
   title: 'Organisms/Layout',
   component: Layout,
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    backgrounds: { default: 'transparent' }
   },
   decorators: [() => LayoutDecorator]
 };
