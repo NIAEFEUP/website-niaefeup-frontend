@@ -12,6 +12,6 @@
     <a href="#/">Equipa</a>
     <a href="#/">Projetos</a>
     <a href="#/">Eventos</a>
-    <a href="#/">Contactos</a>
+    <a href="/contacts">Contactos</a>
   </div>
 </nav>
