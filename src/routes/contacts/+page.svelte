@@ -21,7 +21,7 @@
         type="submit">Enviar</button
       >
     </form>
-    <div class="m-5 flex w-full justify-center md:my-0">
+    <div class="m-2 flex w-full justify-center md:m-5 md:my-0">
       <Graph />
     </div>
   </div>

@@ -34,7 +34,7 @@
 
 <svelte:window bind:innerWidth />
 
-<svg style="height: 400px; min-width: 350px" viewBox="0 0 87 80" xmlns="http://www.w3.org/2000/svg">
+<svg style="height: 40dvh; min-width: 35dvw" viewBox="0 0 87 80" xmlns="http://www.w3.org/2000/svg">
   <!-- Draw graph edges. -->
   {#each lines as line}
     <line
