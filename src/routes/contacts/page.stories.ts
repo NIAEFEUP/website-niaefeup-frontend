@@ -1,9 +1,9 @@
-import Layout from './+layout.svelte';
 import Page from './+page.svelte';
+import Layout from '@/routes/+layout.svelte';
 import LayoutDecorator from '$lib/storybook-utils/LayoutDecorator.svelte';
 
 export default {
-  title: 'Pages/HomePage',
+  title: 'Pages/Contacts',
   component: Page,
   parameters: {
     layout: 'fullscreen',
@@ -12,4 +12,4 @@ export default {
   decorators: [() => Layout, () => LayoutDecorator]
 };
 
-export const HomePage = {};
+export const Contacts = {};
