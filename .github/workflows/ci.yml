@@ -76,6 +76,9 @@ jobs:
       - name: Install Playwright
         run: npx playwright install
 
+      - name: Build storybook
+        run: npm run build-storybook
+
       - name: Test
         run: npm run test-storybook:ci
 
