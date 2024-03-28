@@ -23,7 +23,7 @@
   </nav>
 {:else}
   <nav
-    class="bg-ni-sidebar absolute grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center py-4 px-2 sm:invisible"
+    class="bg-ni-sidebar fixed grid h-screen w-screen flex-grow grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center py-4 px-2 sm:invisible"
   >
     <BackgroundHexagon position="left" />
     <button

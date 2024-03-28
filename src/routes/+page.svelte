@@ -1,2 +1,1 @@
-<div style="min-height: 400px;">
-</div>
+<div style="min-height: 400px;" />
