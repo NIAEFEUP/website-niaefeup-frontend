@@ -85,6 +85,7 @@
         role="button"
         tabindex="0"
         on:click={() => copyToClipboard('ni@aefeup.pt')}
+        aria-label="Email"
         on:keydown
         class="cursor-pointer"
       >
@@ -158,6 +159,7 @@
       <div
         role="button"
         tabindex="0"
+        aria-label="Copy"
         on:click={() => copyToClipboard('ni@aefeup.pt')}
         on:keydown
         class="cursor-pointer"

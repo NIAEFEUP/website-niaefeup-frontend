@@ -30,7 +30,7 @@
       class="col-start-2 h-fit w-1/2 text-white"
       on:click={() => (sidebarClosed = !sidebarClosed)}
     >
-      <Icon src={Icons.Times} color="white" size="31px" />
+      <Icon src={Icons.Close} color="white" size="31px" />
     </button>
     <ul
       class="col-span-2 col-start-1 flex w-full flex-col items-start gap-10 pt-12 font-source_code text-3xl text-white"

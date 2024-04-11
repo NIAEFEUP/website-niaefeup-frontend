@@ -22,7 +22,7 @@
       on:click={() => notification.close()}
       aria-label="Close"
     >
-      <Icon src={Icons.Times} color="white" size="18px" />
+      <Icon src={Icons.Close} color="white" size="18px" />
     </button>
   </div>
 </div>
