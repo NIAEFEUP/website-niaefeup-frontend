@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Icon } from 'svelte-icons-pack';
-  import type {IconType} from 'svelte-icons-pack';
+  import type { IconType } from 'svelte-icons-pack';
 
   export let src: IconType;
   export let href: string | undefined = undefined;
