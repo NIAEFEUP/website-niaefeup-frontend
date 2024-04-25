@@ -1,13 +1,14 @@
-import FaBrandsInstagram from 'svelte-icons-pack/fa/FaBrandsInstagram';
-import FaBrandsTwitter from 'svelte-icons-pack/fa/FaBrandsTwitter';
-import FaBrandsFacebook from 'svelte-icons-pack/fa/FaBrandsFacebook';
-import FaBrandsGithub from 'svelte-icons-pack/fa/FaBrandsGithub';
-import IoMail from 'svelte-icons-pack/io/IoMail';
-import FaBrandsLinkedin from 'svelte-icons-pack/fa/FaBrandsLinkedin';
-import FaSolidUser from 'svelte-icons-pack/fa/FaSolidUser';
-import FaBars from 'svelte-icons-pack/fa/FaSolidBars';
-import FaTimes from 'svelte-icons-pack/fa/FaSolidTimes';
-import FaSolidGlobe from 'svelte-icons-pack/fa/FaSolidGlobe';
+import {
+  FaBrandsInstagram,
+  FaBrandsTwitter,
+  FaBrandsFacebook,
+  FaBrandsGithub,
+  FaBrandsLinkedin,
+  FaSolidUser,
+  FaSolidBars,
+  FaSolidGlobe
+} from 'svelte-icons-pack/fa';
+import { IoMail, IoClose } from 'svelte-icons-pack/io';
 
 const Icons = {
   Instagram: FaBrandsInstagram,
@@ -17,8 +18,8 @@ const Icons = {
   Mail: IoMail,
   Linkedin: FaBrandsLinkedin,
   User: FaSolidUser,
-  Bars: FaBars,
-  Times: FaTimes,
+  Bars: FaSolidBars,
+  Close: IoClose,
   Globe: FaSolidGlobe
 };
 

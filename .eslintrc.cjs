@@ -1,19 +1,17 @@
+/** @type { import("eslint").Linter.Config } */
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'plugin:storybook/recommended'
+    'plugin:svelte/recommended',
+    'prettier'
   ],
-  plugins: ['svelte3', '@typescript-eslint', 'import'],
-  ignorePatterns: ['*.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'import'],
   rules: {
-    'import/no-relative-parent-imports': 'error',
     'import/export': 'error',
     'import/no-empty-named-blocks': 'error',
-    'import/named': 'error',
     'import/no-absolute-path': 'error',
     'import/no-self-import': 'error',
     'import/no-useless-path-segments': 'error',
@@ -21,31 +19,36 @@ module.exports = {
     'import/no-duplicates': 'error',
     'import/order': 'error'
   },
+
+  parserOptions: {
+    sourceType: 'module',
+    ecmaVersion: 2020,
+    extraFileExtensions: ['.svelte']
+  },
+  env: {
+    browser: true,
+    es2017: true,
+    node: true
+  },
   overrides: [
     {
       files: ['*.svelte'],
-      processor: 'svelte3/svelte3',
+      parser: 'svelte-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser'
+      },
       rules: {
         'no-undef': 'off'
       }
     }
   ],
   settings: {
-    'svelte3/typescript': () => require('typescript'),
+    'svelte/typescript': () => require('typescript'),
     'import/extensions': ['.js', '.ts', '.svelte', '.stories.ts'],
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true
       }
     }
-  },
-  parserOptions: {
-    sourceType: 'module',
-    ecmaVersion: 2020
-  },
-  env: {
-    browser: true,
-    es2017: true,
-    node: true
   }
 };

@@ -80,7 +80,7 @@ export const BarsIcon = {
 
 export const TimesIcon = {
   args: {
-    src: Icons.Times,
+    src: Icons.Close,
     color: 'white',
     size: '50px'
   }
