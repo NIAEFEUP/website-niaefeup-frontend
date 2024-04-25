@@ -1,10 +1,10 @@
 <script lang="ts">
-  import '@/app.css';
-  import Navbar from '$lib/layout/Navbar.svelte';
+  import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
   import Footer from '$lib/layout/Footer.svelte';
+  import Navbar from '$lib/layout/Navbar.svelte';
   import Sidebar from '$lib/layout/Sidebar.svelte';
   import SnackbarList from '$lib/notifications/SnackbarList.svelte';
-  import BackgroundHexagon from '$lib/layout/BackgroundHexagon.svelte';
+  import '@/app.css';
 </script>
 
 <Sidebar />

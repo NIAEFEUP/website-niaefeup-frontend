@@ -8,8 +8,8 @@
 </script>
 
 <div
-  out:slide
-  in:fly={{ x: 100 }}
+  out:slide|global
+  in:fly|global={{ x: 100 }}
   class="mb-4 flex h-auto w-80 rounded-lg bg-muted-red-700 px-3 py-2"
   role="status"
 >
@@ -22,7 +22,7 @@
       on:click={() => notification.close()}
       aria-label="Close"
     >
-      <Icon src={Icons.Times} color="white" size="18px" />
+      <Icon src={Icons.Close} color="white" size="18px" />
     </button>
   </div>
 </div>
