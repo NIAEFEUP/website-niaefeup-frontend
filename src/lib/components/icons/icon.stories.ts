@@ -1,5 +1,5 @@
-import Icon from './Icon.svelte';
-import Icons from './Icons';
+import Icon from './icon.svelte';
+import Icons from './icons';
 
 export default {
   title: 'Atoms/Icons',
