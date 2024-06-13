@@ -7,6 +7,7 @@
 </script>
 
 <main class="container my-32 w-full max-w-screen-lg">
+  <h1 class="text-center text-2xl font-bold md:hidden">{data.title}</h1>
   <Tabs.Root value="info">
     <Tabs.List class="mx-auto my-8 grid w-full grid-cols-2 md:w-1/2">
       <Tabs.Trigger value="info">Informações</Tabs.Trigger>
