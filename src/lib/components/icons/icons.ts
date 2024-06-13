@@ -7,7 +7,7 @@ import {
   FaCalendar,
   FaSolidBars,
   FaSolidGlobe,
-  FaSolidLocationPin,
+  FaSolidLocationDot,
   FaSolidUser
 } from 'svelte-icons-pack/fa';
 import { BiMap } from 'svelte-icons-pack/bi';
@@ -29,8 +29,8 @@ const Icons = {
   Visible: IoEye,
   Hidden: IoEyeOff,
   Logout: FiLogOut,
-  Edit: FiEdit2
-  Location: FaSolidLocationPin,
+  Edit: FiEdit2,
+  Location: FaSolidLocationDot,
   Calendar: FaCalendar
 };
 
