@@ -1,14 +1,16 @@
 import {
-  FaBrandsInstagram,
-  FaBrandsTwitter,
   FaBrandsFacebook,
   FaBrandsGithub,
+  FaBrandsInstagram,
   FaBrandsLinkedin,
-  FaSolidUser,
+  FaBrandsTwitter,
+  FaCalendar,
   FaSolidBars,
-  FaSolidGlobe
+  FaSolidGlobe,
+  FaSolidLocationPin,
+  FaSolidUser
 } from 'svelte-icons-pack/fa';
-import { IoMail, IoClose } from 'svelte-icons-pack/io';
+import { IoClose, IoMail } from 'svelte-icons-pack/io';
 
 const Icons = {
   Instagram: FaBrandsInstagram,
@@ -20,7 +22,9 @@ const Icons = {
   User: FaSolidUser,
   Bars: FaSolidBars,
   Close: IoClose,
-  Globe: FaSolidGlobe
+  Globe: FaSolidGlobe,
+  Location: FaSolidLocationPin,
+  Calendar: FaCalendar
 };
 
 export default Icons;
