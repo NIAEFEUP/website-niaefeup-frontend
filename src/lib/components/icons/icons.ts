@@ -7,7 +7,7 @@ import {
   FaCalendar,
   FaSolidBars,
   FaSolidGlobe,
-  FaSolidLocationPin,
+  FaSolidLocationDot,
   FaSolidUser
 } from 'svelte-icons-pack/fa';
 import { IoClose, IoMail } from 'svelte-icons-pack/io';
@@ -23,7 +23,7 @@ const Icons = {
   Bars: FaSolidBars,
   Close: IoClose,
   Globe: FaSolidGlobe,
-  Location: FaSolidLocationPin,
+  Location: FaSolidLocationDot,
   Calendar: FaCalendar
 };
 

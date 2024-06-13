@@ -3,7 +3,8 @@ import { error } from '@sveltejs/kit';
 export async function load() {
   const event = {
     title: 'Jantar de Curso Informática',
-    description: 'This was a nice and iconic event',
+    description:
+      'Python é uma das linguagens de programação usada por profissionais de software para criar aplicativos, websites, jogos, inteligência artificial e muito mais. ',
     teamMembers: [
       {
         name: 'Test Account',
