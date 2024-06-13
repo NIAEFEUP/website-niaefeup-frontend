@@ -1,12 +1,14 @@
 import {
-  FaBrandsInstagram,
-  FaBrandsTwitter,
   FaBrandsFacebook,
   FaBrandsGithub,
+  FaBrandsInstagram,
   FaBrandsLinkedin,
-  FaSolidUser,
+  FaBrandsTwitter,
+  FaCalendar,
   FaSolidBars,
-  FaSolidGlobe
+  FaSolidGlobe,
+  FaSolidLocationPin,
+  FaSolidUser
 } from 'svelte-icons-pack/fa';
 import { BiMap } from 'svelte-icons-pack/bi';
 import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
@@ -28,6 +30,8 @@ const Icons = {
   Hidden: IoEyeOff,
   Logout: FiLogOut,
   Edit: FiEdit2
+  Location: FaSolidLocationPin,
+  Calendar: FaCalendar
 };
 
 export default Icons;
