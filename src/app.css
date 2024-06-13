@@ -30,3 +30,50 @@ body {
 .footer-icons * {
   transition: opacity 0.2s ease-in-out;
 }
+
+@layer base {
+  :root {
+    --background: 357 56% 84%;
+    --foreground: 0 0% 0%;
+    --card: 357 56% 84%;
+    --card-foreground: 0 0% 0%;
+    --popover: 357 56% 84%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 0 54% 54%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 358 18% 40%;
+    --secondary-foreground: 357 56% 84%;
+    --muted: 357 57% 20%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 66% 37%;
+    --accent-foreground: 357 56% 84%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 0%;
+    --border: 357 57% 20%;
+    --input: 357 57% 20%;
+    --ring: 0 66% 40%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 357 55% 16%;
+    --foreground: 0 0% 100%;
+    --card: 357 55% 16%;
+    --card-foreground: 0 0% 100%;
+    --popover: 357 55% 16%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 54% 46%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 358 18% 60%;
+    --secondary-foreground: 357 55% 16%;
+    --muted: 357 55% 80%;
+    --muted-foreground: 0 0% 100%;
+    --accent: 0 66% 63%;
+    --accent-foreground: 357 55% 16%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 10%;
+    --border: 357 55% 60%;
+    --input: 357 55% 80%;
+    --ring: 0 66% 60%;
+  }
+}
