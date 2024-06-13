@@ -10,11 +10,10 @@
   let date = new Date(data.dateInterval.startDate);
 </script>
 
-<div class="container mx-auto my-32 grid max-w-screen-lg grid-cols-3">
+<div class="grid grid-cols-3">
   <div class="col-span-2 space-y-12 text-white">
     <h1 class="text-6xl font-bold">{data.title}</h1>
     <ul class="space-y-4">
-      <!-- <li class="text-xl">{moment.utc(date).locale('pt').format('dddd - HH:mm')}</li> -->
       <li class="flex items-center gap-2 text-xl font-bold">
         <Icon
           src={Icons.Calendar}
