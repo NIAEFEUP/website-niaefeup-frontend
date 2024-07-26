@@ -7,6 +7,11 @@
 
   let selectedIndex: number | null = null;
   let sidebarClosed = true;
+
+  function toggleSidebar() {
+    sidebarClosed = !sidebarClosed;
+    document.body.classList.toggle('no-scroll', !sidebarClosed);
+  }
 </script>
 
 {#if sidebarClosed}
@@ -15,7 +20,7 @@
   >
     <button
       class="col-start-2 h-fit w-1/2 sm:invisible"
-      on:click={() => (sidebarClosed = !sidebarClosed)}
+      on:click={toggleSidebar}
       aria-label="Open sidebar"
     >
       <Icon src={Icons.Bars} color="white" size="31px" />
@@ -23,13 +28,10 @@
   </nav>
 {:else}
   <nav
-    class="bg-ni-sidebar absolute grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center px-2 py-4 sm:invisible"
+    class="bg-ni-sidebar fixed grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center px-2 py-4 sm:invisible"
   >
     <BackgroundHexagon position="left" />
-    <button
-      class="col-start-2 h-fit w-1/2 text-white"
-      on:click={() => (sidebarClosed = !sidebarClosed)}
-    >
+    <button class="col-start-2 h-fit w-1/2 text-white" on:click={toggleSidebar}>
       <Icon src={Icons.Close} color="white" size="31px" />
     </button>
     <ul
@@ -41,6 +43,7 @@
             href="#/"
             on:click={() => {
               selectedIndex = i;
+              toggleSidebar();
             }}>{item}</a
           >
         </NavItem>
@@ -48,3 +51,9 @@
     </ul>
   </nav>
 {/if}
+
+<style>
+  :global(.no-scroll) {
+    overflow: hidden;
+  }
+</style>
