@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type EventHexagon from './EventHexagon.svelte';
   import type TeamMemberHexagon from '@/routes/(app)/team/_components/team-member-hexagon.svelte';
 
   // Inspired by https://github.com/sveltejs/svelte-virtual-list/blob/master/VirtualList.svelte
@@ -9,7 +10,7 @@
 
   export let gap: 'small' | 'medium' | 'big' = 'medium';
   export let orientation: 'horizontal' | 'vertical';
-  export let component: typeof TeamMemberHexagon;
+  export let component: typeof TeamMemberHexagon | typeof EventHexagon;
 
   const gridColumnsStyle =
     orientation === 'horizontal'

@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts,stories.js,stories.ts}'],
   theme: {
@@ -82,8 +85,26 @@ module.exports = {
       },
       fontSize: {
         huge: '10rem'
+      },
+
+      textShadow: {
+        none: '0 0 0 var(--tw-shadow-color)',
+        sm: '0 2px 4px var(--tw-shadow-color)',
+        DEFAULT: '0 4px 6px var(--tw-shadow-color)',
+        lg: '0 8px 16px var(--tw-shadow-color)'
       }
     }
   },
-  plugins: []
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'text-shadow': (value) => ({
+            textShadow: value
+          })
+        },
+        { values: theme('textShadow') }
+      );
+    })
+  ]
 };
