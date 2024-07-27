@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [19.x]
+        node-version: [21.x]
 
     steps:
       - name: Checkout repository
@@ -35,6 +35,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Build site
+        run: npm run build
 
       - name: Test
         run: CI=true npm run test-vite:coverage
@@ -48,7 +51,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [19.x]
+        node-version: [21.x]
 
     steps:
       - name: Checkout repository
@@ -67,20 +70,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Build site
+        run: npm run build
+
       - name: Install Playwright
         run: npx playwright install
 
-      - name: Wait for the Netlify Preview
-        uses: kamranayub/wait-for-netlify-action@v2.1.0
-        id: waitForNetlify
-        with:
-          site_name: 'niaefeup-frontend-storybook'
-          max_timeout: 300 # 5 minutes
-        env:
-          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+      - name: Build storybook
+        run: npm run build-storybook
 
       - name: Test
-        run: npm run test-storybook:coverage -- --url ${{ steps.waitForNetlify.outputs.url }} --ci
+        run: npm run test-storybook:ci
 
       - name: Upload code coverage to Codecov
         uses: codecov/codecov-action@v3
@@ -91,7 +91,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [19.x]
+        node-version: [21.x]
 
     steps:
       - name: Checkout repository
@@ -109,6 +109,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Build site
+        run: npm run build
 
       - name: Lint Code
         run: npm run lint
