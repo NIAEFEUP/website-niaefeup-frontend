@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Icon } from 'svelte-icons-pack';
-  import Graph from './Graph.svelte';
-  import LabelInput from '$lib/components/icons/LabelInput.svelte';
+  import Graph from './graph.svelte';
+  import LabelInput from '@/lib/components/icons/label-input.svelte';
   import Icons from '$lib/components/icons/icons';
 </script>
 
@@ -10,7 +10,7 @@
     <h1 class="text-2xl font-bold">&lt; Contacta-nos /&gt;</h1>
   </section>
   <div class="mx-10 grid-cols-2 md:grid">
-    <form class="min-w-[85%] justify-self-end lg:min-w-[70%]">
+    <form class="min-w-[85%] justify-self-end">
       <LabelInput label="// Email" id="email" type="email" placeholder="xxxxxxxxxxxxx@gmail.com" />
       <LabelInput label="// Nome" id="name" type="text" />
       <LabelInput label="// Assunto" id="subject" type="text" />
