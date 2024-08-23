@@ -20,10 +20,12 @@
 
 <style>
   :global(html) {
+    height: 100%;
     min-height: 100vh;
   }
 
   :global(body) {
+    height: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
