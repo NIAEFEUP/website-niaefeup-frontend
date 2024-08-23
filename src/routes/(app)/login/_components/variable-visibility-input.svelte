@@ -8,7 +8,12 @@
 </script>
 
 <div class="relative">
-  <input {type} {...$$restProps} class="col-start-1 col-end-3 row-start-1 {$$props.class}" />
+  <input
+    {type}
+    {...$$restProps}
+    class="col-start-1 col-end-3 row-start-1 {$$props.class}"
+    data-testid="password-input"
+  />
   <button
     type="button"
     class="absolute inset-y-0 right-0 mr-4"
