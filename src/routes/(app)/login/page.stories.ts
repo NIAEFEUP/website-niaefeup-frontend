@@ -1,6 +1,6 @@
+import Layout from '../+layout.svelte';
 import Page from './+page.svelte';
-import Layout from '@/routes/+layout.svelte';
-import LayoutDecorator from '$lib/storybook-utils/LayoutDecorator.svelte';
+import LayoutDecorator from '@/lib/storybook-utils/layout-decorator.svelte';
 
 export default {
   title: 'Pages/Login',
