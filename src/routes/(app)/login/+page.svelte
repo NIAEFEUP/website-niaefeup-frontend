@@ -50,7 +50,7 @@
       >Iniciar Sessão</button
     >
     <br />
-    <p>{message}</p>
+    <p class="h-[2dvh] text-center">{message}</p>
     <br />
   </form>
 </section>
