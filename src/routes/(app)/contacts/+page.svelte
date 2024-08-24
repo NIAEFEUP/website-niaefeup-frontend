@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Icon } from 'svelte-icons-pack';
-  import Graph from './graph.svelte';
+  import Graph from './_components/graph.svelte';
   import LabelInput from '@/lib/components/icons/label-input.svelte';
   import Icons from '$lib/components/icons/icons';
 </script>
