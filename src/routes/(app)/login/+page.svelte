@@ -20,8 +20,6 @@
   }
 </script>
 
-<!-- Colocar a página toda scrollable incluindo footer, ver container queries -->
-
 <section
   class="flex h-full w-full flex-col items-center justify-center font-raleway text-base font-[700] sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
 >

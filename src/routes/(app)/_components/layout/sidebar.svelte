@@ -2,8 +2,8 @@
   import SidebarItems from './sidebar-items';
   import NavItem from './nav-item.svelte';
   import BackgroundHexagon from './background-hexagon.svelte';
-  import Icon from '@/lib/components/icons/icon.svelte';
-  import Icons from '@/lib/components/icons/icons';
+  import Icon from '$lib/components/icons/icon.svelte';
+  import Icons from '$lib/components/icons/icons';
 
   let selectedIndex: number | null = null;
   let sidebarClosed = true;
