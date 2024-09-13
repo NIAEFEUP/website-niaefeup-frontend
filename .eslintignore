@@ -7,6 +7,7 @@ node_modules
 .env.*
 !.env.example
 storybook-static
+/src/lib/components/ui
 
 # Ignore files for PNPM, NPM and YARN
 pnpm-lock.yaml

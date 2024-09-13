@@ -9,15 +9,15 @@
 <main class="container my-32 w-full max-w-screen-lg">
   <h1 class="text-center text-3xl font-bold md:hidden">{data.title}</h1>
   <Tabs.Root value="info">
-    <Tabs.List class="mx-auto my-8 grid w-full grid-cols-2 md:w-1/2">
+    <!-- <Tabs.List class="mx-auto my-8 grid w-full grid-cols-2 md:w-1/2">
       <Tabs.Trigger value="info">Informações</Tabs.Trigger>
       <Tabs.Trigger value="respostas">Respostas</Tabs.Trigger>
-    </Tabs.List>
+    </Tabs.List> -->
     <Tabs.Content value="info">
       <EventHeader {data} />
       <Carousel />
       <p class="text-justify text-2xl font-semibold">{data.description}</p>
     </Tabs.Content>
-    <Tabs.Content value="respostas">Respostas</Tabs.Content>
+    <!-- <Tabs.Content value="respostas">Respostas</Tabs.Content> -->
   </Tabs.Root>
 </main>
