@@ -1,7 +1,7 @@
 <script>
-  import * as Tabs from '$lib/components/ui/tabs/index';
   import Carousel from './_components/carousel.svelte';
   import EventHeader from './_components/event-header.svelte';
+  import * as Tabs from '$lib/components/ui/tabs/index';
 
   export let data;
 </script>

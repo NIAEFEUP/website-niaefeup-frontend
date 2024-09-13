@@ -1,5 +1,4 @@
 <script lang="ts">
-  import * as Card from '$lib/components/ui/card/index.js';
   import type { CarouselAPI } from '$lib/components/ui/carousel/context.js';
   import * as Carousel from '$lib/components/ui/carousel/index.js';
 
@@ -21,6 +20,7 @@
   <Carousel.Root bind:api class="mx-auto max-w-[80%] lg:max-w-full">
     <Carousel.Content>
       {#each Array(5) as _, i (i)}
+        <!-- eslint-disable-line @typescript-eslint/no-unused-vars -->
         <Carousel.Item>
           <img
             class="max-h-[30vh] w-full rounded-3xl object-cover object-center"
