@@ -1,6 +1,5 @@
 <script>
   import ErrorSection from './_components/error/error-section.svelte';
-  // @ts-expect-error Import is as expected but throws error
   import { page } from '$app/stores';
   import Button from '$lib/components/button.svelte';
 </script>
