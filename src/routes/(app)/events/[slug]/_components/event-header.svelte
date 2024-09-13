@@ -1,9 +1,9 @@
 <script lang="ts">
+  import { format } from 'date-fns';
+  import { pt } from 'date-fns/locale';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
   import type { Event } from '@/types/event';
-  import { format } from 'date-fns';
-  import { pt } from 'date-fns/locale';
 
   import { Button } from '$lib/components/ui/button/index.js';
 
