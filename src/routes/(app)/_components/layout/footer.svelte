@@ -119,7 +119,7 @@
       </div>
     </div>
     <div
-      class="footer-icons grid grid-cols-3 grid-rows-2 items-center justify-items-center gap-4 px-6 py-5"
+      class="footer-icons grid grid-cols-3 grid-rows-2 items-center justify-items-center gap-4 px-6 py-4"
     >
       <Icon
         src={Icons.Instagram}

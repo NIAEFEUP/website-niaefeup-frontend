@@ -8,7 +8,7 @@ import {
   FaSolidBars,
   FaSolidGlobe
 } from 'svelte-icons-pack/fa';
-import { IoMail, IoClose } from 'svelte-icons-pack/io';
+import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
 
 const Icons = {
   Instagram: FaBrandsInstagram,
@@ -20,7 +20,9 @@ const Icons = {
   User: FaSolidUser,
   Bars: FaSolidBars,
   Close: IoClose,
-  Globe: FaSolidGlobe
+  Globe: FaSolidGlobe,
+  Visible: IoEye,
+  Hidden: IoEyeOff
 };
 
 export default Icons;
