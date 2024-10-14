@@ -1,5 +1,5 @@
 <nav
-  class="fixed hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
+  class="hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
   aria-label="Navigation Bar"
 >
   <div class="flex w-full justify-start">

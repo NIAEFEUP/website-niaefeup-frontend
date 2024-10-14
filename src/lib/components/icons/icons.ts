@@ -9,7 +9,7 @@ import {
   FaSolidGlobe
 } from 'svelte-icons-pack/fa';
 import { BiMap } from 'svelte-icons-pack/bi';
-import { IoMail, IoClose } from 'svelte-icons-pack/io';
+import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
 
 const Icons = {
   Instagram: FaBrandsInstagram,
@@ -22,7 +22,9 @@ const Icons = {
   Bars: FaSolidBars,
   Close: IoClose,
   Globe: FaSolidGlobe,
-  Pin: BiMap
+  Pin: BiMap,
+  Visible: IoEye,
+  Hidden: IoEyeOff
 };
 
 export default Icons;
