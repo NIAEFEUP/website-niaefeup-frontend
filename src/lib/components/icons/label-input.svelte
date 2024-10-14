@@ -10,7 +10,7 @@
 {#if isTextArea}
   <textarea
     aria-label="textarea-input"
-    class="mb-2 w-full rounded-lg p-2 font-source_code text-primary placeholder-primary bg-white min-h-[100px]"
+    class="mb-2 min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
     {id}
     {placeholder}
     rows="4"
@@ -18,7 +18,7 @@
 {:else}
   <input
     aria-label="text-input"
-    class="mb-2 w-full rounded-lg p-2 text-primary placeholder-primary bg-white"
+    class="mb-2 w-full rounded-lg bg-white p-2 text-primary placeholder-primary"
     {type}
     {id}
     {placeholder}
