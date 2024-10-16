@@ -2,7 +2,12 @@ import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { cubicOut } from 'svelte/easing';
 import type { TransitionConfig } from 'svelte/transition';
+import { createNotification } from '@/routes/(app)/_components/layout/notifications';
 
+export function copyToClipboard(content: string) {
+  navigator.clipboard.writeText(content);
+  createNotification('O email foi copiado para o teu clipboard :)');
+}
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

@@ -8,6 +8,7 @@ import {
   FaSolidBars,
   FaSolidGlobe
 } from 'svelte-icons-pack/fa';
+import { BiMap } from 'svelte-icons-pack/bi';
 import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
 
 const Icons = {
@@ -21,6 +22,7 @@ const Icons = {
   Bars: FaSolidBars,
   Close: IoClose,
   Globe: FaSolidGlobe,
+  Pin: BiMap,
   Visible: IoEye,
   Hidden: IoEyeOff
 };
