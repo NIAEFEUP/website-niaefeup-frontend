@@ -5,7 +5,7 @@
   import Icons from '$lib/components/icons/icons';
 </script>
 
-<section class="-10 my-20 flex flex-col justify-center">
+<section class="flex flex-col justify-center">
   <section class="mb-4 flex flex-col text-center font-raleway text-white">
     <h1 class="text-2xl font-bold">&lt; Contacta-nos /&gt;</h1>
   </section>
