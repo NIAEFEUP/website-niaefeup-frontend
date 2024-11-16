@@ -22,7 +22,7 @@
   :global(html) {
     height: 100%;
     min-height: 100vh;
-    overflow: scroll;
+    overflow: auto;
   }
 
   :global(body) {
@@ -30,6 +30,6 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
   }
 </style>
