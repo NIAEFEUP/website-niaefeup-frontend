@@ -11,6 +11,8 @@ services:
       - ./static:/usr/src/website-niaefeup-frontend/static
     environment:
       - PORT=3000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   website-niaefeup-frontend-storybook:
     build:
