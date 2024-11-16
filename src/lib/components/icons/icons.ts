@@ -10,7 +10,7 @@ import {
 } from 'svelte-icons-pack/fa';
 import { BiMap } from 'svelte-icons-pack/bi';
 import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
-import { LuPencil } from "svelte-icons-pack/lu";
+import { LuPencil } from 'svelte-icons-pack/lu';
 
 const Icons = {
   Instagram: FaBrandsInstagram,
