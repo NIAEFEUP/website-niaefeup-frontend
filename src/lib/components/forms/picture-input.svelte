@@ -18,7 +18,7 @@
   
         {#if avatar}
         <div class="flex h-[200px] w-[200px] rounded-md overflow-hidden relative">
-            <img class="h-[200px] w-[200px]" src="{avatar}" alt="Avatar" />
+            <img class="h-[200px] w-[200px] object-cover" src="{avatar}" alt="Avatar" />
             <button type="button" aria-label="Change Avatar" class="bg-rose-950 rounded-md h-[15%] w-[15%] flex items-center justify-center cursor-pointer absolute bottom-0 right-0 m-2" on:click={() => { fileinput.click(); }} on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { fileinput.click(); } }}>
                 <Icon src={Icons.Edit} color="white" size="70%" />
             </button>
