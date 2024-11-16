@@ -28,10 +28,14 @@ export const SingleDateHexagon = {
   args: {
     data: {
       title: 'Jantar de Curso',
-      description: 'Muito fixe',
+      description: 'Muito fixeeeeeeeeeeeeeeee',
       teamMemberIds: [],
       registerUrl: 'https://www.google.com/intl/pt-PT/forms/about/',
-      dateInterval: { startDate: new Date('2023-12-10') },
+
+      dateInterval: {
+        startDate: '2023-12-10T00:00:00.000Z'
+      },
+
       location: 'Cervejaria Diu',
       thumbnailPath: 'images/previews/evento.png'
     }
