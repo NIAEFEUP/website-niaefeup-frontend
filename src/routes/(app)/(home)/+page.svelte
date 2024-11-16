@@ -1,5 +1,5 @@
 <script>
-    import RadioButton from '@/lib/components/forms/radio-button.svelte'
+        import PictureInput from '$lib/components/forms/picture-input.svelte';
 </script>
 
-<RadioButton />
+<PictureInput/>
