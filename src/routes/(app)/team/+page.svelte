@@ -3,6 +3,21 @@
   import TeamMemberHexagon from './_components/team-member-hexagon.svelte'; // Caminho para o componente
   import type { TeamMember } from '@/types/team-member';
   import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
+  import { onMount } from 'svelte';
+  let isSmallScreen = false;
+  
+  const checkScreenSize = () => {
+    isSmallScreen = window.innerWidth < 768; // Tailwind's `md` breakpoint
+  };
+    
+    onMount(() => {
+        checkScreenSize(); // Check screen size on mount
+        window.addEventListener('resize', checkScreenSize); // Update on resize
+
+        return () => {
+            window.removeEventListener('resize', checkScreenSize); // Cleanup
+        };
+    });
 
   const boardMembers: TeamMember[] = [
  
@@ -495,6 +510,7 @@
     }
     ];
 
+
 </script>
 
 <section class="flex flex-col justify-center gap-32">
@@ -502,24 +518,43 @@
     <h1 class="text-3xl font-bold">&lt; Equipa /&gt;</h1>
   </section>
 
-  <section class="flex flex-col justify-center items-center">
-    <div class="justify-center max-w-5xl">
-        <div class="grid grid-cols-5 w-full mb-6">   
-            <div class="col-span-1"></div>
-            <h2 class="text-3xl font-bold pl-4 col-span-1 place-self-center">Direção</h2>
-            <div class="col-span-1"></div>
+<section class="flex flex-col justify-center items-center">
+    <div class="max-w-5xl w-full p-6">
+        <div class=" w-full mb-6 items-center {isSmallScreen ? 'justify-center' : 'grid grid-cols-5'}">
+            {#if !isSmallScreen}
+                <div class="hidden md:block md:col-span-1"></div>
+            {/if}
+            <h2
+                class="text-3xl font-bold text-center"
+            >
+                Direção
+            </h2>
+            {#if !isSmallScreen}
+                <div class="hidden md:block md:col-span-3"></div>
+            {/if}
         </div>
-        <HexagonGrid
+
+        {#if isSmallScreen}
+          <HexagonGrid
+            items={boardMembers}
+            cols={2}
+            gap="small"
+            orientation="horizontal"
+            component={TeamMemberHexagon}
+            class=""
+          />
+        {:else}
+          <HexagonGrid
             items={boardMembers}
             cols={5}
             gap="small"
             orientation="horizontal"
             component={TeamMemberHexagon}
             class=""
-        />
+          />
+        {/if}
     </div>
-    
-  </section>
+</section>
 
   <section class="flex flex-col justify-center items-center">
     <div class="justify-center max-w-5xl">
