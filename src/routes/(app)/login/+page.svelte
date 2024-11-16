@@ -16,7 +16,11 @@
         password
       })
     }).then((res) => res.ok);
+
     message = success ? 'Login successful' : 'Login failed';
+    if (success == true) {
+      window.location.href = '/';
+    }
   }
 </script>
 
