@@ -73,43 +73,45 @@
   >
     <div
       data-testid="container"
-      class="container absolute bottom-0 z-20 w-full px-4 duration-500 group-hover:bottom-1/2 group-hover:translate-y-1/3"
+      class="container absolute bottom-0 z-20 w-full px-4 duration-1000 group-hover:bottom-1/2 group-hover:translate-y-1/3"
     >
       <p
-        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl"
+        class="mx-auto w-[70%] self-center text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl"
       >
         {teamMember.name}
       </p>
       <p
         data-testid="role"
-        class="full-opacity mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
+        class="full-opacity mx-auto text-center text-xs leading-tight text-gray-100 hidden opacity-0 transition-all duration-1000 delay-1000 ease-in-out group-hover:opacity-100 group-hover:block  sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
-        {teamMember.role}
-      </p>
+        {#if teamMember.role}
+          {teamMember.role}
+        {/if}
+      </p>      
       <div class="relative mt-1">
         <div class="absolute flex w-full justify-center gap-1 md:gap-2">
           {#if teamMember.linkedin}
             <a
               href={teamMember.linkedin}
-              class="full-opacity h-6 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="full-opacity h-6 flex items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-in-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s LinkedIn"
             >
-              <Icon src={Icons.Linkedin} color="white" size="100%" /></a
+              <Icon src={Icons.Linkedin} color="white" size="80%" /></a
             >
           {/if}
           {#if teamMember.gitHub}
             <a
               href={teamMember.gitHub}
-              class="full-opacity h-6 opacity-0 transition-all duration-500 ease-out group-hover:static group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="full-opacity h-6 flex items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-in-out group-hover:static group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s GitHub"
-              ><Icon src={Icons.Github} color="white" size="100%" /></a
+              ><Icon src={Icons.Github} color="white" size="80%" /></a
             >
           {/if}
           {#if teamMember.websites}
             {#each teamMember.websites as customWebsite}
               <a
                 href={customWebsite.url}
-                class="full-opacity h-5 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+                class="full-opacity h-5 flex items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-in-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
                 aria-label="{teamMember.name}'s custom website"
               >
                 {#if customWebsite.iconPath}
@@ -119,7 +121,7 @@
                     class="icon h-full w-full object-cover"
                   />
                 {:else}
-                  <Icon src={Icons.Globe} color="white" size="100%" />
+                  <Icon src={Icons.Globe} color="white" size="80%" />
                 {/if}
               </a>
             {/each}
@@ -128,7 +130,7 @@
       </div>
     </div>
     <div
-      class="variable-opacity absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-30"
+      class="variable-opacity absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-1000 group-hover:opacity-30"
     />
     <img
       src={teamMember.photo ? teamMember.photo : 'images/default_profile_pic.png'}
