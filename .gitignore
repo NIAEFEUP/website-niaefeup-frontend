@@ -14,3 +14,4 @@ vite.config.ts.timestamp-*
 
 # Test Reports
 /coverage
+storybook-static/
