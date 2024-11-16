@@ -11,7 +11,7 @@ services:
       - ./static:/usr/src/website-niaefeup-frontend/static
     environment:
       - PORT=3000
-    network_mode: "host" # do not add this to prod!
+    network_mode: 'host' # do not add this to prod!
 
   website-niaefeup-frontend-storybook:
     build:
