@@ -83,16 +83,11 @@ export const DefaultIconHexagon = {
     data: {
       name: 'Bruno Rosendo',
       email: 'brunorosendo@gmail.com',
-      role: 'Co-Gestor de Projetosssssssssssssssssssss',
+      role: 'Co-Gestor de Projetos',
       photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
       gitHub: 'https://github.com/',
-
-      websites: [
-        {
-          url: 'https://www.facebook.com/'
-        }
-      ]
+      websites: [{ url: 'https://www.facebook.com/' }]
     }
   }
 };
