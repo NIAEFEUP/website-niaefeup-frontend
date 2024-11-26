@@ -2,7 +2,7 @@
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
 
-  export let value: any;
+  export let value: string;
   let visible = false;
   $: type = visible ? 'text' : 'password';
   $: icon = visible ? Icons.Hidden : Icons.Visible;
