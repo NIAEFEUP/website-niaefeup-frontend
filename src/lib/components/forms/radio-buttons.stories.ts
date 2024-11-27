@@ -1,7 +1,7 @@
 import RadioButtons from './radio-buttons.svelte';
 
 export default {
-  title: 'Atoms/RadioButtons',
+  title: 'Atoms/Forms/Radio Buttons',
   component: RadioButtons,
   argTypes: {
     options: { control: 'array' }
@@ -13,6 +13,6 @@ export default {
 
 export const Example = {
   args: {
-    options: ['Hello', 'World']
+    options: ['English', 'Spanish']
   }
 };
