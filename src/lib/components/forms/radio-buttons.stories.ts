@@ -7,7 +7,7 @@ export default {
     options: { control: 'array' }
   },
   parameters: {
-    layout: 'centered',
+    layout: 'centered'
   }
 };
 
