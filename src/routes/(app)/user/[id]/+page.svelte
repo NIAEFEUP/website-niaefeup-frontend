@@ -5,8 +5,8 @@
 
 <section>
   <div class="flex w-full justify-center px-4 sm:px-6 lg:px-8">
-    <div class="w-full content-center sm:w-4/5 md:w-2/3 lg:w-1/2 xl:w-1/2">
-      <div class="flex h-12 justify-end">
+    <div class="flex w-4/5 flex-col content-center gap-y-4 md:gap-y-6 lg:w-3/4 xl:w-1/2">
+      <div class="flex h-10 justify-end lg:h-10 xl:h-12">
         <div class="rounded-md bg-muted-red-500 p-3">
           <a href="https://www.lipsum.com/">
             <Icon src={Icons.Pencil} color="white" size="100%" />
