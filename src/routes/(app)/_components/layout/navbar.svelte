@@ -1,3 +1,12 @@
+<script>
+  import { onMount } from 'svelte';
+  let currentUrl = '';
+
+  onMount(() => {
+    currentUrl = window.location.href;
+  });
+</script>
+
 <nav
   class="hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
   aria-label="Navigation Bar"
@@ -9,9 +18,17 @@
     </a>
   </div>
   <div class="flex justify-end gap-7">
-    <a href="#/">Equipa</a>
-    <a href="#/">Projetos</a>
-    <a href="#/">Eventos</a>
-    <a href="#/">Contactos</a>
+    <a class:active={currentUrl === "http://localhost:3000/#/team/"} href="#/team/"><p class = "font-bold">Equipa</p></a>
+    <a class:active={currentUrl === "http://localhost:3000/#/projects/"} href="#/projects/"><p class = "font-bold">Projetos</p></a>
+    <a class:active={currentUrl === "http://localhost:3000/#/events/"} href="#/events/"><p class = "font-bold">Eventos</p></a>
+    <a class:active={currentUrl === "http://localhost:3000/#/contacts/"} href="#/contacts/"><p class = "font-bold">Contactos</p></a>
   </div>
 </nav>
+
+<style>
+  .active {
+    background-color: rgba(116, 20, 20, 0.4);
+    padding: 2px 3px; 
+    border-radius: 4px; 
+    }
+</style>
