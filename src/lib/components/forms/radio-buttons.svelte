@@ -3,7 +3,7 @@
   let selectedOption: string;
 </script>
 
-<div>
+<fieldset>
   {#each options as option}
     <input
       id="radio-{option}"
