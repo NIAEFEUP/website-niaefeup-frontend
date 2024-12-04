@@ -1,10 +1,7 @@
 <script>
-  import { onMount } from 'svelte';
-  let currentUrl = '';
+  import { page } from '$app/stores';
 
-  onMount(() => {
-    currentUrl = window.location.href;
-  });
+  $: currentPage = $page.url.pathname;
 </script>
 
 <nav
