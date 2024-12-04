@@ -17,6 +17,7 @@
 </script>
 
 {#await teamMember}
+  <!-- TODO: include a waiting animation -->
   <p>...waiting</p>
 {:then teamMember}
   <section>
@@ -42,6 +43,7 @@
               </h3>
               <div class="flex items-center rounded-2xl bg-green-200/20 px-5 py-2">
                 <div class="mr-2 h-4 w-4 rounded-full bg-green-200"></div>
+                <!-- TODO: incorporate backend's active member flag -->
                 <p class="text-sm font-semibold sm:text-base">Membro ativo</p>
               </div>
             </div>
@@ -99,5 +101,6 @@
     </div>
   </section>
 {:catch error}
+  <!-- TODO: link the error page -->
   <p>{error.message}</p>
 {/await}
