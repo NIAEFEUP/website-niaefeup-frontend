@@ -1,7 +1,7 @@
 import PictureInput from './picture-input.svelte';
 
 export default {
-  title: 'Atoms/Forms/Picture Input',
+  title: 'Atoms/Forms',
   component: PictureInput,
   argTypes: {
     text: { control: 'text' }
@@ -11,7 +11,7 @@ export default {
   }
 };
 
-export const Example = {
+export const Picture_Input = {
   args: {
     text: 'Adicionar logo'
   }
