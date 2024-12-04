@@ -11,7 +11,7 @@
 <ModeWatcher defaultMode="dark" />
 <Sidebar />
 <Navbar />
-<main class="bg-ni-primary flex-grow">
+<main class="bg-ni-primary my-20 flex-grow">
   <BackgroundHexagon position="right" />
   <slot />
 </main>
@@ -22,6 +22,7 @@
   :global(html) {
     height: 100%;
     min-height: 100vh;
+    overflow: auto;
   }
 
   :global(body) {
@@ -29,5 +30,6 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: auto;
   }
 </style>
