@@ -3,15 +3,15 @@
   aria-label="Navigation Bar"
 >
   <div class="flex w-full justify-start">
-    <a href="#/" class="flex items-center gap-4">
+    <a href="/" class="flex items-center gap-4">
       <img src="/images/ni_logo.png" alt="NIAEFEUP's logo" width="40" height="40" />
       <span>NIAEFEUP</span>
     </a>
   </div>
   <div class="flex justify-end gap-7">
-    <a href="#/">Equipa</a>
-    <a href="#/">Projetos</a>
-    <a href="#/">Eventos</a>
+    <a href="/#/">Equipa</a>
+    <a href="/#/">Projetos</a>
+    <a href="/#/">Eventos</a>
     <a href="/contacts">Contactos</a>
   </div>
 </nav>

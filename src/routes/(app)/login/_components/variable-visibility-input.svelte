@@ -2,6 +2,7 @@
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
 
+  export let value: string;
   let visible = false;
   $: type = visible ? 'text' : 'password';
   $: icon = visible ? Icons.Hidden : Icons.Visible;
@@ -9,11 +10,12 @@
 
 <div class="relative">
   <input
-    {type}
+    {...{ type }}
     {...$$restProps}
     class="col-start-1 col-end-3 row-start-1 {$$props.class}"
     data-testid="password-input"
     aria-label="Password input"
+    bind:value
   />
   <button
     type="button"
