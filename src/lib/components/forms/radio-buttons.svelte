@@ -14,15 +14,16 @@
     />
     <label
       class="m-1 justify-self-start rounded-lg bg-taupe-200 px-5 py-1 text-rose-950"
+      class:selected={selectedOption === option}
       for="radio-{option}"
     >
       {option}
     </label>
   {/each}
-</div>
+</fieldset>
 
 <style>
-  .radio-button:checked + label {
+  label.selected {
     background-color: theme('colors.muted-red.400');
     color: theme('colors.taupe.100');
   }
