@@ -19,7 +19,9 @@
 </script>
 
 <div id="app" class="flex flex-col items-center justify-center">
-  <div class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-400 text-center">
+  <div
+    class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-400 text-center"
+  >
     {#if avatar}
       <img class="h-[200px] w-[200px] object-cover" src={avatar} alt="Avatar" />
     {:else}
