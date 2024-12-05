@@ -2,6 +2,10 @@
   import { page } from '$app/stores';
 
   $: currentPage = $page.url.pathname;
+  const links = [{href: "/team/", label: "Equipa", pageComp: "/team"},
+  {href: "/projects/", label: "Projects", pageComp: "/projects"},
+  {href: "/events/", label: "Eventos", pageComp: "/events"},
+  {href: "/contacts/", label: "Contactos", pageComp: "/contacts"}];
 </script>
 
 <nav
@@ -15,24 +19,18 @@
     </a>
   </div>
   <div class="flex justify-end gap-7">
-<<<<<<< HEAD
-    <a class:active={currentUrl === "http://localhost:3000/#/team/"} href="#/team/"><p class = "font-bold">Equipa</p></a>
-    <a class:active={currentUrl === "http://localhost:3000/#/projects/"} href="#/projects/"><p class = "font-bold">Projetos</p></a>
-    <a class:active={currentUrl === "http://localhost:3000/#/events/"} href="#/events/"><p class = "font-bold">Eventos</p></a>
-    <a class:active={currentUrl === "http://localhost:3000/#/contacts/"} href="#/contacts/"><p class = "font-bold">Contactos</p></a>
-=======
-    <a href="/#/">Equipa</a>
-    <a href="/#/">Projetos</a>
-    <a href="/#/">Eventos</a>
-    <a href="/contacts">Contactos</a>
->>>>>>> c06cc9d4ec9d3ef94d256019af7eb47b0e9b5b6d
+    {#each links as {href, label, pageComp}} 
+      <a class:active={currentPage === pageComp} href={href}>
+        <p class = "font-bold">{label}</p>
+      </a>
+    {/each}
   </div>
 </nav>
 
 <style>
   .active {
-    background-color: rgba(116, 20, 20, 0.4);
-    padding: 2px 3px; 
+    background-color: theme('colors.muted-red.400');
+    padding: 2px 6px; 
     border-radius: 4px; 
     }
 </style>
