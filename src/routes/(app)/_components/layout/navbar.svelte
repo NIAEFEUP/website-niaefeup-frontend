@@ -2,10 +2,12 @@
   import { page } from '$app/stores';
 
   $: currentPage = $page.url.pathname;
-  const links = [{href: "/team/", label: "Equipa", pageComp: "/team"},
-  {href: "/projects/", label: "Projects", pageComp: "/projects"},
-  {href: "/events/", label: "Eventos", pageComp: "/events"},
-  {href: "/contacts/", label: "Contactos", pageComp: "/contacts"}];
+  const links = [
+    { href: '/team/', label: 'Equipa', pageComp: '/team' },
+    { href: '/projects/', label: 'Projects', pageComp: '/projects' },
+    { href: '/events/', label: 'Eventos', pageComp: '/events' },
+    { href: '/contacts/', label: 'Contactos', pageComp: '/contacts' }
+  ];
 </script>
 
 <nav
@@ -19,9 +21,9 @@
     </a>
   </div>
   <div class="flex justify-end gap-7">
-    {#each links as {href, label, pageComp}} 
-      <a class:active={currentPage === pageComp} href={href}>
-        <p class = "font-bold">{label}</p>
+    {#each links as { href, label, pageComp }}
+      <a class:active={currentPage === pageComp} {href}>
+        <p class="font-bold">{label}</p>
       </a>
     {/each}
   </div>
@@ -30,7 +32,7 @@
 <style>
   .active {
     background-color: theme('colors.muted-red.400');
-    padding: 2px 6px; 
-    border-radius: 4px; 
-    }
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
 </style>
