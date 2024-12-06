@@ -1,10 +1,10 @@
 <script>
+  // @ts-expect-error Import is as expected but throws error
   import { page } from '$app/stores';
-
   $: currentPage = $page.url.pathname;
   const links = [
     { href: '/team/', label: 'Equipa', pageComp: '/team' },
-    { href: '/projects/', label: 'Projects', pageComp: '/projects' },
+    { href: '/projects/', label: 'Projetos', pageComp: '/projects' },
     { href: '/events/', label: 'Eventos', pageComp: '/events' },
     { href: '/contacts/', label: 'Contactos', pageComp: '/contacts' }
   ];
