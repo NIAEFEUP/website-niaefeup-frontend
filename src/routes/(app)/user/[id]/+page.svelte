@@ -3,16 +3,41 @@
   import Icons from '@/lib/components/icons/icons';
 
   import type { TeamMember } from '@/types/team-member';
+  import Snackbar from '@/routes/(app)/_components/layout/notifications/snackbar.svelte';
   import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
 
   export let teamMember = getMember() as TeamMember;
 
   async function getMember() {
-    const tm = await fetch(`/api/accounts/${$page.params.id}
-    `);
+    const tm = await fetch(`/api/accounts/${$page.params.id}`);
     const tmJson = await tm.json();
 
     return tmJson;
+  }
+
+  let showErrorMessage = false;
+  let notification = null;
+
+  async function logout() {
+    const response = await fetch('/api/auth/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (response.ok) {
+      goto('/');
+    } else {
+      showErrorMessage = true;
+      notification = {
+        message: 'Logout failed',
+        close: () => {
+          showErrorMessage = false;
+          notification = null;
+        }
+      };
+    }
   }
 </script>
 
@@ -22,13 +47,16 @@
 {:then teamMember}
   <section>
     <div class="flex w-full justify-center px-4 sm:px-6 lg:px-8">
-      <div class="flex w-4/5 flex-col content-center gap-y-4 md:gap-y-6 lg:w-3/4 xl:w-1/2">
-        <div class="flex h-10 justify-end lg:h-10 xl:h-12">
+      <div class="itme flex w-4/5 flex-col content-center gap-y-4 md:gap-y-6 lg:w-3/4 xl:w-1/2">
+        <div class="flex h-10 justify-end gap-x-2 lg:h-10 xl:h-12">
           <div class="rounded-md bg-muted-red-500 p-3">
             <a href="https://www.lipsum.com/">
               <Icon src={Icons.Pencil} color="white" size="100%" />
             </a>
           </div>
+          <button class="rounded-md bg-muted-red-500 p-3" on:click={() => logout()}>
+            <Icon src={Icons.Logout} color="white" size="100%" />
+          </button>
         </div>
         <div class="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
           <img
@@ -97,6 +125,11 @@
             </div>
           </div>
         </div>
+        {#if showErrorMessage}
+          <div class="w-full flex flex-grow justify-center">
+            <Snackbar {notification} />
+          </div>
+        {/if}
       </div>
     </div>
   </section>

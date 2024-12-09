@@ -11,6 +11,7 @@ import {
 import { BiMap } from 'svelte-icons-pack/bi';
 import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
 import { LuPencil } from 'svelte-icons-pack/lu';
+import { FiLogOut } from 'svelte-icons-pack/fi';
 
 const Icons = {
   Instagram: FaBrandsInstagram,
@@ -26,7 +27,8 @@ const Icons = {
   Pin: BiMap,
   Visible: IoEye,
   Hidden: IoEyeOff,
-  Pencil: LuPencil
+  Pencil: LuPencil,
+  Logout: FiLogOut
 };
 
 export default Icons;
