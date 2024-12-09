@@ -126,7 +126,7 @@
           </div>
         </div>
         {#if showErrorMessage}
-          <div class="w-full flex flex-grow justify-center">
+          <div class="flex w-full flex-grow justify-center">
             <Snackbar {notification} />
           </div>
         {/if}
