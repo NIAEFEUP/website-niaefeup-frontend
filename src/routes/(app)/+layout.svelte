@@ -33,9 +33,14 @@
     overflow: auto;
   }
 
-  :global(input:-webkit-autofill,input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active) {
-    -webkit-box-shadow: 0 0 0px 1000px rgb(255 233 233 / var(--tw-bg-opacity)) inset;   /*Since we can't alter the browsers background change on autofill fields we add an inner shadow with the desired color*/ 
-    -webkit-text-fill-color: rgb(65 19 21 / .54);
+  :global(
+      input:-webkit-autofill,
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active
+    ) {
+    -webkit-box-shadow: 0 0 0px 1000px rgb(255 233 233 / var(--tw-bg-opacity)) inset; /*Since we can't alter the browsers background change on autofill fields we add an inner shadow with the desired color*/
+    -webkit-text-fill-color: rgb(65 19 21 / 0.54);
   }
-  
 </style>
