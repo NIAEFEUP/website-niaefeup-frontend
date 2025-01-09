@@ -33,6 +33,10 @@
     overflow: auto;
   }
 
+  /*
+  A browser autofill option (in loging form for example) may apply a filter to our input fields that clashes with our desired aesthetic,
+  therefore we undo that change and keep the original style
+  */
   :global(
       input:-webkit-autofill,
       input:-webkit-autofill,
