@@ -1,4 +1,5 @@
 <script lang="ts">
+  import SocialMediaIcon from '../_components/social-media-icon.svelte';
   import type { PageData } from './$types';
   import type { TeamMember } from '@/types/team-member';
   import Icon from '@/lib/components/icons/icon.svelte';
@@ -77,42 +78,30 @@
             {/if}
             <div class="flex justify-center gap-3 sm:justify-start">
               {#if teamMember.github}
-                <div
-                  class="h-12 w-12 rounded-md bg-white/20 p-3 sm:h-14 sm:w-14 sm:p-4"
-                  aria-label="{teamMember.name}'s LinkedIn"
-                >
-                  <a href={teamMember.linkedin}>
-                    <Icon src={Icons.Linkedin} color="white" size="100%" />
-                  </a>
-                </div>
+                <SocialMediaIcon
+                  url={teamMember.github}
+                  social={'Github'}
+                  icon={Icons.Github}
+                  user={teamMember.name}
+                />
               {/if}
               {#if teamMember.github}
-                <div
-                  class="h-12 w-12 rounded-md bg-white/20 p-3 sm:h-14 sm:w-14 sm:p-4"
-                  aria-label="{teamMember.name}'s GitHub"
-                >
-                  <a href={teamMember.github}>
-                    <Icon src={Icons.Github} color="white" size="100%" />
-                  </a>
-                </div>
+                <SocialMediaIcon
+                  url={teamMember.linkedin}
+                  social={'Linkedin'}
+                  icon={Icons.Linkedin}
+                  user={teamMember.name}
+                />
               {/if}
               {#if teamMember.websites}
                 {#each teamMember.websites as customWebsite}
-                  <a
-                    href={customWebsite.url}
-                    class="h-12 w-12 rounded-md bg-white/20 p-3 sm:h-14 sm:w-14 sm:p-4"
-                    aria-label="{teamMember.name}'s custom website"
-                  >
-                    {#if customWebsite.iconPath}
-                      <img
-                        src={customWebsite.iconPath}
-                        alt="Icon of {teamMember.name}'s custom website"
-                        class="icon h-full w-full object-cover"
-                      />
-                    {:else}
-                      <Icon src={Icons.Globe} color="white" size="100%" />
-                    {/if}
-                  </a>
+                  <SocialMediaIcon
+                    url={customWebsite.url}
+                    social="custom website"
+                    icon={Icons.Globe}
+                    user={teamMember.name}
+                    iconPath={customWebsite.iconPath}
+                  />
                 {/each}
               {/if}
             </div>
