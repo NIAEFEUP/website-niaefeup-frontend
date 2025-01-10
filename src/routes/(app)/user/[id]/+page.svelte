@@ -4,14 +4,10 @@
   import type { TeamMember } from '@/types/team-member';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
-  import Snackbar from '@/routes/(app)/_components/layout/notifications/snackbar.svelte';
   import { goto } from '$app/navigation';
 
   export let data: PageData;
   export let teamMember: TeamMember = data.teamMember;
-
-  let showErrorMessage = false;
-  let notification = null;
 
   async function logout() {
     const response = await fetch('/api/auth/logout', {
@@ -22,15 +18,6 @@
     });
     if (response.ok) {
       goto('/');
-    } else {
-      showErrorMessage = true;
-      notification = {
-        message: 'Logout failed',
-        close: () => {
-          showErrorMessage = false;
-          notification = null;
-        }
-      };
     }
   }
 </script>
@@ -107,11 +94,6 @@
             </div>
           </div>
         </div>
-        {#if showErrorMessage}
-          <div class="flex w-full flex-grow justify-center">
-            <Snackbar {notification} />
-          </div>
-        {/if}
       </div>
     </div>
   </section>
