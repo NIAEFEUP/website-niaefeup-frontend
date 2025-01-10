@@ -13,6 +13,7 @@ export default {
 
 export const Radio_Button = {
   args: {
+    label: 'Language',
     options: ['English', 'Spanish']
   }
 };

@@ -1,9 +1,11 @@
 <script lang="ts">
+  export let label: string;
   export let options: string[];
   let selectedOption: string;
 </script>
 
 <fieldset>
+  <legend class="m-1 font-source_code font-bold text-white">{label}</legend>
   {#each options as option}
     <input
       id="radio-{option}"
