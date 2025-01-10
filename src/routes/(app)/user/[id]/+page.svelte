@@ -1,20 +1,13 @@
 <script lang="ts">
+  import type { PageData } from './$types';
+  import type { TeamMember } from '@/types/team-member';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
-
-  import type { TeamMember } from '@/types/team-member';
   import Snackbar from '@/routes/(app)/_components/layout/notifications/snackbar.svelte';
-  import { page } from '$app/stores';
   import { goto } from '$app/navigation';
 
-  export let teamMember = getMember() as TeamMember;
-
-  async function getMember() {
-    const tm = await fetch(`/api/accounts/${$page.params.id}`);
-    const tmJson = await tm.json();
-
-    return tmJson;
-  }
+  export let data: PageData;
+  export let teamMember: TeamMember = data.teamMember;
 
   let showErrorMessage = false;
   let notification = null;
