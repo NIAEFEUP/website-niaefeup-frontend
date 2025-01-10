@@ -1,21 +1,20 @@
 <script lang="ts">
   export let label: string;
   export let options: string[];
-  let selectedOption: string;
 </script>
 
 <fieldset>
   <legend class="m-1 font-source_code font-bold text-white">{label}</legend>
   {#each options as option}
     <input
-      id="radio-{option}"
+      id="radio-{label.toLowerCase()}-{option.toLowerCase()}"
       class="radio-button hidden text-center"
       type="radio"
-      bind:group={selectedOption}
+      name={label}
       value={option}
     />
     <label
-      class="m-1 justify-self-start rounded-lg bg-taupe-200 px-5 py-1 text-rose-950"
+      class="m-1 justify-self-start rounded-lg bg-taupe-200 px-5 py-1 text-rose-950 font-bold"
       for="radio-{option}"
     >
       {option}
