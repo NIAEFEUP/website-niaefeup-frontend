@@ -1,14 +1,15 @@
 <script lang="ts">
   export let label: string;
   export let options: string[];
+  export let horizontal: boolean = true;
 </script>
 
-<fieldset>
-  <legend class="m-1 font-source_code font-bold text-white">{label}</legend>
+<fieldset class="flex flex-row">
+  <legend class="{horizontal ? "float-left" : ""} m-1 font-source_code font-bold text-white">{label}</legend>
   {#each options as option}
     <input
       id="radio-{label.toLowerCase()}-{option.toLowerCase()}"
-      class="radio-button hidden text-center"
+      class="hidden text-center"
       type="radio"
       name={label}
       value={option}
