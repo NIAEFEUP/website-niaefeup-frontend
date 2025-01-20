@@ -1,6 +1,10 @@
 import Layout from '../+layout.svelte';
 import Page from './+page.svelte';
 import LayoutDecorator from '@/lib/storybook-utils/layout-decorator.svelte';
+import type { Meta, StoryObj } from '@storybook/svelte';
+import { userEvent, within } from '@storybook/testing-library';
+import { http, HttpResponse, delay } from 'msw';
+
 
 export default {
   title: 'Pages/Login',
@@ -13,3 +17,108 @@ export default {
 };
 
 export const Login = {};
+
+export const Success = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.post('/api/auth', async () => {
+        return new HttpResponse(null, {
+          status: 200,
+        });
+      }),
+      http.get('/', async () => {
+        return new HttpResponse(null, {
+          status: 200,
+        });
+      }),
+      ],
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const emailInput = canvas.getByPlaceholderText('email');
+ 
+    await userEvent.type(emailInput, 'example-email@email.com', {
+      delay: 10,
+    });
+ 
+    const passwordInput = canvas.getByPlaceholderText('password');
+ 
+    await userEvent.type(passwordInput, 'ExamplePassword', {
+      delay: 10,
+    });
+ 
+    // See https://storybook.js.org/docs/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    const submitButton = canvas.getByText('Iniciar Sessão');
+    await userEvent.click(submitButton);
+  }
+};
+
+export const Failure = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.post('/api/auth', async () => {
+        return new HttpResponse(null, {
+          status: 403,
+        });
+      })
+    ],
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const emailInput = canvas.getByPlaceholderText('email');
+ 
+    await userEvent.type(emailInput, 'example-email@email.com', {
+      delay: 10,
+    });
+ 
+    const passwordInput = canvas.getByPlaceholderText('password');
+ 
+    await userEvent.type(passwordInput, 'ExamplePassword', {
+      delay: 10,
+    });
+ 
+    // See https://storybook.js.org/docs/essentials/actions#automatically-matching-args to learn how to setup logging in the Actions panel
+    const submitButton = canvas.getByText('Iniciar Sessão');
+    await userEvent.click(submitButton);
+  }
+};
+
+/*
+export const Success = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.post('/api/auth', async () => {
+        return new HttpResponse(null, {
+          status: 200,
+        });
+      }),
+      http.get('/', async () => {
+        return new HttpResponse(null, {
+          status: 200,
+        });
+      }),
+      ],
+    },
+  },
+};
+
+export const Failure = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.post('/api/auth', async () => {
+        return new HttpResponse(null, {
+          status: 403,
+        });
+      }),
+      ],
+    },
+  },
+};*/

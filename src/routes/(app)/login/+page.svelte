@@ -1,6 +1,7 @@
 <script lang="ts">
+    import { goto } from '$app/navigation';
   import VariableVisibilityInput from './_components/variable-visibility-input.svelte';
-
+  import { redirect } from '@sveltejs/kit';
   let email = '';
   let password = '';
   let message = '';
@@ -19,7 +20,7 @@
 
     message = success ? 'Login successful' : 'Login failed';
     if (success == true) {
-      window.location.href = '/';
+      goto('/');
     }
   }
 </script>
