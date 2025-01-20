@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
   import VariableVisibilityInput from './_components/variable-visibility-input.svelte';
-  import { redirect } from '@sveltejs/kit';
+  import { goto } from '$app/navigation';
+
   let email = '';
   let password = '';
   let message = '';
