@@ -8,6 +8,14 @@
 
   const onFileSelected = (e) => {
     const file = e.target.files[0];
+
+    // ensure the file is an image
+    if (file?.type?.split('/')[0] !== 'image') {
+      console.error('Imagem inválida!');
+      return;
+    }
+
+    // update the image
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e) => {
@@ -17,6 +25,13 @@
 </script>
 
 <div class="flex flex-col items-center justify-center gap-y-2">
+  <input
+    style="display:none"
+    type="file"
+    accept="image/*"
+    on:change={(e) => onFileSelected(e)}
+    bind:this={fileInput}
+  />
   <button
     type="button"
     aria-label="Upload image"
@@ -35,13 +50,6 @@
     >
       <Icon src={Icons.Edit} color="white" size="60%" />
     </div>
-    <input
-      style="display:none"
-      type="file"
-      accept=".jpg, .jpeg, .png"
-      on:change={(e) => onFileSelected(e)}
-      bind:this={fileInput}
-    />
   </button>
   <button
     type="button"
@@ -49,7 +57,7 @@
     hidden={!image}
     class="relative text-sm font-bold text-white hover:underline"
     on:click={() => {
-      image = '';
+      fileInput.value = image = '';
     }}
   >
     Remover imagem
