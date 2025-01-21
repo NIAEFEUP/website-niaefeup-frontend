@@ -5,6 +5,7 @@
   import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
 
   export let text: string;
+  export let name: string = 'profilePicture';
   let image: string;
   let fileInput: HTMLInputElement;
 
@@ -30,6 +31,7 @@
   <input
     style="display:none"
     type="file"
+    {name}
     accept="image/*"
     on:change={(e) => onFileSelected(e)}
     bind:this={fileInput}
