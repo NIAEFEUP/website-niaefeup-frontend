@@ -56,8 +56,7 @@
   <button
     type="button"
     aria-label="Remove image"
-    hidden={!image}
-    class="relative text-sm font-bold text-white hover:underline"
+    class="{image ? 'visible' : 'invisible'} text-sm font-bold text-white hover:underline"
     on:click={() => {
       fileInput.value = image = '';
     }}
