@@ -1,6 +1,8 @@
 <script lang="ts">
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
+  import { createNotification } from '@/routes/(app)/_components/layout/notifications';
+  import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
 
   export let text: string;
   let image: string;
@@ -11,7 +13,7 @@
 
     // ensure the file is an image
     if (file?.type?.split('/')[0] !== 'image') {
-      console.error('Imagem inválida!');
+      createNotification(notificationMessages.INVALID_IMAGE);
       return;
     }
 
