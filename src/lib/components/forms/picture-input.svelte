@@ -7,8 +7,8 @@
   let fileInput: HTMLInputElement;
 
   const onFileSelected = (e) => {
-    let file = e.target.files[0];
-    let reader = new FileReader();
+    const file = e.target.files[0];
+    const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e) => {
       image = e.target?.result?.toString() ?? image;
@@ -16,25 +16,25 @@
   };
 </script>
 
-<div class="flex flex-col items-center justify-center">
-  <div
+<div class="flex flex-col items-center justify-center gap-y-2">
+  <button
+    type="button"
+    aria-label="Upload image"
     class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-400 text-center"
+    on:click={() => {
+      fileInput.click();
+    }}
   >
     {#if image}
-      <img class="h-[200px] w-[200px] object-cover" src={image} alt="Avatar" />
+      <img class="h-[200px] w-[200px] rounded-md object-cover" src={image} alt="Avatar" />
     {:else}
-      <p class="font-medium text-white">{text}<span class="text-4xl">*</span></p>
+      <p class="font-medium text-white">{text}<span class="text-2xl">*</span></p>
     {/if}
-    <button
-      type="button"
-      aria-label="Upload image"
+    <div
       class="absolute bottom-0 right-0 m-2 flex h-[15%] w-[15%] cursor-pointer items-center justify-center rounded-md bg-rose-950"
-      on:click={() => {
-        fileInput.click();
-      }}
     >
       <Icon src={Icons.Edit} color="white" size="60%" />
-    </button>
+    </div>
     <input
       style="display:none"
       type="file"
@@ -42,5 +42,16 @@
       on:change={(e) => onFileSelected(e)}
       bind:this={fileInput}
     />
-  </div>
+  </button>
+  <button
+    type="button"
+    aria-label="Remove image"
+    hidden={!image}
+    class="relative text-sm font-bold text-white hover:underline"
+    on:click={() => {
+      image = '';
+    }}
+  >
+    Remover imagem
+  </button>
 </div>
