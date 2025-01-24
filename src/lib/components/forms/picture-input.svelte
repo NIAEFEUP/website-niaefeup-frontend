@@ -45,7 +45,11 @@
     }}
   >
     {#if image}
-      <img class="h-[200px] w-[200px] rounded-md object-cover" src={image} alt="Avatar" />
+      <img
+        class="h-[200px] w-[200px] rounded-md object-cover"
+        src={image}
+        alt="Selected {name.replace(/([A-Z])/g, ' $1').toLowerCase()}"
+      />
     {:else}
       <p class="font-medium text-white">{text}<span class="text-2xl">*</span></p>
     {/if}
