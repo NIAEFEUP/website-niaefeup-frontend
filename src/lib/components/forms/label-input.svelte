@@ -6,7 +6,11 @@
   export let isTextArea = false;
 </script>
 
-<label class="m-1 font-source_code font-bold text-white" for={id}>{label}</label><br class="mb-1" />
+{#if label}
+  <label class="m-1 font-source_code font-bold text-white" for={id}>{label}</label><br
+    class="mb-1"
+  />
+{/if}
 {#if isTextArea}
   <textarea
     aria-label="textarea-input"

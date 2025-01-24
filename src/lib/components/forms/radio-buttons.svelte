@@ -1,14 +1,16 @@
 <script lang="ts">
-  export let label: string;
+  export let label: string = '';
   export let options: string[];
   export let horizontal: boolean = false;
 </script>
 
 <fieldset class="flex flex-row align-middle">
-  <legend
-    class="m-1 font-source_code font-bold text-white {horizontal ? 'float-left self-center' : ''}"
-    >{label}</legend
-  >
+  {#if label}
+    <legend
+      class="m-1 font-source_code font-bold text-white {horizontal ? 'float-left self-center' : ''}"
+      >{label}</legend
+    >
+  {/if}
   {#each options as option}
     <input
       id="radio-{label.toLowerCase()}-{option.toLowerCase()}"
