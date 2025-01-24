@@ -7,7 +7,8 @@ export default {
     text: { control: 'text' }
   },
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    controls: { exclude: ['name'] }
   }
 };
 
