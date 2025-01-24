@@ -14,7 +14,7 @@
 
     // ensure the file is an image
     if (file?.type?.split('/')[0] !== 'image') {
-      createNotification(notificationMessages.INVALID_IMAGE);
+      createNotification(notificationMessages.NOT_AN_IMAGE);
       return;
     }
 
