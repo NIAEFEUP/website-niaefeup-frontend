@@ -7,9 +7,12 @@
 <fieldset class="flex flex-row align-middle">
   {#if label}
     <legend
-      class="m-1 font-source_code font-bold text-white {horizontal ? 'float-left self-center' : ''}"
-      >{label}</legend
+      class="mx-1 font-source_code font-bold text-white"
+      class:float-left={horizontal}
+      class:self-center={horizontal}
     >
+      {label}
+    </legend>
   {/if}
   {#each options as option}
     <input
