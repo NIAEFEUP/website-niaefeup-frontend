@@ -1,5 +1,28 @@
+<script>
+  import { onMount } from 'svelte';
+
+  let isScrolled = false;
+  let y = 0;
+
+  function handleScroll() {
+    y = document.body.scrollTop || document.documentElement.scrollTop;
+    isScrolled = y > 0;
+  }
+
+  onMount(() => {
+    // Add scroll listener to the body
+    document.body.addEventListener('scroll', handleScroll);
+
+    // Cleanup on unmount
+    return () => {
+      document.body.removeEventListener('scroll', handleScroll);
+    };
+  });
+</script>
+
 <nav
-  class="bg-ni-topnav fixed z-30 hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
+  class="bg-ni-navbar fixed z-30 hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
+  class:isScrolled
   aria-label="Navigation Bar"
 >
   <div class="flex w-full justify-start">

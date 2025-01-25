@@ -26,6 +26,10 @@ body {
   background-image: linear-gradient(180deg, rgba(179, 54, 54, 1) 0%, rgba(162, 49, 49, 1) 100%);
 }
 
+.isScrolled {
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.12);
+}
+
 .footer-icons svg,
 .footer-icons path {
   pointer-events: none;
