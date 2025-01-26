@@ -1,3 +1,7 @@
+<script>
+  import LabelInput from '@/lib/components/forms/label-input.svelte';
+</script>
+
 <div class="flex flex-col items-center">
   <div class="flex w-[65vw] flex-col items-center">
     <div class="flex w-full items-center justify-center border-b-4 border-red-500">
@@ -12,7 +16,8 @@
       </div>
       <div class="flex flex-row items-center p-10">
         <div>
-          <div class="flex h-10 w-[50vw] items-center">
+          <LabelInput label="Nome" horizontal />
+          <!-- <div class="flex h-10 w-[50vw] items-center">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Nome*</p>
             </div>
@@ -23,8 +28,10 @@
               id="subject"
               placeholder=""
             />
-          </div>
-          <div class="mt-5 flex h-10 w-[50vw] items-center">
+          </div> -->
+          <LabelInput label="GitHub" horizontal />
+
+          <!--  <div class="mt-5 flex h-10 w-[50vw] items-center">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Github*</p>
             </div>
@@ -35,8 +42,10 @@
               id="subject"
               placeholder=""
             />
-          </div>
-          <div class="mt-5 flex h-20 w-[50vw]">
+          </div> -->
+
+          <LabelInput label="Slogan" horizontal isTextArea />
+          <!-- <div class="mt-5 flex h-20 w-[50vw]">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Slogan*</p>
             </div>
@@ -47,7 +56,7 @@
               id="subject"
               placeholder=""
             />
-          </div>
+          </div> -->
           <div class="mt-5 flex w-[50vw]">
             <div class="flex w-1/6">
               <p class="font-bold">Tipo*</p>
@@ -67,7 +76,9 @@
               <div
                 class="mt-5 flex h-40 flex-col items-center justify-center rounded-xl bg-white bg-opacity-30"
               >
-                <div class="flex w-[25vw]">
+                <LabelInput label="Google Play" horizontal />
+
+                <!-- <div class="flex w-[25vw]">
                   <div class="flex w-1/4 items-center">
                     <p>Google Play</p>
                   </div>
@@ -78,8 +89,10 @@
                     id="subject"
                     placeholder=""
                   />
-                </div>
-                <div class="mt-5 flex w-[25vw]">
+                </div> -->
+
+                <LabelInput label="App Store" horizontal />
+                <!-- <div class="mt-5 flex w-[25vw]">
                   <div class="flex w-1/4 items-center">
                     <p>App Store</p>
                   </div>
@@ -90,11 +103,14 @@
                     id="subject"
                     placeholder=""
                   />
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
-          <div class="mt-5 flex w-[50vw]">
+
+          <LabelInput label="Descricao" horizontal />
+
+          <!--  <div class="mt-5 flex w-[50vw]">
             <div class="flex w-1/6">
               <p class="font-bold">Descrição</p>
             </div>
@@ -105,7 +121,7 @@
               id="subject"
               placeholder=""
             />
-          </div>
+          </div> -->
           <div class="mt-5 flex h-10 w-[50vw]">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Fotos</p>
@@ -119,7 +135,9 @@
               </div>
             </div>
           </div>
-          <div class="mt-5 flex h-10 w-[50vw]">
+
+          <LabelInput label="Publico Alvo" horizontal />
+          <!-- <div class="mt-5 flex h-10 w-[50vw]">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Público Alvo</p>
             </div>
@@ -130,8 +148,10 @@
               id="subject"
               placeholder=""
             />
-          </div>
-          <div class="mt-5 flex w-[50vw]">
+          </div> -->
+
+          <LabelInput label="Tecnologias" horizontal isTextArea />
+          <!-- <div class="mt-5 flex w-[50vw]">
             <div class="flex w-1/6">
               <p class="font-bold">Tecnologias</p>
             </div>
@@ -142,7 +162,7 @@
               id="subject"
               placeholder=""
             />
-          </div>
+          </div> -->
           <div class="mt-[5vw] flex w-[50vw] gap-10">
             <div class="flex h-10 w-[15vw] items-center justify-center rounded-xl bg-red-500">
               <p class="font-bold">Guardar Alterações</p>
