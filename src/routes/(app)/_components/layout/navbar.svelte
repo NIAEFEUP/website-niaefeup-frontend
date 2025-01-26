@@ -2,6 +2,7 @@
   // @ts-expect-error Import is as expected but throws error
 
   import { page } from '$app/stores';
+  import { onMount } from 'svelte';
 
   $: currentPage = $page.url.pathname ?? '/';
   const links = [
@@ -10,10 +11,29 @@
     { href: '#', label: 'Eventos', pageComp: '/events' },
     { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
   ];
+
+  let isScrolled = false;
+  let y = 0;
+
+  function handleScroll() {
+    y = document.body.scrollTop || document.documentElement.scrollTop;
+    isScrolled = y > 0;
+  }
+
+  onMount(() => {
+    // Add scroll listener to the body
+    document.body.addEventListener('scroll', handleScroll);
+
+    // Cleanup on unmount
+    return () => {
+      document.body.removeEventListener('scroll', handleScroll);
+    };
+  });
 </script>
 
 <nav
-  class="fixed hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
+  class="bg-ni-navbar fixed z-30 hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
+  class:isScrolled
   aria-label="Navigation Bar"
 >
   <div class="flex w-full justify-start">
@@ -22,17 +42,23 @@
       <span>NIAEFEUP</span>
     </a>
   </div>
-  <div class="flex justify-end items-center gap-7">
+  <div class="flex items-center justify-end gap-7">
     {#each links as { href, label, pageComp }}
       {#if currentPage === pageComp}
-        <a href={href} class="bg-muted-red-400 p-2 rounded">
+        <a {href} class="rounded bg-muted-red-400 p-2">
           <p class="font-bold">{label}</p>
         </a>
       {:else}
-        <a href={href} class="rounded">
+        <a {href} class="rounded">
           <p class="font-bold">{label}</p>
         </a>
       {/if}
     {/each}
   </div>
 </nav>
+
+<style>
+  .isScrolled {
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.12);
+  }
+</style>
