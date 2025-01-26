@@ -75,7 +75,7 @@
                   user={teamMember.name}
                 />
               {/if}
-              {#if teamMember.github}
+              {#if teamMember.linkedin}
                 <SocialMediaIcon
                   url={teamMember.linkedin}
                   social={'Linkedin'}
