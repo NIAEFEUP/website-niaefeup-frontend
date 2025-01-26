@@ -1,4 +1,4 @@
-import Layout from '../+layout.svelte';
+import { Layout } from 'lucide-svelte';
 import Page from './+page.svelte';
 import LayoutDecorator from '@/lib/storybook-utils/layout-decorator.svelte';
 

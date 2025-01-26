@@ -7,7 +7,7 @@ export default {
   component: Page,
   parameters: {
     layout: 'fullscreen',
-    backgrounds: { default: 'clear' }
+    backgrounds: { default: 'clear' },
   },
   decorators: [() => Layout, () => LayoutDecorator]
 };

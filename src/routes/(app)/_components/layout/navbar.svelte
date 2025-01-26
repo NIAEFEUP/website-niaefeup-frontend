@@ -3,7 +3,7 @@
 
   import { page } from '$app/stores';
 
-  $: currentPage = $page.url.pathname;
+  $: currentPage = $page.url.pathname ?? '/';
   const links = [
     { href: '#', label: 'Equipa', pageComp: '/team' },
     { href: '#', label: 'Projetos', pageComp: '/projects' },
