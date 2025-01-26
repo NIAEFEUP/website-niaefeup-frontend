@@ -2,7 +2,6 @@ import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import Navbar from './navbar.svelte';
 
-
 export default {
   title: 'Molecules/Layout/Navbar',
   component: Navbar,
@@ -20,15 +19,13 @@ export default {
   }
 };
 
-
 export const DesktopNavbar = () => ({
-  Component: Navbar,
+  Component: Navbar
 });
 
 DesktopNavbar.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  const contactsButton = await canvas.findByTestId("Contactos");
-  expect(contactsButton).toHaveClass("bg-muted-red-400");
-
+  const contactsButton = await canvas.findByTestId('Contactos');
+  expect(contactsButton).toHaveClass('bg-muted-red-400');
 };
