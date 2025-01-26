@@ -1,5 +1,5 @@
 <script>
-    import LabelInput from "@/lib/components/forms/label-input.svelte"
+  import LabelInput from '@/lib/components/forms/label-input.svelte';
 </script>
 
 <div class="flex flex-col items-center">
@@ -16,7 +16,7 @@
       </div>
       <div class="flex flex-row items-center p-10">
         <div>
-            <LabelInput label="Nome" horizontal/>
+          <LabelInput label="Nome" horizontal />
           <!-- <div class="flex h-10 w-[50vw] items-center">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Nome*</p>
@@ -29,9 +29,9 @@
               placeholder=""
             />
           </div> -->
-          <LabelInput label="GitHub" horizontal/>
+          <LabelInput label="GitHub" horizontal />
 
-         <!--  <div class="mt-5 flex h-10 w-[50vw] items-center">
+          <!--  <div class="mt-5 flex h-10 w-[50vw] items-center">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Github*</p>
             </div>
@@ -44,7 +44,7 @@
             />
           </div> -->
 
-          <LabelInput label="Slogan" horizontal isTextArea/>
+          <LabelInput label="Slogan" horizontal isTextArea />
           <!-- <div class="mt-5 flex h-20 w-[50vw]">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Slogan*</p>
@@ -76,7 +76,7 @@
               <div
                 class="mt-5 flex h-40 flex-col items-center justify-center rounded-xl bg-white bg-opacity-30"
               >
-              <LabelInput label="Google Play" horizontal/>
+                <LabelInput label="Google Play" horizontal />
 
                 <!-- <div class="flex w-[25vw]">
                   <div class="flex w-1/4 items-center">
@@ -91,7 +91,7 @@
                   />
                 </div> -->
 
-                <LabelInput label="App Store" horizontal/>
+                <LabelInput label="App Store" horizontal />
                 <!-- <div class="mt-5 flex w-[25vw]">
                   <div class="flex w-1/4 items-center">
                     <p>App Store</p>
@@ -108,9 +108,9 @@
             </div>
           </div>
 
-          <LabelInput label="Descricao" horizontal/>
+          <LabelInput label="Descricao" horizontal />
 
-         <!--  <div class="mt-5 flex w-[50vw]">
+          <!--  <div class="mt-5 flex w-[50vw]">
             <div class="flex w-1/6">
               <p class="font-bold">Descrição</p>
             </div>
@@ -136,7 +136,7 @@
             </div>
           </div>
 
-          <LabelInput label="Publico Alvo" horizontal/>
+          <LabelInput label="Publico Alvo" horizontal />
           <!-- <div class="mt-5 flex h-10 w-[50vw]">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Público Alvo</p>
@@ -150,7 +150,7 @@
             />
           </div> -->
 
-          <LabelInput label="Tecnologias" horizontal isTextArea/>
+          <LabelInput label="Tecnologias" horizontal isTextArea />
           <!-- <div class="mt-5 flex w-[50vw]">
             <div class="flex w-1/6">
               <p class="font-bold">Tecnologias</p>
