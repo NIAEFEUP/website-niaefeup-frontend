@@ -15,5 +15,5 @@ module.exports = {
   docs: {
     docsPage: true
   },
-  staticDirs: ['../static']
+  staticDirs: ['../static', '../public']
 };
