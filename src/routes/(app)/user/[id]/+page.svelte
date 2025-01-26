@@ -1,13 +1,16 @@
 <script lang="ts">
   import SocialMediaIcon from '../_components/social-media-icon.svelte';
-  import type { PageData } from './$types';
-  import type { TeamMember } from '@/types/team-member';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
+  import { page } from '$app/stores';
   import { goto } from '$app/navigation';
 
-  export let data: PageData;
-  export let teamMember: TeamMember = data.teamMember;
+  export let teamMember = getMember();
+
+  async function getMember() {
+    const tm = await fetch(`/api/accounts/${$page.params.id}`);
+    return await tm.json();
+  }
 
   async function logout() {
     const response = await fetch('/api/auth/logout', {
