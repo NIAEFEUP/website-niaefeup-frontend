@@ -16,19 +16,37 @@
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Nome*</p>
             </div>
-            <input aria-label="text-input" class="opacity-70 h-10 w-[30vw] mb-2 rounded-lg bg-white p-2 text-primary placeholder-primary" type="text" id="subject" placeholder="">
+            <input
+              aria-label="text-input"
+              class="mb-2 h-10 w-[30vw] rounded-lg bg-white p-2 text-primary placeholder-primary opacity-70"
+              type="text"
+              id="subject"
+              placeholder=""
+            />
           </div>
           <div class="mt-5 flex h-10 w-[50vw] items-center">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Github*</p>
             </div>
-            <input aria-label="text-input" class="opacity-70 h-10 w-[30vw] mb-2 rounded-lg bg-white p-2 text-primary placeholder-primary" type="text" id="subject" placeholder="">
+            <input
+              aria-label="text-input"
+              class="mb-2 h-10 w-[30vw] rounded-lg bg-white p-2 text-primary placeholder-primary opacity-70"
+              type="text"
+              id="subject"
+              placeholder=""
+            />
           </div>
           <div class="mt-5 flex h-20 w-[50vw]">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Slogan*</p>
             </div>
-            <input aria-label="text-input" class="opacity-70 h-20 w-[30vw] mb-2 rounded-lg bg-white p-2 text-primary placeholder-primary" type="text" id="subject" placeholder="">
+            <input
+              aria-label="text-input"
+              class="mb-2 h-20 w-[30vw] rounded-lg bg-white p-2 text-primary placeholder-primary opacity-70"
+              type="text"
+              id="subject"
+              placeholder=""
+            />
           </div>
           <div class="mt-5 flex w-[50vw]">
             <div class="flex w-1/6">
@@ -53,13 +71,25 @@
                   <div class="flex w-1/4 items-center">
                     <p>Google Play</p>
                   </div>
-                  <input aria-label="text-input" class=" h-10 w-[20vw] mb-2 rounded-lg bg-white p-2 text-primary placeholder-primary" type="text" id="subject" placeholder="">
+                  <input
+                    aria-label="text-input"
+                    class=" mb-2 h-10 w-[20vw] rounded-lg bg-white p-2 text-primary placeholder-primary"
+                    type="text"
+                    id="subject"
+                    placeholder=""
+                  />
                 </div>
                 <div class="mt-5 flex w-[25vw]">
                   <div class="flex w-1/4 items-center">
                     <p>App Store</p>
                   </div>
-                  <input aria-label="text-input" class=" h-10 w-[20vw] mb-2 rounded-lg bg-white p-2 text-primary placeholder-primary" type="text" id="subject" placeholder="">
+                  <input
+                    aria-label="text-input"
+                    class=" mb-2 h-10 w-[20vw] rounded-lg bg-white p-2 text-primary placeholder-primary"
+                    type="text"
+                    id="subject"
+                    placeholder=""
+                  />
                 </div>
               </div>
             </div>
@@ -68,7 +98,13 @@
             <div class="flex w-1/6">
               <p class="font-bold">Descrição</p>
             </div>
-            <input aria-label="text-input" class="opacity-70 h-40 w-[30vw] mb-2 rounded-lg bg-white p-2 text-primary placeholder-primary" type="text" id="subject" placeholder="">
+            <input
+              aria-label="text-input"
+              class="mb-2 h-40 w-[30vw] rounded-lg bg-white p-2 text-primary placeholder-primary opacity-70"
+              type="text"
+              id="subject"
+              placeholder=""
+            />
           </div>
           <div class="mt-5 flex h-10 w-[50vw]">
             <div class="flex w-1/6 items-center">
@@ -87,13 +123,25 @@
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Público Alvo</p>
             </div>
-            <input aria-label="text-input" class="opacity-70 h-10 w-[30vw] mb-2 rounded-lg bg-white p-2 text-primary placeholder-primary" type="text" id="subject" placeholder="">
+            <input
+              aria-label="text-input"
+              class="mb-2 h-10 w-[30vw] rounded-lg bg-white p-2 text-primary placeholder-primary opacity-70"
+              type="text"
+              id="subject"
+              placeholder=""
+            />
           </div>
           <div class="mt-5 flex w-[50vw]">
             <div class="flex w-1/6">
               <p class="font-bold">Tecnologias</p>
             </div>
-            <input aria-label="text-input" class="opacity-70 h-40 w-[30vw] mb-2 rounded-lg bg-white p-2 text-primary placeholder-primary" type="text" id="subject" placeholder="">
+            <input
+              aria-label="text-input"
+              class="mb-2 h-40 w-[30vw] rounded-lg bg-white p-2 text-primary placeholder-primary opacity-70"
+              type="text"
+              id="subject"
+              placeholder=""
+            />
           </div>
           <div class="mt-[5vw] flex w-[50vw] gap-10">
             <div class="flex h-10 w-[15vw] items-center justify-center rounded-xl bg-red-500">
@@ -106,7 +154,8 @@
         </div>
         <div class="flex self-start">
           <div
-            class="flex h-[10vw] w-[10vw] items-center justify-center rounded-xl bg-red-500 bg-opacity-80">
+            class="flex h-[10vw] w-[10vw] items-center justify-center rounded-xl bg-red-500 bg-opacity-80"
+          >
             <p class="font-bold">Adicionar Logo*</p>
           </div>
         </div>
