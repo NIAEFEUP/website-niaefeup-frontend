@@ -1,9 +1,8 @@
 <script>
   // @ts-expect-error Import is as expected but throws error
-  
-  import { onMount } from 'svelte'
-  import { page } from '$app/stores';
 
+  import { onMount } from 'svelte';
+  import { page } from '$app/stores';
 
   $: currentPage = $page.url.pathname ?? '/';
   const links = [
