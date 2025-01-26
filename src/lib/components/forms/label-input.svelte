@@ -7,7 +7,7 @@
   export let horizontal = false;
 </script>
 
-<div class="flex flex-{horizontal ? 'row' : 'col'}">
+<div class="flex flex-{horizontal ? 'row' : 'col'} align-middle">
   {#if label}
     <label class="m-1 font-source_code font-bold text-white" for={id}>{label}</label>
   {/if}
