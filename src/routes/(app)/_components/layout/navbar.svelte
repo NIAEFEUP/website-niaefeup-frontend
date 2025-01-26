@@ -5,10 +5,10 @@
 
   $: currentPage = $page.url.pathname;
   const links = [
-    { href: '/team/', label: 'Equipa', pageComp: '/team' },
-    { href: '/projects/', label: 'Projetos', pageComp: '/projects' },
-    { href: '/events/', label: 'Eventos', pageComp: '/events' },
-    { href: '/contacts/', label: 'Contactos', pageComp: '/contacts' }
+    { href: '#', label: 'Equipa', pageComp: '/team' },
+    { href: '#', label: 'Projetos', pageComp: '/projects' },
+    { href: '#', label: 'Eventos', pageComp: '/events' },
+    { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
   ];
 </script>
 
@@ -22,19 +22,17 @@
       <span>NIAEFEUP</span>
     </a>
   </div>
-  <div class="flex justify-end gap-7">
+  <div class="flex justify-end items-center gap-7">
     {#each links as { href, label, pageComp }}
-      <a class:active={currentPage === pageComp} {href}>
-        <p class="font-bold">{label}</p>
-      </a>
+      {#if currentPage === pageComp}
+        <a href={href} class="bg-muted-red-400 p-2 rounded">
+          <p class="font-bold">{label}</p>
+        </a>
+      {:else}
+        <a href={href} class="rounded">
+          <p class="font-bold">{label}</p>
+        </a>
+      {/if}
     {/each}
   </div>
 </nav>
-
-<style>
-  .active {
-    background-color: theme('colors.muted-red.400');
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
-</style>
