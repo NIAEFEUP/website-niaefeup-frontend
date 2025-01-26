@@ -4,7 +4,7 @@ export type TeamMember = {
   name: string;
   email: string;
   bio: string;
-  birthDate: Date,
+  birthDate: Date;
   role: string;
   photo?: string;
   linkedin?: string;
