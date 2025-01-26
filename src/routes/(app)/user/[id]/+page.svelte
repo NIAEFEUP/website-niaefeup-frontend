@@ -32,7 +32,7 @@
         <div class="flex h-12 justify-end gap-x-3 lg:h-10 xl:h-12">
           <div class="w-12 rounded-md bg-muted-red-500 p-3 lg:w-12 xl:w-12">
             <a href="https://www.lipsum.com/">
-              <Icon src={Icons.Pencil} color="white" size="100%" />
+              <Icon src={Icons.Edit} color="white" size="100%" />
             </a>
           </div>
           <button
