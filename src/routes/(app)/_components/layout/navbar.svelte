@@ -38,3 +38,9 @@
     <a href="/contacts">Contactos</a>
   </div>
 </nav>
+
+<style>
+  .isScrolled {
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.12);
+  }
+</style>
