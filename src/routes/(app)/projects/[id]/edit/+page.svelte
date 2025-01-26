@@ -1,5 +1,7 @@
 <script>
   import LabelInput from '@/lib/components/forms/label-input.svelte';
+  import PictureInput from '@/lib/components/forms/picture-input.svelte';
+  import RadioButtons from '@/lib/components/forms/radio-buttons.svelte';
 </script>
 
 <div class="flex flex-col items-center">
@@ -29,7 +31,9 @@
               placeholder=""
             />
           </div> -->
-          <LabelInput label="GitHub" horizontal />
+          <div class="mt-5">
+            <LabelInput label="GitHub" horizontal />
+          </div>
 
           <!--  <div class="mt-5 flex h-10 w-[50vw] items-center">
             <div class="flex w-1/6 items-center">
@@ -43,8 +47,9 @@
               placeholder=""
             />
           </div> -->
-
-          <LabelInput label="Slogan" horizontal isTextArea />
+          <div class="mt-5">
+            <LabelInput label="Slogan" horizontal isTextArea />
+          </div>
           <!-- <div class="mt-5 flex h-20 w-[50vw]">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Slogan*</p>
@@ -63,7 +68,8 @@
             </div>
             <div class="flex-col">
               <div class="flex gap-10">
-                <div class="flex h-10 w-[9vw] items-center justify-center rounded-xl bg-red-500">
+                <RadioButtons options={['aplicacao', 'website', 'outro']} horizontal />
+                <!-- <div class="flex h-10 w-[9vw] items-center justify-center rounded-xl bg-red-500">
                   <p>aplicacao</p>
                 </div>
                 <div class="flex h-10 w-[9vw] items-center justify-center rounded-xl bg-white">
@@ -71,12 +77,14 @@
                 </div>
                 <div class="flex h-10 w-[9vw] items-center justify-center rounded-xl bg-white">
                   <p class="text-black">outro</p>
-                </div>
+                </div> -->
               </div>
               <div
                 class="mt-5 flex h-40 flex-col items-center justify-center rounded-xl bg-white bg-opacity-30"
               >
-                <LabelInput label="Google Play" horizontal />
+                <div class="mt-5">
+                  <LabelInput label="Google Play" horizontal boxwidth="[25vw]" labelwidth="1/4" />
+                </div>
 
                 <!-- <div class="flex w-[25vw]">
                   <div class="flex w-1/4 items-center">
@@ -90,8 +98,9 @@
                     placeholder=""
                   />
                 </div> -->
-
-                <LabelInput label="App Store" horizontal />
+                <div class="mt-5">
+                  <LabelInput label="App Store" horizontal boxwidth="[25vw]" labelwidth="1/4" />
+                </div>
                 <!-- <div class="mt-5 flex w-[25vw]">
                   <div class="flex w-1/4 items-center">
                     <p>App Store</p>
@@ -108,7 +117,9 @@
             </div>
           </div>
 
-          <LabelInput label="Descricao" horizontal />
+          <div class="mt-5">
+            <LabelInput label="Descricao" horizontal />
+          </div>
 
           <!--  <div class="mt-5 flex w-[50vw]">
             <div class="flex w-1/6">
@@ -127,16 +138,19 @@
               <p class="font-bold">Fotos</p>
             </div>
             <div class="flex gap-10">
-              <div class="flex h-10 w-[9vw] items-center justify-center rounded-xl bg-red-500">
+              <RadioButtons options={['Selecionar ficheiro', 'image.png']} horizontal />
+              <!-- <div class="flex h-10 w-[9vw] items-center justify-center rounded-xl bg-red-500">
                 <p>Selecionar Ficheiro</p>
               </div>
               <div class="flex h-10 w-[9vw] items-center justify-center rounded-xl bg-white">
                 <p class="text-black">Image.png</p>
-              </div>
+              </div> -->
             </div>
           </div>
 
-          <LabelInput label="Publico Alvo" horizontal />
+          <div class="mt-5">
+            <LabelInput label="Publico Alvo" horizontal />
+          </div>
           <!-- <div class="mt-5 flex h-10 w-[50vw]">
             <div class="flex w-1/6 items-center">
               <p class="font-bold">Público Alvo</p>
@@ -149,8 +163,9 @@
               placeholder=""
             />
           </div> -->
-
-          <LabelInput label="Tecnologias" horizontal isTextArea />
+          <div class="mt-5">
+            <LabelInput label="Tecnologias" horizontal isTextArea />
+          </div>
           <!-- <div class="mt-5 flex w-[50vw]">
             <div class="flex w-1/6">
               <p class="font-bold">Tecnologias</p>
@@ -164,21 +179,25 @@
             />
           </div> -->
           <div class="mt-[5vw] flex w-[50vw] gap-10">
-            <div class="flex h-10 w-[15vw] items-center justify-center rounded-xl bg-red-500">
+            <RadioButtons options={['Guardar Alteracoes', 'Cancelar']} horizontal />
+            <!-- <div class="flex h-10 w-[15vw] items-center justify-center rounded-xl bg-red-500">
               <p class="font-bold">Guardar Alterações</p>
             </div>
             <div class="flex h-10 w-[10vw] items-center justify-center rounded-xl bg-gray-500">
               <p class="font-bold">Cancelar</p>
-            </div>
+            </div> -->
           </div>
         </div>
-        <div class="flex self-start">
+        <div class="self-start">
+          <PictureInput />
+        </div>
+        <!-- <div class="flex self-start">
           <div
             class="flex h-[10vw] w-[10vw] items-center justify-center rounded-xl bg-red-500 bg-opacity-80"
           >
             <p class="font-bold">Adicionar Logo*</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
