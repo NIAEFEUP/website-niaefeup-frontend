@@ -27,11 +27,20 @@ export const LinkedinIcon = {
   }
 };
 
-export const CustomWebsiteIcon = {
+export const CustomWebsiteIcon1 = {
   args: {
     url: 'loremipsum.com',
     social: 'LoremIpsum',
     icon: Icons.Globe,
     user: 'John Doo'
+  }
+};
+
+export const CustomWebsiteIcon2 = {
+  args: {
+    url: 'loremipsum.com',
+    social: 'LoremIpsum',
+    user: 'John Doo',
+    iconPath: 'https://picsum.photos/640/480'
   }
 };
