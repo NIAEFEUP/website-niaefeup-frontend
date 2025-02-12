@@ -1,7 +1,6 @@
 <script>
-  // @ts-expect-error Import is as expected but throws error
-
   import { onMount } from 'svelte';
+    // @ts-expect-error Import is as expected but throws error
   import { page } from '$app/stores';
 
   $: currentPage = $page.url.pathname ?? '/';
