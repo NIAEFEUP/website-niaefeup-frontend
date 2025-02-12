@@ -6,6 +6,7 @@ export type TeamMember = {
   bio: string;
   birthDate: Date;
   role: string;
+  isActive?: boolean;
   photo?: string;
   linkedin?: string;
   github?: string;
