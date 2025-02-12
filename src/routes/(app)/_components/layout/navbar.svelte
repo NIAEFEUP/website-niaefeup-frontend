@@ -47,7 +47,7 @@
         <a
           {href}
           class="rounded bg-muted-red-400 p-2"
-          data-testid={label ? label.toLowerCase() : ''}
+          data-testid={label.toLowerCase()}
         >
           <p class="font-bold">{label}</p>
         </a>
