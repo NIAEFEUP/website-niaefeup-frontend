@@ -44,7 +44,11 @@
   <div class="flex items-center justify-end gap-7">
     {#each links as { href, label, pageComp }}
       {#if currentPage === pageComp}
-        <a {href} class="rounded bg-muted-red-400 p-2" data-testid={label ? label.toLowerCase() : ''}>
+        <a
+          {href}
+          class="rounded bg-muted-red-400 p-2"
+          data-testid={label ? label.toLowerCase() : ''}
+        >
           <p class="font-bold">{label}</p>
         </a>
       {:else}
