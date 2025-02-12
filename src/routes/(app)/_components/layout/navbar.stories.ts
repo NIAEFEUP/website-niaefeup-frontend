@@ -26,6 +26,6 @@ export const DesktopNavbar = () => ({
 DesktopNavbar.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  const contactsButton = await canvas.findByTestId('Contactos');
+  const contactsButton = await canvas.findByTestId('contactos');
   expect(contactsButton).toHaveClass('bg-muted-red-400');
 };
