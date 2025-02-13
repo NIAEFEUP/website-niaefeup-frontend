@@ -7,8 +7,8 @@
     link: string;
   const sizeList = {
     small: 'w-12 h-12',
-    medium: 'w-20 w-20',
-    large: 'w-32 w-32'
+    medium: 'w-20 h-20',
+    large: 'w-32 h-32'
   };
 </script>
 
@@ -20,7 +20,11 @@
     ]} min-w-0 rounded px-2 py-2"
   >
     <div class="flex h-full w-full items-center justify-center">
-      <Icon src={Icons.Edit} size={size == 'small' ? '24px' : size == 'medium' ? '32px' : '48px'} />
+      <Icon
+        src={Icons.Edit}
+        size={size == 'small' ? '24px' : size == 'medium' ? '42px' : '62px'}
+        color="white"
+      />
     </div>
   </button>
 </a>
