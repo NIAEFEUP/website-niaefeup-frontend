@@ -20,7 +20,7 @@
     ]} min-w-0 rounded px-2 py-2"
   >
     <div class="flex h-full w-full items-center justify-center">
-      <Icon src={Icons.Edit} size={size == 'small' ? 25 : size == 'medium' ? 35 : 45} />
+      <Icon src={Icons.Edit} size={size == 'small' ? '24px' : size == 'medium' ? '32px' : '48px'} />
     </div>
   </button>
 </a>
