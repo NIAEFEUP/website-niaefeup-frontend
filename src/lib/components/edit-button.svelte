@@ -14,6 +14,7 @@
 
 <a href={link}>
   <button
+    aria-label="Edit"
     {type}
     class="flex justify-center bg-muted-red-500 hover:bg-muted-red-300 {sizeList[
       size
