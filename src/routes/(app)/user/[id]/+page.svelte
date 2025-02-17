@@ -1,5 +1,6 @@
 <script lang="ts">
   import SocialMediaIcon from '../_components/social-media-icon.svelte';
+  import IsActiveBadge from '../_components/is-active-badge.svelte';
   import type { PageData } from './$types';
   import type { TeamMember } from '@/types/team-member';
   import Icon from '@/lib/components/icons/icon.svelte';
@@ -50,17 +51,7 @@
               <h3 class="text-2xl font-bold lg:text-lg xl:text-xl 2xl:text-2xl">
                 {teamMember.name}
               </h3>
-              {#if teamMember.isActive}
-                <div class="flex items-center rounded-2xl bg-green-200/20 px-5 py-2">
-                  <div class="mr-2 h-4 w-4 rounded-full bg-green-200"></div>
-                  <p class="text-sm font-semibold sm:text-base">Membro ativo</p>
-                </div>
-              {:else}
-                <div class="flex items-center rounded-2xl bg-red-200/20 px-5 py-2">
-                  <div class="mr-2 h-4 w-4 rounded-full bg-red-500"></div>
-                  <p class="text-sm font-semibold sm:text-base">Membro não ativo</p>
-                </div>
-              {/if}
+              <IsActiveBadge {teamMember} />
             </div>
             {#if teamMember.bio}
               <p
