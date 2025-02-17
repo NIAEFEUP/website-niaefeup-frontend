@@ -1,7 +1,7 @@
 import EditButton from './edit-button.svelte';
 
 export default {
-  title: 'Atoms/Buttons/EditButton',
+  title: 'Atoms/Buttons/Edit Button',
   component: EditButton,
   parameters: {
     layout: 'centered',
