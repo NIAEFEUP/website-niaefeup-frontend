@@ -1,7 +1,7 @@
 import LabelInput from './label-input.svelte';
 
 export default {
-  title: 'Atoms/LabelInput',
+  title: 'Atoms/Forms/Label Input',
   component: LabelInput,
   argTypes: {
     label: { control: 'text' },
