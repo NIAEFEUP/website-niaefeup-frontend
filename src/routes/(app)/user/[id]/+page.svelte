@@ -5,7 +5,7 @@
   import type { TeamMember } from '@/types/team-member';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
-  import EditButton from '$lib/components/edit-button.svelte';
+  import EditButton from '$lib/components/buttons/edit-button.svelte';
   import { goto } from '$app/navigation';
 
   export let data: PageData;
