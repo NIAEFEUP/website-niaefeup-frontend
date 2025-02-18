@@ -97,9 +97,9 @@
               <Icon src={Icons.Linkedin} color="white" size="100%" /></a
             >
           {/if}
-          {#if teamMember.gitHub}
+          {#if teamMember.github}
             <a
-              href={teamMember.gitHub}
+              href={teamMember.github}
               class="full-opacity h-6 opacity-0 transition-all duration-500 ease-out group-hover:static group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s GitHub"
               ><Icon src={Icons.Github} color="white" size="100%" /></a
