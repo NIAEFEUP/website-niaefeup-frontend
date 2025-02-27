@@ -5,7 +5,8 @@
   export let placeholder = '';
   export let isTextArea = false;
   export let required = false;
-  export let horizontal = false;/* 
+  export let name = '';
+  export let horizontal = false; /* 
   export let boxwidth = '[40vw]';
   export let labelwidth = '1/6'; */
 </script>
@@ -34,6 +35,7 @@
       {id}
       {placeholder}
       {required}
+      {name}
     />
   {/if}
 </div>
