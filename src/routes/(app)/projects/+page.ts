@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ fetch, params }) => {
+export const load: PageLoad = async ({ fetch }) => {
   const res = await fetch(`/api/projects`);
   if (!res.ok) error(res.status, 'No projects found');
 

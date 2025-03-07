@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Project } from '@/types/project';
-  let windowWidth: number;
 
+  let windowWidth: number;
   export let project: Project;
 </script>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
+  import type { PageData } from './$types';
   import ProjectTile from './_components/project-tile.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
-  import type { PageData } from './$types';
   import type { Project } from '@/types/project';
 
   export let data: PageData;
