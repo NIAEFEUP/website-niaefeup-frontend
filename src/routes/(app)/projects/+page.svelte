@@ -26,7 +26,7 @@
                 md:mt-6 md:flex-row md:items-end md:gap-x-1.5"
     >
       {#each projects as project}
-        <ProjectTile project={project} />
+        <ProjectTile {project} />
       {/each}
     </div>
   </div>

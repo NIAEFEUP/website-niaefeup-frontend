@@ -1,28 +1,14 @@
 <script lang="ts">
+  import type { Project } from '@/types/project';
   let windowWidth: number;
 
-  export let name: string;
-  const colorList = {
-    nijobs: {
-      background: 'bg-[#9c342f]',
-      text: 'text-gray-200'
-    },
-    uni: {
-      background: 'bg-[#521015]',
-      text: 'text-gray-200'
-    },
-    tts: {
-      background: 'bg-[#A8A8A8]',
-      text: 'text-gray-900'
-    }
-  };
+  export let project: Project;
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
 
 <div
-  class="{colorList[name.toLowerCase()]
-    .background} flex h-44 w-4/5 flex-col justify-center rounded-xl
+  class="flex h-44 w-4/5 flex-col justify-center rounded-xl bg-[#521015]
     {windowWidth < 768 ? 'odd:items-end odd:self-start even:items-start even:self-end' : null}
     md:h-auto md:w-auto md:flex-none md:self-center md:bg-transparent"
 >
@@ -32,14 +18,14 @@
   >
     <img
       class="h-20 rounded-xl shadow-lg md:h-72 md:shadow-none"
-      src={'/images/projects/' + name.toLowerCase() + (windowWidth >= 768 ? '.png' : '_logo.png')}
+      src={project.thumbnail}
       alt="nijobs logo"
     />
     <p
-      class="font-raleway text-2xl font-semibold {colorList[name.toLowerCase()].text}
+      class="'text-gray-200'} font-raleway text-2xl font-semibold
                   md:text-5xl md:text-white"
     >
-      {name}
+      {project.title}
     </p>
   </div>
 </div>
