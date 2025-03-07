@@ -1,8 +1,11 @@
-<script>
+<script lang="ts">
   import ProjectTile from './_components/project-tile.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
+  import type { PageData } from './$types';
+  import type { Project } from '@/types/project';
 
-  const projects = [{ name: 'NIJobs' }, { name: 'UNI' }, { name: 'TTS' }];
+  export let data: PageData;
+  export let projects: Project[] = data.projects;
 </script>
 
 <section>
@@ -23,7 +26,7 @@
                 md:mt-6 md:flex-row md:items-end md:gap-x-1.5"
     >
       {#each projects as project}
-        <ProjectTile name={project.name} />
+        <ProjectTile project={project} />
       {/each}
     </div>
   </div>
