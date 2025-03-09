@@ -1,8 +1,10 @@
+import type { CustomWebsite } from './custom-website';
+import type { TimelineEvent } from './timeline-event';
+
 export type Project = {
   title: string;
   description: string;
   teamMemberIds: bigint[];
-  // associatedRoles : ?;
   slug: string;
   image: string;
   gallery: string[];
@@ -12,7 +14,7 @@ export type Project = {
   slogan: string;
   targetAudience: string;
   github: string;
-  // links : ?;
-  // hallOfFame: ?;
-  // timeline : ?;
+  links: CustomWebsite[];
+  hallOfFame: bigint[];
+  timeline: TimelineEvent[];
 };
