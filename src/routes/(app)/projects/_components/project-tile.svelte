@@ -8,8 +8,10 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 <div
-  class="flex h-44 w-4/5 flex-col justify-center rounded-xl bg-[#521015] md:m-10 lg:m-12
-    {windowWidth < 768 ? 'odd:items-end odd:self-start even:items-start even:self-end' : null}
+  class="flex h-44 w-4/5 flex-col justify-center bg-[#521015] md:m-10 lg:m-12
+    {windowWidth < 768
+    ? 'odd:items-end odd:self-start odd:rounded-r-xl even:items-start even:self-end even:rounded-l-xl'
+    : null}
     md:h-auto md:w-auto md:flex-none md:self-center md:bg-transparent"
 >
   <div
