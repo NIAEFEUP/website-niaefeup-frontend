@@ -14,7 +14,7 @@
       &lt&nbsp<strong>Projetos</strong>&nbsp/&gt
     </h1>
     <!-- TODO: only show this if the user is authenticated and has the given rights -->
-    <div class="flex w-5/6 justify-end sm:my-6 md:my-6 lg:mb-12 xl:mb-12 2xl:mb-12">
+    <div class="my-8 flex w-5/6 justify-end sm:my-6 md:my-6 lg:mb-12 xl:mb-12 2xl:mb-12">
       <!-- TODO: link the new project page -->
       <a href="https://lipsum.com">
         <Button color="secondary" hoverColor="red" width="12" text="Novo Projeto"></Button>
