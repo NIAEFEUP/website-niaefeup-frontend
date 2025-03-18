@@ -22,8 +22,8 @@
     </div>
 
     <div
-      class="mt-4 flex h-full w-full flex-col flex-wrap justify-evenly gap-4
-                md:mt-6 md:flex-row md:items-end md:gap-x-1.5"
+      class="mt-4 flex h-full w-full flex-col justify-evenly gap-4
+                md:mt-6 md:grid md:grid-cols-3 md:gap-x-1.5"
     >
       {#each projects as project}
         <ProjectTile {project} />
