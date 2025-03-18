@@ -28,7 +28,7 @@ md:justify-between md:gap-4 md:px-0 md:py-0"
     </a>
     <a href="https://lipsum.com">
       <p
-        class="'text-gray-200'} font-raleway text-2xl font-semibold
+        class="text-center font-raleway text-2xl font-semibold text-gray-200
                   md:text-5xl md:text-white"
       >
         {project.title}
