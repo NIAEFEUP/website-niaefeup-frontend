@@ -11,7 +11,7 @@
 <ModeWatcher defaultMode="dark" />
 <Sidebar />
 <Navbar />
-<main class="bg-ni-primary my-20 flex-grow">
+<main class="bg-ni-primary mt-20 flex-grow">
   <BackgroundHexagon position="right" />
   <slot />
 </main>

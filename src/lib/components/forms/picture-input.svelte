@@ -39,7 +39,7 @@
   <button
     type="button"
     aria-label="Upload image"
-    class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-400 text-center"
+    class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-700 hover:bg-muted-red-500 hover= text-center"
     on:click={() => {
       fileInput.click();
     }}
