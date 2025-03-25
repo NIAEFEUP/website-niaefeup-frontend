@@ -8,7 +8,9 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<div
+<svelte:element
+  this={windowWidth < screenSizeThreshold ? 'a' : 'div'}
+  href={windowWidth < screenSizeThreshold ? 'https://lipsum.com' : undefined}
   class="flex h-44 w-4/5 flex-col justify-center bg-[#521015] md:m-10 lg:m-12
     {windowWidth < screenSizeThreshold
     ? 'odd:items-end odd:self-start odd:rounded-r-xl even:items-start even:self-end even:rounded-l-xl'
@@ -28,11 +30,11 @@ md:justify-between md:gap-4 md:px-0 md:py-0"
     </a>
     <a href="https://lipsum.com">
       <p
-        class="text-md md:h-32 text-center font-raleway
-                  font-semibold text-gray-200 md:text-3xl md:text-white lg:text-5xl"
+        class="text-md text-center font-raleway font-semibold
+                  text-gray-200 md:h-32 md:text-3xl md:text-white lg:text-5xl"
       >
         {project.title}
       </p>
     </a>
   </div>
-</div>
+</svelte:element>
