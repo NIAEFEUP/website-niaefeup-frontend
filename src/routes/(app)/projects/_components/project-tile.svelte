@@ -21,15 +21,15 @@ md:justify-between md:gap-4 md:px-0 md:py-0"
   >
     <a href="https://lipsum.com">
       <img
-        class="h-20 rounded-xl shadow-lg md:h-72 md:shadow-none"
+        class="h-20 rounded-xl shadow-lg md:h-min md:max-h-80 md:shadow-none"
         src={windowWidth < screenSizeThreshold ? project.image : project.thumbnail}
         alt="{project.title}'s thumbnail"
       />
     </a>
     <a href="https://lipsum.com">
       <p
-        class="text-center font-raleway text-2xl font-semibold text-gray-200
-                  md:text-5xl md:text-white"
+        class="text-md md:h-32 text-center font-raleway
+                  font-semibold text-gray-200 md:text-3xl md:text-white lg:text-5xl"
       >
         {project.title}
       </p>
