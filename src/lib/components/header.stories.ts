@@ -7,6 +7,6 @@ export default {
     title: 'Atoms/Forms/Header',
     component: Header,
     parameters: {
-        label: 'coco'
+        label: 'coco2'
     }
 };
