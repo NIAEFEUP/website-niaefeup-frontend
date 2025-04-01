@@ -25,8 +25,8 @@
       class="mt-4 flex h-full w-full flex-col justify-evenly gap-4
                 md:mt-6 md:grid md:grid-cols-3 md:gap-x-1.5"
     >
-      {#each projects as project}
-        <ProjectTile {project} />
+      {#each projects as project, index}
+        <ProjectTile {project} isOdd={index % 2 === 1} />
       {/each}
     </div>
   </div>

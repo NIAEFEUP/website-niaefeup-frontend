@@ -4,6 +4,7 @@
   let screenSizeThreshold = 768; // tailwindcss sets 48rem (768px) as the minimum with for mobile devices
   let windowWidth: number;
   export let project: Project;
+  export let isOdd: boolean;
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
@@ -19,7 +20,7 @@
 >
   <div
     class="md:basis-3/10 mx-5 mb-3 flex flex-row items-center gap-1 md:flex-col
-md:justify-between md:gap-4 md:px-0 md:py-0"
+md:justify-between md:gap-4 md:px-0 md:py-0 {isOdd ? 'flex-row' : 'flex-row-reverse'}"
   >
     <a href="https://lipsum.com">
       <img
