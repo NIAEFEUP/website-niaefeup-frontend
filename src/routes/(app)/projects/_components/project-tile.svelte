@@ -11,14 +11,14 @@
 <svelte:element
   this={windowWidth < screenSizeThreshold ? 'a' : 'div'}
   href={windowWidth < screenSizeThreshold ? 'https://lipsum.com' : undefined}
-  class="flex h-44 w-4/5 flex-row justify-center bg-[#521015] md:m-10 md:flex-col lg:m-12
+  class="flex h-44 w-4/5 flex-row justify-center bg-[#521015]
     {windowWidth < screenSizeThreshold
-    ? 'odd:flex-row odd:items-end odd:self-start odd:rounded-r-xl even:flex-row-reverse even:items-start even:self-end even:rounded-l-xl'
+    ? 'odd:self-start odd:rounded-r-xl even:self-end even:rounded-l-xl'
     : null}
-    md:h-auto md:w-auto md:flex-none md:self-center md:bg-transparent"
+    md:m-10 md:h-auto md:w-auto md:flex-none md:flex-col md:self-center md:bg-transparent lg:m-12"
 >
   <div
-    class="md:basis-3/10 mx-5 -mb-3 flex flex-col items-center gap-1
+    class="md:basis-3/10 mx-5 mb-3 flex flex-row items-center gap-1 md:flex-col
 md:justify-between md:gap-4 md:px-0 md:py-0"
   >
     <a href="https://lipsum.com">
