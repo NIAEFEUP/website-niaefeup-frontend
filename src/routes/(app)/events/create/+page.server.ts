@@ -21,7 +21,7 @@ export const actions = {
       slug: Slug,
       teamMembersIds: [],
       image: Image,
-      registerUrl: "idk :/",
+      registerUrl: "idk : /",
       dateInterval: Date,
       location: Place,
       category: "idk :/"
