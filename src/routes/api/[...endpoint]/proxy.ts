@@ -10,12 +10,20 @@ async function _fetchApi(
   headers?: Headers | null
 ) {
   const url = new URL(relativeUrl, PUBLIC_API_URL);
-  headers ??= new Headers();
-  headers.append('Content-Type', 'application/json');
-  headers.append('Accept', 'application/json');
-  if (browser && window?.location?.origin) {
-    headers.append('Origin', window.location.origin);
+  if(headers == null) {
+    headers ??= new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    if (browser && window?.location?.origin) {
+      headers.append('Origin', window.location.origin);
+    }
   }
+  console.log({
+    url,
+    method,
+    body,
+    headers
+  })
   return fetch(url, { method: method, body, headers });
 }
 
