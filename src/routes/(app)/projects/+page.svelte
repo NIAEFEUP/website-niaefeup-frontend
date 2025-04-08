@@ -16,8 +16,7 @@
     </h1>
     {#if hasPerms}
       <div class="my-8 flex w-5/6 justify-end sm:my-6 md:my-6 lg:mb-12 xl:mb-12 2xl:mb-12">
-        <!-- TODO: link the new project page -->
-        <a href="https://lipsum.com">
+        <a href="/projects/create">
           <Button color="secondary" hoverColor="red" width="12" text="Novo Projeto"></Button>
         </a>
       </div>
