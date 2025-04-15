@@ -52,11 +52,7 @@
     </ul>
 
     <div class="mt-32 flex items-center justify-center gap-4">
-      <img
-        class="w-max-xl w-1/3"
-        src={project.image}
-        alt="Three printscreens of phones showcasing the uni app"
-      />
+      <img class="w-max-xl w-1/3" src={project.image} alt="{project.title}'s image" />
       <p class="w-1/3 max-w-xl text-right text-4xl text-gray-100">
         {project.description}
       </p>
@@ -66,44 +62,16 @@
       <div class="flex w-1/3 flex-col items-center">
         <p class="font-source_code text-5xl font-bold text-white">&lt; Tecnologias /&gt;</p>
         <div class="mt-6 flex justify-center gap-8">
-          <div class="flex gap-4 rounded-full bg-[#674244]/40 px-8 py-4">
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15.3828 18.316L18.7438 15.042H27.0928L19.6968 22.438L15.3828 18.316Z"
-                fill="#40D0FD"
+          {#each project.technologies as technology}
+            <!-- TODO: fix this when we have the technologies entity implemented in the backend -->
+            <div class="flex gap-4 rounded-full bg-[#674244]/40 px-8 py-4">
+              <img
+                src="https://picsum.photos/id/239/200/200"
+                alt="Logótipo da tecnologia {technology}"
               />
-              <path
-                d="M4.90723 16.1251L9.10623 20.4241L27.0932 2.28711H18.7442L4.90723 16.1251Z"
-                fill="#41D0FD"
-              />
-              <path
-                d="M11.1758 22.4794L15.4348 26.6754L19.6968 22.4384L15.3828 18.3164L11.1758 22.4794Z"
-                fill="#1FBCFD"
-              />
-              <path
-                d="M15.4346 26.6745L19.6966 22.4375L26.9886 29.8125H18.5926L15.4346 26.6745Z"
-                fill="#095A9D"
-              />
-              <path
-                d="M15.4346 26.6746L19.4056 25.3536L18.0676 24.0566L15.4346 26.6746Z"
-                fill="#0E5199"
-              />
-            </svg>
-            <p class="text-2xl text-white">Flutter</p>
-          </div>
-          <div class="flex gap-4 rounded-full bg-[#674244]/40 px-8 py-4">
-            <img
-              src="/images/technologies/dart.png"
-              alt="Logótipo da linguagem de programação Dart"
-            />
-            <p class="text-2xl text-white">Dart</p>
-          </div>
+              <p class="text-2xl text-white">{technology}</p>
+            </div>
+          {/each}
         </div>
       </div>
       <div class="flex w-1/3 flex-col items-center">

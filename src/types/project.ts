@@ -7,7 +7,7 @@ export type Project = {
   image: string;
   gallery: string[];
   thumbnail: string;
-  technologies: string;
+  technologies: string[];
   slogan: string;
   targetAudience: string;
   github: string;
