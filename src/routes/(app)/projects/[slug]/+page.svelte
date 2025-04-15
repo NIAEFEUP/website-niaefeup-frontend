@@ -39,39 +39,16 @@
     </div>
 
     <ul class="mt-24 flex justify-center gap-11">
-      <li>
-        <a
-          href="https://play.google.com"
-          class="flex h-20 w-60 items-center justify-center rounded-xl bg-[#872020] text-white"
-        >
-          <span>
-            Baixa em <br />
-            <span class="font-bold"> Google Play</span>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://play.google.com"
-          class="flex h-20 w-60 items-center justify-center rounded-xl bg-[#872020] text-white"
-        >
-          <span>
-            Baixa em <br />
-            <span class="font-bold"> App Store</span>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://play.google.com"
-          class="flex h-20 w-60 items-center justify-center rounded-xl bg-[#872020] text-white"
-        >
-          <span class="text-lg">
-            Download do
-            <p class="text-2xl font-semibold">APK</p>
-          </span>
-        </a>
-      </li>
+      {#each project.links as link}
+        <li>
+          <a
+            href={link.url}
+            class="flex h-20 w-60 items-center justify-center rounded-xl bg-[#872020] text-white"
+          >
+            <img src={link.iconPath} alt="{project.title}'s custom website" />
+          </a>
+        </li>
+      {/each}
     </ul>
 
     <div class="mt-32 flex items-center justify-center gap-4">
