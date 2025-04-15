@@ -9,7 +9,8 @@ const dispatchToBackend: RequestHandler = async (event) => {
     event.request.method === 'HEAD'
       ? undefined
       : await event.request.text();
-  return fetchWithAuth(event.cookies, endpoint(event.url), event.request.method, undefined, body);
+  const headers = event.request.headers;
+  return fetchWithAuth(event.cookies, endpoint(event.url), event.request.method, headers, body);
 };
 
 export const GET: RequestHandler = dispatchToBackend;

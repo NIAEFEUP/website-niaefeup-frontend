@@ -14,17 +14,18 @@ export const actions = {
 
     const dummy = "bipbop";
 
+  
     const value  = {
       // technologies: formData.get("title"),
       title: Title,
       description: Description,
       slug: Slug,
-      teamMembersIds: [],
-      image: Image,
-      registerUrl: "idk : /",
-      dateInterval: Date,
+      registerUrl: SignUp,
+      dateInterval: {
+        startDate: X,
+        endDate: X
+      },
       location: Place,
-      category: "idk :/"
     }
 
 
@@ -33,7 +34,7 @@ export const actions = {
 
     const form = new FormData()
     form.append("event",blob)
-    //form.append("image",image)
+    //form.append("image",Image)
 
     const success = await fetch(`/api/events`,
       {

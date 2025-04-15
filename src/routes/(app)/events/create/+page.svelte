@@ -18,9 +18,9 @@
             
             <LabelInput label = "Título" name = "Title" type = "text" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
             <LabelInput label = "Slug" name = "Slug" type = "text" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
-            <LabelInput label = "Data/Hora" name = "Date" type = "date" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
+            <LabelInput label = "Data" name = "Date" type = "date" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
             <LabelInput label = "Descrição" name = "Description" type = "text" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
-            <LabelInput label = "Inscrição" name = "SingUp" type = "text" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
+            <LabelInput label = "Inscrição" name = "SignUp" type = "text" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
             <LabelInput label = "Localização" name = "Place" type = "text" placeholder = "Insira o texto" horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
             
             <div class = "flex flex-row gap-16 ml-5 mr-5 md:flex-row md:ml-0">
