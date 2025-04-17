@@ -10,7 +10,7 @@ async function _fetchApi(
   headers?: Headers | null
 ) {
   const url = new URL(relativeUrl, PUBLIC_API_URL);
-  if(headers == null) {
+  if (headers == null) {
     headers ??= new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
@@ -23,7 +23,7 @@ async function _fetchApi(
     method,
     body,
     headers
-  })
+  });
   return fetch(url, { method: method, body, headers });
 }
 
