@@ -1,45 +1,48 @@
 import type { RequestEvent } from '@sveltejs/kit';
+import type { FormInput } from 'lucide-svelte';
 
 export const actions = {
   default: async ({ request, fetch }: RequestEvent) => {
     const data = await request.formData();
 
-    const Title = data.get("Title")
-    const Slug = data.get("Slug")
-    const Description = data.get("Description")
-    const Date = data.get("Date")
-    const SignUp = data.get("SignUp")
-    const Place = data.get("Place")
-    const Image = data.get("Profile Picture")
+    console.log(data);
 
-    const dummy = "bipbop";
+    const title = data.get('Title');
+    const slug = data.get('Slug');
+    const description = data.get('Description');
+    const start = new Date(data.get('DateStart') as string);
+    const end = new Date(data.get('DateEnd') as string);
 
-  
-    const value  = {
+    const startJson = `${start.getDay()}-${start.getMonth()}-${start.getFullYear()} ${start.getHours()}:${start.getMinutes()}`;
+    const endJson = `${end.getDay()}-${end.getMonth()}-${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`;
+    const signUp = data.get('SignUp');
+    const place = data.get('Place');
+    const image = data.get('image') as File;
+
+    const value = {
       // technologies: formData.get("title"),
-      title: Title,
-      description: Description,
-      slug: Slug,
-      registerUrl: SignUp,
+      title: title,
+      description: description,
+      slug: slug,
+      registerUrl: signUp,
       dateInterval: {
-        startDate: X,
-        endDate: X
+        startDate: startJson,
+        endDate: endJson
       },
-      location: Place,
-    }
+      location: place
+    };
 
-
-    const json = JSON.stringify(value)
-    const blob = new Blob([json],{type: "application/json"})
-
-    const form = new FormData()
-    form.append("event",blob)
-    //form.append("image",Image)
-
-    const success = await fetch(`/api/events`,
-      {
+    const json = JSON.stringify(value);
+    //const jsonImage = JSON.stringify(image)
+    const blob = new Blob([json], { type: 'application/json' });
+    //const blob2 = new Blob([jsonImage], {type: "multipart/formdata"})
+    const form = new FormData();
+    form.append('event', blob);
+    form.append('image', image, image.name);
+    console.log(form);
+    const success = await fetch(`/api/events`, {
       method: 'POST',
-      body:form 
+      body: form
     }).then((res) => res.ok);
 
     return success;
