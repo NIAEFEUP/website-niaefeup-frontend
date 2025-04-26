@@ -13,10 +13,10 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 {#await project then project}
-  <section class="min-h-screen pt-24 font-raleway md:pt-60">
+  <section class="min-h-screen pt-24 md:pt-60">
     <header class="flex flex-row justify-center gap-6">
-      <div class="inline-block rounded-2xl bg-white/20 p-4">
-        <img src={project.thumbnail} alt="{project.title}'s thumbnail" />
+      <div class="rounded-2xl bg-white/20 p-4">
+        <img src={project.image} alt="{project.title}'s image" />
       </div>
       <div class="my-auto flex flex-col items-center md:items-start">
         <h1 class="mb-4 text-3xl font-semibold text-white md:text-6xl">{project.title}</h1>
@@ -30,7 +30,7 @@
       </div>
     </header>
 
-    <div class="mt-28 text-center">
+    <div class="mt-16 text-center md:mt-28">
       <strong class="text-4xl text-white">{project.slogan}</strong>
     </div>
 
@@ -39,12 +39,12 @@
         <li>
           <a
             href={link.url}
-            class="flex h-20 w-60 items-center justify-center overflow-hidden rounded-xl text-white md:h-20"
+            class="flex h-20 w-60 items-center justify-center overflow-hidden rounded-xl text-white md:h-28 md:w-56"
           >
             <img
               src={link.iconPath}
               alt="{project.title}'s custom website"
-              class="max-h-60 object-contain"
+              class="object-cover md:h-28 md:w-56"
             />
           </a>
         </li>
@@ -52,7 +52,7 @@
     </ul>
 
     <div class="mt-32 flex flex-col items-center justify-center gap-4 md:flex-row">
-      <img class="w-max-xl w-1/3" src={project.image} alt="{project.title}'s image" />
+      <img class="w-max-xl w-1/3" src={project.thumbnail} alt="{project.title}'s thumbnail" />
       <p class="w-5/6 max-w-xl text-right text-2xl text-gray-100 md:w-1/3 md:text-4xl">
         {project.description}
       </p>
