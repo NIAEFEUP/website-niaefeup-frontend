@@ -16,8 +16,8 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 {#await project then project}
-  <section class="mx-5 min-h-screen pt-24 md:pt-32">
-    {#if !hasPerms}
+  <section class="mx-5 min-h-screen pt-12 md:pt-32">
+    {#if hasPerms}
       <div class="my-4 flex justify-end md:my-8 md:w-5/6">
         <EditButton size="small" link="/projects/{project.slug}/edit" />
       </div>
@@ -30,7 +30,7 @@
       />
       <div class="my-auto flex flex-col items-center md:items-start">
         <h1 class="mb-4 text-3xl font-semibold text-white md:text-6xl">{project.title}</h1>
-        <div class="flex w-full justify-center md:justify-start">
+        <div class="flex w-full justify-start">
           <Icon
             src={Icons.Github}
             href={project.github}
@@ -40,12 +40,12 @@
       </div>
     </header>
 
-    <div class="mt-16 text-center md:mt-28">
+    <div class="mt-14 text-center md:mt-28">
       <strong class="text-4xl text-white">{project.slogan}</strong>
     </div>
 
     {#if project.links && project.links.length > 0}
-      <ul class="mt-24 flex flex-wrap justify-center gap-10">
+      <ul class="mt-16 flex flex-wrap justify-center gap-10">
         {#each project.links as link}
           <li>
             <a
@@ -63,8 +63,11 @@
       </ul>
     {/if}
 
-    <div class="mt-32 flex flex-col items-center justify-center gap-4 md:flex-row">
+    <div class="mt-20 flex flex-col items-center justify-center gap-4 md:flex-row">
       <img class="w-max-xl w-1/3" src={project.thumbnail} alt="{project.title}'s thumbnail" />
+      {#if windowWidth < screenSizeThreshold}
+        <p class="mt-4 w-5/6 text-left text-3xl font-bold">tem por objetivo...</p>
+      {/if}
       <p class="w-5/6 max-w-xl text-right text-2xl text-gray-100 md:w-1/3 md:text-4xl">
         {project.description}
       </p>
@@ -72,19 +75,21 @@
 
     <div class="mt-24 flex flex-col justify-evenly md:flex-row">
       <div class="flex flex-col items-center md:w-1/3">
-        <p class="mb-6 font-source_code text-3xl font-bold text-white md:text-5xl">
+        <p
+          class="mb-6 font-source_code text-3xl font-bold text-white sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
+        >
           &lt; Tecnologias /&gt;
         </p>
         <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
           {#each project.technologies as technology}
             <!-- TODO: fix this when we have the technologies entity implemented in the backend -->
             <div
-              class="flex w-20 content-center items-center gap-4 rounded-full bg-[#674244]/40 px-4 py-4 md:w-64 md:px-8"
+              class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
             >
               <img
                 src="https://picsum.photos/id/239/200/200"
                 alt="Logótipo da tecnologia {technology}"
-                class="max-h-20"
+                class="max-h-16"
               />
               {#if windowWidth > screenSizeThreshold}
                 <p class="text-xl text-white">{technology}</p>
@@ -94,7 +99,9 @@
         </div>
       </div>
       <div class="flex flex-col items-center md:w-1/3">
-        <p class="mb-6 font-source_code text-3xl font-bold text-white md:text-5xl">
+        <p
+          class="mb-6 font-source_code text-3xl font-bold text-white sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
+        >
           &lt; Público Alvo /&gt;
         </p>
         <div class="flex justify-center gap-8">
