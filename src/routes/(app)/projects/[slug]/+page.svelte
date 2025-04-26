@@ -1,11 +1,14 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import type { Project } from '@/types/project';
+  import EditButton from '$lib/components/buttons/edit-button.svelte';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
   export let data: PageData;
-  export let project: Project = data.project;
+  export const project: Project = data.project;
+  export const hasPerms: boolean = data.hasPerms;
+
   let screenSizeThreshold = 768;
   let windowWidth: number;
 </script>
@@ -13,7 +16,12 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 {#await project then project}
-  <section class="mx-5 min-h-screen pt-24 md:pt-60">
+  <section class="mx-5 min-h-screen pt-24 md:pt-32">
+    {#if !hasPerms}
+      <div class="my-4 flex justify-end md:my-8 md:w-5/6">
+        <EditButton size="small" link="/projects/{project.slug}/edit" />
+      </div>
+    {/if}
     <header class="flex flex-row justify-center gap-6">
       <img
         src={project.image}
