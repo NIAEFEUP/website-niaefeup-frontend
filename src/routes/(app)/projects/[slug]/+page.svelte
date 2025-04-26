@@ -13,11 +13,13 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 {#await project then project}
-  <section class="min-h-screen pt-24 md:pt-60">
+  <section class="mx-5 min-h-screen pt-24 md:pt-60">
     <header class="flex flex-row justify-center gap-6">
-      <div class="rounded-2xl bg-white/20 p-4">
-        <img src={project.image} alt="{project.title}'s image" />
-      </div>
+      <img
+        src={project.image}
+        alt="{project.title}'s image"
+        class="h-full w-full rounded-2xl border-[3vw] border-solid border-white/20 md:w-1/5 md:max-w-md md:border-[2vw]"
+      />
       <div class="my-auto flex flex-col items-center md:items-start">
         <h1 class="mb-4 text-3xl font-semibold text-white md:text-6xl">{project.title}</h1>
         <div class="flex w-full justify-center md:justify-start">
@@ -34,22 +36,24 @@
       <strong class="text-4xl text-white">{project.slogan}</strong>
     </div>
 
-    <ul class="mt-24 flex flex-wrap justify-center gap-10">
-      {#each project.links as link}
-        <li>
-          <a
-            href={link.url}
-            class="flex h-20 w-60 items-center justify-center overflow-hidden rounded-xl text-white md:h-28 md:w-56"
-          >
-            <img
-              src={link.iconPath}
-              alt="{project.title}'s custom website"
-              class="object-cover md:h-28 md:w-56"
-            />
-          </a>
-        </li>
-      {/each}
-    </ul>
+    {#if project.links && project.links.length > 0}
+      <ul class="mt-24 flex flex-wrap justify-center gap-10">
+        {#each project.links as link}
+          <li>
+            <a
+              href={link.url}
+              class="flex h-20 w-60 items-center justify-center overflow-hidden rounded-xl text-white md:h-28 md:w-56"
+            >
+              <img
+                src={link.iconPath}
+                alt="{project.title}'s custom website"
+                class="object-cover md:h-28 md:w-56"
+              />
+            </a>
+          </li>
+        {/each}
+      </ul>
+    {/if}
 
     <div class="mt-32 flex flex-col items-center justify-center gap-4 md:flex-row">
       <img class="w-max-xl w-1/3" src={project.thumbnail} alt="{project.title}'s thumbnail" />
@@ -63,11 +67,11 @@
         <p class="mb-6 font-source_code text-3xl font-bold text-white md:text-5xl">
           &lt; Tecnologias /&gt;
         </p>
-        <div class="mb-12 mt-6 flex flex-wrap justify-center gap-8">
+        <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
           {#each project.technologies as technology}
             <!-- TODO: fix this when we have the technologies entity implemented in the backend -->
             <div
-              class="flex h-24 w-24 content-center items-center gap-4 rounded-full bg-[#674244]/40 px-4 py-4 md:w-64 md:px-8"
+              class="flex w-20 content-center items-center gap-4 rounded-full bg-[#674244]/40 px-4 py-4 md:w-64 md:px-8"
             >
               <img
                 src="https://picsum.photos/id/239/200/200"
@@ -86,7 +90,7 @@
           &lt; Público Alvo /&gt;
         </p>
         <div class="flex justify-center gap-8">
-          <p class="text-center text-3xl font-semibold text-white">
+          <p class="text-center text-xl font-semibold text-white md:text-3xl">
             {project.targetAudience}
           </p>
         </div>
