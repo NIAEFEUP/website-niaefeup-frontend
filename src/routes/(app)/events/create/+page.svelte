@@ -30,8 +30,6 @@
                     <p class = "font-semibold flex items-center justify-center">Nenhum Ficheiro Selecionado</p>
                 </div>
 
-                <input type="file" name="image" accept="image/**">
-
                 <div class = "flex flex-row ml-5 mr-5 md:ml-0">
                     <Button type = "submit" color = "primary" hoverColor = "primary" width = "large" text = "Guardar Alterações"/>
                 </div>
