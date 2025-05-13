@@ -1,5 +1,4 @@
 import type { RequestEvent } from '@sveltejs/kit';
-import type { FormInput } from 'lucide-svelte';
 
 export const actions = {
   default: async ({ request, fetch }: RequestEvent) => {
