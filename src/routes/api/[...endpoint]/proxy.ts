@@ -6,19 +6,33 @@ import { browser } from '$app/environment';
 async function _fetchApi(
   relativeUrl: URL | string,
   method: string,
-  body?: string | null,
+  body?: BodyInit | null,
   headers?: Headers | null
 ) {
   const url = new URL(relativeUrl, PUBLIC_API_URL);
-  if (headers == null) {
-    headers ??= new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Accept', 'application/json');
+  if (!headers) {
+    headers = new Headers({
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    });
+
     if (browser && window?.location?.origin) {
-      headers.append('Origin', window.location.origin);
+      headers.set('Origin', window.location.origin);
     }
   }
-  return fetch(url, { method: method, body, headers });
+
+  const init: RequestInit = {
+    method,
+    body,
+    headers
+  };
+
+  if (body instanceof ReadableStream) {
+    // @ts-expect-error: 'duplex' is a Node.js-specific addition not in TS yet
+    init.duplex = 'half';
+  }
+
+  return fetch(url, init);
 }
 
 async function _refreshAccessToken(cookies: Cookies): Promise<string | null> {
@@ -38,7 +52,7 @@ export async function fetchWithAuth(
   relativeUrl: URL | string,
   method: string,
   headers?: HeadersInit,
-  body?: string | null
+  body?: BodyInit | null
 ): Promise<Response> {
   const jwt = cookies.get(PUBLIC_JWT_ACCESS_KEY);
 
