@@ -9,7 +9,16 @@ export default {
   component: Layout,
   parameters: {
     layout: 'fullscreen',
-    backgrounds: { default: 'transparent' }
+    backgrounds: { default: 'transparent' },
+    sveltekit_experimental: {
+      stores: {
+        page: {
+          url: {
+            pathname: '/'
+          }
+        }
+      }
+    }
   },
   decorators: [() => LayoutDecorator]
 };
