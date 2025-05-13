@@ -1,7 +1,7 @@
 <script>
   import PictureInput from '$lib/components/forms/picture-input.svelte';
   import LabelInput from '$lib/components/forms/label-input.svelte';
-  import Button from '$lib/components/button.svelte';
+  import Button from '$lib/components/buttons/button.svelte';
   import FormsHeader from '$lib/components/forms-header.svelte';
 </script>
 
