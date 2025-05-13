@@ -5,8 +5,6 @@ export const actions = {
   default: async ({ request, fetch }: RequestEvent) => {
     const data = await request.formData();
 
-    console.log(data);
-
     const title = data.get('Title');
     const slug = data.get('Slug');
     const description = data.get('Description');
@@ -20,7 +18,6 @@ export const actions = {
     const image = data.get('image') as File;
 
     const value = {
-      // technologies: formData.get("title"),
       title: title,
       description: description,
       slug: slug,
@@ -33,9 +30,7 @@ export const actions = {
     };
 
     const json = JSON.stringify(value);
-    //const jsonImage = JSON.stringify(image)
     const blob = new Blob([json], { type: 'application/json' });
-    //const blob2 = new Blob([jsonImage], {type: "multipart/formdata"})
     const form = new FormData();
     form.append('event', blob);
     form.append('image', image, image.name);

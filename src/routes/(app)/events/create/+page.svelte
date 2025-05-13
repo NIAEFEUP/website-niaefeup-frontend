@@ -39,7 +39,5 @@
                 <PictureInput text="Insira a Imagem" name="image"/>
             </div>
         </form>
-
-
     </div>
 </div>
