@@ -14,9 +14,8 @@
   class="flex flex-{horizontal ? 'row justify-between' : 'col'} {$$props.className}"
   class:align-middle={horizontal && !isTextArea}
 >
-  
   {#if label}
-  <div style="width: {textGap}vw;">
+    <div style="width: {textGap}vw;">
       <label
         class="m-1 flex flex-row font-source_code font-bold text-white"
         class:flex-row={required}

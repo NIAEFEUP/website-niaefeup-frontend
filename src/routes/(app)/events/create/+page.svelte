@@ -1,43 +1,109 @@
-
 <script>
-    import PictureInput from '$lib/components/forms/picture-input.svelte';
-    import LabelInput from '$lib/components/forms/label-input.svelte';
-    import Button from '$lib/components/button.svelte';
-    import FormsHeader from '$lib/components/forms-header.svelte';
+  import PictureInput from '$lib/components/forms/picture-input.svelte';
+  import LabelInput from '$lib/components/forms/label-input.svelte';
+  import Button from '$lib/components/button.svelte';
+  import FormsHeader from '$lib/components/forms-header.svelte';
 </script>
 
+<div class="flex h-full flex-col">
+  <FormsHeader label="Novo Evento" />
 
+  <div class="flex w-[100] flex-grow flex-col justify-around md:flex-row">
+    <form
+      method="POST"
+      enctype="multipart/form-data"
+      class="flex flex-col font-semibold md:flex-row md:gap-64"
+    >
+      <div class="order-2 ml-5 mt-5 flex flex-col content-start justify-center gap-10 md:order-1">
+        <LabelInput
+          label="Título"
+          name="Title"
+          type="text"
+          placeholder="Insira o texto"
+          horizontal
+          textGap="25"
+          className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+        />
+        <LabelInput
+          label="Slug"
+          name="Slug"
+          type="text"
+          placeholder="Insira o texto"
+          horizontal
+          textGap="25"
+          className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+        />
+        <LabelInput
+          label="Início"
+          name="DateStart"
+          type="datetime-local"
+          placeholder="Insira o texto"
+          horizontal
+          textGap="25"
+          className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+        />
+        <LabelInput
+          label="Fim"
+          name="DateEnd"
+          type="datetime-local"
+          placeholder="Insira o texto"
+          horizontal
+          textGap="25"
+          className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+        />
+        <LabelInput
+          label="Descrição"
+          name="Description"
+          type="text"
+          placeholder="Insira o texto"
+          horizontal
+          textGap="25"
+          className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+        />
+        <LabelInput
+          label="Inscrição"
+          name="SignUp"
+          type="text"
+          placeholder="Insira o texto"
+          horizontal
+          textGap="25"
+          className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+        />
+        <LabelInput
+          label="Localização"
+          name="Place"
+          type="text"
+          placeholder="Insira o texto"
+          horizontal
+          textGap="25"
+          className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+        />
 
-<div class="h-full flex flex-col">
-    
-    <FormsHeader label = 'Novo Evento'/>
-    
-    <div class="flex flex-col md:flex-row justify-around flex-grow w-[100]">
+        <div class="ml-5 mr-5 flex flex-row gap-16 md:ml-0 md:flex-row">
+          <Button
+            type="button"
+            color="primary"
+            hoverColor="secondary"
+            width="large"
+            text="Selecionar Ficheiros"
+          />
+          <p class="flex items-center justify-center font-semibold">Nenhum Ficheiro Selecionado</p>
+        </div>
 
-        <form method = "POST" enctype = "multipart/form-data" class="flex flex-col font-semibold md:flex-row md:gap-64">
-            
-            <div class = "flex flex-col justify-center content-start  mt-5 ml-5 gap-10 order-2 md:order-1">
-                <LabelInput label = "Título" name = "Title" type = "text" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
-                <LabelInput label = "Slug" name = "Slug" type = "text" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
-                <LabelInput label = "Início" name = "DateStart" type = "datetime-local" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
-                <LabelInput label = "Fim" name = "DateEnd" type = "datetime-local" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
-                <LabelInput label = "Descrição" name = "Description" type = "text" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
-                <LabelInput label = "Inscrição" name = "SignUp" type = "text" placeholder = "Insira o texto"  horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
-                <LabelInput label = "Localização" name = "Place" type = "text" placeholder = "Insira o texto" horizontal textGap = 25 className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"/>
-            
-                <div class = "flex flex-row gap-16 ml-5 mr-5 md:flex-row md:ml-0">
-                    <Button type = "button" color = "primary" hoverColor = "secondary" width = "large" text = "Selecionar Ficheiros"/>
-                    <p class = "font-semibold flex items-center justify-center">Nenhum Ficheiro Selecionado</p>
-                </div>
+        <div class="ml-5 mr-5 flex flex-row md:ml-0">
+          <Button
+            type="submit"
+            color="primary"
+            hoverColor="primary"
+            width="large"
+            text="Guardar Alterações"
+          />
+        </div>
+      </div>
 
-                <div class = "flex flex-row ml-5 mr-5 md:ml-0">
-                    <Button type = "submit" color = "primary" hoverColor = "primary" width = "large" text = "Guardar Alterações"/>
-                </div>
-            </div>
-            
-            <div class="flex flex-col align-top mt-20 order-1 md:order-2">
-                <PictureInput text="Insira a Imagem" name="image"/>
-            </div>
-        </form>
-    </div>
+      <div class="order-1 mt-20 flex flex-col align-top md:order-2">
+        <PictureInput text="Insira a Imagem" name="image" />
+      </div>
+    </form>
+  </div>
 </div>

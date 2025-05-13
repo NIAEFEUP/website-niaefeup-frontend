@@ -1,9 +1,9 @@
 <script>
-    export let label = '';
+  export let label = '';
 </script>
 
-<div class = "place-self-center flex flex-row border-b-muted-red-500 border-b-[3px] p-[2vw] w-[99vw]">
-    <p class="font-bold text-5xl ml-11">
-        {label}
-    </p>
+<div class="flex w-[99vw] flex-row place-self-center border-b-[3px] border-b-muted-red-500 p-[2vw]">
+  <p class="ml-11 text-5xl font-bold">
+    {label}
+  </p>
 </div>
