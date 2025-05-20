@@ -35,7 +35,7 @@
       const icons: HTMLCollection = container.children;
 
       for (let i of icons) {
-        iconHoverOpacity(iFooter, icons, 'mouseover', '1.0', '0.5');
+        iconHoverOpacity(i, icons, 'mouseover', '1.0', '0.5');
         iconHoverOpacity(i, icons, 'mouseleave', '1.0', '1.0');
       }
     });
