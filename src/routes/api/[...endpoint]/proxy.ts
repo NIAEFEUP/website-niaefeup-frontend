@@ -10,22 +10,22 @@ async function _fetchApi(
   headers?: Headers | null
 ) {
   const url = new URL(relativeUrl, PUBLIC_API_URL);
-  if (!headers) {
-    headers = new Headers({
-      'Content-Type': 'application/json',
-      Accept: 'application/json'
-    });
 
-    if (browser && window?.location?.origin) {
-      headers.set('Origin', window.location.origin);
-    }
+  const mergedHeaders = new Headers(headers ?? {});
+
+  if (!mergedHeaders.has('Content-Type')) {
+    mergedHeaders.set('Content-Type', 'application/json');
   }
 
-  const init: RequestInit = {
-    method,
-    body,
-    headers
-  };
+  if (!mergedHeaders.has('Accept')) {
+    mergedHeaders.set('Accept', 'application/json');
+  }
+
+  if (browser && window?.location?.origin) {
+    mergedHeaders.set('Origin', window.location.origin);
+  }
+
+  const init: RequestInit = { method, body, headers: mergedHeaders };
 
   if (body instanceof ReadableStream) {
     // @ts-expect-error: 'duplex' is a Node.js-specific addition not in TS yet

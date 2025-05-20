@@ -8,7 +8,7 @@ const dispatchToBackend: RequestHandler = async (event) => {
     event.request.method === 'OPTIONS' ||
     event.request.method === 'HEAD'
       ? undefined
-      : await event.request.body;
+      : event.request.body;
   return fetchWithAuth(
     event.cookies,
     endpoint(event.url),
