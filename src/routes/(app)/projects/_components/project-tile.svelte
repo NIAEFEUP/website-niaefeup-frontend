@@ -19,7 +19,7 @@
     md:m-10 md:h-auto md:w-auto md:flex-none md:flex-col md:self-center md:bg-transparent lg:m-12"
 >
   <div
-    class="md:basis-3/10 mx-5 mb-3 w-full justify-around flex flex-row items-center gap-2 md:flex-col
+    class="md:basis-3/10 mx-5 mb-3 flex w-full flex-row items-center justify-around gap-2 md:flex-col
 md:justify-between md:gap-4 md:px-0 md:py-0 {isOdd ? 'flex-row' : 'flex-row-reverse'}"
   >
     <a href="https://lipsum.com">
