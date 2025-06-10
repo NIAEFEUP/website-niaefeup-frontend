@@ -1,18 +1,15 @@
 import type { RequestEvent } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 
-
-import type { PageServerLoad } from '$types';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, fetch }) => {
-  const res = await fetch(`/api/events/${params.id}`);
+  const res = await fetch(`/api/events/${params.id}`)
+  if (!res.ok) error(res.status, 'Event not found');
   const event = await res.json();
-
-  return {
-    event
-  };
+  console.log(event);
+  return { event };
 };
-
-
 
 export const actions = {
   default: async ({ request, fetch }: RequestEvent) => {

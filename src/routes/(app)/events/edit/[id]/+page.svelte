@@ -1,13 +1,28 @@
-<script>
+<script lang="ts">
   import PictureInput from '$lib/components/forms/picture-input.svelte';
   import LabelInput from '$lib/components/forms/label-input.svelte';
   import Button from '$lib/components/buttons/button.svelte';
   import FormsHeader from '$lib/components/forms-header.svelte';
+  import type { PageData } from './$types';
+  import type { Event } from '@/types/event';
 
-  export let data;
-  let formData = { ...data.event };
+  export let data: PageData;
+  export let event: Event = data.event;
+  //fazer regex? a rita mandou coisas para ajudar no slack
+  function toISOLocal(date) {
+    console.log(date)
+    var adate = new Date(date) //os parametros tão mal. a rita mandou no slack os parametros como devem ser
+    console.log(adate)
+    var localdt = new Date(adate - adate.getTimezoneOffset()*60000);
+    console.log(localdt)
+    return localdt.toISOString().slice(0, -1); 
+}
+
 </script>
 
+{#await event}
+  <p>...waiting</p>
+{:then event}
 
 <div class="flex h-full flex-col">
   <FormsHeader label="Editar Evento" />
@@ -26,7 +41,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          bind:value={formData.Title}
+          value={event.title}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -36,7 +51,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          bind:value={formData.Slug}
+          value={event.slug}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -46,7 +61,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          bind:value={formData.DateStart}
+          value={toISOLocal(event.dateInterval.startDate)}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -56,7 +71,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          bind:value={formData.DateEnd}
+          valueAsNumber={event.dateInterval.endDate}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -66,7 +81,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          bind:value={formData.Description}
+          value={event.description}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -76,7 +91,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          bind:value={formData.SignUp}
+          value={event.signUp}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -86,7 +101,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          bind:value={formData.Place}
+          value={event.place}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
 
@@ -118,3 +133,4 @@
     </form>
   </div>
 </div>
+{/await}

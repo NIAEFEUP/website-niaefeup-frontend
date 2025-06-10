@@ -1,4 +1,5 @@
 <script>
+  export let value = '';
   export let label = '';
   export let id = '';
   export let type = 'text';
@@ -39,7 +40,7 @@
       rows="4"
     />
   {:else}
-    <input
+    <input 
       aria-label="text-input"
       class="w-full rounded-lg bg-white p-2 text-primary placeholder-primary"
       {type}
@@ -47,6 +48,7 @@
       {name}
       {placeholder}
       {required}
+      {value}
     />
   {/if}
 </div>
