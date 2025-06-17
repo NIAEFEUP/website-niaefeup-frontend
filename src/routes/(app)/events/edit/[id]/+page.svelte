@@ -8,7 +8,7 @@
 
   export let data: PageData;
   export let event: Event = data.event;
-  //fazer regex? a rita mandou coisas para ajudar no slack
+
   function toISOLocal(date) {
     let parts = date.match(/(\d+)/g),
           i = 0, fmt = {};
@@ -132,7 +132,7 @@
       </div>
 
       <div class="order-1 mt-20 flex flex-col align-top md:order-2">
-        <PictureInput text="Insira a Imagem" name="image" />
+        <PictureInput text="Insira a Imagem" name="image"  value = {// não faço ideia de como resolver esse problema...}/>
       </div>
     </form>
   </div>

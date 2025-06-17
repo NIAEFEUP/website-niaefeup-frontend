@@ -3,7 +3,8 @@
   import Icons from '$lib/components/icons/icons';
   import { createNotification } from '@/routes/(app)/_components/layout/notifications';
   import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
-
+  
+  export let value = '';
   export let text: string;
   export let name: string = 'profilePicture';
   let image: string;
@@ -32,6 +33,7 @@
     style="display:none"
     type="file"
     {name}
+    {value}
     accept="image/*"
     on:change={(e) => onFileSelected(e)}
     bind:this={fileInput}

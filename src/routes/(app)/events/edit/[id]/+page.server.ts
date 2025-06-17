@@ -19,7 +19,7 @@ export const actions = {
     const slug = data.get('Slug');
     const description = data.get('Description');
     const start = new Date(data.get('DateStart') as string);
-    const end = new Date(data.get('DateEnd') as string);
+    const end = new Date(data.get('DateEnd') as string); 
 
     const startJson = `${start.getDay()}-${start.getMonth()}-${start.getFullYear()} ${start.getHours()}:${start.getMinutes()}`;
     const endJson = `${end.getDay()}-${end.getMonth()}-${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`;
