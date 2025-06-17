@@ -1,5 +1,5 @@
 import type { RequestEvent } from '@sveltejs/kit';
-import { error } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';  
 
 import type { PageServerLoad } from './$types';
 
@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
 };
 
 export const actions = {
-  default: async ({ request, fetch }: RequestEvent) => {
+  default: async ({params, request, fetch }: RequestEvent) => {
     const data = await request.formData();
 
     const title = data.get('Title');
@@ -45,8 +45,8 @@ export const actions = {
     form.append('event', blob);
     form.append('image', image, image.name);
     console.log(form);
-    const success = await fetch(`/api/events`, {
-      method: 'POST',
+    const success = await fetch(`/api/events/${params.id}`, {
+      method: 'PUT',
       body: form
     }).then((res) => res.ok);
 

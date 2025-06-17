@@ -10,13 +10,16 @@
   export let event: Event = data.event;
   //fazer regex? a rita mandou coisas para ajudar no slack
   function toISOLocal(date) {
-    console.log(date)
-    var adate = new Date(date) //os parametros tão mal. a rita mandou no slack os parametros como devem ser
-    console.log(adate)
+    let parts = date.match(/(\d+)/g),
+          i = 0, fmt = {};
+
+    var adate = new Date(parts[2], parts[1]-1, parts[0],parts[3],parts[4]) //os parametros tão mal. a rita mandou no slack os parametros como devem ser
     var localdt = new Date(adate - adate.getTimezoneOffset()*60000);
-    console.log(localdt)
     return localdt.toISOString().slice(0, -1); 
 }
+
+
+
 
 </script>
 
@@ -71,7 +74,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          valueAsNumber={event.dateInterval.endDate}
+          value={toISOLocal(event.dateInterval.endDate)}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -91,7 +94,8 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          value={event.signUp}
+          value={event.registerUrl}
+          
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -101,7 +105,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          value={event.place}
+          value={event.location}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
 
