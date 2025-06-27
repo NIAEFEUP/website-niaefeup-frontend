@@ -12,8 +12,8 @@ export const actions = {
 
     const startJson = `${start.getDay()}-${start.getMonth()}-${start.getFullYear()} ${start.getHours()}:${start.getMinutes()}`;
     const endJson = `${end.getDay()}-${end.getMonth()}-${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`;
-    const signUp = data.get('SignUp');
-    const place = data.get('Place');
+    const signUp = data.get('SignUp')? data.get('SignUp') : null ;
+    const place = data.get('Place')? data.get('Place') : null;
     const image = data.get('image') as File;
 
     const value = {
@@ -33,7 +33,7 @@ export const actions = {
     const form = new FormData();
     form.append('event', blob);
     form.append('image', image, image.name);
-    console.log(form);
+    console.log(value);
     const success = await fetch(`/api/events`, {
       method: 'POST',
       body: form

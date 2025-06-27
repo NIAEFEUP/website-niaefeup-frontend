@@ -7,7 +7,6 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
   const res = await fetch(`/api/events/${params.id}`)
   if (!res.ok) error(res.status, 'Event not found');
   const event = await res.json();
-  console.log(event);
   return { event };
 };
 
@@ -42,9 +41,9 @@ export const actions = {
     const json = JSON.stringify(value);
     const blob = new Blob([json], { type: 'application/json' });
     const form = new FormData();
-    form.append('event', blob);
-    form.append('image', image, image.name);
-    console.log(form);
+    form.append('event', blob);value
+    if(image && image.size != 0) form.append('image', image, image.name);
+
     const success = await fetch(`/api/events/${params.id}`, {
       method: 'PUT',
       body: form

@@ -44,6 +44,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
+          required = {true};
           value={event.title}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
@@ -55,6 +56,7 @@
           horizontal
           textGap="25"
           value={event.slug}
+          required = {true};
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -64,6 +66,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
+          required = {true};
           value={toISOLocal(event.dateInterval.startDate)}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
@@ -74,6 +77,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
+          required = {true};
           value={toISOLocal(event.dateInterval.endDate)}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
@@ -85,6 +89,7 @@
           horizontal
           textGap="25"
           value={event.description}
+          required = {true};
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -95,7 +100,6 @@
           horizontal
           textGap="25"
           value={event.registerUrl}
-          
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -132,7 +136,7 @@
       </div>
 
       <div class="order-1 mt-20 flex flex-col align-top md:order-2">
-        <PictureInput text="Insira a Imagem" name="image"  value = {// não faço ideia de como resolver esse problema...}/>
+        <PictureInput text="Insira a Imagem" name="image" source = {event.image} />
       </div>
     </form>
   </div>

@@ -5,8 +5,10 @@
   import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
   
   export let value = '';
+  export let source = '';
   export let text: string;
   export let name: string = 'profilePicture';
+  export let required = false;
   let image: string;
   let fileInput: HTMLInputElement;
 
@@ -34,6 +36,7 @@
     type="file"
     {name}
     {value}
+    {required}
     accept="image/*"
     on:change={(e) => onFileSelected(e)}
     bind:this={fileInput}
@@ -46,10 +49,10 @@
       fileInput.click();
     }}
   >
-    {#if image}
+    {#if image || source}
       <img
         class="h-[200px] w-[200px] rounded-md object-cover"
-        src={image}
+        src =  {image? image : source}
         alt="Selected {name.replace(/([A-Z])/g, ' $1').toLowerCase()}"
       />
     {:else}
