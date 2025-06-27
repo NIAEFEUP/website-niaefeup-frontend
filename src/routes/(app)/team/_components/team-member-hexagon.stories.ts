@@ -24,7 +24,7 @@ export const MobileHexagon = {
       role: 'Co-Gestor de Projetos',
       photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
+      github: 'https://github.com/',
       websites: [{ url: 'https://www.facebook.com/' }]
     }
   },
@@ -55,7 +55,7 @@ export const CustomIconHexagon = {
       role: 'Co-Gestor de Projetos',
       photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
+      github: 'https://github.com/',
       websites: [{ iconPath: 'images/previews/facebook.png', url: 'https://www.facebook.com/' }]
     }
   }
@@ -69,7 +69,7 @@ export const HoveredCustomIconHexagon = {
       role: 'Co-Gestor de Projetos',
       photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
+      github: 'https://github.com/',
       websites: [{ iconPath: 'images/previews/facebook.png', url: 'https://www.facebook.com/' }]
     }
   },
@@ -86,7 +86,7 @@ export const DefaultIconHexagon = {
       role: 'Co-Gestor de Projetos',
       photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
+      github: 'https://github.com/',
       websites: [{ url: 'https://www.facebook.com/' }]
     }
   }
@@ -100,7 +100,7 @@ export const HoveredDefaultIconHexagon = {
       role: 'Co-Gestor de Projetos',
       photo: 'images/previews/bruno_rosendo.png',
       linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
+      github: 'https://github.com/',
       websites: [{ url: 'https://www.facebook.com/' }]
     }
   },
@@ -116,7 +116,7 @@ export const DefaultProfilePicHexagon = {
       email: 'brunorosendo@gmail.com',
       role: 'Co-Gestor de Projetos',
       linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
+      github: 'https://github.com/',
       websites: [{ url: 'https://www.facebook.com/' }]
     }
   }
@@ -129,7 +129,7 @@ export const HoveredDefaultProfilePicHexagon = {
       email: 'brunorosendo@gmail.com',
       role: 'Co-Gestor de Projetos',
       linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
+      github: 'https://github.com/',
       websites: [{ url: 'https://www.facebook.com/' }]
     }
   },

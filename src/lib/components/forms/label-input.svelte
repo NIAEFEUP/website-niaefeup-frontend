@@ -1,6 +1,7 @@
 <script>
   export let label = '';
   export let id = '';
+  export let name = '';
   export let type = 'text';
   export let placeholder = '';
   export let isTextArea = false;
@@ -32,6 +33,7 @@
       aria-label="textarea-input"
       class="min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
       {id}
+      {name}
       {placeholder}
       {required}
       rows="4"
@@ -42,6 +44,7 @@
       class="w-full rounded-lg bg-white p-2 text-primary placeholder-primary"
       {type}
       {id}
+      {name}
       {placeholder}
       {required}
     />
