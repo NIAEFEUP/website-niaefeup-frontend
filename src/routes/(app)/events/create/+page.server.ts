@@ -12,21 +12,26 @@ export const actions = {
 
     const startJson = `${start.getDay()}-${start.getMonth()}-${start.getFullYear()} ${start.getHours()}:${start.getMinutes()}`;
     const endJson = `${end.getDay()}-${end.getMonth()}-${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`;
-    const signUp = data.get('SignUp')? data.get('SignUp') : null ;
-    const place = data.get('Place')? data.get('Place') : null;
+    const signUp = data.get('SignUp');
+    const place = data.get('Place');
     const image = data.get('image') as File;
 
-    const value = {
-      title: title,
-      description: description,
-      slug: slug,
-      registerUrl: signUp,
-      dateInterval: {
-        startDate: startJson,
-        endDate: endJson
-      },
-      location: place
+    const value: {
+      title: FormDataEntryValue | null;
+      description: FormDataEntryValue | null;
+      slug: FormDataEntryValue | null;
+      dateInterval: { startDate: string; endDate: string };
+      registerUrl?: FormDataEntryValue | null;
+      location?: FormDataEntryValue | null;
+    } = {
+      title,
+      description,
+      slug,
+      dateInterval: { startDate: startJson, endDate: endJson }
     };
+
+    if (signUp) value.registerUrl = signUp;
+    if (place) value.location = place;
 
     const json = JSON.stringify(value);
     const blob = new Blob([json], { type: 'application/json' });

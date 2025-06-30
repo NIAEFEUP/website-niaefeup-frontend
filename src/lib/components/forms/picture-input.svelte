@@ -3,7 +3,7 @@
   import Icons from '$lib/components/icons/icons';
   import { createNotification } from '@/routes/(app)/_components/layout/notifications';
   import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
-  
+
   export let value = '';
   export let source = '';
   export let text: string;
@@ -52,7 +52,7 @@
     {#if image || source}
       <img
         class="h-[200px] w-[200px] rounded-md object-cover"
-        src =  {image? image : source}
+        src={image ? image : source}
         alt="Selected {name.replace(/([A-Z])/g, ' $1').toLowerCase()}"
       />
     {:else}

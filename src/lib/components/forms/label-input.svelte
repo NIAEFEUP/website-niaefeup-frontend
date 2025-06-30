@@ -40,7 +40,7 @@
       rows="4"
     />
   {:else}
-    <input 
+    <input
       aria-label="text-input"
       class="w-full rounded-lg bg-white p-2 text-primary placeholder-primary"
       {type}

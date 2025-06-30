@@ -22,7 +22,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          required = {true};
+          required="{true};"
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -32,7 +32,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          required = {true};
+          required="{true};"
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -42,7 +42,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          required = {true};
+          required="{true};"
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -52,7 +52,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          required = {true};
+          required="{true};"
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -62,7 +62,7 @@
           placeholder="Insira o texto"
           horizontal
           textGap="25"
-          required = {true};
+          required="{true};"
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -107,7 +107,7 @@
       </div>
 
       <div class="order-1 mt-20 flex flex-col align-top md:order-2">
-        <PictureInput text="Insira a Imagem" name="image" required = {true} />
+        <PictureInput text="Insira a Imagem" name="image" required={true} />
       </div>
     </form>
   </div>
