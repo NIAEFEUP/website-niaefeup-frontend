@@ -1,7 +1,8 @@
 <script>
   import ErrorSection from './_components/error/error-section.svelte';
+  // @ts-expect-error Import is as expected but throws error
   import { page } from '$app/stores';
-  import Button from '$lib/components/button.svelte';
+  import Button from '@/lib/components/buttons/button.svelte';
 </script>
 
 <main class="mx-10 my-20 flex flex-col justify-center gap-20 font-source_code">

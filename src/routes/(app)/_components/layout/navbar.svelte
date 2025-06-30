@@ -6,7 +6,7 @@
   $: currentPage = $page.url.pathname ?? '/';
   const links = [
     { href: '#', label: 'Equipa', pageComp: '/team' },
-    { href: '#', label: 'Projetos', pageComp: '/projects' },
+    { href: '/projects', label: 'Projetos', pageComp: '/projects' },
     { href: '#', label: 'Eventos', pageComp: '/events' },
     { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
   ];
