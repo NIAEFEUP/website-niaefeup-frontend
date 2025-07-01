@@ -78,6 +78,7 @@
     "embla-carousel-svelte": "^8.6.0",
     "lucide-svelte": "^0.378.0",
     "mode-watcher": "^0.3.0",
+    "moment": "^2.30.1",
     "storybook-addon-pseudo-states": "^3.0.1",
     "tailwind-merge": "^2.3.0",
     "tailwind-variants": "^0.2.1"
