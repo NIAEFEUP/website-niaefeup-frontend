@@ -6,7 +6,7 @@ export async function load({ params, fetch }) {
     console.log('Error fetching event:', res.status, res.statusText);
     throw error(res.status, 'Event not found');
   }
-
+  
   const event = await res.json();
   return { event };
 }
