@@ -9,7 +9,7 @@
   export let data: Event;
   let event = data.event;
   let momentDate = moment.utc(event.dateInterval.startDate, 'DD-MM-YYYY HH:mm').locale('pt');
-  let eventImage = "https://picsum.photos/500/500";
+  let eventImage = 'https://picsum.photos/500/500';
 </script>
 
 <div class="flex flex-col items-center gap-12">
