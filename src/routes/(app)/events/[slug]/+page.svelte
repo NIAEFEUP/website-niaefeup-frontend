@@ -16,7 +16,7 @@
     <Tabs.Content value="info">
       <EventHeader {data} />
       <Carousel />
-      <p class="text-justify text-2xl font-semibold">{data.event.description}</p>
+      <p class="text-justify text-2xl font-semibold">{data.description}</p>
     </Tabs.Content>
     <!-- <Tabs.Content value="respostas">Respostas</Tabs.Content> -->
   </Tabs.Root>
