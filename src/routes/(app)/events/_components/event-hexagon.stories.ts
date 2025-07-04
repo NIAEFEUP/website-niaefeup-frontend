@@ -31,7 +31,7 @@ export const SingleDateHexagon = {
       description: 'Muito fixe',
       teamMemberIds: [],
       registerUrl: 'https://www.google.com/intl/pt-PT/forms/about/',
-      dateInterval: { startDate: new Date('2023-12-10') },
+      dateInterval: { startDate: new Date('2023-12-10'),  endDate: new Date('2024-01-01')},
       location: 'Cervejaria Diu',
       thumbnailPath: 'images/previews/evento.png'
     }
@@ -69,7 +69,7 @@ export const MobileHexagon = {
       description: 'Muito fixe',
       teamMemberIds: [],
       registerUrl: 'https://www.google.com/intl/pt-PT/forms/about/',
-      dateInterval: { startDate: new Date('2023-12-10'), endDate: new Date('2023-12-05') },
+      dateInterval: { startDate: new Date('2023-12-10'), endDate: new Date('2023-12-11') },
       location: 'Cervejaria Diu',
       thumbnailPath: 'images/previews/evento.png'
     }
