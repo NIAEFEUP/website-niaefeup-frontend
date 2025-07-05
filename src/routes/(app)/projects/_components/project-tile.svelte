@@ -11,7 +11,7 @@
 
 <svelte:element
   this={windowWidth < screenSizeThreshold ? 'a' : 'div'}
-  href={windowWidth < screenSizeThreshold ? 'https://lipsum.com' : undefined}
+  href={windowWidth < screenSizeThreshold ? `/projects/${project.slug}` : undefined}
   class="flex h-44 w-4/5 flex-row justify-center bg-[#521015]
     {windowWidth < screenSizeThreshold
     ? 'odd:self-start odd:rounded-r-xl even:self-end even:rounded-l-xl'
@@ -22,14 +22,14 @@
     class="md:basis-3/10 mx-5 mb-3 flex w-full flex-row items-center justify-around gap-2 md:flex-col
 md:justify-between md:gap-4 md:px-0 md:py-0 {isOdd ? 'flex-row' : 'flex-row-reverse'}"
   >
-    <a href="https://lipsum.com">
+    <a href="/projects/{project.slug}">
       <img
         class="h-20 rounded-xl shadow-lg md:h-min md:max-h-80 md:shadow-none"
         src={windowWidth < screenSizeThreshold ? project.image : project.thumbnail}
         alt="{project.title}'s thumbnail"
       />
     </a>
-    <a href="https://lipsum.com">
+    <a href="/projects/{project.slug}">
       <p
         class="text-md text-center font-raleway font-semibold
                   text-gray-200 md:h-32 md:text-3xl md:text-white lg:text-5xl"
