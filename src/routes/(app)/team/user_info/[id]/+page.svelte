@@ -11,9 +11,9 @@
 <div class = "flex flex-col gap-10">
     <FormsHeader label="Informações Pessoais"/>
 
-    <div class = "flex flex-row justify-evenly">
+    <div class = "flex md:flex-row md:justify-evenly flex-col">
         
-        <div class = "flex flex-col">
+        <div class = "flex flex-col order-1 items-center">
 
             <PictureInput text = "Foto de perfil" name="image" required = {true} />
             
@@ -21,17 +21,26 @@
 
         </div>
 
-        <div class = "flex flex-col gap-5">
+        <div class = "flex flex-col order-2 ml-5 mr-5 gap-5">
 
-            <div class = "flex flex-row gap-12">
+            <div class = "flex flex-row gap-12 justify-evenly">
                 <LabelInput label = "Primeiro Nome" placeholder = "John"/>
 
                 <LabelInput label = "Último Nome" placeholder = "Doe"/>
 
             </div>
             
-            <Estatute label = "Estatuto" color1 = "primary" color2 = "secondary" width="large" text1 = "Membro Ativo" text2 = "Membro Inativo" gap = "20" bind:selected={selectedStatus}/>
+            <Estatute label = "Estatuto" color1 = "primary" color2 = "secondary" width="58" text1 = "Membro Ativo" text2 = "Membro Inativo" bind:selected={selectedStatus}/>
 
+            <LabelInput label = "Linkdin" placeholder = "Insira o Texto"/>
+
+            <LabelInput label = "Instagram" placeholder = "Insira o Texto"/>
+            
+            <LabelInput label = "Website" placeholder = "Insira o Texto"/>
+            
+            <LabelInput label = "Github" placeholder = "Insira o Texto"/>
+            
+            <LabelInput label = "Bio" placeholder = "Insira o Texto" isTextArea = {true}/>
         </div>
 
     </div>
