@@ -32,8 +32,8 @@ export const actions = {
       slug: slug,
       registerUrl: signUp,
       dateInterval: {
-        startDate: startJson,
-        endDate: endJson
+        startDate: start,
+        endDate: end
       },
       location: place
     };
