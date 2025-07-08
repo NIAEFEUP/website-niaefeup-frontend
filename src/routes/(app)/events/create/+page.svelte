@@ -19,20 +19,20 @@
           label="Título"
           name="Title"
           type="text"
-          placeholder="Insira o texto"
+          placeholder="Jantar de Curso"
           horizontal
-          textGap="25"
-          required="{true};"
+          textGap=25
+          required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
           label="Slug"
           name="Slug"
           type="text"
-          placeholder="Insira o texto"
+          placeholder="jantar-de-curso"
           horizontal
-          textGap="25"
-          required="{true};"
+          textGap=25
+          required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -41,8 +41,8 @@
           type="datetime-local"
           placeholder="Insira o texto"
           horizontal
-          textGap="25"
-          required="{true};"
+          textGap=25
+          required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -51,36 +51,36 @@
           type="datetime-local"
           placeholder="Insira o texto"
           horizontal
-          textGap="25"
-          required="{true};"
+          textGap=25
+          required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
           label="Descrição"
           name="Description"
           type="text"
-          placeholder="Insira o texto"
+          placeholder="Jantar muito fixe comida boa, bebida melhor!!!"
           horizontal
-          textGap="25"
-          required="{true};"
+          textGap=25
+          required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
           label="Inscrição"
           name="SignUp"
           type="text"
-          placeholder="Insira o texto"
+          placeholder="https://www.google.com/"
           horizontal
-          textGap="25"
+          textGap=25
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
           label="Localização"
           name="Place"
           type="text"
-          placeholder="Insira o texto"
+          placeholder="Cervejaria Diu"
           horizontal
-          textGap="25"
+          textGap=25
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
 
