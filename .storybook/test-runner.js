@@ -4,7 +4,7 @@ const { injectAxe, checkA11y, configureAxe } = require('axe-playwright');
 
 // Set the viewport to the default viewport for the story
 module.exports = {
-  async preRender(page, story) {
+  async preVisit(page, story) {
     const context = await getStoryContext(page, story);
     const viewPortParams = context.parameters?.viewport;
     const defaultViewportName = viewPortParams?.defaultViewport;
@@ -26,7 +26,7 @@ module.exports = {
     await injectAxe(page); // For a11y testing
   },
 
-  async postRender(page, story) {
+  async postVisit(page, story) {
     const storyContext = await getStoryContext(page, story);
 
     // Do not run a11y tests on disabled stories.
