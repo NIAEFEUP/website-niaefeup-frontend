@@ -5,8 +5,8 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
-  let selectedIndex: number | null = null;
-  let sidebarClosed = true;
+  let selectedIndex: number | null = $state(null);
+  let sidebarClosed = $state(true);
 
   function toggleSidebar() {
     sidebarClosed = !sidebarClosed;
@@ -20,7 +20,7 @@
   >
     <button
       class="col-start-2 h-fit w-1/2 sm:invisible"
-      on:click={toggleSidebar}
+      onclick={toggleSidebar}
       aria-label="Open sidebar"
     >
       <Icon src={Icons.Bars} color="white" size="31px" />
@@ -31,7 +31,7 @@
     class="bg-ni-sidebar absolute z-20 grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center overflow-scroll px-2 py-4 sm:invisible"
   >
     <BackgroundHexagon position="left" />
-    <button class="col-start-2 h-fit w-1/2 text-white" on:click={toggleSidebar}>
+    <button class="col-start-2 h-fit w-1/2 text-white" onclick={toggleSidebar}>
       <Icon src={Icons.Close} color="white" size="31px" />
     </button>
     <ul
@@ -41,7 +41,7 @@
         <NavItem selected={selectedIndex === i}>
           <a
             href="#/"
-            on:click={() => {
+            onclick={() => {
               selectedIndex = i;
               toggleSidebar();
             }}>{item}</a

@@ -5,12 +5,22 @@
   // Inspired by https://github.com/sveltejs/svelte-virtual-list/blob/master/VirtualList.svelte
   type T = $$Generic;
 
-  export let items: T[];
-  export let cols: number;
 
-  export let gap: 'small' | 'medium' | 'big' = 'medium';
-  export let orientation: 'horizontal' | 'vertical';
-  export let component: typeof TeamMemberHexagon | typeof EventHexagon;
+  interface Props {
+    items: T[];
+    cols: number;
+    gap?: 'small' | 'medium' | 'big';
+    orientation: 'horizontal' | 'vertical';
+    component: typeof TeamMemberHexagon | typeof EventHexagon;
+  }
+
+  let {
+    items,
+    cols,
+    gap = 'medium',
+    orientation,
+    component
+  }: Props = $props();
 
   const gridColumnsStyle =
     orientation === 'horizontal'
@@ -31,8 +41,9 @@
     {@const colEnd = isHorizontal ? 2 * col + 4 : 2 * col + 3 + (row % 2)}
     {@const rowEnd = isHorizontal ? 2 * row + 3 + (col % 2) : 2 * row + 4}
 
+    {@const SvelteComponent = component}
     <li style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}">
-      <svelte:component this={component} {orientation} data={item} />
+      <SvelteComponent {orientation} data={item} />
     </li>
   {/each}
 </ul>

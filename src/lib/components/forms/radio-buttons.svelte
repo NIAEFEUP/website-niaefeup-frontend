@@ -1,7 +1,11 @@
 <script lang="ts">
-  export let label: string = '';
-  export let options: string[];
-  export let horizontal: boolean = false;
+  interface Props {
+    label?: string;
+    options: string[];
+    horizontal?: boolean;
+  }
+
+  let { label = '', options, horizontal = false }: Props = $props();
 </script>
 
 <fieldset class="flex flex-row align-middle">

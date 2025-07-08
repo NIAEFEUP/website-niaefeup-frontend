@@ -2,9 +2,13 @@
   import type { Project } from '@/types/project';
 
   let screenSizeThreshold = 768; // tailwindcss sets 48rem (768px) as the minimum with for mobile devices
-  let windowWidth: number;
-  export let project: Project;
-  export let isOdd: boolean;
+  let windowWidth: number = $state();
+  interface Props {
+    project: Project;
+    isOdd: boolean;
+  }
+
+  let { project, isOdd }: Props = $props();
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />

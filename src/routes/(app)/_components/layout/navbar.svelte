@@ -3,7 +3,7 @@
   // @ts-expect-error Import is as expected but throws error
   import { page } from '$app/stores';
 
-  $: currentPage = $page.url.pathname ?? '/';
+  let currentPage = $derived($page.url.pathname ?? '/');
   const links = [
     { href: '#', label: 'Equipa', pageComp: '/team' },
     { href: '/projects', label: 'Projetos', pageComp: '/projects' },
@@ -11,7 +11,7 @@
     { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
   ];
 
-  let isScrolled = false;
+  let isScrolled = $state(false);
   let y = 0;
 
   function handleScroll() {

@@ -1,9 +1,19 @@
 <script lang="ts">
-  export let type: 'button' | 'submit' | 'reset' = 'button',
-    color: keyof typeof colorList,
-    hoverColor: keyof typeof colorList,
-    width: keyof typeof widthList,
+  interface Props {
+    type?: 'button' | 'submit' | 'reset';
+    color: keyof typeof colorList;
+    hoverColor: keyof typeof colorList;
+    width: keyof typeof widthList;
     text: string;
+  }
+
+  let {
+    type = 'button',
+    color,
+    hoverColor,
+    width,
+    text
+  }: Props = $props();
   const colorList = {
     primary: { main: 'bg-muted-red-700', hover: 'hover:bg-muted-red-500' },
     secondary: { main: 'bg-muted-red-500', hover: 'hover:bg-muted-red-500' },

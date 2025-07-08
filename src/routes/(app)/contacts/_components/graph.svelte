@@ -18,7 +18,7 @@
     [5, 3],
     [2, 4]
   ];
-  let innerWidth = 0;
+  let innerWidth = $state(0);
   let coefficient = 8;
   let iconSize = 8;
 
@@ -67,8 +67,8 @@
       {:else}
         <div
           class="flex h-full w-full items-center justify-center rounded bg-white bg-opacity-30"
-          on:click={() => copyToClipboard(socials[index].url)}
-          on:keydown={() => copyToClipboard(socials[index].url)}
+          onclick={() => copyToClipboard(socials[index].url)}
+          onkeydown={() => copyToClipboard(socials[index].url)}
           role="button"
           tabindex="0"
           aria-label="copy-mail"

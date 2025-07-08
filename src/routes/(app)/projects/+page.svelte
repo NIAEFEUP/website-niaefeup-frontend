@@ -4,9 +4,13 @@
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Project } from '@/types/project';
 
-  export let data: PageData;
-  export let projects: Project[] = data.projects;
-  export let hasPerms: boolean = data.hasPerms;
+  interface Props {
+    data: PageData;
+    projects?: Project[];
+    hasPerms?: boolean;
+  }
+
+  let { data, projects = data.projects, hasPerms = data.hasPerms }: Props = $props();
 </script>
 
 <section>

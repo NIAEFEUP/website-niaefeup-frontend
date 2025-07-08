@@ -5,12 +5,16 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
   export const project: Project = data.project;
   export const hasPerms: boolean = data.hasPerms;
 
   let screenSizeThreshold = 768;
-  let windowWidth: number;
+  let windowWidth: number = $state();
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />

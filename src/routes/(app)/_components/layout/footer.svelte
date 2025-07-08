@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { createBubbler } from 'svelte/legacy';
+
+  const bubble = createBubbler();
   import { onMount } from 'svelte';
   import MemberButton from './member-button.svelte';
   import { createNotification } from './notifications';
@@ -84,9 +87,9 @@
         data-testid="email-icon"
         role="button"
         tabindex="0"
-        on:click={() => copyToClipboard('ni@aefeup.pt')}
+        onclick={() => copyToClipboard('ni@aefeup.pt')}
         aria-label="Email"
-        on:keydown
+        onkeydown={bubble('keydown')}
         class="cursor-pointer"
       >
         <Icon src={Icons.Mail} color="white" size="24px" />
@@ -160,8 +163,8 @@
         role="button"
         tabindex="0"
         aria-label="Copy"
-        on:click={() => copyToClipboard('ni@aefeup.pt')}
-        on:keydown
+        onclick={() => copyToClipboard('ni@aefeup.pt')}
+        onkeydown={bubble('keydown')}
         class="cursor-pointer"
       >
         <Icon src={Icons.Mail} color="white" size="24px" />
