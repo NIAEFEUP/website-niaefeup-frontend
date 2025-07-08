@@ -7,7 +7,7 @@
   import FormsHeader from '$lib/components/forms-header.svelte';
 
   export let data: PageData;
-  export let event: Event = data.event; 
+  export let event: Event = data.event;
 
   function toISOLocal(date) {
     let parts = date.match(/(\d+)/g);
