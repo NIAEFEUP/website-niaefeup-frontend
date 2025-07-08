@@ -1,4 +1,3 @@
-import { Layout } from 'lucide-svelte';
 import ErrorPage from './+error.svelte';
 import LayoutDecorator from '$lib/storybook-utils/layout-decorator.svelte';
 
@@ -9,10 +8,12 @@ export default {
     layout: 'fullscreen',
     backgrounds: { default: 'clear' }
   },
-  decorators: [() => Layout, () => LayoutDecorator]
+  decorators: [() => LayoutDecorator]
 };
 
-export const NotFound = {
+// Awaiting support to mock $app/state, see https://github.com/storybookjs/storybook/issues/30209
+
+/* export const NotFound = {
   parameters: {
     sveltekit_experimental: {
       stores: {
@@ -71,3 +72,4 @@ export const BadRequest = {
     }
   }
 };
+ */
