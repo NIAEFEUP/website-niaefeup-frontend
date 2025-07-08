@@ -29,7 +29,7 @@
       {id}
       {placeholder}
       rows="4"
-></textarea>
+    ></textarea>
   {:else}
     <input
       aria-label="text-input"

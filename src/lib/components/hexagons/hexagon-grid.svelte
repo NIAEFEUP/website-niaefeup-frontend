@@ -5,7 +5,6 @@
   // Inspired by https://github.com/sveltejs/svelte-virtual-list/blob/master/VirtualList.svelte
   type T = $$Generic;
 
-
   interface Props {
     items: T[];
     cols: number;
@@ -14,13 +13,7 @@
     component: typeof TeamMemberHexagon | typeof EventHexagon;
   }
 
-  let {
-    items,
-    cols,
-    gap = 'medium',
-    orientation,
-    component
-  }: Props = $props();
+  let { items, cols, gap = 'medium', orientation, component }: Props = $props();
 
   const gridColumnsStyle =
     orientation === 'horizontal'

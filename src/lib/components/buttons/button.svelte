@@ -7,13 +7,7 @@
     text: string;
   }
 
-  let {
-    type = 'button',
-    color,
-    hoverColor,
-    width,
-    text
-  }: Props = $props();
+  let { type = 'button', color, hoverColor, width, text }: Props = $props();
   const colorList = {
     primary: { main: 'bg-muted-red-700', hover: 'hover:bg-muted-red-500' },
     secondary: { main: 'bg-muted-red-500', hover: 'hover:bg-muted-red-500' },

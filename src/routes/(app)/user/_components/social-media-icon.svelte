@@ -10,13 +10,7 @@
     iconPath?: string | null;
   }
 
-  let {
-    url,
-    social,
-    icon,
-    user,
-    iconPath = null
-  }: Props = $props();
+  let { url, social, icon, user, iconPath = null }: Props = $props();
 </script>
 
 <div class="h-12 w-12 rounded-md bg-white/20 p-3 sm:h-14 sm:w-14 sm:p-4">
