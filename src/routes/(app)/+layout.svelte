@@ -6,7 +6,7 @@
   import Sidebar from './_components/layout/sidebar.svelte';
   import SnackbarList from './_components/layout/notifications/snackbar-list.svelte';
   import '@/app.css';
-  
+
   interface Props {
     children?: import('svelte').Snippet;
   }

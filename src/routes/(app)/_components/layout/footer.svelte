@@ -1,7 +1,4 @@
 <script lang="ts">
-  import { createBubbler } from 'svelte/legacy';
-
-  const bubble = createBubbler();
   import { onMount } from 'svelte';
   import MemberButton from './member-button.svelte';
   import { createNotification } from './notifications';
