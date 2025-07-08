@@ -15,7 +15,7 @@
   class="flex flex-{horizontal ? 'row' : 'col'} {$$props.className}"
 >
   {#if label}
-    <div style="width: {textGap}vw;">
+    <div style="width: {textGap ? textGap : '20'}em;">
       <label
         class="m-1 flex flex-row font-source_code font-bold text-white"
         class:flex-row={required}
