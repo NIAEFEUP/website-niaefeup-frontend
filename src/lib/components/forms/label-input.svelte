@@ -12,8 +12,7 @@
 </script>
 
 <div
-  class="flex flex-{horizontal ? 'row justify-between' : 'col'} {$$props.className}"
-  class:align-middle={horizontal && !isTextArea}
+  class="flex flex-{horizontal ? 'row' : 'col'} {$$props.className}"
 >
   {#if label}
     <div style="width: {textGap}vw;">
