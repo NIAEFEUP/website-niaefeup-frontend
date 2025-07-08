@@ -89,7 +89,12 @@
         tabindex="0"
         onclick={() => copyToClipboard('ni@aefeup.pt')}
         aria-label="Email"
-        onkeydown={bubble('keydown')}
+        onkeydown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault(); // Prevent scrolling on space
+            copyToClipboard('ni@aefeup.pt');
+          }
+        }}
         class="cursor-pointer"
       >
         <Icon src={Icons.Mail} color="white" size="24px" />
@@ -164,7 +169,12 @@
         tabindex="0"
         aria-label="Copy"
         onclick={() => copyToClipboard('ni@aefeup.pt')}
-        onkeydown={bubble('keydown')}
+        onkeydown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault(); // Prevent scrolling on space
+            copyToClipboard('ni@aefeup.pt');
+          }
+        }}
         class="cursor-pointer"
       >
         <Icon src={Icons.Mail} color="white" size="24px" />

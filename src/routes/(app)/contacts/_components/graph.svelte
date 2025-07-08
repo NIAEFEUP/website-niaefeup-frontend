@@ -68,7 +68,12 @@
         <div
           class="flex h-full w-full items-center justify-center rounded bg-white bg-opacity-30"
           onclick={() => copyToClipboard(socials[index].url)}
-          onkeydown={() => copyToClipboard(socials[index].url)}
+          onkeydown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault(); // Prevent scrolling on space
+              copyToClipboard(socials[index].url);
+            }
+          }}
           role="button"
           tabindex="0"
           aria-label="copy-mail"
