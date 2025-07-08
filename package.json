@@ -67,7 +67,6 @@
     "vitest": "^1.4.0"
   },
   "dependencies": {
-    "@storybook/addon-viewport": "^9.0.8",
     "@vitest/coverage-v8": "^1.4.0",
     "clsx": "^2.1.1",
     "lucide-svelte": "^0.378.0",

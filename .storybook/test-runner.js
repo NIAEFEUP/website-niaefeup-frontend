@@ -1,5 +1,5 @@
 const { getStoryContext } = require('@storybook/test-runner');
-const { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } = require('@storybook/addon-viewport');
+const { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } = require('storybook/viewport');
 const { injectAxe, checkA11y, configureAxe } = require('axe-playwright');
 
 // Set the viewport to the default viewport for the story
