@@ -12,11 +12,10 @@
 </script>
 
 <div
-  class="flex flex-{horizontal ? 'row justify-between' : 'col'} {$$props.className}"
-  class:align-middle={horizontal && !isTextArea}
+  class="flex flex-{horizontal ? 'row' : 'col'} {$$props.className}"
 >
   {#if label}
-    <div style="width: {textGap}vw;">
+    <div style="width: {textGap ? textGap : '20'}em;">
       <label
         class="m-1 flex flex-row font-source_code font-bold text-white"
         class:flex-row={required}
@@ -31,8 +30,8 @@
   {/if}
   {#if isTextArea}
     <textarea
-      aria-label="textarea-input"
-      class="min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
+      aria-label="Text area input{label ? ' for ' + label : ''}"
+      class="w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
       {id}
       {name}
       {placeholder}

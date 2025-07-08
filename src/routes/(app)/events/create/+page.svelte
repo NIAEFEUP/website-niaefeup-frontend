@@ -63,6 +63,8 @@
           horizontal
           textGap=25
           required={true}
+          textGap=25
+          required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -72,6 +74,7 @@
           placeholder="https://www.google.com/"
           horizontal
           textGap=25
+          textGap=25
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -80,6 +83,7 @@
           type="text"
           placeholder="Cervejaria Diu"
           horizontal
+          textGap=25
           textGap=25
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
