@@ -30,7 +30,7 @@
   {/if}
   {#if isTextArea}
     <textarea
-      aria-label="textarea-input"
+      aria-label="Text area input{label ? ' for ' + label : ''}"
       class="min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
       {id}
       {name}
