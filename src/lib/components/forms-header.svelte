@@ -7,4 +7,3 @@
     {label}
   </p>
 </div>
-</div>

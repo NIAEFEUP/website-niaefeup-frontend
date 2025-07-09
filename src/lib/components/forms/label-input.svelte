@@ -37,7 +37,8 @@
       {placeholder}
       {required}
       rows="4"
-    />
+    >
+    </textarea>
   {:else}
     <input
       aria-label="text-input"
