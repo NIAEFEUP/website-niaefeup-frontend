@@ -21,7 +21,7 @@
           type="text"
           placeholder="Jantar de Curso"
           horizontal
-          textGap=25
+          textGap="25"
           required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
@@ -31,7 +31,7 @@
           type="text"
           placeholder="jantar-de-curso"
           horizontal
-          textGap=25
+          textGap="25"
           required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
@@ -41,7 +41,7 @@
           type="datetime-local"
           placeholder="Insira o texto"
           horizontal
-          textGap=25
+          textGap="25"
           required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
@@ -51,7 +51,7 @@
           type="datetime-local"
           placeholder="Insira o texto"
           horizontal
-          textGap=25
+          textGap="25"
           required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
@@ -61,7 +61,7 @@
           type="text"
           placeholder="Jantar muito fixe comida boa, bebida melhor!!!"
           horizontal
-          textGap=25
+          textGap="25"
           required={true}
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
@@ -71,7 +71,7 @@
           type="text"
           placeholder="https://www.google.com/"
           horizontal
-          textGap=25
+          textGap="25"
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
         <LabelInput
@@ -80,7 +80,7 @@
           type="text"
           placeholder="Cervejaria Diu"
           horizontal
-          textGap=25
+          textGap="25"
           className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
         />
 

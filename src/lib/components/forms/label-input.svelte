@@ -11,9 +11,7 @@
   export let name = '';
 </script>
 
-<div
-  class="flex flex-{horizontal ? 'row' : 'col'} {$$props.className}"
->
+<div class="flex flex-{horizontal ? 'row' : 'col'} {$$props.className}">
   {#if label}
     <div style="width: {textGap ? textGap : '20'}em;">
       <label
