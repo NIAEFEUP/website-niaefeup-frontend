@@ -2,6 +2,7 @@
   export let label: string = '';
   export let options: string[];
   export let horizontal: boolean = false;
+  export let selected: string = '';
 </script>
 
 <fieldset class="flex flex-row align-middle">
@@ -17,23 +18,17 @@
   {#each options as option}
     <input
       id="radio-{label.toLowerCase()}-{option.toLowerCase()}"
-      class="hidden text-center"
+      class="hidden text-center "
       type="radio"
       name={label}
       value={option}
+      bind:group={selected}
     />
     <label
-      class="m-1 justify-self-start rounded-lg bg-taupe-200 px-5 py-1 font-bold text-rose-950"
+      class="m-1 justify-self-start rounded-lg px-5 py-1 font-bold {selected === option ? 'bg-muted-red-400 text-taupe-100' : 'bg-taupe-200 text-rose-950'}"
       for="radio-{label.toLowerCase()}-{option.toLowerCase()}"
     >
       {option}
     </label>
   {/each}
 </fieldset>
-
-<style>
-  input:checked + label {
-    background-color: theme('colors.muted-red.400');
-    color: theme('colors.taupe.100');
-  }
-</style>

@@ -3,9 +3,8 @@
     import LabelInput from '$lib/components/forms/label-input.svelte';
     import PictureInput from '$lib/components/forms/picture-input.svelte';
     import Button from '$lib/components/buttons/button.svelte';
-    import Estatute from '../../_components/switch_color_button.svelte';
-    import { LucideTableRowsSplit } from 'lucide-svelte';
-    let selectedStatus: 'ativo' | 'inativo' = 'ativo';
+    import RadioButton from '$lib/components/forms/radio-buttons.svelte';
+    let selected: string;
 </script>
 
 <div class = "flex flex-col gap-10">
@@ -29,8 +28,8 @@
                 <LabelInput label = "Último Nome" placeholder = "Doe"/>
 
             </div>
-            
-            <Estatute label = "Estatuto" color1 = "primary" color2 = "secondary" width="58" text1 = "Membro Ativo" text2 = "Membro Inativo" bind:selected={selectedStatus}/>
+
+            <RadioButton label = "Estatuto" options = {["Ativo", "Inativo"]} selected = "Ativo" />
 
             <LabelInput label = "Linkdin" placeholder = "Insira o Texto"/>
 
@@ -41,6 +40,14 @@
             <LabelInput label = "Github" placeholder = "Insira o Texto"/>
             
             <LabelInput label = "Bio" placeholder = "Insira o Texto" isTextArea = {true}/>
+
+            <Button
+                type="submit"
+                color="primary"
+                hoverColor="primary"
+                width="large"
+                text="Guardar Alterações"
+                />
         </div>
 
     </div>
