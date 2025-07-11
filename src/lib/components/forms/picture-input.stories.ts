@@ -14,7 +14,8 @@ export default {
 
 export const Picture_Input = {
   args: {
-    text: 'Adicionar logo'
+    text: 'Adicionar logo',
+    source: ''
   }
 };
 
@@ -22,6 +23,6 @@ export const SourcePicture_Input = {
   args: {
     text: 'Adicionar logo',
     source:
-      'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTgX-qM3hvBIHwepZ900FVvx2QVQPlL6JDT6wrAjvREqegsokytnskVKWEyHSwCoCaPxGu7z7O9bSu97DH6_dw0xiJds0OmsSHhVk3IoGKT'
+      'https://media.istockphoto.com/id/1316134499/pt/foto/a-concept-image-of-a-magnifying-glass-on-blue-background-with-a-word-example-zoom-inside-the.jpg?s=612x612&w=0&k=20&c=raTXPP4qnJy_svR1J6dOYeoonbJOWeezfvGd9mAE5vo='
   }
 };
