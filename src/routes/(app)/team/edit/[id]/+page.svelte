@@ -1,60 +1,60 @@
 <script lang="ts">
+    import type { PageData } from './$types';
+    import type { Account } from '@/types/account';
     import FormsHeader from '$lib/components/forms-header.svelte';
     import LabelInput from '$lib/components/forms/label-input.svelte';
     import PictureInput from '$lib/components/forms/picture-input.svelte';
     import Button from '$lib/components/buttons/button.svelte';
     import RadioButton from '$lib/components/forms/radio-buttons.svelte';
+
+    export let data: PageData;
+    export let account: Account = data.account;
+
+    function toISOLocal(date: string): string {
+        const parts = date.match(/(\d+)/g);
+        if (!parts || parts.length < 5) return "";
+        const adate = new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]), Number(parts[3]), Number(parts[4]));
+        const localdt = new Date(adate.getTime() - adate.getTimezoneOffset() * 60000);
+        return localdt.toISOString().slice(0, -1);
+    }
 </script>
 
-<div class = "flex flex-col gap-10">
+<!-- Antes aqui tinha um await mas depois tirei pq parecia que não fazia lá grande diferença... -->
+<div class="flex flex-col gap-10">
     <FormsHeader label="Informações Pessoais"/>
 
-    <form
-        method="POST"
-        enctype="multipart/form-data"
-        class="flex md:flex-row md:justify-evenly flex-col"
-    >
+    <form method="POST" enctype="multipart/form-data" class="flex md:flex-row md:justify-around flex-col">
+        
+        <div class="flex flex-col order-1 items-center">
+            <PictureInput text="Foto de perfil" name="image" required={true} source={account.photoFile} />
             
-        <div class = "flex flex-col order-1 items-center">
-
-            <PictureInput text = "Foto de perfil" name="image" required = {true} />
-
-            <Button color = "primary" hoverColor = "primary" width = "large" text = "Alterar Senha" />
-
+            <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
         </div>
 
-        <div class = "flex flex-col order-2 ml-5 mr-5 gap-5">
+        <div class="flex flex-col order-2 ml-5 mr-5 gap-5">
+            <LabelInput label="Nome" placeholder="John Doe" value={account.name} textGap={30} />
 
-            <div class = "flex flex-col  md:flex-row gap-12 justify-evenly">
+            <RadioButton label="Is Active" options={["Ativo", "Inativo"]} selected={account.is_active ? "Ativo" : "Inativo"} />
 
-                <LabelInput label = "Primeiro Nome" placeholder = "John"/>
+            <LabelInput label="Email" placeholder="Insira o Texto" value={account.email} textGap={30} />
+            
+            <LabelInput label="Birth Date" type="datetime-local" value={toISOLocal(account.birthDate)} textGap={30} />
+            
+            <LabelInput label="Linkedin" placeholder="Insira o Texto" value={account.linkedin} textGap={30} />
+            
+            {#each account.websites as website, index}
+            <LabelInput label="Website {index+1} Url" placeholder="Insira o Texto" value={website.url ? website.url : ""} />
 
-                <LabelInput label = "Último Nome" placeholder = "Doe"/>
+            <LabelInput label="Website {index+1} Icon" placeholder="Insira o Texto" value={website.iconPath ? website.iconPath : ""} />
 
-            </div>
+            <LabelInput label="Website {index+1} Name" placeholder="Insira o Texto" value={website.label ? website.label : ""} />
+            {/each}
 
-            <RadioButton label = "Estatuto" options = {["Ativo", "Inativo"]} selected = "Ativo" />
+            <LabelInput label="Github" placeholder="Insira o Texto" value={account.github} textGap={30} />
 
-            <LabelInput label = "Linkdin" placeholder = "Insira o Texto"/>
-
-            <LabelInput label = "Instagram" placeholder = "Insira o Texto"/>
-
-            <LabelInput label = "Website" placeholder = "Insira o Texto"/>
-
-            <LabelInput label = "Github" placeholder = "Insira o Texto"/>
-
-            <LabelInput label = "Bio" placeholder = "Insira o Texto" isTextArea = {true}/>
-
-            <Button
-                type="submit"
-                color="primary"
-                hoverColor="primary"
-                width="large"
-                text="Guardar Alterações"
-                />
-
+            <LabelInput label="Bio" placeholder="Insira o Texto" isTextArea={true} value={account.bio} textGap={30} />
+            
+            <Button type="submit" color="primary" hoverColor="primary" width="large" text="Guardar Alterações" />
         </div>
-
     </form>
-
 </div>

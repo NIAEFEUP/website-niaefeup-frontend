@@ -37,6 +37,7 @@
       {name}
       {placeholder}
       {required}
+      {value}
       rows="4"
     />
   {:else}
