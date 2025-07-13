@@ -3,15 +3,12 @@ import { error } from '@sveltejs/kit';
 
 import type { PageServerLoad } from './$types';
 
-
-
 export const load: PageServerLoad = async ({ params, fetch }) => {
   const res = await fetch(`/api/accounts/${params.id}`);
   if (!res.ok) error(res.status, 'Account not found');
   const account = await res.json();
   return { account };
 };
-
 
 export const actions = {
   default: async ({ params, request, fetch }: RequestEvent) => {

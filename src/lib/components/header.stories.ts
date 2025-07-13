@@ -7,6 +7,6 @@ export default {
 
 export const Header = {
   args: {
-    label: 'Forms Header',
+    label: 'Forms Header'
   }
 };

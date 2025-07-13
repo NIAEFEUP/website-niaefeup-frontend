@@ -18,14 +18,16 @@
   {#each options as option}
     <input
       id="radio-{label.toLowerCase()}-{option.toLowerCase()}"
-      class="hidden text-center "
+      class="hidden text-center"
       type="radio"
       name={label}
       value={option}
       bind:group={selected}
     />
     <label
-      class="m-1 justify-self-start rounded-lg px-5 py-1 font-bold {selected === option ? 'bg-muted-red-400 text-taupe-100' : 'bg-taupe-200 text-rose-950'}"
+      class="m-1 justify-self-start rounded-lg px-5 py-1 font-bold {selected === option
+        ? 'bg-muted-red-400 text-taupe-100'
+        : 'bg-taupe-200 text-rose-950'}"
       for="radio-{label.toLowerCase()}-{option.toLowerCase()}"
     >
       {option}

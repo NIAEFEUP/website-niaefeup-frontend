@@ -31,7 +31,10 @@ export const SingleDateHexagon = {
       description: 'Muito fixe',
       teamMemberIds: [],
       registerUrl: 'https://www.google.com/intl/pt-PT/forms/about/',
-      dateInterval: { startDate: new Date('2023-12-10-21-00'), endDate: new Date('2023-12-10-23-59') },
+      dateInterval: {
+        startDate: new Date('2023-12-10-21-00'),
+        endDate: new Date('2023-12-10-23-59')
+      },
       location: 'Cervejaria Diu',
       thumbnailPath: 'images/previews/evento.png'
     }
