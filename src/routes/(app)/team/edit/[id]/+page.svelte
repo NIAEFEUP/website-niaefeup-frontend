@@ -19,22 +19,18 @@
     }
 </script>
 
-<!-- Antes aqui tinha um await mas depois tirei pq parecia que não fazia lá grande diferença... -->
+{#await account}
+  <p>...waiting</p>
+{:then account}
 <div class="flex flex-col gap-10">
     <FormsHeader label="Informações Pessoais"/>
 
     <form method="POST" enctype="multipart/form-data" class="flex md:flex-row md:justify-around flex-col">
-        
-        <div class="flex flex-col order-1 items-center">
-            <PictureInput text="Foto de perfil" name="image" required={true} source={account.photoFile} />
-            
-            <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
-        </div>
 
-        <div class="flex flex-col order-2 ml-5 mr-5 gap-5">
+        <div class="flex flex-col order-2 md:order-1 ml-5 mr-5 gap-5">
             <LabelInput label="Nome" placeholder="John Doe" value={account.name} textGap={30} />
 
-            <RadioButton label="Is Active" options={["Ativo", "Inativo"]} selected={account.is_active ? "Ativo" : "Inativo"} />
+            <RadioButton label="Is Active" options={["Ativo", "Inativo"]} selected={account.isActive ? "Ativo" : "Inativo"} />
 
             <LabelInput label="Email" placeholder="Insira o Texto" value={account.email} textGap={30} />
             
@@ -43,11 +39,11 @@
             <LabelInput label="Linkedin" placeholder="Insira o Texto" value={account.linkedin} textGap={30} />
             
             {#each account.websites as website, index}
+            <LabelInput label="Website {index+1} Name" placeholder="Insira o Texto" value={website.label ? website.label : ""} />
+
             <LabelInput label="Website {index+1} Url" placeholder="Insira o Texto" value={website.url ? website.url : ""} />
 
             <LabelInput label="Website {index+1} Icon" placeholder="Insira o Texto" value={website.iconPath ? website.iconPath : ""} />
-
-            <LabelInput label="Website {index+1} Name" placeholder="Insira o Texto" value={website.label ? website.label : ""} />
             {/each}
 
             <LabelInput label="Github" placeholder="Insira o Texto" value={account.github} textGap={30} />
@@ -56,5 +52,12 @@
             
             <Button type="submit" color="primary" hoverColor="primary" width="large" text="Guardar Alterações" />
         </div>
+
+        <div class="flex flex-col order-1 md:order-2 items-center mt-5">
+            <PictureInput text="Foto de perfil" name="photo" required={true} source={account.photo} />
+            
+            <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
+        </div>
     </form>
 </div>
+{/await}

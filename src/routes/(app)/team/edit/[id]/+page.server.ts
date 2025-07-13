@@ -17,17 +17,17 @@ export const actions = {
   default: async ({ params, request, fetch }: RequestEvent) => {
     const data = await request.formData();
 
-    const email = data.get('Email');
-    const name = data.get('Name');
-    const bio = data.get('Bio');
-    const birthDate = data.get('BirthDate');
-    const linkedin = data.get('Linkedin');
-    const github = data.get('Github');
-    const photoFile = data.get('photoFile') as File;
-    const url = data.get('Url') as string;
-    const icon = data.get('Icon') as string;
-    const label = data.get('Label') as string;
-    const is_active = data.get('Is Active') as unknown as boolean;
+    const email = data.get('email');
+    const name = data.get('name');
+    const bio = data.get('bio');
+    const birthDate = data.get('birthDate');
+    const linkedin = data.get('linkedin');
+    const github = data.get('github');
+    const photo = data.get('photo') as File;
+    const url = data.get('url') as string;
+    const icon = data.get('icon') as string;
+    const label = data.get('label') as string;
+    const isActive = data.get('isActive') as unknown as boolean;
 
     const value = {
       email,
@@ -36,7 +36,6 @@ export const actions = {
       birthDate,
       linkedin,
       github,
-      photoFile,
       websites: [
         {
           url,
@@ -44,14 +43,14 @@ export const actions = {
           label
         }
       ],
-      is_active
+      isActive
     };
 
     const json = JSON.stringify(value);
     const blob = new Blob([json], { type: 'application/json' });
     const form = new FormData();
     form.append('account', blob);
-    if (photoFile && photoFile.size != 0) form.append('photoFile', photoFile, photoFile.name);
+    if (photo && photo.size != 0) form.append('photo', photo, photo.name);
 
     const success = await fetch(`/api/accounts/${params.id}`, {
       method: 'PUT',
