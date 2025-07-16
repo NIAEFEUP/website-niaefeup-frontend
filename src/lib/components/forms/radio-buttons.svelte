@@ -3,6 +3,7 @@
   export let options: string[];
   export let horizontal: boolean = false;
   export let selected: string = '';
+  export let name: string = '';
 </script>
 
 <fieldset class="flex flex-row align-middle">
@@ -20,7 +21,7 @@
       id="radio-{label.toLowerCase()}-{option.toLowerCase()}"
       class="hidden text-center"
       type="radio"
-      name={label}
+      {name}
       value={option}
       bind:group={selected}
     />

@@ -32,7 +32,7 @@
 
 <div class="flex flex-col items-center justify-center gap-y-2">
   <input
-    style="display:none"
+    class="opacity-0"
     type="file"
     {name}
     {value}

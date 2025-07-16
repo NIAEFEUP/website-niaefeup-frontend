@@ -34,20 +34,23 @@
     <form
       method="POST"
       enctype="multipart/form-data"
-      class="flex flex-col md:flex-row md:justify-around"
+      class="flex flex-col md:flex-row md:justify-evenly"
     >
-      <div class="order-2 ml-5 mr-5 flex flex-col gap-5 md:order-1">
-        <LabelInput label="Nome" placeholder="John Doe" value={account.name} textGap={30} />
+      <div class="order-2 ml-5 mr-5 flex flex-col gap-5 ">
+        <LabelInput name="name" label="Nome" placeholder="John Doe" value={account.name} textGap={30} />
 
         <RadioButton
+          name="isActive"
           label="Is Active"
           options={['Ativo', 'Inativo']}
           selected={account.isActive ? 'Ativo' : 'Inativo'}
+
         />
 
-        <LabelInput label="Email" placeholder="Insira o Texto" value={account.email} textGap={30} />
+        <LabelInput name="email" label="Email" placeholder="Insira o Texto" value={account.email} textGap={30} />
 
         <LabelInput
+          name="birthDate"
           label="Birth Date"
           type="datetime-local"
           value={toISOLocal(account.birthDate)}
@@ -55,26 +58,30 @@
         />
 
         <LabelInput
+          name="linkedin"
           label="Linkedin"
           placeholder="Insira o Texto"
-          value={account.linkedin}
+          value={account.linkedin ? account.linkedin : ''}
           textGap={30}
         />
 
         {#each account.websites as website, index}
           <LabelInput
+            name="label"
             label="Website {index + 1} Name"
             placeholder="Insira o Texto"
             value={website.label ? website.label : ''}
           />
 
           <LabelInput
+            name="url"
             label="Website {index + 1} Url"
             placeholder="Insira o Texto"
             value={website.url ? website.url : ''}
           />
 
           <LabelInput
+            name="icon"
             label="Website {index + 1} Icon"
             placeholder="Insira o Texto"
             value={website.iconPath ? website.iconPath : ''}
@@ -82,17 +89,19 @@
         {/each}
 
         <LabelInput
+          name="github"
           label="Github"
           placeholder="Insira o Texto"
-          value={account.github}
+          value={account.github ? account.github : ''}
           textGap={30}
         />
 
         <LabelInput
+          name="bio"
           label="Bio"
           placeholder="Insira o Texto"
           isTextArea={true}
-          value={account.bio}
+          value={account.bio ? account.bio : ''}
           textGap={30}
         />
 
@@ -105,8 +114,8 @@
         />
       </div>
 
-      <div class="order-1 mt-5 flex flex-col items-center md:order-2">
-        <PictureInput text="Foto de perfil" name="photo" required={true} source={account.photo} />
+      <div class="order-1 mt-5 flex flex-col items-center">
+        <PictureInput text="Foto de perfil" name="photo" source={account.photo} />
 
         <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
       </div>
