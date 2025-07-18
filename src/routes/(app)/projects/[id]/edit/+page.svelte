@@ -1,9 +1,8 @@
 <script>
   import FileInput from '../../../../../lib/components/forms/file-input.svelte';
-  import LabelInput from '@/lib/components/forms/label-input.svelte';
-  import PictureInput from '@/lib/components/forms/picture-input.svelte';
-  import RadioButtons from '@/lib/components/forms/radio-buttons.svelte';
-  import Button from '@/lib/components/buttons/button.svelte';
+  import LabelInput from '../../../../../lib/components/forms/label-input.svelte';
+  import PictureInput from '../../../../../lib/components/forms/picture-input.svelte';
+  import Button from '../../../../../lib/components/buttons/button.svelte';
 </script>
 
 <div class="flex w-full flex-col items-center justify-around">
@@ -20,7 +19,6 @@
           label="Title"
           name="title"
           horizontal
-          required
           placeholder="Insira o texto"
           className="flex-col md:flex-row"
           textGap="10"
@@ -30,7 +28,6 @@
           label="Slug"
           name="slug"
           horizontal
-          required
           placeholder="Insira o texto"
           className="flex-col md:flex-row"
           textGap="10"
@@ -55,45 +52,10 @@
           textGap="10"
         />
 
-        <!--<div class="flex w-[50vw] flex-col gap-5 md:flex-row">
-          <p class="w-1/6 font-bold">Tipo*</p>
-
-          <div class="flex flex-col gap-5">
-            <RadioButtons
-              options={['aplicacao', 'website', 'outro']}
-              horizontal
-            />
-
-            <div class="flex flex-col gap-5 rounded-xl bg-white bg-opacity-30 p-5">
-              <LabelInput
-                label="Google Play"
-                horizontal
-                labelwidth="1/4"
-                name="googleplay"
-                placeholder="Insira o texto"
-                className="flex-col md:flex-row"
-                textGap="10"
-              />
-
-              <LabelInput
-                label="App Store"
-                horizontal
-                boxwidth="[25vw]"
-                labelwidth="1/4"
-                name="appstore"
-                placeholder="Insira o texto"
-                className="flex-col md:flex-row"
-                textGap="10"
-              />
-            </div>
-          </div>
-        </div>-->
-
         <LabelInput
           label="Descrição"
           name="description"
           horizontal
-          required
           placeholder="Insira o texto"
           className="flex-col md:flex-row"
           textGap="10"
@@ -108,22 +70,20 @@
           label="Público Alvo"
           name="public"
           horizontal
-          required
           placeholder="Insira o texto"
           className="flex-col md:flex-row"
           textGap="10"
         />
 
         <div class="flex w-[50vw] gap-10">
-          <RadioButtons options={['Guardar Alteracoes', 'Cancelar']} horizontal />
+          <Button type="submit" color="reddish" hoverColor="reddish" text="Guardar Alterações"/>
+          <Button type="reset" color="reddish" hoverColor="reddish" text="Cancelar"/>
         </div>
-
-        <Button type="submit" color="primary" hoverColor="secondary" text="morra" />
       </div>
 
       <div class="order-1 flex flex-col items-center gap-5 self-center md:order-2 md:self-start">
-        <PictureInput label="Image" name="image" text="logo" />
-        <PictureInput label="Image" name="imageMenu" text="imagem do menu" />
+        <PictureInput name="image" text="logo" />
+        <PictureInput name="imageMenu" text="imagem do menu" />
       </div>
     </div>
   </form>

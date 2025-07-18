@@ -3,15 +3,10 @@ import type { RequestEvent } from '@sveltejs/kit';
 export const actions = {
   default: async ({ request, params, fetch }: RequestEvent) => {
     const formData: FormData = await request.formData();
-    console.log(formData);
     const id = params.id;
     const googlePlay = formData.get('googleplay');
     const appStore = formData.get('appstore');
 
-    console.log(googlePlay);
-    console.log(appStore);
-    console.log([googlePlay, appStore]);
-    console.log('---------------------------------------------------------------------');
     const value = {
       title: formData.get('title'),
       description: formData.get('description'),
@@ -28,7 +23,6 @@ export const actions = {
     const form = new FormData();
     form.append('project', blob);
 
-    console.log(value);
 
     const success = await fetch(`/api/projects/${id}`, {
       method: 'PUT',

@@ -13,7 +13,7 @@
 <div class="relative flex items-center space-x-4">
   <label
     for="file-upload"
-    class="muted-red cursor-pointer rounded-lg bg-taupe-200 px-4 py-2 text-black hover:bg-red-600"
+    class="muted-red cursor-pointer rounded-lg bg-taupe-200 px-4 py-2 text-rose-950 font-bold hover:bg-red-500"
   >
     Selecionar ficheiro
   </label>
@@ -26,7 +26,7 @@
         <span>{file.name}</span>
         <button
           on:click={() => pop_file(file)}
-          class=" order-2 rounded bg-red-600 px-1 font-bold text-white hover:bg-muted-red-400 md:right-[-5px]"
+          class=" order-2 rounded bg-white px-1 text-black font-bold hover:bg-red-500 md:right-[-5px]"
           >X</button
         >
       </div>
