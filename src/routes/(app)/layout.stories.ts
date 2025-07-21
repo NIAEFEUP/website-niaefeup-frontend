@@ -1,5 +1,5 @@
 import { userEvent, waitFor, waitForElementToBeRemoved, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { expect, jest } from '@storybook/jest';
 import Layout from './+layout.svelte';
 import NotificationMessages from './_components/layout/notifications/notification-messages';
 import LayoutDecorator from '$lib/storybook-utils/layout-decorator.svelte';
@@ -27,8 +27,16 @@ export const Default = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
+    // Mock navigator.clipboard.writeText
+    const clipboardCopyMock = jest
+      .spyOn(navigator.clipboard, 'writeText')
+      .mockImplementation(async (content: string) => {
+        console.log('Mocked clipboard writeText with:', content);
+      });
+
     await step('Copy email and check notification', async () => {
       await userEvent.click(await canvas.findByTestId('email-icon'));
+      expect(clipboardCopyMock).toHaveBeenCalledWith('ni@aefeup.pt');
       const notification = canvas.queryByText(NotificationMessages.COPY_EMAIL);
       await expect(notification).toBeTruthy();
     });
