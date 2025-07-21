@@ -14,7 +14,7 @@
   export const hasPerms: boolean = data.hasPerms;
 
   let screenSizeThreshold = 768;
-  let windowWidth: number = $state();
+  let windowWidth: number = $state(0);
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
