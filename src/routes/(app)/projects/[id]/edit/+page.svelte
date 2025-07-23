@@ -76,8 +76,8 @@
         />
 
         <div class="flex w-[50vw] gap-10">
-          <Button type="submit" color="reddish" hoverColor="reddish" text="Guardar Alterações"/>
-          <Button type="reset" color="reddish" hoverColor="reddish" text="Cancelar"/>
+          <Button type="submit" color="reddish" hoverColor="reddish" text="Guardar Alterações" />
+          <Button type="reset" color="reddish" hoverColor="reddish" text="Cancelar" />
         </div>
       </div>
 

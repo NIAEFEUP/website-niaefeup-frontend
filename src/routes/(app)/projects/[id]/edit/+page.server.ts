@@ -23,7 +23,6 @@ export const actions = {
     const form = new FormData();
     form.append('project', blob);
 
-
     const success = await fetch(`/api/projects/${id}`, {
       method: 'PUT',
       body: form
