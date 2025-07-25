@@ -82,7 +82,9 @@
         </p>
         <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
           {#each project.technologies as technology}
-            <div
+            <a
+              href={technology.url}
+              target="_blank"
               class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
             >
               <img
@@ -93,7 +95,7 @@
               {#if windowWidth > screenSizeThreshold}
                 <p class="text-xl text-white">{technology.name}</p>
               {/if}
-            </div>
+            </a>
           {/each}
         </div>
       </div>
