@@ -82,17 +82,16 @@
         </p>
         <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
           {#each project.technologies as technology}
-            <!-- TODO: fix this when we have the technologies entity implemented in the backend -->
             <div
               class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
             >
               <img
-                src="https://picsum.photos/id/239/200/200"
-                alt="Logótipo da tecnologia {technology}"
+                src={technology.image}
+                alt="Logótipo da tecnologia {technology.name}"
                 class="max-h-16"
               />
               {#if windowWidth > screenSizeThreshold}
-                <p class="text-xl text-white">{technology}</p>
+                <p class="text-xl text-white">{technology.name}</p>
               {/if}
             </div>
           {/each}
