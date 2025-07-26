@@ -5,22 +5,41 @@
   import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
   import { onMount } from 'svelte';
   let isSmallScreen = false;
-  
+
   const checkScreenSize = () => {
     isSmallScreen = window.innerWidth < 768; // Tailwind's `md` breakpoint
   };
-    
-    onMount(() => {
-        checkScreenSize(); // Check screen size on mount
-        window.addEventListener('resize', checkScreenSize); // Update on resize
 
-        return () => {
-            window.removeEventListener('resize', checkScreenSize); // Cleanup
-        };
-    });
+  // lib/utils/get-cols.ts
+  function getColsFromWidth(width: number): number {
+    if (width >= 1280) return 6; // xl
+    if (width >= 1024) return 5; // lg
+    if (width >= 768) return 4; // md
+    if (width >= 640) return 3; // sm
+    return 2; // default / mobile
+  }
+
+  onMount(() => {
+    checkScreenSize(); // Check screen size on mount
+    updateCols();
+
+    window.addEventListener('resize', checkScreenSize); // Update on resize
+    window.addEventListener('resize', updateCols);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize); // Cleanup
+      window.removeEventListener('resize', updateCols);
+    };
+  });
+
+  let cols = getColsFromWidth(typeof window !== 'undefined' ? window.innerWidth : 1024); // default to `md`
+
+  const updateCols = () => {
+    cols = getColsFromWidth(window.innerWidth);
+    console.log(`Updated cols to: ${cols}`); // Debugging log
+  };
 
   const boardMembers: TeamMember[] = [
- 
     {
       name: 'Bruno Rosendo',
       email: 'brunorosendo@gmail.com',
@@ -110,11 +129,10 @@
       linkedin: 'https://pt.linkedin.com/',
       gitHub: 'https://github.com/',
       websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    ];
+    }
+  ];
 
   const teamMembers: TeamMember[] = [
- 
     {
       name: 'Bruno Rosendo',
       email: 'brunorosendo@gmail.com',
@@ -243,10 +261,9 @@
       gitHub: 'https://github.com/',
       websites: [{ url: 'https://www.facebook.com/' }]
     }
-    ];
+  ];
 
-    const recruitMembers: TeamMember[] = [
- 
+  const recruitMembers: TeamMember[] = [
     {
       name: 'Bruno Rosendo',
       email: 'brunorosendo@gmail.com',
@@ -375,142 +392,7 @@
       gitHub: 'https://github.com/',
       websites: [{ url: 'https://www.facebook.com/' }]
     }
-    ];
-
-
-    const alumniMembers: TeamMember[] = [
- 
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    },
-    {
-      name: 'Bruno Rosendo',
-      email: 'brunorosendo@gmail.com',
-      photo: 'images/previews/bruno_rosendo.png',
-      linkedin: 'https://pt.linkedin.com/',
-      gitHub: 'https://github.com/',
-      websites: [{ url: 'https://www.facebook.com/' }]
-    }
-    ];
-
-
+  ];
 </script>
 
 <section class="flex flex-col justify-center gap-32">
@@ -518,101 +400,46 @@
     <h1 class="text-3xl font-bold">&lt; Equipa /&gt;</h1>
   </section>
 
-<section class="flex flex-col justify-center items-center">
-    <div class="max-w-5xl w-full p-6">
-        <div class=" w-full mb-6 items-center {isSmallScreen ? 'justify-center' : 'grid grid-cols-5'}">
-            {#if !isSmallScreen}
-                <div class="hidden md:block md:col-span-1"></div>
-            {/if}
-            <h2
-                class="text-3xl font-bold text-center"
-            >
-                Direção
-            </h2>
-            {#if !isSmallScreen}
-                <div class="hidden md:block md:col-span-3"></div>
-            {/if}
-        </div>
-
-        {#if isSmallScreen}
-          <HexagonGrid
-            items={boardMembers}
-            cols={2}
-            gap="small"
-            orientation="horizontal"
-            component={TeamMemberHexagon}
-            class=""
-          />
-        {:else}
-          <HexagonGrid
-            items={boardMembers}
-            cols={5}
-            gap="small"
-            orientation="horizontal"
-            component={TeamMemberHexagon}
-            class=""
-          />
-        {/if}
-    </div>
-</section>
-
-  <section class="flex flex-col justify-center items-center">
-    <div class="justify-center max-w-5xl">
-        <div class="grid grid-cols-5 w-full mb-6">   
-            <div class="col-span-3"></div>
-            <h2 class="text-3xl font-bold col-span-1 pr-4 place-self-center">Membros</h2>
-            <div class="col-span-1"></div>
-        </div>
-        <HexagonGrid
-            items={teamMembers}
-            cols={5}
-            gap="small"
-            orientation="horizontal"
-            component={TeamMemberHexagon}
-            class=""
-        />
-    </div>
-    
-  </section>  
-
-  <section class="flex flex-col justify-center items-center">
-    <div class="justify-center max-w-5xl">
-        <div class="grid grid-cols-5 w-full mb-6">   
-            <div class="col-span-1"></div>
-            <h2 class="text-3xl font-bold pl-4 col-span-1 place-self-center">Recrutas</h2>
-            <div class="col-span-1"></div>
-        </div>
-        <HexagonGrid
-            items={recruitMembers}
-            cols={5}
-            gap="small"
-            orientation="horizontal"
-            component={TeamMemberHexagon}
-            class=""
-        />
-    </div>
-    
+  <section class="flex w-full flex-col items-center justify-center p-6">
+    <h2 class="text-center text-3xl font-bold">Direção</h2>
+    <HexagonGrid
+      items={boardMembers}
+      {cols}
+      gap="small"
+      orientation="horizontal"
+      component={TeamMemberHexagon}
+    />
   </section>
 
-    <section class="flex flex-col justify-center items-center">
-        <div class="justify-center max-w-5xl">
-            <div class="grid grid-cols-5 w-full mb-6">   
-                <div class="col-span-3"></div>
-                <h2 class="text-3xl font-bold col-span-1 pr-4 place-self-center">Alumni</h2>
-                <div class="col-span-1"></div>
-            </div>
-            <HexagonGrid
-                items={alumniMembers}
-                cols={5}
-                gap="small"
-                orientation="horizontal"
-                component={TeamMemberHexagon}
-                class=""
-            />
-        </div>
-        
-    </section>  
+  <section class="flex w-full flex-col items-center justify-center p-6">
+    <div class="mb-6 grid w-full grid-cols-5">
+      <div class="col-span-3"></div>
+      <h2 class="col-span-1 place-self-center pr-4 text-3xl font-bold">Membros</h2>
+      <div class="col-span-1"></div>
+    </div>
 
-  
+    <HexagonGrid
+      items={teamMembers}
+      {cols}
+      gap="small"
+      orientation="horizontal"
+      component={TeamMemberHexagon}
+    />
+  </section>
+
+  <section class="flex w-full flex-col items-center justify-center p-6">
+    <div class="mb-6 grid w-full grid-cols-5">
+      <div class="col-span-1"></div>
+      <h2 class="col-span-1 place-self-center pl-4 text-3xl font-bold">Recrutas</h2>
+      <div class="col-span-1"></div>
+    </div>
+
+    <HexagonGrid
+      items={recruitMembers}
+      {cols}
+      gap="small"
+      orientation="horizontal"
+      component={TeamMemberHexagon}
+    />
+  </section>
 </section>
-
