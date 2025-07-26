@@ -49,7 +49,7 @@
           label="Fim"
           name="DateEnd"
           type="datetime-local"
-          placeholder="Insira o texto"
+          placeholder="Insira o texto"                                           
           horizontal
           textGap="25"
           required={true}
@@ -106,7 +106,7 @@
         </div>
       </div>
 
-      <div class="order-1 mt-20 flex flex-col align-top md:order-2">
+      <div class="order-1 mt-20 flex flex-col align-top md:order-2 md:max-w-[278px]">
         <PictureInput text="Insira a Imagem" name="image" required={true} />
       </div>
     </form>

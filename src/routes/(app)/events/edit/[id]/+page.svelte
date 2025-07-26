@@ -5,17 +5,10 @@
   import LabelInput from '$lib/components/forms/label-input.svelte';
   import Button from '$lib/components/buttons/button.svelte';
   import FormsHeader from '$lib/components/forms-header.svelte';
+  import { toISOLocal } from '$lib/utils.ts'
 
   export let data: PageData;
   export let event: Event = data.event;
-
-  function toISOLocal(date) {
-    let parts = date.match(/(\d+)/g);
-
-    var adate = new Date(parts[2], parts[1] - 1, parts[0], parts[3], parts[4]); //os parametros tão mal. a rita mandou no slack os parametros como devem ser
-    var localdt = new Date(adate - adate.getTimezoneOffset() * 60000);
-    return localdt.toISOString().slice(0, -1);
-  }
 </script>
 
 {#await event}
@@ -50,7 +43,7 @@
             horizontal
             textGap="25"
             value={event.slug}
-            required="{true};"
+            required={true}
             className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
           />
           <LabelInput
@@ -60,7 +53,7 @@
             placeholder="Insira o texto"
             horizontal
             textGap="25"
-            required="{true};"
+            required={true}
             value={toISOLocal(event.dateInterval.startDate)}
             className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
           />
@@ -68,10 +61,10 @@
             label="Fim"
             name="DateEnd"
             type="datetime-local"
-            placeholder="Insira o texto"
+            placeholder="12-02-2025 12:30"
             horizontal
             textGap="25"
-            required="{true};"
+            required={true}
             value={toISOLocal(event.dateInterval.endDate)}
             className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
           />

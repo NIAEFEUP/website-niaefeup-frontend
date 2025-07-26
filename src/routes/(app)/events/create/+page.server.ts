@@ -10,8 +10,11 @@ export const actions = {
     const start = new Date(data.get('DateStart') as string);
     const end = new Date(data.get('DateEnd') as string);
 
-    const startJson = `${start.getDate()}-${start.getMonth()}-${start.getFullYear()} ${start.getHours()}:${start.getMinutes()}`;
-    const endJson = `${end.getDate()}-${end.getMonth()}-${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`;
+    //the following start.getMonth()+1 is because getMonth() actually returns month index :( 
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
+
+    const startJson = `${start.getDate()}-${start.getMonth()+1}-${start.getFullYear()} ${start.getHours()}:${start.getMinutes()}`;
+    const endJson = `${end.getDate()}-${end.getMonth()+1}-${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`;
     const signUp = data.get('SignUp');
     const place = data.get('Place');
     const image = data.get('image') as File;

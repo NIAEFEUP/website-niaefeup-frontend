@@ -4,6 +4,7 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, fetch }) => {
+  console.log("Here", params.id);
   const res = await fetch(`/api/events/${params.id}`);
   if (!res.ok) error(res.status, 'Event not found');
   const event = await res.json();
@@ -20,8 +21,8 @@ export const actions = {
     const start = new Date(data.get('DateStart') as string);
     const end = new Date(data.get('DateEnd') as string);
 
-    const startJson = `${start.getDate()}-${start.getMonth()}-${start.getFullYear()} ${start.getHours()}:${start.getMinutes()}`;
-    const endJson = `${end.getDate()}-${end.getMonth()}-${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`;
+    const startJson = `${start.getDate()}-${start.getMonth()+1}-${start.getFullYear()} ${start.getHours()}:${start.getMinutes()}`;
+    const endJson = `${end.getDate()}-${end.getMonth()+1}-${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`;
     const signUp = data.get('SignUp');
     const place = data.get('Place');
     const image = data.get('image') as File;
