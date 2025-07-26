@@ -63,7 +63,7 @@
     <input
       on:input={changeColor}
       aria-label="text-input"
-      class="w-full rounded-lg bg-white p-2 text-secondary"
+      class="w-full rounded-lg bg-white p-2 placeholder-secondary"
       {type}
       {id}
       {name}
