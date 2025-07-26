@@ -49,7 +49,7 @@
           label="Fim"
           name="DateEnd"
           type="datetime-local"
-          placeholder="Insira o texto"                                           
+          placeholder="Insira o texto"
           horizontal
           textGap="25"
           required={true}

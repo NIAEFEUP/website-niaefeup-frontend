@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { guidGenerator } from '$lib/utils'
+  import { onMount } from 'svelte';
+  import { guidGenerator } from '$lib/utils';
 
   export let value = '';
   export let label = '';
@@ -11,26 +12,23 @@
   export let horizontal = false;
   export let textGap;
   export let name = '';
-  
+
   function changeColor() {
     const input = document.getElementById(id) as HTMLInputElement | null;
-    if (!input) return
+    if (!input) return;
     const inputValue = input.value;
-    if(inputValue){
-      input.classList.add('text-primary')
-      input.classList.remove('text-secondary')  
-      return
+    if (inputValue) {
+      input.classList.add('text-primary');
+      input.classList.remove('text-secondary');
+      return;
     }
-    input.classList.remove('text-primary')
-    input.classList.add('text-secondary')
+    input.classList.remove('text-primary');
+    input.classList.add('text-secondary');
   }
-
-  import { onMount } from 'svelte';
 
   onMount(() => {
     changeColor();
   });
-
 </script>
 
 <div class="flex flex-{horizontal ? 'row' : 'col'} {$$props.className}">

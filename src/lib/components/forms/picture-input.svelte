@@ -31,8 +31,8 @@
 </script>
 
 <div class="flex flex-col items-center justify-center gap-y-2">
-  <input 
-    class = "opacity-0"
+  <input
+    class="opacity-0"
     type="file"
     {name}
     {value}

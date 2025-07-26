@@ -5,7 +5,7 @@
   import LabelInput from '$lib/components/forms/label-input.svelte';
   import Button from '$lib/components/buttons/button.svelte';
   import FormsHeader from '$lib/components/forms-header.svelte';
-  import { toISOLocal } from '$lib/utils.ts'
+  import { toISOLocal } from '$lib/utils.ts';
 
   export let data: PageData;
   export let event: Event = data.event;
