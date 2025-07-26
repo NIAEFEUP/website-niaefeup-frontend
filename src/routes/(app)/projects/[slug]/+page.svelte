@@ -89,8 +89,8 @@
             >
               <img
                 src={technology.image}
-                alt="Logótipo da tecnologia {technology.name}"
-                class="max-h-16"
+                alt="Technology {technology.name}'s logo"
+                class="max-h-12"
               />
               {#if windowWidth > screenSizeThreshold}
                 <p class="text-xl text-white">{technology.name}</p>
