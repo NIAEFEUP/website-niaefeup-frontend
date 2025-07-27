@@ -3,6 +3,8 @@
   import LabelInput from '$lib/components/forms/label-input.svelte';
   import Button from '$lib/components/buttons/button.svelte';
   import FormsHeader from '$lib/components/forms-header.svelte';
+
+  export let form;
 </script>
 
 <div class="flex h-full flex-col">
@@ -94,6 +96,12 @@
           />
           <p class="flex items-center justify-center font-semibold">Nenhum Ficheiro Selecionado</p>
         </div>
+
+        {#if form?.errorMessage}
+          {#each form.errorMessage as error}
+            <p class="mt-2 text-red-500">{error}</p>
+          {/each}
+        {/if}
 
         <div class="ml-5 mr-5 flex flex-row md:ml-0">
           <Button

@@ -1,3 +1,4 @@
+import { fail } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
 
 export const actions = {
@@ -41,12 +42,30 @@ export const actions = {
     const form = new FormData();
     form.append('event', blob);
     form.append('image', image, image.name);
-    console.log(value);
-    const success = await fetch(`/api/events`, {
-      method: 'POST',
-      body: form
-    }).then((res) => res.ok);
+    try {
+      const res = await fetch('/api/events', {
+        method: 'POST',
+        body: form
+      });
 
-    return success;
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        let messages: string[] = [];
+
+        if (Array.isArray(errorData.errors)) {
+          messages = errorData.errors.map((error: { message: string }) => error.message);
+        } else if (errorData.message) {
+          messages = [errorData.message];
+        } else {
+          messages = ['Failed to create event.'];
+        }
+
+        return fail(res.status, { errorMessage: messages });
+      }
+
+      return { success: true };
+    } catch (err) {
+      return fail(500, { errorMessage: 'Server error. Please try again.' });
+    }
   }
 };
