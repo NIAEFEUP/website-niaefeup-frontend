@@ -6,23 +6,11 @@
   import PictureInput from '$lib/components/forms/picture-input.svelte';
   import Button from '$lib/components/buttons/button.svelte';
   import RadioButton from '$lib/components/forms/radio-buttons.svelte';
+  import { toISOLocal } from '$lib/utils.ts';
 
   export let data: PageData;
   export let account: Account = data.account;
 
-  function toISOLocal(date: string): string {
-    const parts = date.match(/(\d+)/g);
-    if (!parts || parts.length < 5) return '';
-    const adate = new Date(
-      Number(parts[2]),
-      Number(parts[1]) - 1,
-      Number(parts[0]),
-      Number(parts[3]),
-      Number(parts[4])
-    );
-    const localdt = new Date(adate.getTime() - adate.getTimezoneOffset() * 60000);
-    return localdt.toISOString().slice(0, -1);
-  }
 </script>
 
 {#await account}
@@ -114,7 +102,7 @@
         />
       </div>
 
-      <div class="order-1 mt-5 flex flex-col items-center">
+      <div class="order-1 mt-5 flex flex-col items-center max-w-[278px]">
         <PictureInput text="Foto de perfil" name="photo" source={account.photo} />
 
         <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
