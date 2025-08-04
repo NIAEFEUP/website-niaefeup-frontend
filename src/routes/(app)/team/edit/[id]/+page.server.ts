@@ -1,3 +1,4 @@
+import { fail } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
 import { error } from '@sveltejs/kit';
 
@@ -51,12 +52,29 @@ export const actions = {
     form.append('account', blob);
     if (photo && photo.size != 0) form.append('photoFile', photo, photo.name);
 
-    console.log(`${params.id}`);
-    const success = await fetch(`/api/accounts/${params.id}`, {
-      method: 'PUT',
-      body: form
-    }).then((res) => res.ok);
+    try {
+      const res = await fetch(`/api/accounts/${params.id}`, {
+        method: 'PUT',
+        body: form
+      });
 
-    return success;
+      if(!res.ok){
+        const errorData = await res.json().catch(() => ({}));
+        let messages: string[] = [];
+
+        if (Array.isArray(errorData.errors)) {
+          messages = errorData.errors.map((error: { message: string }) => error.message);
+        } else if (errorData.message) {
+          messages = [errorData.message];
+        } else {
+          messages = ['Failed to create account.'];
+        }
+        return fail(res.status, { errorMessage: messages });
+      }
+
+      return { success: true };
+    } catch (err) {
+      return fail(500, { errorMessage: 'Server error. Please try again.' });
+    }
   }
 };

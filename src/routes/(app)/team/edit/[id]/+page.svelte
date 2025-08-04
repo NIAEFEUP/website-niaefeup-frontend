@@ -11,6 +11,10 @@
   export let data: PageData;
   export let account: Account = data.account;
 
+  export let form;
+  
+
+
 </script>
 
 {#await account}
@@ -92,6 +96,10 @@
           value={account.bio ? account.bio : ''}
           textGap={30}
         />
+
+        {#if form?.errorMessage}
+          <p class="mt-2 text-red-500">{form.errorMessage}</p>
+        {/if}
 
         <Button
           type="submit"
