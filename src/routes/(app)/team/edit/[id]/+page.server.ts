@@ -1,7 +1,5 @@
-import { fail } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
-import { error } from '@sveltejs/kit';
-
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, fetch }) => {
@@ -19,7 +17,7 @@ export const actions = {
     const name = data.get('name');
     const bio = data.get('bio');
     const birthDate = new Date(data.get('birthDate') as string);
-    const birthDatejson = `${birthDate.getDate()}-${birthDate.getMonth()+1}-${birthDate.getFullYear()} ${birthDate.getHours()}:${birthDate.getMinutes()}`;
+    const birthDatejson = `${birthDate.getDate()}-${birthDate.getMonth() + 1}-${birthDate.getFullYear()} ${birthDate.getHours()}:${birthDate.getMinutes()}`;
     const linkedin = data.get('linkedin');
     const github = data.get('github');
     const photo = data.get('photo') as File;
@@ -58,7 +56,7 @@ export const actions = {
         body: form
       });
 
-      if(!res.ok){
+      if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
         let messages: string[] = [];
 

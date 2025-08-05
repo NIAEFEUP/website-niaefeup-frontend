@@ -12,9 +12,6 @@
   export let account: Account = data.account;
 
   export let form;
-  
-
-
 </script>
 
 {#await account}
@@ -28,18 +25,29 @@
       enctype="multipart/form-data"
       class="flex flex-col md:flex-row md:justify-evenly"
     >
-      <div class="order-2 ml-5 mr-5 flex flex-col gap-5 ">
-        <LabelInput name="name" label="Nome" placeholder="John Doe" value={account.name} textGap={30} />
+      <div class="order-2 ml-5 mr-5 flex flex-col gap-5">
+        <LabelInput
+          name="name"
+          label="Nome"
+          placeholder="John Doe"
+          value={account.name}
+          textGap={30}
+        />
 
         <RadioButton
           name="isActive"
           label="Is Active"
           options={['Ativo', 'Inativo']}
           selected={account.isActive ? 'Ativo' : 'Inativo'}
-
         />
 
-        <LabelInput name="email" label="Email" placeholder="Insira o Texto" value={account.email} textGap={30} />
+        <LabelInput
+          name="email"
+          label="Email"
+          placeholder="Insira o Texto"
+          value={account.email}
+          textGap={30}
+        />
 
         <LabelInput
           name="birthDate"
@@ -110,7 +118,7 @@
         />
       </div>
 
-      <div class="order-1 mt-5 flex flex-col items-center max-w-[278px]">
+      <div class="order-1 mt-5 flex max-w-[278px] flex-col items-center">
         <PictureInput text="Foto de perfil" name="photo" source={account.photo} />
 
         <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
