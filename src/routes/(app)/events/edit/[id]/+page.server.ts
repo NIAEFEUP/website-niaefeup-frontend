@@ -1,10 +1,9 @@
 import type { RequestEvent } from '@sveltejs/kit';
-import { error } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, fetch }) => {
-  console.log('Here', params.id);
   const res = await fetch(`/api/events/${params.id}`);
   if (!res.ok) error(res.status, 'Event not found');
   const event = await res.json();
@@ -46,11 +45,31 @@ export const actions = {
     value;
     if (image && image.size != 0) form.append('image', image, image.name);
 
-    const success = await fetch(`/api/events/${params.id}`, {
-      method: 'PUT',
-      body: form
-    }).then((res) => res.ok);
+    try{
+      const res = await fetch(`/api/events/${params.id}`, {
+        method: 'PUT',
+        body: form
+      });
 
-    return success;
+      if(!res.ok){
+        const errorData = await res.json().catch(() => ({}));
+        let messages: string[] = [];
+
+        if (Array.isArray(errorData.errors)) {
+          messages = errorData.errors.map((error: { message: string }) => error.message);
+        } else if (errorData.message) {
+          messages = [errorData.message];
+        } else {
+          messages = ['Failed to edit event.'];
+        }
+
+        return fail(res.status, { errorMessage: messages });
+      }
+
+      return { success: true };
+
+    } catch(err){
+      return fail(500, { errorMessage: 'Server error. Please try again.' });
+    }
   }
 };

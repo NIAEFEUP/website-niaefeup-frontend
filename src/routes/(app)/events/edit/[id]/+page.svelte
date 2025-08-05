@@ -9,6 +9,7 @@
 
   export let data: PageData;
   export let event: Event = data.event;
+  export let form;
 </script>
 
 {#await event}
@@ -112,6 +113,11 @@
               Nenhum Ficheiro Selecionado
             </p>
           </div>
+
+
+          {#if form?.errorMessage}
+            <p class="mt-2 text-red-500">{form.errorMessage}</p>
+          {/if}
 
           <div class="ml-5 mr-5 flex flex-row md:ml-0">
             <Button
