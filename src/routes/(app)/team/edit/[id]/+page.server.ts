@@ -65,7 +65,7 @@ export const actions = {
         } else if (errorData.message) {
           messages = [errorData.message];
         } else {
-          messages = ['Failed to create account.'];
+          messages = ['Failed to edit account.'];
         }
         return fail(res.status, { errorMessage: messages });
       }
