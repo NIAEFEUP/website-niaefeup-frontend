@@ -3,6 +3,7 @@
   export let id = '';
   export let type = 'text';
   export let placeholder = '';
+  export let name = '';
   export let isTextArea = false;
   export let horizontal = false;
 </script>
@@ -17,6 +18,7 @@
       class="mb-2 min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
       {id}
       {placeholder}
+      {name}
       rows="4"
     />
   {:else}
@@ -26,6 +28,7 @@
       {type}
       {id}
       {placeholder}
+      {name}
     />
   {/if}
 </div>

@@ -33,6 +33,10 @@ export const actions = {
       body: formData
     });
 
+    const json = await res.json();
+
+    console.log("JSON: ", json);
+
     return { success: res.ok };
   }
 };

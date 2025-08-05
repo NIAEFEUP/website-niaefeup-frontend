@@ -6,12 +6,13 @@
   import * as Dialog from '$lib/components/ui/dialog/index.js';
 
   import PictureInput from '$lib/components/forms/picture-input.svelte';
+  import LabelInput from '$lib/components/forms/label-input.svelte';
 
   let dialogOpen = false;
   let search = '';
 
   $: filtered = technologies.filter((tech) =>
-    tech.name.toLowerCase().includes(search.toLowerCase())
+    tech.name.toLowerCase().trim().includes(search.toLowerCase())
   );
 
   export let technologies;
@@ -32,31 +33,28 @@
 
           Adicionar Tecnologia
         </Dialog.Trigger>
-        <Dialog.Content class="bg-muted-red-500 p-8">
+        <Dialog.Content class="bg-muted-red-500 p-0 rounded-3xl">
           <form method="POST" action="?/addTechnology" enctype="multipart/form-data">
-            <Dialog.Header class="flex flex-col gap-y-6">
-              <Dialog.Title>Adicionar nova tecnologia</Dialog.Title>
+            <Dialog.Header class="flex flex-col gap-y-6 p-8">
+              <Dialog.Title class="text-xl">Adicionar nova tecnologia</Dialog.Title>
               <Dialog.Description>
                 <div class="flex flex-col gap-y-8">
-                  <div class="grid grid-cols-[0.35fr_1.75fr] items-center gap-4">
-                    <label for="name">Nome</label>
-                    <input
-                      type="text"
-                      id="name"
+                    <LabelInput 
+                      label="Nome" 
+                      id="name" 
+                      type="text" 
+                      class="bg-white"
                       name="name"
-                      class="h-5 rounded-md bg-white p-4 text-black"
                     />
-                  </div>
 
-                  <div class="grid grid-cols-[0.35fr_1.75fr] items-center gap-4">
-                    <label for="website">Website</label>
-                    <input
+                    <LabelInput 
+                      label="Website" 
+                      id="website" 
                       type="text"
-                      id="website"
                       name="url"
+                      placeholder="https://"
                       class="h-5 rounded-md bg-white p-4 text-black"
                     />
-                  </div>
 
                   <div class="grid grid-cols-[0.35fr_1.75fr] items-center gap-4">
                     <label for="image">Imagem</label>
@@ -66,8 +64,9 @@
                 </div>
               </Dialog.Description>
             </Dialog.Header>
-            <Dialog.Footer>
-              <button> Submeter </button>
+            <Dialog.Footer class="bg-white p-4 flex flex-row gap-4 rounded-md">
+              <button type="button" class="text-muted-red-700 text-lg" on:click={() => dialogOpen = false}>Cancelar</button>
+              <button type="submit" class="text-lg bg-muted-red-700 text-white p-4 rounded-xl shadow-xl"> Adicionar </button>
             </Dialog.Footer>
           </form>
         </Dialog.Content>

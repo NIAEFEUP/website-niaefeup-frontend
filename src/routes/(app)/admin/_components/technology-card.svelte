@@ -22,16 +22,16 @@
 >
   <div class="align-center mr-4 flex flex-row items-center gap-x-2">
     <img src={tech.image} alt="Technology logo" class="h-8 w-8 rounded-full" />
-    <p class="uppercase drop-shadow-xl">{tech.name}</p>
+    <p class="drop-shadow-xl">{tech.name}</p>
   </div>
 
   <Dialog.Root bind:open={dialogOpen}>
     <Dialog.Trigger>
       <Icon src={Icons.Trash} color="white" size="24px" ariaLabel="Trash" />
     </Dialog.Trigger>
-    <Dialog.Content>
+    <Dialog.Content class="p-4">
       <Dialog.Header>
-        <Dialog.Title>Tens a certeza que queres eliminar esta tecnologia?</Dialog.Title>
+        <Dialog.Title>Tens a certeza que queres eliminar { tech.name }?</Dialog.Title>
       </Dialog.Header>
       <Dialog.Footer>
         <form method="POST" action="?/deleteTechnology" use:enhance={deleteTechnology}>
