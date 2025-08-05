@@ -7,6 +7,7 @@
   import Button from '$lib/components/buttons/button.svelte';
   import RadioButton from '$lib/components/forms/radio-buttons.svelte';
   import { toISOLocal } from '$lib/utils.ts';
+  import * as Carousel from "$lib/components/ui/carousel/index.js";
 
   export let data: PageData;
   export let account: Account = data.account;
@@ -65,28 +66,7 @@
           textGap={30}
         />
 
-        {#each account.websites as website, index}
-          <LabelInput
-            name="label"
-            label="Website {index + 1} Name"
-            placeholder="Insira o Texto"
-            value={website.label ? website.label : ''}
-          />
-
-          <LabelInput
-            name="url"
-            label="Website {index + 1} Url"
-            placeholder="Insira o Texto"
-            value={website.url ? website.url : ''}
-          />
-
-          <LabelInput
-            name="icon"
-            label="Website {index + 1} Icon"
-            placeholder="Insira o Texto"
-            value={website.iconPath ? website.iconPath : ''}
-          />
-        {/each}
+        account.websites
 
         <LabelInput
           name="github"
