@@ -45,6 +45,7 @@
                       type="text" 
                       class="bg-white"
                       name="name"
+                      required
                     />
 
                     <LabelInput 
@@ -54,6 +55,7 @@
                       name="url"
                       placeholder="https://"
                       class="h-5 rounded-md bg-white p-4 text-black"
+                      required
                     />
 
                   <div class="grid grid-cols-[0.35fr_1.75fr] items-center gap-4">
