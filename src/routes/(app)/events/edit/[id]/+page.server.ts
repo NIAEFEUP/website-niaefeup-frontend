@@ -45,13 +45,13 @@ export const actions = {
     value;
     if (image && image.size != 0) form.append('image', image, image.name);
 
-    try{
+    try {
       const res = await fetch(`/api/events/${params.id}`, {
         method: 'PUT',
         body: form
       });
 
-      if(!res.ok){
+      if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
         let messages: string[] = [];
 
@@ -67,8 +67,7 @@ export const actions = {
       }
 
       return { success: true };
-
-    } catch(err){
+    } catch (err) {
       return fail(500, { errorMessage: 'Server error. Please try again.' });
     }
   }
