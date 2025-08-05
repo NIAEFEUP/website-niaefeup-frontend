@@ -107,7 +107,7 @@
           : 'md:w-full md:justify-center'}"
       >
         <p
-          class="mb-6 font-source_code text-3xl font-bold text-white sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
+          class="mb-6 font-source_code font-bold text-white sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
         >
           &lt; Público Alvo /&gt;
         </p>
