@@ -74,32 +74,38 @@
     </div>
 
     <div class="mt-24 flex flex-col justify-evenly md:flex-row">
-      <div class="flex flex-col items-center md:w-1/3">
-        <p
-          class="mb-6 font-source_code text-3xl font-bold text-white sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
-        >
-          &lt; Tecnologias /&gt;
-        </p>
-        <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
-          {#each project.technologies as technology}
-            <a
-              href={technology.url}
-              target="_blank"
-              class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
-            >
-              <img
-                src={technology.image}
-                alt="Technology {technology.name}'s logo"
-                class="max-h-12"
-              />
-              {#if windowWidth > screenSizeThreshold}
-                <p class="text-xl text-white">{technology.name}</p>
-              {/if}
-            </a>
-          {/each}
+      {#if project.technologies && project.technologies.length > 0}
+        <div class="flex flex-col items-center md:w-1/3">
+          <p
+            class="mb-6 font-source_code text-3xl font-bold text-white sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
+          >
+            &lt; Tecnologias /&gt;
+          </p>
+          <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
+            {#each project.technologies as technology}
+              <a
+                href={technology.url}
+                target="_blank"
+                class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
+              >
+                <img
+                  src={technology.image}
+                  alt="Technology {technology.name}'s logo"
+                  class="max-h-12"
+                />
+                {#if windowWidth > screenSizeThreshold}
+                  <p class="text-xl text-white">{technology.name}</p>
+                {/if}
+              </a>
+            {/each}
+          </div>
         </div>
-      </div>
-      <div class="flex flex-col items-center md:w-1/3">
+      {/if}
+      <div
+        class="flex flex-col items-center {project.technologies && project.technologies.length > 0
+          ? 'md:w-1/3'
+          : 'md:w-full md:justify-center'}"
+      >
         <p
           class="mb-6 font-source_code text-3xl font-bold text-white sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
         >
