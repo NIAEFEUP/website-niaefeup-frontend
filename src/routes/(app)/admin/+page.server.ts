@@ -1,18 +1,23 @@
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { PUBLIC_API_URL } from '$env/static/public';
+import { canEdit } from '@/lib/api/permissions';
 
 export const load: PageLoad = async ({ fetch }) => {
-  const res = await fetch(`${PUBLIC_API_URL}/technologies`);
-  if (!res.ok) {
-    if (res.status === 404) {
+  if (!(await canEdit())) {
+    throw redirect(303, '/');
+  }
+
+  const tech = await fetch(`${PUBLIC_API_URL}/technologies`);
+  if (!tech.ok) {
+    if (tech.status === 404) {
       error(404, 'No technologies found');
     } else {
-      error(res.status, 'Failed to load technologies');
+      error(tech.status, 'Failed to load technologies');
     }
   }
 
-  const technologies = await res.json();
+  const technologies = await tech.json();
 
   return { technologies };
 };
@@ -52,6 +57,8 @@ export const actions = {
       body: formData
     });
 
-    return { success: res.ok };
+    const json = await res.json();
+
+    return { success: res.ok, data: json };
   }
 };
