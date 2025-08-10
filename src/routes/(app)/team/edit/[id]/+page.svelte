@@ -7,7 +7,8 @@
   import Button from '$lib/components/buttons/button.svelte';
   import RadioButton from '$lib/components/forms/radio-buttons.svelte';
   import { toISOLocal } from '$lib/utils.ts';
-  import * as Carousel from "$lib/components/ui/carousel/index.js";
+  import Carousel from '$lib/components/carousel.svelte';
+  import * as Tabs from '$lib/components/ui/tabs/index';
 
   export let data: PageData;
   export let account: Account = data.account;
@@ -66,7 +67,19 @@
           textGap={30}
         />
 
-        account.websites
+        <Tabs.Root value="custom-websites">
+          <!-- <Tabs.List class="mx-auto my-8 grid w-full grid-cols-2 md:w-1/2">
+            <Tabs.Trigger value="info">Informações</Tabs.Trigger>
+            <Tabs.Trigger value="respostas">Respostas</Tabs.Trigger>
+          </Tabs.List> -->
+          <Tabs.Content value="custom-websites">
+            <Carousel />
+            <p class="text-justify text-2xl font-semibold">cocotete</p>
+          </Tabs.Content>
+          <!-- <Tabs.Content value="respostas">Respostas</Tabs.Content> -->
+        </Tabs.Root>
+
+        <!-- account.websites -->
 
         <LabelInput
           name="github"
