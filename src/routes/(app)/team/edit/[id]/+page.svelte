@@ -7,9 +7,8 @@
   import Button from '$lib/components/buttons/button.svelte';
   import RadioButton from '$lib/components/forms/radio-buttons.svelte';
   import { toISOLocal } from '$lib/utils.ts';
-  import Carousel from '$lib/components/carousel.svelte';
-  import * as Tabs from '$lib/components/ui/tabs/index';
-
+  import * as Carousel from '$lib/components/ui/carousel/index.js';
+  import * as Card from "$lib/components/ui/card/index.js";
   export let data: PageData;
   export let account: Account = data.account;
 
@@ -67,19 +66,37 @@
           textGap={30}
         />
 
-        <Tabs.Root value="custom-websites">
-          <!-- <Tabs.List class="mx-auto my-8 grid w-full grid-cols-2 md:w-1/2">
-            <Tabs.Trigger value="info">Informações</Tabs.Trigger>
-            <Tabs.Trigger value="respostas">Respostas</Tabs.Trigger>
-          </Tabs.List> -->
-          <Tabs.Content value="custom-websites">
-            <Carousel />
-            <p class="text-justify text-2xl font-semibold">cocotete</p>
-          </Tabs.Content>
-          <!-- <Tabs.Content value="respostas">Respostas</Tabs.Content> -->
-        </Tabs.Root>
-
-        <!-- account.websites -->
+        <Carousel.Root>
+          <Carousel.Content>
+            {#each account.websites as website, index}
+              <Carousel.Item>
+                  <Card.Root>
+                    <Card.Content
+                      class="flex flex-col justify-center "
+                    >
+                      <LabelInput
+                        name="label"
+                        label="Custom Website {index + 1} Name"
+                        placeholder="Insira o Texto"
+                        value={website.label ? website.label : ''}/>
+                      <LabelInput
+                        name="url"
+                        label="Custom Website {index + 1} Url"
+                        placeholder="Insira o Texto"
+                        value={website.url ? website.url : ''}/>
+                      <LabelInput
+                        name="icon"
+                        label="Custom Website {index + 1} Icon"
+                        placeholder="Insira o Texto"
+                        value={website.iconPath ? website.iconPath : ''}/>
+                    </Card.Content>
+                  </Card.Root>
+              </Carousel.Item>
+            {/each}
+          </Carousel.Content>
+          <Carousel.Previous />
+          <Carousel.Next />
+        </Carousel.Root>
 
         <LabelInput
           name="github"
