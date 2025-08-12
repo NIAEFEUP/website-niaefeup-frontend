@@ -31,7 +31,7 @@
     </Dialog.Trigger>
     <Dialog.Content class="p-4">
       <Dialog.Header>
-        <Dialog.Title>Tens a certeza que queres eliminar { tech.name }?</Dialog.Title>
+        <Dialog.Title>Tens a certeza que queres eliminar {tech.name}?</Dialog.Title>
       </Dialog.Header>
       <Dialog.Footer>
         <form method="POST" action="?/deleteTechnology" use:enhance={deleteTechnology}>

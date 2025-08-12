@@ -8,8 +8,15 @@
   import PictureInput from '$lib/components/forms/picture-input.svelte';
   import LabelInput from '$lib/components/forms/label-input.svelte';
 
+  import { sentenceFirstLetterToUpperCase } from '$lib/utils';
+  import { enhance } from '$app/forms';
+
+  import type { BackendError } from '$lib/types/backend-error';
+
   let dialogOpen = false;
   let search = '';
+
+  let error: BackendError | null = null;
 
   $: filtered = technologies.filter((tech) =>
     tech.name.toLowerCase().trim().includes(search.toLowerCase())
@@ -33,42 +40,96 @@
 
           Adicionar Tecnologia
         </Dialog.Trigger>
-        <Dialog.Content class="bg-muted-red-500 p-0 rounded-3xl">
-          <form method="POST" action="?/addTechnology" enctype="multipart/form-data">
+        <Dialog.Content class="rounded-3xl bg-muted-red-500 p-0">
+          <form
+            method="POST"
+            action="?/addTechnology"
+            enctype="multipart/form-data"
+            use:enhance={() => {
+              error = null;
+              return async ({ result }) => {
+                if (!result.data.success) {
+                  error = result.data.data.errors[0];
+                }
+              };
+            }}
+          >
             <Dialog.Header class="flex flex-col gap-y-6 p-8">
               <Dialog.Title class="text-xl">Adicionar nova tecnologia</Dialog.Title>
               <Dialog.Description>
                 <div class="flex flex-col gap-y-8">
-                    <LabelInput 
-                      label="Nome" 
-                      id="name" 
-                      type="text" 
+                  <div>
+                    <LabelInput
+                      label="Nome"
+                      id="name"
+                      type="text"
                       class="bg-white"
                       name="name"
-                      required
+                      required={true}
                     />
 
-                    <LabelInput 
-                      label="Website" 
-                      id="website" 
+                    {#if error?.param === 'name'}
+                      <p>
+                        {sentenceFirstLetterToUpperCase(error?.param)}
+                        {sentenceFirstLetterToUpperCase(error?.message)}
+                      </p>
+                    {/if}
+                  </div>
+
+                  <div>
+                    <LabelInput
+                      label="Website"
+                      id="website"
                       type="text"
                       name="url"
                       placeholder="https://"
                       class="h-5 rounded-md bg-white p-4 text-black"
-                      required
+                      required={true}
                     />
+
+                    {#if error?.param === 'url'}
+                      <p>
+                        {sentenceFirstLetterToUpperCase(error?.param)}
+                        {sentenceFirstLetterToUpperCase(error?.message)}
+                      </p>
+                    {/if}
+                  </div>
 
                   <div class="grid grid-cols-[0.35fr_1.75fr] items-center gap-4">
                     <label for="image">Imagem</label>
 
                     <PictureInput text="Adicionar imagem" name="image" />
+
+                    {#if error?.param === 'image'}
+                      <p>
+                        {sentenceFirstLetterToUpperCase(error?.param)}
+                        {sentenceFirstLetterToUpperCase(error?.message)}
+                      </p>
+                    {/if}
                   </div>
                 </div>
               </Dialog.Description>
             </Dialog.Header>
-            <Dialog.Footer class="bg-white p-4 flex flex-row gap-4 rounded-md">
-              <button type="button" class="text-muted-red-700 text-lg" on:click={() => dialogOpen = false}>Cancelar</button>
-              <button type="submit" class="text-lg bg-muted-red-700 text-white p-4 rounded-xl shadow-xl"> Adicionar </button>
+            <Dialog.Footer class="flex flex-col rounded-md bg-white p-4 sm:flex-col">
+              {#if error && !error.param}
+                <p class="my-4 text-center text-muted-red-500">
+                  {sentenceFirstLetterToUpperCase(error.message)}
+                </p>
+              {/if}
+
+              <div class="flex flex-row justify-end gap-4">
+                <button
+                  type="button"
+                  class="text-lg text-muted-red-700"
+                  on:click={() => (dialogOpen = false)}>Cancelar</button
+                >
+                <button
+                  type="submit"
+                  class="rounded-xl bg-muted-red-700 p-4 text-lg text-white shadow-xl"
+                >
+                  Adicionar
+                </button>
+              </div>
             </Dialog.Footer>
           </form>
         </Dialog.Content>

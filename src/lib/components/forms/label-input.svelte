@@ -6,6 +6,7 @@
   export let name = '';
   export let isTextArea = false;
   export let horizontal = false;
+  export let required = false;
 </script>
 
 <div class="flex flex-{horizontal ? 'row' : 'col'}">
@@ -19,6 +20,7 @@
       {id}
       {placeholder}
       {name}
+      {required}
       rows="4"
     />
   {:else}
@@ -29,6 +31,7 @@
       {id}
       {placeholder}
       {name}
+      {required}
     />
   {/if}
 </div>
