@@ -44,7 +44,7 @@
           <img
             src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
             alt="User pic"
-            class="h-32 w-32 rounded-lg sm:h-52 sm:w-52"
+            class="h-32 w-32 rounded-lg sm:h-52 sm:w-52 object-cover"
           />
           <div class="flex flex-grow flex-col">
             <div class="mb-5 flex flex-col items-center gap-3 sm:flex-row sm:gap-6">
