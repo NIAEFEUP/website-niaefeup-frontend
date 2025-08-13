@@ -11,7 +11,6 @@
   import * as Card from "$lib/components/ui/card/index.js";
   export let data: PageData;
   export let account: Account = data.account;
-
   export let form;
 </script>
 
@@ -66,37 +65,37 @@
           textGap={30}
         />
 
-        <Carousel.Root>
-          <Carousel.Content>
-            {#each account.websites as website, index}
-              <Carousel.Item>
+        {#if account.websites && account.websites.length}
+          <Carousel.Root> 
+            <Carousel.Content class="flex w-[550px]">
+              {#each account.websites as website, index}
+                <Carousel.Item class="">
                   <Card.Root>
-                    <Card.Content
-                      class="flex flex-col justify-center "
-                    >
+                    <Card.Content>
                       <LabelInput
-                        name="label"
-                        label="Custom Website {index + 1} Name"
+                        name={`label ${index + 1}`} 
+                        label={`Custom Website ${index + 1} Name`}
                         placeholder="Insira o Texto"
-                        value={website.label ? website.label : ''}/>
+                        value={website.label ?? ''}/>
                       <LabelInput
-                        name="url"
-                        label="Custom Website {index + 1} Url"
+                        name={`url ${index + 1}`}
+                        label={`Custom Website ${index + 1} Url`}
                         placeholder="Insira o Texto"
-                        value={website.url ? website.url : ''}/>
+                        value={website.url ?? ''}/>
                       <LabelInput
-                        name="icon"
-                        label="Custom Website {index + 1} Icon"
+                        name={`icon ${index + 1}`}
+                        label={`Custom Website ${index + 1} Icon`}
                         placeholder="Insira o Texto"
-                        value={website.iconPath ? website.iconPath : ''}/>
+                        value={website.iconPath ?? ''}/>
                     </Card.Content>
                   </Card.Root>
-              </Carousel.Item>
-            {/each}
-          </Carousel.Content>
-          <Carousel.Previous />
-          <Carousel.Next />
-        </Carousel.Root>
+                </Carousel.Item>
+              {/each}
+            </Carousel.Content>
+            <Carousel.Previous />
+            <Carousel.Next />
+          </Carousel.Root>
+        {/if}
 
         <LabelInput
           name="github"

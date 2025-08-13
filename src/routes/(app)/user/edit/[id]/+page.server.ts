@@ -13,33 +13,35 @@ export const actions = {
   default: async ({ params, request, fetch }: RequestEvent) => {
     const data = await request.formData();
 
+
+    const dataWebsites = [];
+    let websiteIndex = 1;
     const email = data.get('email');
     const name = data.get('name');
     const bio = data.get('bio');
     const birthDate = new Date(data.get('birthDate') as string);
-    const birthDatejson = `${birthDate.getDate()}-${birthDate.getMonth() + 1}-${birthDate.getFullYear()} ${birthDate.getHours()}:${birthDate.getMinutes()}`;
+    const birthDateJson = `${birthDate.getDate()}-${birthDate.getMonth() + 1}-${birthDate.getFullYear()} ${birthDate.getHours()}:${birthDate.getMinutes()}`;
     const linkedin = data.get('linkedin');
     const github = data.get('github');
     const photo = data.get('photo') as File;
-    const url = data.get('url') as string;
-    const icon = data.get('icon') as string;
-    const label = data.get('label') as string;
+    while(data.get(`url ${websiteIndex}`)){
+      dataWebsites.push({
+        url: data.get(`url ${websiteIndex}`) as string,
+        iconPath: data.get(`icon ${websiteIndex}`) as string,
+        label: data.get(`label ${websiteIndex}`) as string
+      })
+      websiteIndex++;
+    }
     const isActive = data.get('isActive') === 'Ativo' ? true : false;
 
     const value = {
       email: email,
       name: name,
       bio: bio,
-      birthDate: birthDatejson,
+      birthDate: birthDateJson,
       linkedin: linkedin,
       github: github,
-      websites: [
-        {
-          url: url,
-          iconPath: icon,
-          label: label
-        }
-      ],
+      websites: dataWebsites,
       isActive: isActive
     };
 
