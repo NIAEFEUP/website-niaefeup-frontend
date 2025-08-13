@@ -40,11 +40,11 @@
       {#each SidebarItems as item, i}
         <NavItem selected={selectedIndex === i}>
           <a
-            href="#/"
+            href={item.href}
             on:click={() => {
               selectedIndex = i;
               toggleSidebar();
-            }}>{item}</a
+            }}>{item.label}</a
           >
         </NavItem>
       {/each}
