@@ -8,7 +8,8 @@
   import RadioButton from '$lib/components/forms/radio-buttons.svelte';
   import { toISOLocal } from '$lib/utils.ts';
   import * as Carousel from '$lib/components/ui/carousel/index.js';
-  import * as Card from "$lib/components/ui/card/index.js";
+  import * as Card from '$lib/components/ui/card/index.js';
+
   export let data: PageData;
   export let account: Account = data.account;
   export let form;
@@ -28,7 +29,7 @@
       <div class="order-2 ml-5 mr-5 flex flex-col gap-5">
         <LabelInput
           name="name"
-          label="Nome"
+          label="Name"
           placeholder="John Doe"
           value={account.name}
           textGap={30}
@@ -37,8 +38,8 @@
         <RadioButton
           name="isActive"
           label="Is Active"
-          options={['Ativo', 'Inativo']}
-          selected={account.isActive ? 'Ativo' : 'Inativo'}
+          options={['Active', 'Inactive']}
+          selected={account.isActive ? 'Active' : 'Inactive'}
         />
 
         <LabelInput
@@ -66,34 +67,38 @@
         />
 
         {#if account.websites && account.websites.length}
-          <Carousel.Root> 
+          <Carousel.Root>
             <Carousel.Content class="flex w-[550px]">
               {#each account.websites as website, index}
                 <Carousel.Item class="">
                   <Card.Root>
                     <Card.Content>
                       <LabelInput
-                        name={`label ${index + 1}`} 
+                        name={`label ${index + 1}`}
                         label={`Custom Website ${index + 1} Name`}
                         placeholder="Insira o Texto"
-                        value={website.label ?? ''}/>
+                        value={website.label ?? ''}
+                      />
                       <LabelInput
                         name={`url ${index + 1}`}
                         label={`Custom Website ${index + 1} Url`}
                         placeholder="Insira o Texto"
-                        value={website.url ?? ''}/>
+                        value={website.url ?? ''}
+                        required
+                      />
                       <LabelInput
                         name={`icon ${index + 1}`}
                         label={`Custom Website ${index + 1} Icon`}
                         placeholder="Insira o Texto"
-                        value={website.iconPath ?? ''}/>
+                        value={website.iconPath ?? ''}
+                      />
                     </Card.Content>
                   </Card.Root>
                 </Carousel.Item>
               {/each}
             </Carousel.Content>
-            <Carousel.Previous />
-            <Carousel.Next />
+            <Carousel.Previous class="hidden md:inline-flex" />
+            <Carousel.Next class="hidden md:inline-flex" />
           </Carousel.Root>
         {/if}
 
@@ -115,7 +120,9 @@
         />
 
         {#if form?.errorMessage}
-          <p class="mt-2 text-red-500">{form.errorMessage}</p>
+          {#each form.errorMessage as message}
+            <p class="mt-2 text-red-500">{message}</p>
+          {/each}
         {/if}
 
         <Button

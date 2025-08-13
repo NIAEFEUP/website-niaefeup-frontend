@@ -19,13 +19,13 @@
 <div class="my-16">
   <Carousel.Root bind:api class="mx-auto max-w-[80%] lg:max-w-full">
     <Carousel.Content>
-      {#each Array(5) as _, i (i)}
+      {#each Array(5) as i}
         <!-- eslint-disable-line @typescript-eslint/no-unused-vars -->
         <Carousel.Item>
           <img
             class="max-h-[30vh] w-full rounded-3xl object-cover object-center"
             src="https://picsum.photos/1920/1080"
-            alt=""
+            alt={`${i}`}
           />
         </Carousel.Item>
       {/each}

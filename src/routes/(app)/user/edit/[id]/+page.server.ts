@@ -13,7 +13,6 @@ export const actions = {
   default: async ({ params, request, fetch }: RequestEvent) => {
     const data = await request.formData();
 
-
     const dataWebsites = [];
     let websiteIndex = 1;
     const email = data.get('email');
@@ -24,15 +23,15 @@ export const actions = {
     const linkedin = data.get('linkedin');
     const github = data.get('github');
     const photo = data.get('photo') as File;
-    while(data.get(`url ${websiteIndex}`)){
+    while (data.get(`url ${websiteIndex}`) !== null) {
       dataWebsites.push({
         url: data.get(`url ${websiteIndex}`) as string,
         iconPath: data.get(`icon ${websiteIndex}`) as string,
         label: data.get(`label ${websiteIndex}`) as string
-      })
+      });
       websiteIndex++;
     }
-    const isActive = data.get('isActive') === 'Ativo' ? true : false;
+    const isActive = data.get('isActive') === 'Active' ? true : false;
 
     const value = {
       email: email,
