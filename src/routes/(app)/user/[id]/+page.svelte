@@ -3,9 +3,8 @@
   import IsActiveBadge from '../_components/is-active-badge.svelte';
   import type { PageData } from './$types';
   import type { TeamMember } from '@/types/team-member';
-  import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
-  import EditButton from '$lib/components/buttons/edit-button.svelte';
+  import GenericButton from '$lib/components/buttons/generic-button.svelte';
   import { goto } from '$app/navigation';
 
   export let data: PageData;
@@ -24,27 +23,29 @@
   }
 </script>
 
-{#await teamMember}
-  <!-- TODO: include a waiting animation -->
-  <p>...waiting</p>
-{:then teamMember}
+{#await teamMember then teamMember}
   <section>
     <div class="flex w-full justify-center px-4 sm:px-6 lg:px-8">
       <div class="flex w-4/5 flex-col content-center gap-y-4 md:gap-y-6 lg:w-3/4 xl:w-1/2">
         <div class="flex h-12 justify-end gap-x-3 lg:h-10 xl:h-12">
-          <EditButton size="small" link="https://lipsum.com" />
-          <button
-            class="w-12 rounded-md bg-muted-red-500 p-3 lg:w-12 xl:w-12"
-            on:click={() => logout()}
-          >
-            <Icon src={Icons.Logout} color="white" size="100%" />
-          </button>
+          <GenericButton
+            icon={Icons.Edit}
+            size="responsive"
+            link="https://lipsum.com"
+            ariaLabel="Edit"
+          />
+          <GenericButton
+            icon={Icons.Logout}
+            size="responsive"
+            onClick={() => logout()}
+            ariaLabel="Logout"
+          />
         </div>
         <div class="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
           <img
             src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
             alt="User pic"
-            class="h-32 w-32 rounded-lg sm:h-52 sm:w-52 object-cover"
+            class="h-32 w-32 rounded-lg object-cover sm:h-52 sm:w-52"
           />
           <div class="flex flex-grow flex-col">
             <div class="mb-5 flex flex-col items-center gap-3 sm:flex-row sm:gap-6">

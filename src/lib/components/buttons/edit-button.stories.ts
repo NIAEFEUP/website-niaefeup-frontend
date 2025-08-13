@@ -1,4 +1,4 @@
-import EditButton from './edit-button.svelte';
+import EditButton from './generic-button.svelte';
 
 export default {
   title: 'Atoms/Buttons/Edit Button',
