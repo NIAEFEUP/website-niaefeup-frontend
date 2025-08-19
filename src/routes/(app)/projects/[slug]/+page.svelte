@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import type { Project } from '@/types/project';
-  import GenericButton from '$lib/components/buttons/generic-button.svelte';
+  import IconButton from '$lib/components/buttons/icon-button.svelte';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
@@ -19,7 +19,7 @@
   <section class="mx-5 min-h-screen pt-12 md:pt-32">
     {#if hasPerms}
       <div class="my-4 flex justify-end md:my-8 md:w-5/6">
-        <GenericButton
+        <IconButton
           icon={Icons.Edit}
           size="responsive"
           link="/projects/edit/{project.slug}"

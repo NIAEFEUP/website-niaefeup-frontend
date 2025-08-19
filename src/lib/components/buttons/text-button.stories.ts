@@ -1,10 +1,10 @@
-import Button from './button.svelte';
+import TextButton from './text-button.svelte';
 
 const colorList = ['primary', 'secondary', 'red', 'green', 'blue'];
 
 export default {
   title: 'Atoms/Buttons/Regular Button',
-  component: Button,
+  component: TextButton,
   argTypes: {
     color: { control: 'inline-radio', options: colorList },
     hoverColor: { control: 'inline-radio', options: colorList },

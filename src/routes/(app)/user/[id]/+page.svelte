@@ -4,7 +4,7 @@
   import type { PageData } from './$types';
   import type { TeamMember } from '@/types/team-member';
   import Icons from '@/lib/components/icons/icons';
-  import GenericButton from '$lib/components/buttons/generic-button.svelte';
+  import IconButton from '$lib/components/buttons/icon-button.svelte';
   import { goto } from '$app/navigation';
 
   export let data: PageData;
@@ -28,13 +28,13 @@
     <div class="flex w-full justify-center px-4 sm:px-6 lg:px-8">
       <div class="flex w-4/5 flex-col content-center gap-y-4 md:gap-y-6 lg:w-3/4 xl:w-1/2">
         <div class="flex h-12 justify-end gap-x-3 lg:h-10 xl:h-12">
-          <GenericButton
+          <IconButton
             icon={Icons.Edit}
             size="responsive"
             link="https://lipsum.com"
             ariaLabel="Edit"
           />
-          <GenericButton
+          <IconButton
             icon={Icons.Logout}
             size="responsive"
             onClick={() => logout()}

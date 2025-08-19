@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import ProjectTile from './_components/project-tile.svelte';
-  import Button from '@/lib/components/buttons/button.svelte';
+  import TextButton from '@/lib/components/buttons/text-button.svelte';
   import type { Project } from '@/types/project';
 
   export let data: PageData;
@@ -17,7 +17,8 @@
     {#if hasPerms}
       <div class="my-8 flex w-5/6 justify-end sm:my-6 md:my-6 lg:mb-12 xl:mb-12 2xl:mb-12">
         <a href="/projects/create">
-          <Button color="secondary" hoverColor="red" width="12" text="Novo Projeto"></Button>
+          <TextButton color="secondary" hoverColor="red" width="12" text="Novo Projeto"
+          ></TextButton>
         </a>
       </div>
     {/if}

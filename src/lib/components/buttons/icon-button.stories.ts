@@ -1,9 +1,9 @@
-import GenericButton from './generic-button.svelte';
+import IconButton from './icon-button.svelte';
 import Icons from '$lib/components/icons/icons';
 
 export default {
   title: 'Atoms/Buttons/Generic Button',
-  component: GenericButton,
+  component: IconButton,
   parameters: {
     layout: 'centered',
     controls: { exclude: ['type'] }

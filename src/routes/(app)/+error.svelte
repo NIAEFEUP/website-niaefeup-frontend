@@ -2,7 +2,7 @@
   import ErrorSection from './_components/error/error-section.svelte';
   // @ts-expect-error Import is as expected but throws error
   import { page } from '$app/stores';
-  import Button from '@/lib/components/buttons/button.svelte';
+  import TextButton from '@/lib/components/buttons/text-button.svelte';
 </script>
 
 <main class="mx-10 my-20 flex flex-col justify-center gap-20 font-source_code">
@@ -12,6 +12,6 @@
   </section>
   <ErrorSection align="text-center" heading="What went wrong?" text={$page.error.message} />
   <form class="m-auto" method="GET" action="/">
-    <Button type="submit" color="primary" hoverColor="secondary" text="Voltar" width="medium" />
+    <TextButton type="submit" color="primary" hoverColor="secondary" text="Voltar" width="medium" />
   </form>
 </main>
