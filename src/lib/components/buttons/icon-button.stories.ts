@@ -2,7 +2,7 @@ import IconButton from './icon-button.svelte';
 import Icons from '$lib/components/icons/icons';
 
 export default {
-  title: 'Atoms/Buttons/Generic Button',
+  title: 'Atoms/Buttons/Icon Button',
   component: IconButton,
   parameters: {
     layout: 'centered',

@@ -19,17 +19,14 @@
       'w-8 h-8 px-0.5 py-0.5 sm:w-10 sm:h-10 sm:px-1 sm:py-1 md:w-12 md:h-12 md:px-2 md:py-2'
   };
 
-  const computedIconSize =
-    iconSize ??
-    (size === 'small'
-      ? '20px'
-      : size === 'medium'
-        ? '32px'
-        : size === 'large'
-          ? '48px'
-          : size === 'responsive'
-            ? '16px'
-            : '20px');
+  const defaultIconSizes = {
+    small: '20px',
+    medium: '32px',
+    large: '48px',
+    responsive: '16px'
+  };
+
+  const computedIconSize = iconSize ?? defaultIconSizes[size] ?? '20px';
 </script>
 
 <svelte:element
@@ -41,7 +38,7 @@
   class="flex min-w-0 items-center justify-center rounded bg-muted-red-500 hover:bg-muted-red-300 {sizeList[
     size
   ]}"
-  on:click={!link && onClick ? onClick : undefined}
+  on:click={onClick ? onClick : undefined}
 >
   <Icon src={icon} size={computedIconSize} {color} />
   <slot />

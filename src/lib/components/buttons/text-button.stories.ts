@@ -3,7 +3,7 @@ import TextButton from './text-button.svelte';
 const colorList = ['primary', 'secondary', 'red', 'green', 'blue'];
 
 export default {
-  title: 'Atoms/Buttons/Regular Button',
+  title: 'Atoms/Buttons/Text Button',
   component: TextButton,
   argTypes: {
     color: { control: 'inline-radio', options: colorList },
