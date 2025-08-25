@@ -13,19 +13,16 @@
   export let data: PageData;
   export let account: Account = data.account;
   export let form;
-  
+
   let websites = account.websites ? [...account.websites] : [];
 
   function addCustomWebsite() {
-    websites = [
-      ...websites,
-      { label: '', url: '', iconPath: '' }
-    ];
+    websites = [...websites, { label: '', url: '', iconPath: '' }];
   }
 
   function removeCustomWebsite() {
-    if(websites.length >= 1){
-      websites = websites.slice(0,websites.length-1)
+    if (websites.length >= 1) {
+      websites = websites.slice(0, websites.length - 1);
     }
   }
 </script>
@@ -81,7 +78,7 @@
           textGap={30}
         />
 
-        {#if (websites.length)}
+        {#if websites.length}
           <Carousel.Root>
             <Carousel.Content class="flex w-[550px]" id="teste1">
               {#each websites as website, index}
@@ -117,7 +114,7 @@
           </Carousel.Root>
         {/if}
 
-        <div class = "flex flex-row justify-evenly">
+        <div class="flex flex-row justify-evenly">
           <Button
             type="button"
             color="secondary"
