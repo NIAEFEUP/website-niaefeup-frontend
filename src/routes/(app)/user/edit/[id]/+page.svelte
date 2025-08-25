@@ -13,6 +13,21 @@
   export let data: PageData;
   export let account: Account = data.account;
   export let form;
+  
+  let websites = account.websites ? [...account.websites] : [];
+
+  function addCustomWebsite() {
+    websites = [
+      ...websites,
+      { label: '', url: '', iconPath: '' }
+    ];
+  }
+
+  function removeCustomWebsite() {
+    if(websites.length >= 1){
+      websites = websites.slice(0,websites.length-1)
+    }
+  }
 </script>
 
 {#await account}
@@ -66,11 +81,11 @@
           textGap={30}
         />
 
-        {#if account.websites && account.websites.length}
+        {#if (websites.length)}
           <Carousel.Root>
-            <Carousel.Content class="flex w-[550px]">
-              {#each account.websites as website, index}
-                <Carousel.Item class="">
+            <Carousel.Content class="flex w-[550px]" id="teste1">
+              {#each websites as website, index}
+                <Carousel.Item>
                   <Card.Root>
                     <Card.Content>
                       <LabelInput
@@ -101,6 +116,25 @@
             <Carousel.Next class="hidden md:inline-flex" />
           </Carousel.Root>
         {/if}
+
+        <div class = "flex flex-row justify-evenly">
+          <Button
+            type="button"
+            color="secondary"
+            hoverColor="secondary"
+            width="large"
+            text="Add Custom Website"
+            on:click={addCustomWebsite}
+          />
+          <Button
+            type="button"
+            color="secondary"
+            hoverColor="secondary"
+            width="large"
+            text="Remove Last Custom Website"
+            on:click={removeCustomWebsite}
+          />
+        </div>
 
         <LabelInput
           name="github"
