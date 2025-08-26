@@ -1,19 +1,24 @@
-<!-- @migration-task Error while migrating Svelte code: $$props is used together with named props in a way that cannot be automatically migrated. -->
 <script lang="ts">
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
 
-  export let value: string;
-  let visible = false;
-  $: type = visible ? 'text' : 'password';
-  $: icon = visible ? Icons.Hidden : Icons.Visible;
+  interface Props {
+    value: string;
+    className?: string;
+    [key: string]: any;
+  }
+
+  let { value = $bindable(), class: className = '', ...rest }: Props = $props();
+  let visible = $state(false);
+  let type = $derived(visible ? 'text' : 'password');
+  let icon = $derived(visible ? Icons.Hidden : Icons.Visible);
 </script>
 
 <div class="relative">
   <input
     {...{ type }}
-    {...$$restProps}
-    class="col-start-1 col-end-3 row-start-1 {$$props.class}"
+    {...rest}
+    class="col-start-1 col-end-3 row-start-1 {className}"
     data-testid="password-input"
     aria-label="Password input"
     bind:value
@@ -21,7 +26,7 @@
   <button
     type="button"
     class="absolute inset-y-0 right-0 mr-4"
-    on:click={() => (visible = !visible)}
+    onclick={() => (visible = !visible)}
     aria-label={visible ? 'Hide password' : 'Show password'}
     title={visible ? 'Hide password' : 'Show password'}
   >
