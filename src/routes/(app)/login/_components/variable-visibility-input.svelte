@@ -5,7 +5,7 @@
   interface Props {
     value: string;
     className?: string;
-    [key: string]: any;
+    [key: string]: unknown;
   }
 
   let { value = $bindable(), class: className = '', ...rest }: Props = $props();
