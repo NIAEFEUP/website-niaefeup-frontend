@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { canEdit } from './permissions';
+import { canEditActivity } from './permissions';
 
 import { PUBLIC_API_URL } from '$env/static/public';
 
@@ -18,7 +18,7 @@ describe('Permissions', () => {
       json: async () => ({ allowed: true })
     });
 
-    const result = await canEdit();
+    const result = await canEditActivity();
 
     expect(fetch).toHaveBeenCalledWith(`${PUBLIC_API_URL}/auth/hasPermission/6`);
     expect(result).toBe(true);
