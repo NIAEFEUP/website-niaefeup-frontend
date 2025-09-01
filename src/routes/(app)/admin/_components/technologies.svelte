@@ -19,7 +19,7 @@
   let error: BackendError | null = null;
 
   $: filtered = technologies.filter((tech) =>
-    tech.name.toLowerCase().trim().includes(search.toLowerCase())
+    tech.name.toLowerCase().trim().includes(search.trim().toLowerCase())
   );
 
   export let technologies;

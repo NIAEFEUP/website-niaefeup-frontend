@@ -21,7 +21,9 @@
   class="mx-auto flex h-10 w-[16em] flex-row items-center justify-between rounded-3xl bg-gray-500/25 p-4"
 >
   <div class="align-center mr-4 flex flex-row items-center gap-x-2">
-    <img src={tech.image} alt="Technology logo" class="h-8 w-8 rounded-full" />
+    <div class="h-8 w-8 rounded-full">
+      <img src={tech.image} alt="Technology logo" class="h-full w-full object-cover" />
+    </div>
     <p class="drop-shadow-xl">{tech.name}</p>
   </div>
 
