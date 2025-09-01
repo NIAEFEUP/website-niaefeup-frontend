@@ -1,4 +1,8 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
+  
+  const dispatch = createEventDispatcher();
+  
   export let value = '';
   export let label = '';
   export let id = '';
@@ -9,6 +13,11 @@
   export let horizontal = false;
   export let textGap;
   export let name = '';
+
+  function handleInput(event) {
+    value = event.target.value;
+    dispatch('input', value);
+  }
 </script>
 
 <div
@@ -39,6 +48,7 @@
       {required}
       {value}
       rows="4"
+      on:input={handleInput}
     />
   {:else}
     <input
@@ -50,6 +60,7 @@
       {placeholder}
       {required}
       {value}
+      on:input={handleInput}
     />
   {/if}
 </div>

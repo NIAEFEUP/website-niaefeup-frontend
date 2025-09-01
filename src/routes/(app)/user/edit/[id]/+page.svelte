@@ -14,6 +14,19 @@
   export let account: Account = data.account;
   export let form;
 
+  let api: any;
+  let current = 0;
+  let count = 0;
+
+  $: if (api) {
+    count = api.scrollSnapList().length;
+    current = api.selectedScrollSnap();
+
+    api.on('select', () => {
+      current = api.selectedScrollSnap();
+    });
+  }
+
   let websites = account.websites ? [...account.websites] : [];
 
   function addCustomWebsite() {
@@ -22,7 +35,8 @@
 
   function removeCustomWebsite() {
     if (websites.length >= 1) {
-      websites = websites.slice(0, websites.length - 1);
+      const currentPosition = api ? api.selectedScrollSnap() : 0;
+      websites = [...websites.slice(0, currentPosition), ...websites.slice(currentPosition + 1, websites.length)];
     }
   }
 </script>
@@ -77,44 +91,45 @@
           value={account.linkedin ? account.linkedin : ''}
           textGap={30}
         />
+        <div class = "flex flex-row justify-center">
+          {#if websites.length}
+            <Carousel.Root bind:api class="w-full max-w-[550px]">
+              <Carousel.Content class="w-full">
+                {#each websites as website, index}
+                  <Carousel.Item class="w-full">
+                    <Card.Root>
+                      <Card.Content>
+                        <LabelInput
+                          name={`label ${index + 1}`}
+                          label={`Custom Website ${index + 1} Name`}
+                          placeholder="Insira o Texto"
+                          bind:value={website.label}
+                        />
+                        <LabelInput
+                          name={`url ${index + 1}`}
+                          label={`Custom Website ${index + 1} Url`}
+                          placeholder="Insira o Texto"
+                          bind:value={website.url}
+                          required
+                        />
+                        <LabelInput
+                          name={`icon ${index + 1}`}
+                          label={`Custom Website ${index + 1} Icon`}
+                          placeholder="Insira o Texto"
+                          bind:value={website.iconPath}
+                        />
+                      </Card.Content>
+                    </Card.Root>
+                  </Carousel.Item>
+                {/each}
+              </Carousel.Content>
+              <Carousel.Previous class="hidden md:inline-flex" />
+              <Carousel.Next class="hidden md:inline-flex" />
+            </Carousel.Root>
+          {/if}
+        </div>
 
-        {#if websites.length}
-          <Carousel.Root>
-            <Carousel.Content class="flex w-[550px]" id="teste1">
-              {#each websites as website, index}
-                <Carousel.Item>
-                  <Card.Root>
-                    <Card.Content>
-                      <LabelInput
-                        name={`label ${index + 1}`}
-                        label={`Custom Website ${index + 1} Name`}
-                        placeholder="Insira o Texto"
-                        value={website.label ?? ''}
-                      />
-                      <LabelInput
-                        name={`url ${index + 1}`}
-                        label={`Custom Website ${index + 1} Url`}
-                        placeholder="Insira o Texto"
-                        value={website.url ?? ''}
-                        required
-                      />
-                      <LabelInput
-                        name={`icon ${index + 1}`}
-                        label={`Custom Website ${index + 1} Icon`}
-                        placeholder="Insira o Texto"
-                        value={website.iconPath ?? ''}
-                      />
-                    </Card.Content>
-                  </Card.Root>
-                </Carousel.Item>
-              {/each}
-            </Carousel.Content>
-            <Carousel.Previous class="hidden md:inline-flex" />
-            <Carousel.Next class="hidden md:inline-flex" />
-          </Carousel.Root>
-        {/if}
-
-        <div class="flex flex-row justify-evenly">
+        <div class="flex flex-row justify-start gap-10">
           <Button
             type="button"
             color="secondary"
@@ -128,7 +143,7 @@
             color="secondary"
             hoverColor="secondary"
             width="large"
-            text="Remove Last Custom Website"
+            text="Remove Custom Website"
             on:click={removeCustomWebsite}
           />
         </div>
@@ -155,20 +170,22 @@
             <p class="mt-2 text-red-500">{message}</p>
           {/each}
         {/if}
-
-        <Button
-          type="submit"
-          color="primary"
-          hoverColor="primary"
-          width="large"
-          text="Guardar Alterações"
-        />
+        <div class = "flex flex-row md:justify-start justify-center">
+          <Button
+            type="submit"
+            color="primary"
+            hoverColor="primary"
+            width="large"
+            text="Guardar Alterações"
+          />
+          </div>
       </div>
+      <div class="flex flex-row justify-center md:justify-start">
+        <div class="order-1 mt-5 flex max-w-[278px] flex-col items-center">
+          <PictureInput text="Foto de perfil" name="photo" source={account.photo} />
 
-      <div class="order-1 mt-5 flex max-w-[278px] flex-col items-center">
-        <PictureInput text="Foto de perfil" name="photo" source={account.photo} />
-
-        <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
+          <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
+        </div>
       </div>
     </form>
   </div>

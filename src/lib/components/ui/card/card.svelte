@@ -5,7 +5,7 @@
   type $$Props = HTMLAttributes<HTMLDivElement>;
 
   let className: $$Props['class'] = undefined;
-  export { className as class };
+  export { className as class};
 </script>
 
 <div
