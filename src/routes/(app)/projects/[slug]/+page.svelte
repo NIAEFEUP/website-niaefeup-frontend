@@ -5,13 +5,10 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
-  interface Props {
-    data: PageData;
-  }
+  let { data }: { data: PageData } = $props();
 
-  let { data }: Props = $props();
-  export const project: Project = data.project;
-  export const hasPerms: boolean = data.hasPerms;
+  const project: Project = data.project;
+  const hasPerms: boolean = data.hasPerms;
 
   let screenSizeThreshold = 768;
   let windowWidth: number = $state(0);
@@ -19,7 +16,7 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-{#await project then project}
+{#if project}
   <section class="mx-5 min-h-screen pt-12 md:pt-32">
     {#if hasPerms}
       <div class="my-4 flex justify-end md:my-8 md:w-5/6">
@@ -50,7 +47,7 @@
 
     {#if project.links && project.links.length > 0}
       <ul class="mt-16 flex flex-wrap justify-center gap-10">
-        {#each project.links as link}
+        {#each project.links as link, i (i)}
           <li>
             <a
               href={link.url}
@@ -85,8 +82,7 @@
           &lt; Tecnologias /&gt;
         </p>
         <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
-          {#each project.technologies as technology}
-            <!-- TODO: fix this when we have the technologies entity implemented in the backend -->
+          {#each project.technologies as technology, i (i)}
             <div
               class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
             >
@@ -116,4 +112,6 @@
       </div>
     </div>
   </section>
-{/await}
+{:else}
+  <p>Loading project details...</p>
+{/if}

@@ -42,7 +42,7 @@
     </a>
   </div>
   <div class="flex items-center justify-end gap-7">
-    {#each links as { href, label, pageComp }}
+    {#each links as { href, label, pageComp } (label)}
       {#if currentPage === pageComp}
         <a {href} class="rounded bg-muted-red-400 p-2" data-testid={label.toLowerCase()}>
           <p class="font-bold">{label}</p>

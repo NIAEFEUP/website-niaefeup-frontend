@@ -4,13 +4,10 @@
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Project } from '@/types/project';
 
-  interface Props {
-    data: PageData;
-    projects?: Project[];
-    hasPerms?: boolean;
-  }
+  let { data }: { data: PageData } = $props();
 
-  let { data, projects = data.projects, hasPerms = data.hasPerms }: Props = $props();
+  const projects: Project[] = data.projects;
+  const hasPerms: boolean = data.hasPerms;
 </script>
 
 <section>
@@ -30,7 +27,7 @@
       class="mt-4 flex h-full w-full flex-col justify-evenly gap-4
                 md:mt-6 md:grid md:grid-cols-3 md:gap-x-1.5"
     >
-      {#each projects as project, index}
+      {#each projects as project, index (index)}
         <ProjectTile {project} isOdd={index % 2 === 1} />
       {/each}
     </div>

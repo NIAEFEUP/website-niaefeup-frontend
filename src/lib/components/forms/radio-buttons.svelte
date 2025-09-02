@@ -18,7 +18,7 @@
       {label}
     </legend>
   {/if}
-  {#each options as option}
+  {#each options as option (option)}
     <input
       id="radio-{label.toLowerCase()}-{option.toLowerCase()}"
       class="hidden text-center"

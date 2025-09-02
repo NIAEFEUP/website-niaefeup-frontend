@@ -23,7 +23,7 @@
 
 <!-- The grid column sizes used are magic numbers that look good with the Hexagon component -->
 <ul class="grid gap-{orientation}-{gap}" style={gridColumnsStyle}>
-  {#each items as item, index}
+  {#each items as item, index (index)}
     {@const isHorizontal = orientation === 'horizontal'}
     {@const col = index % cols}
     {@const row = (index - col) / cols}

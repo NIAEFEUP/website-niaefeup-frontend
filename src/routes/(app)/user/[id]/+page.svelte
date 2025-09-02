@@ -8,12 +8,9 @@
   import EditButton from '$lib/components/buttons/edit-button.svelte';
   import { goto } from '$app/navigation';
 
-  interface Props {
-    data: PageData;
-    teamMember?: TeamMember;
-  }
+  let { data }: { data: PageData } = $props();
 
-  let { data, teamMember = data.teamMember }: Props = $props();
+  let teamMember: TeamMember = data.teamMember;
 
   async function logout() {
     const response = await fetch('/api/auth/logout', {
@@ -68,7 +65,7 @@
               {#if teamMember.github}
                 <SocialMediaIcon
                   url={teamMember.github}
-                  social={'Github'}
+                  social="Github"
                   icon={Icons.Github}
                   user={teamMember.name}
                 />
@@ -76,16 +73,16 @@
               {#if teamMember.linkedin}
                 <SocialMediaIcon
                   url={teamMember.linkedin}
-                  social={'Linkedin'}
+                  social="Linkedin"
                   icon={Icons.Linkedin}
                   user={teamMember.name}
                 />
               {/if}
               {#if teamMember.websites}
-                {#each teamMember.websites as customWebsite}
+                {#each teamMember.websites as customWebsite, i (i)}
                   <SocialMediaIcon
                     url={customWebsite.url}
-                    social="custom website"
+                    social="Custom Website"
                     icon={Icons.Globe}
                     user={teamMember.name}
                     iconPath={customWebsite.iconPath}

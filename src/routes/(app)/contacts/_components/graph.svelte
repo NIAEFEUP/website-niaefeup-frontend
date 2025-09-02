@@ -36,7 +36,7 @@
 
 <svg style="height: 40dvh; min-width: 35dvw" viewBox="0 0 87 80" xmlns="http://www.w3.org/2000/svg">
   <!-- Draw graph edges. -->
-  {#each lines as line}
+  {#each lines as line, i (i)}
     <line
       x1={coords[line[0]][0] * coefficient}
       y1={coords[line[0]][1] * coefficient}
@@ -47,7 +47,7 @@
   {/each}
 
   <!-- Draw graph nodes. -->
-  {#each coords as coord, index}
+  {#each coords as coord, index (index)}
     <foreignObject
       x={coord[0] * coefficient - (iconSize + 2) / 2}
       y={coord[1] * coefficient - (iconSize + 2) / 2}
