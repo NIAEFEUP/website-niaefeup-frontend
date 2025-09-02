@@ -1,6 +1,10 @@
 <script lang="ts">
-  export let data: { info: string };
-  let logoutMessage = '';
+  interface Props {
+    data: { info: string };
+  }
+
+  let { data }: Props = $props();
+  let logoutMessage = $state('');
 
   async function logout() {
     const response = await fetch('/api/auth/logout', {
@@ -17,7 +21,7 @@
   <h1>Profile</h1>
   <p>{data.info}</p>
   <br />
-  <button on:click={() => logout()}>Logout</button>
+  <button onclick={() => logout()}>Logout</button>
   <p>{logoutMessage}</p>
   <br />
   <button><a href="/login">Login</a></button>

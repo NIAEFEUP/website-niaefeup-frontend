@@ -2,14 +2,29 @@
   import type { IconType } from 'svelte-icons-pack';
   import Icon from '@/lib/components/icons/icon.svelte';
 
-  export let type: 'button' | 'submit' | 'reset' = 'button';
-  export let size: 'small' | 'medium' | 'large' | 'responsive' = 'small';
-  export let link: string | undefined;
-  export let icon: IconType;
-  export let iconSize: string | undefined;
-  export let ariaLabel: string = '';
-  export let color: string = 'white';
-  export let onClick: (() => void) | undefined;
+  interface Props {
+    type?: 'button' | 'submit' | 'reset';
+    size?: 'small' | 'medium' | 'large' | 'responsive';
+    link: string | undefined;
+    icon: IconType;
+    iconSize: string | undefined;
+    ariaLabel?: string;
+    color?: string;
+    onClick: (() => void) | undefined;
+    children?: import('svelte').Snippet;
+  }
+
+  let {
+    type = 'button',
+    size = 'small',
+    link,
+    icon,
+    iconSize,
+    ariaLabel = '',
+    color = 'white',
+    onClick,
+    children
+  }: Props = $props();
 
   const sizeList = {
     small: 'w-10 h-10 px-1 py-1 sm:w-12 sm:h-12 sm:px-2 sm:py-2',
@@ -38,8 +53,8 @@
   class="flex min-w-0 items-center justify-center rounded bg-muted-red-500 hover:bg-muted-red-300 {sizeList[
     size
   ]}"
-  on:click={onClick ? onClick : undefined}
+  onclick={onClick ? onClick : undefined}
 >
   <Icon src={icon} size={computedIconSize} {color} />
-  <slot />
+  {@render children?.()}
 </svelte:element>

@@ -2,9 +2,9 @@
   import VariableVisibilityInput from './_components/variable-visibility-input.svelte';
   import { goto } from '$app/navigation';
 
-  let email = '';
-  let password = '';
-  let message = '';
+  let email = $state('');
+  let password = $state('');
+  let message = $state('');
 
   async function submitLogin() {
     const success = await fetch('/api/auth', {
@@ -50,7 +50,7 @@
     <button
       type="button"
       class="z-20 my-4 w-full rounded-[15px] bg-taupe-100 p-[2dvh] text-muted-red-700"
-      on:click={submitLogin}>Iniciar Sessão</button
+      onclick={submitLogin}>Iniciar Sessão</button
     >
     <br />
     <p class="h-[2dvh] text-center">{message}</p>
