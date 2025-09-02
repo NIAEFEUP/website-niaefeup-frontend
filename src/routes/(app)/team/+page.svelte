@@ -1,14 +1,10 @@
 <script lang="ts">
-  import { Icon } from 'svelte-icons-pack';
-  import TeamMemberHexagon from './_components/team-member-hexagon.svelte'; // Caminho para o componente
+  import { onMount } from 'svelte';
+  import TeamMemberHexagon from './_components/team-member-hexagon.svelte';
   import type { TeamMember } from '@/types/team-member';
   import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
-  import { onMount } from 'svelte';
-  let isSmallScreen = false;
 
-  const checkScreenSize = () => {
-    isSmallScreen = window.innerWidth < 768; // Tailwind's `md` breakpoint
-  };
+  export let data: PageData;
 
   // lib/utils/get-cols.ts
   function getColsFromWidth(width: number): number {
@@ -20,14 +16,11 @@
   }
 
   onMount(() => {
-    checkScreenSize(); // Check screen size on mount
     updateCols();
 
-    window.addEventListener('resize', checkScreenSize); // Update on resize
     window.addEventListener('resize', updateCols);
 
     return () => {
-      window.removeEventListener('resize', checkScreenSize); // Cleanup
       window.removeEventListener('resize', updateCols);
     };
   });
@@ -395,36 +388,35 @@
   ];
 </script>
 
-<section class="flex flex-col justify-center gap-32">
-  <section class="mb-4 flex flex-col text-center font-raleway text-white">
-    <h1 class="text-3xl font-bold">&lt; Equipa /&gt;</h1>
+<div class="flex flex-col justify-center">
+  <h1 class="mb-4 flex flex-col text-center font-raleway text-4xl font-bold text-white lg:text-5xl">
+    &lt; Equipa /&gt;
+  </h1>
+
+  <section class="mb-6 flex w-full flex-col items-center justify-center p-6">
+    <h2 class="mb-16 text-center text-3xl font-bold lg:text-4xl">Direção</h2>
+    {#key cols}
+      <HexagonGrid
+        items={boardMembers}
+        {cols}
+        gap="small"
+        orientation="horizontal"
+        component={TeamMemberHexagon}
+      />
+    {/key}
   </section>
 
-  <section class="flex w-full flex-col items-center justify-center p-6">
-    <h2 class="text-center text-3xl font-bold">Direção</h2>
-    <HexagonGrid
-      items={boardMembers}
-      {cols}
-      gap="small"
-      orientation="horizontal"
-      component={TeamMemberHexagon}
-    />
-  </section>
-
-  <section class="flex w-full flex-col items-center justify-center p-6">
-    <div class="mb-6 grid w-full grid-cols-5">
-      <div class="col-span-3"></div>
-      <h2 class="col-span-1 place-self-center pr-4 text-3xl font-bold">Membros</h2>
-      <div class="col-span-1"></div>
-    </div>
-
-    <HexagonGrid
-      items={teamMembers}
-      {cols}
-      gap="small"
-      orientation="horizontal"
-      component={TeamMemberHexagon}
-    />
+  <section class="mb-6 flex w-full flex-col items-center justify-center p-6">
+    <h2 class="mb-16 text-center text-4xl font-bold">Membros</h2>
+    {#key cols}
+      <HexagonGrid
+        items={teamMembers}
+        {cols}
+        gap="small"
+        orientation="horizontal"
+        component={TeamMemberHexagon}
+      />
+    {/key}
   </section>
 
   <section class="flex w-full flex-col items-center justify-center p-6">
@@ -442,4 +434,4 @@
       component={TeamMemberHexagon}
     />
   </section>
-</section>
+</div>
