@@ -5,17 +5,18 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
-  export let data: PageData;
-  export const project: Project = data.project;
-  export const hasPerms: boolean = data.hasPerms;
+  let { data }: { data: PageData } = $props();
+
+  const project: Project = data.project;
+  const hasPerms: boolean = data.hasPerms;
 
   let screenSizeThreshold = 768;
-  let windowWidth: number;
+  let windowWidth: number = $state(0);
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-{#await project then project}
+{#if project}
   <section class="mx-5 min-h-screen pt-12 md:pt-32">
     {#if hasPerms}
       <div class="my-4 flex justify-end md:my-8 md:w-5/6">
@@ -46,7 +47,7 @@
 
     {#if project.links && project.links.length > 0}
       <ul class="mt-16 flex flex-wrap justify-center gap-10">
-        {#each project.links as link}
+        {#each project.links as link (link.url)}
           <li>
             <a
               href={link.url}
@@ -82,7 +83,7 @@
             &lt; Tecnologias /&gt;
           </p>
           <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
-            {#each project.technologies as technology}
+            {#each project.technologies as technology (technology.url)}
               <a
                 href={technology.url}
                 target="_blank"
@@ -119,4 +120,6 @@
       </div>
     </div>
   </section>
-{/await}
+{:else}
+  <p>Loading project details...</p>
+{/if}

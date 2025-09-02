@@ -4,7 +4,11 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
-  export let notification: Notification;
+  interface Props {
+    notification: Notification;
+  }
+
+  let { notification }: Props = $props();
 </script>
 
 <div
@@ -19,7 +23,7 @@
   <div class="ml-1 flex flex-col">
     <button
       class="rounded-lg p-1.5 hover:bg-muted-red-500"
-      on:click={() => notification.close()}
+      onclick={() => notification.close()}
       aria-label="Close"
     >
       <Icon src={Icons.Close} color="white" size="18px" />

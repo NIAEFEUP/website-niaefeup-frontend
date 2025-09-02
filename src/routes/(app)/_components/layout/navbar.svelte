@@ -3,7 +3,7 @@
   // @ts-expect-error Import is as expected but throws error
   import { page } from '$app/stores';
 
-  $: currentPage = $page.url.pathname ?? '/';
+  let currentPage = $derived($page.url.pathname ?? '/');
   const links = [
     { href: '#', label: 'Equipa', pageComp: '/team' },
     { href: '/projects', label: 'Projetos', pageComp: '/projects' },
@@ -11,7 +11,7 @@
     { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
   ];
 
-  let isScrolled = false;
+  let isScrolled = $state(false);
   let y = 0;
 
   function handleScroll() {
@@ -42,7 +42,7 @@
     </a>
   </div>
   <div class="flex items-center justify-end gap-7">
-    {#each links as { href, label, pageComp }}
+    {#each links as { href, label, pageComp } (label)}
       {#if currentPage === pageComp}
         <a {href} class="rounded bg-muted-red-400 p-2" data-testid={label.toLowerCase()}>
           <p class="font-bold">{label}</p>

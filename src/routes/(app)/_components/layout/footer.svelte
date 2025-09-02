@@ -84,9 +84,14 @@
         data-testid="email-icon"
         role="button"
         tabindex="0"
-        on:click={() => copyToClipboard('ni@aefeup.pt')}
+        onclick={() => copyToClipboard('ni@aefeup.pt')}
         aria-label="Email"
-        on:keydown
+        onkeydown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault(); // Prevent scrolling on space
+            copyToClipboard('ni@aefeup.pt');
+          }
+        }}
         class="cursor-pointer"
       >
         <Icon src={Icons.Mail} color="white" size="24px" />
@@ -160,8 +165,13 @@
         role="button"
         tabindex="0"
         aria-label="Copy"
-        on:click={() => copyToClipboard('ni@aefeup.pt')}
-        on:keydown
+        onclick={() => copyToClipboard('ni@aefeup.pt')}
+        onkeydown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault(); // Prevent scrolling on space
+            copyToClipboard('ni@aefeup.pt');
+          }
+        }}
         class="cursor-pointer"
       >
         <Icon src={Icons.Mail} color="white" size="24px" />

@@ -5,9 +5,8 @@
   import Icons from '$lib/components/icons/icons';
   import type { TeamMember } from '@/types/team-member';
 
-  export let data;
   export const orientation = 'horizontal';
-  export let teamMember = data as TeamMember;
+  let { data, teamMember = data as TeamMember } = $props();
 
   const openHexagonAnimation = (
     target: HTMLElement,
@@ -108,7 +107,7 @@
             >
           {/if}
           {#if teamMember.websites}
-            {#each teamMember.websites as customWebsite}
+            {#each teamMember.websites as customWebsite (customWebsite.url)}
               <a
                 href={customWebsite.url}
                 class="full-opacity flex h-5 items-center justify-center opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
@@ -130,8 +129,8 @@
       </div>
     </div>
     <div
-      class="variable-opacity absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-1000 group-hover:opacity-30"
-    />
+      class="variable-opacity absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-30"
+    ></div>
     <img
       src={teamMember.photo ? teamMember.photo : 'images/default_profile_pic.png'}
       alt="NIAFEUP member {teamMember.name}"

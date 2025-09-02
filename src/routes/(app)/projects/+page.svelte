@@ -4,9 +4,10 @@
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Project } from '@/types/project';
 
-  export let data: PageData;
-  export let projects: Project[] = data.projects;
-  export let hasPerms: boolean = data.hasPerms;
+  let { data }: { data: PageData } = $props();
+
+  const projects: Project[] = data.projects;
+  const hasPerms: boolean = data.hasPerms;
 </script>
 
 <section>
@@ -26,7 +27,7 @@
       class="mt-4 flex h-full w-full flex-col justify-evenly gap-4
                 md:mt-6 md:grid md:grid-cols-3 md:gap-x-1.5"
     >
-      {#each projects as project, index}
+      {#each projects as project, index (index)}
         <ProjectTile {project} isOdd={index % 2 === 1} />
       {/each}
     </div>
