@@ -1,4 +1,3 @@
-version: '3'
 services:
   website-niaefeup-frontend-dev:
     build:
@@ -11,6 +10,7 @@ services:
       - ./static:/usr/src/website-niaefeup-frontend/static
     environment:
       - PORT=3000
+    network_mode: 'host' # do not add this to prod!
 
   website-niaefeup-frontend-storybook:
     build:

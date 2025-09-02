@@ -10,6 +10,7 @@ import {
 } from 'svelte-icons-pack/fa';
 import { BiMap } from 'svelte-icons-pack/bi';
 import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
+import { FiLogOut, FiEdit2 } from 'svelte-icons-pack/fi';
 
 const Icons = {
   Instagram: FaBrandsInstagram,
@@ -24,7 +25,9 @@ const Icons = {
   Globe: FaSolidGlobe,
   Pin: BiMap,
   Visible: IoEye,
-  Hidden: IoEyeOff
+  Hidden: IoEyeOff,
+  Logout: FiLogOut,
+  Edit: FiEdit2
 };
 
 export default Icons;

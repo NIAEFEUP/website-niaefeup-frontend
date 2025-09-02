@@ -82,27 +82,27 @@
       </p>
       <p
         data-testid="role"
-        class="full-opacity mx-auto text-center text-xs leading-tight text-gray-100 hidden opacity-0 transition-all duration-1000 delay-1000 ease-in-out group-hover:opacity-100 group-hover:block  sm:text-xs md:text-sm lg:text-base xl:text-lg"
+        class="full-opacity mx-auto hidden text-center text-xs leading-tight text-gray-100 opacity-0 transition-all delay-1000 duration-1000 ease-in-out group-hover:block group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {#if teamMember.role}
           {teamMember.role}
         {/if}
-      </p>      
+      </p>
       <div class="relative mt-1">
         <div class="absolute flex w-full justify-center gap-1 md:gap-2">
           {#if teamMember.linkedin}
             <a
               href={teamMember.linkedin}
-              class="full-opacity h-6 flex items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-in-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="full-opacity flex h-6 items-center justify-center opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s LinkedIn"
             >
               <Icon src={Icons.Linkedin} color="white" size="80%" /></a
             >
           {/if}
-          {#if teamMember.gitHub}
+          {#if teamMember.github}
             <a
-              href={teamMember.gitHub}
-              class="full-opacity h-6 flex items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-in-out group-hover:static group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              href={teamMember.github}
+              class="full-opacity flex h-6 items-center justify-center opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:static group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s GitHub"
               ><Icon src={Icons.Github} color="white" size="80%" /></a
             >
@@ -111,7 +111,7 @@
             {#each teamMember.websites as customWebsite}
               <a
                 href={customWebsite.url}
-                class="full-opacity h-5 flex items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-in-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+                class="full-opacity flex h-5 items-center justify-center opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
                 aria-label="{teamMember.name}'s custom website"
               >
                 {#if customWebsite.iconPath}

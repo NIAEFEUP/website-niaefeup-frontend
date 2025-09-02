@@ -1,5 +1,6 @@
 <script lang="ts">
   import VariableVisibilityInput from './_components/variable-visibility-input.svelte';
+  import { goto } from '$app/navigation';
 
   let email = '';
   let password = '';
@@ -16,14 +17,18 @@
         password
       })
     }).then((res) => res.ok);
+
     message = success ? 'Login successful' : 'Login failed';
+    if (success == true) {
+      goto('/');
+    }
   }
 </script>
 
 <section
   class="flex h-full w-full flex-col items-center justify-center font-raleway text-base font-[700] sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
 >
-  <form on:submit={submitLogin}>
+  <form method="POST" action="">
     <div class="grid justify-center rounded-[15px] bg-muted-red-500 p-[5dvh] lg:min-w-[60%]">
       <h1 class="text-taupe-100">Área Membro</h1>
       <input
@@ -43,9 +48,9 @@
       <br />
     </div>
     <button
-      type="submit"
+      type="button"
       class="z-20 my-4 w-full rounded-[15px] bg-taupe-100 p-[2dvh] text-muted-red-700"
-      >Iniciar Sessão</button
+      on:click={submitLogin}>Iniciar Sessão</button
     >
     <br />
     <p class="h-[2dvh] text-center">{message}</p>

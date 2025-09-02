@@ -22,7 +22,7 @@
   :global(html) {
     height: 100%;
     min-height: 100vh;
-    overflow: scroll;
+    overflow: auto;
   }
 
   :global(body) {
@@ -30,6 +30,21 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
+  }
+
+  /*
+  A browser autofill option (in loging form for example) may apply a filter to our input fields that clashes with our desired aesthetic,
+  therefore we undo that change and keep the original style
+  */
+  :global(
+    input:-webkit-autofill,
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active
+  ) {
+    -webkit-box-shadow: 0 0 0px 1000px rgb(255 233 233 / var(--tw-bg-opacity)) inset; /*Since we can't alter the browsers background change on autofill fields we add an inner shadow with the desired color*/
+    -webkit-text-fill-color: rgb(65 19 21 / 0.54);
   }
 </style>
