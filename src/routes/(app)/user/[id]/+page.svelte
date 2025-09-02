@@ -79,7 +79,7 @@
                 />
               {/if}
               {#if teamMember.websites}
-                {#each teamMember.websites as customWebsite, i (customWebsite.url)}
+                {#each teamMember.websites as customWebsite (customWebsite.url)}
                   <SocialMediaIcon
                     url={customWebsite.url}
                     social="Custom Website"

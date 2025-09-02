@@ -47,7 +47,7 @@
 
     {#if project.links && project.links.length > 0}
       <ul class="mt-16 flex flex-wrap justify-center gap-10">
-        {#each project.links as link, i (link.url)}
+        {#each project.links as link (link.url)}
           <li>
             <a
               href={link.url}
