@@ -1,3 +1,4 @@
+import type { Technology } from './technology';
 import type { CustomWebsite } from './custom-website';
 import type { TimelineEvent } from './timeline-event';
 
@@ -10,7 +11,7 @@ export type Project = {
   gallery: string[];
   thumbnail: string;
   isArchived: boolean;
-  technologies: string[];
+  technologies: Technology[];
   slogan: string;
   targetAudience: string;
   github: string;
