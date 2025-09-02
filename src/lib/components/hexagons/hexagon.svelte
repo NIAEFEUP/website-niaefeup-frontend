@@ -2,15 +2,20 @@
   import HorizontalHexagon from './internal/horizontal-hexagon.svelte';
   import VerticalHexagon from './internal/vertical-hexagon.svelte';
 
-  export let orientation: 'horizontal' | 'vertical';
+  interface Props {
+    orientation: 'horizontal' | 'vertical';
+    children?: import('svelte').Snippet;
+  }
+
+  let { orientation, children }: Props = $props();
 </script>
 
 {#if orientation === 'horizontal'}
   <HorizontalHexagon>
-    <slot />
+    {@render children?.()}
   </HorizontalHexagon>
 {:else}
   <VerticalHexagon>
-    <slot />
+    {@render children?.()}
   </VerticalHexagon>
 {/if}
