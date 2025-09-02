@@ -9,7 +9,6 @@
   import LabelInput from '$lib/components/forms/label-input.svelte';
 
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
-  import { enhance } from '$app/forms';
 
   import type { BackendError } from '$lib/types/backend-error';
 
@@ -41,19 +40,7 @@
           Adicionar Tecnologia
         </Dialog.Trigger>
         <Dialog.Content class="rounded-3xl bg-muted-red-500 p-0">
-          <form
-            method="POST"
-            action="?/addTechnology"
-            enctype="multipart/form-data"
-            use:enhance={() => {
-              error = null;
-              return async ({ result }) => {
-                if (!result.data.success) {
-                  error = result.data.data.errors[0];
-                }
-              };
-            }}
-          >
+          <form method="POST" action="?/addTechnology" enctype="multipart/form-data">
             <Dialog.Header class="flex flex-col gap-y-6 p-8">
               <Dialog.Title class="text-xl">Adicionar nova tecnologia</Dialog.Title>
               <Dialog.Description>
