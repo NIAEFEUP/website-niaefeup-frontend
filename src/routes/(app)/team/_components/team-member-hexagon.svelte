@@ -105,7 +105,7 @@
             >
           {/if}
           {#if teamMember.websites}
-            {#each teamMember.websites as customWebsite, i (i)}
+            {#each teamMember.websites as customWebsite (customWebsite.url)}
               <a
                 href={customWebsite.url}
                 class="full-opacity h-5 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"

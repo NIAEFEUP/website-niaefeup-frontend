@@ -2,7 +2,7 @@
   import type { Project } from '@/types/project';
 
   let screenSizeThreshold = 768; // tailwindcss sets 48rem (768px) as the minimum with for mobile devices
-  let windowWidth: number = $state();
+  let windowWidth: number = $state(0);
   interface Props {
     project: Project;
     isOdd: boolean;

@@ -10,8 +10,8 @@
   }
 
   let { text, name = 'profilePicture' }: Props = $props();
-  let image: string = $state();
-  let fileInput: HTMLInputElement = $state();
+  let image: string | undefined = $state();
+  let fileInput: HTMLInputElement | undefined = $state();
 
   const onFileSelected = (e) => {
     const file = e.target.files[0];

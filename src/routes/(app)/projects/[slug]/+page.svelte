@@ -47,7 +47,7 @@
 
     {#if project.links && project.links.length > 0}
       <ul class="mt-16 flex flex-wrap justify-center gap-10">
-        {#each project.links as link, i (i)}
+        {#each project.links as link, i (link.url)}
           <li>
             <a
               href={link.url}
@@ -83,7 +83,7 @@
             &lt; Tecnologias /&gt;
           </p>
           <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
-            {#each project.technologies as technology, i (i)}
+            {#each project.technologies as technology (technology.url)}
               <a
                 href={technology.url}
                 target="_blank"
