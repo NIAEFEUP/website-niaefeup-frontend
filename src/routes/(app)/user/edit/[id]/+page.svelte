@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import type { PageData } from './$types';
   import type { Account } from '@/types/account';
   import FormsHeader from '$lib/components/forms-header.svelte';
@@ -10,24 +12,30 @@
   import * as Carousel from '$lib/components/ui/carousel/index.js';
   import * as Card from '$lib/components/ui/card/index.js';
 
-  export let data: PageData;
-  export let account: Account = data.account;
-  export let form;
-
-  let api: any;
-  let current = 0;
-  let count = 0;
-
-  $: if (api) {
-    count = api.scrollSnapList().length;
-    current = api.selectedScrollSnap();
-
-    api.on('select', () => {
-      current = api.selectedScrollSnap();
-    });
+  interface Props {
+    data: PageData;
+    account?: Account;
+    form: any;
   }
 
-  let websites = account.websites ? [...account.websites] : [];
+  let { data, account = data.account, form }: Props = $props();
+
+  let api: any = $state();
+  let current = $state(0);
+  let count = $state(0);
+
+  run(() => {
+    if (api) {
+      count = api.scrollSnapList().length;
+      current = api.selectedScrollSnap();
+
+      api.on('select', () => {
+        current = api.selectedScrollSnap();
+      });
+    }
+  });
+
+  let websites = $state(account.websites ? [...account.websites] : []);
 
   function addCustomWebsite() {
     websites = [...websites, { label: '', url: '', iconPath: '' }];

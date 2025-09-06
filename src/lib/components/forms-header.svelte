@@ -1,5 +1,9 @@
-<script>
-  export let label = '';
+<script lang="ts">
+  interface Props {
+    label?: string;
+  }
+
+  let { label = '' }: Props = $props();
 </script>
 
 <div class="flex w-[99vw] flex-row place-self-center border-b-[3px] border-b-muted-red-500 p-[2vw]">

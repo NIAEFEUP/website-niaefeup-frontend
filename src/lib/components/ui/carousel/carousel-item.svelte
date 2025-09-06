@@ -2,8 +2,14 @@
   import { getEmblaContext } from './context.js';
   import { cn } from '$lib/utils.js';
 
-  let className: string | undefined | null = undefined;
-  export { className as class };
+  interface Props {
+    class?: string | undefined | null;
+    children?: import('svelte').Snippet;
+    [key: string]: any
+  }
+
+  let { class: className = undefined, children, ...rest }: Props = $props();
+  
 
   const { orientation } = getEmblaContext('<Carousel.Item/>');
 </script>
@@ -17,7 +23,7 @@
     className
   )}
   data-embla-slide=""
-  {...$$restProps}
+  {...rest}
 >
-  <slot />
+  {@render children?.()}
 </div>

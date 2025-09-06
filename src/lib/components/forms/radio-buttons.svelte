@@ -1,9 +1,13 @@
 <script lang="ts">
-  export let label: string = '';
-  export let options: string[];
-  export let horizontal: boolean = false;
-  export let selected: string = '';
-  export let name: string = '';
+  interface Props {
+    label?: string;
+    options: string[];
+    horizontal?: boolean;
+    name?: string;
+  }
+
+  let { label = '', options, horizontal = false, name = "" }: Props = $props();
+  let selected = $state(options[0]);
 </script>
 
 <fieldset class="flex flex-row align-middle">
@@ -16,7 +20,7 @@
       {label}
     </legend>
   {/if}
-  {#each options as option}
+  {#each options as option (option)}
     <input
       id="radio-{label.toLowerCase()}-{option.toLowerCase()}"
       class="hidden text-center"

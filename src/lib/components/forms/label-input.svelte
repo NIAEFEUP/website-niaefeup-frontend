@@ -1,27 +1,37 @@
-<script>
-  import { createEventDispatcher } from 'svelte';
+<script lang="ts">
+  import {createEventDispatcher} from 'svelte';
   
-  const dispatch = createEventDispatcher();
-  
-  export let value = '';
-  export let label = '';
-  export let id = '';
-  export let type = 'text';
-  export let placeholder = '';
-  export let isTextArea = false;
-  export let required = false;
-  export let horizontal = false;
-  export let textGap;
-  export let name = '';
-
-  function handleInput(event) {
-    value = event.target.value;
-    dispatch('input', value);
+  interface Props {
+    label?: string;
+    id?: string;
+    type?: string;
+    className?: string;
+    placeholder?: string;
+    isTextArea?: boolean;
+    horizontal?: boolean;
+    textGap?: string;
+    required?: boolean;
+    name?: string;
+    value?: string;
   }
+
+  let {
+    label = '',
+    id = '',
+    type = 'text',
+    placeholder = '',
+    isTextArea = false,
+    horizontal = false,
+    className = "",
+    textGap = "2",
+    required = false,
+    name = "",
+    value= "",
+  }: Props = $props();
 </script>
 
 <div
-  class="flex flex-{horizontal ? 'row justify-between' : 'col'} {$$props.className}"
+  class="flex flex-{horizontal ? 'row justify-between' : 'col'} {className}"
   class:align-middle={horizontal && !isTextArea}
 >
   {#if label}
@@ -48,8 +58,7 @@
       {required}
       {value}
       rows="4"
-      on:input={handleInput}
-    />
+    ></textarea>
   {:else}
     <input
       aria-label="text-input"
@@ -60,7 +69,7 @@
       {placeholder}
       {required}
       {value}
-      on:input={handleInput}
+      oninput={handleInput}
     />
   {/if}
 </div>

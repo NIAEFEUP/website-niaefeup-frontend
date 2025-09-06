@@ -6,8 +6,12 @@
   import Button from '$lib/components/buttons/button.svelte';
   import FormsHeader from '$lib/components/forms-header.svelte';
 
-  export let data: PageData;
-  export let event: Event = data.event;
+  interface Props {
+    data: PageData;
+    event?: Event;
+  }
+
+  let { data, event = data.event }: Props = $props();
 
   function toISOLocal(date) {
     let parts = date.match(/(\d+)/g);

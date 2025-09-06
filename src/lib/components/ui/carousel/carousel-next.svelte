@@ -7,10 +7,15 @@
 
   type $$Props = Props;
 
-  let className: $$Props['class'] = undefined;
-  export { className as class };
-  export let variant: VariantProps<typeof buttonVariants>['variant'] = 'outline';
-  export let size: VariantProps<typeof buttonVariants>['size'] = 'icon';
+  
+  interface Props_1 {
+    class?: $$Props['class'];
+    variant?: VariantProps<typeof buttonVariants>['variant'];
+    size?: VariantProps<typeof buttonVariants>['size'];
+    [key: string]: any
+  }
+
+  let { class: className = undefined, variant = 'outline', size = 'icon', ...rest }: Props_1 = $props();
   const { orientation, canScrollNext, scrollNext, handleKeyDown } =
     getEmblaContext('<Carousel.Next/>');
 </script>
@@ -28,7 +33,7 @@
   disabled={!$canScrollNext}
   on:click={scrollNext}
   on:keydown={handleKeyDown}
-  {...$$restProps}
+  {...rest}
 >
   <ArrowRight class="h-4 w-4" />
   <span class="sr-only">Next slide</span>

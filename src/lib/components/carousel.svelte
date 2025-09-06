@@ -1,19 +1,23 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import type { CarouselAPI } from '$lib/components/ui/carousel/context.js';
   import * as Carousel from '$lib/components/ui/carousel/index.js';
 
-  let api: CarouselAPI;
-  let current = 0;
-  let count = 0;
+  let api: CarouselAPI = $state();
+  let current = $state(0);
+  let count = $state(0);
 
-  $: if (api) {
-    count = api.scrollSnapList().length;
-    current = api.selectedScrollSnap() + 1;
-
-    api.on('select', () => {
+  run(() => {
+    if (api) {
+      count = api.scrollSnapList().length;
       current = api.selectedScrollSnap() + 1;
-    });
-  }
+
+      api.on('select', () => {
+        current = api.selectedScrollSnap() + 1;
+      });
+    }
+  });
 </script>
 
 <div class="my-16">
