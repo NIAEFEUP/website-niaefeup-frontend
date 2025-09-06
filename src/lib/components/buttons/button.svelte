@@ -8,9 +8,10 @@
     hoverColor: keyof typeof colorList;
     width: keyof typeof widthList;
     text: string;
+    onClick: (() => void) | undefined;
   }
 
-  let { type = 'button', color, hoverColor, width, text }: Props = $props();
+  let { type = 'button', color, hoverColor, width, text, onClick = () => null, }: Props = $props();
   const colorList = {
     primary: { main: 'bg-muted-red-700', hover: 'hover:bg-muted-red-500' },
     secondary: { main: 'bg-muted-red-500', hover: 'hover:bg-muted-red-500' },

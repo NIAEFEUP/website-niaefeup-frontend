@@ -1,11 +1,9 @@
 <script lang="ts">
-  import {createEventDispatcher} from 'svelte';
   
   interface Props {
     label?: string;
     id?: string;
     type?: string;
-    className?: string;
     placeholder?: string;
     isTextArea?: boolean;
     horizontal?: boolean;
@@ -13,6 +11,7 @@
     required?: boolean;
     name?: string;
     value?: string;
+    className?: string;  
   }
 
   let {
@@ -22,23 +21,22 @@
     placeholder = '',
     isTextArea = false,
     horizontal = false,
-    className = "",
     textGap = "2",
     required = false,
     name = "",
-    value= "",
+    value = $bindable(""),
+    className = '', 
   }: Props = $props();
 </script>
 
 <div
-  class="flex flex-{horizontal ? 'row justify-between' : 'col'} {className}"
+  class="flex {horizontal ? 'flex-row justify-between' : 'flex-col'} {className}"
   class:align-middle={horizontal && !isTextArea}
 >
   {#if label}
-    <div style="width: {textGap}vw;">
+    <div class="w-[{textGap}vw]">
       <label
         class="m-1 flex flex-row font-source_code font-bold text-white"
-        class:flex-row={required}
         for={id}
       >
         {label}
@@ -56,7 +54,7 @@
       {name}
       {placeholder}
       {required}
-      {value}
+      bind:value
       rows="4"
     ></textarea>
   {:else}
@@ -68,7 +66,7 @@
       {name}
       {placeholder}
       {required}
-      {value}
+      bind:value
     />
   {/if}
 </div>

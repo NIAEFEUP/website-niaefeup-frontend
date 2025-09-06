@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
-
   import type { PageData } from './$types';
   import type { Account } from '@/types/account';
   import FormsHeader from '$lib/components/forms-header.svelte';
@@ -24,7 +22,7 @@
   let current = $state(0);
   let count = $state(0);
 
-  run(() => {
+  $effect(() => {
     if (api) {
       count = api.scrollSnapList().length;
       current = api.selectedScrollSnap();
@@ -39,12 +37,25 @@
 
   function addCustomWebsite() {
     websites = [...websites, { label: '', url: '', iconPath: '' }];
+    
+    requestAnimationFrame(() => {
+      if (api) {
+        const lastIndex = websites.length - 1;
+        api.scrollTo(lastIndex, false); 
+      }
+    });
   }
 
   function removeCustomWebsite() {
     if (websites.length >= 1) {
       const currentPosition = api ? api.selectedScrollSnap() : 0;
-      websites = [...websites.slice(0, currentPosition), ...websites.slice(currentPosition + 1, websites.length)];
+      websites = [...websites.slice(0, currentPosition), ...websites.slice(currentPosition + 1)];
+      
+      if (api && currentPosition >= websites.length && websites.length > 0) {
+        requestAnimationFrame(() => {
+          api.scrollTo(websites.length - 1, false);
+        });
+      }
     }
   }
 </script>
@@ -58,12 +69,12 @@
     <form
       method="POST"
       enctype="multipart/form-data"
-      class="flex flex-col md:flex-row md:justify-evenly"
+      class="flex flex-col md:flex-row md:justify-evenly w-full"
     >
-      <div class="order-2 ml-5 mr-5 flex flex-col gap-5">
+      <div class="order-2 ml-5 mr-5 flex flex-col gap-5 flex-1 max-w-[600px]">
         <LabelInput
           name="name"
-          label="Name"
+          label="Nome"
           placeholder="John Doe"
           value={account.name}
           textGap={30}
@@ -71,9 +82,9 @@
 
         <RadioButton
           name="isActive"
-          label="Is Active"
-          options={['Active', 'Inactive']}
-          selected={account.isActive ? 'Active' : 'Inactive'}
+          label="Estatuto"
+          options={['Membro Ativo', 'Membro Inativo']}
+          selected={account.isActive ? 'Membro Ativo' : 'Membro Inativo'}
         />
 
         <LabelInput
@@ -86,7 +97,7 @@
 
         <LabelInput
           name="birthDate"
-          label="Birth Date"
+          label="Data de Nascimento"
           type="datetime-local"
           value={toISOLocal(account.birthDate)}
           textGap={30}
@@ -99,41 +110,46 @@
           value={account.linkedin ? account.linkedin : ''}
           textGap={30}
         />
-        <div class = "flex flex-row justify-center">
+        <div class="w-full">
           {#if websites.length}
-            <Carousel.Root bind:api class="w-full max-w-[550px]">
-              <Carousel.Content class="w-full">
-                {#each websites as website, index}
-                  <Carousel.Item class="w-full">
-                    <Card.Root>
-                      <Card.Content>
-                        <LabelInput
-                          name={`label ${index + 1}`}
-                          label={`Custom Website ${index + 1} Name`}
-                          placeholder="Insira o Texto"
-                          bind:value={website.label}
-                        />
-                        <LabelInput
-                          name={`url ${index + 1}`}
-                          label={`Custom Website ${index + 1} Url`}
-                          placeholder="Insira o Texto"
-                          bind:value={website.url}
-                          required
-                        />
-                        <LabelInput
-                          name={`icon ${index + 1}`}
-                          label={`Custom Website ${index + 1} Icon`}
-                          placeholder="Insira o Texto"
-                          bind:value={website.iconPath}
-                        />
-                      </Card.Content>
-                    </Card.Root>
-                  </Carousel.Item>
-                {/each}
-              </Carousel.Content>
-              <Carousel.Previous class="hidden md:inline-flex" />
-              <Carousel.Next class="hidden md:inline-flex" />
-            </Carousel.Root>
+            <div class="flex flex-row md:justify-center justify-start w-full">
+              <Carousel.Root bind:api class="w-full max-w-[550px]">
+                <Carousel.Content class="w-full">
+                  {#each websites as website, index}
+                    <Carousel.Item class="w-full">
+                      <Card.Root>
+                        <Card.Content class="p-6">
+                          <LabelInput
+                            name={`label ${index + 1}`}
+                            label={`Site ${index + 1} Nome`}
+                            placeholder="Insira o Texto"  
+                            textGap= 15
+                            bind:value={website.label}
+                          />
+                          <LabelInput
+                            name={`url ${index + 1}`}
+                            label={`Site ${index + 1} Url`}
+                            placeholder="Insira o Texto"
+                            textGap= 15
+                            bind:value={website.url}
+                            required
+                          />
+                          <LabelInput
+                            name={`icon ${index + 1}`}
+                            label={`Site ${index + 1} Icone`}
+                            placeholder="Insira o Texto"
+                            textGap= {15}
+                            bind:value={website.iconPath}
+                          />
+                        </Card.Content>
+                      </Card.Root>
+                    </Carousel.Item>
+                  {/each}
+                </Carousel.Content>
+                <Carousel.Previous class="hidden md:inline-flex" />
+                <Carousel.Next class="hidden md:inline-flex" />
+              </Carousel.Root>
+            </div>
           {/if}
         </div>
 
@@ -143,18 +159,19 @@
             color="secondary"
             hoverColor="secondary"
             width="large"
-            text="Add Custom Website"
-            
+            text="Adicionar Site"
             on:click={addCustomWebsite}
           />
-          <Button
-            type="button"
-            color="secondary"
-            hoverColor="secondary"
-            width="large"
-            text="Remove Custom Website"
-            on:click={removeCustomWebsite}
-          />
+          {#if websites.length}
+            <Button
+              type="button"
+              color="secondary"
+              hoverColor="secondary"
+              width="large"
+              text="Remover Site"
+              on:click={removeCustomWebsite}
+            />
+          {/if}
         </div>
 
         <LabelInput
