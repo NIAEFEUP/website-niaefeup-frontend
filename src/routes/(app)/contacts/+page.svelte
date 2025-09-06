@@ -1,16 +1,38 @@
 <script lang="ts">
-  import { Icon } from 'svelte-icons-pack';
   import Graph from './_components/graph.svelte';
   import LabelInput from '@/lib/components/forms/label-input.svelte';
-  import Icons from '$lib/components/icons/icons';
+  import Icon from '@/lib/components/icons/icon.svelte';
+  import Icons from '@/lib/components/icons/icons';
+  import { LucideLoaderCircle, LucideCheckCircle, LucideXCircle, LucideSend } from 'lucide-svelte';
 
   let email = $state('');
   let name = $state('');
   let subject = $state('');
   let message = $state('');
 
+  let loading = $state(false);
+  let success = $state(false);
+  let error = $state(false);
+  let successTimeout: ReturnType<typeof setTimeout> | null = null;
+  let errorTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  let sendButtonText = $derived(
+    success ? 'Enviado' : error ? 'Erro' : loading ? 'A enviar...' : 'Enviar'
+  );
+
   async function submitForm(event: Event) {
     event.preventDefault();
+    if (successTimeout) {
+      clearTimeout(successTimeout);
+      successTimeout = null;
+    }
+    if (errorTimeout) {
+      clearTimeout(errorTimeout);
+      errorTimeout = null;
+    }
+    success = false;
+    error = false;
+    loading = true;
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: {
@@ -25,13 +47,23 @@
     });
 
     if (response.ok) {
-      alert('Mensagem enviada com sucesso!');
+      success = true;
+      loading = false;
       email = '';
       name = '';
       subject = '';
       message = '';
+      successTimeout = setTimeout(() => {
+        success = false;
+        successTimeout = null;
+      }, 2000);
     } else {
-      alert('Erro ao enviar a mensagem. Tente novamente mais tarde.');
+      error = true;
+      loading = false;
+      errorTimeout = setTimeout(() => {
+        error = false;
+        errorTimeout = null;
+      }, 2000);
     }
   }
 </script>
@@ -60,10 +92,21 @@
       />
 
       <button
-        class="m-1 justify-self-start rounded-lg bg-vivid-red-900 px-5 py-1 text-white"
+        class="m-1 flex flex-row justify-between gap-x-1 justify-self-start rounded-lg bg-vivid-red-900 py-1 pl-2 pr-3 text-white"
         type="button"
-        onclick={submitForm}>Enviar</button
+        onclick={submitForm}
       >
+        {#if success}
+          <LucideCheckCircle class="p-1" />
+        {:else if error}
+          <LucideXCircle class="p-1" />
+        {:else if loading}
+          <LucideLoaderCircle class="animate-spin p-1" />
+        {:else}
+          <LucideSend class="p-1" />
+        {/if}
+        {sendButtonText}
+      </button>
     </form>
     <div class="m-2 flex w-full justify-center md:m-5 md:my-0">
       <Graph />
