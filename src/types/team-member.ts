@@ -1,6 +1,7 @@
 import type { CustomWebsite } from './custom-website';
 
 export type TeamMember = {
+  id: number;
   name: string;
   email: string;
   bio: string;

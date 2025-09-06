@@ -10,6 +10,7 @@
   let { data }: { data: PageData } = $props();
 
   let teamMember: TeamMember = data.teamMember;
+  let hasLogoutPerms: boolean = data.hasLogoutPerms;
 
   async function logout() {
     const response = await fetch('/api/auth/logout', {
@@ -35,12 +36,14 @@
             link="https://lipsum.com"
             ariaLabel="Edit"
           />
-          <IconButton
-            icon={Icons.Logout}
-            size="responsive"
-            onClick={() => logout()}
-            ariaLabel="Logout"
-          />
+          {#if hasLogoutPerms}
+            <IconButton
+              icon={Icons.Logout}
+              size="responsive"
+              onClick={() => logout()}
+              ariaLabel="Logout"
+            />
+          {/if}
         </div>
         <div class="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
           <img
