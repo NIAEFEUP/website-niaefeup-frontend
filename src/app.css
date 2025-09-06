@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&display=swap')
 layer(base);
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 @config '../tailwind.config.cjs';
-
 
 @layer utilities {
   body {
