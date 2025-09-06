@@ -47,7 +47,7 @@
             alt="User pic"
             class="h-32 w-32 rounded-lg sm:h-52 sm:w-52"
           />
-          <div class="flex flex-grow flex-col">
+          <div class="flex grow flex-col">
             <div class="mb-5 flex flex-col items-center gap-3 sm:flex-row sm:gap-6">
               <h3 class="text-2xl font-bold lg:text-lg xl:text-xl 2xl:text-2xl">
                 {teamMember.name}

@@ -30,6 +30,6 @@
     aria-label={visible ? 'Hide password' : 'Show password'}
     title={visible ? 'Hide password' : 'Show password'}
   >
-    <Icon src={icon} size="1.5em" className="fill-rose-950/[.54]" />
+    <Icon src={icon} size="1.5em" className="fill-rose-950/54" />
   </button>
 </div>

@@ -17,7 +17,7 @@
 <ModeWatcher defaultMode="dark" />
 <Sidebar />
 <Navbar />
-<main class="bg-ni-primary my-20 flex-grow">
+<main class="bg-ni-primary my-20 grow">
   <BackgroundHexagon position="right" />
   {@render children?.()}
 </main>
