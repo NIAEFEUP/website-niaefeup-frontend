@@ -1,9 +1,9 @@
 <script lang="ts">
+  import { LucideLoaderCircle, LucideCheckCircle, LucideXCircle, LucideSend } from 'lucide-svelte';
   import Graph from './_components/graph.svelte';
   import LabelInput from '@/lib/components/forms/label-input.svelte';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
-  import { LucideLoaderCircle, LucideCheckCircle, LucideXCircle, LucideSend } from 'lucide-svelte';
 
   let email = $state('');
   let name = $state('');
