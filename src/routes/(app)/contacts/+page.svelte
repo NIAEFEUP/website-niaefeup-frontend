@@ -3,6 +3,37 @@
   import Graph from './_components/graph.svelte';
   import LabelInput from '@/lib/components/forms/label-input.svelte';
   import Icons from '$lib/components/icons/icons';
+
+  let email = $state('');
+  let name = $state('');
+  let subject = $state('');
+  let message = $state('');
+
+  async function submitForm(event: Event) {
+    event.preventDefault();
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        name,
+        subject,
+        message
+      })
+    });
+
+    if (response.ok) {
+      alert('Mensagem enviada com sucesso!');
+      email = '';
+      name = '';
+      subject = '';
+      message = '';
+    } else {
+      alert('Erro ao enviar a mensagem. Tente novamente mais tarde.');
+    }
+  }
 </script>
 
 <section class="flex flex-col justify-center">
@@ -10,15 +41,28 @@
     <h1 class="text-2xl font-bold">&lt; Contacta-nos /&gt;</h1>
   </section>
   <div class="mx-10 grid-cols-2 md:grid">
-    <form class="min-w-[85%] justify-self-end">
-      <LabelInput label="// Email" id="email" type="email" placeholder="xxxxxxxxxxxxx@gmail.com" />
-      <LabelInput label="// Nome" id="name" type="text" />
-      <LabelInput label="// Assunto" id="subject" type="text" />
-      <LabelInput label="// Mensagem" id="message" type="text" isTextArea={true} />
+    <form class="min-w-[85%] justify-self-end" method="POST" action="">
+      <LabelInput
+        label="// Email"
+        id="email"
+        type="email"
+        placeholder="xxxxxxxxxxxxx@gmail.com"
+        bind:value={email}
+      />
+      <LabelInput label="// Nome" id="name" type="text" bind:value={name} />
+      <LabelInput label="// Assunto" id="subject" type="text" bind:value={subject} />
+      <LabelInput
+        label="// Mensagem"
+        id="message"
+        type="text"
+        isTextArea={true}
+        bind:value={message}
+      />
 
       <button
         class="m-1 justify-self-start rounded-lg bg-vivid-red-900 px-5 py-1 text-white"
-        type="submit">Enviar</button
+        type="button"
+        onclick={submitForm}>Enviar</button
       >
     </form>
     <div class="m-2 flex w-full justify-center md:m-5 md:my-0">
