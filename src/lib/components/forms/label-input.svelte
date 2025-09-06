@@ -69,7 +69,6 @@
       {placeholder}
       {required}
       {value}
-      oninput={handleInput}
     />
   {/if}
 </div>
