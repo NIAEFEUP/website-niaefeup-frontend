@@ -7,6 +7,9 @@
     placeholder?: string;
     isTextArea?: boolean;
     horizontal?: boolean;
+    required?: boolean;
+    minlength?: number | undefined;
+    maxlength?: number | undefined;
     [key: string]: unknown;
   }
 
@@ -18,6 +21,9 @@
     placeholder = '',
     isTextArea = false,
     horizontal = false,
+    required = false,
+    minlength = undefined,
+    maxlength = undefined,
     ...rest
   }: Props = $props();
 </script>
@@ -33,6 +39,9 @@
       rows="4"
       {id}
       {placeholder}
+      {required}
+      {minlength}
+      {maxlength}
       {...rest}
       bind:value
     ></textarea>
@@ -43,6 +52,9 @@
       {type}
       {id}
       {placeholder}
+      {required}
+      {minlength}
+      {maxlength}
       {...rest}
       bind:value
     />

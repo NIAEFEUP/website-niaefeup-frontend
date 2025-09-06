@@ -73,28 +73,47 @@
     <h1 class="text-2xl font-bold">&lt; Contacta-nos /&gt;</h1>
   </section>
   <div class="mx-10 grid-cols-2 md:grid">
-    <form class="min-w-[85%] justify-self-end" method="POST" action="">
+    <form class="min-w-[85%] justify-self-end" method="POST" action="" onsubmit={submitForm}>
       <LabelInput
         label="// Email"
         id="email"
         type="email"
         placeholder="xxxxxxxxxxxxx@gmail.com"
+        required={true}
         bind:value={email}
       />
-      <LabelInput label="// Nome" id="name" type="text" bind:value={name} />
-      <LabelInput label="// Assunto" id="subject" type="text" bind:value={subject} />
+      <LabelInput
+        label="// Nome"
+        id="name"
+        type="text"
+        required={true}
+        minlength={2}
+        maxlength={100}
+        bind:value={name}
+      />
+      <LabelInput
+        label="// Assunto"
+        id="subject"
+        type="text"
+        required={true}
+        minlength={5}
+        maxlength={200}
+        bind:value={subject}
+      />
       <LabelInput
         label="// Mensagem"
         id="message"
         type="text"
         isTextArea={true}
+        required={true}
+        minlength={10}
+        maxlength={5000}
         bind:value={message}
       />
 
       <button
         class="m-1 flex flex-row justify-between gap-x-1 justify-self-start rounded-lg bg-vivid-red-900 py-1 pl-2 pr-3 text-white"
-        type="button"
-        onclick={submitForm}
+        type="submit"
       >
         {#if success}
           <LucideCheckCircle class="p-1" />
