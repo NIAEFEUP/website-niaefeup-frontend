@@ -1,4 +1,4 @@
-import '../src/app.css';
+import '../src/app.pcss';
 
 import { initialize, mswLoader } from 'msw-storybook-addon';
 
