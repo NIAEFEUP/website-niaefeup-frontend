@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { resolve } from '$app/paths';
+
   interface Props {
     data: { info: string };
   }
@@ -15,6 +17,8 @@
     });
     logoutMessage = response.ok ? 'Logout successful' : 'Logout failed';
   }
+
+  const loginUrl = resolve('/login');
 </script>
 
 <div>
@@ -24,5 +28,5 @@
   <button onclick={() => logout()}>Logout</button>
   <p>{logoutMessage}</p>
   <br />
-  <button><a href="/login">Login</a></button>
+  <button><a href={loginUrl}>Login</a></button>
 </div>

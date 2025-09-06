@@ -2,14 +2,17 @@
   import { onMount } from 'svelte';
   // @ts-expect-error Import is as expected but throws error
   import { page } from '$app/stores';
+  import { resolve } from '$app/paths';
 
   let currentPage = $derived($page.url.pathname ?? '/');
   const links = [
-    { href: '#', label: 'Equipa', pageComp: '/team' },
-    { href: '/projects', label: 'Projetos', pageComp: '/projects' },
-    { href: '#', label: 'Eventos', pageComp: '/events' },
-    { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
+    { href: resolve('#'), label: 'Equipa', pageComp: '/team' },
+    { href: resolve('/projects'), label: 'Projetos', pageComp: '/projects' },
+    { href: resolve('#'), label: 'Eventos', pageComp: '/events' },
+    { href: resolve('/contacts'), label: 'Contactos', pageComp: '/contacts' }
   ];
+
+  const homeUrl = resolve('/');
 
   let isScrolled = $state(false);
   let y = 0;
@@ -31,12 +34,12 @@
 </script>
 
 <nav
-  class="bg-ni-navbar fixed z-30 hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
+  class="bg-ni-navbar font-raleway fixed z-30 hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 text-xs text-white sm:grid sm:text-base"
   class:isScrolled
   aria-label="Navigation Bar"
 >
   <div class="flex w-full justify-start">
-    <a href="/" class="flex items-center gap-4">
+    <a href={homeUrl} class="flex items-center gap-4">
       <img src="/images/ni_logo.png" alt="NIAEFEUP's logo" width="40" height="40" />
       <span>NIAEFEUP</span>
     </a>
@@ -44,7 +47,7 @@
   <div class="flex items-center justify-end gap-7">
     {#each links as { href, label, pageComp } (label)}
       {#if currentPage === pageComp}
-        <a {href} class="rounded bg-muted-red-400 p-2" data-testid={label.toLowerCase()}>
+        <a {href} class="bg-muted-red-400 rounded p-2" data-testid={label.toLowerCase()}>
           <p class="font-bold">{label}</p>
         </a>
       {:else}

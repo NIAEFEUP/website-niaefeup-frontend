@@ -51,6 +51,8 @@
           <li>
             <a
               href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
               class="flex h-20 w-60 items-center justify-center overflow-hidden rounded-xl text-white md:h-28 md:w-56"
             >
               <img
@@ -78,17 +80,20 @@
       {#if project.technologies && project.technologies.length > 0}
         <div class="flex flex-col items-center md:w-1/3">
           <p
-            class="mb-6 font-source_code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
+            class="font-source_code mb-6 text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
           >
             &lt; Tecnologias /&gt;
           </p>
-          <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
+          <div class="mt-6 mb-12 flex flex-wrap justify-center gap-4 md:gap-8">
             {#each project.technologies as technology (technology.url)}
+              /* eslint-disable svelte/no-navigation-without-resolve */
               <a
                 href={technology.url}
                 target="_blank"
+                rel="noopener noreferrer"
                 class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
               >
+                /* eslint-enable svelte/no-navigation-without-resolve */
                 <img
                   src={technology.image}
                   alt="Technology {technology.name}'s logo"
@@ -108,7 +113,7 @@
           : 'md:w-full md:justify-center'}"
       >
         <p
-          class="mb-6 font-source_code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
+          class="font-source_code mb-6 text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
         >
           &lt; Público Alvo /&gt;
         </p>

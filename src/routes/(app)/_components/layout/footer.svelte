@@ -43,7 +43,7 @@
 </script>
 
 <div class="z-10 w-full bg-transparent p-3 max-sm:hidden">
-  <footer class="grid grid-cols-3 justify-between border-t-2 border-muted-red-500 p-2 text-white">
+  <footer class="border-muted-red-500 grid grid-cols-3 justify-between border-t-2 p-2 text-white">
     <div class="footer-icons grid w-fit grid-cols-6 gap-4 self-center p-3">
       <Icon
         src={Icons.Instagram}
@@ -113,7 +113,7 @@
 
 <div class="hidden w-full bg-transparent p-3 max-sm:block">
   <footer
-    class="flex flex-col justify-between border-t-2 border-muted-red-500 p-2 text-sm text-white"
+    class="border-muted-red-500 flex flex-col justify-between border-t-2 p-2 text-sm text-white"
   >
     <div class="flex w-full flex-row items-center justify-between self-center p-3">
       <span>NIAEFEUP</span>

@@ -7,6 +7,7 @@
   import Icons from '@/lib/components/icons/icons';
   import EditButton from '$lib/components/buttons/edit-button.svelte';
   import { goto } from '$app/navigation';
+  import { resolve } from '$app/paths';
 
   let { data }: { data: PageData } = $props();
 
@@ -20,7 +21,7 @@
       }
     });
     if (response.ok) {
-      goto('/');
+      goto(resolve('/'));
     }
   }
 </script>
@@ -35,7 +36,7 @@
         <div class="flex h-12 justify-end gap-x-3 lg:h-10 xl:h-12">
           <EditButton size="small" link="https://lipsum.com" />
           <button
-            class="w-12 rounded-md bg-muted-red-500 p-3 lg:w-12 xl:w-12"
+            class="bg-muted-red-500 w-12 rounded-md p-3 lg:w-12 xl:w-12"
             onclick={() => logout()}
           >
             <Icon src={Icons.Logout} color="white" size="100%" />

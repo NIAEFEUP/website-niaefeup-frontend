@@ -6,7 +6,7 @@
 </script>
 
 <section class="flex flex-col justify-center">
-  <section class="mb-4 flex flex-col text-center font-raleway text-white">
+  <section class="font-raleway mb-4 flex flex-col text-center text-white">
     <h1 class="text-2xl font-bold">&lt; Contacta-nos /&gt;</h1>
   </section>
   <div class="mx-10 grid-cols-2 md:grid">
@@ -17,7 +17,7 @@
       <LabelInput label="// Mensagem" id="message" type="text" isTextArea={true} />
 
       <button
-        class="m-1 justify-self-start rounded-lg bg-vivid-red-900 px-5 py-1 text-white"
+        class="bg-vivid-red-900 m-1 justify-self-start rounded-lg px-5 py-1 text-white"
         type="submit">Enviar</button
       >
     </form>

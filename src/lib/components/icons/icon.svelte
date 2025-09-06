@@ -22,7 +22,7 @@
 </script>
 
 {#if href}
-  <a {href} target="_blank" rel="noreferrer" class="w-min" aria-label={ariaLabel}>
+  <a {href} target="_blank" rel="noreferrer noopener" class="w-min" aria-label={ariaLabel}>
     <Icon {src} {color} {size} {className} />
   </a>
 {:else}

@@ -26,7 +26,8 @@ export default [
       '**/storybook-static',
       '**/pnpm-lock.yaml',
       '**/package-lock.json',
-      '**/yarn.lock'
+      '**/yarn.lock',
+      'src/lib/components/ui/**'
     ]
   },
   {
@@ -77,7 +78,8 @@ export default [
       }
     },
     rules: {
-      'no-undef': 'off'
+      'no-undef': 'off',
+      'svelte/no-navigation-without-resolve': 'warn'
     }
   }
 ];

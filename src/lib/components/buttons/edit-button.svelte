@@ -1,6 +1,7 @@
 <script lang="ts">
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
+  import { resolve } from '$app/paths';
 
   interface Props {
     type?: 'button' | 'submit' | 'reset';
@@ -14,13 +15,15 @@
     medium: 'w-20 h-20',
     large: 'w-32 h-32'
   };
+
+  const resolvedLink = resolve(link);
 </script>
 
-<a href={link}>
+<a href={resolvedLink}>
   <button
     aria-label="Edit"
     {type}
-    class="flex justify-center bg-muted-red-500 hover:bg-muted-red-300 {sizeList[
+    class="bg-muted-red-500 hover:bg-muted-red-300 flex justify-center {sizeList[
       size
     ]} min-w-0 rounded px-2 py-2"
   >

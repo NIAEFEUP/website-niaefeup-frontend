@@ -3,21 +3,24 @@
   import ProjectTile from './_components/project-tile.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Project } from '@/types/project';
+  import { resolve } from '$app/paths';
 
   let { data }: { data: PageData } = $props();
 
   const projects: Project[] = data.projects;
   const hasPerms: boolean = data.hasPerms;
+
+  const createUrl = resolve('/projects/create');
 </script>
 
 <section>
   <div class="flex w-full flex-col items-center">
-    <h1 class="my-2 text-center font-source_code text-xl text-white md:my-4 md:text-3xl">
+    <h1 class="font-source_code my-2 text-center text-xl text-white md:my-4 md:text-3xl">
       &lt&nbsp<strong>Projetos</strong>&nbsp/&gt
     </h1>
     {#if hasPerms}
       <div class="my-8 flex w-5/6 justify-end sm:my-6 md:my-6 lg:mb-12 xl:mb-12 2xl:mb-12">
-        <a href="/projects/create">
+        <a href={createUrl}>
           <Button color="secondary" hoverColor="red" width="12" text="Novo Projeto"></Button>
         </a>
       </div>

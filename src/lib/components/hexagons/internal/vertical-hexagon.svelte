@@ -6,9 +6,9 @@
   let { children }: Props = $props();
 </script>
 
-<div class="aspect-hexagon mask-background mask-cover clip-hexagon h-full w-full bg-white">
+<div class="aspect-hexagon mask-background clip-hexagon h-full w-full bg-white mask-cover">
   <!-- px-[5.8%] and py-[6.9%] are magic numbers that look good with the masks -->
-  <div class="mask-foreground mask-cover h-full px-[5.8%] py-[6.9%]">
+  <div class="mask-foreground h-full mask-cover px-[5.8%] py-[6.9%]">
     <div class="clip-hexagon h-full">
       {@render children?.()}
     </div>

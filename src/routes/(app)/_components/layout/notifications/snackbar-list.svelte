@@ -3,7 +3,7 @@
   import { notifications } from './index';
 </script>
 
-<div class="fixed bottom-4 right-10 z-20">
+<div class="fixed right-10 bottom-4 z-20">
   {#each $notifications as notification (notification.id)}
     <Snackbar {notification} />
   {/each}
