@@ -14,5 +14,10 @@ export const load: PageLoad = async ({ fetch, params }) => {
     isOwner = authBody?.authenticated_user?.id === teamMember.id;
   }
 
-  return { teamMember, hasLogoutPerms: isOwner };
+  let hasEditPerms = false;
+  res = await fetch(`/api/auth/hasAccountPermission/${params.id}/2`);
+  hasEditPerms = res.ok;
+  console.log(hasEditPerms);
+
+  return { teamMember, hasLogoutPerms: isOwner, hasEditPerms };
 };
