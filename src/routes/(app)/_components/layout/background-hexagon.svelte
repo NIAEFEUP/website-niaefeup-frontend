@@ -1,5 +1,9 @@
 <script lang="ts">
-  export let position: string | null = null;
+  interface Props {
+    position?: string | null;
+  }
+
+  let { position = null }: Props = $props();
 </script>
 
 {#if position === 'right'}

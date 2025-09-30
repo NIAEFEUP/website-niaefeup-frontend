@@ -2,9 +2,13 @@
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
 
-  export let type: 'button' | 'submit' | 'reset' = 'button',
-    size: keyof typeof sizeList,
+  interface Props {
+    type?: 'button' | 'submit' | 'reset';
+    size: keyof typeof sizeList;
     link: string;
+  }
+
+  let { type = 'button', size, link }: Props = $props();
   const sizeList = {
     small: 'w-12 h-12',
     medium: 'w-20 h-20',

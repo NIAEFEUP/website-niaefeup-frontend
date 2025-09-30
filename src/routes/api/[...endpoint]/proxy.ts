@@ -3,6 +3,11 @@ import { PUBLIC_API_URL, PUBLIC_JWT_REFRESH_KEY, PUBLIC_JWT_ACCESS_KEY } from '$
 import { appendSetCookieHeader } from '$lib/api/auth';
 import { browser } from '$app/environment';
 
+// Fix for 'no-undef' errors
+type BodyInit = globalThis.BodyInit;
+type RequestInit = globalThis.RequestInit;
+type HeadersInit = globalThis.HeadersInit;
+
 async function _fetchApi(
   relativeUrl: URL | string,
   method: string,

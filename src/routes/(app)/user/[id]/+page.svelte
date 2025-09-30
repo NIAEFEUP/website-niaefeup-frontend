@@ -8,8 +8,9 @@
   import EditButton from '$lib/components/buttons/edit-button.svelte';
   import { goto } from '$app/navigation';
 
-  export let data: PageData;
-  export let teamMember: TeamMember = data.teamMember;
+  let { data }: { data: PageData } = $props();
+
+  let teamMember: TeamMember = data.teamMember;
 
   async function logout() {
     const response = await fetch('/api/auth/logout', {
@@ -35,7 +36,7 @@
           <EditButton size="small" link="https://lipsum.com" />
           <button
             class="w-12 rounded-md bg-muted-red-500 p-3 lg:w-12 xl:w-12"
-            on:click={() => logout()}
+            onclick={() => logout()}
           >
             <Icon src={Icons.Logout} color="white" size="100%" />
           </button>
@@ -64,7 +65,7 @@
               {#if teamMember.github}
                 <SocialMediaIcon
                   url={teamMember.github}
-                  social={'Github'}
+                  social="Github"
                   icon={Icons.Github}
                   user={teamMember.name}
                 />
@@ -72,16 +73,16 @@
               {#if teamMember.linkedin}
                 <SocialMediaIcon
                   url={teamMember.linkedin}
-                  social={'Linkedin'}
+                  social="Linkedin"
                   icon={Icons.Linkedin}
                   user={teamMember.name}
                 />
               {/if}
               {#if teamMember.websites}
-                {#each teamMember.websites as customWebsite}
+                {#each teamMember.websites as customWebsite (customWebsite.url)}
                   <SocialMediaIcon
                     url={customWebsite.url}
-                    social="custom website"
+                    social="Custom Website"
                     icon={Icons.Globe}
                     user={teamMember.name}
                     iconPath={customWebsite.iconPath}

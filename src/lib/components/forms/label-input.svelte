@@ -1,13 +1,21 @@
-<script>
-  export let label = '';
-  export let id = '';
-  export let name = '';
-  export let type = 'text';
-  export let placeholder = '';
-  export let isTextArea = false;
-  export let required = false;
-  export let horizontal = false;
-  export let textGap;
+<script lang="ts">
+  interface Props {
+    label?: string;
+    id?: string;
+    type?: string;
+    placeholder?: string;
+    isTextArea?: boolean;
+    horizontal?: boolean;
+  }
+
+  let {
+    label = '',
+    id = '',
+    type = 'text',
+    placeholder = '',
+    isTextArea = false,
+    horizontal = false
+  }: Props = $props();
 </script>
 
 <div
@@ -37,7 +45,7 @@
       {placeholder}
       {required}
       rows="4"
-    />
+    ></textarea>
   {:else}
     <input
       aria-label="text-input"

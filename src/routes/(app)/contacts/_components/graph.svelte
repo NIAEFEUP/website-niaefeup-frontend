@@ -18,7 +18,7 @@
     [5, 3],
     [2, 4]
   ];
-  let innerWidth = 0;
+  let innerWidth = $state(0);
   let coefficient = 8;
   let iconSize = 8;
 
@@ -36,7 +36,7 @@
 
 <svg style="height: 40dvh; min-width: 35dvw" viewBox="0 0 87 80" xmlns="http://www.w3.org/2000/svg">
   <!-- Draw graph edges. -->
-  {#each lines as line}
+  {#each lines as line, i (i)}
     <line
       x1={coords[line[0]][0] * coefficient}
       y1={coords[line[0]][1] * coefficient}
@@ -47,7 +47,7 @@
   {/each}
 
   <!-- Draw graph nodes. -->
-  {#each coords as coord, index}
+  {#each coords as coord, index (index)}
     <foreignObject
       x={coord[0] * coefficient - (iconSize + 2) / 2}
       y={coord[1] * coefficient - (iconSize + 2) / 2}
@@ -67,8 +67,13 @@
       {:else}
         <div
           class="flex h-full w-full items-center justify-center rounded bg-white bg-opacity-30"
-          on:click={() => copyToClipboard(socials[index].url)}
-          on:keydown={() => copyToClipboard(socials[index].url)}
+          onclick={() => copyToClipboard(socials[index].url)}
+          onkeydown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault(); // Prevent scrolling on space
+              copyToClipboard(socials[index].url);
+            }
+          }}
           role="button"
           tabindex="0"
           aria-label="copy-mail"
