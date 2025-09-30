@@ -1,7 +1,11 @@
-<script>
-  export let name = '';
+<script lang="ts">
+  interface Props {
+    name?: string;
+  }
 
-  let files = [];
+  let { name = '' }: Props = $props();
+
+  let files = $state([]);
   function append_file(event) {
     files = Array.from(event.target.files);
   }
@@ -18,14 +22,14 @@
     Selecionar ficheiro
   </label>
 
-  <input id="file-upload" type="file" {name} multiple on:change={append_file} class="hidden" />
+  <input id="file-upload" type="file" {name} multiple onchange={append_file} class="hidden" />
 
   {#if files.length}
     {#each files as file (file.name)}
       <div class="file-item">
         <span>{file.name}</span>
         <button
-          on:click={() => pop_file(file)}
+          onclick={() => pop_file(file)}
           class=" order-2 rounded bg-white px-1 font-bold text-black hover:bg-red-500 md:right-[-5px]"
           >X</button
         >
