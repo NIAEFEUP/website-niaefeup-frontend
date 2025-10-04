@@ -20,7 +20,7 @@
 
 <div class="flex flex-{horizontal ? 'row' : 'col'}">
   {#if label}
-    <label class="m-1 font-source_code font-bold text-white" for={id}>{label}</label>
+    <label class="m-1 font-source_code w-1/5 font-bold text-white" for={id}>{label}</label>
   {/if}
   {#if isTextArea}
     <textarea
