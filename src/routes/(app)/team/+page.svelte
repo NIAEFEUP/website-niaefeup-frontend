@@ -1,10 +1,14 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import TeamMemberHexagon from './_components/team-member-hexagon.svelte';
+  import type { PageData } from './$types';
+  import type { Generation } from '@/types/generation';
   import type { TeamMember } from '@/types/team-member';
   import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
 
-  export let data: PageData;
+  let { data }: { data: PageData } = $props();
+  const generation: Generation = data.generation;
+  console.log(generation);
 
   // lib/utils/get-cols.ts
   function getColsFromWidth(width: number): number {
