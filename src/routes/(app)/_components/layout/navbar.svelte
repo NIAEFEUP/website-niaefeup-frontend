@@ -1,11 +1,11 @@
 <script>
   import { onMount } from 'svelte';
   // @ts-expect-error Import is as expected but throws error
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
-  let currentPage = $derived($page.url.pathname ?? '/');
+  let currentPage = $derived(page.url.pathname ?? '/');
   const links = [
-    { href: '#', label: 'Equipa', pageComp: '/team' },
+    { href: '/team', label: 'Equipa', pageComp: '/team' },
     { href: '/projects', label: 'Projetos', pageComp: '/projects' },
     { href: '#', label: 'Eventos', pageComp: '/events' },
     { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
