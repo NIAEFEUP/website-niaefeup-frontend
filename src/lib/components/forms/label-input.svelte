@@ -1,12 +1,21 @@
-<script>
-  export let label = '';
-  export let id = '';
-  export let type = 'text';
-  export let placeholder = '';
-  export let name = '';
-  export let isTextArea = false;
-  export let horizontal = false;
-  export let required = false;
+<script lang="ts">
+  interface Props {
+    label?: string;
+    id?: string;
+    type?: string;
+    placeholder?: string;
+    isTextArea?: boolean;
+    horizontal?: boolean;
+  }
+
+  let {
+    label = '',
+    id = '',
+    type = 'text',
+    placeholder = '',
+    isTextArea = false,
+    horizontal = false
+  }: Props = $props();
 </script>
 
 <div class="flex flex-{horizontal ? 'row' : 'col'}">
@@ -22,7 +31,7 @@
       {name}
       {required}
       rows="4"
-    />
+    ></textarea>
   {:else}
     <input
       aria-label="text-input"

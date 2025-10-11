@@ -1,7 +1,11 @@
 <script lang="ts">
   import type { TeamMember } from '@/types/team-member';
 
-  export let teamMember: TeamMember;
+  interface Props {
+    teamMember: TeamMember;
+  }
+
+  let { teamMember }: Props = $props();
 </script>
 
 <div>

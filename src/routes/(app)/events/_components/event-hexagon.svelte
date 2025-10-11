@@ -2,9 +2,8 @@
   import Hexagon from '@/lib/components/hexagons/hexagon.svelte';
   import type { Event } from '@/types/event.ts';
 
-  export let data;
   export const orientation = 'vertical';
-  export let event = data as Event;
+  let { data, event = data as Event } = $props();
 </script>
 
 <Hexagon orientation="vertical">
@@ -53,7 +52,7 @@
         {event.location}
       </p>
     </div>
-    <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/[.62] text-lg" />
+    <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/[.62] text-lg"></div>
     <img
       src={event.thumbnailPath}
       alt="Event thumbnail"

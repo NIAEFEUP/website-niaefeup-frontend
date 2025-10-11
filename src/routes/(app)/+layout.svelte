@@ -6,6 +6,12 @@
   import Sidebar from './_components/layout/sidebar.svelte';
   import SnackbarList from './_components/layout/notifications/snackbar-list.svelte';
   import '@/app.css';
+
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
 </script>
 
 <ModeWatcher defaultMode="dark" />
@@ -13,7 +19,7 @@
 <Navbar />
 <main class="bg-ni-primary my-20 flex-grow">
   <BackgroundHexagon position="right" />
-  <slot />
+  {@render children?.()}
 </main>
 <Footer />
 <SnackbarList />
