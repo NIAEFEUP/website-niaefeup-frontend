@@ -27,7 +27,7 @@
   {type}
   class="flex {colorList[color]['main']} {colorList[hoverColor][
     'hover'
-  ]} items-center justify-center font-raleway font-bold text-rose-950 {widthList[
+  ]} items-center justify-center font-raleway font-bold text-white {widthList[
     width
   ]} min-w-0 rounded px-4 py-2"
 >

@@ -6,10 +6,10 @@
   let { name = '' }: Props = $props();
 
   let files = $state([]);
-  function append_file(event) {
+  function appendFile(event) {
     files = Array.from(event.target.files);
   }
-  function pop_file(fileRemove) {
+  function popFile(fileRemove) {
     files = files.filter((file) => file != fileRemove);
   }
 </script>
@@ -17,23 +17,23 @@
 <div class="relative flex items-center space-x-4">
   <label
     for="file-upload"
-    class="muted-red cursor-pointer rounded-lg bg-taupe-200 px-4 py-2 font-bold text-rose-950 hover:bg-red-500"
+    class="muted-red cursor-pointer rounded-lg bg-muted-red-400 px-4 py-2 text-white hover:bg-red-500"
   >
     Selecionar ficheiro
   </label>
 
-  <input id="file-upload" type="file" {name} multiple onchange={append_file} class="hidden" />
+  <input id="file-upload" type="file" {name} multiple onchange={appendFile} class="hidden" />
 
   {#if files.length}
     {#each files as file (file.name)}
-      <div class="file-item">
-        <span>{file.name}</span>
+      <div class="file-item bg-taupe-200 min-w-0 rounded px-2 py-2">
+        <span class="text-rose-950 font-bold">{file.name}</span>
         <button
-          onclick={() => pop_file(file)}
-          class=" order-2 rounded bg-white px-1 font-bold text-black hover:bg-red-500 md:right-[-5px]"
+          onclick={() => popFile(file)}
+          class=" order-2 rounded bg-taupe-200 px-1 font-bold text-black hover:bg-red-500 md:right-[-5px]"
           >X</button
         >
-      </div>
+      </div> 
     {/each}
   {/if}
 </div>

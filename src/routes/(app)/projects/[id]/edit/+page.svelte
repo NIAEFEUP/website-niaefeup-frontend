@@ -1,8 +1,9 @@
 <script>
-  import FileInput from '../../../../../lib/components/forms/file-input.svelte';
-  import LabelInput from '../../../../../lib/components/forms/label-input.svelte';
-  import PictureInput from '../../../../../lib/components/forms/picture-input.svelte';
-  import Button from '../../../../../lib/components/buttons/button.svelte';
+  import FileInput from '@/lib/components/forms/file-input.svelte';
+  import LabelInput from '@/lib/components/forms/label-input.svelte';
+  import PictureInput from '@/lib/components/forms/picture-input.svelte';
+  import Button from '@/lib/components/buttons/button.svelte';
+  import ProjectFormsInput from '../../_components/project-forms-input.svelte';
 </script>
 
 <div class="flex w-full flex-col items-center justify-around">
@@ -11,54 +12,34 @@
   </div>
 
   <form method="POST" enctype="multipart/form-data" class="flex w-full flex-col items-center p-10">
-    <p class="mb-10 text-center text-2xl font-bold">Dados Gerais</p>
+    <h2 class="mb-10 text-center text-2xl font-bold">Dados Gerais</h2>
 
     <div class="flex w-full flex-col justify-center gap-10 md:flex-row md:items-start md:p-10">
       <div class="order-2 flex w-full flex-col gap-5 md:order-1 md:w-1/2">
-        <LabelInput
+        <ProjectFormsInput
           label="Title"
           name="title"
-          horizontal
-          placeholder="Insira o texto"
-          className="flex-col md:flex-row"
-          textGap="10"
         />
 
-        <LabelInput
+        <ProjectFormsInput
           label="Slug"
           name="slug"
-          horizontal
-          placeholder="Insira o texto"
-          className="flex-col md:flex-row"
-          textGap="10"
         />
 
-        <LabelInput
+        <ProjectFormsInput
           label="GitHub"
           name="github"
-          horizontal
-          placeholder="Insira o texto"
-          className="flex-col md:flex-row"
-          textGap="10"
         />
 
-        <LabelInput
+        <ProjectFormsInput
           label="Slogan"
           name="slogan"
-          horizontal
           isTextArea
-          placeholder="Insira o texto"
-          className="flex-col md:flex-row"
-          textGap="10"
         />
 
-        <LabelInput
+        <ProjectFormsInput
           label="Descrição"
           name="description"
-          horizontal
-          placeholder="Insira o texto"
-          className="flex-col md:flex-row"
-          textGap="10"
         />
 
         <div class="flex flex-col gap-5 md:flex-row">
@@ -66,18 +47,14 @@
           <FileInput name="addFile" />
         </div>
 
-        <LabelInput
+        <ProjectFormsInput
           label="Público Alvo"
           name="public"
-          horizontal
-          placeholder="Insira o texto"
-          className="flex-col md:flex-row"
-          textGap="10"
         />
 
         <div class="flex w-[50vw] gap-10">
-          <Button type="submit" color="reddish" hoverColor="reddish" text="Guardar Alterações" />
-          <Button type="reset" color="reddish" hoverColor="reddish" text="Cancelar" />
+          <Button type="submit" color="secondary" hoverColor="red" text="Guardar Alterações" />
+          <Button type="reset" color="secondary" hoverColor="red" text="Cancelar" />
         </div>
       </div>
 
