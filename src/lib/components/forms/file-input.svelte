@@ -26,14 +26,14 @@
 
   {#if files.length}
     {#each files as file (file.name)}
-      <div class="file-item bg-taupe-200 min-w-0 rounded px-2 py-2">
-        <span class="text-rose-950 font-bold">{file.name}</span>
+      <div class="file-item min-w-0 rounded bg-taupe-200 px-2 py-2">
+        <span class="font-bold text-rose-950">{file.name}</span>
         <button
           onclick={() => popFile(file)}
           class=" order-2 rounded bg-taupe-200 px-1 font-bold text-black hover:bg-red-500 md:right-[-5px]"
           >X</button
         >
-      </div> 
+      </div>
     {/each}
   {/if}
 </div>
