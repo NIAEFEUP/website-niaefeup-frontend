@@ -6,6 +6,7 @@
     placeholder?: string;
     isTextArea?: boolean;
     horizontal?: boolean;
+    value?: string;
   }
 
   let {
@@ -14,8 +15,10 @@
     type = 'text',
     placeholder = '',
     isTextArea = false,
-    horizontal = false
+    horizontal = false,
+    value = $bindable()
   }: Props = $props();
+
 </script>
 
 <div class="flex flex-{horizontal ? 'row' : 'col'}">
@@ -29,6 +32,7 @@
       {id}
       {placeholder}
       rows="4"
+      bind:value
     ></textarea>
   {:else}
     <input
@@ -37,6 +41,7 @@
       {type}
       {id}
       {placeholder}
+      bind:value
     />
   {/if}
 </div>

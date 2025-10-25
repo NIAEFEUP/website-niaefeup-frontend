@@ -3,7 +3,11 @@
   import FileInput from '@/lib/components/forms/file-input.svelte';
   import PictureInput from '@/lib/components/forms/picture-input.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
+
+  let { data }: { data: PageData } = $props();
+  const project: Project = data.project;
 </script>
+
 
 <div class="flex w-full flex-col items-center justify-around">
   <div class="flex w-full justify-center border-b-4 border-red-500 p-2">
@@ -15,7 +19,7 @@
 
     <div class="flex w-full flex-col justify-center gap-10 md:flex-row md:items-start md:p-10">
       <div class="order-2 flex w-full flex-col gap-5 md:order-1 md:w-1/2">
-        <ProjectFormsInput label="Title" name="title" />
+        <ProjectFormsInput label="Title" name="title" value = {project.title} />
 
         <ProjectFormsInput label="Slug" name="slug" />
 
