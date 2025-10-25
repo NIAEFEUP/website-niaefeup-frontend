@@ -5,7 +5,7 @@
     label: string;
     name: string;
     isTextArea?: boolean;
-    value?:string;
+    value?: string;
   }
   let { label = '', name = '', isTextArea = false, value = '' }: Props = $props();
 </script>
@@ -18,5 +18,5 @@
   placeholder="Insira o texto"
   className="flex-col md:flex-row"
   textGap="10"
-  bind:value={value}
+  bind:value
 />

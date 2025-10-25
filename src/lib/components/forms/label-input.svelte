@@ -18,7 +18,6 @@
     horizontal = false,
     value = $bindable()
   }: Props = $props();
-
 </script>
 
 <div class="flex flex-{horizontal ? 'row' : 'col'}">
