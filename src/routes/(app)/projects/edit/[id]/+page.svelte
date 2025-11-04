@@ -4,6 +4,7 @@
   import PictureInput from '@/lib/components/forms/picture-input.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
   import type { PageData } from './$types';
+  import type { Project } from '@/types/project';
 
   let { data }: { data: PageData } = $props();
   const project: Project = data.project;
