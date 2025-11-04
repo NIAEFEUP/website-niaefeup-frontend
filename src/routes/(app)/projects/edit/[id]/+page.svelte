@@ -8,6 +8,7 @@
 
   let { data }: { data: PageData } = $props();
   const project: Project = data.project;
+  console.log(project);
 </script>
 
 <div class="flex w-full flex-col items-center justify-around">
@@ -22,20 +23,20 @@
       <div class="order-2 flex w-full flex-col gap-5 md:order-1 md:w-1/2">
         <ProjectFormsInput label="Title" name="title" value={project.title} />
 
-        <ProjectFormsInput label="Slug" name="slug" />
+        <ProjectFormsInput label="Slug" name="slug" value={project.slug} />
 
-        <ProjectFormsInput label="GitHub" name="github" />
+        <ProjectFormsInput label="GitHub" name="github" value={project.github} />
 
-        <ProjectFormsInput label="Slogan" name="slogan" isTextArea />
+        <ProjectFormsInput label="Slogan" name="slogan" isTextArea value={project.slogan} />
 
-        <ProjectFormsInput label="Descrição" name="description" />
+        <ProjectFormsInput label="Descrição" name="description" value={project.description} />
 
         <div class="flex flex-col gap-2 md:flex-row">
           <p class="w-1/6 font-bold">Fotos</p>
           <FileInput name="addFile" />
         </div>
 
-        <ProjectFormsInput label="Público Alvo" name="public" />
+        <ProjectFormsInput label="Público Alvo" name="public" value={project.targetAudience} />
 
         <div class="flex w-[50vw] gap-10">
           <Button type="submit" color="secondary" hoverColor="red" text="Guardar Alterações" />
