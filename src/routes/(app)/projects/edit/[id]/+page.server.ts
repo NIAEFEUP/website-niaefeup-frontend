@@ -4,24 +4,28 @@ export const actions = {
   default: async ({ request, params, fetch }: RequestEvent) => {
     const formData: FormData = await request.formData();
     const id = params.id;
-    const googlePlay = formData.get('googleplay');
-    const appStore = formData.get('appstore');
 
-    const value = {
+    const projectDto = {
       title: formData.get('title'),
       description: formData.get('description'),
       slug: formData.get('slug'),
       isArchived: false,
       slogan: formData.get('slogan'),
-      targetAudience: formData.get('targetaudience'),
-      links: [{ url: googlePlay }, { url: appStore }],
-      addFile: formData.get('addFile')
+      targetAudience: formData.get('public'),
+      github: formData.get('github')
     };
 
-    const json = JSON.stringify(value);
-    const blob = new Blob([json], { type: 'application/json' });
     const form = new FormData();
-    form.append('project', blob);
+
+    const projectBlob = new Blob([JSON.stringify(projectDto)], {
+      type: 'application/json'
+    });
+    form.append('project', projectBlob);
+
+    const imageFile = formData.get('image');
+    if (imageFile instanceof File && imageFile.size > 0) {
+      form.append('image', imageFile);
+    }
 
     const success = await fetch(`/api/projects/${id}`, {
       method: 'PUT',

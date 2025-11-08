@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { Project } from '@/types/project';
   import type { PageData } from './$types';
   import ProjectTile from './_components/project-tile.svelte';
+  import type { Project } from '@/types/project';
   import Button from '@/lib/components/buttons/button.svelte';
 
   let { data }: { data: PageData } = $props();

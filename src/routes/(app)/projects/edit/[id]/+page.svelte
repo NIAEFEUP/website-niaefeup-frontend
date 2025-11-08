@@ -1,14 +1,13 @@
 <script lang="ts">
   import ProjectFormsInput from '../../_components/project-forms-input.svelte';
+  import type { PageData } from './$types';
   import FileInput from '@/lib/components/forms/file-input.svelte';
   import PictureInput from '@/lib/components/forms/picture-input.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
-  import type { PageData } from './$types';
   import type { Project } from '@/types/project';
 
   let { data }: { data: PageData } = $props();
   const project: Project = data.project;
-  console.log(project);
 </script>
 
 <div class="flex w-full flex-col items-center justify-around">

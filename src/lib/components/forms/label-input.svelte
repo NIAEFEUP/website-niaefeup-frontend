@@ -2,6 +2,7 @@
   interface Props {
     label?: string;
     id?: string;
+    name?: string;
     type?: string;
     placeholder?: string;
     isTextArea?: boolean;
@@ -12,6 +13,7 @@
   let {
     label = '',
     id = '',
+    name = '',
     type = 'text',
     placeholder = '',
     isTextArea = false,
@@ -29,6 +31,7 @@
       aria-label="textarea-input"
       class="mb-2 min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
       {id}
+      {name}
       {placeholder}
       rows="4"
       bind:value
@@ -39,6 +42,7 @@
       class="mb-2 w-full rounded-lg bg-white p-2 text-primary placeholder-primary"
       {type}
       {id}
+      {name}
       {placeholder}
       bind:value
     />
