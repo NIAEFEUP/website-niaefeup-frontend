@@ -134,13 +134,12 @@
                             bind:value={website.url}
                             required
                           />
-                          <LabelInput
-                            name={`icon ${index + 1}`}
-                            label={`Site ${index + 1} Icone`}
-                            placeholder="Insira o Texto"
-                            textGap= {15}
-                            bind:value={website.iconPath}
+                          <PictureInput
+                            text="Icon Website" 
+                            name={`icon ${index + 1}`} 
+                            value={website.icon}
                           />
+                          
                         </Card.Content>
                       </Card.Root>
                     </Carousel.Item>
@@ -208,7 +207,7 @@
       </div>
       <div class="flex flex-row justify-center md:justify-start">
         <div class="order-1 mt-5 flex max-w-[278px] flex-col items-center">
-          <PictureInput text="Foto de perfil" name="photo" source={account.photo} />
+          <PictureInput text="Foto de perfil" name="photo" value={account.photo} />
 
           <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
         </div>

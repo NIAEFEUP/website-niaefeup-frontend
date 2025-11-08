@@ -23,12 +23,21 @@ export const actions = {
     const linkedin = data.get('linkedin');
     const github = data.get('github');
     const photo = data.get('photo') as File;
+    
+    const iconFiles: File[] = [];
+    
     while (data.get(`url ${websiteIndex}`) !== null) {
+      const icon = data.get(`icon ${websiteIndex}`) as File;
+      
+      console.log(`Icon ${websiteIndex}:`, icon, 'Size:', icon?.size, 'Name:', icon?.name);
+      
       dataWebsites.push({
         url: data.get(`url ${websiteIndex}`) as string,
-        iconPath: data.get(`icon ${websiteIndex}`) as string,
         label: data.get(`label ${websiteIndex}`) as string
       });
+      
+      iconFiles.push(icon);
+      
       websiteIndex++;
     }
     const isActive = data.get('isActive') === 'Active' ? true : false;
@@ -44,13 +53,38 @@ export const actions = {
       isActive: isActive
     };
 
-    console.log(value);
-    const json = JSON.stringify(value);
-    const blob = new Blob([json], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(value)], {
+      type: 'application/json'
+    });
+
     const form = new FormData();
     form.append('account', blob);
-    if (photo && photo.size != 0) form.append('photoFile', photo, photo.name);
+    if (photo && photo.size != 0) form.append('photoFile', photo);
+    
+    console.log('Value being sent:', value);
+    console.log('Icon files to append:', iconFiles.length);
 
+    iconFiles.forEach((iconFile, index) => {
+      if (iconFile instanceof File && iconFile.size > 0) {
+        const fieldName = `websites[${index}].iconPath`;
+        console.log(`Appending ${fieldName}:`, iconFile.name, iconFile.size, 'bytes');
+        form.append(fieldName, iconFile, iconFile.name);
+      } else {
+        console.log(`Skipping icon ${index} - size:`, iconFile?.size);
+      }
+    });
+
+    console.log('\n=== FormData Contents ===');
+    for (const pair of form.entries()) {
+      const [key, value] = pair;
+      if (value instanceof File) {
+        console.log(`${key}: File(${value.name}, ${value.size} bytes)`);
+      } else {
+        console.log(`${key}: Other type`);
+      }
+    }
+    console.log('========================\n');
+    
     try {
       const res = await fetch(`/api/accounts/${params.id}`, {
         method: 'PUT',
