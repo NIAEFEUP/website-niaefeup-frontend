@@ -27,6 +27,11 @@ export const actions = {
       form.append('image', imageFile);
     }
 
+    const thumbnailFile = formData.get('thumbnail');
+    if (thumbnailFile instanceof File && thumbnailFile.size > 0) {
+      form.append('thumbnail', thumbnailFile);
+    }
+
     const success = await fetch(`/api/projects/${id}`, {
       method: 'PUT',
       body: form

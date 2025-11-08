@@ -1,11 +1,12 @@
 <script lang="ts">
   interface Props {
     name?: string;
+    value?:string[];
   }
 
-  let { name = '' }: Props = $props();
+  let { name = '' , value=$bindable()}: Props = $props();
 
-  let files = $state([]);
+  let files = $state(value?value:[]);
   function appendFile(event) {
     files = Array.from(event.target.files);
   }

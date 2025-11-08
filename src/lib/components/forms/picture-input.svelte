@@ -7,12 +7,12 @@
   interface Props {
     text: string;
     name?: string;
+    value?: string;
   }
 
-  let { text, name = 'profilePicture' }: Props = $props();
-  let image: string | undefined = $state();
+  let { text, name = 'profilePicture', value = $bindable()}: Props = $props();
+  let image: string | undefined = $state(value);
   let fileInput: HTMLInputElement | undefined = $state();
-
   const onFileSelected = (e) => {
     const file = e.target.files[0];
 

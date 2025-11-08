@@ -32,7 +32,7 @@
 
         <div class="flex flex-col gap-2 md:flex-row">
           <p class="w-1/6 font-bold">Fotos</p>
-          <FileInput name="addFile" />
+          <FileInput name="addFile", value={project.galery} />
         </div>
 
         <ProjectFormsInput label="Público Alvo" name="public" value={project.targetAudience} />
@@ -44,8 +44,8 @@
       </div>
 
       <div class="order-1 flex flex-col items-center gap-5 self-center md:order-2 md:self-start">
-        <PictureInput name="image" text="Adicionar logo" />
-        <PictureInput name="imageMenu" text="Adicionar imagem menu" />
+        <PictureInput name="image" text="Adicionar logo"  value={project.image}/>
+        <PictureInput name="thumbnail" text="Adicionar imagem menu" value={project.thumbnail} />
       </div>
     </div>
   </form>
