@@ -32,7 +32,7 @@
 
         <div class="flex flex-col gap-2 md:flex-row">
           <p class="w-1/6 font-bold">Fotos</p>
-          <FileInput name="addFile", value={project.galery} />
+          <FileInput name="gallery", value={project.gallery} />
         </div>
 
         <ProjectFormsInput label="Público Alvo" name="public" value={project.targetAudience} />
