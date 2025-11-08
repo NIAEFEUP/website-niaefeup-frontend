@@ -137,7 +137,7 @@
                           <PictureInput
                             text="Icon Website" 
                             name={`icon ${index + 1}`} 
-                            value={website.icon}
+                            value={website.iconPath}
                           />
                           
                         </Card.Content>

@@ -29,8 +29,6 @@ export const actions = {
     while (data.get(`url ${websiteIndex}`) !== null) {
       const icon = data.get(`icon ${websiteIndex}`) as File;
       
-      console.log(`Icon ${websiteIndex}:`, icon, 'Size:', icon?.size, 'Name:', icon?.name);
-      
       dataWebsites.push({
         url: data.get(`url ${websiteIndex}`) as string,
         label: data.get(`label ${websiteIndex}`) as string
@@ -58,32 +56,23 @@ export const actions = {
     });
 
     const form = new FormData();
-    form.append('account', blob);
-    if (photo && photo.size != 0) form.append('photoFile', photo);
-    
-    console.log('Value being sent:', value);
-    console.log('Icon files to append:', iconFiles.length);
 
-    iconFiles.forEach((iconFile, index) => {
+    form.append('account', blob);
+    if (photo && photo.size != 0) form.append('photo', photo);
+    iconFiles.forEach((iconFile) => {
       if (iconFile instanceof File && iconFile.size > 0) {
-        const fieldName = `websites[${index}].iconPath`;
-        console.log(`Appending ${fieldName}:`, iconFile.name, iconFile.size, 'bytes');
-        form.append(fieldName, iconFile, iconFile.name);
-      } else {
-        console.log(`Skipping icon ${index} - size:`, iconFile?.size);
+        form.append('websiteIcons', iconFile, iconFile.name);
       }
     });
-
-    console.log('\n=== FormData Contents ===');
-    for (const pair of form.entries()) {
-      const [key, value] = pair;
+    
+    console.log('\nFormData contents:');
+    for (const [key, value] of form.entries()) {
       if (value instanceof File) {
-        console.log(`${key}: File(${value.name}, ${value.size} bytes)`);
+        console.log(`  ${key}: File(${value.name}, ${value.size} bytes)`);
       } else {
-        console.log(`${key}: Other type`);
+        console.log(`  ${key}: Blob`);
       }
     }
-    console.log('========================\n');
     
     try {
       const res = await fetch(`/api/accounts/${params.id}`, {
