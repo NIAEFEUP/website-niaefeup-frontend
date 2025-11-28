@@ -17,27 +17,21 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 {#if event}
-  <section class="mx-5 min-h-screen pt-12 md:pt-32">
+  <section class="mx-9 min-h-screen pt-12 md:mx-32 md:pt-32 lg:mx-64">
     {#if hasPerms}
       <div class="my-4 flex justify-end md:my-8 md:w-5/6">
         <EditButton size="small" link="/events/{event.slug}/edit" />
       </div>
     {/if}
     <header class="flex flex-row justify-center gap-6">
-      <img
-        src={event.image}
-        alt="{event.title}'s image"
-        class="h-full w-full rounded-2xl border-[3vw] border-solid border-white/20 md:w-1/5 md:max-w-md md:border-[2vw]"
-      />
-      <div class="my-auto flex flex-col items-center md:items-start">
-        <h1 class="mb-4 text-3xl font-semibold text-white md:text-6xl">{event.title}</h1>
-        <div class="flex w-full justify-start">
-          <Icon
-            src={Icons.Github}
-            href={event.github}
-            size={windowWidth < screenSizeThreshold ? '38px' : '64px'}
-          />
-        </div>
+      <div class="my-auto flex flex-row items-center md:items-start">
+        <h1 class="mb-4 text-2xl font-semibold text-white md:text-4xl">{event.title}</h1>
+        <!-- src={event.image} -->
+        <img
+          src="https://picsum.photos/200"
+          alt="{event.title}'s image"
+          class="aspect-square w-36 rounded-xl md:w-60"
+        />
       </div>
     </header>
 
@@ -84,7 +78,7 @@
           </p>
           <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
             {#each event.technologies as technology (technology.url)}
-              <a 
+              <a
                 href={technology.url}
                 target="_blank"
                 class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
