@@ -3,5 +3,5 @@
 </script>
 
 <section>
-  div
+  Events Page
 </section>
