@@ -12,6 +12,35 @@
 
   let screenSizeThreshold = 768;
   let windowWidth: number = $state(0);
+
+  function parseCustomDate(dateStr: string): Date | null {
+    if (!dateStr) return null;
+    const match = dateStr.match(/(\d{2})-(\d{2})-(\d{4})[ T](\d{2})[:\-](\d{2})/);
+    if (!match) return null;
+    const [, day, month, year, hour, minute] = match;
+    return new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute));
+  }
+
+  function formatWeekdayTime(date: Date): string {
+    let weekday = new Intl.DateTimeFormat('pt-PT', { weekday: 'long' }).format(date);
+    weekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+    const hour = date.getHours().toString().padStart(2, '0');
+    const minute = date.getMinutes().toString().padStart(2, '0');
+    return `${weekday} - ${hour}h${minute}`;
+  }
+
+  function formatDateExtense(date: Date): string {
+    const day = date.getDate();
+    let month = new Intl.DateTimeFormat('pt-PT', { month: 'long' }).format(date);
+    month = month.toLowerCase();
+    const year = date.getFullYear();
+    return `${day} de ${month} ${year}`;
+  }
+
+  let parsedEventDate = $state<Date | null>(null);
+  $effect(() => {
+    parsedEventDate = parseCustomDate(event?.dateInterval?.startDate);
+  });
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
@@ -47,8 +76,12 @@
         />
         {#if windowWidth < screenSizeThreshold}
           <div class="ml-4 flex flex-1 flex-col justify-start">
-            <span>{event.dateInterval.startDate}</span>
-            <span>{event.dateInterval.startDate}</span>
+            {#if parsedEventDate}
+              <span>{formatWeekdayTime(parsedEventDate)}</span>
+              <span>{formatDateExtense(parsedEventDate)}</span>
+            {:else}
+              <span>Data inválida</span>
+            {/if}
             <span>{event.location}</span>
           </div>
         {/if}
