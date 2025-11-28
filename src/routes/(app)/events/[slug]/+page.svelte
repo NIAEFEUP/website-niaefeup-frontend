@@ -63,33 +63,50 @@
     {/if}
     <header class="flex flex-row justify-center gap-6">
       <div class="my-auto flex flex-row items-stretch">
-        {#if windowWidth > screenSizeThreshold}<h1
-            class="mb-4 text-2xl font-semibold text-white md:text-4xl"
-          >
-            {event.title}
-          </h1>{/if}
+        {#if windowWidth > screenSizeThreshold}
+          <div class="mr-6 flex flex-col justify-center gap-8">
+            <h1 class="mb-4 pr-8 text-2xl font-bold text-white md:text-3xl lg:pr-16 lg:text-5xl">
+              {event.title}
+            </h1>
+            <div class="flex flex-1 flex-col justify-start gap-3 text-lg">
+              {#if parsedEventDate}
+                <span>{formatWeekdayTime(parsedEventDate)}</span>
+                <span class="flex items-center gap-2">
+                  <Icon src={Icons.Calendar} class="mr-1 inline-block" size={18} />
+
+                  {@html formatDateExtense(parsedEventDate)}
+                </span>
+              {:else}
+                <span>Data inválida</span>
+              {/if}
+              <span class="flex items-center gap-2">
+                <Icon src={Icons.Location} class="mr-1 inline-block" size={18} />
+
+                {event.location}
+              </span>
+            </div>
+          </div>
+        {/if}
         <!-- src={event.image} -->
         <img
           src="https://picsum.photos/200"
           alt="{event.title}'s image"
-          class="aspect-square w-36 rounded-xl md:w-60"
+          class="aspect-square h-36 w-36 rounded-xl md:h-60 md:w-60"
         />
         {#if windowWidth < screenSizeThreshold}
           <div class="ml-4 flex flex-1 flex-col justify-start gap-3 text-sm">
             {#if parsedEventDate}
               <span>{formatWeekdayTime(parsedEventDate)}</span>
-              <span class="flex items-center gap-2">
-                <Icon src={Icons.Calendar} class="mr-1 inline-block" size={18} />
-
-                {@html formatDateExtense(parsedEventDate)}
+              <span class="flex min-w-0 flex-nowrap items-center gap-2">
+                <Icon src={Icons.Calendar} class="mr-1 inline-block flex-shrink-0" size={18} />
+                <span class="block break-words">{@html formatDateExtense(parsedEventDate)}</span>
               </span>
             {:else}
               <span>Data inválida</span>
             {/if}
-            <span class="flex items-center gap-2">
-              <Icon src={Icons.Location} class="mr-1 inline-block" size={18} />
-
-              {event.location}
+            <span class="flex min-w-0 flex-nowrap items-center gap-2">
+              <Icon src={Icons.Location} class="mr-1 inline-block flex-shrink-0" size={18} />
+              <span class="block break-words">{event.location}</span>
             </span>
           </div>
         {/if}
