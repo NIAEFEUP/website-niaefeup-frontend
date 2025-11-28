@@ -6,7 +6,9 @@ import {
   FaBrandsLinkedin,
   FaSolidUser,
   FaSolidBars,
-  FaSolidGlobe
+  FaSolidGlobe,
+  FaSolidLocationDot,
+  FaSolidCalendarDays
 } from 'svelte-icons-pack/fa';
 import { BiMap } from 'svelte-icons-pack/bi';
 import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
@@ -27,7 +29,9 @@ const Icons = {
   Visible: IoEye,
   Hidden: IoEyeOff,
   Logout: FiLogOut,
-  Edit: FiEdit2
+  Edit: FiEdit2,
+  Calendar: FaSolidCalendarDays,
+  Location: FaSolidLocationDot
 };
 
 export default Icons;

@@ -93,3 +93,19 @@ export const GlobeIcon = {
     size: '50px'
   }
 };
+
+export const CalendarIcon = {
+  args: {
+    src: Icons.Calendar,
+    color: 'white',
+    size: '50px'
+  }
+};
+
+export const LocationIcon = {
+  args: {
+    src: Icons.Location,
+    color: 'white',
+    size: '50px'
+  }
+};

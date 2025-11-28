@@ -30,11 +30,11 @@
   }
 
   function formatDateExtense(date: Date): string {
-    const day = date.getDate();
+    const day = date.getDate().toString();
     let month = new Intl.DateTimeFormat('pt-PT', { month: 'long' }).format(date);
     month = month.toLowerCase();
-    const year = date.getFullYear();
-    return `${day} de ${month} ${year}`;
+    const year = date.getFullYear().toString();
+    return `<b>${day}</b> de <b>${month}</b> <b>${year}</b>`;
   }
 
   let parsedEventDate = $state<Date | null>(null);
@@ -75,14 +75,22 @@
           class="aspect-square w-36 rounded-xl md:w-60"
         />
         {#if windowWidth < screenSizeThreshold}
-          <div class="ml-4 flex flex-1 flex-col justify-start">
+          <div class="ml-4 flex flex-1 flex-col justify-start gap-3 text-sm">
             {#if parsedEventDate}
               <span>{formatWeekdayTime(parsedEventDate)}</span>
-              <span>{formatDateExtense(parsedEventDate)}</span>
+              <span class="flex items-center gap-2">
+                <Icon src={Icons.Calendar} class="mr-1 inline-block" size={18} />
+
+                {@html formatDateExtense(parsedEventDate)}
+              </span>
             {:else}
               <span>Data inválida</span>
             {/if}
-            <span>{event.location}</span>
+            <span class="flex items-center gap-2">
+              <Icon src={Icons.Location} class="mr-1 inline-block" size={18} />
+
+              {event.location}
+            </span>
           </div>
         {/if}
       </div>
