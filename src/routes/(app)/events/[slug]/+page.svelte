@@ -18,26 +18,42 @@
 
 {#if event}
   <section class="mx-9 min-h-screen pt-12 md:mx-32 md:pt-32 lg:mx-64">
+    {#if windowWidth < screenSizeThreshold}
+      <div class="flex flex-col items-center">
+        <p
+          class="mb-6 text-center font-source_code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
+        >
+          &lt; {event.title} /&gt;
+        </p>
+      </div>
+    {/if}
     {#if hasPerms}
       <div class="my-4 flex justify-end md:my-8 md:w-5/6">
         <EditButton size="small" link="/events/{event.slug}/edit" />
       </div>
     {/if}
     <header class="flex flex-row justify-center gap-6">
-      <div class="my-auto flex flex-row items-center md:items-start">
-        <h1 class="mb-4 text-2xl font-semibold text-white md:text-4xl">{event.title}</h1>
+      <div class="my-auto flex flex-row items-stretch">
+        {#if windowWidth > screenSizeThreshold}<h1
+            class="mb-4 text-2xl font-semibold text-white md:text-4xl"
+          >
+            {event.title}
+          </h1>{/if}
         <!-- src={event.image} -->
         <img
           src="https://picsum.photos/200"
           alt="{event.title}'s image"
           class="aspect-square w-36 rounded-xl md:w-60"
         />
+        {#if windowWidth < screenSizeThreshold}
+          <div class="ml-4 flex flex-1 flex-col justify-start">
+            <span>{event.dateInterval.startDate}</span>
+            <span>{event.dateInterval.startDate}</span>
+            <span>{event.location}</span>
+          </div>
+        {/if}
       </div>
     </header>
-
-    <div class="mt-14 text-center md:mt-28">
-      <strong class="text-4xl text-white">{event.slogan}</strong>
-    </div>
 
     {#if event.links && event.links.length > 0}
       <ul class="mt-16 flex flex-wrap justify-center gap-10">
@@ -96,22 +112,6 @@
           </div>
         </div>
       {/if}
-      <div
-        class="flex flex-col items-center {event.technologies && event.technologies.length > 0
-          ? 'md:w-1/3'
-          : 'md:w-full md:justify-center'}"
-      >
-        <p
-          class="mb-6 font-source_code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
-        >
-          &lt; Público Alvo /&gt;
-        </p>
-        <div class="flex justify-center gap-8">
-          <p class="text-center text-xl font-semibold text-white md:text-3xl">
-            {event.targetAudience}
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 {:else}
