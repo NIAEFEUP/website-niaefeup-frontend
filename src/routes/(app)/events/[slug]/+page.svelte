@@ -4,6 +4,7 @@
   import EditButton from '$lib/components/buttons/edit-button.svelte';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
+  import EventEnrollButton from '../_components/event-enroll-button.svelte';
 
   let { data }: { data: PageData } = $props();
 
@@ -87,12 +88,24 @@
             </div>
           </div>
         {/if}
-        <!-- src={event.image} -->
-        <img
-          src="https://picsum.photos/200"
-          alt="{event.title}'s image"
-          class="aspect-square h-36 w-36 rounded-xl md:h-60 md:w-60"
-        />
+
+        <div class="flex shrink-0 flex-col items-center gap-4">
+          <img
+            src="https://picsum.photos/200"
+            alt="{event.title}'s image"
+            class="aspect-square h-36 w-36 rounded-xl object-cover md:h-60 md:w-60"
+          />
+
+          <div class="hidden md:block">
+            <EventEnrollButton
+              registerUrl={event.registerUrl}
+              onClick={() => {
+                event.registerUrl;
+              }}
+            />
+          </div>
+        </div>
+
         {#if windowWidth < screenSizeThreshold}
           <div class="ml-4 flex flex-1 flex-col justify-start gap-3 text-sm">
             {#if parsedEventDate}
