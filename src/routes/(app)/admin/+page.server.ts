@@ -4,9 +4,9 @@ import { PUBLIC_API_URL } from '$env/static/public';
 import { canEditActivity } from '@/lib/api/permissions';
 
 export const load: PageLoad = async ({ fetch }) => {
-  if (!(await canEditActivity())) {
-    throw redirect(303, '/');
-  }
+  // if (!(await canEditActivity())) {
+  //   throw redirect(303, '/');
+  // }
 
   const tech = await fetch(`${PUBLIC_API_URL}/technologies`);
   if (!tech.ok) {

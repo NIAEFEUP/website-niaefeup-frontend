@@ -2,19 +2,23 @@
   interface Props {
     label?: string;
     id?: string;
+    name?: string;
     type?: string;
     placeholder?: string;
     isTextArea?: boolean;
     horizontal?: boolean;
+    required?: boolean;
   }
 
   let {
     label = '',
     id = '',
+    name = '',
     type = 'text',
     placeholder = '',
     isTextArea = false,
-    horizontal = false
+    horizontal = false,
+    required = false
   }: Props = $props();
 </script>
 

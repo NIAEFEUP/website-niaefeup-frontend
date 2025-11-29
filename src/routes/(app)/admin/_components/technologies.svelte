@@ -1,5 +1,7 @@
 <script lang="ts">
   import TechnologyCard from './technology-card.svelte';
+  import { applyAction, enhance } from '$app/forms';
+
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
@@ -12,20 +14,22 @@
 
   import type { BackendError } from '$lib/types/backend-error';
 
-  let dialogOpen = false;
-  let search = '';
+  let dialogOpen = $state(false);
+  let search = $state('');
 
-  let error: BackendError | null = null;
+  let error: BackendError | null = $state(null);
 
-  $: filtered = technologies.filter((tech) =>
-    tech.name.toLowerCase().trim().includes(search.trim().toLowerCase())
-  );
-
-  export let technologies;
+  let { technologies = $bindable() } = $props();
 
   function removeTechnology(id: number) {
     technologies = technologies.filter((t) => t.id !== id);
   }
+
+  let filtered = $derived(
+    technologies.filter((tech) =>
+      tech.name.toLowerCase().trim().includes(search.trim().toLowerCase())
+    )
+  );
 </script>
 
 <section class="flex flex-col gap-y-8">
@@ -40,7 +44,27 @@
           Adicionar Tecnologia
         </Dialog.Trigger>
         <Dialog.Content class="rounded-3xl bg-muted-red-500 p-0">
-          <form method="POST" action="?/addTechnology" enctype="multipart/form-data">
+          <form
+            method="POST"
+            action="?/addTechnology"
+            enctype="multipart/form-data"
+            use:enhance={() => {
+              error = null;
+
+              return async ({ result }) => {
+                if (!result?.data.data.errors) {
+                  dialogOpen = false;
+
+                  const newTechnologies = [...technologies, result?.data.data];
+                  technologies = newTechnologies;
+
+                  await applyAction(result);
+                } else {
+                  error = result?.data.data.errors[0];
+                }
+              };
+            }}
+          >
             <Dialog.Header class="flex flex-col gap-y-6 p-8">
               <Dialog.Title class="text-xl">Adicionar nova tecnologia</Dialog.Title>
               <Dialog.Description>
@@ -108,7 +132,7 @@
                 <button
                   type="button"
                   class="text-lg text-muted-red-700"
-                  on:click={() => (dialogOpen = false)}>Cancelar</button
+                  onclick={() => (dialogOpen = false)}>Cancelar</button
                 >
                 <button
                   type="submit"
@@ -139,7 +163,7 @@
   </section>
 
   <section class="mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-    {#each filtered as tech}
+    {#each filtered as tech (tech.id)}
       <TechnologyCard {tech} {removeTechnology} />
     {/each}
   </section>

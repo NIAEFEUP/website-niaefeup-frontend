@@ -6,10 +6,9 @@
 
   import { enhance } from '$app/forms';
 
-  export let tech;
-  export let removeTechnology;
+  let { tech, removeTechnology } = $props();
 
-  let dialogOpen = false;
+  let dialogOpen = $state(false);
 
   async function deleteTechnology(e) {
     removeTechnology(Number(e.formData.get('id')));

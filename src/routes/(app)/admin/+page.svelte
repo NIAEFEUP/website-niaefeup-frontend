@@ -4,8 +4,12 @@
 
   import * as Tabs from '$lib/components/ui/tabs/index.js';
 
-  export let data: PageData;
-  export let technologies = data.technologies;
+  interface Props {
+    data: PageData;
+    technologies?: any;
+  }
+
+  let { data, technologies = data.technologies }: Props = $props();
 </script>
 
 <section class="flex w-full items-center justify-center">
