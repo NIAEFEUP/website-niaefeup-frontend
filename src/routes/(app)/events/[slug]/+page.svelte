@@ -47,7 +47,7 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 {#if event}
-  <section class="mx-9 min-h-screen pt-12 md:mx-32 md:pt-32 lg:mx-64">
+  <section class="mx-9 min-h-screen pt-4 md:mx-32 md:pt-16 lg:mx-56">
     {#if windowWidth < screenSizeThreshold}
       <div class="flex flex-col items-center">
         <p
@@ -137,30 +137,7 @@
       </div>
     </header>
 
-    {#if event.links && event.links.length > 0}
-      <ul class="mt-16 flex flex-wrap justify-center gap-10">
-        {#each event.links as link (link.url)}
-          <li>
-            <a
-              href={link.url}
-              class="flex h-20 w-60 items-center justify-center overflow-hidden rounded-xl text-white md:h-28 md:w-56"
-            >
-              <img
-                src={link.iconPath}
-                alt="{event.title}'s custom website"
-                class="object-cover md:h-28 md:w-56"
-              />
-            </a>
-          </li>
-        {/each}
-      </ul>
-    {/if}
-
     <div class="mt-20 flex flex-col items-center justify-center gap-4 md:flex-row">
-      <img class="w-max-xl w-1/3" src={event.thumbnail} alt="{event.title}'s thumbnail" />
-      {#if windowWidth < screenSizeThreshold}
-        <p class="mt-4 w-5/6 text-left text-3xl font-bold">tem por objetivo...</p>
-      {/if}
       <p class="w-5/6 max-w-xl text-right text-2xl text-gray-100 md:w-1/3 md:text-4xl">
         {event.description}
       </p>
