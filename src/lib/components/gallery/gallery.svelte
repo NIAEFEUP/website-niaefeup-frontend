@@ -1,51 +1,107 @@
 <script lang="ts">
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
+  import { mousePan } from '$lib/actions/mouse-pan';
 
   export let photos: string[] = [];
+
   let current = 0;
+  let scrollContainer: HTMLElement;
+  let cancelPhysics: () => void = () => {};
+
+  function to(index: number) {
+    if (!scrollContainer) return;
+
+    const targetIndex = Math.max(0, Math.min(index, photos.length - 1));
+    const child = scrollContainer.children[targetIndex] as HTMLElement;
+
+    if (!child) return;
+
+    cancelPhysics();
+
+    scrollContainer.scrollTo({
+      left: child.offsetLeft - scrollContainer.offsetLeft,
+      behavior: 'smooth'
+    });
+  }
 
   function prev() {
-    current = (current - 1 + photos.length) % photos.length;
+    to(current - 1);
   }
+
   function next() {
-    current = (current + 1) % photos.length;
+    to(current + 1);
   }
-  function goTo(idx: number) {
-    current = idx;
+
+  function onScroll() {
+    if (!scrollContainer) return;
+    const containerLeft = scrollContainer.scrollLeft;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    Array.from(scrollContainer.children).forEach((child, index) => {
+      const htmlChild = child as HTMLElement;
+      const distance = Math.abs(htmlChild.offsetLeft - scrollContainer.offsetLeft - containerLeft);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== current) {
+      current = closestIndex;
+    }
   }
 </script>
 
-{#if photos.length === 1}
+{#if photos.length === 0}
+  <div class="h-64 w-full max-w-xl rounded-3xl bg-gray-200"></div>
+{:else if photos.length === 1}
   <div class="flex justify-center">
     <img
       src={photos[0]}
       alt="Gallery 1"
-      class="h-64 w-full max-w-xl rounded-lg object-cover shadow"
+      class="h-64 w-full max-w-xl rounded-3xl object-cover shadow"
       loading="lazy"
     />
   </div>
 {:else}
-  <div class="group relative flex flex-col items-center">
-    <div class="relative flex h-64 w-full max-w-xl items-center justify-center">
+  <div class="group flex w-full max-w-xl flex-col items-center">
+    <div class="relative w-full">
+      <div
+        bind:this={scrollContainer}
+        use:mousePan={{ onCancel: (fn) => (cancelPhysics = fn) }}
+        on:scroll={onScroll}
+        class="scrollbar-hide relative flex w-full cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth active:cursor-grabbing"
+        style="scrollbar-width: none; -ms-overflow-style: none;"
+      >
+        {#each photos as photo, i}
+          <div class="relative h-64 min-w-full snap-center">
+            <img
+              src={photo}
+              alt={`Gallery photo ${i + 1}`}
+              class="pointer-events-none h-full w-full select-none rounded-3xl object-cover shadow"
+              loading="lazy"
+              draggable="false"
+            />
+          </div>
+        {/each}
+      </div>
+
       <button
-        class="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-50 group-hover:opacity-100"
+        class="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0 group-hover:opacity-100"
         on:click={prev}
+        disabled={current === 0}
         aria-label="Previous photo"
       >
         <Icon src={Icons.ChevronLeft} size={14} />
       </button>
 
-      <img
-        src={photos[current]}
-        alt={`Gallery photo ${current + 1}`}
-        class="h-64 w-full rounded-3xl object-cover shadow"
-        loading="lazy"
-      />
-
       <button
-        class="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-50 group-hover:opacity-100"
+        class="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0 group-hover:opacity-100"
         on:click={next}
+        disabled={current === photos.length - 1}
         aria-label="Next photo"
       >
         <Icon src={Icons.ChevronRight} size={14} />
@@ -60,7 +116,7 @@
             : 'bg-[#d9d9d9]/50 hover:bg-[#d9d9d9] '}"
           aria-label={`Go to photo ${i + 1}`}
           aria-current={current === i ? 'true' : undefined}
-          on:click={() => goTo(i)}
+          on:click={() => to(i)}
         ></button>
       {/each}
     </div>
