@@ -8,7 +8,9 @@ import {
   FaSolidBars,
   FaSolidGlobe,
   FaSolidLocationDot,
-  FaSolidCalendarDays
+  FaSolidCalendarDays,
+  FaSolidChevronRight,
+  FaSolidChevronLeft
 } from 'svelte-icons-pack/fa';
 import { BiMap } from 'svelte-icons-pack/bi';
 import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
@@ -31,7 +33,9 @@ const Icons = {
   Logout: FiLogOut,
   Edit: FiEdit2,
   Calendar: FaSolidCalendarDays,
-  Location: FaSolidLocationDot
+  Location: FaSolidLocationDot,
+  ChevronRight: FaSolidChevronRight,
+  ChevronLeft: FaSolidChevronLeft
 };
 
 export default Icons;

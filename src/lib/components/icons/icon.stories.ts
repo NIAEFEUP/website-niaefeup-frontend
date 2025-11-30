@@ -109,3 +109,19 @@ export const LocationIcon = {
     size: '50px'
   }
 };
+
+export const ChevronRightIcon = {
+  args: {
+    src: Icons.ChevronRight,
+    color: 'white',
+    size: '50px'
+  }
+};
+
+export const ChevronLeftIcon = {
+  args: {
+    src: Icons.ChevronLeft,
+    color: 'white',
+    size: '50px'
+  }
+};
