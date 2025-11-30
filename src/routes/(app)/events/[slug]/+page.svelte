@@ -137,41 +137,7 @@
       </div>
     </header>
 
-    <div class="mt-20 flex flex-col items-center justify-center gap-4 md:flex-row">
-      <p class="w-5/6 max-w-xl text-right text-2xl text-gray-100 md:w-1/3 md:text-4xl">
-        {event.description}
-      </p>
-    </div>
-
-    <div class="mt-24 flex flex-col justify-evenly md:flex-row">
-      {#if event.technologies && event.technologies.length > 0}
-        <div class="flex flex-col items-center md:w-1/3">
-          <p
-            class="mb-6 font-source_code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
-          >
-            &lt; Tecnologias /&gt;
-          </p>
-          <div class="mb-12 mt-6 flex flex-wrap justify-center gap-4 md:gap-8">
-            {#each event.technologies as technology (technology.url)}
-              <a
-                href={technology.url}
-                target="_blank"
-                class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
-              >
-                <img
-                  src={technology.image}
-                  alt="Technology {technology.name}'s logo"
-                  class="max-h-12"
-                />
-                {#if windowWidth > screenSizeThreshold}
-                  <p class="text-xl text-white">{technology.name}</p>
-                {/if}
-              </a>
-            {/each}
-          </div>
-        </div>
-      {/if}
-    </div>
+    
   </section>
 {:else}
   <p>Loading project details...</p>
