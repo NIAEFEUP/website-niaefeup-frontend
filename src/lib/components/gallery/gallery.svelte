@@ -95,7 +95,7 @@
         disabled={current === 0}
         aria-label="Previous photo"
       >
-        <Icon src={Icons.ChevronLeft} size={14} />
+        <Icon src={Icons.ChevronLeft} size="14" />
       </button>
 
       <button
@@ -104,7 +104,7 @@
         disabled={current === photos.length - 1}
         aria-label="Next photo"
       >
-        <Icon src={Icons.ChevronRight} size={14} />
+        <Icon src={Icons.ChevronRight} size="14" />
       </button>
     </div>
 
