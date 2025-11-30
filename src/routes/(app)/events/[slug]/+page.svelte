@@ -63,66 +63,77 @@
       </div>
     {/if}
     <header class="flex flex-row justify-center gap-6">
-      <div class="my-auto flex flex-row items-stretch">
-        {#if windowWidth > screenSizeThreshold}
-          <div class="mr-6 flex flex-col justify-center gap-8">
-            <h1 class="mb-4 pr-8 text-2xl font-bold text-white md:text-3xl lg:pr-16 lg:text-5xl">
-              {event.title}
-            </h1>
-            <div class="flex flex-1 flex-col justify-start gap-3 text-lg">
+      <div class="flex flex-col gap-16">
+        <div class="my-auto flex flex-row items-stretch">
+          {#if windowWidth > screenSizeThreshold}
+            <div class="mr-6 flex flex-col justify-center gap-8">
+              <h1 class="mb-4 pr-8 text-2xl font-bold text-white md:text-3xl lg:pr-16 lg:text-5xl">
+                {event.title}
+              </h1>
+              <div class="flex flex-1 flex-col justify-start gap-3 text-lg">
+                {#if parsedEventDate}
+                  <span>{formatWeekdayTime(parsedEventDate)}</span>
+                  <span class="flex items-center gap-2">
+                    <Icon src={Icons.Calendar} class="mr-1 inline-block" size={18} />
+
+                    {@html formatDateExtense(parsedEventDate)}
+                  </span>
+                {:else}
+                  <span>Data inválida</span>
+                {/if}
+                <span class="flex items-center gap-2">
+                  <Icon src={Icons.Location} class="mr-1 inline-block" size={18} />
+
+                  {event.location}
+                </span>
+              </div>
+            </div>
+          {/if}
+
+          <div class="flex shrink-0 flex-col items-center gap-8">
+            <img
+              src="https://picsum.photos/200"
+              alt="{event.title}'s image"
+              class="aspect-square h-36 w-36 rounded-xl object-cover md:h-60 md:w-60"
+            />
+
+            <div class="hidden md:block">
+              <EventEnrollButton
+                registerUrl={event.registerUrl}
+                onClick={() => {
+                  if (event.registerUrl) window.open(event.registerUrl, '_blank');
+                }}
+              />
+            </div>
+          </div>
+
+          {#if windowWidth < screenSizeThreshold}
+            <div class="ml-4 flex flex-1 flex-col justify-start gap-3 text-sm">
               {#if parsedEventDate}
                 <span>{formatWeekdayTime(parsedEventDate)}</span>
-                <span class="flex items-center gap-2">
-                  <Icon src={Icons.Calendar} class="mr-1 inline-block" size={18} />
-
-                  {@html formatDateExtense(parsedEventDate)}
+                <span class="flex min-w-0 flex-nowrap items-center gap-2">
+                  <Icon src={Icons.Calendar} class="mr-1 inline-block flex-shrink-0" size={18} />
+                  <span class="block break-words">{@html formatDateExtense(parsedEventDate)}</span>
                 </span>
               {:else}
                 <span>Data inválida</span>
               {/if}
-              <span class="flex items-center gap-2">
-                <Icon src={Icons.Location} class="mr-1 inline-block" size={18} />
-
-                {event.location}
+              <span class="flex min-w-0 flex-nowrap items-center gap-2">
+                <Icon src={Icons.Location} class="mr-1 inline-block flex-shrink-0" size={18} />
+                <span class="block break-words">{event.location}</span>
               </span>
             </div>
-          </div>
-        {/if}
-
-        <div class="flex shrink-0 flex-col items-center gap-4">
-          <img
-            src="https://picsum.photos/200"
-            alt="{event.title}'s image"
-            class="aspect-square h-36 w-36 rounded-xl object-cover md:h-60 md:w-60"
-          />
-
-          <div class="hidden md:block">
-            <EventEnrollButton
-              registerUrl={event.registerUrl}
-              onClick={() => {
-                event.registerUrl;
-              }}
-            />
-          </div>
+          {/if}
         </div>
 
-        {#if windowWidth < screenSizeThreshold}
-          <div class="ml-4 flex flex-1 flex-col justify-start gap-3 text-sm">
-            {#if parsedEventDate}
-              <span>{formatWeekdayTime(parsedEventDate)}</span>
-              <span class="flex min-w-0 flex-nowrap items-center gap-2">
-                <Icon src={Icons.Calendar} class="mr-1 inline-block flex-shrink-0" size={18} />
-                <span class="block break-words">{@html formatDateExtense(parsedEventDate)}</span>
-              </span>
-            {:else}
-              <span>Data inválida</span>
-            {/if}
-            <span class="flex min-w-0 flex-nowrap items-center gap-2">
-              <Icon src={Icons.Location} class="mr-1 inline-block flex-shrink-0" size={18} />
-              <span class="block break-words">{event.location}</span>
-            </span>
-          </div>
-        {/if}
+        <div class="mx-auto block w-fit md:hidden">
+          <EventEnrollButton
+            registerUrl={event.registerUrl}
+            onClick={() => {
+              if (event.registerUrl) window.open(event.registerUrl, '_blank');
+            }}
+          />
+        </div>
       </div>
     </header>
 

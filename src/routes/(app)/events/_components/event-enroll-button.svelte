@@ -19,7 +19,7 @@
   <svg
     class="absolute inset-0 -z-10 h-full w-full text-muted-red-500/60 transition-colors {isDisabled
       ? ''
-      : 'group-hover:text-muted-red-500/80'}"
+      : 'group-hover:text-muted-red-500/70'}"
     viewBox="0 0 207 67"
     preserveAspectRatio="none"
     xmlns="http://www.w3.org/2000/svg"
