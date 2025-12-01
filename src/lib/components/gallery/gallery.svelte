@@ -5,6 +5,18 @@
 
   export let photos: string[] = [];
 
+  // --- MOCK DATA START (REMOVE WHEN BACKEND IS READY) ---
+  const MOCK_PHOTOS = [
+    'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=960&auto=format&fit=crop', // Ocean
+    'https://images.unsplash.com/photo-1595514807053-2c594370091a?q=80&w=960&auto=format&fit=crop', // Forest
+    'https://images.unsplash.com/photo-1498144668414-48bf526766cf?q=80&w=960&auto=format&fit=crop', // Desert
+    'https://images.unsplash.com/photo-1736525155507-2326a56f0606?q=80&w=960&auto=format&fit=crop' // Mountain
+  ];
+  // --- MOCK DATA END ---
+
+  // This variable decides: if real photos exist, use them. If not, use mock.
+  $: galleryPhotos = photos.length > 0 ? photos : MOCK_PHOTOS;
+
   let current = 0;
   let scrollContainer: HTMLElement;
   let cancelPhysics: () => void = () => {};
@@ -12,7 +24,8 @@
   function to(index: number) {
     if (!scrollContainer) return;
 
-    const targetIndex = Math.max(0, Math.min(index, photos.length - 1));
+    // Updated to use galleryPhotos.length
+    const targetIndex = Math.max(0, Math.min(index, galleryPhotos.length - 1));
     const child = scrollContainer.children[targetIndex] as HTMLElement;
 
     if (!child) return;
@@ -55,12 +68,12 @@
   }
 </script>
 
-{#if photos.length === 0}
+{#if galleryPhotos.length === 0}
   <div class="h-64 w-full max-w-xl rounded-3xl bg-gray-200"></div>
-{:else if photos.length === 1}
+{:else if galleryPhotos.length === 1}
   <div class="flex justify-center">
     <img
-      src={photos[0]}
+      src={galleryPhotos[0]}
       alt="Gallery 1"
       class="h-64 w-full max-w-xl rounded-3xl object-cover shadow"
       loading="lazy"
@@ -76,7 +89,7 @@
         class="scrollbar-hide relative flex w-full cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth active:cursor-grabbing"
         style="scrollbar-width: none; -ms-overflow-style: none;"
       >
-        {#each photos as photo, i}
+        {#each galleryPhotos as photo, i}
           <div class="relative h-64 min-w-full snap-center">
             <img
               src={photo}
@@ -101,7 +114,7 @@
       <button
         class="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0 group-hover:opacity-100"
         on:click={next}
-        disabled={current === photos.length - 1}
+        disabled={current === galleryPhotos.length - 1}
         aria-label="Next photo"
       >
         <Icon src={Icons.ChevronRight} size="14" />
@@ -109,7 +122,7 @@
     </div>
 
     <div class="mt-3 flex gap-2">
-      {#each photos as _, i}
+      {#each galleryPhotos as _, i}
         <button
           class="h-3 w-3 rounded-full transition-colors focus:outline-none {current === i
             ? 'bg-muted-red-700'

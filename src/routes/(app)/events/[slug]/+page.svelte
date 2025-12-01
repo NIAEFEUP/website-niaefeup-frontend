@@ -5,6 +5,7 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
   import EventEnrollButton from '../_components/event-enroll-button.svelte';
+  import Gallery from '../../../../lib/components/gallery/gallery.svelte';
 
   let { data }: { data: PageData } = $props();
 
@@ -137,7 +138,14 @@
       </div>
     </header>
 
-    
+    <div class="my-12">
+      <span>{event.description}</span>
+    </div>
+
+    <!-- {#if event.photos && event.photos.length > 0} -->
+    <div class="mt-12 flex justify-center">
+      <Gallery photos={event.photos} />
+    </div>
   </section>
 {:else}
   <p>Loading project details...</p>
