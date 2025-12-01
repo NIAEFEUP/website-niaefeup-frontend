@@ -7,12 +7,11 @@
 
   // --- MOCK DATA START (REMOVE WHEN BACKEND IS READY) ---
   const MOCK_PHOTOS = [
-    'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=960&auto=format&fit=crop', // Ocean
-    'https://images.unsplash.com/photo-1595514807053-2c594370091a?q=80&w=960&auto=format&fit=crop', // Forest
-    'https://images.unsplash.com/photo-1498144668414-48bf526766cf?q=80&w=960&auto=format&fit=crop', // Desert
-    'https://images.unsplash.com/photo-1736525155507-2326a56f0606?q=80&w=960&auto=format&fit=crop' // Mountain
+    'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=960&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1595514807053-2c594370091a?q=80&w=960&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1498144668414-48bf526766cf?q=80&w=960&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1736525155507-2326a56f0606?q=80&w=960&auto=format&fit=crop'
   ];
-  // --- MOCK DATA END ---
 
   $: galleryPhotos = photos.length > 0 ? photos : MOCK_PHOTOS;
 
@@ -22,7 +21,7 @@
   let isLightboxOpen = false;
   let lightboxIndex = 0;
 
-  function to(index: number) {
+  function to(index: number, behavior: ScrollBehavior = 'smooth') {
     if (!scrollContainer) return;
 
     const targetIndex = Math.max(0, Math.min(index, galleryPhotos.length - 1));
@@ -34,8 +33,12 @@
 
     scrollContainer.scrollTo({
       left: child.offsetLeft - scrollContainer.offsetLeft,
-      behavior: 'smooth'
+      behavior
     });
+  }
+
+  function onResize() {
+    to(current, 'auto');
   }
 
   function prev() {
@@ -54,6 +57,7 @@
 
     Array.from(scrollContainer.children).forEach((child, index) => {
       const htmlChild = child as HTMLElement;
+      // We check distance from the container's left edge to find the center
       const distance = Math.abs(htmlChild.offsetLeft - scrollContainer.offsetLeft - containerLeft);
 
       if (distance < minDistance) {
@@ -103,7 +107,7 @@
   }
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window on:keydown={handleKeydown} on:resize={onResize} />
 
 {#if galleryPhotos.length === 0}
   <div class="aspect-[21/9] w-full rounded-3xl bg-gray-200"></div>
@@ -198,13 +202,13 @@
     </button>
 
     <div
-      class="absolute left-1/2 top-6 z-20 -translate-x-1/2 rounded-full bg-black/20 px-4 py-2 text-sm text-white backdrop-blur-sm"
+      class="absolute left-1/2 top-4 z-20 -translate-x-1/2 rounded-full bg-black/20 px-4 py-2 text-sm text-white backdrop-blur-sm"
     >
       {lightboxIndex + 1} / {galleryPhotos.length}
     </div>
 
     <div
-      class="relative flex h-full w-full items-center justify-center py-4"
+      class="relative flex h-full w-full items-center justify-center p-4"
       on:click|stopPropagation
       on:keydown={(e) => e.key === 'Enter' && e.stopPropagation()}
       role="presentation"
@@ -218,7 +222,7 @@
 
       {#if galleryPhotos.length > 1}
         <button
-          class="absolute left-4 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
+          class="absolute left-2 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
           on:click|stopPropagation={prevLightbox}
           aria-label="Previous photo"
         >
@@ -226,7 +230,7 @@
         </button>
 
         <button
-          class="absolute right-4 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
+          class="absolute right-2 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
           on:click|stopPropagation={nextLightbox}
           aria-label="Next photo"
         >

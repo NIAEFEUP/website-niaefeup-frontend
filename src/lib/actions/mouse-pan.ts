@@ -1,9 +1,9 @@
 const lerp = (start: number, end: number, amt: number) => (1 - amt) * start + amt * end;
 
-const VELOCITY_MOMENTUM_FACTOR = 15;
+const VELOCITY_MOMENTUM_FACTOR = 8;
 const DRAG_EASE = 1;
-const MOMENTUM_EASE = 0.1;
-const SETTLED_THRESHOLD = 0.5;
+const MOMENTUM_EASE = 0.25;
+const SETTLED_THRESHOLD = 1.5;
 
 export function mousePan(
   element: HTMLElement,
@@ -132,12 +132,17 @@ export function mousePan(
     };
 
     if (hasSnap && scroll.axis.x) {
+      const style = window.getComputedStyle(element);
+      const gap = parseFloat(style.columnGap) || parseFloat(style.gap) || 0;
+
       const itemWidth = element.clientWidth;
+      const stride = itemWidth + gap;
+
       const maxScroll = element.scrollWidth - element.clientWidth;
 
-      const targetIndex = Math.round(unsnappedScrollTarget.x / itemWidth);
+      const targetIndex = Math.round(unsnappedScrollTarget.x / stride);
 
-      const clampedTargetX = Math.max(0, Math.min(targetIndex * itemWidth, maxScroll));
+      const clampedTargetX = Math.max(0, Math.min(targetIndex * stride, maxScroll));
 
       scroll.target.x = clampedTargetX;
     } else {
