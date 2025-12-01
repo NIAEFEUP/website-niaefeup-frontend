@@ -138,13 +138,17 @@
       </div>
     </header>
 
-    <div class="my-12">
+    <div class="my-12 text-justify text-lg font-medium md:hidden">
       <span>{event.description}</span>
     </div>
 
     <!-- {#if event.photos && event.photos.length > 0} -->
-    <div class="mt-12 flex justify-center">
+    <div class="mt-16 flex justify-center">
       <Carousel photos={event.photos} />
+    </div>
+
+    <div class="my-12 hidden text-justify text-xl font-medium md:block">
+      <span>{event.description}</span>
     </div>
   </section>
 {:else}
