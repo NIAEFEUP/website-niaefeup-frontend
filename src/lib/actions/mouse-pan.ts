@@ -2,8 +2,8 @@ const lerp = (start: number, end: number, amt: number) => (1 - amt) * start + am
 
 const VELOCITY_MOMENTUM_FACTOR = 15;
 const DRAG_EASE = 1;
-const MOMENTUM_EASE = 0.09;
-const SETTLED_THRESHOLD = 0.01;
+const MOMENTUM_EASE = 0.1;
+const SETTLED_THRESHOLD = 0.5;
 
 export function mousePan(
   element: HTMLElement,
@@ -25,6 +25,8 @@ export function mousePan(
 
   const onPanFinish = () => {
     element.style.removeProperty('scroll-snap-type');
+    element.style.removeProperty('scroll-behavior');
+    element.style.removeProperty('user-select');
   };
 
   const cancelTick = () => {
@@ -55,8 +57,8 @@ export function mousePan(
 
     if (isSettled) {
       scroll.current = {
-        x: Math.ceil(scroll.target.x),
-        y: Math.ceil(scroll.target.y)
+        x: scroll.target.x,
+        y: scroll.target.y
       };
       if (!isPanning) onPanFinish();
     }
@@ -70,6 +72,9 @@ export function mousePan(
   const onMouseDown = (event: MouseEvent) => {
     isPanning = true;
     shouldPreventClick = false;
+
+    element.style.scrollBehavior = 'auto';
+    element.style.userSelect = 'none';
 
     element.style.removeProperty('scroll-snap-type');
     hasSnap = window.getComputedStyle(element).scrollSnapType !== 'none';
@@ -105,7 +110,7 @@ export function mousePan(
     const walkX = currentMouseX - mouse.initial.x;
     const walkY = currentMouseY - mouse.initial.y;
 
-    if (Math.abs(walkX) + Math.abs(walkY) > 0) {
+    if (Math.abs(walkX) + Math.abs(walkY) > 5) {
       shouldPreventClick = true;
     }
 
@@ -126,28 +131,20 @@ export function mousePan(
       y: scroll.target.y + scroll.velocity.y * VELOCITY_MOMENTUM_FACTOR
     };
 
-    if (hasSnap) {
-      const cloneContainer = document.createElement('div');
-      cloneContainer.style.cssText = `position:absolute;visibility:hidden;pointer-events:none;`;
+    if (hasSnap && scroll.axis.x) {
+      const itemWidth = element.clientWidth;
+      const maxScroll = element.scrollWidth - element.clientWidth;
 
-      const clone = element.cloneNode(true) as HTMLElement;
-      clone.style.cssText = `${element.style.cssText.replace(
-        /scroll-snap-type:.+?;/g,
-        'scroll-snap-type: auto;'
-      )}width:${element.clientWidth}px;height:${element.clientHeight}px;`;
+      const targetIndex = Math.round(unsnappedScrollTarget.x / itemWidth);
 
-      cloneContainer.appendChild(clone);
-      (element.parentElement ?? element).appendChild(cloneContainer);
+      const clampedTargetX = Math.max(0, Math.min(targetIndex * itemWidth, maxScroll));
 
-      clone.scrollLeft = unsnappedScrollTarget.x;
-      clone.scrollTop = unsnappedScrollTarget.y;
-      scroll.target = { x: clone.scrollLeft, y: clone.scrollTop };
-      cloneContainer.remove();
+      scroll.target.x = clampedTargetX;
     } else {
       scroll.target = { ...unsnappedScrollTarget };
     }
 
-    if (scroll.current.x === scroll.target.x && scroll.current.y === scroll.target.y) {
+    if (Math.abs(scroll.current.x - scroll.target.x) < 1) {
       onPanFinish();
     } else {
       if (!rafId) rafId = window.requestAnimationFrame(tick);
@@ -176,6 +173,7 @@ export function mousePan(
   element.addEventListener('mousedown', onMouseDown, { signal });
   window.addEventListener('mousemove', onMouseMove, { signal });
   window.addEventListener('mouseup', onMouseUp, { signal });
+  window.addEventListener('mouseleave', onMouseUp, { signal });
   element.addEventListener('wheel', cancelCurrent, { signal });
   element.addEventListener('click', onClick, { signal, capture: true });
 
