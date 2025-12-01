@@ -14,7 +14,6 @@
   ];
   // --- MOCK DATA END ---
 
-  // This variable decides: if real photos exist, use them. If not, use mock.
   $: galleryPhotos = photos.length > 0 ? photos : MOCK_PHOTOS;
 
   let current = 0;
@@ -24,7 +23,6 @@
   function to(index: number) {
     if (!scrollContainer) return;
 
-    // Updated to use galleryPhotos.length
     const targetIndex = Math.max(0, Math.min(index, galleryPhotos.length - 1));
     const child = scrollContainer.children[targetIndex] as HTMLElement;
 
@@ -69,18 +67,18 @@
 </script>
 
 {#if galleryPhotos.length === 0}
-  <div class="h-64 w-full max-w-xl rounded-3xl bg-gray-200"></div>
+  <div class="aspect-[21/9] w-full rounded-3xl bg-gray-200"></div>
 {:else if galleryPhotos.length === 1}
-  <div class="flex justify-center">
+  <div class="flex w-full justify-center">
     <img
       src={galleryPhotos[0]}
       alt="Gallery 1"
-      class="h-64 w-full max-w-xl rounded-3xl object-cover shadow"
+      class="aspect-[21/9] w-full rounded-3xl object-cover shadow"
       loading="lazy"
     />
   </div>
 {:else}
-  <div class="group flex w-full max-w-xl flex-col items-center">
+  <div class="group flex w-full flex-col items-center">
     <div class="relative w-full">
       <div
         bind:this={scrollContainer}
@@ -90,7 +88,7 @@
         style="scrollbar-width: none; -ms-overflow-style: none;"
       >
         {#each galleryPhotos as photo, i}
-          <div class="relative h-64 min-w-full snap-center">
+          <div class="relative aspect-[21/9] min-w-full snap-center">
             <img
               src={photo}
               alt={`Gallery photo ${i + 1}`}

@@ -1,4 +1,4 @@
-import Gallery from './gallery.svelte';
+import Gallery from './Carousel.svelte';
 
 export default {
   title: 'Components/Gallery',

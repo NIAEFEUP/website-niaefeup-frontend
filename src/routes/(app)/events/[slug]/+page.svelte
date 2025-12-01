@@ -5,7 +5,7 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
   import EventEnrollButton from '../_components/event-enroll-button.svelte';
-  import Gallery from '../../../../lib/components/gallery/gallery.svelte';
+  import Carousel from '../../../../lib/components/gallery/Carousel.svelte';
 
   let { data }: { data: PageData } = $props();
 
@@ -144,7 +144,7 @@
 
     <!-- {#if event.photos && event.photos.length > 0} -->
     <div class="mt-12 flex justify-center">
-      <Gallery photos={event.photos} />
+      <Carousel photos={event.photos} />
     </div>
   </section>
 {:else}
