@@ -19,6 +19,8 @@
   let current = 0;
   let scrollContainer: HTMLElement;
   let cancelPhysics: () => void = () => {};
+  let isLightboxOpen = false;
+  let lightboxIndex = 0;
 
   function to(index: number) {
     if (!scrollContainer) return;
@@ -64,7 +66,44 @@
       current = closestIndex;
     }
   }
+
+  function openLightbox(index: number) {
+    lightboxIndex = index;
+    isLightboxOpen = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    isLightboxOpen = false;
+    document.body.style.overflow = '';
+  }
+
+  function nextLightbox() {
+    lightboxIndex = (lightboxIndex + 1) % galleryPhotos.length;
+  }
+
+  function prevLightbox() {
+    lightboxIndex = (lightboxIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+  }
+
+  function handleKeydown(e: KeyboardEvent) {
+    if (!isLightboxOpen) return;
+
+    switch (e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowLeft':
+        prevLightbox();
+        break;
+      case 'ArrowRight':
+        nextLightbox();
+        break;
+    }
+  }
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 {#if galleryPhotos.length === 0}
   <div class="aspect-[21/9] w-full rounded-3xl bg-gray-200"></div>
@@ -89,13 +128,19 @@
       >
         {#each galleryPhotos as photo, i}
           <div class="relative aspect-[21/9] min-w-full snap-center">
-            <img
-              src={photo}
-              alt={`Gallery photo ${i + 1}`}
-              class="pointer-events-none h-full w-full select-none rounded-3xl object-cover shadow"
-              loading="lazy"
-              draggable="false"
-            />
+            <button
+              on:click={() => openLightbox(i)}
+              class="h-full w-full cursor-pointer"
+              aria-label={`View photo ${i + 1} in full screen`}
+            >
+              <img
+                src={photo}
+                alt={`Gallery photo ${i + 1}`}
+                class="pointer-events-none h-full w-full select-none rounded-3xl object-cover shadow"
+                loading="lazy"
+                draggable="false"
+              />
+            </button>
           </div>
         {/each}
       </div>
@@ -130,6 +175,64 @@
           on:click={() => to(i)}
         ></button>
       {/each}
+    </div>
+  </div>
+{/if}
+
+{#if isLightboxOpen}
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
+    on:click={closeLightbox}
+    on:keydown={(e) => e.key === 'Enter' && closeLightbox()}
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photo lightbox"
+    tabindex="-1"
+  >
+    <button
+      class="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
+      on:click={closeLightbox}
+      aria-label="Close lightbox"
+    >
+      <Icon src={Icons.Close} size="24" />
+    </button>
+
+    <div
+      class="absolute left-1/2 top-6 z-20 -translate-x-1/2 rounded-full bg-black/20 px-4 py-2 text-sm text-white backdrop-blur-sm"
+    >
+      {lightboxIndex + 1} / {galleryPhotos.length}
+    </div>
+
+    <div
+      class="relative flex h-full w-full items-center justify-center py-4"
+      on:click|stopPropagation
+      on:keydown={(e) => e.key === 'Enter' && e.stopPropagation()}
+      role="presentation"
+    >
+      <img
+        src={galleryPhotos[lightboxIndex]}
+        alt={`Gallery photo ${lightboxIndex + 1}`}
+        class="max-h-full max-w-full select-none object-contain"
+        draggable="false"
+      />
+
+      {#if galleryPhotos.length > 1}
+        <button
+          class="absolute left-4 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
+          on:click|stopPropagation={prevLightbox}
+          aria-label="Previous photo"
+        >
+          <Icon src={Icons.ChevronLeft} size="32" />
+        </button>
+
+        <button
+          class="absolute right-4 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
+          on:click|stopPropagation={nextLightbox}
+          aria-label="Next photo"
+        >
+          <Icon src={Icons.ChevronRight} size="32" />
+        </button>
+      {/if}
     </div>
   </div>
 {/if}
