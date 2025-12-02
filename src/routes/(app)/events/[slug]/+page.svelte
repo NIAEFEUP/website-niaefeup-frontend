@@ -6,6 +6,8 @@
   import Icons from '$lib/components/icons/icons';
   import EventEnrollButton from '../_components/event-enroll-button.svelte';
   import Carousel from '../../../../lib/components/gallery/Carousel.svelte';
+  import HexagonGrid from '../../../../lib/components/hexagons/hexagon-grid.svelte';
+  import TeamMemberHexagon from '@/routes/(app)/team/_components/team-member-hexagon.svelte';
 
   let { data }: { data: PageData } = $props();
 
@@ -14,6 +16,166 @@
 
   let screenSizeThreshold = 768;
   let windowWidth: number = $state(0);
+
+  // --- MOCK DATA START ---
+  const mockTeamMembers = [
+    {
+      name: 'Dr. Libby Raynor',
+      email: 'cary.mraz@hotmail.com',
+      bio: 'Lead organizer and technical supervisor.',
+      birthDate: '12-12-1994 14:09',
+      photo: 'https://i.pravatar.cc/300?img=1',
+      linkedin: 'https://linkedin.com',
+      github: 'https://github.com',
+      websites: [],
+      isActive: true,
+      id: 1
+    },
+    {
+      name: 'Brianna Kihn',
+      email: 'katelyn.nitzsche@gmail.com',
+      birthDate: '10-06-1997 17:45',
+      photo: 'https://i.pravatar.cc/300?img=5',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: false,
+      id: 4
+    },
+    {
+      name: 'Deon Thompson',
+      email: 'suzann.balistreri@gmail.com',
+      bio: 'Fullstack developer passionate about Svelte.',
+      birthDate: '13-03-1983 11:46',
+      photo: 'https://i.pravatar.cc/300?img=3',
+      linkedin: 'https://linkedin.com',
+      github: 'https://github.com',
+      websites: [],
+      isActive: true,
+      id: 5
+    },
+    {
+      name: 'Sarah Jenkins',
+      email: 'sarah.j@example.com',
+      bio: 'Design lead.',
+      birthDate: '01-01-1995 10:00',
+      photo: 'https://i.pravatar.cc/300?img=9',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 6
+    },
+    {
+      name: 'Michael Chen',
+      email: 'm.chen@example.com',
+      bio: 'Backend architect.',
+      birthDate: '05-05-1990 12:00',
+      photo: 'https://i.pravatar.cc/300?img=11',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 7
+    },
+    {
+      name: 'Jessica Alverez',
+      email: 'jess.a@example.com',
+      bio: 'Community manager.',
+      birthDate: '07-07-1998 09:00',
+      photo: 'https://i.pravatar.cc/300?img=24',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 8
+    },
+    {
+      name: 'David Ross',
+      email: 'd.ross@example.com',
+      bio: 'Logistics coordinator.',
+      birthDate: '11-11-1992 16:00',
+      photo: 'https://i.pravatar.cc/300?img=13',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 9
+    },
+    {
+      name: 'Emily Blunt',
+      email: 'e.blunt@example.com',
+      bio: 'Marketing specialist.',
+      birthDate: '02-02-1996 14:00',
+      photo: 'https://i.pravatar.cc/300?img=32',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 10
+    },
+    {
+      name: 'Tom Hardy',
+      email: 't.hardy@example.com',
+      bio: 'Security lead.',
+      birthDate: '03-03-1985 08:00',
+      photo: 'https://i.pravatar.cc/300?img=53',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 11
+    },
+    {
+      name: 'Scarlett Jo',
+      email: 's.jo@example.com',
+      bio: 'Event Host.',
+      birthDate: '04-04-1994 18:00',
+      photo: 'https://i.pravatar.cc/300?img=44',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 12
+    },
+    {
+      name: 'Chris Evans',
+      email: 'c.evans@example.com',
+      bio: 'Volunteer coordinator.',
+      birthDate: '06-06-1981 11:00',
+      photo: 'https://i.pravatar.cc/300?img=59',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 13
+    },
+    {
+      name: 'Robert Down',
+      email: 'r.down@example.com',
+      bio: 'Sponsor relations.',
+      birthDate: '08-08-1975 13:00',
+      photo: 'https://i.pravatar.cc/300?img=68',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 14
+    },
+    {
+      name: 'Mark Ruff',
+      email: 'm.ruff@example.com',
+      bio: 'Technical support.',
+      birthDate: '09-09-1978 15:00',
+      photo: 'https://i.pravatar.cc/300?img=12',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 15
+    },
+    {
+      name: 'Chris Hem',
+      email: 'c.hem@example.com',
+      bio: 'Infrastructure.',
+      birthDate: '10-10-1983 17:00',
+      photo: 'https://i.pravatar.cc/300?img=8',
+      linkedin: 'https://linkedin.com',
+      websites: [],
+      isActive: true,
+      id: 16
+    }
+  ];
+  // --- MOCK DATA END ---
 
   function parseCustomDate(dateStr: string): Date | null {
     if (!dateStr) return null;
@@ -142,13 +304,22 @@
       <span>{event.description}</span>
     </div>
 
-    <!-- {#if event.photos && event.photos.length > 0} -->
     <div class="mt-16 flex justify-center">
       <Carousel photos={event.photos} />
     </div>
 
     <div class="my-12 hidden text-justify text-xl font-medium md:block">
       <span>{event.description}</span>
+    </div>
+
+    <div class="mt-12 hidden md:block">
+      <HexagonGrid
+        items={mockTeamMembers}
+        cols={5}
+        gap="small"
+        orientation="horizontal"
+        component={TeamMemberHexagon}
+      />
     </div>
   </section>
 {:else}
