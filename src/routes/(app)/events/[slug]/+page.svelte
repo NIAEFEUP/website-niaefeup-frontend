@@ -8,11 +8,15 @@
   import Carousel from '../../../../lib/components/gallery/Carousel.svelte';
   import HexagonGrid from '../../../../lib/components/hexagons/hexagon-grid.svelte';
   import TeamMemberHexagon from '@/routes/(app)/team/_components/team-member-hexagon.svelte';
+  import { fade } from 'svelte/transition';
 
   let { data }: { data: PageData } = $props();
 
   const event: Event = data.event;
   const hasPerms: boolean = data.hasPerms;
+
+  // Tab state only used for Mobile view
+  let activeTab = $state<'evento' | 'equipa'>('evento');
 
   let screenSizeThreshold = 768;
   let windowWidth: number = $state(0);
@@ -208,7 +212,6 @@
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
-
 {#if event}
   <section class="mx-9 min-h-screen pt-4 md:mx-32 md:pt-16 lg:mx-56">
     {#if windowWidth < screenSizeThreshold}
@@ -219,108 +222,163 @@
           &lt; {event.title} /&gt;
         </p>
       </div>
+
+      <div class="mb-6 flex justify-center">
+        <div class="relative flex w-fit rounded-2xl bg-transparent">
+          <div
+            class="absolute inset-y-0 left-0 w-1/2 rounded-3xl bg-rose-200/30 transition-all duration-300 ease-in-out"
+            class:translate-x-full={activeTab === 'equipa'}
+            class:translate-x-0={activeTab === 'evento'}
+          ></div>
+
+          <button
+            class="z-10 w-32 py-2 transition-colors duration-300
+            {activeTab === 'evento' ? 'font-bold text-white' : 'text-gray-400 hover:text-white'}"
+            onclick={() => (activeTab = 'evento')}
+          >
+            Evento
+          </button>
+          <button
+            class="z-10 w-32 py-2 transition-colors duration-300
+            {activeTab === 'equipa' ? 'font-bold text-white' : 'text-gray-400 hover:text-white'}"
+            onclick={() => (activeTab = 'equipa')}
+          >
+            Equipa
+          </button>
+        </div>
+      </div>
     {/if}
+
     {#if hasPerms}
       <div class="my-4 flex justify-end md:my-8 md:w-5/6">
         <EditButton size="small" link="/events/{event.slug}/edit" />
       </div>
     {/if}
-    <header class="flex flex-row justify-center gap-6">
-      <div class="flex flex-col gap-16">
-        <div class="my-auto flex flex-row items-stretch">
-          {#if windowWidth > screenSizeThreshold}
-            <div class="mr-6 flex flex-col justify-center gap-8">
-              <h1 class="mb-4 pr-8 text-2xl font-bold text-white md:text-3xl lg:pr-16 lg:text-5xl">
-                {event.title}
-              </h1>
-              <div class="flex flex-1 flex-col justify-start gap-3 text-lg">
+
+    {#if windowWidth >= screenSizeThreshold || activeTab === 'evento'}
+      <header class="flex flex-row justify-center gap-6" transition:fade={{ duration: 300 }}>
+        <div class="flex flex-col gap-16">
+          <div class="my-auto flex flex-row items-stretch">
+            {#if windowWidth > screenSizeThreshold}
+              <div class="mr-6 flex flex-col justify-center gap-8">
+                <h1
+                  class="mb-4 pr-8 text-2xl font-bold text-white md:text-3xl lg:pr-16 lg:text-5xl"
+                >
+                  {event.title}
+                </h1>
+                <div class="flex flex-1 flex-col justify-start gap-3 text-lg">
+                  {#if parsedEventDate}
+                    <span>{formatWeekdayTime(parsedEventDate)}</span>
+                    <span class="flex items-center gap-2">
+                      <Icon src={Icons.Calendar} class="mr-1 inline-block" size={18} />
+                      {@html formatDateExtense(parsedEventDate)}
+                    </span>
+                  {:else}
+                    <span>Data inválida</span>
+                  {/if}
+                  <span class="flex items-center gap-2">
+                    <Icon src={Icons.Location} class="mr-1 inline-block" size={18} />
+                    {event.location}
+                  </span>
+                </div>
+              </div>
+            {/if}
+
+            <div class="flex shrink-0 flex-col items-center gap-8">
+              <img
+                src="https://picsum.photos/200"
+                alt="{event.title}'s image"
+                class="aspect-square h-36 w-36 rounded-xl object-cover md:h-60 md:w-60"
+              />
+
+              <div class="hidden md:block">
+                <EventEnrollButton
+                  registerUrl={event.registerUrl}
+                  onClick={() => {
+                    if (event.registerUrl) window.open(event.registerUrl, '_blank');
+                  }}
+                />
+              </div>
+            </div>
+
+            {#if windowWidth < screenSizeThreshold}
+              <div class="ml-4 flex flex-1 flex-col justify-start gap-3 text-sm">
                 {#if parsedEventDate}
                   <span>{formatWeekdayTime(parsedEventDate)}</span>
-                  <span class="flex items-center gap-2">
-                    <Icon src={Icons.Calendar} class="mr-1 inline-block" size={18} />
-
-                    {@html formatDateExtense(parsedEventDate)}
+                  <span class="flex min-w-0 flex-nowrap items-center gap-2">
+                    <Icon src={Icons.Calendar} class="mr-1 inline-block flex-shrink-0" size={18} />
+                    <span class="block break-words">{@html formatDateExtense(parsedEventDate)}</span
+                    >
                   </span>
                 {:else}
                   <span>Data inválida</span>
                 {/if}
-                <span class="flex items-center gap-2">
-                  <Icon src={Icons.Location} class="mr-1 inline-block" size={18} />
-
-                  {event.location}
+                <span class="flex min-w-0 flex-nowrap items-center gap-2">
+                  <Icon src={Icons.Location} class="mr-1 inline-block flex-shrink-0" size={18} />
+                  <span class="block break-words">{event.location}</span>
                 </span>
               </div>
-            </div>
-          {/if}
-
-          <div class="flex shrink-0 flex-col items-center gap-8">
-            <img
-              src="https://picsum.photos/200"
-              alt="{event.title}'s image"
-              class="aspect-square h-36 w-36 rounded-xl object-cover md:h-60 md:w-60"
-            />
-
-            <div class="hidden md:block">
-              <EventEnrollButton
-                registerUrl={event.registerUrl}
-                onClick={() => {
-                  if (event.registerUrl) window.open(event.registerUrl, '_blank');
-                }}
-              />
-            </div>
+            {/if}
           </div>
 
-          {#if windowWidth < screenSizeThreshold}
-            <div class="ml-4 flex flex-1 flex-col justify-start gap-3 text-sm">
-              {#if parsedEventDate}
-                <span>{formatWeekdayTime(parsedEventDate)}</span>
-                <span class="flex min-w-0 flex-nowrap items-center gap-2">
-                  <Icon src={Icons.Calendar} class="mr-1 inline-block flex-shrink-0" size={18} />
-                  <span class="block break-words">{@html formatDateExtense(parsedEventDate)}</span>
-                </span>
-              {:else}
-                <span>Data inválida</span>
-              {/if}
-              <span class="flex min-w-0 flex-nowrap items-center gap-2">
-                <Icon src={Icons.Location} class="mr-1 inline-block flex-shrink-0" size={18} />
-                <span class="block break-words">{event.location}</span>
-              </span>
+          <div class="mx-auto block w-fit md:hidden">
+            <EventEnrollButton
+              registerUrl={event.registerUrl}
+              onClick={() => {
+                if (event.registerUrl) window.open(event.registerUrl, '_blank');
+              }}
+            />
+          </div>
+        </div>
+      </header>
+    {/if}
+
+    {#if windowWidth < screenSizeThreshold}
+      <div class="mt-8">
+        {#if activeTab === 'evento'}
+          <div in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }}>
+            <div class="my-12 text-justify text-lg font-medium">
+              <span>{event.description}</span>
             </div>
-          {/if}
-        </div>
-
-        <div class="mx-auto block w-fit md:hidden">
-          <EventEnrollButton
-            registerUrl={event.registerUrl}
-            onClick={() => {
-              if (event.registerUrl) window.open(event.registerUrl, '_blank');
-            }}
-          />
-        </div>
+            <div class="mt-16 flex justify-center">
+              <Carousel photos={event.photos} />
+            </div>
+          </div>
+        {:else if activeTab === 'equipa'}
+          <div
+            class="mt-4 flex justify-center"
+            in:fade={{ duration: 300, delay: 300 }}
+            out:fade={{ duration: 300 }}
+          >
+            <HexagonGrid
+              items={mockTeamMembers}
+              cols={2}
+              gap="small"
+              orientation="horizontal"
+              component={TeamMemberHexagon}
+            />
+          </div>
+        {/if}
       </div>
-    </header>
+    {:else}
+      <div class="mt-16 flex justify-center">
+        <Carousel photos={event.photos} />
+      </div>
 
-    <div class="my-12 text-justify text-lg font-medium md:hidden">
-      <span>{event.description}</span>
-    </div>
+      <div class="my-12 text-justify text-xl font-medium">
+        <span>{event.description}</span>
+      </div>
 
-    <div class="mt-16 flex justify-center">
-      <Carousel photos={event.photos} />
-    </div>
-
-    <div class="my-12 hidden text-justify text-xl font-medium md:block">
-      <span>{event.description}</span>
-    </div>
-
-    <div class="mt-12 hidden md:block">
-      <HexagonGrid
-        items={mockTeamMembers}
-        cols={5}
-        gap="small"
-        orientation="horizontal"
-        component={TeamMemberHexagon}
-      />
-    </div>
+      <div class="mt-12">
+        <HexagonGrid
+          items={mockTeamMembers}
+          cols={5}
+          gap="small"
+          orientation="horizontal"
+          component={TeamMemberHexagon}
+        />
+      </div>
+    {/if}
   </section>
 {:else}
   <p>Loading project details...</p>
