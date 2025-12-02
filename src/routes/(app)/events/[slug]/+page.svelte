@@ -232,14 +232,14 @@
           ></div>
 
           <button
-            class="z-10 w-32 py-2 transition-colors duration-300
+            class="z-10 w-36 py-1 transition-colors duration-300
             {activeTab === 'evento' ? 'font-bold text-white' : 'text-gray-400 hover:text-white'}"
             onclick={() => (activeTab = 'evento')}
           >
             Evento
           </button>
           <button
-            class="z-10 w-32 py-2 transition-colors duration-300
+            class="z-10 w-36 py-1 transition-colors duration-300
             {activeTab === 'equipa' ? 'font-bold text-white' : 'text-gray-400 hover:text-white'}"
             onclick={() => (activeTab = 'equipa')}
           >
