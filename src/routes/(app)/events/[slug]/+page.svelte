@@ -1,14 +1,14 @@
 <script lang="ts">
+  import { fade } from 'svelte/transition';
+  import Carousel from '../../../../lib/components/gallery/Carousel.svelte';
+  import EventEnrollButton from '../_components/event-enroll-button.svelte';
+  import HexagonGrid from '../../../../lib/components/hexagons/hexagon-grid.svelte';
   import type { PageData } from './$types';
   import type { Event } from '@/types/event';
   import EditButton from '$lib/components/buttons/edit-button.svelte';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
-  import EventEnrollButton from '../_components/event-enroll-button.svelte';
-  import Carousel from '../../../../lib/components/gallery/Carousel.svelte';
-  import HexagonGrid from '../../../../lib/components/hexagons/hexagon-grid.svelte';
   import TeamMemberHexagon from '@/routes/(app)/team/_components/team-member-hexagon.svelte';
-  import { fade } from 'svelte/transition';
 
   let { data }: { data: PageData } = $props();
 
@@ -183,7 +183,7 @@
 
   function parseCustomDate(dateStr: string): Date | null {
     if (!dateStr) return null;
-    const match = dateStr.match(/(\d{2})-(\d{2})-(\d{4})[ T](\d{2})[:\-](\d{2})/);
+    const match = dateStr.match(/(\d{2})-(\d{2})-(\d{4})[ T](\d{2})[:](\d{2})/);
     if (!match) return null;
     const [, day, month, year, hour, minute] = match;
     return new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute));
@@ -205,10 +205,7 @@
     return `<b>${day}</b> de <b>${month}</b> <b>${year}</b>`;
   }
 
-  let parsedEventDate = $state<Date | null>(null);
-  $effect(() => {
-    parsedEventDate = parseCustomDate(event?.dateInterval?.startDate);
-  });
+  let parsedEventDate = $derived(parseCustomDate(event?.dateInterval?.startDate));
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
@@ -271,6 +268,7 @@
                     <span>{formatWeekdayTime(parsedEventDate)}</span>
                     <span class="flex items-center gap-2">
                       <Icon src={Icons.Calendar} class="mr-1 inline-block" size={18} />
+                      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                       {@html formatDateExtense(parsedEventDate)}
                     </span>
                   {:else}
@@ -307,6 +305,7 @@
                   <span>{formatWeekdayTime(parsedEventDate)}</span>
                   <span class="flex min-w-0 flex-nowrap items-center gap-2">
                     <Icon src={Icons.Calendar} class="mr-1 inline-block flex-shrink-0" size={18} />
+                    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     <span class="block break-words">{@html formatDateExtense(parsedEventDate)}</span
                     >
                   </span>

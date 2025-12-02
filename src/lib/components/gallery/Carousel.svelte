@@ -130,7 +130,7 @@
         class="scrollbar-hide relative flex w-full cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth active:cursor-grabbing"
         style="scrollbar-width: none; -ms-overflow-style: none;"
       >
-        {#each galleryPhotos as photo, i}
+        {#each galleryPhotos as photo, i (i)}
           <div class="relative aspect-[21/9] min-w-full snap-center">
             <button
               on:click={() => openLightbox(i)}
@@ -169,7 +169,8 @@
     </div>
 
     <div class="mt-3 flex gap-2">
-      {#each galleryPhotos as _, i}
+      <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+      {#each galleryPhotos as photo, i (i)}
         <button
           class="h-3 w-3 rounded-full transition-colors focus:outline-none {current === i
             ? 'bg-muted-red-700'
