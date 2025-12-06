@@ -15,7 +15,7 @@
 <style>
   .custom-scaler {
     will-change: transform;
-    animation: scale-up-down 4s infinite ease-in-out;
+    animation: scale-up-down 2s infinite ease-in-out;
   }
 
   @keyframes scale-up-down {
