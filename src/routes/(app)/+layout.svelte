@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { navigating } from '$app/stores';
   import { ModeWatcher } from 'mode-watcher';
   import BackgroundHexagon from './_components/layout/background-hexagon.svelte';
   import Footer from './_components/layout/footer.svelte';
   import Navbar from './_components/layout/navbar.svelte';
   import Sidebar from './_components/layout/sidebar.svelte';
   import SnackbarList from './_components/layout/notifications/snackbar-list.svelte';
-  import GlobalLoader from '@/lib/components/layout/global-loader.svelte'; // Import the new component
-  import { isGlobalLoading } from '@/lib/stores/loader'; // Import the store
+  import GlobalLoader from '@/lib/components/layout/global-loader.svelte';
+  import { isGlobalLoading } from '@/lib/stores/loader';
+  import { navigating } from '$app/stores';
   import '@/app.css';
 
   interface Props {
