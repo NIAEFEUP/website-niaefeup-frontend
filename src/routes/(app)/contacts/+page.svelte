@@ -114,6 +114,7 @@
       <button
         class="m-1 flex flex-row justify-between gap-x-1 justify-self-start rounded-lg bg-vivid-red-900 py-1 pl-2 pr-3 text-white"
         type="submit"
+        disabled={loading || error}
       >
         {#if success}
           <LucideCheckCircle class="p-1" />
