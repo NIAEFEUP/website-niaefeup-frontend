@@ -4,6 +4,7 @@
   import LabelInput from '@/lib/components/forms/label-input.svelte';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
+    import { createNotification } from '../_components/layout/notifications';
 
   let email = $state('');
   let name = $state('');
@@ -47,6 +48,7 @@
     });
 
     if (response.ok) {
+      createNotification('Mensagem enviada com sucesso!');
       success = true;
       loading = false;
       email = '';
@@ -58,6 +60,7 @@
         successTimeout = null;
       }, 2000);
     } else {
+      createNotification('Erro ao enviar a mensagem. Tente novamente mais tarde.');
       error = true;
       loading = false;
       errorTimeout = setTimeout(() => {
