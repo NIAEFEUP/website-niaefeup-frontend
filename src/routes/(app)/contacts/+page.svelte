@@ -1,10 +1,10 @@
 <script lang="ts">
   import { LucideLoaderCircle, LucideCheckCircle, LucideXCircle, LucideSend } from 'lucide-svelte';
+  import { createNotification } from '../_components/layout/notifications';
   import Graph from './_components/graph.svelte';
   import LabelInput from '@/lib/components/forms/label-input.svelte';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
-    import { createNotification } from '../_components/layout/notifications';
 
   let email = $state('');
   let name = $state('');
