@@ -26,7 +26,8 @@ export default [
       '**/storybook-static',
       '**/pnpm-lock.yaml',
       '**/package-lock.json',
-      '**/yarn.lock'
+      '**/yarn.lock',
+      'src/lib/components/ui'
     ]
   },
   {
