@@ -1,7 +1,6 @@
-import { error, redirect } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { PUBLIC_API_URL } from '$env/static/public';
-import { canEditActivity } from '@/lib/api/permissions';
 
 export const load: PageLoad = async ({ fetch }) => {
   // if (!(await canEditActivity())) {

@@ -1,15 +1,13 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import Technologies from './_components/technologies.svelte';
-
   import * as Tabs from '$lib/components/ui/tabs/index.js';
 
   interface Props {
     data: PageData;
-    technologies?: any;
   }
 
-  let { data, technologies = data.technologies }: Props = $props();
+  let { data }: Props = $props();
 </script>
 
 <section class="flex w-full items-center justify-center">
@@ -30,7 +28,7 @@
     </Tabs.List>
     <Tabs.Content value="roles">Roles</Tabs.Content>
     <Tabs.Content value="technologies">
-      <Technologies {technologies} />
+      <Technologies technologies={data.technologies} />
     </Tabs.Content>
   </Tabs.Root>
 </section>
