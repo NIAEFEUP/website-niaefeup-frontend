@@ -1,7 +1,5 @@
-import { PUBLIC_API_URL } from '$env/static/public';
-
 export async function canEditActivity() {
-  const perms = await fetch(`${PUBLIC_API_URL}/auth/hasPermission/6`);
+  const perms = await fetch('/api/auth/hasPermission/6');
 
   if (!perms.ok) {
     return false;

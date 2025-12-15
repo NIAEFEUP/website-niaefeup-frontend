@@ -1,13 +1,12 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import { PUBLIC_API_URL } from '$env/static/public';
 
 export const load: PageLoad = async ({ fetch }) => {
   // if (!(await canEditActivity())) {
   //   throw redirect(303, '/');
   // }
 
-  const tech = await fetch(`${PUBLIC_API_URL}/technologies`);
+  const tech = await fetch('/api/technologies');
   if (!tech.ok) {
     if (tech.status === 404) {
       return { technologies: [] };
