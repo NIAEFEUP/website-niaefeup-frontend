@@ -1,18 +1,14 @@
 <script lang="ts">
   import TechnologyCard from './technology-card.svelte';
   import { applyAction, enhance } from '$app/forms';
-
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
-
   import * as Dialog from '$lib/components/ui/dialog/index.js';
-
   import PictureInput from '$lib/components/forms/picture-input.svelte';
   import LabelInput from '$lib/components/forms/label-input.svelte';
-
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
-
-  import type { BackendError } from '$lib/types/backend-error';
+  import type { BackendError } from '@/types/backend-error';
+  import type { Technology } from '@/types/technology';
 
   let dialogOpen = $state(false);
   let search = $state('');
@@ -22,12 +18,12 @@
   let { technologies = $bindable() } = $props();
 
   function removeTechnology(id: number) {
-    technologies = technologies.filter((t) => t.id !== id);
+    technologies = technologies.filter((t: Technology) => t.id !== id);
   }
 
   let filtered = $derived(
-    technologies.filter((tech) =>
-      tech.name.toLowerCase().trim().includes(search.trim().toLowerCase())
+    technologies.filter((t: Technology) =>
+      t.name.toLowerCase().trim().includes(search.trim().toLowerCase())
     )
   );
 </script>
@@ -52,15 +48,21 @@
               error = null;
 
               return async ({ result }) => {
-                if (!result?.data.data.errors) {
-                  dialogOpen = false;
+                if (result.type === 'success' && result.data) {
+                  const responseData = result.data as {
+                    data: Technology & { errors?: BackendError[] };
+                  };
 
-                  const newTechnologies = [...technologies, result?.data.data];
-                  technologies = newTechnologies;
+                  if (!responseData.data.errors) {
+                    dialogOpen = false;
 
-                  await applyAction(result);
-                } else {
-                  error = result?.data.data.errors[0];
+                    const newTechnologies = [...technologies, responseData.data];
+                    technologies = newTechnologies;
+
+                    await applyAction(result);
+                  } else {
+                    error = responseData.data.errors[0];
+                  }
                 }
               };
             }}
@@ -74,7 +76,6 @@
                       label="Nome"
                       id="name"
                       type="text"
-                      class="bg-white"
                       name="name"
                       required={true}
                     />

@@ -1,19 +1,18 @@
 <script lang="ts">
+  import type { SubmitFunction } from '@sveltejs/kit';
   import * as Dialog from '$lib/components/ui/dialog/index.js';
-
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
-
   import { enhance } from '$app/forms';
 
   let { tech, removeTechnology } = $props();
 
   let dialogOpen = $state(false);
 
-  async function deleteTechnology(e) {
-    removeTechnology(Number(e.formData.get('id')));
+  const deleteTechnology: SubmitFunction = async ({ formData }) => {
+    removeTechnology(Number(formData.get('id')));
     dialogOpen = false;
-  }
+  };
 </script>
 
 <article

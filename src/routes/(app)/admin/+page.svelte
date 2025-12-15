@@ -3,11 +3,7 @@
   import Technologies from './_components/technologies.svelte';
   import * as Tabs from '$lib/components/ui/tabs/index.js';
 
-  interface Props {
-    data: PageData;
-  }
-
-  let { data }: Props = $props();
+  let { data }: { data: PageData } = $props();
 </script>
 
 <section class="flex w-full items-center justify-center">
