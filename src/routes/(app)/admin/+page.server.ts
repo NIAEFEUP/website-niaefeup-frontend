@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
-export const load: PageLoad = async ({ fetch }) => {
+export const load: PageServerLoad = async ({ fetch }) => {
   // if (!(await canEditActivity())) {
   //   throw redirect(303, '/');
   // }
@@ -48,7 +48,10 @@ export const actions = {
         { type: 'application/json' }
       )
     );
-    formData.append('image', data.get('image'));
+    const image = data.get('image');
+    if (image) {
+      formData.append('image', image);
+    }
 
     const res = await fetch(`/api/technologies`, {
       method: 'POST',
