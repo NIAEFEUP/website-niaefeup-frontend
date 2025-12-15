@@ -1,5 +1,6 @@
 <script lang="ts">
   interface Props {
+    value?: string;
     label?: string;
     id?: string;
     name?: string;
@@ -8,9 +9,13 @@
     isTextArea?: boolean;
     horizontal?: boolean;
     required?: boolean;
+    minlength?: number | undefined;
+    maxlength?: number | undefined;
+    [key: string]: unknown;
   }
 
   let {
+    value = $bindable(),
     label = '',
     id = '',
     name = '',
@@ -18,7 +23,10 @@
     placeholder = '',
     isTextArea = false,
     horizontal = false,
-    required = false
+    required = false,
+    minlength = undefined,
+    maxlength = undefined,
+    ...rest
   }: Props = $props();
 </script>
 
@@ -30,11 +38,15 @@
     <textarea
       aria-label="textarea-input"
       class="mb-2 min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
+      rows="4"
       {id}
       {placeholder}
       {name}
       {required}
-      rows="4"
+      {minlength}
+      {maxlength}
+      {...rest}
+      bind:value
     ></textarea>
   {:else}
     <input
@@ -45,6 +57,10 @@
       {placeholder}
       {name}
       {required}
+      {minlength}
+      {maxlength}
+      {...rest}
+      bind:value
     />
   {/if}
 </div>
