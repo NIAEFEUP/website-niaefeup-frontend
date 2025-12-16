@@ -27,7 +27,8 @@ export default [
       '**/pnpm-lock.yaml',
       '**/package-lock.json',
       '**/yarn.lock',
-      'src/lib/components/ui'
+      'src/lib/components/ui/dialog',
+      'src/lib/components/ui/tabs'
     ]
   },
   {
