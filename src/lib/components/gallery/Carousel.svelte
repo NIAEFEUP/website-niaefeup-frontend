@@ -158,7 +158,8 @@
     </div>
 
     <div class="mt-3 flex gap-2">
-      {#each photos as photo, i (i)}
+      <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+      {#each photos as _, i (i)}
         <button
           class="h-3 w-3 rounded-full transition-colors focus:outline-none {current === i
             ? 'bg-muted-red-700'

@@ -107,6 +107,7 @@
                     <span>{formatWeekdayTime(parsedEventDate)}</span>
                     <span class="flex items-center gap-2">
                       <Icon src={Icons.Calendar} class="mr-1 inline-block" size={18} />
+                      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                       {@html formatDateExtense(parsedEventDate)}
                     </span>
                   {:else}
@@ -143,6 +144,7 @@
                   <span>{formatWeekdayTime(parsedEventDate)}</span>
                   <span class="flex min-w-0 flex-nowrap items-center gap-2">
                     <Icon src={Icons.Calendar} class="mr-1 inline-block flex-shrink-0" size={18} />
+                    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                     <span class="block break-words">{@html formatDateExtense(parsedEventDate)}</span
                     >
                   </span>
