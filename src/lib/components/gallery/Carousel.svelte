@@ -5,16 +5,6 @@
 
   export let photos: string[] = [];
 
-  // --- MOCK DATA START (REMOVE WHEN BACKEND IS READY) ---
-  const MOCK_PHOTOS = [
-    'https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=960&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1595514807053-2c594370091a?q=80&w=960&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1498144668414-48bf526766cf?q=80&w=960&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1736525155507-2326a56f0606?q=80&w=960&auto=format&fit=crop'
-  ];
-
-  $: galleryPhotos = photos.length > 0 ? photos : MOCK_PHOTOS;
-
   let current = 0;
   let scrollContainer: HTMLElement;
   let cancelPhysics: () => void = () => {};
@@ -24,7 +14,7 @@
   function to(index: number, behavior: ScrollBehavior = 'smooth') {
     if (!scrollContainer) return;
 
-    const targetIndex = Math.max(0, Math.min(index, galleryPhotos.length - 1));
+    const targetIndex = Math.max(0, Math.min(index, photos.length - 1));
     const child = scrollContainer.children[targetIndex] as HTMLElement;
 
     if (!child) return;
@@ -57,7 +47,6 @@
 
     Array.from(scrollContainer.children).forEach((child, index) => {
       const htmlChild = child as HTMLElement;
-      // We check distance from the container's left edge to find the center
       const distance = Math.abs(htmlChild.offsetLeft - scrollContainer.offsetLeft - containerLeft);
 
       if (distance < minDistance) {
@@ -83,11 +72,11 @@
   }
 
   function nextLightbox() {
-    lightboxIndex = (lightboxIndex + 1) % galleryPhotos.length;
+    lightboxIndex = (lightboxIndex + 1) % photos.length;
   }
 
   function prevLightbox() {
-    lightboxIndex = (lightboxIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+    lightboxIndex = (lightboxIndex - 1 + photos.length) % photos.length;
   }
 
   function handleKeydown(e: KeyboardEvent) {
@@ -109,12 +98,12 @@
 
 <svelte:window on:keydown={handleKeydown} on:resize={onResize} />
 
-{#if galleryPhotos.length === 0}
+{#if photos.length === 0}
   <div class="aspect-[21/9] w-full rounded-3xl bg-gray-200"></div>
-{:else if galleryPhotos.length === 1}
+{:else if photos.length === 1}
   <div class="flex w-full justify-center">
     <img
-      src={galleryPhotos[0]}
+      src={photos[0]}
       alt="Gallery 1"
       class="aspect-[21/9] w-full rounded-3xl object-cover shadow"
       loading="lazy"
@@ -130,7 +119,7 @@
         class="scrollbar-hide relative flex w-full cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth active:cursor-grabbing"
         style="scrollbar-width: none; -ms-overflow-style: none;"
       >
-        {#each galleryPhotos as photo, i (i)}
+        {#each photos as photo, i (i)}
           <div class="relative aspect-[21/9] min-w-full snap-center">
             <button
               on:click={() => openLightbox(i)}
@@ -161,7 +150,7 @@
       <button
         class="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0 group-hover:opacity-100"
         on:click={next}
-        disabled={current === galleryPhotos.length - 1}
+        disabled={current === photos.length - 1}
         aria-label="Next photo"
       >
         <Icon src={Icons.ChevronRight} size="14" />
@@ -169,8 +158,7 @@
     </div>
 
     <div class="mt-3 flex gap-2">
-      <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-      {#each galleryPhotos as photo, i (i)}
+      {#each photos as photo, i (i)}
         <button
           class="h-3 w-3 rounded-full transition-colors focus:outline-none {current === i
             ? 'bg-muted-red-700'
@@ -205,7 +193,7 @@
     <div
       class="absolute left-1/2 top-4 z-20 -translate-x-1/2 rounded-full bg-black/20 px-4 py-2 text-sm text-white backdrop-blur-sm"
     >
-      {lightboxIndex + 1} / {galleryPhotos.length}
+      {lightboxIndex + 1} / {photos.length}
     </div>
 
     <div
@@ -215,13 +203,13 @@
       role="presentation"
     >
       <img
-        src={galleryPhotos[lightboxIndex]}
+        src={photos[lightboxIndex]}
         alt={`Gallery photo ${lightboxIndex + 1}`}
         class="max-h-full max-w-full select-none object-contain"
         draggable="false"
       />
 
-      {#if galleryPhotos.length > 1}
+      {#if photos.length > 1}
         <button
           class="absolute left-2 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
           on:click|stopPropagation={prevLightbox}
