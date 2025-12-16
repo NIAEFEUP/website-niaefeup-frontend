@@ -1,7 +1,8 @@
 import { error, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import type { Technology } from '@/types/technology';
-import { canEditActivity } from '@/lib/api/permissions';
+import { canEditActivity, canCreateActivity } from '@/lib/api/permissions';
+import type { BackendError } from '@/types/backend-error';
 
 export const load: PageServerLoad = async ({ fetch }) => {
   if (!(await canEditActivity(fetch))) {
@@ -37,7 +38,12 @@ export const actions: Actions = {
 
     return { success: res.ok };
   },
+
   addTechnology: async ({ request, fetch }) => {
+    if (!(await canCreateActivity(fetch))) {
+      throw redirect(303, '/');
+    }
+
     const data = await request.formData();
 
     const name = data.get('name');
@@ -65,7 +71,8 @@ export const actions: Actions = {
       body: formData
     });
 
-    const json: Technology | { errors: unknown[] } = await res.json();
+    const json: (Technology & { errors?: BackendError[] }) | { errors: BackendError[] } =
+      await res.json();
 
     return { success: res.ok, data: json };
   }
