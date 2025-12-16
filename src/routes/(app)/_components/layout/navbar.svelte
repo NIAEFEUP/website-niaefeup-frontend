@@ -1,8 +1,8 @@
 <script>
   import { onMount } from 'svelte';
-  import { page } from '$app/state';
+  import { page } from '$app/stores';
 
-  let currentPage = $derived(page.url.pathname ?? '/');
+  let currentPage = $derived($page.url.pathname ?? '/');
   const links = [
     { href: '#', label: 'Equipa', pageComp: '/team' },
     { href: '/projects', label: 'Projetos', pageComp: '/projects' },
