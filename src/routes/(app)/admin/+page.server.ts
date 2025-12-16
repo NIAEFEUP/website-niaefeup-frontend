@@ -1,10 +1,12 @@
-import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import { error, redirect } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
+import type { Technology } from '@/types/technology';
+import { canEditActivity } from '@/lib/api/permissions';
 
 export const load: PageServerLoad = async ({ fetch }) => {
-  // if (!(await canEditActivity())) {
-  //   throw redirect(303, '/');
-  // }
+  if (!(await canEditActivity(fetch))) {
+    throw redirect(303, '/');
+  }
 
   const tech = await fetch('/api/technologies');
   if (!tech.ok) {
@@ -15,15 +17,19 @@ export const load: PageServerLoad = async ({ fetch }) => {
     }
   }
 
-  const technologies = await tech.json();
+  const technologies: Technology[] = await tech.json();
 
   return { technologies };
 };
 
-export const actions = {
+export const actions: Actions = {
   deleteTechnology: async ({ request, fetch }) => {
     const formData = await request.formData();
     const id = formData.get('id');
+
+    if (!id || typeof id !== 'string') {
+      error(400, 'Invalid technology ID');
+    }
 
     const res = await fetch(`/api/technologies/${id}`, {
       method: 'DELETE'
@@ -34,22 +40,23 @@ export const actions = {
   addTechnology: async ({ request, fetch }) => {
     const data = await request.formData();
 
+    const name = data.get('name');
+    const url = data.get('url');
+    const image = data.get('image');
+
+    if (!name || typeof name !== 'string') {
+      error(400, 'Technology name is required');
+    }
+
+    if (!url || typeof url !== 'string') {
+      error(400, 'Technology URL is required');
+    }
+
     const formData = new FormData();
 
-    formData.append(
-      'dto',
-      new Blob(
-        [
-          JSON.stringify({
-            name: data.get('name'),
-            url: data.get('url')
-          })
-        ],
-        { type: 'application/json' }
-      )
-    );
-    const image = data.get('image');
-    if (image) {
+    formData.append('dto', new Blob([JSON.stringify({ name, url })], { type: 'application/json' }));
+
+    if (image && image instanceof File) {
       formData.append('image', image);
     }
 
@@ -58,7 +65,7 @@ export const actions = {
       body: formData
     });
 
-    const json = await res.json();
+    const json: Technology | { errors: unknown[] } = await res.json();
 
     return { success: res.ok, data: json };
   }

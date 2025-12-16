@@ -72,13 +72,7 @@
               <Dialog.Description>
                 <div class="flex flex-col gap-y-8">
                   <div>
-                    <LabelInput
-                      label="Nome"
-                      id="name"
-                      type="text"
-                      name="name"
-                      required={true}
-                    />
+                    <LabelInput label="Nome" id="name" type="text" name="name" required={true} />
 
                     {#if error?.param === 'name'}
                       <p>

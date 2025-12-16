@@ -1,4 +1,4 @@
-export async function canEditActivity() {
+export async function canEditActivity(fetch: typeof globalThis.fetch) {
   const perms = await fetch('/api/auth/hasPermission/6');
 
   if (!perms.ok) {

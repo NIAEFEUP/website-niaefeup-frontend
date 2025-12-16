@@ -16,7 +16,7 @@ describe('Permissions', () => {
       json: async () => ({ allowed: true })
     });
 
-    const result = await canEditActivity();
+    const result = await canEditActivity(fetch);
 
     expect(fetch).toHaveBeenCalledWith('/api/auth/hasPermission/6');
     expect(result).toBe(true);
