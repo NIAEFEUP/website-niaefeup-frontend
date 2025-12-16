@@ -4,8 +4,10 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
   import { enhance } from '$app/forms';
+  import type { Technology } from '@/types/technology';
 
-  let { tech, removeTechnology } = $props();
+  let { tech, removeTechnology }: { tech: Technology; removeTechnology: (id: number) => void } =
+    $props();
 
   let dialogOpen = $state(false);
 
@@ -36,7 +38,13 @@
       <Dialog.Footer>
         <form method="POST" action="?/deleteTechnology" use:enhance={deleteTechnology}>
           <input type="hidden" name="id" value={tech.id} />
-          <button class="h-10 rounded-md bg-muted-red-500 px-4"> Confirmar </button>
+          <button
+            type="submit"
+            class="h-10 rounded-md bg-muted-red-500 px-4"
+            aria-label="Confirm deletion of {tech.name}"
+          >
+            Confirmar
+          </button>
         </form>
       </Dialog.Footer>
     </Dialog.Content>

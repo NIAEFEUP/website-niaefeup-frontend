@@ -152,6 +152,7 @@
           class="w-md h-10 rounded-md bg-gray-500/40 p-4 pl-12"
           type="text"
           bind:value={search}
+          aria-label="Search technologies"
         />
       </div>
     </section>
