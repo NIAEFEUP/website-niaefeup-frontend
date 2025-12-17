@@ -1,6 +1,8 @@
 import type { DateInterval } from './date-interval.ts';
 
 export type Event = {
+  teamMembers: never[];
+  gallery: string[] | undefined;
   title: string;
   description: string;
   teamMemberIds: bigint[];

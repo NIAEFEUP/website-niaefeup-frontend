@@ -44,7 +44,10 @@
     return `<b>${day}</b> de <b>${month}</b> <b>${year}</b>`;
   }
 
-  let parsedEventDate = $derived(parseCustomDate(event?.dateInterval?.startDate));
+  let parsedEventDate =
+    typeof event?.dateInterval?.startDate === 'string'
+      ? parseCustomDate(event.dateInterval.startDate)
+      : null;
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
