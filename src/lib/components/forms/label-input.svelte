@@ -3,6 +3,7 @@
     value?: string;
     label?: string;
     id?: string;
+    name?: string;
     type?: string;
     placeholder?: string;
     isTextArea?: boolean;
@@ -17,6 +18,7 @@
     value = $bindable(),
     label = '',
     id = '',
+    name = '',
     type = 'text',
     placeholder = '',
     isTextArea = false,
@@ -39,6 +41,7 @@
       rows="4"
       {id}
       {placeholder}
+      {name}
       {required}
       {minlength}
       {maxlength}
@@ -52,6 +55,7 @@
       {type}
       {id}
       {placeholder}
+      {name}
       {required}
       {minlength}
       {maxlength}
