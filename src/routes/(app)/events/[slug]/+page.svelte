@@ -126,7 +126,7 @@
 
             <div class="flex shrink-0 flex-col items-center gap-8">
               <img
-                src="https://picsum.photos/200"
+                src={event.image}
                 alt="{event.title}'s image"
                 class="aspect-square h-36 w-36 rounded-xl object-cover md:h-60 md:w-60"
               />
