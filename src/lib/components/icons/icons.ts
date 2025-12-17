@@ -10,10 +10,12 @@ import {
   FaSolidLocationDot,
   FaSolidCalendarDays,
   FaSolidChevronRight,
-  FaSolidChevronLeft
+  FaSolidChevronLeft,
+  FaTrashCan,
+  FaSolidSquarePlus
 } from 'svelte-icons-pack/fa';
 import { BiMap } from 'svelte-icons-pack/bi';
-import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
+import { IoMail, IoClose, IoEye, IoEyeOff, IoSearch } from 'svelte-icons-pack/io';
 import { FiLogOut, FiEdit2 } from 'svelte-icons-pack/fi';
 
 const Icons = {
@@ -35,7 +37,10 @@ const Icons = {
   Calendar: FaSolidCalendarDays,
   Location: FaSolidLocationDot,
   ChevronRight: FaSolidChevronRight,
-  ChevronLeft: FaSolidChevronLeft
+  ChevronLeft: FaSolidChevronLeft,
+  Add: FaSolidSquarePlus,
+  Search: IoSearch,
+  Trash: FaTrashCan
 };
 
 export default Icons;
