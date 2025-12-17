@@ -10,10 +10,19 @@
     $props();
 
   let dialogOpen = $state(false);
+  let deleteError = $state<string | null>(null);
 
-  const deleteTechnology: SubmitFunction = async ({ formData }) => {
-    removeTechnology(Number(formData.get('id')));
-    dialogOpen = false;
+  const deleteTechnology: SubmitFunction = ({ formData }) => {
+    deleteError = null;
+
+    return async ({ result }) => {
+      if (result.type === 'success' && result.data?.success) {
+        removeTechnology(Number(formData.get('id')));
+        dialogOpen = false;
+      } else {
+        deleteError = 'Falha ao eliminar tecnologia. Tenta novamente.';
+      }
+    };
   };
 </script>
 
@@ -36,6 +45,9 @@
         <Dialog.Title>Tens a certeza que queres eliminar {tech.name}?</Dialog.Title>
       </Dialog.Header>
       <Dialog.Footer>
+        {#if deleteError}
+          <p class="mb-2 text-center text-red-500">{deleteError}</p>
+        {/if}
         <form method="POST" action="?/deleteTechnology" use:enhance={deleteTechnology}>
           <input type="hidden" name="id" value={tech.id} />
           <button
