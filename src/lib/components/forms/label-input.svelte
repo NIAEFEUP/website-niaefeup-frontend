@@ -22,7 +22,7 @@
   }: Props = $props();
 </script>
 
-<div class="flex flex-{horizontal ? 'row' : 'col'}">
+<div class="flex flex-col md:flex-row">
   {#if label}
     <label class="m-1 w-1/5 font-source_code font-bold text-white" for={id}>{label}</label>
   {/if}

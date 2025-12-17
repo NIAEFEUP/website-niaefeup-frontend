@@ -25,11 +25,13 @@ export const actions = {
 
     const imageFile = formData.get('image');
     if (imageFile instanceof File && imageFile.size > 0) {
+      console.log(imageFile.name)
       form.append('image', imageFile);
     }
 
     const thumbnailFile = formData.get('thumbnail');
     if (thumbnailFile instanceof File && thumbnailFile.size > 0) {
+      console.log(thumbnailFile.name)
       form.append('thumbnail', thumbnailFile);
     }
 
@@ -56,7 +58,6 @@ export const actions = {
     
 
     const success = await fetch(`/api/projects/${id}`, {
-      headers: {"Content-Type":"multipart/form-data"},
       method: 'PUT',
       body: form
     }).then((res) => res.ok);
