@@ -3,13 +3,17 @@
   import Icons from '$lib/components/icons/icons';
   import { mousePan } from '$lib/actions/mouse-pan';
 
-  export let photos: string[] = [];
+  interface Props {
+    photos?: string[];
+  }
 
-  let current = 0;
-  let scrollContainer: HTMLElement;
+  let { photos = [] }: Props = $props();
+
+  let current = $state(0);
+  let scrollContainer = $state<HTMLElement>();
   let cancelPhysics: () => void = () => {};
-  let isLightboxOpen = false;
-  let lightboxIndex = 0;
+  let isLightboxOpen = $state(false);
+  let lightboxIndex = $state(0);
 
   function to(index: number, behavior: ScrollBehavior = 'smooth') {
     if (!scrollContainer) return;
@@ -41,13 +45,16 @@
 
   function onScroll() {
     if (!scrollContainer) return;
-    const containerLeft = scrollContainer.scrollLeft;
+    // Create a local reference to satisfy TypeScript inside the forEach callback
+    const container = scrollContainer;
+    const containerLeft = container.scrollLeft;
     let closestIndex = 0;
     let minDistance = Infinity;
 
-    Array.from(scrollContainer.children).forEach((child, index) => {
+    Array.from(container.children).forEach((child, index) => {
       const htmlChild = child as HTMLElement;
-      const distance = Math.abs(htmlChild.offsetLeft - scrollContainer.offsetLeft - containerLeft);
+      // Using 'container' here fixes the "possibly undefined" error
+      const distance = Math.abs(htmlChild.offsetLeft - container.offsetLeft - containerLeft);
 
       if (distance < minDistance) {
         minDistance = distance;
@@ -96,7 +103,7 @@
   }
 </script>
 
-<svelte:window on:keydown={handleKeydown} on:resize={onResize} />
+<svelte:window onkeydown={handleKeydown} onresize={onResize} />
 
 {#if photos.length === 0}
   <div class="aspect-[21/9] w-full rounded-3xl bg-gray-200"></div>
@@ -115,14 +122,14 @@
       <div
         bind:this={scrollContainer}
         use:mousePan={{ onCancel: (fn) => (cancelPhysics = fn) }}
-        on:scroll={onScroll}
+        onscroll={onScroll}
         class="scrollbar-hide relative flex w-full cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth active:cursor-grabbing"
         style="scrollbar-width: none; -ms-overflow-style: none;"
       >
         {#each photos as photo, i (i)}
           <div class="relative aspect-[21/9] min-w-full snap-center">
             <button
-              on:click={() => openLightbox(i)}
+              onclick={() => openLightbox(i)}
               class="h-full w-full cursor-pointer"
               aria-label={`View photo ${i + 1} in full screen`}
             >
@@ -140,7 +147,7 @@
 
       <button
         class="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0 group-hover:opacity-100"
-        on:click={prev}
+        onclick={prev}
         disabled={current === 0}
         aria-label="Previous photo"
       >
@@ -149,7 +156,7 @@
 
       <button
         class="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0 group-hover:opacity-100"
-        on:click={next}
+        onclick={next}
         disabled={current === photos.length - 1}
         aria-label="Next photo"
       >
@@ -158,7 +165,6 @@
     </div>
 
     <div class="mt-3 flex gap-2">
-      <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
       {#each photos as _, i (i)}
         <button
           class="h-3 w-3 rounded-full transition-colors focus:outline-none {current === i
@@ -166,7 +172,7 @@
             : 'bg-[#d9d9d9]/50 hover:bg-[#d9d9d9] '}"
           aria-label={`Go to photo ${i + 1}`}
           aria-current={current === i ? 'true' : undefined}
-          on:click={() => to(i)}
+          onclick={() => to(i)}
         ></button>
       {/each}
     </div>
@@ -176,8 +182,8 @@
 {#if isLightboxOpen}
   <div
     class="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
-    on:click={closeLightbox}
-    on:keydown={(e) => e.key === 'Enter' && closeLightbox()}
+    onclick={closeLightbox}
+    onkeydown={(e) => e.key === 'Enter' && closeLightbox()}
     role="dialog"
     aria-modal="true"
     aria-label="Photo lightbox"
@@ -185,7 +191,7 @@
   >
     <button
       class="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
-      on:click={closeLightbox}
+      onclick={closeLightbox}
       aria-label="Close lightbox"
     >
       <Icon src={Icons.Close} size="24" />
@@ -199,8 +205,8 @@
 
     <div
       class="relative flex h-full w-full items-center justify-center p-4"
-      on:click|stopPropagation
-      on:keydown={(e) => e.key === 'Enter' && e.stopPropagation()}
+      onclick={(e) => e.stopPropagation()}
+      onkeydown={(e) => e.key === 'Enter' && e.stopPropagation()}
       role="presentation"
     >
       <img
@@ -213,7 +219,10 @@
       {#if photos.length > 1}
         <button
           class="absolute left-2 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
-          on:click|stopPropagation={prevLightbox}
+          onclick={(e) => {
+            e.stopPropagation();
+            prevLightbox();
+          }}
           aria-label="Previous photo"
         >
           <Icon src={Icons.ChevronLeft} size="32" />
@@ -221,7 +230,10 @@
 
         <button
           class="absolute right-2 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
-          on:click|stopPropagation={nextLightbox}
+          onclick={(e) => {
+            e.stopPropagation();
+            nextLightbox();
+          }}
           aria-label="Next photo"
         >
           <Icon src={Icons.ChevronRight} size="32" />
