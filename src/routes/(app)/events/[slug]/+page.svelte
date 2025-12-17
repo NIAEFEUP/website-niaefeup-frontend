@@ -229,5 +229,5 @@
     {/if}
   </section>
 {:else}
-  <p>Loading project details...</p>
+  <p>Loading event details...</p>
 {/if}
