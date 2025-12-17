@@ -6,7 +6,7 @@
     name?: string;
   }
 
-  let { label = '', options, horizontal = false, name = "" }: Props = $props();
+  let { label = '', options, horizontal = false, name = '' }: Props = $props();
   let selected = $state(options[0]);
 </script>
 

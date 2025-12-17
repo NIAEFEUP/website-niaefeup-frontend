@@ -23,19 +23,19 @@ export const actions = {
     const linkedin = data.get('linkedin');
     const github = data.get('github');
     const photo = data.get('photo') as File;
-    
+
     const iconFiles: File[] = [];
-    
+
     while (data.get(`url ${websiteIndex}`) !== null) {
       const icon = data.get(`icon ${websiteIndex}`) as File;
-      
+
       dataWebsites.push({
         url: data.get(`url ${websiteIndex}`) as string,
         label: data.get(`label ${websiteIndex}`) as string
       });
-      
+
       iconFiles.push(icon);
-      
+
       websiteIndex++;
     }
     const isActive = data.get('isActive') === 'Active' ? true : false;
@@ -64,7 +64,7 @@ export const actions = {
         form.append('websiteIcons', iconFile, iconFile.name);
       }
     });
-    
+
     console.log('\nFormData contents:');
     for (const [key, value] of form.entries()) {
       if (value instanceof File) {
@@ -73,7 +73,7 @@ export const actions = {
         console.log(`  ${key}: Blob`);
       }
     }
-    
+
     try {
       const res = await fetch(`/api/accounts/${params.id}`, {
         method: 'PUT',

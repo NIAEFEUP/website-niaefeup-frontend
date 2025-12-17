@@ -37,11 +37,11 @@
 
   function addCustomWebsite() {
     websites = [...websites, { label: '', url: '', iconPath: '' }];
-    
+
     requestAnimationFrame(() => {
       if (api) {
         const lastIndex = websites.length - 1;
-        api.scrollTo(lastIndex, false); 
+        api.scrollTo(lastIndex, false);
       }
     });
   }
@@ -50,7 +50,7 @@
     if (websites.length >= 1) {
       const currentPosition = api ? api.selectedScrollSnap() : 0;
       websites = [...websites.slice(0, currentPosition), ...websites.slice(currentPosition + 1)];
-      
+
       if (api && currentPosition >= websites.length && websites.length > 0) {
         requestAnimationFrame(() => {
           api.scrollTo(websites.length - 1, false);
@@ -69,9 +69,9 @@
     <form
       method="POST"
       enctype="multipart/form-data"
-      class="flex flex-col md:flex-row md:justify-evenly w-full"
+      class="flex w-full flex-col md:flex-row md:justify-evenly"
     >
-      <div class="order-2 ml-5 mr-5 flex flex-col gap-5 flex-1 max-w-[600px]">
+      <div class="order-2 ml-5 mr-5 flex max-w-[600px] flex-1 flex-col gap-5">
         <LabelInput
           name="name"
           label="Nome"
@@ -112,7 +112,7 @@
         />
         <div class="w-full">
           {#if websites.length}
-            <div class="flex flex-row md:justify-center justify-start w-full">
+            <div class="flex w-full flex-row justify-start md:justify-center">
               <Carousel.Root bind:api class="w-full max-w-[550px]">
                 <Carousel.Content class="w-full">
                   {#each websites as website, index}
@@ -122,24 +122,23 @@
                           <LabelInput
                             name={`label ${index + 1}`}
                             label={`Site ${index + 1} Nome`}
-                            placeholder="Insira o Texto"  
-                            textGap= 15
+                            placeholder="Insira o Texto"
+                            textGap="15"
                             bind:value={website.label}
                           />
                           <LabelInput
                             name={`url ${index + 1}`}
                             label={`Site ${index + 1} Url`}
                             placeholder="Insira o Texto"
-                            textGap= 15
+                            textGap="15"
                             bind:value={website.url}
                             required
                           />
                           <PictureInput
-                            text="Icon Website" 
-                            name={`icon ${index + 1}`} 
+                            text="Icon Website"
+                            name={`icon ${index + 1}`}
                             value={website.iconPath}
                           />
-                          
                         </Card.Content>
                       </Card.Root>
                     </Carousel.Item>
@@ -195,7 +194,7 @@
             <p class="mt-2 text-red-500">{message}</p>
           {/each}
         {/if}
-        <div class = "flex flex-row md:justify-start justify-center">
+        <div class="flex flex-row justify-center md:justify-start">
           <Button
             type="submit"
             color="primary"
@@ -203,7 +202,7 @@
             width="large"
             text="Guardar Alterações"
           />
-          </div>
+        </div>
       </div>
       <div class="flex flex-row justify-center md:justify-start">
         <div class="order-1 mt-5 flex max-w-[278px] flex-col items-center">

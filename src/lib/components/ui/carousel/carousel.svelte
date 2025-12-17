@@ -12,7 +12,6 @@
 
   type $$Props = CarouselProps;
 
-
   interface Props {
     opts?: any;
     plugins?: NonNullable<$$Props['plugins']>;
@@ -20,7 +19,7 @@
     orientation?: NonNullable<$$Props['orientation']>;
     class?: $$Props['class'];
     children?: import('svelte').Snippet;
-    [key: string]: any
+    [key: string]: any;
   }
 
   let {
@@ -32,7 +31,6 @@
     children,
     ...rest
   }: Props = $props();
-  
 
   const apiStore = writable<CarouselAPI | undefined>(undefined);
   const orientationStore = writable(orientation);

@@ -6,11 +6,10 @@
   interface Props {
     class?: string | undefined | null;
     children?: import('svelte').Snippet;
-    [key: string]: any
+    [key: string]: any;
   }
 
   let { class: className = undefined, children, ...rest }: Props = $props();
-  
 
   const { orientation, options, plugins, onInit } = getEmblaContext('<Carousel.Content/>');
 </script>

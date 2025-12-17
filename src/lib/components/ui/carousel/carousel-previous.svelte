@@ -7,15 +7,19 @@
 
   type $$Props = Props;
 
-  
   interface Props_1 {
     class?: $$Props['class'];
     variant?: VariantProps<typeof buttonVariants>['variant'];
     size?: VariantProps<typeof buttonVariants>['size'];
-    [key: string]: any
+    [key: string]: any;
   }
 
-  let { class: className = undefined, variant = 'outline', size = 'icon', ...rest }: Props_1 = $props();
+  let {
+    class: className = undefined,
+    variant = 'outline',
+    size = 'icon',
+    ...rest
+  }: Props_1 = $props();
 
   const { orientation, canScrollPrev, scrollPrev, handleKeyDown } =
     getEmblaContext('<Carousel.Previous/>');

@@ -1,5 +1,4 @@
 <script lang="ts">
-  
   interface Props {
     label?: string;
     id?: string;
@@ -11,7 +10,7 @@
     required?: boolean;
     name?: string;
     value?: string;
-    className?: string;  
+    className?: string;
   }
 
   let {
@@ -21,11 +20,11 @@
     placeholder = '',
     isTextArea = false,
     horizontal = false,
-    textGap = "2",
+    textGap = '2',
     required = false,
-    name = "",
-    value = $bindable(""),
-    className = '', 
+    name = '',
+    value = $bindable(''),
+    className = ''
   }: Props = $props();
 </script>
 
@@ -35,10 +34,7 @@
 >
   {#if label}
     <div class="w-[{textGap}vw]">
-      <label
-        class="m-1 flex flex-row font-source_code font-bold text-white"
-        for={id}
-      >
+      <label class="m-1 flex flex-row font-source_code font-bold text-white" for={id}>
         {label}
         {#if required}
           <span class="text-sm">*</span>
