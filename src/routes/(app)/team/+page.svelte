@@ -145,7 +145,7 @@
     &lt&nbsp<strong>Equipa</strong>&nbsp/&gt
   </h1>
 
-  <h2 class="text-lg md:text-2xl font-bold my-4">Recrutas</h2>
+  <h2 class="my-4 text-lg font-bold md:text-2xl">Recrutas</h2>
   <HexagonGrid
     items={teamMembers}
     cols={4}
