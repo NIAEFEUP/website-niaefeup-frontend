@@ -1,5 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
+import { canEditActivity } from '$lib/api/permissions';
+
 
 export const load: PageLoad = async ({ fetch, params }) => {
   let res = await fetch(`/api/events/${params.slug}`);
@@ -7,9 +9,8 @@ export const load: PageLoad = async ({ fetch, params }) => {
 
   const event = await res.json();
 
-  let hasPerms = false;
-  res = await fetch(`/api/auth/hasPermission/6`);
-  if (res.status !== 403) hasPerms = true;
+
+  const hasPerms = await canEditActivity(fetch);
 
   return { event, hasPerms };
 };
