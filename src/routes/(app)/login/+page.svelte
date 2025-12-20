@@ -1,19 +1,10 @@
 <script lang="ts">
   import VariableVisibilityInput from './_components/variable-visibility-input.svelte';
   import { goto } from '$app/navigation';
-  import { onMount } from 'svelte';
 
   let email = $state('');
   let password = $state('');
   let message = $state('');
-
-  onMount(async () =>{
-    let res = await fetch('/api/auth');
-
-    if (res.ok) {
-      goto('/');
-    }
-  });
 
   async function submitLogin() {
     const success = await fetch('/api/auth', {
