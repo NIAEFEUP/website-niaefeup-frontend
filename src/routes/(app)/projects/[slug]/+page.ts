@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
+import { canDeleteActivity } from '@/lib/api/permissions';
 
 export const load: PageLoad = async ({ fetch, params }) => {
   let res = await fetch(`/api/projects/${params.slug}`);
@@ -7,9 +8,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
 
   const project = await res.json();
 
-  let hasPerms = false;
-  res = await fetch(`/api/auth/hasPermission/6`);
-  if (res.status !== 403) hasPerms = true;
+  let hasPerms = await canDeleteActivity(fetch);
 
   return { project, hasPerms };
 };
