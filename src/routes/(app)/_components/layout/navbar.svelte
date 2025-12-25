@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  // @ts-expect-error Import is as expected but throws error
-  import { page } from '$app/state';
+  import { page } from '$app/stores';
 
   let currentPage = $derived(page.url.pathname ?? '/');
   const links = [
@@ -43,7 +42,7 @@
   </div>
   <div class="flex items-center justify-end gap-7">
     {#each links as { href, label, pageComp } (label)}
-      {#if currentPage === pageComp}
+      {#if currentPage.startsWith(pageComp)}
         <a {href} class="rounded bg-muted-red-400 p-2" data-testid={label.toLowerCase()}>
           <p class="font-bold">{label}</p>
         </a>

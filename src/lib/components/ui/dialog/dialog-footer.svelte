@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Tabs as TabsPrimitive } from 'bits-ui';
+  import type { HTMLAttributes } from 'svelte/elements';
   import { cn } from '$lib/utils.js';
 
-  type $$Props = TabsPrimitive.ListProps;
+  type $$Props = HTMLAttributes<HTMLDivElement>;
 
   interface Props {
     class?: $$Props['class'];
@@ -13,12 +13,9 @@
   let { class: className = undefined, children, ...rest }: Props = $props();
 </script>
 
-<TabsPrimitive.List
-  class={cn(
-    'inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground',
-    className
-  )}
+<div
+  class={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
   {...rest}
 >
   {@render children?.()}
-</TabsPrimitive.List>
+</div>

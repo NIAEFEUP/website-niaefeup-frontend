@@ -5,6 +5,9 @@
   import Navbar from './_components/layout/navbar.svelte';
   import Sidebar from './_components/layout/sidebar.svelte';
   import SnackbarList from './_components/layout/notifications/snackbar-list.svelte';
+  import GlobalLoader from '@/lib/components/layout/global-loader.svelte';
+  import { isGlobalLoading } from '@/lib/stores/loader';
+  import { navigating } from '$app/stores';
   import '@/app.css';
 
   interface Props {
@@ -12,15 +15,37 @@
   }
 
   let { children }: Props = $props();
+
+  let isLoadingState = $derived($navigating !== null || $isGlobalLoading);
+
+  let showLoader = $state(false);
+  let timer: ReturnType<typeof setTimeout>;
+
+  $effect(() => {
+    if (isLoadingState) {
+      timer = setTimeout(() => {
+        showLoader = true;
+      }, 150);
+    } else {
+      clearTimeout(timer);
+      showLoader = false;
+    }
+  });
 </script>
+
+{#if showLoader}
+  <GlobalLoader />
+{/if}
 
 <ModeWatcher defaultMode="dark" />
 <Sidebar />
 <Navbar />
-<main class="bg-ni-primary mt-20 flex-grow">
+
+<main class="bg-ni-primary my-20 flex-grow">
   <BackgroundHexagon position="right" />
   {@render children?.()}
 </main>
+
 <Footer />
 <SnackbarList />
 

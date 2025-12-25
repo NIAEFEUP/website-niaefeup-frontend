@@ -60,6 +60,10 @@ export const flyAndScale = (
   };
 };
 
+export function sentenceFirstLetterToUpperCase(sentence: string) {
+  return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+}
+
 export function toISOLocal(date: string): string {
   const parts = date.match(/(\d+)/g);
   if (!parts || parts.length < 5) return '';

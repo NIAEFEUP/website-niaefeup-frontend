@@ -1,30 +1,36 @@
 <script lang="ts">
   interface Props {
+    value?: string;
     label?: string;
     id?: string;
+    name?:string;
     type?: string;
     placeholder?: string;
     isTextArea?: boolean;
     horizontal?: boolean;
     textGap?: string;
-    required?: boolean;
-    name?: string;
-    value?: string;
     className?: string;
+    required?: boolean;
+    minlength?: number | undefined;
+    maxlength?: number | undefined;
+    [key: string]: unknown;
   }
 
   let {
+    value = $bindable(),
     label = '',
     id = '',
+    name = '',
     type = 'text',
     placeholder = '',
     isTextArea = false,
     horizontal = false,
     textGap = '2',
+    className = '',
     required = false,
-    name = '',
-    value = $bindable(''),
-    className = ''
+    minlength = undefined,
+    maxlength = undefined,
+    ...rest
   }: Props = $props();
 </script>
 
@@ -45,13 +51,16 @@
   {#if isTextArea}
     <textarea
       aria-label="textarea-input"
-      class="min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
+      class="mb-2 min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
+      rows="4"
       {id}
       {name}
       {placeholder}
       {required}
+      {minlength}
+      {maxlength}
+      {...rest}
       bind:value
-      rows="4"
     ></textarea>
   {:else}
     <input
@@ -62,6 +71,9 @@
       {name}
       {placeholder}
       {required}
+      {minlength}
+      {maxlength}
+      {...rest}
       bind:value
     />
   {/if}

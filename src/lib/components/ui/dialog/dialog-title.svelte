@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Tabs as TabsPrimitive } from 'bits-ui';
+  import { Dialog as DialogPrimitive } from 'bits-ui';
   import { cn } from '$lib/utils.js';
 
-  type $$Props = TabsPrimitive.ListProps;
+  type $$Props = DialogPrimitive.TitleProps;
 
   interface Props {
     class?: $$Props['class'];
@@ -13,12 +13,9 @@
   let { class: className = undefined, children, ...rest }: Props = $props();
 </script>
 
-<TabsPrimitive.List
-  class={cn(
-    'inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground',
-    className
-  )}
+<DialogPrimitive.Title
+  class={cn('text-lg font-semibold leading-none tracking-tight', className)}
   {...rest}
 >
   {@render children?.()}
-</TabsPrimitive.List>
+</DialogPrimitive.Title>
