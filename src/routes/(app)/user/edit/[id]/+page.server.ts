@@ -24,17 +24,17 @@ export const actions = {
     const github = data.get('github');
     const photo = data.get('photo') as File;
 
-    const iconFiles: File[] = [];
+    const iconPairs: { index: number; file: File | null }[] = [];
 
     while (data.get(`url ${websiteIndex}`) !== null) {
-      const icon = data.get(`icon ${websiteIndex}`) as File;
+      const icon = data.get(`icon ${websiteIndex}`) as File | null;
 
       dataWebsites.push({
         url: data.get(`url ${websiteIndex}`) as string,
         label: data.get(`label ${websiteIndex}`) as string
       });
 
-      iconFiles.push(icon);
+      iconPairs.push({ index: websiteIndex, file: icon });
 
       websiteIndex++;
     }
@@ -59,9 +59,10 @@ export const actions = {
 
     form.append('account', blob);
     if (photo && photo.size != 0) form.append('photo', photo);
-    iconFiles.forEach((iconFile) => {
-      if (iconFile instanceof File && iconFile.size > 0) {
-        form.append('websiteIcons', iconFile, iconFile.name);
+
+    iconPairs.forEach((pair) => {
+      if (pair.file instanceof File && pair.file.size > 0) {
+        form.append(`websiteIcons[${pair.index - 1}]`, pair.file, pair.file.name);
       }
     });
 
