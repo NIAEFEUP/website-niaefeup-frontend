@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import Technologies from './_components/technologies.svelte';
+  import Roles from './_components/roles.svelte';
   import * as Tabs from '$lib/components/ui/tabs/index.js';
 
   let { data }: { data: PageData } = $props();
@@ -22,9 +23,11 @@
         Tecnologias
       </Tabs.Trigger>
     </Tabs.List>
-    <Tabs.Content value="roles">Roles</Tabs.Content>
     <Tabs.Content value="technologies">
       <Technologies technologies={data.technologies} />
+    </Tabs.Content>
+    <Tabs.Content value="roles">
+      <Roles roles={data.roles} />
     </Tabs.Content>
   </Tabs.Root>
 </section>

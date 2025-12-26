@@ -1,13 +1,14 @@
 import { error, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import type { Technology } from '@/types/technology';
+import type { Role } from '@/types/role';
 import { canEditActivity, canCreateActivity, canDeleteActivity } from '@/lib/api/permissions';
 import type { BackendError } from '@/types/backend-error';
 
 export const load: PageServerLoad = async ({ fetch }) => {
-  if (!(await canEditActivity(fetch))) {
-    throw redirect(303, '/');
-  }
+  // if (!(await canEditActivity(fetch))) {
+  //   throw redirect(303, '/');
+  // }
 
   const tech = await fetch('/api/technologies');
   if (!tech.ok) {
@@ -17,17 +18,30 @@ export const load: PageServerLoad = async ({ fetch }) => {
       error(tech.status, 'Failed to load technologies');
     }
   }
-
+  
   const technologies: Technology[] = await tech.json();
 
-  return { technologies };
+  const role = await fetch('/api/roles');
+  if (!role.ok) {
+    if (role.status === 404) {
+      return { roles: [] };
+    } else {
+      error(role.status, 'Failed to load roles');
+    }
+  }
+
+  const roles: Role[] = await role.json();
+
+
+
+  return { technologies, roles};
 };
 
 export const actions: Actions = {
   deleteTechnology: async ({ request, fetch }) => {
-    if (!(await canDeleteActivity(fetch))) {
-      throw redirect(303, '/');
-    }
+    // if (!(await canDeleteActivity(fetch))) {
+    //   throw redirect(303, '/');
+    // }
 
     const formData = await request.formData();
     const id = formData.get('id');
@@ -44,9 +58,9 @@ export const actions: Actions = {
   },
 
   addTechnology: async ({ request, fetch }) => {
-    if (!(await canCreateActivity(fetch))) {
-      throw redirect(303, '/');
-    }
+    // if (!(await canCreateActivity(fetch))) {
+    //   throw redirect(303, '/');
+    // }
 
     const requestData = await request.formData();
 
@@ -79,5 +93,36 @@ export const actions: Actions = {
       await res.json();
 
     return { success: res.ok, data: json };
+  },
+
+  addRole: async ({ request, fetch }) => {
+  const formData = await request.formData();
+  const name = formData.get('name');
+
+  if (!name || typeof name !== 'string' || name.trim() === '') {
+    return { success: false, error: 'O nome da role é obrigatório' };
   }
+
+  const res = await fetch('/api/roles', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: name.trim(),
+      permissions: [],           
+      isSection: false,         
+      associatedActivities: []
+    })
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    const message = errorData.message || errorData.errors?.[0]?.message || 'Erro ao criar role';
+    return { success: false, error: message };
+  }
+
+  const newRole: Role = await res.json();
+  return { success: true, data: newRole };
+}
 };
