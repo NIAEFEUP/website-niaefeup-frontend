@@ -17,8 +17,6 @@
   let errorMessage = $state<string | null>(null);
 
   // Atividades fictícias (até o backend estar pronto)
-  const activities = ['UNI', 'Outro Projeto', 'Recrutamento', 'Evento X'];
-  let selectedActivity = $state('UNI');
 </script>
 
 <section class="flex h-full w-full flex-row py-12">
@@ -123,14 +121,7 @@
     <div class="mb-12 flex items-center justify-between">
       <h2 class="text-3xl font-bold text-white">Atividade</h2>
 
-      <select
-        bind:value={selectedActivity}
-        class="rounded-lg bg-white px-6 py-3 text-lg font-medium text-black focus:outline-none focus:ring-4 focus:ring-red-500/50"
-      >
-        {#each activities as activity}
-          <option value={activity}>{activity}</option>
-        {/each}
-      </select>
+
     </div>
 
     <div class="mt-20 text-gray-400">
