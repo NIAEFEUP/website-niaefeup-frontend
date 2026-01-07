@@ -1,7 +1,4 @@
 <script lang="ts">
-  import { createBubbler, handlers } from 'svelte/legacy';
-
-  const bubble = createBubbler();
   interface Props {
     type?: 'button' | 'submit' | 'reset';
     color: keyof typeof colorList;
@@ -33,7 +30,7 @@
   ]} items-center justify-center font-raleway font-bold text-white {widthList[
     width
   ]} min-w-0 rounded-lg px-4 py-2"
-  onclick={handlers(onClick, bubble('click'))}
+  onclick={() => onClick()}
 >
   <p class="px-5">{text}</p>
 </button>

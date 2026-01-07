@@ -6,7 +6,7 @@
   import PictureInput from '$lib/components/forms/picture-input.svelte';
   import Button from '$lib/components/buttons/button.svelte';
   import RadioButton from '$lib/components/forms/radio-buttons.svelte';
-  import { toISOLocal } from '$lib/utils.ts';
+  import { toISOLocal } from '$lib/utils';
   import * as Carousel from '$lib/components/ui/carousel/index.js';
   import * as Card from '$lib/components/ui/card/index.js';
 
@@ -77,7 +77,7 @@
           label="Nome"
           placeholder="John Doe"
           value={account.name}
-          textGap={30}
+          textGap={"30"}
         />
 
         <RadioButton
@@ -92,7 +92,7 @@
           label="Email"
           placeholder="Insira o Texto"
           value={account.email}
-          textGap={30}
+          textGap={"30"}
         />
 
         <LabelInput
@@ -100,7 +100,7 @@
           label="Data de Nascimento"
           type="datetime-local"
           value={toISOLocal(account.birthDate)}
-          textGap={30}
+          textGap={"30"}
         />
 
         <LabelInput
@@ -108,7 +108,7 @@
           label="Linkedin"
           placeholder="Insira o Texto"
           value={account.linkedin ? account.linkedin : ''}
-          textGap={30}
+          textGap={"30"}
         />
         <div class="w-full">
           {#if websites.length}
@@ -177,7 +177,7 @@
           label="Github"
           placeholder="Insira o Texto"
           value={account.github ? account.github : ''}
-          textGap={30}
+          textGap={"30"}
         />
 
         <LabelInput
