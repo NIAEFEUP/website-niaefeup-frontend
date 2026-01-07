@@ -12,15 +12,12 @@
 
   let selectedRole: Role | null = $state(roles[0] ?? null);
 
-  // Dialog adicionar role
   let dialogOpen = $state(false);
   let errorMessage = $state<string | null>(null);
 
-  // Atividades fictícias (até o backend estar pronto)
 </script>
 
 <section class="flex h-full w-full flex-row py-12">
-  <!-- Lista de Roles -->
   <aside class="flex w-80 flex-col gap-y-4 pr-12">
     {#each roles as role (role.id)}
       <button
@@ -34,7 +31,6 @@
       </button>
     {/each}
 
-    <!-- Botão Adicionar Role com Dialog -->
     <Dialog.Root bind:open={dialogOpen}>
       <Dialog.Trigger
         class="flex flex-row items-center gap-x-4 rounded-full bg-white/10 px-8 py-4 text-left text-xl font-medium text-white hover:bg-white/20 transition-all"
@@ -55,7 +51,7 @@
                 const name = formData.get('name')?.toString().trim();
                 if (name && roles.some(r => r.name.toLowerCase() === name.toLowerCase())) {
                     errorMessage = 'Role já existente!';
-                    return; // não prossegue com o submit
+                    return;
                     }
                     if (result.type === 'success' && result.data?.success) {
                         const newRole = result.data.data as Role;
