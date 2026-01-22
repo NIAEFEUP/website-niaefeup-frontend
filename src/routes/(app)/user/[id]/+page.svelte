@@ -11,6 +11,7 @@
   let { data }: { data: PageData } = $props();
 
   let teamMember: TeamMember = data.teamMember;
+  let canEdit: boolean = data.canEdit;
 
   async function logout() {
     const response = await fetch('/api/auth/logout', {
@@ -33,7 +34,9 @@
     <div class="flex w-full justify-center px-4 sm:px-6 lg:px-8">
       <div class="flex w-4/5 flex-col content-center gap-y-4 md:gap-y-6 lg:w-3/4 xl:w-1/2">
         <div class="flex h-12 justify-end gap-x-3 lg:h-10 xl:h-12">
-          <EditButton size="small" link="https://lipsum.com" />
+          {#if canEdit}
+            <EditButton size="small" link="https://lipsum.com" />
+          {/if}
           <button
             class="w-12 rounded-md bg-muted-red-500 p-3 lg:w-12 xl:w-12"
             onclick={() => logout()}
