@@ -36,12 +36,12 @@
     return `${weekday} - ${hour}h${minute}`;
   }
 
-  function formatDateExtense(date: Date): string {
+  function formatDateExtense(date: Date) {
     const day = date.getDate().toString();
     let month = new Intl.DateTimeFormat('pt-PT', { month: 'long' }).format(date);
     month = month.toLowerCase();
     const year = date.getFullYear().toString();
-    return `<b>${day}</b> de <b>${month}</b> <b>${year}</b>`;
+    return { day, month, year };
   }
 
   let parsedEventDate =
@@ -107,11 +107,13 @@
                 </h1>
                 <div class="flex flex-1 flex-col justify-start gap-3 text-lg">
                   {#if parsedEventDate}
+                    {@const d = formatDateExtense(parsedEventDate)}
                     <span>{formatWeekdayTime(parsedEventDate)}</span>
                     <span class="flex items-center gap-2">
                       <Icon src={Icons.Calendar} size="18" />
-                      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                      {@html formatDateExtense(parsedEventDate)}
+                      <span>
+                        <b>{d.day}</b> de <b>{d.month}</b> <b>{d.year}</b>
+                      </span>
                     </span>
                   {:else}
                     <span>Data inválida</span>
@@ -144,12 +146,13 @@
             {#if windowWidth < screenSizeThreshold}
               <div class="ml-4 flex flex-1 flex-col justify-start gap-3 text-sm">
                 {#if parsedEventDate}
+                  {@const d = formatDateExtense(parsedEventDate)}
                   <span>{formatWeekdayTime(parsedEventDate)}</span>
                   <span class="flex min-w-0 flex-nowrap items-center gap-2">
                     <Icon src={Icons.Calendar} size="18" />
-                    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                    <span class="block break-words">{@html formatDateExtense(parsedEventDate)}</span
-                    >
+                    <span class="block break-words">
+                      <b>{d.day}</b> de <b>{d.month}</b> <b>{d.year}</b>
+                    </span>
                   </span>
                 {:else}
                   <span>Data inválida</span>
