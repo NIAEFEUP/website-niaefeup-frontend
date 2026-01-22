@@ -1,9 +1,9 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import Carousel from '$lib/components/gallery/Carousel.svelte';
   import EventEnrollButton from '../_components/event-enroll-button.svelte';
-  import HexagonGrid from '$lib/components/hexagons/hexagon-grid.svelte';
   import type { PageData } from './$types';
+  import Carousel from '$lib/components/gallery/Carousel.svelte';
+  import HexagonGrid from '$lib/components/hexagons/hexagon-grid.svelte';
   import type { Event } from '@/types/event';
   import EditButton from '$lib/components/buttons/edit-button.svelte';
   import Icon from '$lib/components/icons/icon.svelte';
