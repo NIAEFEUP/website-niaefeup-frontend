@@ -1,7 +1,7 @@
 import Gallery from './Carousel.svelte';
 
 export default {
-  title: 'Components/Gallery',
+  title: 'Organisms/Gallery',
   component: Gallery,
   argTypes: {
     photos: { control: 'array' }
