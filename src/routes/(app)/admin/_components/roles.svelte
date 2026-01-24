@@ -21,11 +21,12 @@
   <aside class="flex w-80 flex-col gap-y-4 pr-12">
     {#each roles as role (role.id)}
       <button
-        class="rounded-full px-8 py-4 text-left text-xl font-medium transition-all duration-200
+        class="rounded-2xl px-8 py-3 text-center text-xl font-bold transition-all duration-200
                {selectedRole?.id === role.id
-                 ? 'bg-red-600 text-white shadow-lg'
+                 ? ' bg-muted-red-500 text-white shadow-lg'
                  : 'bg-white/10 text-white hover:bg-white/20'}"
-        on:click={() => (selectedRole = role)}
+       
+        onclick={() => (selectedRole = role)}
       >
         {role.name}
       </button>
@@ -53,13 +54,25 @@
                     errorMessage = 'Role já existente!';
                     return;
                     }
-                    if (result.type === 'success' && result.data?.success) {
+                    if (result.type === 'success') {
+                      if (result.data?.success) {
                         const newRole = result.data.data as Role;
                         roles = [...roles, newRole];
                         selectedRole = newRole;
                         dialogOpen = false;
+                      } else {
+                        errorMessage =
+                          typeof result.data?.error === 'string'
+                            ? result.data.error
+                            : 'Erro ao criar a role';
+                      }
+                    } else if (result.type === 'failure') {
+                      errorMessage =
+                        typeof result.data?.error === 'string'
+                          ? result.data.error
+                          : 'Erro de validação';
                     } else {
-                        errorMessage = result.data?.error || 'Erro ao criar a role';
+                      errorMessage = 'Erro inesperado';
                     }
                     await applyAction(result);
                 };
@@ -93,7 +106,7 @@
               <button
                 type="button"
                 class="text-lg text-muted-red-700"
-                on:click={() => (dialogOpen = false)}
+                onclick={() => (dialogOpen = false)}
               >
                 Cancelar
               </button>

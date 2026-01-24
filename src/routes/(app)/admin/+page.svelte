@@ -6,7 +6,7 @@
 
   let { data }: { data: PageData } = $props();
 </script>
-
+ 
 <section class="flex w-full items-center justify-center">
   <Tabs.Root value="technologies">
     <Tabs.List class="mb-8 flex w-full flex-row gap-x-16 bg-transparent md:gap-x-32">
