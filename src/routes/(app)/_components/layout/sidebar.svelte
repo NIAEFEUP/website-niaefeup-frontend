@@ -31,7 +31,11 @@
     class="bg-ni-sidebar absolute z-20 grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center overflow-scroll px-2 py-4 sm:invisible"
   >
     <BackgroundHexagon position="left" />
-    <button class="col-start-2 h-fit w-1/2 text-white" onclick={toggleSidebar}>
+    <button
+      class="col-start-2 h-fit w-1/2 text-white"
+      onclick={toggleSidebar}
+      aria-label="Close sidebar"
+    >
       <Icon src={Icons.Close} color="white" size="31px" />
     </button>
     <ul
