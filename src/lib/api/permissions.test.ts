@@ -286,7 +286,7 @@ describe('Permissions', () => {
       json: async () => ({ error: false })
     } as Response);
 
-    const result = await canDeleteAccount(fetch as typeof globalThis.fetch);
+    const result = await canDeleteActivity(fetch as typeof globalThis.fetch);
 
     expect(fetch).toHaveBeenCalledWith('/api/auth/hasPermission/7');
     expect(result).toBe(true);
@@ -298,7 +298,7 @@ describe('Permissions', () => {
       json: async () => ({ error: true })
     } as Response);
 
-    const result = await canDeleteAccount(fetch as typeof globalThis.fetch);
+    const result = await canDeleteActivity(fetch as typeof globalThis.fetch);
 
     expect(fetch).toHaveBeenCalledWith('/api/auth/hasPermission/7');
     expect(result).toBe(false);
