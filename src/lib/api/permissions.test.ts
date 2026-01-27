@@ -1,5 +1,16 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { canCreateAccount,canViewAccount,canEditAccount,canDeleteAccount,canCreateActivity,canViewActivity,canEditActivity,canDeleteActivity,canEditSettings,isSuperUser } from './permissions';
+import {
+  canCreateAccount,
+  canViewAccount,
+  canEditAccount,
+  canDeleteAccount,
+  canCreateActivity,
+  canViewActivity,
+  canEditActivity,
+  canDeleteActivity,
+  canEditSettings,
+  isSuperUser
+} from './permissions';
 
 describe('Permissions', () => {
   beforeEach(() => {
@@ -48,16 +59,16 @@ describe('Permissions', () => {
   });
 
   it('should return true when user has permission', async () => {
-  vi.mocked(fetch).mockResolvedValue({
-    ok: true,
-    json: async () => ({ error: false })
-  } as Response);
+    vi.mocked(fetch).mockResolvedValue({
+      ok: true,
+      json: async () => ({ error: false })
+    } as Response);
 
-  const result = await canViewAccount(fetch as typeof globalThis.fetch);
+    const result = await canViewAccount(fetch as typeof globalThis.fetch);
 
-  expect(fetch).toHaveBeenCalledWith('/api/auth/hasPermission/1');
-  expect(result).toBe(true);
-});
+    expect(fetch).toHaveBeenCalledWith('/api/auth/hasPermission/1');
+    expect(result).toBe(true);
+  });
 
   it('should return false when API returns error field', async () => {
     vi.mocked(fetch).mockResolvedValue({
@@ -85,16 +96,16 @@ describe('Permissions', () => {
   });
 
   it('should return true when user has permission', async () => {
-  vi.mocked(fetch).mockResolvedValue({
-    ok: true,
-    json: async () => ({ error: false })
-  } as Response);
+    vi.mocked(fetch).mockResolvedValue({
+      ok: true,
+      json: async () => ({ error: false })
+    } as Response);
 
-  const result = await canEditAccount(fetch as typeof globalThis.fetch);
+    const result = await canEditAccount(fetch as typeof globalThis.fetch);
 
-  expect(fetch).toHaveBeenCalledWith('/api/auth/hasPermission/2');
-  expect(result).toBe(true);
-});
+    expect(fetch).toHaveBeenCalledWith('/api/auth/hasPermission/2');
+    expect(result).toBe(true);
+  });
 
   it('should return false when API returns error field', async () => {
     vi.mocked(fetch).mockResolvedValue({
@@ -300,12 +311,12 @@ describe('Permissions', () => {
       json: async () => ({})
     } as Response);
 
-    const result = await canDeleteAccount(fetch as typeof globalThis.fetch);
+    const result = await canDeleteActivity(fetch as typeof globalThis.fetch);
 
     expect(fetch).toHaveBeenCalledWith('/api/auth/hasPermission/7');
     expect(result).toBe(false);
   });
-  
+
   it('should return true when user has permission', async () => {
     vi.mocked(fetch).mockResolvedValue({
       ok: true,
@@ -387,5 +398,4 @@ describe('Permissions', () => {
       'Network error'
     );
   });
-
 });
