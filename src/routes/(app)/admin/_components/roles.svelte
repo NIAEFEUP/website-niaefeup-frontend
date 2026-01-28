@@ -14,7 +14,6 @@
 
   let dialogOpen = $state(false);
   let errorMessage = $state<string | null>(null);
-
 </script>
 
 <section class="flex h-full w-full flex-row py-12">
@@ -23,9 +22,8 @@
       <button
         class="rounded-2xl px-8 py-3 text-center text-xl font-bold transition-all duration-200
                {selectedRole?.id === role.id
-                 ? ' bg-muted-red-500 text-white shadow-lg'
-                 : 'bg-white/10 text-white hover:bg-white/20'}"
-       
+          ? ' bg-muted-red-500 text-white shadow-lg'
+          : 'bg-white/10 text-white hover:bg-white/20'}"
         onclick={() => (selectedRole = role)}
       >
         {role.name}
@@ -34,7 +32,7 @@
 
     <Dialog.Root bind:open={dialogOpen}>
       <Dialog.Trigger
-        class="flex flex-row items-center gap-x-4 rounded-full bg-white/10 px-8 py-4 text-left text-xl font-medium text-white hover:bg-white/20 transition-all"
+        class="flex flex-row items-center gap-x-4 rounded-full bg-white/10 px-8 py-4 text-left text-xl font-medium text-white transition-all hover:bg-white/20"
       >
         <div class="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
           <Icon src={Icons.Add} color="white" size="20px" />
@@ -44,40 +42,38 @@
 
       <Dialog.Content class="rounded-3xl bg-muted-red-500 p-0">
         <form
-        method="POST"
-        action="?/addRole"
-        use:enhance={() => {
+          method="POST"
+          action="?/addRole"
+          use:enhance={() => {
             errorMessage = null;
             return async ({ result, formData }) => {
-                const name = formData.get('name')?.toString().trim();
-                if (name && roles.some(r => r.name.toLowerCase() === name.toLowerCase())) {
-                    errorMessage = 'Role já existente!';
-                    return;
-                    }
-                    if (result.type === 'success') {
-                      if (result.data?.success) {
-                        const newRole = result.data.data as Role;
-                        roles = [...roles, newRole];
-                        selectedRole = newRole;
-                        dialogOpen = false;
-                      } else {
-                        errorMessage =
-                          typeof result.data?.error === 'string'
-                            ? result.data.error
-                            : 'Erro ao criar a role';
-                      }
-                    } else if (result.type === 'failure') {
-                      errorMessage =
-                        typeof result.data?.error === 'string'
-                          ? result.data.error
-                          : 'Erro de validação';
-                    } else {
-                      errorMessage = 'Erro inesperado';
-                    }
-                    await applyAction(result);
-                };
-                }}
-                >
+              const name = formData.get('name')?.toString().trim();
+              if (name && roles.some((r) => r.name.toLowerCase() === name.toLowerCase())) {
+                errorMessage = 'Role já existente!';
+                return;
+              }
+              if (result.type === 'success') {
+                if (result.data?.success) {
+                  const newRole = result.data.data as Role;
+                  roles = [...roles, newRole];
+                  selectedRole = newRole;
+                  dialogOpen = false;
+                } else {
+                  errorMessage =
+                    typeof result.data?.error === 'string'
+                      ? result.data.error
+                      : 'Erro ao criar a role';
+                }
+              } else if (result.type === 'failure') {
+                errorMessage =
+                  typeof result.data?.error === 'string' ? result.data.error : 'Erro de validação';
+              } else {
+                errorMessage = 'Erro inesperado';
+              }
+              await applyAction(result);
+            };
+          }}
+        >
           <Dialog.Header class="flex flex-col gap-y-6 p-8">
             <Dialog.Title class="text-xl">Adicionar nova role</Dialog.Title>
 
@@ -89,11 +85,11 @@
                   name="name"
                   type="text"
                   required={true}
-                  class="bg-white rounded-lg px-4 py-3 text-black"
+                  class="rounded-lg bg-white px-4 py-3 text-black"
                 />
 
                 {#if errorMessage}
-                  <p class="text-center text-red-300 font-medium">
+                  <p class="text-center font-medium text-red-300">
                     {sentenceFirstLetterToUpperCase(errorMessage)}
                   </p>
                 {/if}
@@ -125,12 +121,9 @@
 
   <div class="w-px bg-red-500"></div>
 
-  
   <section class="flex-1 pl-12">
     <div class="mb-12 flex items-center justify-between">
       <h2 class="text-3xl font-bold text-white">Atividade</h2>
-
-
     </div>
 
     <div class="mt-20 text-gray-400">
