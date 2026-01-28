@@ -3,5 +3,5 @@ export type Role = {
   permissions: string[];
   isSection: boolean;
   id: number;
-  associatedActivities: any[];
+  associatedActivities: unknown[];
 };

@@ -4,8 +4,7 @@
   import Icons from '$lib/components/icons/icons';
   import * as Dialog from '$lib/components/ui/dialog/index.js';
   import LabelInput from '$lib/components/forms/label-input.svelte';
-  import { enhance } from '$app/forms';
-  import { applyAction } from '$app/forms';
+  import { enhance , applyAction } from '$app/forms';
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
 
   let { roles = $bindable([] as Role[]) } = $props();
