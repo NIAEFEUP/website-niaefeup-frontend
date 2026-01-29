@@ -45,7 +45,7 @@
 
   {#each groupedSections as section}
     {#if section.accounts.length > 0}
-      <h2 class="my-4 text-lg font-bold md:text-2xl">{section.name}</h2>
+      <h2 class="mb-10 mt-12 text-lg font-bold md:text-2xl">{section.name}</h2>
       <div class="w-full max-w-5xl">
         <HexagonGrid
           items={section.accounts}
