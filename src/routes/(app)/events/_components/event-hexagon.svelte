@@ -2,8 +2,15 @@
   import Hexagon from '@/lib/components/hexagons/hexagon.svelte';
   import type { Event } from '@/types/event.ts';
 
-  export const orientation = 'vertical';
-  let { data, event = data as Event } = $props();
+
+  interface Props {
+    data: Event; 
+    orientation?: 'horizontal' | 'vertical';
+  }
+
+  let { data: event, orientation = 'vertical' }: Props = $props();
+
+  const parseDate = (d: string) => d ? new Date(d.replace(' ', 'T')) : null;
 </script>
 
 <Hexagon orientation="vertical">
@@ -16,7 +23,7 @@
         class="z-20 w-full whitespace-nowrap px-8 text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {#if !event.dateInterval.endDate}
-          {event.dateInterval.startDate
+          {new Date(event.dateInterval.startDate)
             .toLocaleString('pt', {
               day: 'numeric',
               month: 'long',
@@ -24,15 +31,16 @@
             })
             .replaceAll(/(de\s)|(\.)/gi, '')}
         {:else}
-          {event.dateInterval.startDate
+          {new Date(event.dateInterval.startDate)
             .toLocaleString('pt', {
               day: 'numeric',
               month: 'short',
               year: '2-digit'
             })
+            /* esta mal */
             .replaceAll(/(de\s)|(\.)/gi, '') +
             ' - ' +
-            event.dateInterval.endDate
+            new Date(event.dateInterval.endDate)
               .toLocaleDateString('pt', {
                 day: 'numeric',
                 month: 'short',
@@ -42,7 +50,8 @@
         {/if}
       </p>
       <p
-        class="z-20 my-1.5 w-full bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl"
+        class="z-20 my-1.5 w-full bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl text-wrap
+        "
       >
         {event.title}
       </p>
@@ -54,7 +63,7 @@
     </div>
     <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/[.62] text-lg"></div>
     <img
-      src={event.thumbnailPath}
+      src={event.image}
       alt="Event thumbnail"
       class="absolute inset-0 z-0 h-full w-full object-cover"
     />
