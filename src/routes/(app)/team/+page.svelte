@@ -4,13 +4,38 @@
 
   let { data } = $props();
 
-  const sectionDisplayNames: Record<string, string> = {
-    'President': 'Presidente',
-    'Board': 'Direção',
-    'Member': 'Membros',
-    'Recruit': 'Recrutas',
-    'Alumni': 'Alumni'
-  };
+ 
+  const groupedSections = $derived.by(() => {
+    const result: Array<{ name: string; accounts: any[] }> = [];
+
+    const president = data.sections.find((s: any) => s.section === 'President');
+    const board = data.sections.find((s: any) => s.section === 'Board');
+    
+    if (president || board) {
+      result.push({
+        name: 'Direção',
+        accounts: [...(president?.accounts || []), ...(board?.accounts || [])]
+      });
+    }
+    
+  
+    const otherSections = data.sections.filter((s: any) => 
+      s.section !== 'President' && s.section !== 'Board'
+    );
+    
+    for (const section of otherSections) {
+      const displayName = section.section === 'Member' ? 'Membros' :
+                         section.section === 'Recruit' ? 'Recrutas' :
+                         section.section === 'Alumni' ? 'Alumni' :
+                         section.section;
+      result.push({
+        name: displayName,
+        accounts: section.accounts
+      });
+    }
+    
+    return result;
+  });
 </script>
 
 <div class="flex w-full flex-col items-center">
@@ -18,13 +43,13 @@
     &lt&nbsp<strong>Equipa</strong>&nbsp/&gt
   </h1>
 
-  {#each data.sections as section}
+  {#each groupedSections as section}
     {#if section.accounts.length > 0}
-      <h2 class="my-4 text-lg font-bold md:text-2xl">{sectionDisplayNames[section.section] || section.section}</h2>
-      <div class="flex justify-center w-full">
+      <h2 class="my-4 text-lg font-bold md:text-2xl">{section.name}</h2>
+      <div class="w-full max-w-5xl">
         <HexagonGrid
           items={section.accounts}
-          cols={Math.min(section.accounts.length, 4)}
+          cols={4}
           orientation="horizontal"
           component={TeamMemberHexagon}
         />
