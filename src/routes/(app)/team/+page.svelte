@@ -21,12 +21,14 @@
   {#each data.sections as section}
     {#if section.accounts.length > 0}
       <h2 class="my-4 text-lg font-bold md:text-2xl">{sectionDisplayNames[section.section] || section.section}</h2>
-      <HexagonGrid
-        items={section.accounts}
-        cols={4}
-        orientation="horizontal"
-        component={TeamMemberHexagon}
-      />
+      <div class="flex justify-center w-full">
+        <HexagonGrid
+          items={section.accounts}
+          cols={Math.min(section.accounts.length, 4)}
+          orientation="horizontal"
+          component={TeamMemberHexagon}
+        />
+      </div>
     {/if}
   {/each}
 </div>
