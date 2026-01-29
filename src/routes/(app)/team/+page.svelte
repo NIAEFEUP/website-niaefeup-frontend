@@ -1,143 +1,16 @@
 <script lang="ts">
   import TeamMemberHexagon from './_components/team-member-hexagon.svelte';
   import HexagonGrid from '$lib/components/hexagons/hexagon-grid.svelte';
-  import type { TeamMember } from '@/types/team-member';
 
-  // mock data
-  let teamMembers: TeamMember[] = $state([
-    {
-      email: 'franciscaportugal2005@gmail.com',
-      name: 'Francisca Portugal',
-      bio: 'Recruta do NIAEFEUP',
-      birthDate: new Date('2005-04-19'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/franciscaportugal',
-      github: 'https://github.com/franpts2',
-      websites: []
-    },
-    {
-      email: 'maluviieira@gmail.com',
-      name: 'Maria Luiza Vieira',
-      bio: 'Recruta no NIAEFEUP',
-      birthDate: new Date('2005-09-29'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/marialuizahvieira',
-      github: 'https://github.com/maluviieira',
-      websites: []
-    },
-    {
-      email: 'franciscaportugal2005@gmail.com',
-      name: 'Francisca Portugal',
-      bio: 'Recruta do NIAEFEUP',
-      birthDate: new Date('2005-04-19'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/franciscaportugal',
-      github: 'https://github.com/franpts2',
-      websites: []
-    },
-    {
-      email: 'maluviieira@gmail.com',
-      name: 'Maria Luiza Vieira',
-      bio: 'Recruta no NIAEFEUP',
-      birthDate: new Date('2005-09-29'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/marialuizahvieira',
-      github: 'https://github.com/maluviieira',
-      websites: []
-    },
-    {
-      email: 'franciscaportugal2005@gmail.com',
-      name: 'Francisca Portugal',
-      bio: 'Recruta do NIAEFEUP',
-      birthDate: new Date('2005-04-19'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/franciscaportugal',
-      github: 'https://github.com/franpts2',
-      websites: []
-    },
-    {
-      email: 'maluviieira@gmail.com',
-      name: 'Maria Luiza Vieira',
-      bio: 'Recruta no NIAEFEUP',
-      birthDate: new Date('2005-09-29'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/marialuizahvieira',
-      github: 'https://github.com/maluviieira',
-      websites: []
-    },
-    {
-      email: 'franciscaportugal2005@gmail.com',
-      name: 'Francisca Portugal',
-      bio: 'Recruta do NIAEFEUP',
-      birthDate: new Date('2005-04-19'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/franciscaportugal',
-      github: 'https://github.com/franpts2',
-      websites: []
-    },
-    {
-      email: 'maluviieira@gmail.com',
-      name: 'Maria Luiza Vieira',
-      bio: 'Recruta no NIAEFEUP',
-      birthDate: new Date('2005-09-29'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/marialuizahvieira',
-      github: 'https://github.com/maluviieira',
-      websites: []
-    },
-    {
-      email: 'franciscaportugal2005@gmail.com',
-      name: 'Francisca Portugal',
-      bio: 'Recruta do NIAEFEUP',
-      birthDate: new Date('2005-04-19'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/franciscaportugal',
-      github: 'https://github.com/franpts2',
-      websites: []
-    },
-    {
-      email: 'maluviieira@gmail.com',
-      name: 'Maria Luiza Vieira',
-      bio: 'Recruta no NIAEFEUP',
-      birthDate: new Date('2005-09-29'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/marialuizahvieira',
-      github: 'https://github.com/maluviieira',
-      websites: []
-    },
-    {
-      email: 'franciscaportugal2005@gmail.com',
-      name: 'Francisca Portugal',
-      bio: 'Recruta do NIAEFEUP',
-      birthDate: new Date('2005-04-19'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/franciscaportugal',
-      github: 'https://github.com/franpts2',
-      websites: []
-    },
-    {
-      email: 'maluviieira@gmail.com',
-      name: 'Maria Luiza Vieira',
-      bio: 'Recruta no NIAEFEUP',
-      birthDate: new Date('2005-09-29'),
-      role: 'Recruta',
-      photo: '/images/default_profile_pic.png',
-      linkedin: 'https://linkedin.com/in/marialuizahvieira',
-      github: 'https://github.com/maluviieira',
-      websites: []
-    }
-  ]);
+  let { data } = $props();
+
+  const sectionDisplayNames: Record<string, string> = {
+    'President': 'Presidente',
+    'Board': 'Direção',
+    'Member': 'Membros',
+    'Recruit': 'Recrutas',
+    'Alumni': 'Alumni'
+  };
 </script>
 
 <div class="flex w-full flex-col items-center">
@@ -145,11 +18,15 @@
     &lt&nbsp<strong>Equipa</strong>&nbsp/&gt
   </h1>
 
-  <h2 class="my-4 text-lg font-bold md:text-2xl">Recrutas</h2>
-  <HexagonGrid
-    items={teamMembers}
-    cols={4}
-    orientation="horizontal"
-    component={TeamMemberHexagon}
-  />
+  {#each data.sections as section}
+    {#if section.accounts.length > 0}
+      <h2 class="my-4 text-lg font-bold md:text-2xl">{sectionDisplayNames[section.section] || section.section}</h2>
+      <HexagonGrid
+        items={section.accounts}
+        cols={4}
+        orientation="horizontal"
+        component={TeamMemberHexagon}
+      />
+    {/if}
+  {/each}
 </div>
