@@ -130,7 +130,7 @@
       class="variable-opacity absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-30"
     ></div>
     <img
-      src={teamMember.photo ? teamMember.photo : 'images/default_profile_pic.png'}
+      src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
       alt="NIAFEUP member {teamMember.name}"
       class="z-0 h-full w-full object-cover"
     />
