@@ -64,13 +64,13 @@
     bind:this={inputElement}
   />
 
-  {#each filesDeleted as deletedUrl}
+  {#each filesDeleted as deletedUrl (deletedUrl)}
     <input type="hidden" name="{name}_to_delete" value={deletedUrl} />
   {/each}
 
   {#if files.length}
     <div class="flex flex-wrap gap-2">
-      {#each files as file}
+      {#each files as file (getFileName(file))}
         <div class="file-item flex min-w-0 items-center gap-2 rounded bg-taupe-200 px-2 py-2">
           <span class="text-sm font-bold text-rose-950">{getFileName(file)}</span>
           <button

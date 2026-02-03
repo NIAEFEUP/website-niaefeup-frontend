@@ -1,6 +1,6 @@
 <script lang="ts">
+  import type { IconType } from 'svelte-icons-pack';
   import Icon from '@/lib/components/icons/icon.svelte';
-  import type { IconType } from '@/lib/components/icons/icon';
 
   interface Props {
     url: string;
