@@ -8,20 +8,17 @@
 
   let files = $state(value);
   let inputElement: HTMLInputElement;
+  let filesDeleted: string[] = $state([]); 
 
   function updateInputElement() {
     if (!inputElement) return;
-
     const dataTransfer = new DataTransfer();
-    
     files.forEach((file) => {
       if (file instanceof File) {
         dataTransfer.items.add(file);
       }
     });
-
     inputElement.files = dataTransfer.files;
-    
     value = files;
   }
 
@@ -29,14 +26,16 @@
     const target = event.target as HTMLInputElement;
     if (target.files) {
       const newFiles = Array.from(target.files);
-      
       files = [...files, ...newFiles];
-      
       updateInputElement();
     }
   }
 
   function removeFile(fileToRemove: string | File) {
+    if (typeof fileToRemove === 'string') {
+      filesDeleted.push(fileToRemove);
+    }
+
     files = files.filter((file) => file !== fileToRemove);
     updateInputElement();
   }
@@ -64,6 +63,10 @@
     class="hidden"
     bind:this={inputElement}
   />
+
+  {#each filesDeleted as deletedUrl}
+    <input type="hidden" name="{name}_to_delete" value={deletedUrl} />
+  {/each}
 
   {#if files.length}
     <div class="flex flex-wrap gap-2">

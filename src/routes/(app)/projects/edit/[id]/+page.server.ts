@@ -1,5 +1,4 @@
 import type { RequestEvent } from '@sveltejs/kit';
-import { PUT } from '@/routes/api/[...endpoint]/+server.js';
 
 export const actions = {
   default: async ({ request, params, fetch }: RequestEvent) => {
@@ -17,7 +16,6 @@ export const actions = {
     };
 
     const form = new FormData();
-
     const projectBlob = new Blob([JSON.stringify(projectDto)], {
       type: 'application/json'
     });
@@ -25,43 +23,50 @@ export const actions = {
 
     const imageFile = formData.get('image');
     if (imageFile instanceof File && imageFile.size > 0) {
-      //console.log(imageFile.name);
       form.append('image', imageFile);
     }
 
     const thumbnailFile = formData.get('thumbnail');
     if (thumbnailFile instanceof File && thumbnailFile.size > 0) {
-      //console.log(thumbnailFile.name);
       form.append('thumbnail', thumbnailFile);
     }
 
-    async function uploadImage(idProject: string, file: File) {
-      const formData = new FormData();
-      formData.append('image', file);
-      const response = await fetch(`/api/projects/${idProject}/gallery`, {
-        method: 'PUT',
-        body: formData
-      });
-      if (!response.ok) {
-        throw new Error(`Upload failed: ${response.statusText}`);
-      }
-      return await response.json();
-      //const data = await response.json();
-      //console.log('Uploaded project:', data);
-    }
-
-    formData.getAll('gallery').forEach((galleryFile) => {
-      if (galleryFile instanceof File && galleryFile.size > 0) {
-        //console.log(galleryFile.name);
-        uploadImage(id, galleryFile);
+    const imagesToDelete = formData.getAll('gallery_to_delete');
+    const deletePromises = imagesToDelete.map((imageUrl) => {
+      if (typeof imageUrl === 'string' && imageUrl.length > 0) {
+        const deleteFormData = new FormData();
+        deleteFormData.append('imageUrl', imageUrl);
+        
+        return fetch(`/api/projects/${id}/gallery`, {
+            method: 'DELETE',
+            body: deleteFormData
+        });
       }
     });
+    await Promise.all(deletePromises);
 
-    const success = await fetch(`/api/projects/${id}`, {
+    const galleryFiles = formData.getAll('gallery');
+    const uploadPromises = galleryFiles.map((galleryFile) => {
+      if (galleryFile instanceof File && galleryFile.size > 0) {
+        const uploadFormData = new FormData();
+        uploadFormData.append('image', galleryFile);
+        
+        return fetch(`/api/projects/${id}/gallery`, {
+          method: 'PUT',
+          body: uploadFormData
+        }).then(res => {
+            if (!res.ok) throw new Error(`Upload failed: ${res.statusText}`);
+            return res.json();
+        });
+      }
+    });
+    await Promise.all(uploadPromises);
+
+    const response = await fetch(`/api/projects/${id}`, {
       method: 'PUT',
       body: form
-    }).then((res) => res.ok);
+    });
 
-    return success;
+    return response.ok;
   }
 };
