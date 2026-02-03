@@ -43,7 +43,7 @@
 </script>
 
 <div class="flex w-full flex-col items-center">
-  <h1 class="my-2 text-center font-source_code text-xl text-white md:my-4 md:text-3xl">
+  <h1 class="my-2 text-center font-source_code text-2xl text-white md:my-4 md:text-3xl">
     &lt&nbsp<strong>Equipa</strong>&nbsp/&gt
   </h1>
 
@@ -55,7 +55,7 @@
         {#if section.accounts.length > 0}
           <button
             onclick={() => toggleSection(section.name)}
-            class="text-3xl font-bold transition-opacity {openSection === section.name ? 'opacity-100' : 'opacity-20'}"
+            class="text-2xl font-bold transition-opacity {openSection === section.name ? 'opacity-100' : 'opacity-20'}"
           >
             {section.name}
           </button>
