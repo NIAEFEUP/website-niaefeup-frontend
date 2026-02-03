@@ -25,13 +25,13 @@ export const actions = {
 
     const imageFile = formData.get('image');
     if (imageFile instanceof File && imageFile.size > 0) {
-      console.log(imageFile.name);
+      //console.log(imageFile.name);
       form.append('image', imageFile);
     }
 
     const thumbnailFile = formData.get('thumbnail');
     if (thumbnailFile instanceof File && thumbnailFile.size > 0) {
-      console.log(thumbnailFile.name);
+      //console.log(thumbnailFile.name);
       form.append('thumbnail', thumbnailFile);
     }
 
@@ -45,14 +45,14 @@ export const actions = {
       if (!response.ok) {
         throw new Error(`Upload failed: ${response.statusText}`);
       }
-      const data = await response.json();
-      console.log('Uploaded project:', data);
+      return await response.json();
+      //const data = await response.json();
+      //console.log('Uploaded project:', data);
     }
 
     formData.getAll('gallery').forEach((galleryFile) => {
       if (galleryFile instanceof File && galleryFile.size > 0) {
-        form.append('gallery', galleryFile);
-        console.log(galleryFile.name);
+        //console.log(galleryFile.name);
         uploadImage(id, galleryFile);
       }
     });

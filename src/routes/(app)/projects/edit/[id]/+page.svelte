@@ -5,6 +5,8 @@
   import PictureInput from '@/lib/components/forms/picture-input.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Project } from '@/types/project';
+  import HexagonGrid from '../../../../../lib/components/hexagons/hexagon-grid.svelte';
+  import { Hexagon } from 'lucide-svelte';
 
   let { data }: { data: PageData } = $props();
   const project: Project = data.project;
