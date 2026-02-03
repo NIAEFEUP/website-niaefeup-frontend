@@ -8,7 +8,7 @@
 
   let files = $state(value);
   let inputElement: HTMLInputElement;
-  let filesDeleted: string[] = $state([]); 
+  let filesDeleted: string[] = $state([]);
 
   function updateInputElement() {
     if (!inputElement) return;
@@ -71,10 +71,10 @@
   {#if files.length}
     <div class="flex flex-wrap gap-2">
       {#each files as file}
-        <div class="file-item flex items-center gap-2 min-w-0 rounded bg-taupe-200 px-2 py-2">
-          <span class="font-bold text-rose-950 text-sm">{getFileName(file)}</span>
+        <div class="file-item flex min-w-0 items-center gap-2 rounded bg-taupe-200 px-2 py-2">
+          <span class="text-sm font-bold text-rose-950">{getFileName(file)}</span>
           <button
-            type="button" 
+            type="button"
             onclick={() => removeFile(file)}
             class="rounded bg-red-200 px-2 font-bold text-black hover:bg-red-500"
           >

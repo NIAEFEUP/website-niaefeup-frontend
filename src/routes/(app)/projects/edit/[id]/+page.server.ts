@@ -36,10 +36,10 @@ export const actions = {
       if (typeof imageUrl === 'string' && imageUrl.length > 0) {
         const deleteFormData = new FormData();
         deleteFormData.append('imageUrl', imageUrl);
-        
+
         return fetch(`/api/projects/${id}/gallery`, {
-            method: 'DELETE',
-            body: deleteFormData
+          method: 'DELETE',
+          body: deleteFormData
         });
       }
     });
@@ -50,13 +50,13 @@ export const actions = {
       if (galleryFile instanceof File && galleryFile.size > 0) {
         const uploadFormData = new FormData();
         uploadFormData.append('image', galleryFile);
-        
+
         return fetch(`/api/projects/${id}/gallery`, {
           method: 'PUT',
           body: uploadFormData
-        }).then(res => {
-            if (!res.ok) throw new Error(`Upload failed: ${res.statusText}`);
-            return res.json();
+        }).then((res) => {
+          if (!res.ok) throw new Error(`Upload failed: ${res.statusText}`);
+          return res.json();
         });
       }
     });
