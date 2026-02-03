@@ -4,7 +4,8 @@
 
   let { data } = $props();
 
- 
+  let openSection = $state<string | null>('Direção');
+
   const groupedSections = $derived.by(() => {
     const result: Array<{ name: string; accounts: any[] }> = [];
 
@@ -18,7 +19,6 @@
       });
     }
     
-  
     const otherSections = data.sections.filter((s: any) => 
       s.section !== 'President' && s.section !== 'Board'
     );
@@ -36,6 +36,10 @@
     
     return result;
   });
+
+  const toggleSection = (sectionName: string) => {
+    openSection = openSection === sectionName ? null : sectionName;
+  };
 </script>
 
 <div class="flex w-full flex-col items-center">
@@ -43,16 +47,55 @@
     &lt&nbsp<strong>Equipa</strong>&nbsp/&gt
   </h1>
 
+  <!-- mobile view -->
+  <div class="w-full md:hidden">
+
+    <div class="flex justify-around px-4 py-6">
+      {#each groupedSections as section}
+        {#if section.accounts.length > 0}
+          <button
+            onclick={() => toggleSection(section.name)}
+            class="text-3xl font-bold transition-opacity {openSection === section.name ? 'opacity-100' : 'opacity-20'}"
+          >
+            {section.name}
+          </button>
+        {/if}
+      {/each}
+    </div>
+
+    <!-- active section content -->
+    {#each groupedSections as section}
+      {#if section.accounts.length > 0 && openSection === section.name}
+        <div class="flex justify-center px-4 pb-8">
+          <div class="w-fit max-w-md">
+            <HexagonGrid
+              items={section.accounts}
+              cols={2}
+              orientation="horizontal"
+              component={TeamMemberHexagon}
+              gap="small"
+            />
+          </div>
+        </div>
+      {/if}
+    {/each}
+  </div>
+
+  <!-- desktop view -->
   {#each groupedSections as section}
     {#if section.accounts.length > 0}
-      <h2 class="mb-10 mt-12 text-lg font-bold md:text-2xl">{section.name}</h2>
-      <div class="w-full max-w-5xl">
-        <HexagonGrid
-          items={section.accounts}
-          cols={4}
-          orientation="horizontal"
-          component={TeamMemberHexagon}
-        />
+      <div class="hidden w-full md:block">
+        <h2 class="mb-10 mt-12 text-center text-lg font-bold md:text-2xl">
+          {section.name}
+        </h2>
+        <div class="mx-auto w-full max-w-5xl">
+          <HexagonGrid
+            items={section.accounts}
+            cols={4}
+            orientation="horizontal"
+            component={TeamMemberHexagon}
+          />
+        </div>
       </div>
     {/if}
   {/each}
