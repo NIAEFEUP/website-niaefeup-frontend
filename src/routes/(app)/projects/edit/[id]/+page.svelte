@@ -44,7 +44,7 @@
       </div>
 
       <div class="order-1 flex flex-col items-center gap-5 self-center md:order-2 md:self-start">
-        <PictureInput name="image" text="Adicionar logo"  value={project.image}/>
+        <PictureInput name="image" text="Adicionar logo" value={project.image} />
         <PictureInput name="thumbnail" text="Adicionar imagem menu" value={project.thumbnail} />
       </div>
     </div>

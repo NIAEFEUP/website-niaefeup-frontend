@@ -10,7 +10,7 @@
     value?: string;
   }
 
-  let { text, name = 'profilePicture', value = $bindable()}: Props = $props();
+  let { text, name = 'profilePicture', value = $bindable() }: Props = $props();
   let image: string | undefined = $state(value);
   let fileInput: HTMLInputElement | undefined = $state();
   const onFileSelected = (e) => {
