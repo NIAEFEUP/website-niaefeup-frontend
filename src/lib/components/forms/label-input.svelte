@@ -11,7 +11,20 @@
     required?: boolean;
     minlength?: number | undefined;
     maxlength?: number | undefined;
+    class?: string;
     [key: string]: unknown;
+  }
+  function changeColor() {
+    const input = document.getElementById(id) as HTMLInputElement | null;
+    if (!input) return;
+    const inputValue = input.value;
+    if (inputValue) {
+      input.classList.add('text-primary');
+      input.classList.remove('text-secondary');
+      return;
+    }
+    input.classList.remove('text-primary');
+    input.classList.add('text-secondary');
   }
 
   let {
@@ -22,17 +35,17 @@
     type = 'text',
     placeholder = '',
     isTextArea = false,
-    horizontal = false,
     required = false,
     minlength = undefined,
     maxlength = undefined,
+    class: className = '',
     ...rest
   }: Props = $props();
 </script>
 
-<div class="flex flex-{horizontal ? 'row' : 'col'} {$$props.className}">
+<div class="flex} {className}">
   {#if label}
-    <div style="width: {textGap ? textGap : '20'}em;">
+    <div style="width: 20em">
       <label
         class="m-1 flex flex-row font-source_code font-bold text-white"
         class:flex-row={required}
@@ -53,7 +66,6 @@
       {id}
       {name}
       {placeholder}
-      {name}
       {required}
       {minlength}
       {maxlength}
@@ -62,19 +74,18 @@
     ></textarea>
   {:else}
     <input
-      on:input={changeColor}
+      oninput={changeColor}
       aria-label="text-input"
-      class="w-full rounded-lg bg-white p-2 placeholder-secondary"
+      class="w-full rounded-lg bg-white p-2 text-primary placeholder-secondary"
       {type}
       {id}
       {name}
       {placeholder}
-      {name}
       {required}
       {minlength}
       {maxlength}
       {...rest}
-      bind:value
+      bind:value  
     />
   {/if}
 </div>

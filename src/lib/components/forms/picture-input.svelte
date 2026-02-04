@@ -7,9 +7,12 @@
   interface Props {
     text: string;
     name?: string;
+    required?: boolean;
+    value?: string;
+    source?: string | null;
   }
 
-  let { text, name = 'profilePicture' }: Props = $props();
+  let { text, name = 'profilePicture', required = false, value = '', source = '' }: Props = $props();
   let image: string | undefined = $state();
   let fileInput: HTMLInputElement | undefined = $state();
 
