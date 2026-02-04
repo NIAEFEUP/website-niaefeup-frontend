@@ -85,7 +85,7 @@
       {minlength}
       {maxlength}
       {...rest}
-      bind:value  
+      bind:value
     />
   {/if}
 </div>
