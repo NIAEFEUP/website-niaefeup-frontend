@@ -77,7 +77,7 @@
           label="Nome"
           placeholder="John Doe"
           value={account.name}
-          textGap={"30"}
+          textGap={'30'}
         />
 
         <RadioButton
@@ -92,7 +92,7 @@
           label="Email"
           placeholder="Insira o Texto"
           value={account.email}
-          textGap={"30"}
+          textGap={'30'}
         />
 
         <LabelInput
@@ -100,7 +100,7 @@
           label="Data de Nascimento"
           type="datetime-local"
           value={toISOLocal(account.birthDate)}
-          textGap={"30"}
+          textGap={'30'}
         />
 
         <LabelInput
@@ -108,7 +108,7 @@
           label="Linkedin"
           placeholder="Insira o Texto"
           value={account.linkedin ? account.linkedin : ''}
-          textGap={"30"}
+          textGap={'30'}
         />
         <div class="w-full">
           {#if websites.length}
@@ -134,11 +134,14 @@
                             bind:value={website.url}
                             required
                           />
-                          <PictureInput
-                            text="Icon Website"
-                            name={`icon ${index + 1}`}
-                            value={website.iconPath}
-                          />
+
+                          <div class="mt-4">
+                            <PictureInput
+                              text="Icon Website"
+                              name={`icon ${index + 1}`}
+                              value={website.iconPath}
+                            />
+                          </div>
                         </Card.Content>
                       </Card.Root>
                     </Carousel.Item>
@@ -158,7 +161,7 @@
             hoverColor="secondary"
             width="large"
             text="Adicionar Site"
-            on:click={addCustomWebsite}
+            onClick={addCustomWebsite}
           />
           {#if websites.length}
             <Button
@@ -167,7 +170,7 @@
               hoverColor="secondary"
               width="large"
               text="Remover Site"
-              on:click={removeCustomWebsite}
+              onClick={removeCustomWebsite}
             />
           {/if}
         </div>
@@ -177,7 +180,7 @@
           label="Github"
           placeholder="Insira o Texto"
           value={account.github ? account.github : ''}
-          textGap={"30"}
+          textGap={'30'}
         />
 
         <LabelInput
@@ -186,7 +189,7 @@
           placeholder="Insira o Texto"
           isTextArea={true}
           value={account.bio ? account.bio : ''}
-          textGap={30}
+          textGap={"30"}
         />
 
         {#if form?.errorMessage}

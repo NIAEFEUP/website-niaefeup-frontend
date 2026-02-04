@@ -3,7 +3,7 @@
     value?: string;
     label?: string;
     id?: string;
-    name?:string;
+    name?: string;
     type?: string;
     placeholder?: string;
     isTextArea?: boolean;

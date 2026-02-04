@@ -5,7 +5,7 @@
     hoverColor: keyof typeof colorList;
     width: keyof typeof widthList;
     text: string;
-    onClick: (() => void) | undefined;
+    onClick?: (() => void) | undefined;
   }
 
   let { type = 'button', color, hoverColor, width, text, onClick = () => null }: Props = $props();

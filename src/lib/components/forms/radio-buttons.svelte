@@ -4,10 +4,10 @@
     options: string[];
     horizontal?: boolean;
     name?: string;
+    selected?: string;
   }
 
-  let { label = '', options, horizontal = false, name = '' }: Props = $props();
-  let selected = $state(options[0]);
+  let { label = '', options, horizontal = false, name = '', selected = options[0]}: Props = $props();
 </script>
 
 <fieldset class="flex flex-row align-middle">

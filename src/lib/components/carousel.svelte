@@ -25,6 +25,7 @@
     <Carousel.Content>
       {#each Array(5) as i}
         <!-- eslint-disable-line @typescript-eslint/no-unused-vars -->
+        <!-- eslint-disable-line @typescript-eslint/require-each-key -->
         <Carousel.Item>
           <img
             class="max-h-[30vh] w-full rounded-3xl object-cover object-center"
