@@ -4,13 +4,14 @@
   import { createNotification } from '@/routes/(app)/_components/layout/notifications';
   import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
 
-  export let value = '';
-  export let source = '';
-  export let text: string;
-  export let name: string = 'profilePicture';
-  export let required = false;
-  let image: string;
-  let fileInput: HTMLInputElement;
+  interface Props {
+    text: string;
+    name?: string;
+  }
+
+  let { text, name = 'profilePicture' }: Props = $props();
+  let image: string | undefined = $state();
+  let fileInput: HTMLInputElement | undefined = $state();
 
   const onFileSelected = (e) => {
     const file = e.target.files[0];
@@ -38,14 +39,14 @@
     {value}
     {required}
     accept="image/*"
-    on:change={(e) => onFileSelected(e)}
+    onchange={(e) => onFileSelected(e)}
     bind:this={fileInput}
   />
   <button
     type="button"
     aria-label="Upload image"
-    class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-700 text-center hover:bg-muted-red-500"
-    on:click={() => {
+    class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-400 text-center"
+    onclick={() => {
       fileInput.click();
     }}
   >
@@ -68,7 +69,7 @@
     type="button"
     aria-label="Remove image"
     class="{image ? 'visible' : 'invisible'} text-sm font-bold text-white hover:underline"
-    on:click={() => {
+    onclick={() => {
       fileInput.value = image = '';
     }}
   >

@@ -1,12 +1,16 @@
 <script lang="ts">
+  import type { IconType } from 'svelte-icons-pack';
   import Icon from '@/lib/components/icons/icon.svelte';
-  import type { IconType } from '@/lib/components/icons/icon';
 
-  export let url: string;
-  export let social: string;
-  export let icon: IconType;
-  export let user: string;
-  export let iconPath: string | null = null;
+  interface Props {
+    url: string;
+    social: string;
+    icon: IconType;
+    user: string;
+    iconPath?: string | null;
+  }
+
+  let { url, social, icon, user, iconPath = null }: Props = $props();
 </script>
 
 <div class="h-12 w-12 rounded-md bg-white/20 p-3 sm:h-14 sm:w-14 sm:p-4">

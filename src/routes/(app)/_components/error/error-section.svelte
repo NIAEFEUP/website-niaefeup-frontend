@@ -1,5 +1,11 @@
 <script lang="ts">
-  export let align: string, heading: string, text: string;
+  interface Props {
+    align: string;
+    heading: string;
+    text: string;
+  }
+
+  let { align, heading, text }: Props = $props();
 </script>
 
 <section class="flex flex-col text-white {align} gap-3 break-normal">

@@ -1,34 +1,33 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { guidGenerator } from '$lib/utils';
-
-  export let value = '';
-  export let label = '';
-  export let id = `labelinput-${guidGenerator()}`;
-  export let type = 'text';
-  export let placeholder = '';
-  export let isTextArea = false;
-  export let required = false;
-  export let horizontal = false;
-  export let textGap;
-  export let name = '';
-
-  function changeColor() {
-    const input = document.getElementById(id) as HTMLInputElement | null;
-    if (!input) return;
-    const inputValue = input.value;
-    if (inputValue) {
-      input.classList.add('text-primary');
-      input.classList.remove('text-secondary');
-      return;
-    }
-    input.classList.remove('text-primary');
-    input.classList.add('text-secondary');
+  interface Props {
+    value?: string;
+    label?: string;
+    id?: string;
+    name?: string;
+    type?: string;
+    placeholder?: string;
+    isTextArea?: boolean;
+    horizontal?: boolean;
+    required?: boolean;
+    minlength?: number | undefined;
+    maxlength?: number | undefined;
+    [key: string]: unknown;
   }
 
-  onMount(() => {
-    changeColor();
-  });
+  let {
+    value = $bindable(),
+    label = '',
+    id = '',
+    name = '',
+    type = 'text',
+    placeholder = '',
+    isTextArea = false,
+    horizontal = false,
+    required = false,
+    minlength = undefined,
+    maxlength = undefined,
+    ...rest
+  }: Props = $props();
 </script>
 
 <div class="flex flex-{horizontal ? 'row' : 'col'} {$$props.className}">
@@ -49,14 +48,18 @@
   {#if isTextArea}
     <textarea
       aria-label="textarea-input"
-      class="min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-secondary"
+      class="mb-2 min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
+      rows="4"
       {id}
       {name}
       {placeholder}
+      {name}
       {required}
-      rows="4"
-    >
-    </textarea>
+      {minlength}
+      {maxlength}
+      {...rest}
+      bind:value
+    ></textarea>
   {:else}
     <input
       on:input={changeColor}
@@ -66,8 +69,12 @@
       {id}
       {name}
       {placeholder}
+      {name}
       {required}
-      {value}
+      {minlength}
+      {maxlength}
+      {...rest}
+      bind:value
     />
   {/if}
 </div>
