@@ -23,9 +23,7 @@
 <div class="my-16">
   <Carousel.Root bind:api class="mx-auto max-w-[80%] lg:max-w-full">
     <Carousel.Content>
-      {#each Array(5) as i}
-        <!-- eslint-disable-line @typescript-eslint/no-unused-vars -->
-        <!-- eslint-disable-line @typescript-eslint/require-each-key -->
+      {#each Array(5) as _, i (i)}
         <Carousel.Item>
           <img
             class="max-h-[30vh] w-full rounded-3xl object-cover object-center"

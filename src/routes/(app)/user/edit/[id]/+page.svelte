@@ -189,7 +189,7 @@
           placeholder="Insira o Texto"
           isTextArea={true}
           value={account.bio ? account.bio : ''}
-          textGap={"30"}
+          textGap={'30'}
         />
 
         {#if form?.errorMessage}

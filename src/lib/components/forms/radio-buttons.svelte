@@ -7,7 +7,13 @@
     selected?: string;
   }
 
-  let { label = '', options, horizontal = false, name = '', selected = options[0]}: Props = $props();
+  let {
+    label = '',
+    options,
+    horizontal = false,
+    name = '',
+    selected = options[0]
+  }: Props = $props();
 </script>
 
 <fieldset class="flex flex-row align-middle">

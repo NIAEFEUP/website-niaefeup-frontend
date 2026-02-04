@@ -3,7 +3,7 @@
   import Icons from '$lib/components/icons/icons';
   import { createNotification } from '@/routes/(app)/_components/layout/notifications';
   import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
-  
+
   interface Props {
     text: string;
     name?: string;

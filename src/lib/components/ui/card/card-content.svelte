@@ -10,7 +10,6 @@
     [key: string]: $$Props['class'];
   }
 
-
   let { class: className = undefined, children, ...rest }: Props = $props();
 </script>
 
