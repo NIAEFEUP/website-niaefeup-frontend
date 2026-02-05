@@ -9,10 +9,44 @@
 
   let { data: event, orientation = 'vertical' }: Props = $props();
 
-  const parseDate = (d: string) => (d ? new Date(d.replace(' ', 'T')) : null);
+  const parseDate = (d: string | Date): Date => {
+    if (d instanceof Date) return d;
+
+    // DD-MM-YYYY HH:mm
+    const match = d.match(/^(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2})$/);
+    if (match) {
+      const [, day, month, year, hour, minute] = match;
+      return new Date(`${year}-${month}-${day}T${hour}:${minute}`);
+    }
+
+    // Fallback for other formats
+    return new Date(d.replace(' ', 'T'));
+  };
+
+  const formatDate = (date: Date, options: Intl.DateTimeFormatOptions): string => {
+    return date.toLocaleDateString('pt', options).replaceAll(/(de\s)|(\.)/gi, '');
+  };
+
+  const getDateDisplay = (): string => {
+    const start = parseDate(event.dateInterval.startDate);
+    const end = parseDate(event.dateInterval.endDate);
+
+    const startFormatted = formatDate(start, {
+      day: 'numeric',
+      month: 'short',
+      year: '2-digit'
+    });
+    const endFormatted = formatDate(end, {
+      day: 'numeric',
+      month: 'short',
+      year: '2-digit'
+    });
+
+    return `${startFormatted} - ${endFormatted}`;
+  };
 </script>
 
-<Hexagon orientation="vertical">
+<Hexagon {orientation}>
   <div
     class="group relative box-content flex h-full w-full justify-center md:shadow-black/[.58] md:text-shadow"
     data-testid="event-hexagon"
@@ -21,32 +55,7 @@
       <p
         class="z-20 w-full whitespace-nowrap px-8 text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
-        {#if !event.dateInterval.endDate}
-          {new Date(event.dateInterval.startDate)
-            .toLocaleString('pt', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric'
-            })
-            .replaceAll(/(de\s)|(\.)/gi, '')}
-        {:else}
-          {new Date(event.dateInterval.startDate)
-            .toLocaleString('pt', {
-              day: 'numeric',
-              month: 'short',
-              year: '2-digit'
-            })
-            /* esta mal */
-            .replaceAll(/(de\s)|(\.)/gi, '') +
-            ' - ' +
-            new Date(event.dateInterval.endDate)
-              .toLocaleDateString('pt', {
-                day: 'numeric',
-                month: 'short',
-                year: '2-digit'
-              })
-              .replaceAll(/(de\s)|(\.)/gi, '')}
-        {/if}
+        {getDateDisplay()}
       </p>
       <p
         class="z-20 my-1.5 w-full text-wrap bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl
