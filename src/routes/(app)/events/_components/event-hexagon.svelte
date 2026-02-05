@@ -2,15 +2,14 @@
   import Hexagon from '@/lib/components/hexagons/hexagon.svelte';
   import type { Event } from '@/types/event.ts';
 
-
   interface Props {
-    data: Event; 
+    data: Event;
     orientation?: 'horizontal' | 'vertical';
   }
 
   let { data: event, orientation = 'vertical' }: Props = $props();
 
-  const parseDate = (d: string) => d ? new Date(d.replace(' ', 'T')) : null;
+  const parseDate = (d: string) => (d ? new Date(d.replace(' ', 'T')) : null);
 </script>
 
 <Hexagon orientation="vertical">
@@ -50,7 +49,7 @@
         {/if}
       </p>
       <p
-        class="z-20 my-1.5 w-full bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl text-wrap
+        class="z-20 my-1.5 w-full text-wrap bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl
         "
       >
         {event.title}
