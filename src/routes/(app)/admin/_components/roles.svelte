@@ -1,0 +1,132 @@
+<script lang="ts">
+  import type { Role } from '@/types/role';
+  import Icon from '$lib/components/icons/icon.svelte';
+  import Icons from '$lib/components/icons/icons';
+  import * as Dialog from '$lib/components/ui/dialog/index.js';
+  import LabelInput from '$lib/components/forms/label-input.svelte';
+  import { enhance, applyAction } from '$app/forms';
+  import { sentenceFirstLetterToUpperCase } from '$lib/utils';
+
+  let { roles = $bindable([] as Role[]) } = $props();
+
+  let selectedRole: Role | null = $state(roles[0] ?? null);
+
+  let dialogOpen = $state(false);
+  let errorMessage = $state<string | null>(null);
+</script>
+
+<section class="flex h-full w-full flex-row py-12">
+  <aside class="flex w-80 flex-col gap-y-4 pr-12">
+    {#each roles as role (role.id)}
+      <button
+        class="rounded-2xl px-8 py-3 text-center text-xl font-bold transition-all duration-200
+               {selectedRole?.id === role.id
+          ? ' bg-muted-red-500 text-white shadow-lg'
+          : 'bg-white/10 text-white hover:bg-white/20'}"
+        onclick={() => (selectedRole = role)}
+      >
+        {role.name}
+      </button>
+    {/each}
+
+    <Dialog.Root bind:open={dialogOpen}>
+      <Dialog.Trigger
+        class="flex flex-row items-center gap-x-4 rounded-full bg-white/10 px-8 py-4 text-left text-xl font-medium text-white transition-all hover:bg-white/20"
+      >
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
+          <Icon src={Icons.Add} color="white" size="20px" />
+        </div>
+        Adicionar Role
+      </Dialog.Trigger>
+
+      <Dialog.Content class="rounded-3xl bg-muted-red-500 p-0">
+        <form
+          method="POST"
+          action="?/addRole"
+          use:enhance={() => {
+            errorMessage = null;
+            return async ({ result, formData }) => {
+              const name = formData.get('name')?.toString().trim();
+              if (name && roles.some((r) => r.name.toLowerCase() === name.toLowerCase())) {
+                errorMessage = 'Role já existente!';
+                return;
+              }
+              if (result.type === 'success') {
+                if (result.data?.success) {
+                  const newRole = result.data.data as Role;
+                  roles = [...roles, newRole];
+                  selectedRole = newRole;
+                  dialogOpen = false;
+                } else {
+                  errorMessage =
+                    typeof result.data?.error === 'string'
+                      ? result.data.error
+                      : 'Erro ao criar a role';
+                }
+              } else if (result.type === 'failure') {
+                errorMessage =
+                  typeof result.data?.error === 'string' ? result.data.error : 'Erro de validação';
+              } else {
+                errorMessage = 'Erro inesperado';
+              }
+              await applyAction(result);
+            };
+          }}
+        >
+          <Dialog.Header class="flex flex-col gap-y-6 p-8">
+            <Dialog.Title class="text-xl">Adicionar nova role</Dialog.Title>
+
+            <Dialog.Description>
+              <div class="flex flex-col gap-y-6">
+                <LabelInput
+                  label="Nome"
+                  id="name"
+                  name="name"
+                  type="text"
+                  required={true}
+                  class="rounded-lg bg-white px-4 py-3 text-black"
+                />
+
+                {#if errorMessage}
+                  <p class="text-center font-medium text-red-300">
+                    {sentenceFirstLetterToUpperCase(errorMessage)}
+                  </p>
+                {/if}
+              </div>
+            </Dialog.Description>
+          </Dialog.Header>
+
+          <Dialog.Footer class="flex flex-col rounded-md bg-white p-4 sm:flex-col ">
+            <div class="flex flex-row justify-end gap-6">
+              <button
+                type="button"
+                class="text-lg text-muted-red-700"
+                onclick={() => (dialogOpen = false)}
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                class="rounded-xl bg-muted-red-700 p-4 text-lg text-white shadow-xl"
+              >
+                Adicionar
+              </button>
+            </div>
+          </Dialog.Footer>
+        </form>
+      </Dialog.Content>
+    </Dialog.Root>
+  </aside>
+
+  <div class="w-px bg-red-500"></div>
+
+  <section class="flex-1 pl-12">
+    <div class="mb-12 flex items-center justify-between">
+      <h2 class="text-3xl font-bold text-white">Atividade</h2>
+    </div>
+
+    <div class="mt-20 text-gray-400">
+      <p>Seleciona uma role e uma atividade para ver/editar permissões.</p>
+    </div>
+  </section>
+</section>
