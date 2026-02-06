@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { PageData } from './$types';
-  import type { Event } from '@/types/event';
   import PictureInput from '$lib/components/forms/picture-input.svelte';
   import LabelInput from '$lib/components/forms/label-input.svelte';
   import Button from '$lib/components/buttons/button.svelte';
@@ -8,15 +7,15 @@
 
   interface Props {
     data: PageData;
-    event?: Event;
   }
 
-  let { data, event = data.event }: Props = $props();
+  let { data }: Props = $props();
+  const event = data.event;
 
   function toISOLocal(date: string | Date) {
     let parts = date.match(/(\d+)/g);
 
-    var adate = new Date(parts[2], parts[1] - 1, parts[0], parts[3], parts[4]); //os parametros tão mal. a rita mandou no slack os parametros como devem ser
+    var adate = new Date(parts[2], parts[1] - 1, parts[0], parts[3], parts[4]);
     var localdt = new Date(adate - adate.getTimezoneOffset() * 60000);
     return localdt.toISOString().slice(0, -1);
   }
@@ -44,7 +43,7 @@
             textGap="25"
             required={true}
             value={event.title}
-            className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+            class="mx-5 md:mx-0"
           />
           <LabelInput
             label="Slug"
@@ -55,7 +54,7 @@
             textGap="25"
             value={event.slug}
             required={true}
-            className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+            class="mx-5 md:mx-0"
           />
           <LabelInput
             label="Início"
@@ -66,7 +65,7 @@
             textGap="25"
             required={true}
             value={toISOLocal(event.dateInterval.startDate)}
-            className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+            class="mx-5 md:mx-0"
           />
           <LabelInput
             label="Fim"
@@ -77,7 +76,7 @@
             textGap="25"
             required={true}
             value={toISOLocal(event.dateInterval.endDate)}
-            className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+            class="mx-5 md:mx-0"
           />
           <LabelInput
             label="Descrição"
@@ -88,7 +87,7 @@
             textGap="25"
             value={event.description}
             required={true}
-            className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+            class="mx-5 md:mx-0"
           />
           <LabelInput
             label="Inscrição"
@@ -98,7 +97,7 @@
             horizontal
             textGap="25"
             value={event.registerUrl}
-            className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+            class="mx-5 md:mx-0"
           />
           <LabelInput
             label="Localização"
@@ -108,7 +107,7 @@
             horizontal
             textGap="25"
             value={event.location}
-            className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
+            class="mx-5 md:mx-0"
           />
 
           <div class="ml-5 mr-5 flex flex-row gap-16 md:ml-0 md:flex-row">
