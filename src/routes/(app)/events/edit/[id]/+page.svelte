@@ -13,7 +13,7 @@
 
   let { data, event = data.event }: Props = $props();
 
-  function toISOLocal(date) {
+  function toISOLocal(date: string | Date) {
     let parts = date.match(/(\d+)/g);
 
     var adate = new Date(parts[2], parts[1] - 1, parts[0], parts[3], parts[4]); //os parametros tão mal. a rita mandou no slack os parametros como devem ser
@@ -42,7 +42,7 @@
             placeholder="Insira o texto"
             horizontal
             textGap="25"
-            required="{true};"
+            required={true}
             value={event.title}
             className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
           />
@@ -54,7 +54,7 @@
             horizontal
             textGap="25"
             value={event.slug}
-            required="{true};"
+            required={true}
             className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
           />
           <LabelInput
@@ -64,7 +64,7 @@
             placeholder="Insira o texto"
             horizontal
             textGap="25"
-            required="{true};"
+            required={true}
             value={toISOLocal(event.dateInterval.startDate)}
             className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
           />
@@ -75,7 +75,7 @@
             placeholder="Insira o texto"
             horizontal
             textGap="25"
-            required="{true};"
+            required={true}
             value={toISOLocal(event.dateInterval.endDate)}
             className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
           />
@@ -87,7 +87,7 @@
             horizontal
             textGap="25"
             value={event.description}
-            required="{true};"
+            required={true}
             className="flex-col ml-5 mr-5 md:flex-row md:ml-0 md:mr-0"
           />
           <LabelInput

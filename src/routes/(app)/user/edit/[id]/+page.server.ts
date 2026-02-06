@@ -66,15 +66,6 @@ export const actions = {
       }
     });
 
-    console.log('\nFormData contents:');
-    for (const [key, value] of form.entries()) {
-      if (value instanceof File) {
-        console.log(`  ${key}: File(${value.name}, ${value.size} bytes)`);
-      } else {
-        console.log(`  ${key}: Blob`);
-      }
-    }
-
     try {
       const res = await fetch(`/api/accounts/${params.id}`, {
         method: 'PUT',
