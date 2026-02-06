@@ -5,6 +5,22 @@
   let { data } = $props();
 
   let openSection = $state<string | null>('Direção');
+  let buttonRefs: (HTMLButtonElement | undefined)[] = $state([]);
+  let containerRef: HTMLDivElement | undefined = $state();
+  let slidePosition = $state(0);
+
+  $effect(() => {
+    if (openSection && containerRef && buttonRefs.length > 0) {
+      const index = groupedSections.findIndex((s) => s.name === openSection);
+      if (index !== -1 && buttonRefs[index]) {
+        const button = buttonRefs[index];
+        if (button) {
+          const buttonCenter = button.offsetLeft + button.offsetWidth / 2;
+          slidePosition = -buttonCenter;
+        }
+      }
+    }
+  });
 
   const groupedSections = $derived.by(() => {
     const result: Array<{ name: string; accounts: any[] }> = [];
@@ -20,13 +36,12 @@
     }
     
     const otherSections = data.sections.filter((s: any) => 
-      s.section !== 'President' && s.section !== 'Board'
+      s.section !== 'President' && s.section !== 'Board' && s.section !== 'Alumni'
     );
     
     for (const section of otherSections) {
       const displayName = section.section === 'Member' ? 'Membros' :
                          section.section === 'Recruit' ? 'Recrutas' :
-                         section.section === 'Alumni' ? 'Alumni' :
                          section.section;
       result.push({
         name: displayName,
@@ -50,17 +65,26 @@
   <!-- mobile view -->
   <div class="w-full md:hidden">
 
-    <div class="flex justify-around px-4 py-6">
-      {#each groupedSections as section}
-        {#if section.accounts.length > 0}
-          <button
-            onclick={() => toggleSection(section.name)}
-            class="text-2xl font-bold transition-opacity {openSection === section.name ? 'opacity-100' : 'opacity-20'}"
-          >
-            {section.name}
-          </button>
-        {/if}
-      {/each}
+    <div class="relative mb-6 mt-6 h-12 w-full overflow-hidden">
+      <div
+        bind:this={containerRef}
+        class="absolute left-1/2 flex h-full items-center transition-transform duration-300 ease-in-out"
+        style="transform: translateX({slidePosition}px)"
+      >
+        {#each groupedSections as section, i}
+          {#if section.accounts.length > 0}
+            <button
+              bind:this={buttonRefs[i]}
+              onclick={() => toggleSection(section.name)}
+              class="mx-4 whitespace-nowrap text-2xl font-bold transition-opacity {openSection === section.name
+                ? 'opacity-100'
+                : 'opacity-20'}"
+            >
+              {section.name}
+            </button>
+          {/if}
+        {/each}
+      </div>
     </div>
 
     <!-- active section content -->
