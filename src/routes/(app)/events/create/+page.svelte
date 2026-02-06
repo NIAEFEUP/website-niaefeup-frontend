@@ -98,7 +98,7 @@
         </div>
 
         {#if form?.errorMessage}
-          {#each form.errorMessage as error}
+          {#each form.errorMessage as error (error)}
             <p class="mt-2 text-red-500">{error}</p>
           {/each}
         {/if}

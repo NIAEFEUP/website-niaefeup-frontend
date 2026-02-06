@@ -8,26 +8,25 @@
     text: string;
     name?: string;
     required?: boolean;
-    value?: string;
     source?: string | null;
   }
 
-  let {
-    text,
-    name = 'profilePicture',
-    required = false,
-    value = '',
-    source = ''
-  }: Props = $props();
+  let { text, name = 'profilePicture', required = false, source = '' }: Props = $props();
   let image: string | undefined = $state();
   let fileInput: HTMLInputElement | undefined = $state();
 
-  const onFileSelected = (e) => {
-    const file = e.target.files[0];
+  const onFileSelected = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    const file = target.files?.[0];
+
+    if (!file) {
+      return;
+    }
 
     // ensure the file is an image
     if (file?.type?.split('/')[0] !== 'image') {
       createNotification(notificationMessages.NOT_AN_IMAGE);
+      target.value = '';
       return;
     }
 
@@ -38,17 +37,23 @@
       image = e.target?.result?.toString() ?? image;
     };
   };
+
+  const removeImage = () => {
+    if (fileInput) {
+      fileInput.value = '';
+    }
+    image = undefined;
+  };
 </script>
 
 <div class="flex flex-col items-center justify-center gap-y-2">
   <input
-    class="opacity-0"
+    class="hidden"
     type="file"
     {name}
-    {value}
     {required}
     accept="image/*"
-    onchange={(e) => onFileSelected(e)}
+    onchange={onFileSelected}
     bind:this={fileInput}
   />
   <button
@@ -56,7 +61,7 @@
     aria-label="Upload image"
     class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-400 text-center"
     onclick={() => {
-      fileInput.click();
+      fileInput?.click();
     }}
   >
     {#if image || source}
@@ -78,9 +83,7 @@
     type="button"
     aria-label="Remove image"
     class="{image ? 'visible' : 'invisible'} text-sm font-bold text-white hover:underline"
-    onclick={() => {
-      fileInput.value = image = '';
-    }}
+    onclick={removeImage}
   >
     Remover imagem
   </button>

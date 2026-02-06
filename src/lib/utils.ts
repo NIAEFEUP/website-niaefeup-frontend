@@ -60,8 +60,9 @@ export const flyAndScale = (
   };
 };
 
-export function toISOLocal(date: string): string {
-  const parts = date.match(/(\d+)/g);
+export function toISOLocal(date: Date | string): string {
+  const written = typeof date === 'string' ? date : date.toString();
+  const parts = written.match(/(\d+)/g);
   if (!parts || parts.length < 5) return '';
   const adate = new Date(
     Number(parts[2]),
@@ -71,7 +72,8 @@ export function toISOLocal(date: string): string {
     Number(parts[4])
   );
   const localdt = new Date(adate.getTime() - adate.getTimezoneOffset() * 60000);
-  return localdt.toISOString().slice(0, -1);
+  // Return format without seconds: YYYY-MM-DDTHH:mm
+  return localdt.toISOString().slice(0, 16);
 }
 
 export function guidGenerator() {

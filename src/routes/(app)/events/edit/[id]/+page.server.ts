@@ -42,8 +42,10 @@ export const actions = {
     const blob = new Blob([json], { type: 'application/json' });
     const form = new FormData();
     form.append('event', blob);
-    value;
-    if (image && image.size != 0) form.append('image', image, image.name);
+
+    if (image && image.size > 0 && image.name !== '') {
+      form.append('image', image, image.name);
+    }
 
     try {
       const res = await fetch(`/api/events/${params.id}`, {

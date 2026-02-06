@@ -21,12 +21,12 @@ export const actions = {
     const image = data.get('image') as File;
 
     const value: {
-      title: FormDataEntryValue | null;
-      description: FormDataEntryValue | null;
-      slug: FormDataEntryValue | null;
+      title: (string | File) | null;
+      description: (string | File) | null;
+      slug: (string | File) | null;
       dateInterval: { startDate: string; endDate: string };
-      registerUrl?: FormDataEntryValue | null;
-      location?: FormDataEntryValue | null;
+      registerUrl?: (string | File) | null;
+      location?: (string | File) | null;
     } = {
       title,
       description,
