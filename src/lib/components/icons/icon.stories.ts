@@ -93,3 +93,35 @@ export const GlobeIcon = {
     size: '50px'
   }
 };
+
+export const CalendarIcon = {
+  args: {
+    src: Icons.Calendar,
+    color: 'white',
+    size: '50px'
+  }
+};
+
+export const LocationIcon = {
+  args: {
+    src: Icons.Location,
+    color: 'white',
+    size: '50px'
+  }
+};
+
+export const ChevronRightIcon = {
+  args: {
+    src: Icons.ChevronRight,
+    color: 'white',
+    size: '50px'
+  }
+};
+
+export const ChevronLeftIcon = {
+  args: {
+    src: Icons.ChevronLeft,
+    color: 'white',
+    size: '50px'
+  }
+};

@@ -6,10 +6,16 @@ import {
   FaBrandsLinkedin,
   FaSolidUser,
   FaSolidBars,
-  FaSolidGlobe
+  FaSolidGlobe,
+  FaSolidLocationDot,
+  FaSolidCalendarDays,
+  FaSolidChevronRight,
+  FaSolidChevronLeft,
+  FaTrashCan,
+  FaSolidSquarePlus
 } from 'svelte-icons-pack/fa';
 import { BiMap } from 'svelte-icons-pack/bi';
-import { IoMail, IoClose, IoEye, IoEyeOff } from 'svelte-icons-pack/io';
+import { IoMail, IoClose, IoEye, IoEyeOff, IoSearch } from 'svelte-icons-pack/io';
 import { FiLogOut, FiEdit2 } from 'svelte-icons-pack/fi';
 
 const Icons = {
@@ -27,7 +33,14 @@ const Icons = {
   Visible: IoEye,
   Hidden: IoEyeOff,
   Logout: FiLogOut,
-  Edit: FiEdit2
+  Edit: FiEdit2,
+  Calendar: FaSolidCalendarDays,
+  Location: FaSolidLocationDot,
+  ChevronRight: FaSolidChevronRight,
+  ChevronLeft: FaSolidChevronLeft,
+  Add: FaSolidSquarePlus,
+  Search: IoSearch,
+  Trash: FaTrashCan
 };
 
 export default Icons;
