@@ -7,6 +7,10 @@ import {
   FaSolidUser,
   FaSolidBars,
   FaSolidGlobe,
+  FaSolidLocationDot,
+  FaSolidCalendarDays,
+  FaSolidChevronRight,
+  FaSolidChevronLeft,
   FaTrashCan,
   FaSolidSquarePlus
 } from 'svelte-icons-pack/fa';
@@ -30,6 +34,10 @@ const Icons = {
   Hidden: IoEyeOff,
   Logout: FiLogOut,
   Edit: FiEdit2,
+  Calendar: FaSolidCalendarDays,
+  Location: FaSolidLocationDot,
+  ChevronRight: FaSolidChevronRight,
+  ChevronLeft: FaSolidChevronLeft,
   Add: FaSolidSquarePlus,
   Search: IoSearch,
   Trash: FaTrashCan
