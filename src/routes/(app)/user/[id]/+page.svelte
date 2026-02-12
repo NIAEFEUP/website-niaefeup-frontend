@@ -10,8 +10,8 @@
 
   let { data }: { data: PageData } = $props();
 
-  let teamMember: TeamMember = data.teamMember;
-  let canEdit: boolean = data.canEdit;
+  const teamMember: TeamMember = data.teamMember;
+  const canEdit: boolean = data.canEdit;
 
   async function logout() {
     const response = await fetch('/api/auth/logout', {
