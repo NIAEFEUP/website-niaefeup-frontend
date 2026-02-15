@@ -1,6 +1,3 @@
-
-
-
 <script lang="ts">
   import type { Role } from '@/types/role';
   import Icon from '$lib/components/icons/icon.svelte';
@@ -17,26 +14,28 @@
   let errorMessage = $state<string | null>(null);
 </script>
 
-<div class="flex flex-col md:flex-row  md:py-12">
-  <header class="md:hidden sticky top-0 z-20 bg-gradient-to-b from-muted-red-900/95 to-muted-red-900/80 backdrop-blur-md border-b border-white/10">
-    <div class="px-8 py-4 flex items-center justify-between gap-3">
+<div class="flex flex-col md:flex-row md:py-12">
+  <header
+    class="from-muted-red-900/95 to-muted-red-900/80 sticky top-0 z-20 border-b border-white/10 bg-gradient-to-b backdrop-blur-md md:hidden"
+  >
+    <div class="flex items-center justify-between gap-3 px-8 py-4">
       <div class="flex-1">
         <select
-          class="w-full rounded-xl bg-gray-500/40 text-white px-4 py-3 border border-white/20
-                 focus:outline-none focus:border-muted-red-400 appearance-none text-base font-medium"
+          class="w-full appearance-none rounded-xl border border-white/20 bg-gray-500/40 px-4 py-3
+                 text-base font-medium text-white focus:border-muted-red-400 focus:outline-none"
           bind:value={selectedRole}
         >
           {#if !selectedRole}
             <option value={null} disabled selected>Selecione uma role...</option>
           {/if}
-          {#each roles as role}
+          {#each roles as role (role.id)}
             <option value={role}>{role.name}</option>
           {/each}
         </select>
       </div>
 
       <button
-        class="flex-shrink-0 flex items-center gap-2 rounded-xl bg-gray-500/40 px-4 py-3 text-white hover:bg-white/25 transition"
+        class="flex flex-shrink-0 items-center gap-2 rounded-xl bg-gray-500/40 px-4 py-3 text-white transition hover:bg-white/25"
         onclick={() => (dialogOpen = true)}
         aria-label="Adicionar nova role"
       >
@@ -45,7 +44,7 @@
     </div>
   </header>
 
-  <aside class="hidden md:flex w-80 flex-col gap-y-4 pr-12">
+  <aside class="hidden w-80 flex-col gap-y-4 pr-12 md:flex">
     {#each roles as role (role.id)}
       <button
         class="rounded-2xl px-8 py-3 text-center text-xl font-bold transition-all duration-200
@@ -59,8 +58,8 @@
     {/each}
 
     <Dialog.Root bind:open={dialogOpen}>
-      <Dialog.Trigger 
-        class="mt-4 flex items-center gap-3 rounded-xl bg-gray-500/40 px-6 py-3.5 text-left text-xl font-medium text-white hover:bg-white/20 transition"
+      <Dialog.Trigger
+        class="mt-4 flex items-center gap-3 rounded-xl bg-gray-500/40 px-6 py-3.5 text-left text-xl font-medium text-white transition hover:bg-white/20"
       >
         <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500/50">
           <Icon src={Icons.Add} color="white" size="20px" />
@@ -94,9 +93,7 @@
                 }
               } else if (result.type === 'failure') {
                 errorMessage =
-                  typeof result.data?.error === 'string'
-                    ? result.data.error
-                    : 'Erro de validação';
+                  typeof result.data?.error === 'string' ? result.data.error : 'Erro de validação';
               } else {
                 errorMessage = 'Erro inesperado';
               }
@@ -152,7 +149,7 @@
 
   <div class="w-px bg-red-500"></div>
 
-  <section class="flex-1 px-10 md:pl-12 py-6 md:py-0">
+  <section class="flex-1 px-10 py-6 md:py-0 md:pl-12">
     <div class="mb-12 flex items-center justify-between">
       <h2 class="text-3xl font-bold text-white">Atividade</h2>
     </div>
@@ -161,5 +158,4 @@
       <p>Seleciona uma role e uma atividade para ver/editar permissões.</p>
     </div>
   </section>
-
 </div>
