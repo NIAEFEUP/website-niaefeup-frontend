@@ -6,37 +6,35 @@
 
   let { name = '', value = $bindable([]) }: Props = $props();
 
-  let files = $state(value);
   let inputElement: HTMLInputElement;
   let filesDeleted: string[] = $state([]);
 
   function updateInputElement() {
     if (!inputElement) return;
     const dataTransfer = new DataTransfer();
-    files.forEach((file) => {
+    value.forEach((file) => {
       if (file instanceof File) {
         dataTransfer.items.add(file);
       }
     });
     inputElement.files = dataTransfer.files;
-    value = files;
   }
 
   function appendFile(event: Event) {
     const target = event.target as HTMLInputElement;
     if (target.files) {
       const newFiles = Array.from(target.files);
-      files = [...files, ...newFiles];
+      value = [...value, ...newFiles];
       updateInputElement();
     }
   }
 
   function removeFile(fileToRemove: string | File) {
     if (typeof fileToRemove === 'string') {
-      filesDeleted.push(fileToRemove);
+      filesDeleted = [...filesDeleted, fileToRemove];
     }
 
-    files = files.filter((file) => file !== fileToRemove);
+    value = value.filter((file) => file !== fileToRemove);
     updateInputElement();
   }
 
@@ -68,9 +66,9 @@
     <input type="hidden" name="{name}_to_delete" value={deletedUrl} />
   {/each}
 
-  {#if files.length}
+  {#if value.length}
     <div class="flex flex-wrap gap-2">
-      {#each files as file (getFileName(file))}
+      {#each value as file (file)}
         <div class="file-item flex min-w-0 items-center gap-2 rounded bg-taupe-200 px-2 py-2">
           <span class="text-sm font-bold text-rose-950">{getFileName(file)}</span>
           <button

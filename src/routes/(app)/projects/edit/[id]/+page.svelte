@@ -26,9 +26,9 @@
 
         <ProjectFormsInput label="GitHub" name="github" value={project.github} />
 
-        <ProjectFormsInput label="Slogan" name="slogan" isTextArea value={project.slogan} />
+        <ProjectFormsInput label="Slogan" name="slogan" value={project.slogan} />
 
-        <ProjectFormsInput label="Descrição" name="description" value={project.description} />
+        <ProjectFormsInput label="Descrição" name="description" isTextArea value={project.description} />
 
         <div class="flex flex-col gap-2 md:flex-row">
           <p class="w-1/6 font-bold">Fotos</p>
