@@ -8,7 +8,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
 
   const project = await res.json();
 
-  let hasPerms = await canDeleteActivity(fetch);
+  const hasPerms = await canDeleteActivity(fetch);
 
   return { project, hasPerms };
 };

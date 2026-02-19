@@ -14,7 +14,7 @@ export const load: PageLoad = async ({ fetch }) => {
 
   const projects = await res.json();
 
-  let hasPerms = await canCreateActivity(fetch);
+  const hasPerms = await canCreateActivity(fetch);
 
   return { projects, hasPerms };
 };
