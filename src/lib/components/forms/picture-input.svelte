@@ -42,7 +42,7 @@
     aria-label="Upload image"
     class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-400 text-center"
     onclick={() => {
-      fileInput.click();
+      fileInput?.click();
     }}
   >
     {#if value}
@@ -65,7 +65,8 @@
     aria-label="Remove image"
     class="{value ? 'visible' : 'invisible'} text-sm font-bold text-white hover:underline"
     onclick={() => {
-      fileInput.value = value = '';
+      value = '';
+      if (fileInput) fileInput.value = '';
     }}
   >
     Remover imagem
