@@ -38,7 +38,7 @@ export const actions = {
 
       websiteIndex++;
     }
-    const isActive = data.get('isActive') === 'Active' ? true : false;
+    const isActive = data.get('isActive') === 'Membro Ativo' ? true : false;
 
     const value = {
       email: email,
