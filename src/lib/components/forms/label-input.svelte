@@ -22,7 +22,7 @@
     type = 'text',
     placeholder = '',
     isTextArea = false,
-    //horizontal = false,
+    horizontal = false,
     required = false,
     minlength = undefined,
     maxlength = undefined,
@@ -30,9 +30,10 @@
   }: Props = $props();
 </script>
 
-<div class="flex flex-col md:flex-row">
+
+<div class="flex flex-col {horizontal ? 'md:flex-row md:items-center' : ''}">
   {#if label}
-    <label class="m-1 w-1/5 font-source_code font-bold text-white" for={id}>{label}</label>
+    <label class="m-1 md:w-1/5 font-source_code font-bold text-white" for={id}>{label}</label>
   {/if}
   {#if isTextArea}
     <textarea
@@ -40,8 +41,8 @@
       class="mb-2 min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
       rows="4"
       {id}
-      {name}
       {placeholder}
+      {name}
       {required}
       {minlength}
       {maxlength}
@@ -54,8 +55,8 @@
       class="mb-2 w-full rounded-lg bg-white p-2 text-primary placeholder-primary"
       {type}
       {id}
-      {name}
       {placeholder}
+      {name}
       {required}
       {minlength}
       {maxlength}

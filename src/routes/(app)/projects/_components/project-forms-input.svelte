@@ -4,16 +4,17 @@
   interface Props {
     label: string;
     name: string;
+    horizontal: boolean;
     isTextArea?: boolean;
     value?: string;
   }
-  let { label = '', name = '', isTextArea = false, value = '' }: Props = $props();
+  let { label = '', name = '', horizontal = false, isTextArea = false, value = '' }: Props = $props();
 </script>
 
 <LabelInput
   {label}
   {name}
-  horizontal
+  {horizontal}
   {isTextArea}
   placeholder="Insira o texto"
   className="flex-col md:flex-row"

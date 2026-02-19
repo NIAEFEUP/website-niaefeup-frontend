@@ -18,24 +18,24 @@
   <form method="POST" enctype="multipart/form-data" class="flex w-full flex-col items-center p-10">
     <h2 class="mb-10 text-center text-2xl font-bold">Dados Gerais</h2>
 
-    <div class="flex w-full flex-col justify-center gap-10 md:flex-row md:items-start md:p-10">
+    <div class="flex w-full flex-col justify-center gap-10 md:flex-row md:items-start">
       <div class="order-2 flex w-full flex-col gap-5 md:order-1 md:w-1/2">
-        <ProjectFormsInput label="Title" name="title" value={project.title} />
+        <ProjectFormsInput label="Title" name="title" horizontal={true} value={project.title} />
 
-        <ProjectFormsInput label="Slug" name="slug" value={project.slug} />
+        <ProjectFormsInput label="Slug" name="slug" horizontal={true} value={project.slug} />
 
-        <ProjectFormsInput label="GitHub" name="github" value={project.github} />
+        <ProjectFormsInput label="GitHub" name="github" horizontal={true} value={project.github} />
 
-        <ProjectFormsInput label="Slogan" name="slogan" value={project.slogan} />
+        <ProjectFormsInput label="Slogan" name="slogan" horizontal={true} value={project.slogan} />
 
-        <ProjectFormsInput label="Descrição" name="description" isTextArea value={project.description} />
+        <ProjectFormsInput label="Descrição" name="description" horizontal={true} isTextArea value={project.description} />
 
         <div class="flex flex-col gap-2 md:flex-row">
           <p class="w-1/6 font-bold">Fotos</p>
           <FileInput name="gallery" multiple value={project.gallery} />
         </div>
 
-        <ProjectFormsInput label="Público Alvo" name="public" value={project.targetAudience} />
+        <ProjectFormsInput label="Público Alvo" name="public" horizontal={true} value={project.targetAudience} />
 
         <div class="flex w-[50vw] gap-10">
           <Button type="submit" color="secondary" hoverColor="red" text="Guardar Alterações" />
