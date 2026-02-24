@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
+import { canCreateActivity } from '@/lib/api/permissions';
 
 export const load: PageLoad = async ({ fetch }) => {
   let res = await fetch(`/api/projects`);
@@ -13,9 +14,7 @@ export const load: PageLoad = async ({ fetch }) => {
 
   const projects = await res.json();
 
-  let hasPerms = false;
-  res = await fetch(`/api/auth/hasPermission/4`);
-  if (res.status !== 403) hasPerms = true;
+  const hasPerms = await canCreateActivity(fetch);
 
   return { projects, hasPerms };
 };
