@@ -1,4 +1,4 @@
-export enum Permission {
+enum Permission {
   CREATE_ACCOUNT = 0,
   VIEW_ACCOUNT = 1,
   EDIT_ACCOUNT = 2,
@@ -11,7 +11,7 @@ export enum Permission {
   SUPER_USER = 9
 }
 
-export async function hasPermission(fetch: typeof globalThis.fetch, number: number) {
+async function hasPermission(fetch: typeof globalThis.fetch, number: number) {
   const perms = await fetch(`/api/auth/hasPermission/${number}`);
 
   if (!perms.ok) {
