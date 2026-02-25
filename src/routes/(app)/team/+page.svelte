@@ -2,9 +2,7 @@
   import TeamMemberHexagon from './_components/team-member-hexagon.svelte';
   import HexagonGrid from '$lib/components/hexagons/hexagon-grid.svelte';
 
-  // Define interfaces for your data structure
   interface Account {
-    // Add specific fields if you know them (e.g., id: string; name: string; image: string;)
     [key: string]: unknown;
   }
 
@@ -268,7 +266,7 @@
       </div>
     </div>
 
-    {#each groupedSections as section}
+    {#each groupedSections as section (section.name)}
       {#if section.accounts.length > 0 && openSection === section.name}
         <div class="flex justify-center px-4 pb-8">
           <div class="w-fit max-w-md">
@@ -285,7 +283,7 @@
     {/each}
   </div>
 
-  {#each groupedSections as section}
+  {#each groupedSections as section (section.name)}
     {#if section.accounts.length > 0}
       <div class="hidden w-full md:block">
         <h2 class="mb-10 mt-12 text-center text-lg font-bold md:text-2xl">
