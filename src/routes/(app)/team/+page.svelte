@@ -17,7 +17,11 @@
   let maskRightPx = $state(0);
 
   let touchStartX = 0;
-  let touchEndX = 0;
+  let dragBasePosition = 0;
+  let isDragging = $state(false);
+
+  let maxDragLeft = $state(100);
+  let maxDragRight = $state(100);
 
   const groupedSections = $derived.by(() => {
     const result: Array<{ name: string; accounts: any[] }> = [];
@@ -68,7 +72,7 @@
   const centerActiveSection = (animate: boolean = false) => {
     if (!containerRef || orderedSections.length === 0) return;
 
-    const activeIndex = 2; // Center is now index 2 ([Next, Prev, Curr, Next, Prev])
+    const activeIndex = 2; // center is index 2 ([Next, Prev, Curr, Next, Prev])
     const centerBtn = buttonRefs[activeIndex];
     const prevBtn = buttonRefs[1];
     const nextBtn = buttonRefs[3];
@@ -81,9 +85,11 @@
       if (prevBtn && nextBtn) {
         let measuredLeft = buttonCenter - prevBtn.offsetLeft + 8;
         let measuredRight = nextBtn.offsetLeft + nextBtn.offsetWidth - buttonCenter + 8;
-
         maskLeftPx = measuredLeft > 50 ? measuredLeft : 130;
         maskRightPx = measuredRight > 50 ? measuredRight : 130;
+
+        maxDragRight = buttonCenter - (prevBtn.offsetLeft + prevBtn.offsetWidth / 2);
+        maxDragLeft = nextBtn.offsetLeft + nextBtn.offsetWidth / 2 - buttonCenter;
       }
     }
   };
@@ -110,7 +116,7 @@
   });
 
   $effect(() => {
-    if (transitionDuration === 0 && buttonRefs[2]) {
+    if (transitionDuration === 0 && buttonRefs[2] && !isDragging) {
       setTimeout(() => centerActiveSection(false), 50);
     }
   });
@@ -162,24 +168,45 @@
   };
 
   const handleTouchStart = (e: TouchEvent) => {
+    if (slidingNext || slidingPrev) return;
+
+    isDragging = true;
+    transitionDuration = 0;
     touchStartX = e.touches[0].clientX;
-    touchEndX = touchStartX;
+    dragBasePosition = slidePosition;
   };
 
   const handleTouchMove = (e: TouchEvent) => {
-    touchEndX = e.touches[0].clientX;
+    if (!isDragging) return;
+
+    const currentX = e.touches[0].clientX;
+    let deltaX = currentX - touchStartX;
+    
+    if (deltaX > maxDragRight) deltaX = maxDragRight;
+    if (deltaX < -maxDragLeft) deltaX = -maxDragLeft;
+
+    slidePosition = dragBasePosition + deltaX;
   };
 
-  const handleTouchEnd = () => {
-    const swipeDistance = touchStartX - touchEndX;
-    const minSwipeDistance = 40;
+  const handleTouchEnd = (e: TouchEvent) => {
+    if (!isDragging) return;
+    isDragging = false;
 
-    if (swipeDistance > minSwipeDistance) {
-      // swiped left (show next)
+    const touchEndX = e.changedTouches[0].clientX;
+    const swipeDistance = touchEndX - touchStartX;
+    const snapThreshold = 60;
+
+    transitionDuration = 300;
+
+    if (swipeDistance < -snapThreshold) {
+      // swiped left -> snap to next
       if (visibleSections[3]) handleSectionClick(visibleSections[3], 3);
-    } else if (swipeDistance < -minSwipeDistance) {
-      // swiped right (show prev)
+    } else if (swipeDistance > snapThreshold) {
+      // swiped right -> snap to prev
       if (visibleSections[1]) handleSectionClick(visibleSections[1], 1);
+    } else {
+      // didn't swipe far enough -> snap back to center
+      centerActiveSection(true);
     }
   };
 </script>
