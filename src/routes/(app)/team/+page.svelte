@@ -178,7 +178,13 @@
 
   <!-- mobile view -->
   <div class="w-full md:hidden">
-    <div class="carousel-mask relative mb-6 mt-6 h-12 w-full overflow-hidden">
+    <div
+      class="relative mb-6 mt-6 h-12 w-full overflow-hidden
+           [-webkit-mask-image:_linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]
+           [mask-image:_linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]
+           min-[500px]:[-webkit-mask-image:_linear-gradient(to_right,transparent_0%,black_20%,black_80%,transparent_100%)]
+           min-[500px]:[mask-image:_linear-gradient(to_right,transparent_0%,black_20%,black_80%,transparent_100%)]"
+    >
       <div
         bind:this={containerRef}
         class="absolute left-1/2 flex h-full items-center transition-transform ease-in-out"
@@ -189,10 +195,10 @@
             <button
               bind:this={buttonRefs[i]}
               onclick={() => handleSectionClick(section, i)}
-              class="mx-4 whitespace-nowrap text-2xl font-bold transition-all duration-300
-                {i === 2 ? 'scale-100 opacity-100' : ''} 
-                {i === 1 || i === 3 ? 'scale-90 opacity-20' : ''}
-                {i === 0 || i === 4 ? 'pointer-events-none opacity-0' : ''}"
+              class="mx-4 whitespace-nowrap text-2xl font-bold transition-opacity duration-300 {openSection ===
+              section.name
+                ? 'opacity-100'
+                : 'opacity-20'}"
             >
               {section.name}
             </button>
@@ -201,7 +207,6 @@
       </div>
     </div>
 
-    <!-- active section content -->
     {#each groupedSections as section}
       {#if section.accounts.length > 0 && openSection === section.name}
         <div class="flex justify-center px-4 pb-8">
@@ -238,31 +243,3 @@
     {/if}
   {/each}
 </div>
-
-<style>
-  /* Standard mobile: narrow mask to keep neighbors visible */
-  .carousel-mask {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 10%,
-      black 90%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  }
-
-  /* Tablet (or larger mobile): wider mask to hide distant buffers */
-  @media (min-width: 500px) {
-    .carousel-mask {
-      -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 20%,
-        black 80%,
-        transparent 100%
-      );
-      mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
-    }
-  }
-</style>
