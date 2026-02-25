@@ -181,7 +181,7 @@
 
     const currentX = e.touches[0].clientX;
     let deltaX = currentX - touchStartX;
-    
+
     if (deltaX > maxDragRight) deltaX = maxDragRight;
     if (deltaX < -maxDragLeft) deltaX = -maxDragLeft;
 
