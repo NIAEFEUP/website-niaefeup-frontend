@@ -18,156 +18,157 @@
 
     const president = data.sections.find((s: any) => s.section === 'President');
     const board = data.sections.find((s: any) => s.section === 'Board');
-    
+
     if (president || board) {
       result.push({
         name: 'Direção',
         accounts: [...(president?.accounts || []), ...(board?.accounts || [])]
       });
     }
-    
-    const otherSections = data.sections.filter((s: any) => 
-      s.section !== 'President' && s.section !== 'Board' && s.section !== 'Alumni'
+
+    const otherSections = data.sections.filter(
+      (s: any) => s.section !== 'President' && s.section !== 'Board' && s.section !== 'Alumni'
     );
-    
+
     for (const section of otherSections) {
-      const displayName = section.section === 'Member' ? 'Membros' :
-                         section.section === 'Recruit' ? 'Recrutas' :
-                         section.section;
+      const displayName =
+        section.section === 'Member'
+          ? 'Membros'
+          : section.section === 'Recruit'
+            ? 'Recrutas'
+            : section.section;
       result.push({
         name: displayName,
         accounts: section.accounts
       });
     }
-    
+
     return result;
   });
 
   // Initialize orderedSections (One list logic)
   $effect(() => {
     if (orderedSections.length === 0 && groupedSections.length > 0) {
-        // Initialize so the default openSection is at index 1 (center)
-        const initialIndex = groupedSections.findIndex(s => s.name === openSection);
-        if (initialIndex !== -1) {
-            // Reorder: Put active section at index 1
-            // [...prev, active, next...] -> need active at 1
-            // If we rotate left by (initialIndex - 1)
-            const count = groupedSections.length;
-            const shift = (initialIndex - 1 + count) % count;
-            
-            orderedSections = [
-                ...groupedSections.slice(shift),
-                ...groupedSections.slice(0, shift)
-            ];
-        } else {
-            orderedSections = [...groupedSections];
-        }
+      // Initialize so the default openSection is at index 1 (center)
+      const initialIndex = groupedSections.findIndex((s) => s.name === openSection);
+      if (initialIndex !== -1) {
+        // Reorder: Put active section at index 1
+        // [...prev, active, next...] -> need active at 1
+        // If we rotate left by (initialIndex - 1)
+        const count = groupedSections.length;
+        const shift = (initialIndex - 1 + count) % count;
+
+        orderedSections = [...groupedSections.slice(shift), ...groupedSections.slice(0, shift)];
+      } else {
+        orderedSections = [...groupedSections];
+      }
     }
   });
 
   // Center alignment effect
   const centerActiveSection = (animate: boolean = false) => {
-      // Ensure we have rendered and have refs
-      if (!containerRef || orderedSections.length === 0) return;
-      
-      const activeIndex = 2; // Center is now index 2 ([Next, Prev, Curr, Next, Prev])
-      const button = buttonRefs[activeIndex];
-      
-      if (button) {
-          const buttonCenter = button.offsetLeft + button.offsetWidth / 2;
-          slidePosition = -buttonCenter;
-          transitionDuration = animate ? 300 : 0;
-      }
+    // Ensure we have rendered and have refs
+    if (!containerRef || orderedSections.length === 0) return;
+
+    const activeIndex = 2; // Center is now index 2 ([Next, Prev, Curr, Next, Prev])
+    const button = buttonRefs[activeIndex];
+
+    if (button) {
+      const buttonCenter = button.offsetLeft + button.offsetWidth / 2;
+      slidePosition = -buttonCenter;
+      transitionDuration = animate ? 300 : 0;
+    }
   };
 
   const visibleSections = $derived.by(() => {
     if (orderedSections.length === 0) return [];
-    
+
     // Take the first 3 elements (orderedSections is maintained as [Prev, Current, Next, ...])
     const base = orderedSections.slice(0, 3);
-    
+
     // [Next, Prev, Current, Next, Prev]
     if (base.length > 0) {
-        const prev = base[0];
-        const curr = base[1];
-        const next = base[2];
-        
-        return [
-            { ...next, isDuplicate: true, id: 'buf-left' }, // 0: Next (Buffer Left)
-            { ...prev, isDuplicate: false, id: 'prev' },    // 1: Prev
-            { ...curr, isDuplicate: false, id: 'curr' },    // 2: Current (Center)
-            { ...next, isDuplicate: false, id: 'next' },    // 3: Next
-            { ...prev, isDuplicate: true, id: 'buf-right' } // 4: Prev (Buffer Right)
-        ] as Array<{ name: string; accounts: any[]; isDuplicate?: boolean; id?: string }>;
+      const prev = base[0];
+      const curr = base[1];
+      const next = base[2];
+
+      return [
+        { ...next, isDuplicate: true, id: 'buf-left' }, // 0: Next (Buffer Left)
+        { ...prev, isDuplicate: false, id: 'prev' }, // 1: Prev
+        { ...curr, isDuplicate: false, id: 'curr' }, // 2: Current (Center)
+        { ...next, isDuplicate: false, id: 'next' }, // 3: Next
+        { ...prev, isDuplicate: true, id: 'buf-right' } // 4: Prev (Buffer Right)
+      ] as Array<{ name: string; accounts: any[]; isDuplicate?: boolean; id?: string }>;
     }
     return base as Array<{ name: string; accounts: any[]; isDuplicate?: boolean; id?: string }>;
   });
 
   // Run on mount / resize / content change
   $effect(() => {
-      // If we are stable (transitionDuration 0), ensure centered
-      if (transitionDuration === 0 && buttonRefs[2]) {
-          centerActiveSection(false);
-      }
+    // If we are stable (transitionDuration 0), ensure centered
+    if (transitionDuration === 0 && buttonRefs[2]) {
+      centerActiveSection(false);
+    }
   });
 
   const handleSectionClick = (clickedSection: any, index: number) => {
-     if (clickedSection.name === openSection) return;
-     if (index === 2) return; // Center
+    if (clickedSection.name === openSection) return;
+    if (index === 2) return; // Center
 
-     // 2 is center
-     // 3 is Next, 4 is Buf-Right
-     // 1 is Prev, 0 is Buf-Left
+    // 2 is center
+    // 3 is Next, 4 is Buf-Right
+    // 1 is Prev, 0 is Buf-Left
 
-     if (index === 3) { // Next
-         // 1. Move strip left to align index 3
-         const nextButton = buttonRefs[3];
-         if (nextButton) {
-             slidingNext = true;
-             const dist = nextButton.offsetLeft + nextButton.offsetWidth/2;
-             slidePosition = -dist;
-             transitionDuration = 300;
-             openSection = clickedSection.name;
-             
-             // 2. After animation, rotate array
-             setTimeout(() => {
-                 slidingNext = false;
-                 const first = orderedSections.shift();
-                 if (first) orderedSections.push(first);
-                 orderedSections = [...orderedSections]; // Trigger update
-                 
-                 // 3. Reset position (instantly)
-                 requestAnimationFrame(() => {
-                    centerActiveSection(false);
-                 });
-             }, 300);
-         }
-     } else if (index === 1) { // Prev
-         // 1. Move strip right to align index 1
-         const prevButton = buttonRefs[1];
-         if (prevButton) {
-             slidingPrev = true;
-             const dist = prevButton.offsetLeft + prevButton.offsetWidth/2;
-             slidePosition = -dist;
-             transitionDuration = 300;
-             openSection = clickedSection.name;
+    if (index === 3) {
+      // Next
+      // 1. Move strip left to align index 3
+      const nextButton = buttonRefs[3];
+      if (nextButton) {
+        slidingNext = true;
+        const dist = nextButton.offsetLeft + nextButton.offsetWidth / 2;
+        slidePosition = -dist;
+        transitionDuration = 300;
+        openSection = clickedSection.name;
 
-             // 2. After animation, rotate array
-             setTimeout(() => {
-                 slidingPrev = false;
-                 const last = orderedSections.pop();
-                 if (last) orderedSections.unshift(last);
-                 orderedSections = [...orderedSections]; // Trigger update
-                 
-                 // 3. Reset position (instantly)
-                 requestAnimationFrame(() => {
-                    centerActiveSection(false);
-                 });
-             }, 300);
-         }
-     }
+        // 2. After animation, rotate array
+        setTimeout(() => {
+          slidingNext = false;
+          const first = orderedSections.shift();
+          if (first) orderedSections.push(first);
+          orderedSections = [...orderedSections]; // Trigger update
+
+          // 3. Reset position (instantly)
+          requestAnimationFrame(() => {
+            centerActiveSection(false);
+          });
+        }, 300);
+      }
+    } else if (index === 1) {
+      // Prev
+      // 1. Move strip right to align index 1
+      const prevButton = buttonRefs[1];
+      if (prevButton) {
+        slidingPrev = true;
+        const dist = prevButton.offsetLeft + prevButton.offsetWidth / 2;
+        slidePosition = -dist;
+        transitionDuration = 300;
+        openSection = clickedSection.name;
+
+        // 2. After animation, rotate array
+        setTimeout(() => {
+          slidingPrev = false;
+          const last = orderedSections.pop();
+          if (last) orderedSections.unshift(last);
+          orderedSections = [...orderedSections]; // Trigger update
+
+          // 3. Reset position (instantly)
+          requestAnimationFrame(() => {
+            centerActiveSection(false);
+          });
+        }, 300);
+      }
+    }
   };
-
 </script>
 
 <div class="flex w-full flex-col items-center">
@@ -177,7 +178,6 @@
 
   <!-- mobile view -->
   <div class="w-full md:hidden">
-
     <div class="carousel-mask relative mb-6 mt-6 h-12 w-full overflow-hidden">
       <div
         bind:this={containerRef}
@@ -189,10 +189,10 @@
             <button
               bind:this={buttonRefs[i]}
               onclick={() => handleSectionClick(section, i)}
-              class="mx-4 whitespace-nowrap text-2xl font-bold transition-opacity duration-300 {openSection ===
-              section.name
-                ? 'opacity-100'
-                : 'opacity-20'}"
+              class="mx-4 whitespace-nowrap text-2xl font-bold transition-all duration-300
+                {i === 2 ? 'scale-100 opacity-100' : ''} 
+                {i === 1 || i === 3 ? 'scale-90 opacity-20' : ''}
+                {i === 0 || i === 4 ? 'pointer-events-none opacity-0' : ''}"
             >
               {section.name}
             </button>
@@ -249,13 +249,7 @@
       black 90%,
       transparent 100%
     );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 10%,
-      black 90%,
-      transparent 100%
-    );
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   }
 
   /* Tablet (or larger mobile): wider mask to hide distant buffers */
@@ -268,13 +262,7 @@
         black 80%,
         transparent 100%
       );
-      mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 20%,
-        black 80%,
-        transparent 100%
-      );
+      mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
     }
   }
 </style>
