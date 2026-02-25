@@ -2,14 +2,32 @@
   import TeamMemberHexagon from './_components/team-member-hexagon.svelte';
   import HexagonGrid from '$lib/components/hexagons/hexagon-grid.svelte';
 
-  let { data } = $props();
+  // Define interfaces for your data structure
+  interface Account {
+    // Add specific fields if you know them (e.g., id: string; name: string; image: string;)
+    [key: string]: unknown;
+  }
+
+  interface Section {
+    section: string;
+    accounts: Account[];
+  }
+
+  interface PageData {
+    sections: Section[];
+  }
+
+  // Type the incoming props
+  let { data }: { data: PageData } = $props();
 
   let openSection = $state<string | null>('Direção');
   let buttonRefs: (HTMLButtonElement | undefined)[] = $state([]);
   let containerRef: HTMLDivElement | undefined = $state();
   let slidePosition = $state(0);
   let transitionDuration = $state(0);
-  let orderedSections: { name: string; accounts: any[] }[] = $state([]);
+
+  // Use the defined types for orderedSections
+  let orderedSections: { name: string; accounts: Account[] }[] = $state([]);
   let slidingNext = $state(false);
   let slidingPrev = $state(false);
 
@@ -24,10 +42,10 @@
   let maxDragRight = $state(100);
 
   const groupedSections = $derived.by(() => {
-    const result: Array<{ name: string; accounts: any[] }> = [];
+    const result: Array<{ name: string; accounts: Account[] }> = [];
 
-    const president = data.sections.find((s: any) => s.section === 'President');
-    const board = data.sections.find((s: any) => s.section === 'Board');
+    const president = data.sections.find((s: Section) => s.section === 'President');
+    const board = data.sections.find((s: Section) => s.section === 'Board');
 
     if (president || board) {
       result.push({
@@ -37,7 +55,7 @@
     }
 
     const otherSections = data.sections.filter(
-      (s: any) => s.section !== 'President' && s.section !== 'Board' && s.section !== 'Alumni'
+      (s: Section) => s.section !== 'President' && s.section !== 'Board' && s.section !== 'Alumni'
     );
 
     for (const section of otherSections) {
@@ -110,9 +128,9 @@
         { ...curr, isDuplicate: false, id: 'curr' }, // 2: Current (Center)
         { ...next, isDuplicate: false, id: 'next' }, // 3: Next
         { ...prev, isDuplicate: true, id: 'buf-right' } // 4: Prev (Buffer Right)
-      ] as Array<{ name: string; accounts: any[]; isDuplicate?: boolean; id?: string }>;
+      ] as Array<{ name: string; accounts: Account[]; isDuplicate?: boolean; id?: string }>;
     }
-    return base as Array<{ name: string; accounts: any[]; isDuplicate?: boolean; id?: string }>;
+    return base as Array<{ name: string; accounts: Account[]; isDuplicate?: boolean; id?: string }>;
   });
 
   $effect(() => {
@@ -121,7 +139,10 @@
     }
   });
 
-  const handleSectionClick = (clickedSection: any, index: number) => {
+  const handleSectionClick = (
+    clickedSection: { name: string; accounts: Account[] },
+    index: number
+  ) => {
     if (clickedSection.name === openSection) return;
     if (index === 2) return; // Center
     if (slidingNext || slidingPrev) return;
