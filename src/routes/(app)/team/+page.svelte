@@ -16,6 +16,9 @@
   let maskLeftPx = $state(0);
   let maskRightPx = $state(0);
 
+  let touchStartX = 0;
+  let touchEndX = 0;
+
   const groupedSections = $derived.by(() => {
     const result: Array<{ name: string; accounts: any[] }> = [];
 
@@ -115,6 +118,7 @@
   const handleSectionClick = (clickedSection: any, index: number) => {
     if (clickedSection.name === openSection) return;
     if (index === 2) return; // Center
+    if (slidingNext || slidingPrev) return;
 
     if (index === 3) {
       // Next
@@ -156,6 +160,28 @@
       }
     }
   };
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX = e.touches[0].clientX;
+    touchEndX = touchStartX;
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndX = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchStartX - touchEndX;
+    const minSwipeDistance = 40;
+
+    if (swipeDistance > minSwipeDistance) {
+      // swiped left (show next)
+      if (visibleSections[3]) handleSectionClick(visibleSections[3], 3);
+    } else if (swipeDistance < -minSwipeDistance) {
+      // swiped right (show prev)
+      if (visibleSections[1]) handleSectionClick(visibleSections[1], 1);
+    }
+  };
 </script>
 
 <div class="flex w-full flex-col items-center">
@@ -165,7 +191,10 @@
 
   <div class="w-full md:hidden">
     <div
-      class="relative mb-6 mt-6 h-12 w-full overflow-hidden"
+      class="relative mb-6 mt-2 h-12 w-full touch-pan-y overflow-hidden"
+      ontouchstart={handleTouchStart}
+      ontouchmove={handleTouchMove}
+      ontouchend={handleTouchEnd}
       style={maskLeftPx > 50
         ? `-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent calc(50% - ${maskLeftPx}px), black calc(50% - ${maskLeftPx}px), black calc(50% + ${maskRightPx}px), transparent calc(50% + ${maskRightPx}px), transparent 100%); mask-image: linear-gradient(to right, transparent 0%, transparent calc(50% - ${maskLeftPx}px), black calc(50% - ${maskLeftPx}px), black calc(50% + ${maskRightPx}px), transparent calc(50% + ${maskRightPx}px), transparent 100%);`
         : `-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 15%, black 15%, black 85%, transparent 85%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, transparent 15%, black 15%, black 85%, transparent 85%, transparent 100%);`}
@@ -180,7 +209,7 @@
             <button
               bind:this={buttonRefs[i]}
               onclick={() => handleSectionClick(section, i)}
-              class="mx-4 whitespace-nowrap text-2xl font-bold transition-opacity duration-300
+              class="mx-4 whitespace-nowrap text-lg font-bold transition-opacity duration-300 min-[400px]:text-xl sm:text-2xl
               {openSection === section.name ? 'opacity-100' : 'opacity-20'} 
               {i === 0 || i === 4 ? 'pointer-events-none' : ''}"
             >
