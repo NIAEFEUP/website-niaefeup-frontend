@@ -22,13 +22,13 @@ export const MobileSidebar = {
 
     await step('Open sidebar', async () => {
       await userEvent.click(await canvas.findByRole('button'));
-      const menuOption = canvas.queryByText(SidebarItems[0]);
+      const menuOption = canvas.queryByText(SidebarItems[0].label);
       await expect(menuOption).toBeTruthy();
     });
 
     await step('Close sidebar', async () => {
       await userEvent.click(await canvas.findByRole('button'));
-      const menuOption = canvas.queryByText(SidebarItems[0]);
+      const menuOption = canvas.queryByText(SidebarItems[0].label);
       await expect(menuOption).toBeNull();
     });
   }

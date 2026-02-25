@@ -6,7 +6,7 @@
   const links = [
     { href: '/team', label: 'Equipa', pageComp: '/team' },
     { href: '/projects', label: 'Projetos', pageComp: '/projects' },
-    { href: '#', label: 'Eventos', pageComp: '/events' },
+    { href: '/events', label: 'Eventos', pageComp: '/events' },
     { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
   ];
 
