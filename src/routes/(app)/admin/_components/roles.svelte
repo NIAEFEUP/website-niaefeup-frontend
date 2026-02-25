@@ -6,6 +6,7 @@
   import LabelInput from '$lib/components/forms/label-input.svelte';
   import { enhance, applyAction } from '$app/forms';
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
+  import Permissions from './roles-permissions.svelte';
 
   let { roles = $bindable([] as Role[]) } = $props();
 
@@ -150,12 +151,6 @@
   <div class="w-px bg-red-500"></div>
 
   <section class="flex-1 px-10 py-6 md:py-0 md:pl-12">
-    <div class="mb-12 flex items-center justify-between">
-      <h2 class="text-3xl font-bold text-white">Atividade</h2>
-    </div>
-
-    <div class="mt-20 text-gray-400">
-      <p>Seleciona uma role e uma atividade para ver/editar permissões.</p>
-    </div>
+    <Permissions />
   </section>
 </div>
