@@ -10,13 +10,41 @@
   let { roles = $bindable([] as Role[]) } = $props();
 
   let selectedRole: Role | null = $state(roles[0] ?? null);
-
   let dialogOpen = $state(false);
   let errorMessage = $state<string | null>(null);
 </script>
 
-<section class="flex h-full w-full flex-row py-12">
-  <aside class="flex w-80 flex-col gap-y-4 pr-12">
+<div class="flex flex-col md:flex-row md:py-12">
+  <header
+    class="from-muted-red-900/95 to-muted-red-900/80 sticky top-0 z-20 border-b border-white/10 bg-gradient-to-b backdrop-blur-md md:hidden"
+  >
+    <div class="flex items-center justify-between gap-3 px-8 py-4">
+      <div class="flex-1">
+        <select
+          class="w-full appearance-none rounded-xl border border-white/20 bg-gray-500/40 px-4 py-3
+                 text-base font-medium text-white focus:border-muted-red-400 focus:outline-none"
+          bind:value={selectedRole}
+        >
+          {#if !selectedRole}
+            <option value={null} disabled selected>Selecione uma role...</option>
+          {/if}
+          {#each roles as role (role.id)}
+            <option value={role}>{role.name}</option>
+          {/each}
+        </select>
+      </div>
+
+      <button
+        class="flex flex-shrink-0 items-center gap-2 rounded-xl bg-gray-500/40 px-4 py-3 text-white transition hover:bg-white/25"
+        onclick={() => (dialogOpen = true)}
+        aria-label="Adicionar nova role"
+      >
+        <Icon src={Icons.Add} color="white" size="22px" />
+      </button>
+    </div>
+  </header>
+
+  <aside class="hidden w-80 flex-col gap-y-4 pr-12 md:flex">
     {#each roles as role (role.id)}
       <button
         class="rounded-2xl px-8 py-3 text-center text-xl font-bold transition-all duration-200
@@ -31,14 +59,13 @@
 
     <Dialog.Root bind:open={dialogOpen}>
       <Dialog.Trigger
-        class="flex flex-row items-center gap-x-4 rounded-full bg-white/10 px-8 py-4 text-left text-xl font-medium text-white transition-all hover:bg-white/20"
+        class="mt-4 flex items-center gap-3 rounded-xl bg-gray-500/40 px-6 py-3.5 text-left text-xl font-medium text-white transition hover:bg-white/20"
       >
-        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500/50">
           <Icon src={Icons.Add} color="white" size="20px" />
         </div>
         Adicionar Role
       </Dialog.Trigger>
-
       <Dialog.Content class="rounded-3xl bg-muted-red-500 p-0">
         <form
           method="POST"
@@ -51,6 +78,7 @@
                 errorMessage = 'Role já existente!';
                 return;
               }
+
               if (result.type === 'success') {
                 if (result.data?.success) {
                   const newRole = result.data.data as Role;
@@ -69,6 +97,7 @@
               } else {
                 errorMessage = 'Erro inesperado';
               }
+
               await applyAction(result);
             };
           }}
@@ -96,7 +125,7 @@
             </Dialog.Description>
           </Dialog.Header>
 
-          <Dialog.Footer class="flex flex-col rounded-md bg-white p-4 sm:flex-col ">
+          <Dialog.Footer class="flex flex-col rounded-md bg-white p-4 sm:flex-col">
             <div class="flex flex-row justify-end gap-6">
               <button
                 type="button"
@@ -120,7 +149,7 @@
 
   <div class="w-px bg-red-500"></div>
 
-  <section class="flex-1 pl-12">
+  <section class="flex-1 px-10 py-6 md:py-0 md:pl-12">
     <div class="mb-12 flex items-center justify-between">
       <h2 class="text-3xl font-bold text-white">Atividade</h2>
     </div>
@@ -129,4 +158,4 @@
       <p>Seleciona uma role e uma atividade para ver/editar permissões.</p>
     </div>
   </section>
-</section>
+</div>
