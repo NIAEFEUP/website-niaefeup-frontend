@@ -5,7 +5,6 @@
 
   let { data }: { data: PageData } = $props();
 
-  let openSection = $state<string | null>('Direção');
   let buttonRefs: (HTMLButtonElement | undefined)[] = $state([]);
   let containerRef: HTMLDivElement | undefined = $state();
   let slidePosition = $state(0);
@@ -60,8 +59,23 @@
 
   const hasTeamMembers = $derived(groupedSections.some((section) => section.accounts.length > 0));
 
+  let openSection = $state<string | null>(null);
+
+  // initialize openSection once groupedSections is available
   $effect(() => {
-    if (orderedSections.length === 0 && groupedSections.length > 0) {
+    if (openSection === null && groupedSections.length > 0) {
+      const direcao = groupedSections.find((s) => s.name === 'Direção' && s.accounts.length > 0);
+      if (direcao) {
+        openSection = direcao.name;
+      } else {
+        const firstNonEmpty = groupedSections.find((s) => s.accounts.length > 0);
+        openSection = firstNonEmpty?.name ?? null;
+      }
+    }
+  });
+
+  $effect(() => {
+    if (orderedSections.length === 0 && groupedSections.length > 0 && openSection !== null) {
       const initialIndex = groupedSections.findIndex((s) => s.name === openSection);
       if (initialIndex !== -1) {
         const count = groupedSections.length;
