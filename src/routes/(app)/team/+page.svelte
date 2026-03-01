@@ -1,21 +1,9 @@
 <script lang="ts">
+  import type { PageData } from './$types';
   import TeamMemberHexagon from './_components/team-member-hexagon.svelte';
   import HexagonGrid from '$lib/components/hexagons/hexagon-grid.svelte';
+  import type { TeamMember } from '@/types/team-member';
 
-  interface Account {
-    [key: string]: unknown;
-  }
-
-  interface Section {
-    section: string;
-    accounts: Account[];
-  }
-
-  interface PageData {
-    sections: Section[];
-  }
-
-  // Type the incoming props
   let { data }: { data: PageData } = $props();
 
   let openSection = $state<string | null>('Direção');
@@ -24,8 +12,7 @@
   let slidePosition = $state(0);
   let transitionDuration = $state(0);
 
-  // Use the defined types for orderedSections
-  let orderedSections: { name: string; accounts: Account[] }[] = $state([]);
+  let orderedSections: { name: string; accounts: TeamMember[] }[] = $state([]);
   let slidingNext = $state(false);
   let slidingPrev = $state(false);
 
@@ -40,10 +27,10 @@
   let maxDragRight = $state(100);
 
   const groupedSections = $derived.by(() => {
-    const result: Array<{ name: string; accounts: Account[] }> = [];
+    const result: Array<{ name: string; accounts: TeamMember[] }> = [];
 
-    const president = data.sections.find((s: Section) => s.section === 'President');
-    const board = data.sections.find((s: Section) => s.section === 'Board');
+    const president = data.sections.find((s) => s.section === 'President');
+    const board = data.sections.find((s) => s.section === 'Board');
 
     if (president || board) {
       result.push({
@@ -53,7 +40,7 @@
     }
 
     const otherSections = data.sections.filter(
-      (s: Section) => s.section !== 'President' && s.section !== 'Board' && s.section !== 'Alumni'
+      (s) => s.section !== 'President' && s.section !== 'Board' && s.section !== 'Alumni'
     );
 
     for (const section of otherSections) {
@@ -126,9 +113,14 @@
         { ...curr, isDuplicate: false, id: 'curr' }, // 2: Current (Center)
         { ...next, isDuplicate: false, id: 'next' }, // 3: Next
         { ...prev, isDuplicate: true, id: 'buf-right' } // 4: Prev (Buffer Right)
-      ] as Array<{ name: string; accounts: Account[]; isDuplicate?: boolean; id?: string }>;
+      ] as Array<{ name: string; accounts: TeamMember[]; isDuplicate?: boolean; id?: string }>;
     }
-    return base as Array<{ name: string; accounts: Account[]; isDuplicate?: boolean; id?: string }>;
+    return base as Array<{
+      name: string;
+      accounts: TeamMember[];
+      isDuplicate?: boolean;
+      id?: string;
+    }>;
   });
 
   $effect(() => {
@@ -138,7 +130,7 @@
   });
 
   const handleSectionClick = (
-    clickedSection: { name: string; accounts: Account[] },
+    clickedSection: { name: string; accounts: TeamMember[] },
     index: number
   ) => {
     if (clickedSection.name === openSection) return;

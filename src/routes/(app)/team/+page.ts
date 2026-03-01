@@ -8,7 +8,7 @@ type Section = {
 };
 
 export const load: PageLoad = async ({ fetch }) => {
-  const res = await fetch(`/api/generations/23-24`);
+  const res = await fetch(`/api/generations/latest`);
   if (!res.ok) {
     if (res.status === 404) {
       error(404, 'No team members found');
