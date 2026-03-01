@@ -59,6 +59,8 @@
     return result;
   });
 
+  const hasTeamMembers = $derived(groupedSections.some((section) => section.accounts.length > 0));
+
   $effect(() => {
     if (orderedSections.length === 0 && groupedSections.length > 0) {
       const initialIndex = groupedSections.findIndex((s) => s.name === openSection);
@@ -227,69 +229,75 @@
     &lt&nbsp<strong>Equipa</strong>&nbsp/&gt
   </h1>
 
-  <div class="w-full md:hidden">
-    <div
-      class="relative mb-6 mt-2 h-12 w-full touch-pan-y overflow-hidden"
-      ontouchstart={handleTouchStart}
-      ontouchmove={handleTouchMove}
-      ontouchend={handleTouchEnd}
-      style={maskLeftPx > 50
-        ? `-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent calc(50% - ${maskLeftPx}px), black calc(50% - ${maskLeftPx}px), black calc(50% + ${maskRightPx}px), transparent calc(50% + ${maskRightPx}px), transparent 100%); mask-image: linear-gradient(to right, transparent 0%, transparent calc(50% - ${maskLeftPx}px), black calc(50% - ${maskLeftPx}px), black calc(50% + ${maskRightPx}px), transparent calc(50% + ${maskRightPx}px), transparent 100%);`
-        : `-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 15%, black 15%, black 85%, transparent 85%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, transparent 15%, black 15%, black 85%, transparent 85%, transparent 100%);`}
-    >
+  {#if !hasTeamMembers}
+    <div class="my-12 text-center text-gray-400">
+      <p class="text-lg">Nenhum membro da equipa encontrado.</p>
+    </div>
+  {:else}
+    <div class="w-full md:hidden">
       <div
-        bind:this={containerRef}
-        class="absolute left-1/2 flex h-full items-center transition-transform ease-in-out"
-        style="transform: translateX({slidePosition}px); transition-duration: {transitionDuration}ms"
+        class="relative mb-6 mt-2 h-12 w-full touch-pan-y overflow-hidden"
+        ontouchstart={handleTouchStart}
+        ontouchmove={handleTouchMove}
+        ontouchend={handleTouchEnd}
+        style={maskLeftPx > 50
+          ? `-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent calc(50% - ${maskLeftPx}px), black calc(50% - ${maskLeftPx}px), black calc(50% + ${maskRightPx}px), transparent calc(50% + ${maskRightPx}px), transparent 100%); mask-image: linear-gradient(to right, transparent 0%, transparent calc(50% - ${maskLeftPx}px), black calc(50% - ${maskLeftPx}px), black calc(50% + ${maskRightPx}px), transparent calc(50% + ${maskRightPx}px), transparent 100%);`
+          : `-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 15%, black 15%, black 85%, transparent 85%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, transparent 15%, black 15%, black 85%, transparent 85%, transparent 100%);`}
       >
-        {#each visibleSections as section, i (section.isDuplicate ? section.name + '_dup_' + i : section.name)}
-          {#if section.accounts.length > 0}
-            <button
-              bind:this={buttonRefs[i]}
-              onclick={() => handleSectionClick(section, i)}
-              class="mx-4 whitespace-nowrap text-lg font-bold transition-opacity duration-300 min-[400px]:text-xl sm:text-2xl
-              {openSection === section.name ? 'opacity-100' : 'opacity-20'} 
-              {i === 0 || i === 4 ? 'pointer-events-none' : ''}"
-            >
-              {section.name}
-            </button>
-          {/if}
-        {/each}
+        <div
+          bind:this={containerRef}
+          class="absolute left-1/2 flex h-full items-center transition-transform ease-in-out"
+          style="transform: translateX({slidePosition}px); transition-duration: {transitionDuration}ms"
+        >
+          {#each visibleSections as section, i (section.isDuplicate ? section.name + '_dup_' + i : section.name)}
+            {#if section.accounts.length > 0}
+              <button
+                bind:this={buttonRefs[i]}
+                onclick={() => handleSectionClick(section, i)}
+                class="mx-4 whitespace-nowrap text-lg font-bold transition-opacity duration-300 min-[400px]:text-xl sm:text-2xl
+                {openSection === section.name ? 'opacity-100' : 'opacity-20'} 
+                {i === 0 || i === 4 ? 'pointer-events-none' : ''}"
+              >
+                {section.name}
+              </button>
+            {/if}
+          {/each}
+        </div>
       </div>
+
+      {#each groupedSections as section (section.name)}
+        {#if section.accounts.length > 0 && openSection === section.name}
+          <div class="flex justify-center px-4 pb-8">
+            <div class="w-fit max-w-md">
+              <HexagonGrid
+                items={section.accounts}
+                cols={2}
+                orientation="horizontal"
+                component={TeamMemberHexagon}
+                gap="small"
+              />
+            </div>
+          </div>
+        {/if}
+      {/each}
     </div>
 
     {#each groupedSections as section (section.name)}
-      {#if section.accounts.length > 0 && openSection === section.name}
-        <div class="flex justify-center px-4 pb-8">
-          <div class="w-fit max-w-md">
+      {#if section.accounts.length > 0}
+        <div class="hidden w-full md:block">
+          <h2 class="mb-10 mt-12 text-center text-lg font-bold md:text-2xl">
+            {section.name}
+          </h2>
+          <div class="mx-auto w-full max-w-5xl">
             <HexagonGrid
               items={section.accounts}
-              cols={2}
+              cols={4}
               orientation="horizontal"
               component={TeamMemberHexagon}
-              gap="small"
             />
           </div>
         </div>
       {/if}
     {/each}
-  </div>
-
-  {#each groupedSections as section (section.name)}
-    {#if section.accounts.length > 0}
-      <div class="hidden w-full md:block">
-        <h2 class="mb-10 mt-12 text-center text-lg font-bold md:text-2xl">
-          {section.name}
-        </h2>
-        <div class="mx-auto w-full max-w-5xl">
-          <HexagonGrid
-            items={section.accounts}
-            cols={4}
-            orientation="horizontal"
-            component={TeamMemberHexagon}
-          />
-        </div>
-      </div>
-    {/if}
-  {/each}
+  {/if}
 </div>
