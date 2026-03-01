@@ -6,13 +6,13 @@
   let { data }: { data: PageData } = $props();
 
   // Carousel constants
-  const CAROUSEL_CENTER_INDEX = 2;      // [Next, Prev, Curr, Next, Prev]
-  const TRANSITION_DURATION_MS = 300;   // animation duration
-  const MASK_OFFSET_PX = 8;             // additional offset for gradient mask calculations
-  const MASK_THRESHOLD_PX = 50;         // min measured distance before using fallback mask size
-  const MASK_FALLBACK_PX = 130;         // fallback mask size
-  const SWIPE_SNAP_THRESHOLD_PX = 60;   // min swipe distance to trigger section change
-  const LAYOUT_RECENTER_DELAY_MS = 50;  // delay before recentering after layout changes
+  const CAROUSEL_CENTER_INDEX = 2; // [Next, Prev, Curr, Next, Prev]
+  const TRANSITION_DURATION_MS = 300; // animation duration
+  const MASK_OFFSET_PX = 8; // additional offset for gradient mask calculations
+  const MASK_THRESHOLD_PX = 50; // min measured distance before using fallback mask size
+  const MASK_FALLBACK_PX = 130; // fallback mask size
+  const SWIPE_SNAP_THRESHOLD_PX = 60; // min swipe distance to trigger section change
+  const LAYOUT_RECENTER_DELAY_MS = 50; // delay before recentering after layout changes
 
   let buttonRefs: (HTMLButtonElement | undefined)[] = $state([]);
   let containerRef: HTMLDivElement | undefined = $state();
