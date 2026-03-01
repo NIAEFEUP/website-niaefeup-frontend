@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { PageData } from './$types';
-  import TeamMemberHexagon from './_components/team-member-hexagon.svelte';
-  import HexagonGrid from '$lib/components/hexagons/hexagon-grid.svelte';
+  import TeamSectionGrid from './_components/team-section-grid.svelte';
   import type { TeamMember } from '@/types/team-member';
 
   let { data }: { data: PageData } = $props();
@@ -266,38 +265,18 @@
       </div>
 
       {#each groupedSections as section (section.name)}
-        {#if section.accounts.length > 0 && openSection === section.name}
+        {#if openSection === section.name}
           <div class="flex justify-center px-4 pb-8">
-            <div class="w-fit max-w-md">
-              <HexagonGrid
-                items={section.accounts}
-                cols={2}
-                orientation="horizontal"
-                component={TeamMemberHexagon}
-                gap="small"
-              />
-            </div>
+            <TeamSectionGrid {section} cols={2} gap="small" />
           </div>
         {/if}
       {/each}
     </div>
 
     {#each groupedSections as section (section.name)}
-      {#if section.accounts.length > 0}
-        <div class="hidden w-full md:block">
-          <h2 class="mb-10 mt-12 text-center text-lg font-bold md:text-2xl">
-            {section.name}
-          </h2>
-          <div class="mx-auto w-full max-w-5xl">
-            <HexagonGrid
-              items={section.accounts}
-              cols={4}
-              orientation="horizontal"
-              component={TeamMemberHexagon}
-            />
-          </div>
-        </div>
-      {/if}
+      <div class="hidden w-full md:block">
+        <TeamSectionGrid {section} cols={4} showTitle />
+      </div>
     {/each}
   {/if}
 </div>
