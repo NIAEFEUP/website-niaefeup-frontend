@@ -5,6 +5,15 @@
 
   let { data }: { data: PageData } = $props();
 
+  // Carousel constants
+  const CAROUSEL_CENTER_INDEX = 2;      // [Next, Prev, Curr, Next, Prev]
+  const TRANSITION_DURATION_MS = 300;   // animation duration
+  const MASK_OFFSET_PX = 8;             // additional offset for gradient mask calculations
+  const MASK_THRESHOLD_PX = 50;         // min measured distance before using fallback mask size
+  const MASK_FALLBACK_PX = 130;         // fallback mask size
+  const SWIPE_SNAP_THRESHOLD_PX = 60;   // min swipe distance to trigger section change
+  const LAYOUT_RECENTER_DELAY_MS = 50;  // delay before recentering after layout changes
+
   let buttonRefs: (HTMLButtonElement | undefined)[] = $state([]);
   let containerRef: HTMLDivElement | undefined = $state();
   let slidePosition = $state(0);
@@ -90,21 +99,21 @@
   const centerActiveSection = (animate: boolean = false) => {
     if (!containerRef || orderedSections.length === 0) return;
 
-    const activeIndex = 2; // center is index 2 ([Next, Prev, Curr, Next, Prev])
-    const centerBtn = buttonRefs[activeIndex];
+    const centerBtn = buttonRefs[CAROUSEL_CENTER_INDEX];
     const prevBtn = buttonRefs[1];
     const nextBtn = buttonRefs[3];
 
     if (centerBtn) {
       const buttonCenter = centerBtn.offsetLeft + centerBtn.offsetWidth / 2;
       slidePosition = -buttonCenter;
-      transitionDuration = animate ? 300 : 0;
+      transitionDuration = animate ? TRANSITION_DURATION_MS : 0;
 
       if (prevBtn && nextBtn) {
-        let measuredLeft = buttonCenter - prevBtn.offsetLeft + 8;
-        let measuredRight = nextBtn.offsetLeft + nextBtn.offsetWidth - buttonCenter + 8;
-        maskLeftPx = measuredLeft > 50 ? measuredLeft : 130;
-        maskRightPx = measuredRight > 50 ? measuredRight : 130;
+        let measuredLeft = buttonCenter - prevBtn.offsetLeft + MASK_OFFSET_PX;
+        let measuredRight =
+          nextBtn.offsetLeft + nextBtn.offsetWidth - buttonCenter + MASK_OFFSET_PX;
+        maskLeftPx = measuredLeft > MASK_THRESHOLD_PX ? measuredLeft : MASK_FALLBACK_PX;
+        maskRightPx = measuredRight > MASK_THRESHOLD_PX ? measuredRight : MASK_FALLBACK_PX;
 
         maxDragRight = buttonCenter - (prevBtn.offsetLeft + prevBtn.offsetWidth / 2);
         maxDragLeft = nextBtn.offsetLeft + nextBtn.offsetWidth / 2 - buttonCenter;
@@ -139,8 +148,8 @@
   });
 
   $effect(() => {
-    if (transitionDuration === 0 && buttonRefs[2] && !isDragging) {
-      setTimeout(() => centerActiveSection(false), 50);
+    if (transitionDuration === 0 && buttonRefs[CAROUSEL_CENTER_INDEX] && !isDragging) {
+      setTimeout(() => centerActiveSection(false), LAYOUT_RECENTER_DELAY_MS);
     }
   });
 
@@ -149,7 +158,7 @@
     index: number
   ) => {
     if (clickedSection.name === openSection) return;
-    if (index === 2) return; // Center
+    if (index === CAROUSEL_CENTER_INDEX) return; // Center
     if (slidingNext || slidingPrev) return;
 
     if (index === 3) {
@@ -159,7 +168,7 @@
         slidingNext = true;
         const dist = nextButton.offsetLeft + nextButton.offsetWidth / 2;
         slidePosition = -dist;
-        transitionDuration = 300;
+        transitionDuration = TRANSITION_DURATION_MS;
         openSection = clickedSection.name;
 
         setTimeout(() => {
@@ -169,7 +178,7 @@
           orderedSections = [...orderedSections];
 
           requestAnimationFrame(() => centerActiveSection(false));
-        }, 300);
+        }, TRANSITION_DURATION_MS);
       }
     } else if (index === 1) {
       // Prev
@@ -178,7 +187,7 @@
         slidingPrev = true;
         const dist = prevButton.offsetLeft + prevButton.offsetWidth / 2;
         slidePosition = -dist;
-        transitionDuration = 300;
+        transitionDuration = TRANSITION_DURATION_MS;
         openSection = clickedSection.name;
 
         setTimeout(() => {
@@ -188,7 +197,7 @@
           orderedSections = [...orderedSections];
 
           requestAnimationFrame(() => centerActiveSection(false));
-        }, 300);
+        }, TRANSITION_DURATION_MS);
       }
     }
   };
@@ -220,14 +229,13 @@
 
     const touchEndX = e.changedTouches[0].clientX;
     const swipeDistance = touchEndX - touchStartX;
-    const snapThreshold = 60;
 
-    transitionDuration = 300;
+    transitionDuration = TRANSITION_DURATION_MS;
 
-    if (swipeDistance < -snapThreshold) {
+    if (swipeDistance < -SWIPE_SNAP_THRESHOLD_PX) {
       // swiped left -> snap to next
       if (visibleSections[3]) handleSectionClick(visibleSections[3], 3);
-    } else if (swipeDistance > snapThreshold) {
+    } else if (swipeDistance > SWIPE_SNAP_THRESHOLD_PX) {
       // swiped right -> snap to prev
       if (visibleSections[1]) handleSectionClick(visibleSections[1], 1);
     } else {
@@ -253,7 +261,7 @@
         ontouchstart={handleTouchStart}
         ontouchmove={handleTouchMove}
         ontouchend={handleTouchEnd}
-        style={maskLeftPx > 50
+        style={maskLeftPx > MASK_THRESHOLD_PX
           ? `-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent calc(50% - ${maskLeftPx}px), black calc(50% - ${maskLeftPx}px), black calc(50% + ${maskRightPx}px), transparent calc(50% + ${maskRightPx}px), transparent 100%); mask-image: linear-gradient(to right, transparent 0%, transparent calc(50% - ${maskLeftPx}px), black calc(50% - ${maskLeftPx}px), black calc(50% + ${maskRightPx}px), transparent calc(50% + ${maskRightPx}px), transparent 100%);`
           : `-webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 15%, black 15%, black 85%, transparent 85%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, transparent 15%, black 15%, black 85%, transparent 85%, transparent 100%);`}
       >
