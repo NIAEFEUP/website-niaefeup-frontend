@@ -19,7 +19,7 @@
   <header
     class="from-muted-red-900/95 to-muted-red-900/80 sticky top-0 z-20 border-b border-white/10 bg-gradient-to-b backdrop-blur-md md:hidden"
   >
-    <div class="flex items-center justify-between gap-3 px-8 py-4">
+    <div class="flex items-center justify-between gap-3 px-2 py-4">
       <div class="flex-1">
         <select
           class="w-full appearance-none rounded-xl border border-white/20 bg-gray-500/40 px-4 py-3
@@ -150,7 +150,7 @@
 
   <div class="w-px bg-red-500"></div>
 
-  <section class="min-w-0 flex-1 px-10 py-6 md:py-0 md:pl-12">
+  <section class="min-w-0 flex-1 py-6 md:py-0 md:pl-12">
     {#if selectedRole}
       <Permissions />
     {:else}
