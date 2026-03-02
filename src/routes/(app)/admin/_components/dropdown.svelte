@@ -120,13 +120,13 @@
   }
 </script>
 
-<div class="relative z-50 w-[200px] text-left" use:clickOutside={() => (isOpen = false)}>
+<div class="relative z-50 w-[150px] text-left" use:clickOutside={() => (isOpen = false)}>
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-md bg-taupe-100 px-4 py-2 text-2xl font-bold text-black transition-colors hover:bg-red-300"
+    class="relative z-10 flex w-full items-center justify-between gap-2 rounded-md bg-taupe-100 px-4 py-2 text-xl font-bold text-black transition-colors hover:bg-red-300"
   >
-    <div class="flex flex-1 overflow-hidden">
-      <span class="mx-auto block max-w-full truncate" use:marquee>{selected}</span>
+    <div class="flex flex-1 justify-around overflow-hidden">
+      <span class="block max-w-full truncate" use:marquee>{selected}</span>
     </div>
 
     <ChevronDown class="shrink-0 transition-transform duration-200 {isOpen ? 'rotate-180' : ''}" />
@@ -134,7 +134,7 @@
 
   {#if isOpen}
     <div
-      class="absolute left-0 top-full z-0 -mt-4 w-full origin-top overflow-hidden rounded-b-md bg-taupe-200 text-2xl font-bold text-black"
+      class="absolute left-0 top-full z-0 -mt-4 w-full origin-top overflow-hidden rounded-b-md bg-taupe-200 text-xl font-bold text-black"
     >
       <div class="py-1 pt-6">
         {#each options.filter((opt) => opt !== selected) as option (option)}
