@@ -56,7 +56,7 @@
       if (diff > 0) {
         const duration = Math.max(diff * 10, 1000);
 
-        node.classList.remove('truncate', 'w-full');
+        node.classList.remove('truncate', 'max-w-full', 'mx-auto');
         node.classList.add('w-max', 'whitespace-nowrap');
 
         const animate = () => {
@@ -99,7 +99,7 @@
           node.style.transition = '';
           node.style.transform = '';
           node.classList.remove('w-max', 'whitespace-nowrap');
-          node.classList.add('truncate', 'w-full');
+          node.classList.add('truncate', 'max-w-full', 'mx-auto');
         }
       }, 800);
     };
@@ -123,10 +123,10 @@
 <div class="relative z-50 w-[200px] text-left" use:clickOutside={() => (isOpen = false)}>
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 px-4 py-2 text-2xl font-bold text-black transition-colors hover:bg-red-300"
+    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-md bg-taupe-100 px-4 py-2 text-2xl font-bold text-black transition-colors hover:bg-red-300"
   >
-    <div class="flex-1 overflow-hidden">
-      <span class="block w-full truncate text-left" use:marquee>{selected}</span>
+    <div class="flex flex-1 overflow-hidden">
+      <span class="mx-auto block max-w-full truncate" use:marquee>{selected}</span>
     </div>
 
     <ChevronDown class="shrink-0 transition-transform duration-200 {isOpen ? 'rotate-180' : ''}" />
@@ -134,16 +134,16 @@
 
   {#if isOpen}
     <div
-      class="absolute left-0 top-full z-0 -mt-4 w-full origin-top overflow-hidden rounded-b-lg bg-taupe-200 text-2xl font-bold text-black"
+      class="absolute left-0 top-full z-0 -mt-4 w-full origin-top overflow-hidden rounded-b-md bg-taupe-200 text-2xl font-bold text-black"
     >
       <div class="py-1 pt-6">
         {#each options.filter((opt) => opt !== selected) as option (option)}
           <button
             on:click={() => handleSelect(option)}
-            class="block w-full px-4 py-2 text-left transition-colors hover:text-vivid-red-700"
+            class="block w-full px-4 py-2 transition-colors hover:text-vivid-red-700"
           >
-            <div class="w-full overflow-hidden">
-              <span class="block w-full truncate text-left" use:marquee>{option}</span>
+            <div class="flex w-full overflow-hidden">
+              <span class="mx-auto block max-w-full truncate" use:marquee>{option}</span>
             </div>
           </button>
         {/each}
