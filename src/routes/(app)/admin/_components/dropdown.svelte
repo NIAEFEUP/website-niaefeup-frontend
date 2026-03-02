@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import { ChevronDown } from 'lucide-svelte';
 
   export let options: string[] = [
@@ -11,11 +10,11 @@
     'opcao bue bue bue grande que nao vai caber aqui para testar cenas ya'
   ];
   export let selected: string = 'Select Option';
+  export let onchange: ((option: string) => void) | undefined = undefined;
 
   let isOpen = false;
-  const dispatch = createEventDispatcher();
 
-  function clickOutside(node: HTMLElement) {
+  function clickOutside(node: HTMLElement, callback: () => void) {
     const handleClick = (event: Event) => {
       if (
         node &&
@@ -23,7 +22,7 @@
         !node.contains(event.target) &&
         !event.defaultPrevented
       ) {
-        node.dispatchEvent(new CustomEvent('click_outside', { detail: node }));
+        callback();
       }
     };
 
@@ -39,7 +38,7 @@
   function handleSelect(option: string) {
     selected = option;
     isOpen = false;
-    dispatch('change', option);
+    onchange?.(option);
   }
 
   function marquee(node: HTMLElement) {
@@ -121,11 +120,7 @@
   }
 </script>
 
-<div
-  class="relative z-50 w-[200px] text-left"
-  use:clickOutside
-  on:click_outside={() => (isOpen = false)}
->
+<div class="relative z-50 w-[200px] text-left" use:clickOutside={() => (isOpen = false)}>
   <button
     on:click={() => (isOpen = !isOpen)}
     class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 px-4 py-2 text-2xl font-bold text-black transition-colors hover:bg-red-300"
