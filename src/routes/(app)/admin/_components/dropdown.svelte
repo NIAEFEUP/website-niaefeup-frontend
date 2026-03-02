@@ -77,7 +77,7 @@
       clearTimeout(timeout2);
       clearTimeout(timeout3);
 
-      node.style.transition = `transform 0.3s ease-out`;
+      node.style.transition = `transform 0.8s ease-in-out`;
       node.style.transform = `translateX(0px)`;
 
       setTimeout(() => {
@@ -85,7 +85,7 @@
           node.classList.remove('w-max', 'whitespace-nowrap');
           node.classList.add('truncate', 'w-full');
         }
-      }, 300);
+      }, 800);
     };
 
     trigger.addEventListener('mouseenter', start);
