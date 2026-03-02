@@ -117,7 +117,7 @@
 >
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 px-6 py-4 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
+    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 px-6 py-4 text-2xl font-bold text-black transition-colors hover:bg-red-300"
   >
     <div class="flex-1 overflow-hidden">
       <span class="block w-full truncate text-left" use:marquee>{selected}</span>
@@ -128,7 +128,7 @@
 
   {#if isOpen}
     <div
-      class="absolute left-0 top-full z-0 -mt-4 w-full origin-top overflow-hidden rounded-b-lg bg-taupe-200 text-2xl font-bold text-black shadow-lg"
+      class="absolute left-0 top-full z-0 -mt-4 w-full origin-top overflow-hidden rounded-b-lg bg-taupe-200 text-2xl font-bold text-black"
     >
       <div class="py-1 pt-6">
         {#each options as option}
