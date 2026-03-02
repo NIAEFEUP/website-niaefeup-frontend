@@ -13,51 +13,101 @@
   let permissionsMap: PermissionsMap = $state({
     TTS: [
       {
-        title: 'Permission Title A',
-        description: 'Short description for permission A',
+        title: 'Editar Página',
+        description: 'Permite editar a página do projeto',
         checked: false
       },
       {
-        title: 'Permission Title B',
-        description: 'Short description for permission B',
+        title: 'Gerir Membros',
+        description: 'Permite adicionar/remover e gerir sub-equipas e seus membros',
+        checked: false
+      },
+      {
+        title: 'Gerir Timeline',
+        description: 'Permite adicionar/remover acontecimentos e gerir timeline',
         checked: false
       }
     ],
     UNI: [
       {
-        title: 'Permission Title C',
-        description: 'Short description for permission C',
+        title: 'Editar Página',
+        description: 'Permite editar a página do projeto',
+        checked: false
+      },
+      {
+        title: 'Gerir Membros',
+        description: 'Permite adicionar/remover e gerir sub-equipas e seus membros',
+        checked: false
+      },
+      {
+        title: 'Gerir Timeline',
+        description: 'Permite adicionar/remover acontecimentos e gerir timeline',
         checked: false
       }
     ],
     NiJobs: [
       {
-        title: 'Permission Title D',
-        description: 'Short description for permission D',
+        title: 'Editar Página',
+        description: 'Permite editar a página do projeto',
         checked: false
       },
       {
-        title: 'Permission Title E',
-        description: 'Short description for permission E',
+        title: 'Gerir Membros',
+        description: 'Permite adicionar/remover e gerir sub-equipas e seus membros',
         checked: false
       },
       {
-        title: 'Permission Title F',
-        description: 'Short description for permission F',
+        title: 'Gerir Timeline',
+        description: 'Permite adicionar/remover acontecimentos e gerir timeline',
         checked: false
       }
     ],
     Eventos: [
       {
-        title: 'Permission Title G',
-        description: 'Short description for permission G',
+        title: 'Adicionar eventos',
+        description: 'Adicionar um evento na página de eventos',
+        checked: false
+      },
+      {
+        title: 'Editar eventos',
+        description: 'Permite editar um evento',
+        checked: false
+      },
+      {
+        title: 'Eliminar eventos',
+        description: 'Remover eventos',
         checked: false
       }
     ],
     Equipa: [
       {
-        title: 'Permission Title H',
-        description: 'Short description for permission H',
+        title: 'Adicionar Membro',
+        description: 'Permite criar novos membros',
+        checked: false
+      },
+      {
+        title: 'Pesquisar Membro',
+        description: 'Permite pesquisar membros',
+        checked: false
+      },
+      {
+        title: 'Gerir Membro',
+        description: 'Editar informações de membros',
+        checked: false
+      },
+      {
+        title: 'Gerir Tags',
+        description: 'Permite editar a página do',
+        checked: false
+      },
+      {
+        title: 'Gerir Cargos',
+        description: 'Permite adicionar/remover e gerir sub-equipas e seus membros',
+        checked: false
+      },
+      {
+        title: 'Gerir Timeline',
+        description: 'Permite editar membros de mandatos passados e adicionar novos mandatos ',
         checked: false
       }
     ]
