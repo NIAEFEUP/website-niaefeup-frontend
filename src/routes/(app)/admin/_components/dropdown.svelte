@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte';
+  import { ChevronDown } from 'lucide-svelte';
 
   // Props
   export let options = ['TTS', 'UNI', 'NiJobs', 'Eventos', 'Equipa'];
@@ -38,28 +39,21 @@
 >
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="flex min-w-[120px] items-center justify-between rounded bg-taupe-100 p-3 text-sm font-medium shadow-sm transition-colors hover:bg-red-300"
+    class="flex min-w-[120px] items-center justify-between rounded-lg bg-taupe-100 p-6 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
   >
     <span>{selected}</span>
-    <svg
-      class="ml-2 h-4 w-4 transition-transform {isOpen ? 'rotate-180' : ''}"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-    </svg>
+    <ChevronDown />
   </button>
 
   {#if isOpen}
     <div
-      class="absolute left-0 z-50 w-full origin-top-left overflow-hidden rounded-md border bg-taupe-200 shadow-lg"
+      class="absolute left-0 z-50 w-full origin-top-left overflow-hidden rounded-lg bg-taupe-200 text-2xl font-bold text-black shadow-lg"
     >
       <div class="py-1">
         {#each options as option}
           <button
             on:click={() => handleSelect(option)}
-            class="block w-full px-4 py-2 text-left text-sm text-gray-700 transition-colors hover:bg-red-50 hover:text-red-700"
+            class="block w-full px-4 py-2 text-left transition-colors hover:bg-red-50 hover:text-red-700"
           >
             {option}
           </button>
