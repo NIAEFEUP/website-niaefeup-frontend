@@ -30,10 +30,9 @@
   }: Props = $props();
 </script>
 
-
 <div class="flex flex-col {horizontal ? 'md:flex-row md:items-center' : ''}">
   {#if label}
-    <label class="m-1 md:w-1/5 font-source_code font-bold text-white" for={id}>{label}</label>
+    <label class="m-1 font-source_code font-bold text-white md:w-1/5" for={id}>{label}</label>
   {/if}
   {#if isTextArea}
     <textarea

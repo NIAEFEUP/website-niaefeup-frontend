@@ -13,7 +13,7 @@
     secondary: { main: 'bg-muted-red-500', hover: 'hover:bg-muted-red-500' },
     red: { main: 'bg-red-500', hover: 'hover:bg-red-500' },
     green: { main: 'bg-green-500', hover: 'hover:bg-green-500' },
-    blue: { main: 'bg-blue-500', hover: 'hover:bg-blue-500' },
+    blue: { main: 'bg-blue-500', hover: 'hover:bg-blue-500' }
   };
   const widthList = {
     small: 'w-20',

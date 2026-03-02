@@ -5,7 +5,7 @@
   import PictureInput from '@/lib/components/forms/picture-input.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Project } from '@/types/project';
-  import {enhance} from '$app/forms';
+  import { enhance } from '$app/forms';
 
   let { data }: { data: PageData } = $props();
   let project: Project = data.project;
@@ -17,13 +17,18 @@
     <h1 class="text-4xl font-bold">Editar projeto</h1>
   </div>
 
-  <form method="POST" enctype="multipart/form-data" class="flex w-full flex-col items-center p-10" use:enhance={() => {
+  <form
+    method="POST"
+    enctype="multipart/form-data"
+    class="flex w-full flex-col items-center p-10"
+    use:enhance={() => {
       isSubmitting = true;
       return async ({ update }) => {
-        await update({reset:false});
+        await update({ reset: false });
         isSubmitting = false;
       };
-    }}>
+    }}
+  >
     <h2 class="mb-10 text-center text-2xl font-bold">Dados Gerais</h2>
 
     <div class="flex w-full flex-col justify-center gap-10 md:flex-row md:items-start">
@@ -36,14 +41,25 @@
 
         <ProjectFormsInput label="Slogan" name="slogan" horizontal={true} value={project.slogan} />
 
-        <ProjectFormsInput label="Descrição" name="description" horizontal={true} isTextArea value={project.description} />
+        <ProjectFormsInput
+          label="Descrição"
+          name="description"
+          horizontal={true}
+          isTextArea
+          value={project.description}
+        />
 
         <div class="flex flex-col gap-2 md:flex-row">
           <p class="w-1/6 font-bold">Fotos</p>
           <FileInput name="gallery" multiple value={project.gallery} />
         </div>
 
-        <ProjectFormsInput label="Público Alvo" name="public" horizontal={true} value={project.targetAudience} />
+        <ProjectFormsInput
+          label="Público Alvo"
+          name="public"
+          horizontal={true}
+          value={project.targetAudience}
+        />
 
         <div class="flex w-[50vw] gap-10">
           <Button type="submit" color="secondary" hoverColor="red" text="Guardar Alterações" />
