@@ -5,6 +5,8 @@ import type { Role } from '@/types/role';
 import { canEditActivity, canCreateActivity, canDeleteActivity } from '@/lib/api/permissions';
 import type { BackendError } from '@/types/backend-error';
 
+// TODO REMOVE PERMISSIONS CHECKS COMMENTS
+
 export const load: PageServerLoad = async ({ fetch }) => {
   // if (!(await canEditActivity(fetch))) {
   //   throw redirect(303, '/');
