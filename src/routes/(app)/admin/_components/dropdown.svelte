@@ -2,7 +2,14 @@
   import { createEventDispatcher } from 'svelte';
   import { ChevronDown } from 'lucide-svelte';
 
-  export let options = ['TTS', 'UNI', 'NiJobs', 'Eventos', 'Equipa'];
+  export let options = [
+    'TTS',
+    'UNI',
+    'NiJobs',
+    'Eventos',
+    'Equipa',
+    'opcao bue bue bue grande que noa vai caber aqui para testar cenas ya'
+  ];
   export let selected = 'Select Option';
 
   let isOpen = false;
@@ -32,16 +39,17 @@
 </script>
 
 <div
-  class="relative z-50 inline-block text-left"
+  class="relative z-50 w-[300px] text-left"
   use:clickOutside
   on:click_outside={() => (isOpen = false)}
 >
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="relative z-10 flex min-w-[120px] items-center justify-between gap-4 rounded-lg bg-taupe-100 p-6 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
+    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 p-6 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
   >
-    <span>{selected}</span>
-    <ChevronDown class="transition-transform duration-200 {isOpen ? 'rotate-180' : ''}" />
+    <span class="truncate">{selected}</span>
+
+    <ChevronDown class="shrink-0 transition-transform duration-200 {isOpen ? 'rotate-180' : ''}" />
   </button>
 
   {#if isOpen}
