@@ -8,7 +8,7 @@
     'NiJobs',
     'Eventos',
     'Equipa',
-    'opcao bue bue bue grande que noa vai caber aqui para testar cenas ya'
+    'opcao bue bue bue grande que nao vai caber aqui para testar cenas ya'
   ];
   export let selected = 'Select Option';
 
@@ -36,6 +36,68 @@
     isOpen = false;
     dispatch('change', option);
   }
+
+  function marquee(node) {
+    let timeout1, timeout2, timeout3;
+    let isHovered = false;
+
+    const trigger = node.closest('button');
+
+    const start = () => {
+      isHovered = true;
+      const diff = node.scrollWidth - node.clientWidth;
+
+      if (diff > 0) {
+        const duration = Math.max(diff * 10, 1000);
+
+        node.classList.remove('truncate', 'w-full');
+        node.classList.add('w-max', 'whitespace-nowrap');
+
+        const animate = () => {
+          if (!isHovered) return;
+          node.style.transition = `transform ${duration}ms ease-in-out`;
+          node.style.transform = `translateX(-${diff}px)`;
+
+          timeout1 = setTimeout(() => {
+            if (!isHovered) return;
+            node.style.transition = `transform ${duration}ms ease-in-out`;
+            node.style.transform = `translateX(0px)`;
+
+            timeout2 = setTimeout(animate, duration + 300);
+          }, duration + 300);
+        };
+
+        timeout3 = setTimeout(animate, 150);
+      }
+    };
+
+    const stop = () => {
+      isHovered = false;
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      clearTimeout(timeout3);
+
+      node.style.transition = `transform 0.3s ease-out`;
+      node.style.transform = `translateX(0px)`;
+
+      setTimeout(() => {
+        if (!isHovered) {
+          node.classList.remove('w-max', 'whitespace-nowrap');
+          node.classList.add('truncate', 'w-full');
+        }
+      }, 300);
+    };
+
+    trigger.addEventListener('mouseenter', start);
+    trigger.addEventListener('mouseleave', stop);
+
+    return {
+      destroy() {
+        trigger.removeEventListener('mouseenter', start);
+        trigger.removeEventListener('mouseleave', stop);
+      }
+    };
+  }
 </script>
 
 <div
@@ -47,7 +109,9 @@
     on:click={() => (isOpen = !isOpen)}
     class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 p-6 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
   >
-    <span class="truncate">{selected}</span>
+    <div class="flex-1 overflow-hidden">
+      <span class="block w-full truncate text-left" use:marquee>{selected}</span>
+    </div>
 
     <ChevronDown class="shrink-0 transition-transform duration-200 {isOpen ? 'rotate-180' : ''}" />
   </button>
@@ -62,7 +126,9 @@
             on:click={() => handleSelect(option)}
             class="block w-full px-4 py-2 text-left transition-colors hover:bg-red-50 hover:text-red-700"
           >
-            {option}
+            <div class="w-full overflow-hidden">
+              <span class="block w-full truncate text-left" use:marquee>{option}</span>
+            </div>
           </button>
         {/each}
       </div>
