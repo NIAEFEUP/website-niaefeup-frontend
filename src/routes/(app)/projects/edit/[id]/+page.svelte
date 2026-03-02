@@ -9,7 +9,6 @@
 
   let { data }: { data: PageData } = $props();
   let project: Project = data.project;
-  let isSubmitting = $state(false);
 </script>
 
 <div class="flex w-full flex-col items-center justify-around">
@@ -22,10 +21,8 @@
     enctype="multipart/form-data"
     class="flex w-full flex-col items-center p-10"
     use:enhance={() => {
-      isSubmitting = true;
       return async ({ update }) => {
         await update({ reset: false });
-        isSubmitting = false;
       };
     }}
   >
