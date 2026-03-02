@@ -101,13 +101,13 @@
 </script>
 
 <div
-  class="relative z-50 w-[300px] text-left"
+  class="relative z-50 w-[200px] text-left"
   use:clickOutside
   on:click_outside={() => (isOpen = false)}
 >
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 p-6 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
+    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 px-6 py-4 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
   >
     <div class="flex-1 overflow-hidden">
       <span class="block w-full truncate text-left" use:marquee>{selected}</span>
