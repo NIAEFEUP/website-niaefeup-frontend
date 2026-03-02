@@ -10,7 +10,7 @@
 
   type PermissionsMap = Record<string, Permission[]>;
 
-  const permissionsMap: PermissionsMap = {
+  let permissionsMap: PermissionsMap = $state({
     TTS: [
       {
         title: 'Permission Title A',
@@ -61,9 +61,10 @@
         checked: false
       }
     ]
-  };
+  });
 
   let selectedOption = $state('TTS');
+
   let permissions = $derived(permissionsMap[selectedOption] ?? []);
 </script>
 
