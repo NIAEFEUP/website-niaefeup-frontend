@@ -77,11 +77,21 @@
       clearTimeout(timeout2);
       clearTimeout(timeout3);
 
+      const computedStyle = window.getComputedStyle(node);
+      const currentTransform = computedStyle.getPropertyValue('transform');
+
+      node.style.transition = 'none';
+      node.style.transform = currentTransform;
+
+      void node.offsetWidth;
+
       node.style.transition = `transform 0.8s ease-in-out`;
       node.style.transform = `translateX(0px)`;
 
       setTimeout(() => {
         if (!isHovered) {
+          node.style.transition = '';
+          node.style.transform = '';
           node.classList.remove('w-max', 'whitespace-nowrap');
           node.classList.add('truncate', 'w-full');
         }
