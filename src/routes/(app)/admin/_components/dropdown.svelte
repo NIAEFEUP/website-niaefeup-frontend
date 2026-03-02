@@ -42,7 +42,7 @@
     class="flex min-w-[120px] items-center justify-between rounded-lg bg-taupe-100 p-6 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
   >
     <span>{selected}</span>
-    <ChevronDown />
+    <ChevronDown class="transition-transform duration-200 {isOpen ? 'rotate-180' : ''}" />
   </button>
 
   {#if isOpen}
