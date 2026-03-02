@@ -134,7 +134,7 @@
         {#each options as option}
           <button
             on:click={() => handleSelect(option)}
-            class="block w-full px-4 py-2 text-left transition-colors hover:bg-red-50 hover:text-red-700"
+            class="block w-full px-4 py-2 text-left transition-colors hover:text-vivid-red-700"
           >
             <div class="w-full overflow-hidden">
               <span class="block w-full truncate text-left" use:marquee>{option}</span>
