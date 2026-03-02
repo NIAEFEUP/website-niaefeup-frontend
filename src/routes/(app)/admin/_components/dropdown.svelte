@@ -1,15 +1,10 @@
 <script lang="ts">
   import { ChevronDown } from 'lucide-svelte';
 
-  export let options: string[] = [
-    'TTS',
-    'UNI',
-    'NiJobs',
-    'Eventos',
-    'Equipa',
-    'opcao bue bue bue grande que nao vai caber aqui para testar cenas ya'
-  ];
-  export let selected: string = 'Select Option';
+  export let options: string[] = ['TTS', 'UNI', 'NiJobs', 'Eventos', 'Equipa'];
+
+  export let selected: string = options[0];
+
   export let onchange: ((option: string) => void) | undefined = undefined;
 
   let isOpen = false;
