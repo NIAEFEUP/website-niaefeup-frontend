@@ -8,7 +8,7 @@
     isTextArea?: boolean;
     value?: string;
   }
-  let { label = '', name = '', horizontal = false, isTextArea = false, value = '' }: Props = $props();
+  let { label = '', name = '', horizontal = false, isTextArea = false, value = $bindable('') }: Props = $props();
 </script>
 
 <LabelInput

@@ -7,7 +7,7 @@
   import type { Project } from '@/types/project';
 
   let { data }: { data: PageData } = $props();
-  const project: Project = data.project;
+  let project: Project = data.project;
 </script>
 
 <div class="flex w-full flex-col items-center justify-around">
