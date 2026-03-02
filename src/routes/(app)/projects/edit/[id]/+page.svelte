@@ -5,9 +5,11 @@
   import PictureInput from '@/lib/components/forms/picture-input.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Project } from '@/types/project';
+  import {enhance} from '$app/forms';
 
   let { data }: { data: PageData } = $props();
   let project: Project = data.project;
+  let isSubmitting = $state(false);
 </script>
 
 <div class="flex w-full flex-col items-center justify-around">
@@ -15,7 +17,13 @@
     <h1 class="text-4xl font-bold">Editar projeto</h1>
   </div>
 
-  <form method="POST" enctype="multipart/form-data" class="flex w-full flex-col items-center p-10">
+  <form method="POST" enctype="multipart/form-data" class="flex w-full flex-col items-center p-10" use:enhance={() => {
+      isSubmitting = true;
+      return async ({ update }) => {
+        await update({reset:false});
+        isSubmitting = false;
+      };
+    }}>
     <h2 class="mb-10 text-center text-2xl font-bold">Dados Gerais</h2>
 
     <div class="flex w-full flex-col justify-center gap-10 md:flex-row md:items-start">
