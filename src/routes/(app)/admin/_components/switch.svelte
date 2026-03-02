@@ -7,7 +7,10 @@
   type="button"
   role="switch"
   aria-checked={checked}
-  onclick={() => (checked = !checked)}
+  onclick={(e) => {
+    checked = !checked;
+    e.currentTarget.blur();
+  }}
   class="relative h-6 w-8 cursor-pointer overflow-hidden rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
 >
   <div
