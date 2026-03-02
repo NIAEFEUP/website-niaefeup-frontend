@@ -131,7 +131,7 @@
       class="absolute left-0 top-full z-0 -mt-4 w-full origin-top overflow-hidden rounded-b-lg bg-taupe-200 text-2xl font-bold text-black"
     >
       <div class="py-1 pt-6">
-        {#each options as option}
+        {#each options.filter((opt) => opt !== selected) as option (option)}
           <button
             on:click={() => handleSelect(option)}
             class="block w-full px-4 py-2 text-left transition-colors hover:text-vivid-red-700"
