@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import { ChevronDown } from 'lucide-svelte';
 
-  export let options = [
+  export let options: string[] = [
     'TTS',
     'UNI',
     'NiJobs',
@@ -10,15 +10,20 @@
     'Equipa',
     'opcao bue bue bue grande que nao vai caber aqui para testar cenas ya'
   ];
-  export let selected = 'Select Option';
+  export let selected: string = 'Select Option';
 
   let isOpen = false;
   const dispatch = createEventDispatcher();
 
-  function clickOutside(node) {
-    const handleClick = (event) => {
-      if (node && !node.contains(event.target) && !event.defaultPrevented) {
-        node.dispatchEvent(new CustomEvent('click_outside', node));
+  function clickOutside(node: HTMLElement) {
+    const handleClick = (event: Event) => {
+      if (
+        node &&
+        event.target instanceof Node &&
+        !node.contains(event.target) &&
+        !event.defaultPrevented
+      ) {
+        node.dispatchEvent(new CustomEvent('click_outside', { detail: node }));
       }
     };
 
@@ -31,14 +36,16 @@
     };
   }
 
-  function handleSelect(option) {
+  function handleSelect(option: string) {
     selected = option;
     isOpen = false;
     dispatch('change', option);
   }
 
-  function marquee(node) {
-    let timeout1, timeout2, timeout3;
+  function marquee(node: HTMLElement) {
+    let timeout1: ReturnType<typeof setTimeout>;
+    let timeout2: ReturnType<typeof setTimeout>;
+    let timeout3: ReturnType<typeof setTimeout>;
     let isHovered = false;
 
     const trigger = node.closest('button');
@@ -98,13 +105,17 @@
       }, 800);
     };
 
-    trigger.addEventListener('mouseenter', start);
-    trigger.addEventListener('mouseleave', stop);
+    if (trigger) {
+      trigger.addEventListener('mouseenter', start);
+      trigger.addEventListener('mouseleave', stop);
+    }
 
     return {
       destroy() {
-        trigger.removeEventListener('mouseenter', start);
-        trigger.removeEventListener('mouseleave', stop);
+        if (trigger) {
+          trigger.removeEventListener('mouseenter', start);
+          trigger.removeEventListener('mouseleave', stop);
+        }
       }
     };
   }
@@ -117,7 +128,7 @@
 >
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 px-6 py-4 text-2xl font-bold text-black transition-colors hover:bg-red-300"
+    class="relative z-10 flex w-full items-center justify-between gap-4 rounded-lg bg-taupe-100 px-4 py-2 text-2xl font-bold text-black transition-colors hover:bg-red-300"
   >
     <div class="flex-1 overflow-hidden">
       <span class="block w-full truncate text-left" use:marquee>{selected}</span>
