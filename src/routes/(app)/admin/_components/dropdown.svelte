@@ -32,13 +32,13 @@
 </script>
 
 <div
-  class="relative inline-block text-left"
+  class="relative z-50 inline-block text-left"
   use:clickOutside
   on:click_outside={() => (isOpen = false)}
 >
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="flex min-w-[120px] items-center justify-between gap-4 rounded-lg bg-taupe-100 p-6 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
+    class="relative z-10 flex min-w-[120px] items-center justify-between gap-4 rounded-lg bg-taupe-100 p-6 text-2xl font-bold text-black shadow-sm transition-colors hover:bg-red-300"
   >
     <span>{selected}</span>
     <ChevronDown class="transition-transform duration-200 {isOpen ? 'rotate-180' : ''}" />
@@ -46,9 +46,9 @@
 
   {#if isOpen}
     <div
-      class="absolute left-0 z-50 w-full origin-top-left overflow-hidden rounded-lg bg-taupe-200 text-2xl font-bold text-black shadow-lg"
+      class="absolute left-0 top-full z-0 -mt-4 w-full origin-top overflow-hidden rounded-b-lg bg-taupe-200 text-2xl font-bold text-black shadow-lg"
     >
-      <div class="py-1">
+      <div class="py-1 pt-6">
         {#each options as option}
           <button
             on:click={() => handleSelect(option)}
