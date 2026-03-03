@@ -2,9 +2,7 @@
   import { ChevronDown } from 'lucide-svelte';
 
   export let options: string[] = ['TTS', 'UNI', 'NiJobs', 'Eventos', 'Equipa'];
-
   export let selected: string = options[0];
-
   export let onchange: ((option: string) => void) | undefined = undefined;
 
   let isOpen = false;
@@ -51,7 +49,12 @@
       if (diff > 0) {
         const duration = Math.max(diff * 10, 1000);
 
-        node.classList.remove('truncate', 'max-w-full', 'mx-auto');
+        const hadMxAuto = node.classList.contains('mx-auto');
+        node.dataset.hadMxAuto = hadMxAuto.toString();
+
+        node.classList.remove('truncate', 'max-w-full');
+        if (hadMxAuto) node.classList.remove('mx-auto');
+
         node.classList.add('w-max', 'whitespace-nowrap');
 
         const animate = () => {
@@ -94,7 +97,11 @@
           node.style.transition = '';
           node.style.transform = '';
           node.classList.remove('w-max', 'whitespace-nowrap');
-          node.classList.add('truncate', 'max-w-full', 'mx-auto');
+          node.classList.add('truncate', 'max-w-full');
+
+          if (node.dataset.hadMxAuto === 'true') {
+            node.classList.add('mx-auto');
+          }
         }
       }, 800);
     };
@@ -120,8 +127,8 @@
     on:click={() => (isOpen = !isOpen)}
     class="relative z-10 flex w-full items-center justify-between gap-2 rounded-md bg-taupe-100 px-4 py-2 text-xl font-bold text-black transition-colors hover:bg-red-300"
   >
-    <div class="flex flex-1 justify-around overflow-hidden">
-      <span class="block max-w-full truncate" use:marquee>{selected}</span>
+    <div class="flex flex-1 overflow-hidden">
+      <span class="mx-auto block max-w-full truncate" use:marquee>{selected}</span>
     </div>
 
     <ChevronDown class="shrink-0 transition-transform duration-200 {isOpen ? 'rotate-180' : ''}" />
@@ -131,14 +138,14 @@
     <div
       class="absolute left-0 top-full z-0 -mt-4 w-full origin-top overflow-hidden rounded-b-md bg-taupe-200 text-xl font-bold text-black"
     >
-      <div class="py-1 pt-6">
+      <div class="py-1 pt-4">
         {#each options.filter((opt) => opt !== selected) as option (option)}
           <button
             on:click={() => handleSelect(option)}
             class="block w-full px-4 py-2 transition-colors hover:text-vivid-red-700"
           >
             <div class="flex w-full overflow-hidden">
-              <span class="mx-auto block max-w-full truncate" use:marquee>{option}</span>
+              <span class="block max-w-full truncate text-left" use:marquee>{option}</span>
             </div>
           </button>
         {/each}
