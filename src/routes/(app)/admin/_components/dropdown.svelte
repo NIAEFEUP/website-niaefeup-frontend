@@ -122,7 +122,7 @@
   }
 </script>
 
-<div class="relative z-50 w-[150px] text-left" use:clickOutside={() => (isOpen = false)}>
+<div class="relative z-10 w-[150px] text-left" use:clickOutside={() => (isOpen = false)}>
   <button
     on:click={() => (isOpen = !isOpen)}
     class="relative z-10 flex w-full items-center justify-between gap-2 rounded-md bg-taupe-100 px-4 py-2 text-xl font-bold text-black transition-colors hover:bg-red-300"
