@@ -147,10 +147,20 @@
     }>;
   });
 
+  let recenterTimeout: ReturnType<typeof setTimeout> | null = null;
   $effect(() => {
     if (transitionDuration === 0 && buttonRefs[CAROUSEL_CENTER_INDEX] && !isDragging) {
-      setTimeout(() => centerActiveSection(false), LAYOUT_RECENTER_DELAY_MS);
+      if (recenterTimeout !== null) {
+        clearTimeout(recenterTimeout);
+      }
+      recenterTimeout = setTimeout(() => centerActiveSection(false), LAYOUT_RECENTER_DELAY_MS);
     }
+    return () => {
+      if (recenterTimeout !== null) {
+        clearTimeout(recenterTimeout);
+        recenterTimeout = null;
+      }
+    };
   });
 
   const handleSectionClick = (
