@@ -15,7 +15,7 @@ export const actions: Actions = {
         const password = requestData.get('password');
         const confirmpassword = requestData.get('confirmpassword');
         const token = requestData.get('token');
-        let stringpassword = $state('')
+        let stringpassword = '';
         if (password != null){
             stringpassword = password.toString()
         }
@@ -25,7 +25,9 @@ export const actions: Actions = {
         if (check){
             const formData = new FormData();
             formData.append('password', stringpassword);
-            const res = await fetch(`api/auth/password/recovery/${token}/confirm`, {
+            const message: string = token;
+            console.log(message);
+            const res = await fetch(`/api/auth/password/recovery/${token}/confirm`, {
                 method: 'POST',
                 body: formData
             });
