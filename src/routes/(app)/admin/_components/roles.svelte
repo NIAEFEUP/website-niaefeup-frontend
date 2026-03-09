@@ -15,7 +15,6 @@
   let selectedRole: Role | null = $state(roles[0] ?? null);
   let dialogOpen = $state(false);
   let errorMessage: BackendError | null = $state(null);
-
 </script>
 
 <div class="flex flex-col md:flex-row md:py-12">
@@ -76,15 +75,15 @@
         <form
           method="POST"
           action="?/addRole"
-          use:enhance={({formData}) => {
+          use:enhance={({ formData }) => {
             errorMessage = null;
 
             const name = formData.get('name')?.toString().trim();
-            
+
             if (name && roles.some((r) => r.name.toLowerCase() === name.toLowerCase())) {
-                errorMessage = {message: 'Role já existente!' };
-                return;
-              }
+              errorMessage = { message: 'Role já existente!' };
+              return;
+            }
             return async ({ result }) => {
               if (result.type === 'success') {
                 if (result.data?.success) {
@@ -98,17 +97,15 @@
                       typeof result.data?.error === 'string'
                         ? result.data.error
                         : 'Erro ao criar a role'
-                  };            
+                  };
                 }
               } else if (result.type === 'failure') {
                 errorMessage = {
                   message:
-                    typeof result.data?.error === 'string' 
-                      ? result.data.error 
-                      : 'Erro de validação'
+                    typeof result.data?.error === 'string' ? result.data.error : 'Erro de validação'
                 };
               } else {
-                errorMessage = {message: 'Erro inesperado' };
+                errorMessage = { message: 'Erro inesperado' };
               }
 
               await applyAction(result);
