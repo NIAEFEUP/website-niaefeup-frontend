@@ -6,9 +6,9 @@ import { canEditActivity, canCreateActivity, canDeleteActivity } from '@/lib/api
 import type { BackendError } from '@/types/backend-error';
 
 export const load: PageServerLoad = async ({ fetch }) => {
-  if (!(await canEditActivity(fetch))) {
-    throw redirect(303, '/');
-  }
+  // if (!(await canEditActivity(fetch))) {
+  //   throw redirect(303, '/');
+  // }
 
   const tech = await fetch('/api/technologies');
   if (!tech.ok) {
@@ -37,9 +37,9 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
 export const actions: Actions = {
   deleteTechnology: async ({ request, fetch }) => {
-    if (!(await canDeleteActivity(fetch))) {
-      throw redirect(303, '/');
-    }
+    // if (!(await canDeleteActivity(fetch))) {
+    //   throw redirect(303, '/');
+    // }
 
     const formData = await request.formData();
     const id = formData.get('id');
@@ -56,9 +56,9 @@ export const actions: Actions = {
   },
 
   addTechnology: async ({ request, fetch }) => {
-    if (!(await canCreateActivity(fetch))) {
-      throw redirect(303, '/');
-    }
+    // if (!(await canCreateActivity(fetch))) {
+    //   throw redirect(303, '/');
+    // }
 
     const requestData = await request.formData();
 
@@ -94,6 +94,10 @@ export const actions: Actions = {
   },
 
   addRole: async ({ request, fetch }) => {
+    // if (!(await canCreateActivity(fetch))) {
+    //   throw redirect(303, '/');
+    // }
+
     const formData = await request.formData();
     const name = formData.get('name');
 

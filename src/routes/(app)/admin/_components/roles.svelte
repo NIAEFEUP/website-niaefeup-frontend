@@ -7,11 +7,15 @@
   import { enhance, applyAction } from '$app/forms';
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
 
+  type BackendError = {
+    message: string;
+    params?: Record<string, string>;
+  };
   let { roles = $bindable([] as Role[]) } = $props();
-
   let selectedRole: Role | null = $state(roles[0] ?? null);
   let dialogOpen = $state(false);
-  let errorMessage = $state<string | null>(null);
+  let errorMessage: BackendError | null = $state(null);
+
 </script>
 
 <div class="flex flex-col md:flex-row md:py-12">
@@ -24,6 +28,7 @@
           class="w-full appearance-none rounded-xl border border-white/20 bg-gray-500/40 px-4 py-3
                  text-base font-medium text-white focus:border-muted-red-400 focus:outline-none"
           bind:value={selectedRole}
+          aria-label="Selecionar role"
         >
           {#if !selectedRole}
             <option value={null} disabled selected>Selecione uma role...</option>
@@ -52,6 +57,7 @@
           ? ' bg-muted-red-500 text-white shadow-lg'
           : 'bg-white/10 text-white hover:bg-white/20'}"
         onclick={() => (selectedRole = role)}
+        aria-label={`Selecionar role ${role.name}`}
       >
         {role.name}
       </button>
@@ -70,15 +76,16 @@
         <form
           method="POST"
           action="?/addRole"
-          use:enhance={() => {
+          use:enhance={({formData}) => {
             errorMessage = null;
-            return async ({ result, formData }) => {
-              const name = formData.get('name')?.toString().trim();
-              if (name && roles.some((r) => r.name.toLowerCase() === name.toLowerCase())) {
-                errorMessage = 'Role já existente!';
+
+            const name = formData.get('name')?.toString().trim();
+            
+            if (name && roles.some((r) => r.name.toLowerCase() === name.toLowerCase())) {
+                errorMessage = {message: 'Role já existente!' };
                 return;
               }
-
+            return async ({ result }) => {
               if (result.type === 'success') {
                 if (result.data?.success) {
                   const newRole = result.data.data as Role;
@@ -86,16 +93,22 @@
                   selectedRole = newRole;
                   dialogOpen = false;
                 } else {
-                  errorMessage =
-                    typeof result.data?.error === 'string'
-                      ? result.data.error
-                      : 'Erro ao criar a role';
+                  errorMessage = {
+                    message:
+                      typeof result.data?.error === 'string'
+                        ? result.data.error
+                        : 'Erro ao criar a role'
+                  };            
                 }
               } else if (result.type === 'failure') {
-                errorMessage =
-                  typeof result.data?.error === 'string' ? result.data.error : 'Erro de validação';
+                errorMessage = {
+                  message:
+                    typeof result.data?.error === 'string' 
+                      ? result.data.error 
+                      : 'Erro de validação'
+                };
               } else {
-                errorMessage = 'Erro inesperado';
+                errorMessage = {message: 'Erro inesperado' };
               }
 
               await applyAction(result);
