@@ -27,7 +27,7 @@
   let slidePosition = $state(0);
   let transitionDuration = $state(0);
 
-  let orderedSections: { name: string; accounts: TeamMember[] }[] = $state([]);
+  let orderedSections: { id: string; name: string; accounts: TeamMember[] }[] = $state([]);
   let slidingNext = $state(false);
   let slidingPrev = $state(false);
 
@@ -42,7 +42,7 @@
   let maxDragRight = $state(100);
 
   const groupedSections = $derived.by(() => {
-    const result: Array<{ name: string; accounts: TeamMember[] }> = [];
+    const result: Array<{ id: string; name: string; accounts: TeamMember[] }> = [];
 
     const directionAccounts: TeamMember[] = [];
     for (const role of DIRECTION_ROLES) {
@@ -54,6 +54,7 @@
 
     if (directionAccounts.length > 0) {
       result.push({
+        id: 'direction',
         name: 'Direção',
         accounts: directionAccounts
       });
@@ -68,6 +69,7 @@
     for (const section of otherSections) {
       const displayName = ROLE_DISPLAY_NAMES[section.section] || section.section;
       result.push({
+        id: section.section.toLowerCase(),
         name: displayName,
         accounts: section.accounts
       });
@@ -83,9 +85,9 @@
   // initialize openSection once groupedSections is available
   $effect(() => {
     if (openSection === null && groupedSections.length > 0) {
-      const direcao = groupedSections.find((s) => s.name === 'Direção' && s.accounts.length > 0);
-      if (direcao) {
-        openSection = direcao.name;
+      const direction = groupedSections.find((s) => s.id === 'direction' && s.accounts.length > 0);
+      if (direction) {
+        openSection = direction.name;
       } else {
         const firstNonEmpty = groupedSections.find((s) => s.accounts.length > 0);
         openSection = firstNonEmpty?.name ?? null;
@@ -142,18 +144,25 @@
       const next = base[2];
 
       return [
-        { ...next, isDuplicate: true, id: 'buf-left' }, // 0: Next (Buffer Left)
-        { ...prev, isDuplicate: false, id: 'prev' }, // 1: Prev
-        { ...curr, isDuplicate: false, id: 'curr' }, // 2: Current (Center)
-        { ...next, isDuplicate: false, id: 'next' }, // 3: Next
-        { ...prev, isDuplicate: true, id: 'buf-right' } // 4: Prev (Buffer Right)
-      ] as Array<{ name: string; accounts: TeamMember[]; isDuplicate?: boolean; id?: string }>;
+        { ...next, isDuplicate: true, carouselId: 'buf-left' }, // 0: Next (Buffer Left)
+        { ...prev, isDuplicate: false, carouselId: 'prev' }, // 1: Prev
+        { ...curr, isDuplicate: false, carouselId: 'curr' }, // 2: Current (Center)
+        { ...next, isDuplicate: false, carouselId: 'next' }, // 3: Next
+        { ...prev, isDuplicate: true, carouselId: 'buf-right' } // 4: Prev (Buffer Right)
+      ] as Array<{
+        id: string;
+        name: string;
+        accounts: TeamMember[];
+        isDuplicate?: boolean;
+        carouselId?: string;
+      }>;
     }
     return base as Array<{
+      id: string;
       name: string;
       accounts: TeamMember[];
       isDuplicate?: boolean;
-      id?: string;
+      carouselId?: string;
     }>;
   });
 
@@ -174,7 +183,7 @@
   });
 
   const handleSectionClick = (
-    clickedSection: { name: string; accounts: TeamMember[] },
+    clickedSection: { id: string; name: string; accounts: TeamMember[] },
     index: number
   ) => {
     if (clickedSection.name === openSection) return;
@@ -290,7 +299,7 @@
           class="absolute left-1/2 flex h-full items-center transition-transform ease-in-out"
           style="transform: translateX({slidePosition}px); transition-duration: {transitionDuration}ms"
         >
-          {#each visibleSections as section, i (section.isDuplicate ? section.name + '_dup_' + i : section.name)}
+          {#each visibleSections as section, i (section.isDuplicate ? section.id + '_dup_' + i : section.id)}
             {#if section.accounts.length > 0}
               <button
                 bind:this={buttonRefs[i]}
@@ -306,7 +315,7 @@
         </div>
       </div>
 
-      {#each groupedSections as section (section.name)}
+      {#each groupedSections as section (section.id)}
         {#if openSection === section.name}
           <div class="flex justify-center px-4 pb-8">
             <TeamSectionGrid {section} cols={2} gap="small" />
@@ -315,7 +324,7 @@
       {/each}
     </div>
 
-    {#each groupedSections as section (section.name)}
+    {#each groupedSections as section (section.id)}
       <div class="hidden w-full md:block">
         <TeamSectionGrid {section} cols={4} showTitle />
       </div>
