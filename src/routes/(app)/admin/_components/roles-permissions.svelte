@@ -128,7 +128,7 @@
     />
   </div>
 
-  {#each permissions as permission}
+  {#each permissions as permission (permission.title)}
     <div class="flex w-full items-center justify-between rounded-xl bg-white/10 px-6 py-4">
       <div class="flex flex-col">
         <span class="text-lg font-bold text-white">{permission.title}</span>
