@@ -24,20 +24,31 @@ export const actions = {
     const github = data.get('github');
     const photo = data.get('photo') as File;
 
-    const iconPairs: { index: number; file: File | null }[] = [];
-
+    const parts = [];
     while (data.get(`url ${websiteIndex}`) !== null) {
       const icon = data.get(`icon ${websiteIndex}`) as File | null;
+      let blobAtual;
 
-      dataWebsites.push({
+      const atual = {
         url: data.get(`url ${websiteIndex}`) as string,
-        label: data.get(`label ${websiteIndex}`) as string
-      });
-
-      iconPairs.push({ index: websiteIndex, file: icon });
+        label: data.get(`label ${websiteIndex}`) as string,
+      };
+      if (icon) {
+        blobAtual = new Blob(
+          [JSON.stringify(atual), icon],
+          { type: "application/octet-stream" }
+        );  
+      } else {
+        blobAtual = new Blob([JSON.stringify(atual)], {
+          type: "application/json"
+        });
+      }
+      parts.push(blobAtual);
 
       websiteIndex++;
     }
+    const blobWebsites = new Blob(parts);
+
     const isActive = data.get('isActive') === 'Membro Ativo' ? true : false;
 
     const value = {
@@ -47,25 +58,18 @@ export const actions = {
       birthDate: birthDateJson,
       linkedin: linkedin,
       github: github,
-      websites: dataWebsites,
       isActive: isActive
     };
 
-    const blob = new Blob([JSON.stringify(value)], {
+    const blobAccount = new Blob([JSON.stringify(value)], {
       type: 'application/json'
     });
 
     const form = new FormData();
 
-    form.append('account', blob);
     if (photo && photo.size != 0) form.append('photo', photo);
-
-    iconPairs.forEach((pair) => {
-      if (pair.file instanceof File && pair.file.size > 0) {
-        form.append(`websiteIcons[${pair.index - 1}]`, pair.file, pair.file.name);
-      }
-    });
-
+    const blobFinal = new Blob([blobAccount, blobWebsites]);
+    form.append("account", blobFinal); //isso tá errado, infelizmente parece que ao tranformar em blob, tudo passa a ser bytes concatenados e não haveria maneira de dizer ou dar parse de onde um site acaba e outro começa e assim em diante... talvez passar para uma abordagem de dar um form.append para a account e a photo, e para cada website seguido de sua icon/null
     try {
       const res = await fetch(`/api/accounts/${params.id}`, {
         method: 'PUT',
