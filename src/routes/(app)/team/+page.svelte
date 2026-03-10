@@ -5,6 +5,14 @@
 
   let { data }: { data: PageData } = $props();
 
+  const ROLE_DISPLAY_NAMES: Record<string, string> = {
+    Member: 'Membros',
+    Recruit: 'Recrutas'
+  };
+
+  const DIRECTION_ROLES = ['President', 'Board'] as const;
+  const EXCLUDED_ROLES = ['Alumni'] as const;
+
   // Carousel constants
   const CAROUSEL_CENTER_INDEX = 2; // [Next, Prev, Curr, Next, Prev]
   const TRANSITION_DURATION_MS = 300; // animation duration
@@ -36,27 +44,29 @@
   const groupedSections = $derived.by(() => {
     const result: Array<{ name: string; accounts: TeamMember[] }> = [];
 
-    const president = data.sections.find((s) => s.section === 'President');
-    const board = data.sections.find((s) => s.section === 'Board');
+    const directionAccounts: TeamMember[] = [];
+    for (const role of DIRECTION_ROLES) {
+      const section = data.sections.find((s) => s.section === role);
+      if (section) {
+        directionAccounts.push(...section.accounts);
+      }
+    }
 
-    if (president || board) {
+    if (directionAccounts.length > 0) {
       result.push({
         name: 'Direção',
-        accounts: [...(president?.accounts || []), ...(board?.accounts || [])]
+        accounts: directionAccounts
       });
     }
 
+    // other sections (excluding direction roles and excluded roles)
     const otherSections = data.sections.filter(
-      (s) => s.section !== 'President' && s.section !== 'Board' && s.section !== 'Alumni'
+      (s) =>
+        !DIRECTION_ROLES.includes(s.section as any) && !EXCLUDED_ROLES.includes(s.section as any)
     );
 
     for (const section of otherSections) {
-      const displayName =
-        section.section === 'Member'
-          ? 'Membros'
-          : section.section === 'Recruit'
-            ? 'Recrutas'
-            : section.section;
+      const displayName = ROLE_DISPLAY_NAMES[section.section] || section.section;
       result.push({
         name: displayName,
         accounts: section.accounts
