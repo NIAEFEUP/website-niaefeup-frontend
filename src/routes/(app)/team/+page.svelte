@@ -63,7 +63,8 @@
     // other sections (excluding direction roles and excluded roles)
     const otherSections = data.sections.filter(
       (s) =>
-        !DIRECTION_ROLES.includes(s.section as any) && !EXCLUDED_ROLES.includes(s.section as any)
+        !(DIRECTION_ROLES as readonly string[]).includes(s.section) &&
+        !(EXCLUDED_ROLES as readonly string[]).includes(s.section)
     );
 
     for (const section of otherSections) {
