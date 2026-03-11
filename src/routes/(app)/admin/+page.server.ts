@@ -96,6 +96,10 @@ export const actions: Actions = {
   },
 
   addRole: async ({ request, fetch }) => {
+    if (!(await canCreateActivity(fetch))) {
+      throw redirect(303, '/');
+    }
+
     const formData = await request.formData();
     const name = formData.get('name');
 
