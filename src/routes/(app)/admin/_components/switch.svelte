@@ -1,5 +1,11 @@
 <script lang="ts">
-  let { checked = $bindable(false) } = $props();
+  let {
+    checked = $bindable(false),
+    onchange
+  }: {
+    checked?: boolean;
+    onchange?: (state: boolean) => void;
+  } = $props();
 </script>
 
 <button
@@ -10,6 +16,7 @@
   onclick={(e) => {
     checked = !checked;
     e.currentTarget.blur();
+    if (onchange) onchange(checked);
   }}
   class="relative h-6 w-8 cursor-pointer overflow-hidden rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
 >
