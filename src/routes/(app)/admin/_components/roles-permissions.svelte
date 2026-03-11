@@ -116,6 +116,12 @@
         code: 'CREATE_ACTIVITY'
       },
       {
+        title: 'Editar Atividades',
+        description: 'Permite editar informações e dados do evento',
+        checked: false,
+        code: 'EDIT_ACTIVITY'
+      },
+      {
         title: 'Apagar Atividades',
         description: 'Permite eliminar projetos e eventos do sistema',
         checked: false,
