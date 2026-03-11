@@ -1,7 +1,8 @@
 <script lang="ts">
   import { ChevronDown } from 'lucide-svelte';
   import { fly, fade } from 'svelte/transition';
-  import { quintOut } from 'svelte/easing';
+
+  const quintOut = (t: number): number => --t * t * t * t * t + 1;
 
   export let options: string[] = ['TTS', 'UNI', 'NiJobs', 'Eventos', 'Equipa'];
   export let selected: string = options[0];
