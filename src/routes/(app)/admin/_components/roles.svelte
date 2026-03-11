@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Permissions from './roles-permissions.svelte';
   import type { Role } from '@/types/role';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
@@ -6,7 +7,6 @@
   import LabelInput from '$lib/components/forms/label-input.svelte';
   import { enhance, applyAction } from '$app/forms';
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
-  import Permissions from './roles-permissions.svelte';
 
   let { roles = $bindable([] as Role[]) } = $props();
 
@@ -152,7 +152,7 @@
 
   <section class="min-w-0 flex-1 py-6 md:py-0 md:pl-12">
     {#if selectedRole}
-      <Permissions />
+      <Permissions role={selectedRole} />
     {:else}
       <div class="mt-20 text-gray-400">
         <p>Seleciona uma role e uma atividade para ver/editar permissões.</p>
