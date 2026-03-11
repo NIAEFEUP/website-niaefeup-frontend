@@ -26,7 +26,6 @@
 
   type PermissionsMap = Record<string, Permission[]>;
 
-  // Cleaned up to ONLY use the 10 available backend permissions
   let permissionsMap: PermissionsMap = $state({
     TTS: [
       {
@@ -151,6 +150,7 @@
 
   let selectedOption = $state('TTS');
   let permissions = $derived(permissionsMap[selectedOption] ?? []);
+  let isSuperUser = $derived(role?.permissions.includes('SUPERUSER') ?? false);
 
   type AssociatedActivityPayload = {
     permissions: string[];
@@ -158,7 +158,6 @@
     [key: string]: unknown;
   };
 
-  // Keep UI in sync with Role object when changing tabs
   $effect(() => {
     if (!role) return;
 
@@ -185,7 +184,6 @@
     });
   });
 
-  // Handle saving to the backend
   async function handleToggle(permission: Permission, isChecked: boolean) {
     const isGlobal = selectedOption === 'Equipa';
     const activityTitle = isGlobal ? null : activityTitleMapping[selectedOption];
@@ -200,10 +198,9 @@
       if (assoc) {
         activityId = assoc.activity.id as number;
       } else {
-        // FALLBACK IDs: Update 10 and 11 to the actual DB IDs for NiJobs and Eventos!
         const hardcodedIds: Record<string, number> = {
-          ' TimeTable Selector': 3, // based on the json provided earlier, activity ID is 3 for TTS
-          uni: 4, // based on the json provided earlier, activity ID is 4 for uni
+          ' TimeTable Selector': 3,
+          uni: 4,
           NiJobs: 10,
           Eventos: 11
         };
@@ -232,7 +229,6 @@
 
       if (!res.ok) throw new Error('Failed to update permission');
 
-      // Update local state to persist UI visually
       if (isGlobal) {
         if (isChecked) {
           role.permissions.push(permission.code);
@@ -263,7 +259,7 @@
       }
     } catch (error) {
       console.error(error);
-      permission.checked = !isChecked; // Revert switch visually
+      permission.checked = !isChecked;
     }
   }
 </script>
@@ -281,13 +277,27 @@
   </div>
 
   {#each permissions as permission (permission.title)}
-    <div class="flex w-full items-center justify-between rounded-xl bg-white/10 px-6 py-4">
+    {@const isThisSuperUser = permission.code === 'SUPERUSER'}
+    {@const isDisabled = isSuperUser && !isThisSuperUser}
+
+    <div
+      class="flex w-full items-center justify-between rounded-xl px-6 py-4 transition-all duration-300
+        {isThisSuperUser
+        ? 'border-2 border-red-500 bg-red-500/10 shadow-[0_0_15px_rgba(239,68,68,0.15)]'
+        : 'border-2 border-transparent bg-white/10'}
+        {isDisabled ? 'opacity-40' : 'opacity-100'}"
+    >
       <div class="flex flex-col">
-        <span class="text-lg font-bold text-white">{permission.title}</span>
-        <span class="text-sm text-white/60">{permission.description}</span>
+        <span class="text-lg font-bold text-white">
+          {permission.title}
+        </span>
+        <span class="text-sm text-white/60">
+          {permission.description}
+        </span>
       </div>
       <Switch
         bind:checked={permission.checked}
+        disabled={isDisabled}
         onchange={() => handleToggle(permission, permission.checked)}
       />
     </div>
