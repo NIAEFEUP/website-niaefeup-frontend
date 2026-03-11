@@ -18,14 +18,14 @@
   let errorMessage: BackendError | null = $state(null);
 </script>
 
-<div class="flex flex-col md:flex-row md:py-12">
+<div class="flex w-full flex-col md:flex-row md:py-12">
   <header
-    class="from-muted-red-900/95 to-muted-red-900/80 sticky top-0 z-20 border-b border-white/10 bg-gradient-to-b backdrop-blur-md md:hidden"
+    class="from-muted-red-900/95 to-muted-red-900/80 sticky top-0 z-20 w-full border-b border-white/10 bg-gradient-to-b px-4 py-4 backdrop-blur-md md:hidden"
   >
-    <div class="flex items-center justify-between gap-3 px-2 py-4">
-      <div class="flex-1">
+    <div class="flex w-full items-center justify-between gap-3">
+      <div class="min-w-0 flex-1">
         <select
-          class="w-full appearance-none rounded-xl border border-white/20 bg-gray-500/40 px-4 py-3
+          class="w-full appearance-none truncate rounded-xl border border-white/20 bg-gray-500/40 px-4 py-3
                  text-base font-medium text-white focus:border-muted-red-400 focus:outline-none"
           bind:value={selectedRole}
           aria-label="Selecionar role"
@@ -49,7 +49,7 @@
     </div>
   </header>
 
-  <aside class="hidden w-80 flex-col gap-y-4 pr-12 md:flex">
+  <aside class="hidden w-80 flex-shrink-0 flex-col gap-y-4 pr-12 md:flex">
     {#each roles as role (role.id)}
       <button
         class="rounded-2xl px-8 py-3 text-center text-xl font-bold transition-all duration-200
@@ -72,6 +72,7 @@
         </div>
         Adicionar Role
       </Dialog.Trigger>
+
       <Dialog.Content class="rounded-3xl bg-muted-red-500 p-0">
         <form
           method="POST"
@@ -85,6 +86,7 @@
               errorMessage = { message: 'Role já existente!' };
               return;
             }
+
             return async ({ result }) => {
               if (result.type === 'success') {
                 if (result.data?.success) {
@@ -108,13 +110,12 @@
               } else {
                 errorMessage = { message: 'Erro inesperado' };
               }
-
               await applyAction(result);
             };
           }}
         >
           <Dialog.Header class="flex flex-col gap-y-6 p-8">
-            <Dialog.Title class="text-xl">Adicionar nova role</Dialog.Title>
+            <Dialog.Title class="text-xl text-white">Adicionar nova role</Dialog.Title>
 
             <Dialog.Description>
               <div class="flex flex-col gap-y-6">
@@ -129,14 +130,14 @@
 
                 {#if errorMessage}
                   <p class="text-center font-medium text-red-300">
-                    {sentenceFirstLetterToUpperCase(errorMessage)}
+                    {sentenceFirstLetterToUpperCase(errorMessage.message)}
                   </p>
                 {/if}
               </div>
             </Dialog.Description>
           </Dialog.Header>
 
-          <Dialog.Footer class="flex flex-col rounded-md bg-white p-4 sm:flex-col">
+          <Dialog.Footer class="flex flex-col rounded-b-3xl bg-white p-4 sm:flex-col">
             <div class="flex flex-row justify-end gap-6">
               <button
                 type="button"
@@ -147,7 +148,7 @@
               </button>
               <button
                 type="submit"
-                class="rounded-xl bg-muted-red-700 p-4 text-lg text-white shadow-xl"
+                class="rounded-xl bg-muted-red-700 p-4 text-lg text-white shadow-xl transition-colors hover:bg-muted-red-800"
               >
                 Adicionar
               </button>
@@ -158,13 +159,13 @@
     </Dialog.Root>
   </aside>
 
-  <div class="w-px bg-red-500"></div>
+  <div class="hidden w-px bg-red-500 md:block"></div>
 
-  <section class="min-w-0 flex-1 py-6 md:py-0 md:pl-12">
+  <section class="min-w-0 flex-1 px-4 py-8 md:px-0 md:py-0 md:pl-12">
     {#if selectedRole}
       <Permissions role={selectedRole} />
     {:else}
-      <div class="mt-20 text-gray-400">
+      <div class="mt-20 text-center text-gray-400 md:text-left">
         <p>Seleciona uma role e uma atividade para ver/editar permissões.</p>
       </div>
     {/if}
