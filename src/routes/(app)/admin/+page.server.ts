@@ -10,27 +10,26 @@ export const load: PageServerLoad = async ({ fetch }) => {
     throw redirect(303, '/');
   }
 
+  let technologies: Technology[] = [];
+  let roles: Role[] = [];
+
   const tech = await fetch('/api/technologies');
   if (!tech.ok) {
-    if (tech.status === 404) {
-      return { technologies: [] };
-    } else {
+    if (tech.status !== 404) {
       error(tech.status, 'Failed to load technologies');
     }
+  } else {
+    technologies = await tech.json();
   }
-
-  const technologies: Technology[] = await tech.json();
 
   const role = await fetch('/api/roles');
   if (!role.ok) {
-    if (role.status === 404) {
-      return { roles: [] };
-    } else {
+    if (role.status !== 404) {
       error(role.status, 'Failed to load roles');
     }
+  } else {
+    roles = await role.json();
   }
-
-  const roles: Role[] = await role.json();
 
   return { technologies, roles };
 };
@@ -102,7 +101,7 @@ export const actions: Actions = {
     const name = formData.get('name');
 
     if (!name || typeof name !== 'string' || name.trim() === '') {
-      return { success: false, error: 'O nome da role é obrigatório' };
+      error(400, 'O nome da role é obrigatório');
     }
 
     const res = await fetch('/api/roles', {

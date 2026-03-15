@@ -6,12 +6,13 @@
   import LabelInput from '$lib/components/forms/label-input.svelte';
   import { enhance, applyAction } from '$app/forms';
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
+  import type { BackendError } from '@/types/backend-error';
 
-  type BackendError = {
-    message: string;
-    params?: Record<string, string>;
-  };
-  let { roles = $bindable([] as Role[]) } = $props();
+
+  interface Props {
+  roles: Role[];
+  }
+  let { roles = $bindable() }: Props = $props();
   let selectedRole: Role | null = $state(roles[0] ?? null);
   let dialogOpen = $state(false);
   let errorMessage: BackendError | null = $state(null);
@@ -91,6 +92,8 @@
                   roles = [...roles, newRole];
                   selectedRole = newRole;
                   dialogOpen = false;
+
+                  await applyAction(result);
                 } else {
                   errorMessage = {
                     message:
@@ -107,8 +110,6 @@
               } else {
                 errorMessage = { message: 'Erro inesperado' };
               }
-
-              await applyAction(result);
             };
           }}
         >
@@ -128,7 +129,7 @@
 
                 {#if errorMessage}
                   <p class="text-center font-medium text-red-300">
-                    {sentenceFirstLetterToUpperCase(errorMessage)}
+                    {sentenceFirstLetterToUpperCase(errorMessage.message)}
                   </p>
                 {/if}
               </div>
