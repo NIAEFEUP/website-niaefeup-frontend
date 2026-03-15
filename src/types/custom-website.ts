@@ -4,4 +4,3 @@ export type CustomWebsite = {
   iconPath?: string;
   label?: string;
 };
-

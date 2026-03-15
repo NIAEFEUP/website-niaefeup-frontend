@@ -1,4 +1,4 @@
-import type {Account} from "@/types/account.ts"
+import type { Account } from '@/types/account.ts';
 
 export type Activity = {
   id: number;

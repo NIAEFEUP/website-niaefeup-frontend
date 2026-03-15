@@ -1,4 +1,4 @@
-import type {PerActivityRole} from "@/types/peractivityrole.ts"
+import type { PerActivityRole } from '@/types/peractivityrole.ts';
 
 export type Role = {
   name: string;

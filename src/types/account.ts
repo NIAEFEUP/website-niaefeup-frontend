@@ -1,4 +1,4 @@
-import type {CustomWebsite} from "@/types/custom-website"
+import type { CustomWebsite } from '@/types/custom-website';
 
 export type Account = {
   id: number;

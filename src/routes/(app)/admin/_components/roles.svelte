@@ -8,9 +8,8 @@
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
   import type { BackendError } from '@/types/backend-error';
 
-
   interface Props {
-  roles: Role[];
+    roles: Role[];
   }
   let { roles = $bindable() }: Props = $props();
   let selectedRole: Role | null = $state(roles[0] ?? null);
