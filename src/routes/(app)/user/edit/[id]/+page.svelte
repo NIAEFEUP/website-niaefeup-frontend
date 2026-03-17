@@ -128,6 +128,10 @@
                           required
                         />
 
+                        {#if website.id}
+                          <input type="hidden" name={`id ${index + 1}`} value={website.id} />
+                        {/if}
+
                         <div class="mt-4">
                           <PictureInput
                             text="Icon Website"

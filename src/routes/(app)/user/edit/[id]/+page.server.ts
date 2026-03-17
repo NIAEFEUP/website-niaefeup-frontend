@@ -1,4 +1,4 @@
-import { error, fail } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
@@ -12,9 +12,6 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
 export const actions = {
   default: async ({ params, request, fetch }: RequestEvent) => {
     const data = await request.formData();
-
-    const dataWebsites = [];
-    let websiteIndex = 1;
     const email = data.get('email');
     const name = data.get('name');
     const bio = data.get('bio');
@@ -24,34 +21,9 @@ export const actions = {
     const github = data.get('github');
     const photo = data.get('photo') as File;
 
-    const parts = [];
-    while (data.get(`url ${websiteIndex}`) !== null) {
-      const icon = data.get(`icon ${websiteIndex}`) as File | null;
-      let blobAtual;
-
-      const atual = {
-        url: data.get(`url ${websiteIndex}`) as string,
-        label: data.get(`label ${websiteIndex}`) as string,
-      };
-      if (icon) {
-        blobAtual = new Blob(
-          [JSON.stringify(atual), icon],
-          { type: "application/octet-stream" }
-        );  
-      } else {
-        blobAtual = new Blob([JSON.stringify(atual)], {
-          type: "application/json"
-        });
-      }
-      parts.push(blobAtual);
-
-      websiteIndex++;
-    }
-    const blobWebsites = new Blob(parts);
-
     const isActive = data.get('isActive') === 'Membro Ativo' ? true : false;
 
-    const value = {
+    const accountValue = {
       email: email,
       name: name,
       bio: bio,
@@ -61,38 +33,76 @@ export const actions = {
       isActive: isActive
     };
 
-    const blobAccount = new Blob([JSON.stringify(value)], {
-      type: 'application/json'
+    const accountBlob = new Blob([JSON.stringify(accountValue)], { type: 'application/json' });
+    const accountForm = new FormData();
+    if (photo && photo.size !== 0) accountForm.append('photo', photo);
+    accountForm.append('account', accountBlob);
+
+    await fetch(`/api/accounts/${params.id}`, {
+      method: 'PUT',
+      body: accountForm
     });
 
-    const form = new FormData();
+    let existingWebsiteIds: number[] = [];
 
-    if (photo && photo.size != 0) form.append('photo', photo);
-    const blobFinal = new Blob([blobAccount, blobWebsites]);
-    form.append("account", blobFinal); //isso tá errado, infelizmente parece que ao tranformar em blob, tudo passa a ser bytes concatenados e não haveria maneira de dizer ou dar parse de onde um site acaba e outro começa e assim em diante... talvez passar para uma abordagem de dar um form.append para a account e a photo, e para cada website seguido de sua icon/null
-    try {
-      const res = await fetch(`/api/accounts/${params.id}`, {
-        method: 'PUT',
-        body: form
-      });
+    const existingRes = await fetch(`/api/accounts/${params.id}`);
+    if (existingRes.ok) {
+      const accountData = await existingRes.json();
+      existingWebsiteIds = (accountData.websites || []).map((w: { id: number }) => w.id);
+    }
 
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        let messages: string[] = [];
+    const processedWebsiteIds: number[] = [];
 
-        if (Array.isArray(errorData.errors)) {
-          messages = errorData.errors.map((error: { message: string }) => error.message);
-        } else if (errorData.message) {
-          messages = [errorData.message];
-        } else {
-          messages = ['Failed to edit account.'];
-        }
-        return fail(res.status, { errorMessage: messages });
+    let websiteIndex = 1;
+    while (data.get(`url ${websiteIndex}`) !== null) {
+      const url = data.get(`url ${websiteIndex}`) as string | null;
+      const label = data.get(`label ${websiteIndex}`) as string | null;
+      const icon = data.get(`icon ${websiteIndex}`) as File | null;
+      const websiteIdRaw = data.get(`id ${websiteIndex}`) || null;
+
+      if (!url || !label) {
+        websiteIndex++;
+        continue;
       }
 
-      return { success: true };
-    } catch (err) {
-      return fail(500, { errorMessage: 'Server error. Please try again.' });
+      const websiteObj = { url, label };
+      const websiteForm = new FormData();
+      websiteForm.append(
+        'website',
+        new Blob([JSON.stringify(websiteObj)], { type: 'application/json' })
+      );
+      if (icon && (icon as File).size !== 0) websiteForm.append('icon', icon as File);
+
+      if (websiteIdRaw) {
+        const websiteId = Number(websiteIdRaw);
+        const putRes = await fetch(`/api/accounts/${params.id}/websites/${websiteId}`, {
+          method: 'PUT',
+          body: websiteForm
+        });
+        if (putRes.ok) {
+          processedWebsiteIds.push(websiteId);
+        }
+      } else {
+        const postRes = await fetch(`/api/accounts/${params.id}/websites`, {
+          method: 'POST',
+          body: websiteForm
+        });
+        if (postRes.ok) {
+          const created = await postRes.json().catch(() => ({}));
+          if (created && created.id) processedWebsiteIds.push(Number(created.id));
+        }
+      }
+
+      websiteIndex++;
     }
+
+    const toDelete = existingWebsiteIds.filter((id) => !processedWebsiteIds.includes(id));
+    for (const id of toDelete) {
+      await fetch(`/api/accounts/${params.id}/websites/${id}`, {
+        method: 'DELETE'
+      });
+    }
+
+    return { success: true };
   }
 };
