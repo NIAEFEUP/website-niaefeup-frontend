@@ -1,4 +1,4 @@
-import { error } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
@@ -38,10 +38,23 @@ export const actions = {
     if (photo && photo.size !== 0) accountForm.append('photo', photo);
     accountForm.append('account', accountBlob);
 
-    await fetch(`/api/accounts/${params.id}`, {
+    const res = await fetch(`/api/accounts/${params.id}`, {
       method: 'PUT',
       body: accountForm
     });
+
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      let messages: string[] = [];
+      if (Array.isArray(errorData.errors)) {
+        messages = errorData.errors.map((e: { message: string }) => e.message);
+      } else if (errorData.message) {
+        messages = [errorData.message];
+      } else {
+        messages = ['Failed to edit account.'];
+      }
+      return fail(res.status, { errorMessage: messages });
+    }
 
     let existingWebsiteIds: number[] = [];
 
@@ -52,6 +65,7 @@ export const actions = {
     }
 
     const processedWebsiteIds: number[] = [];
+    const errors: string[] = [];
 
     let websiteIndex = 1;
     while (data.get(`url ${websiteIndex}`) !== null) {
@@ -81,6 +95,15 @@ export const actions = {
         });
         if (putRes.ok) {
           processedWebsiteIds.push(websiteId);
+        } else {
+          const errData = await putRes.json().catch(() => ({}));
+          if (Array.isArray(errData.errors)) {
+            errors.push(...errData.errors.map((e: { message: string }) => e.message));
+          } else if (errData.message) {
+            errors.push(errData.message);
+          } else {
+            errors.push(`Failed to update website ${websiteId}`);
+          }
         }
       } else {
         const postRes = await fetch(`/api/accounts/${params.id}/websites`, {
@@ -90,6 +113,15 @@ export const actions = {
         if (postRes.ok) {
           const created = await postRes.json().catch(() => ({}));
           if (created && created.id) processedWebsiteIds.push(Number(created.id));
+        } else {
+          const errData = await postRes.json().catch(() => ({}));
+          if (Array.isArray(errData.errors)) {
+            errors.push(...errData.errors.map((e: { message: string }) => e.message));
+          } else if (errData.message) {
+            errors.push(errData.message);
+          } else {
+            errors.push(`Failed to add website ${url}`);
+          }
         }
       }
 
@@ -98,9 +130,19 @@ export const actions = {
 
     const toDelete = existingWebsiteIds.filter((id) => !processedWebsiteIds.includes(id));
     for (const id of toDelete) {
-      await fetch(`/api/accounts/${params.id}/websites/${id}`, {
+      const delRes = await fetch(`/api/accounts/${params.id}/websites/${id}`, {
         method: 'DELETE'
       });
+      if (!delRes.ok) {
+        const errData = await delRes.json().catch(() => ({}));
+        if (Array.isArray(errData.errors)) {
+          errors.push(...errData.errors.map((e: { message: string }) => e.message));
+        } else if (errData.message) {
+          errors.push(errData.message);
+        } else {
+          errors.push(`Failed to remove website ${id}`);
+        }
+      }
     }
 
     return { success: true };

@@ -19,20 +19,24 @@
   let { data, form }: Props = $props();
   const account: Account = data.account;
 
-  let api: CarouselAPI = $state();
+  let api: CarouselAPI | undefined = $state();
 
   $effect(() => {
     if (api) {
       api.on('select', () => {
-        api.selectedScrollSnap();
+        api!.selectedScrollSnap();
       });
     }
   });
 
-  let websites = $state(account.websites ? [...account.websites] : []);
+  let websites: { id?: number; label: string; url: string; iconPath: string }[] = $state(
+    account.websites
+      ? account.websites.map((w) => ({ id: w.id, label: w.label ?? '', url: w.url ?? '', iconPath: w.iconPath ?? '' }))
+      : []
+  );
 
   function addCustomWebsite() {
-    websites = [...websites, { label: '', url: '', iconPath: '' }];
+    websites = [...websites, { id: undefined, label: '', url: '', iconPath: '' }];
 
     requestAnimationFrame(() => {
       if (api) {
@@ -49,7 +53,7 @@
 
       if (api && currentPosition >= websites.length && websites.length > 0) {
         requestAnimationFrame(() => {
-          api.scrollTo(websites.length - 1, false);
+          api!.scrollTo(websites.length - 1, false);
         });
       }
     }
@@ -92,7 +96,7 @@
         name="birthDate"
         label="Data de Nascimento"
         type="datetime-local"
-        value={toISOLocal(account.birthDate)}
+        value={toISOLocal(account.birthDate!)}
         textGap="30"
       />
 
@@ -108,7 +112,7 @@
           <div class="flex w-full flex-row justify-start md:justify-center">
             <Carousel.Root bind:api class="w-full max-w-[550px]">
               <Carousel.Content class="w-full">
-                {#each websites as website, index (website)}
+                {#each websites as website, index (index)}
                   <Carousel.Item class="w-full">
                     <Card.Root>
                       <Card.Content class="p-6">
@@ -206,7 +210,7 @@
     </div>
     <div class="flex flex-row justify-center md:justify-start">
       <div class="order-1 mt-5 flex max-w-[278px] flex-col items-center">
-        <PictureInput text="Foto de perfil" name="photo" value={account.photo} />
+        <PictureInput text="Foto de perfil" name="photo" value={account.photo ?? undefined} />
 
         <Button color="primary" hoverColor="primary" width="large" text="Alterar Senha" />
       </div>
