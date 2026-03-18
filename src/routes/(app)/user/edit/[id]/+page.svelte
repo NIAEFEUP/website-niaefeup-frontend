@@ -31,7 +31,12 @@
 
   let websites: { id?: number; label: string; url: string; iconPath: string }[] = $state(
     account.websites
-      ? account.websites.map((w) => ({ id: w.id, label: w.label ?? '', url: w.url ?? '', iconPath: w.iconPath ?? '' }))
+      ? account.websites.map((w) => ({
+          id: w.id,
+          label: w.label ?? '',
+          url: w.url ?? '',
+          iconPath: w.iconPath ?? ''
+        }))
       : []
   );
 
