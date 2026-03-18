@@ -108,7 +108,7 @@
           <div class="flex w-full flex-row justify-start md:justify-center">
             <Carousel.Root bind:api class="w-full max-w-[550px]">
               <Carousel.Content class="w-full">
-                {#each websites as website, index (index)}
+                {#each websites as website, index (website)}
                   <Carousel.Item class="w-full">
                     <Card.Root>
                       <Card.Content class="p-6">
