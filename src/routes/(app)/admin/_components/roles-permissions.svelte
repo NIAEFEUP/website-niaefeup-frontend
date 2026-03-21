@@ -296,6 +296,7 @@
       </div>
       <div class="flex-shrink-0">
         <Switch
+          ariaLabel={`Permissão: ${superuserPermission.title}`}
           bind:checked={superuserPermission.checked}
           onchange={async () => {
             await handleToggle(superuserPermission, superuserPermission.checked);
@@ -351,6 +352,7 @@
         </div>
         <div class="flex-shrink-0">
           <Switch
+            ariaLabel={`Permissão: ${permission.title}`}
             bind:checked={permission.checked}
             disabled={isSuperUser}
             onchange={() => handleToggle(permission, permission.checked)}

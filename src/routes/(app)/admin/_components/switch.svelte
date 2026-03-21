@@ -1,17 +1,9 @@
 <script lang="ts">
-  let {
-    checked = $bindable(false),
-    disabled = false,
-    onchange
-  }: {
-    checked?: boolean;
-    disabled?: boolean;
-    onchange?: (state: boolean) => void;
-  } = $props();
+  let { checked = $bindable(false), disabled = false, onchange, ariaLabel } = $props();
 </script>
 
 <button
-  aria-label="Toggle switch"
+  aria-label={ariaLabel || 'Toggle switch'}
   type="button"
   role="switch"
   aria-checked={checked}
