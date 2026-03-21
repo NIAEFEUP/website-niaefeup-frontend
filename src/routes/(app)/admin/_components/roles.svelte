@@ -8,11 +8,13 @@
   import { enhance, applyAction } from '$app/forms';
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
   import type { BackendError } from '@/types/backend-error';
+  import type { Project } from '@/types/project';
 
   interface Props {
     roles: Role[];
+    projects: Project[];
   }
-  let { roles = $bindable() }: Props = $props();
+  let { roles = $bindable(), projects }: Props = $props();
   let selectedRole: Role | null = $state(roles[0] ?? null);
   let dialogOpen = $state(false);
   let errorMessage: BackendError | null = $state(null);
@@ -163,7 +165,7 @@
 
   <section class="min-w-0 flex-1 px-4 py-8 md:px-0 md:py-0 md:pl-12">
     {#if selectedRole}
-      <Permissions role={selectedRole} />
+      <Permissions role={selectedRole} {projects} />
     {:else}
       <div class="mt-20 text-center text-gray-400 md:text-left">
         <p>Seleciona uma role e uma atividade para ver/editar permissões.</p>

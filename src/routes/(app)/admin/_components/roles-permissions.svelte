@@ -2,8 +2,9 @@
   import Dropdown from './dropdown.svelte';
   import Switch from './switch.svelte';
   import type { Role } from '@/types/role';
+  import type { Project } from '@/types/project';
 
-  let { role } = $props<{ role: Role }>();
+  let { role, projects } = $props<{ role: Role; projects: Project[] }>();
 
   type PermissionCode =
     | 'CREATE_ACCOUNT'
@@ -32,48 +33,6 @@
   });
 
   let permissionsMap: PermissionsMap = $state({
-    TTS: [
-      {
-        title: 'Editar Atividade',
-        description: 'Permite editar página, timeline e dados do projeto',
-        checked: false,
-        code: 'EDIT_ACTIVITY'
-      },
-      {
-        title: 'Apagar Atividade',
-        description: 'Permite eliminar a atividade do sistema',
-        checked: false,
-        code: 'DELETE_ACTIVITY'
-      }
-    ],
-    UNI: [
-      {
-        title: 'Editar Atividade',
-        description: 'Permite editar página, timeline e dados do projeto',
-        checked: false,
-        code: 'EDIT_ACTIVITY'
-      },
-      {
-        title: 'Apagar Atividade',
-        description: 'Permite eliminar a atividade do sistema',
-        checked: false,
-        code: 'DELETE_ACTIVITY'
-      }
-    ],
-    NiJobs: [
-      {
-        title: 'Editar Atividade',
-        description: 'Permite editar página, timeline e dados do projeto',
-        checked: false,
-        code: 'EDIT_ACTIVITY'
-      },
-      {
-        title: 'Apagar Atividade',
-        description: 'Permite eliminar a atividade do sistema',
-        checked: false,
-        code: 'DELETE_ACTIVITY'
-      }
-    ],
     Eventos: [
       {
         title: 'Criar Atividade',
@@ -140,15 +99,18 @@
     ]
   });
 
-  const activityTitleMapping: Record<string, string> = {
-    TTS: ' TimeTable Selector',
-    UNI: 'uni',
-    NiJobs: 'NiJobs',
-    Eventos: 'Eventos'
-  };
-
-  let selectedOption = $state('TTS');
-  let permissions = $derived(permissionsMap[selectedOption] ?? []);
+  let allOptions = $derived([
+    ...(projects?.map((p: Project) => p.title) ?? []),
+    'Eventos',
+    'Equipa'
+  ]);
+  let selectedOption = $state(allOptions[0] ?? '');
+  function getPermissionsForOption(option: string) {
+    const canonical = option.trim().toLowerCase();
+    const key = Object.keys(permissionsMap).find((k) => k.trim().toLowerCase() === canonical);
+    return key ? permissionsMap[key] : [];
+  }
+  let permissions = $derived(getPermissionsForOption(selectedOption));
 
   let isSuperUser = $derived(superuserPermission.checked);
 
@@ -157,6 +119,45 @@
     activity: { title: string; id: number; [key: string]: unknown };
     [key: string]: unknown;
   };
+
+  $effect(() => {
+    if (!projects || !permissionsMap) return;
+
+    const hardcodedKeys = Object.keys(permissionsMap).reduce(
+      (acc, key) => {
+        acc[key.trim().toLowerCase()] = key;
+        return acc;
+      },
+      {} as Record<string, string>
+    );
+    const globalTabs = ['equipa', 'eventos'];
+
+    projects.forEach((project: Project) => {
+      const backendKey = project.title.trim();
+      const canonical = backendKey.toLowerCase();
+      if (globalTabs.includes(canonical)) return;
+      if (!permissionsMap[backendKey]) {
+        if (hardcodedKeys[canonical]) {
+          permissionsMap[backendKey] = permissionsMap[hardcodedKeys[canonical]];
+        } else {
+          permissionsMap[backendKey] = [
+            {
+              title: 'Editar Atividade',
+              description: 'Permite editar página, timeline e dados do projeto',
+              checked: false,
+              code: 'EDIT_ACTIVITY'
+            },
+            {
+              title: 'Apagar Atividade',
+              description: 'Permite eliminar a atividade do sistema',
+              checked: false,
+              code: 'DELETE_ACTIVITY'
+            }
+          ];
+        }
+      }
+    });
+  });
 
   $effect(() => {
     if (!role) return;
@@ -170,19 +171,25 @@
       if (permCode === 'SUPERUSER') {
         superuserPermission.checked = true;
       } else {
-        const target = permissionsMap['Equipa']?.find((p: Permission) => p.code === permCode);
-        if (target) target.checked = true;
+        ['Equipa', 'Eventos'].forEach((section) => {
+          const target = permissionsMap[section]?.find((p: Permission) => p.code === permCode);
+          if (target) target.checked = true;
+        });
       }
     });
 
     role.associatedActivities.forEach((assoc: AssociatedActivityPayload) => {
-      const uiCategory = Object.keys(activityTitleMapping).find(
-        (key) => activityTitleMapping[key] === assoc.activity.title
+      const matchingCategory = Object.keys(permissionsMap).find(
+        (key) =>
+          assoc.activity &&
+          assoc.activity.title &&
+          key.toLowerCase() === assoc.activity.title.trim().toLowerCase()
       );
-
-      if (uiCategory && permissionsMap[uiCategory]) {
+      if (matchingCategory && permissionsMap[matchingCategory]) {
         assoc.permissions.forEach((permCode: string) => {
-          const target = permissionsMap[uiCategory].find((p: Permission) => p.code === permCode);
+          const target = permissionsMap[matchingCategory].find(
+            (p: Permission) => p.code === permCode
+          );
           if (target) target.checked = true;
         });
       }
@@ -190,8 +197,11 @@
   });
 
   async function handleToggle(permission: Permission, isChecked: boolean) {
-    const isGlobal = permission.code === 'SUPERUSER' || selectedOption === 'Equipa';
-    const activityTitle = isGlobal ? null : activityTitleMapping[selectedOption];
+    const isGlobal =
+      permission.code === 'SUPERUSER' ||
+      selectedOption === 'Equipa' ||
+      selectedOption === 'Eventos';
+    const activityTitle = isGlobal ? null : selectedOption;
 
     let activityId: number | null = null;
 
@@ -203,13 +213,13 @@
       if (assoc) {
         activityId = assoc.activity.id as number;
       } else {
-        const hardcodedIds: Record<string, number> = {
-          ' TimeTable Selector': 3,
-          uni: 4,
-          NiJobs: 10,
-          Eventos: 11
-        };
-        activityId = hardcodedIds[activityTitle] || null;
+        const matchedProject =
+          projects && activityTitle
+            ? projects.find(
+                (p: Project) => p.title.trim().toLowerCase() === activityTitle.trim().toLowerCase()
+              )
+            : null;
+        activityId = matchedProject ? matchedProject.id : null;
 
         if (!activityId) {
           alert(`Erro: ID da atividade '${activityTitle}' não encontrado!`);
@@ -299,7 +309,7 @@
     <h2 class="text-3xl font-bold text-white">Atividade</h2>
     <div class="w-full sm:w-auto">
       <Dropdown
-        options={['TTS', 'UNI', 'NiJobs', 'Eventos', 'Equipa']}
+        options={allOptions}
         selected={selectedOption}
         onchange={(option) => {
           selectedOption = option;

@@ -27,7 +27,7 @@
       <Technologies technologies={data.technologies} />
     </Tabs.Content>
     <Tabs.Content value="roles">
-      <Roles roles={data.roles} />
+      <Roles roles={data.roles} projects={data.projects} />
     </Tabs.Content>
   </Tabs.Root>
 </section>

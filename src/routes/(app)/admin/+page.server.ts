@@ -33,7 +33,12 @@ export const load: PageServerLoad = async ({ fetch }) => {
     roles = await role.json();
   }
 
-  return { technologies, roles };
+  let projects = [];
+  const projectsRes = await fetch('/api/projects');
+  if (projectsRes.ok) {
+    projects = await projectsRes.json();
+  }
+  return { technologies, roles, projects };
 };
 
 export const actions: Actions = {
