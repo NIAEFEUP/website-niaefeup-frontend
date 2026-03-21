@@ -11,9 +11,10 @@ export const PUT: RequestHandler = async ({ params, request, cookies }) => {
 
     const bodyPayload = JSON.stringify({ permissions: [permission] });
 
-    const apiPath = !activityId
-      ? `/roles/${roleId}/permissions`
-      : `/roles/${roleId}/activities/${activityId}/permissions`;
+    const apiPath =
+      activityId == null
+        ? `/roles/${roleId}/permissions`
+        : `/roles/${roleId}/activities/${activityId}/permissions`;
 
     const res = await fetchWithAuth(
       cookies,
