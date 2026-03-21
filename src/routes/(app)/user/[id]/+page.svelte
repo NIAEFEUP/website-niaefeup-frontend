@@ -3,28 +3,13 @@
   import IsActiveBadge from '../_components/is-active-badge.svelte';
   import type { PageData } from './$types';
   import type { TeamMember } from '@/types/team-member';
-  import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
   import EditButton from '$lib/components/buttons/edit-button.svelte';
-  import { goto, invalidateAll } from '$app/navigation';
 
   let { data }: { data: PageData } = $props();
 
   const teamMember: TeamMember = data.teamMember;
   const canEdit: boolean = data.canEdit;
-
-  async function logout() {
-    const response = await fetch('/api/auth/logout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    if (response.ok) {
-      await invalidateAll();
-      goto('/');
-    }
-  }
 </script>
 
 {#await teamMember}

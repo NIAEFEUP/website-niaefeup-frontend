@@ -5,11 +5,12 @@
   import Navbar from './_components/layout/navbar.svelte';
   import Sidebar from './_components/layout/sidebar.svelte';
   import SnackbarList from './_components/layout/notifications/snackbar-list.svelte';
+  import type { LayoutData } from './$types';
   import GlobalLoader from '@/lib/components/layout/global-loader.svelte';
   import { isGlobalLoading } from '@/lib/stores/loader';
   import { navigating } from '$app/stores';
   import '@/app.css';
-  import type { LayoutData } from './$types';
+  
 
   interface Props {
     children?: import('svelte').Snippet;
