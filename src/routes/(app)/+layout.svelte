@@ -16,7 +16,7 @@
     data: LayoutData;
   }
 
-  let { children,data }: Props = $props();
+  let { children, data }: Props = $props();
 
   let isLoadingState = $derived($navigating !== null || $isGlobalLoading);
 
