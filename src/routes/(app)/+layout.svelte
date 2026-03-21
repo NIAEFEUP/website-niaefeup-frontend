@@ -10,7 +10,6 @@
   import { isGlobalLoading } from '@/lib/stores/loader';
   import { navigating } from '$app/stores';
   import '@/app.css';
-  
 
   interface Props {
     children?: import('svelte').Snippet;
