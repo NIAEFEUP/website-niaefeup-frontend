@@ -6,12 +6,14 @@
   import Sidebar from './_components/layout/sidebar.svelte';
   import SnackbarList from './_components/layout/notifications/snackbar-list.svelte';
   import '@/app.css';
+  import type { LayoutData } from './$types';
 
   interface Props {
     children?: import('svelte').Snippet;
+    data: LayoutData;
   }
 
-  let { children }: Props = $props();
+  let { children, data }: Props = $props();
 </script>
 
 <ModeWatcher defaultMode="dark" />
@@ -21,7 +23,7 @@
   <BackgroundHexagon position="right" />
   {@render children?.()}
 </main>
-<Footer />
+<Footer user={data.user} />
 <SnackbarList />
 
 <style>
