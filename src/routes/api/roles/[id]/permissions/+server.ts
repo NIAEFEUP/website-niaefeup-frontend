@@ -1,7 +1,8 @@
 import { json, error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { fetchWithAuth } from '@/routes/api/[...endpoint]/proxy';
 
-export const PUT: RequestHandler = async ({ params, request }) => {
+export const PUT: RequestHandler = async ({ params, request, cookies }) => {
   const roleId = params.id;
   const { permission, action, activityId } = await request.json();
 
@@ -10,20 +11,17 @@ export const PUT: RequestHandler = async ({ params, request }) => {
 
     const bodyPayload = JSON.stringify({ permissions: [permission] });
 
-    const BACKEND_URL = 'http://localhost:8080';
-    let springBootUrl = '';
+    const apiPath = !activityId
+      ? `/roles/${roleId}/permissions`
+      : `/roles/${roleId}/activities/${activityId}/permissions`;
 
-    if (!activityId) {
-      springBootUrl = `${BACKEND_URL}/roles/${roleId}/permissions`;
-    } else {
-      springBootUrl = `${BACKEND_URL}/roles/${roleId}/activities/${activityId}/permissions`;
-    }
-
-    const res = await globalThis.fetch(springBootUrl, {
-      method: method,
-      headers: { 'Content-Type': 'application/json' },
-      body: bodyPayload
-    });
+    const res = await fetchWithAuth(
+      cookies,
+      apiPath,
+      method,
+      { 'Content-Type': 'application/json' },
+      bodyPayload
+    );
 
     if (!res.ok) {
       const errorData = await res.json().catch(() => ({}));
