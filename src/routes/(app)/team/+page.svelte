@@ -5,22 +5,14 @@
 
   let { data }: { data: PageData } = $props();
 
-  const ROLE_DISPLAY_NAMES: Record<string, string> = {
-    Member: 'Membros',
-    Recruit: 'Recrutas'
-  };
-
-  const DIRECTION_ROLES = ['President', 'Board'] as const;
-  const EXCLUDED_ROLES = ['Alumni'] as const;
-
   // Carousel constants
-  const CAROUSEL_CENTER_INDEX = 2; // [Next, Prev, Curr, Next, Prev]
-  const TRANSITION_DURATION_MS = 300; // animation duration
-  const MASK_OFFSET_PX = 8; // additional offset for gradient mask calculations
-  const MASK_THRESHOLD_PX = 50; // min measured distance before using fallback mask size
-  const MASK_FALLBACK_PX = 130; // fallback mask size
-  const SWIPE_SNAP_THRESHOLD_PX = 60; // min swipe distance to trigger section change
-  const LAYOUT_RECENTER_DELAY_MS = 50; // delay before recentering after layout changes
+  const CAROUSEL_CENTER_INDEX = 2;      // [Next, Prev, Curr, Next, Prev]
+  const TRANSITION_DURATION_MS = 300;   // animation duration
+  const MASK_OFFSET_PX = 8;             // additional offset for gradient mask calculations
+  const MASK_THRESHOLD_PX = 50;         // min measured distance before using fallback mask size
+  const MASK_FALLBACK_PX = 130;         // fallback mask size
+  const SWIPE_SNAP_THRESHOLD_PX = 60;   // min swipe distance to trigger section change
+  const LAYOUT_RECENTER_DELAY_MS = 50;  // delay before recentering after layout changes
 
   let buttonRefs: (HTMLButtonElement | undefined)[] = $state([]);
   let containerRef: HTMLDivElement | undefined = $state();
@@ -42,41 +34,11 @@
   let maxDragRight = $state(100);
 
   const groupedSections = $derived.by(() => {
-    const result: Array<{ id: string; name: string; accounts: TeamMember[] }> = [];
-
-    const directionAccounts: TeamMember[] = [];
-    for (const role of DIRECTION_ROLES) {
-      const section = data.sections.find((s) => s.section === role);
-      if (section) {
-        directionAccounts.push(...section.accounts);
-      }
-    }
-
-    if (directionAccounts.length > 0) {
-      result.push({
-        id: 'direction',
-        name: 'Direção',
-        accounts: directionAccounts
-      });
-    }
-
-    // other sections (excluding direction roles and excluded roles)
-    const otherSections = data.sections.filter(
-      (s) =>
-        !(DIRECTION_ROLES as readonly string[]).includes(s.section) &&
-        !(EXCLUDED_ROLES as readonly string[]).includes(s.section)
-    );
-
-    for (const section of otherSections) {
-      const displayName = ROLE_DISPLAY_NAMES[section.section] || section.section;
-      result.push({
-        id: section.section.toLowerCase(),
-        name: displayName,
-        accounts: section.accounts
-      });
-    }
-
-    return result;
+    return data.sections.map((section) => ({
+      id: section.section.toLowerCase(),
+      name: section.section,
+      accounts: section.accounts
+    }));
   });
 
   const hasTeamMembers = $derived(groupedSections.some((section) => section.accounts.length > 0));
@@ -146,9 +108,9 @@
 
       return [
         { ...next, isDuplicate: true, carouselId: 'buf-left' }, // 0: Next (Buffer Left)
-        { ...prev, isDuplicate: false, carouselId: 'prev' }, // 1: Prev
-        { ...curr, isDuplicate: false, carouselId: 'curr' }, // 2: Current (Center)
-        { ...next, isDuplicate: false, carouselId: 'next' }, // 3: Next
+        { ...prev, isDuplicate: false, carouselId: 'prev' },    // 1: Prev
+        { ...curr, isDuplicate: false, carouselId: 'curr' },    // 2: Current (Center)
+        { ...next, isDuplicate: false, carouselId: 'next' },    // 3: Next
         { ...prev, isDuplicate: true, carouselId: 'buf-right' } // 4: Prev (Buffer Right)
       ] as Array<{
         id: string;
