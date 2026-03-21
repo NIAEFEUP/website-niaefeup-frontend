@@ -27,7 +27,8 @@
 
   let superuserPermission = $state<Permission>({
     title: 'Superuser',
-    description: 'Acesso total e irrestrito ao sistema. Substitui as outras permissões.',
+    description:
+      'Concede acesso total e irrestrito ao sistema. Ativa todas as permissões. Ao desmarcar, remove todas as permissões.',
     checked: false,
     code: 'SUPERUSER'
   });
@@ -296,7 +297,22 @@
       <div class="flex-shrink-0">
         <Switch
           bind:checked={superuserPermission.checked}
-          onchange={() => handleToggle(superuserPermission, superuserPermission.checked)}
+          onchange={async () => {
+            await handleToggle(superuserPermission, superuserPermission.checked);
+            for (const [category, perms] of Object.entries(permissionsMap)) {
+              for (const perm of perms) {
+                if (perm.code !== 'SUPERUSER') {
+                  if (superuserPermission.checked && !perm.checked) {
+                    perm.checked = true;
+                    await handleToggle(perm, true);
+                  } else if (!superuserPermission.checked && perm.checked) {
+                    perm.checked = false;
+                    await handleToggle(perm, false);
+                  }
+                }
+              }
+            }
+          }}
         />
       </div>
     </div>
