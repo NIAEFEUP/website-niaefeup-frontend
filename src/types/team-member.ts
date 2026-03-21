@@ -5,7 +5,8 @@ export type TeamMember = {
   email: string;
   bio: string;
   birthDate: Date;
-  role: string;
+  role?: string;
+  roles?: string[];
   isActive?: boolean;
   photo?: string;
   linkedin?: string;
