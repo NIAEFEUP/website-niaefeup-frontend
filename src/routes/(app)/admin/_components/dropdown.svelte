@@ -63,6 +63,7 @@
     let timeout1: ReturnType<typeof setTimeout>;
     let timeout2: ReturnType<typeof setTimeout>;
     let timeout3: ReturnType<typeof setTimeout>;
+    let stopTimeoutId: ReturnType<typeof setTimeout>;
     let isHovered = false;
 
     const trigger = node.closest('button');
@@ -117,7 +118,7 @@
       node.style.transition = `transform 0.8s ease-in-out`;
       node.style.transform = `translateX(0px)`;
 
-      setTimeout(() => {
+      stopTimeoutId = setTimeout(() => {
         if (!isHovered) {
           node.style.transition = '';
           node.style.transform = '';
@@ -141,6 +142,19 @@
         if (trigger) {
           trigger.removeEventListener('mouseenter', start);
           trigger.removeEventListener('mouseleave', stop);
+        }
+        clearTimeout(timeout1);
+        clearTimeout(timeout2);
+        clearTimeout(timeout3);
+        // Clear post-stop timeout if present
+        if (typeof stopTimeoutId !== 'undefined') clearTimeout(stopTimeoutId);
+        // Reset styles (optional, but prevents leaks)
+        node.style.transition = '';
+        node.style.transform = '';
+        node.classList.remove('w-max', 'whitespace-nowrap');
+        node.classList.add('truncate', 'max-w-full');
+        if (node.dataset.hadMxAuto === 'true') {
+          node.classList.add('mx-auto');
         }
       }
     };
