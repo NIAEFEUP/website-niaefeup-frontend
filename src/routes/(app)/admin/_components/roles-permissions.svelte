@@ -208,9 +208,7 @@
             : null;
         activityId = matchedProject ? matchedProject.id : null;
         if (!activityId) {
-          alert(`Erro: ID da atividade '${activityTitle}' não encontrado!`);
-          permission.checked = !isChecked;
-          return;
+          throw new Error(`Erro: ID da atividade '${activityTitle}' não encontrado!`);
         }
       }
     }
