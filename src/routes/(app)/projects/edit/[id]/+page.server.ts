@@ -1,9 +1,37 @@
+import { error } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
+
+const resolveNumericProjectId = async (
+  routeParam: string,
+  fetch: RequestEvent['fetch']
+): Promise<number> => {
+  const parsedId = Number(routeParam);
+  if (Number.isInteger(parsedId) && parsedId > 0) {
+    return parsedId;
+  }
+
+  const projectRes = await fetch(`/api/projects/${routeParam}`);
+  if (!projectRes.ok) {
+    error(projectRes.status, 'Project not found');
+  }
+
+  const project = await projectRes.json();
+  if (!project || typeof project.id !== 'number') {
+    error(500, 'Project id is missing or invalid');
+  }
+
+  return project.id;
+};
 
 export const actions = {
   default: async ({ request, params, fetch }: RequestEvent) => {
     const formData: FormData = await request.formData();
-    const id = params.id;
+    const routeParam = params.id;
+    if (!routeParam) {
+      error(400, 'Project identifier is missing');
+    }
+
+    const id = await resolveNumericProjectId(routeParam, fetch);
 
     const projectDto = {
       title: formData.get('title'),
