@@ -167,20 +167,22 @@
         });
       }
     });
-    role.associatedActivities.forEach((assoc: any) => {
-      const matchingCategory = Object.keys(permissionsMap).find(
-        (key) =>
-          assoc.activity &&
-          assoc.activity.title &&
-          key.toLowerCase() === assoc.activity.title.trim().toLowerCase()
-      );
-      if (matchingCategory && permissionsMap[matchingCategory]) {
-        assoc.permissions.forEach((permCode: string) => {
-          const target = permissionsMap[matchingCategory].find((p) => p.code === permCode);
-          if (target) target.checked = true;
-        });
+    role.associatedActivities.forEach(
+      (assoc: import('@/types/peractivityrole').PerActivityRole) => {
+        const matchingCategory = Object.keys(permissionsMap).find(
+          (key) =>
+            assoc.activity &&
+            assoc.activity.title &&
+            key.toLowerCase() === assoc.activity.title.trim().toLowerCase()
+        );
+        if (matchingCategory && permissionsMap[matchingCategory]) {
+          assoc.permissions.forEach((permCode: string) => {
+            const target = permissionsMap[matchingCategory].find((p) => p.code === permCode);
+            if (target) target.checked = true;
+          });
+        }
       }
-    });
+    );
   }
 
   async function handleToggle(permission: Permission, isChecked: boolean) {
@@ -192,7 +194,7 @@
     let activityId: number | null = null;
     if (!isGlobal && activityTitle) {
       const assoc = role.associatedActivities.find(
-        (a: any) =>
+        (a: import('@/types/peractivityrole').PerActivityRole) =>
           a.activity &&
           a.activity.title &&
           a.activity.title.trim().toLowerCase() === activityTitle.trim().toLowerCase()
@@ -231,7 +233,10 @@
           role.permissions = role.permissions.filter((p: string) => p !== permission.code);
         }
       } else {
-        let assoc = role.associatedActivities.find((a: any) => a.activity.title === activityTitle);
+        let assoc = role.associatedActivities.find(
+          (a: import('@/types/peractivityrole').PerActivityRole) =>
+            a.activity.title === activityTitle
+        );
         if (!assoc && isChecked) {
           assoc = {
             id: Date.now(),
@@ -283,7 +288,7 @@
           bind:checked={superuserPermission.checked}
           onchange={async () => {
             await handleToggle(superuserPermission, superuserPermission.checked);
-            for (const [category, perms] of Object.entries(permissionsMap)) {
+            for (const [, perms] of Object.entries(permissionsMap)) {
               for (const perm of perms) {
                 if (perm.code !== 'SUPERUSER') {
                   if (superuserPermission.checked && !perm.checked) {
