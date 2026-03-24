@@ -5,7 +5,7 @@
   import type { Project } from '@/types/project';
 
   export let role: Role;
-  export let projects: Project[];
+  export let projects: Project[] = [];
 
   type PermissionCode =
     | 'CREATE_ACCOUNT'
@@ -104,7 +104,10 @@
 
   $: allOptions = [...(projects?.map((p: Project) => p.title) ?? []), 'Eventos', 'Equipa'];
 
-  let selectedOption: string = allOptions[0] ?? '';
+  let selectedOption: string = '';
+  $: if (allOptions && allOptions.length && !selectedOption) {
+    selectedOption = allOptions[0];
+  }
 
   $: if (projects && permissionsMap) {
     const hardcodedKeys = Object.keys(permissionsMap).reduce(
