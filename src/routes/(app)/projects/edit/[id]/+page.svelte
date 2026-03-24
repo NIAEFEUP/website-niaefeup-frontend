@@ -9,6 +9,45 @@
 
   let { data }: { data: PageData } = $props();
   let project: Project = data.project;
+  let submitError = $state('');
+
+  function validateForm(event: SubmitEvent) {
+    submitError = '';
+    const form = event.currentTarget as HTMLFormElement;
+
+    const requiredFields: Array<{ name: string; label: string }> = [
+      { name: 'title', label: 'Title' },
+      { name: 'slug', label: 'Slug' },
+      { name: 'description', label: 'Descrição' },
+      { name: 'public', label: 'Público Alvo' }
+    ];
+
+    for (const field of requiredFields) {
+      const input = form.elements.namedItem(field.name);
+      if (!(input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement)) continue;
+
+      if (input.value.trim().length === 0) {
+        event.preventDefault();
+        input.setCustomValidity(`${field.label} é obrigatório.`);
+        input.reportValidity();
+        return;
+      }
+
+      input.setCustomValidity('');
+    }
+
+    const githubInput = form.elements.namedItem('github');
+    if (githubInput instanceof HTMLInputElement) {
+      const githubValue = githubInput.value;
+      if (githubValue.length > 0 && githubValue.trim().length === 0) {
+        event.preventDefault();
+        githubInput.setCustomValidity('O campo GitHub não pode conter apenas espaços.');
+        githubInput.reportValidity();
+        return;
+      }
+      githubInput.setCustomValidity('');
+    }
+  }
 </script>
 
 <div class="flex w-full flex-col items-center justify-around">
@@ -20,8 +59,14 @@
     method="POST"
     enctype="multipart/form-data"
     class="flex w-full flex-col items-center p-10"
+    onsubmit={validateForm}
     use:enhance={() => {
-      return async ({ update }) => {
+      return async ({ result, update }) => {
+        submitError =
+          result.type === 'failure' ||
+          (result.type === 'success' && ((result.data as unknown) === false))
+            ? 'Não foi possível guardar as alterações. Verifica os campos e tenta novamente.'
+            : '';
         await update({ reset: false });
       };
     }}
@@ -97,6 +142,9 @@
           <Button type="submit" color="secondary" hoverColor="red" text="Guardar Alterações" />
           <Button type="reset" color="secondary" hoverColor="red" text="Cancelar" />
         </div>
+        {#if submitError}
+          <p class="text-sm font-semibold text-red-300">{submitError}</p>
+        {/if}
       </div>
 
       <div class="order-1 flex flex-col items-center gap-5 self-center md:order-2 md:self-start">
