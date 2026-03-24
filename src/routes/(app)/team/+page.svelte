@@ -99,28 +99,28 @@
   const visibleSections = $derived.by(() => {
     if (orderedSections.length === 0) return [];
 
-    const base = orderedSections.slice(0, 3);
+    let indices: number[];
 
-    if (base.length > 0) {
-      const prev = base[0];
-      const curr = base[1];
-      const next = base[2];
-
-      return [
-        { ...next, isDuplicate: true, carouselId: 'buf-left' }, // 0: Next (Buffer Left)
-        { ...prev, isDuplicate: false, carouselId: 'prev' }, // 1: Prev
-        { ...curr, isDuplicate: false, carouselId: 'curr' }, // 2: Current (Center)
-        { ...next, isDuplicate: false, carouselId: 'next' }, // 3: Next
-        { ...prev, isDuplicate: true, carouselId: 'buf-right' } // 4: Prev (Buffer Right)
-      ] as Array<{
-        id: string;
-        name: string;
-        accounts: TeamMember[];
-        isDuplicate?: boolean;
-        carouselId?: string;
-      }>;
+    if (orderedSections.length === 3) {
+      indices = [2, 0, 1, 2, 0]; // [C, A, B, C, A]
+    } else if (orderedSections.length === 4) {
+      indices = [2, 0, 1, 2, 3]; // [C, A, B, C, D]
+    } else {
+      indices = [4, 0, 1, 2, 3]; // no extra cycling
     }
-    return base as Array<{
+
+    const carouselIds = ['buf-left', 'prev', 'curr', 'next', 'buf-right'];
+
+    return indices.map((idx, pos) => {
+      const section = orderedSections[idx];
+      const isDuplicate = indices.filter((i) => i === idx).length > 1;
+
+      return {
+        ...section,
+        isDuplicate,
+        carouselId: carouselIds[pos]
+      };
+    }) as Array<{
       id: string;
       name: string;
       accounts: TeamMember[];
