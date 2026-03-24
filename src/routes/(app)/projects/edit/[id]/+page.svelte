@@ -30,19 +30,51 @@
 
     <div class="flex w-full flex-col justify-center gap-10 md:flex-row md:items-start">
       <div class="order-2 flex w-full flex-col gap-5 md:order-1 md:w-1/2">
-        <ProjectFormsInput label="Title" name="title" horizontal={true} value={project.title} />
+        <ProjectFormsInput
+          label="Title"
+          name="title"
+          horizontal={true}
+          required={true}
+          minlength={2}
+          maxlength={500}
+          value={project.title}
+        />
 
-        <ProjectFormsInput label="Slug" name="slug" horizontal={true} value={project.slug} />
+        <ProjectFormsInput
+          label="Slug"
+          name="slug"
+          horizontal={true}
+          required={true}
+          minlength={2}
+          maxlength={500}
+          value={project.slug}
+        />
 
-        <ProjectFormsInput label="GitHub" name="github" horizontal={true} value={project.github} />
+        <ProjectFormsInput
+          label="GitHub"
+          name="github"
+          type="url"
+          horizontal={true}
+          value={project.github}
+        />
 
-        <ProjectFormsInput label="Slogan" name="slogan" horizontal={true} value={project.slogan} />
+        <ProjectFormsInput
+          label="Slogan"
+          name="slogan"
+          horizontal={true}
+          minlength={2}
+          maxlength={100}
+          value={project.slogan}
+        />
 
         <ProjectFormsInput
           label="Descrição"
           name="description"
           horizontal={true}
           isTextArea
+          required={true}
+          minlength={10}
+          maxlength={10000}
           value={project.description}
         />
 
@@ -55,6 +87,9 @@
           label="Público Alvo"
           name="public"
           horizontal={true}
+          required={true}
+          minlength={2}
+          maxlength={250}
           value={project.targetAudience}
         />
 
