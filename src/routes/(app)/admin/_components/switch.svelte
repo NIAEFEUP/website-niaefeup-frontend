@@ -1,5 +1,8 @@
 <script lang="ts">
-  let { checked = $bindable(false), disabled = false, onchange, ariaLabel } = $props();
+  export let checked = false;
+  export let disabled = false;
+  export let onchange: ((checked: boolean) => void) | undefined;
+  export let ariaLabel: string | undefined;
 </script>
 
 <button

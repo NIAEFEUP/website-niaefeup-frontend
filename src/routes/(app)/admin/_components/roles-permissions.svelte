@@ -4,7 +4,8 @@
   import type { Role } from '@/types/role';
   import type { Project } from '@/types/project';
 
-  let { role, projects } = $props<{ role: Role; projects: Project[] }>();
+  export let role: Role;
+  export let projects: Project[];
 
   type PermissionCode =
     | 'CREATE_ACCOUNT'
@@ -25,15 +26,16 @@
 
   type PermissionsMap = Record<string, Permission[]>;
 
-  let superuserPermission = $state<Permission>({
+  // Main default state setup
+  let superuserPermission: Permission = {
     title: 'Superuser',
     description:
       'Concede acesso total e irrestrito ao sistema. Ativa todas as permissões. Ao desmarcar, remove todas as permissões.',
     checked: false,
     code: 'SUPERUSER'
-  });
+  };
 
-  let permissionsMap: PermissionsMap = $state({
+  let permissionsMap: PermissionsMap = {
     Eventos: [
       {
         title: 'Criar Atividade',
@@ -98,32 +100,13 @@
         code: 'EDIT_SETTINGS'
       }
     ]
-  });
-
-  let allOptions = $derived([
-    ...(projects?.map((p: Project) => p.title) ?? []),
-    'Eventos',
-    'Equipa'
-  ]);
-  let selectedOption = $state(allOptions[0] ?? '');
-  function getPermissionsForOption(option: string) {
-    const canonical = option.trim().toLowerCase();
-    const key = Object.keys(permissionsMap).find((k) => k.trim().toLowerCase() === canonical);
-    return key ? permissionsMap[key] : [];
-  }
-  let permissions = $derived(getPermissionsForOption(selectedOption));
-
-  let isSuperUser = $derived(superuserPermission.checked);
-
-  type AssociatedActivityPayload = {
-    permissions: string[];
-    activity: { title: string; id: number; [key: string]: unknown };
-    [key: string]: unknown;
   };
 
-  $effect(() => {
-    if (!projects || !permissionsMap) return;
+  $: allOptions = [...(projects?.map((p: Project) => p.title) ?? []), 'Eventos', 'Equipa'];
 
+  let selectedOption: string = allOptions[0] ?? '';
+
+  $: if (projects && permissionsMap) {
     const hardcodedKeys = Object.keys(permissionsMap).reduce(
       (acc, key) => {
         acc[key.trim().toLowerCase()] = key;
@@ -132,8 +115,7 @@
       {} as Record<string, string>
     );
     const globalTabs = ['equipa', 'eventos'];
-
-    projects.forEach((project: Project) => {
+    projects.forEach((project) => {
       const backendKey = project.title.trim();
       const canonical = backendKey.toLowerCase();
       if (globalTabs.includes(canonical)) return;
@@ -158,28 +140,34 @@
         }
       }
     });
-  });
+  }
 
-  $effect(() => {
-    if (!role) return;
+  function getPermissionsForOption(option: string) {
+    const canonical = option.trim().toLowerCase();
+    const key = Object.keys(permissionsMap).find((k) => k.trim().toLowerCase() === canonical);
+    return key ? permissionsMap[key] : [];
+  }
 
+  $: permissions = getPermissionsForOption(selectedOption);
+
+  $: isSuperUser = superuserPermission.checked;
+
+  $: if (role) {
     Object.keys(permissionsMap).forEach((category) => {
       permissionsMap[category].forEach((p) => (p.checked = false));
     });
     superuserPermission.checked = false;
-
     role.permissions.forEach((permCode: string) => {
       if (permCode === 'SUPERUSER') {
         superuserPermission.checked = true;
       } else {
         ['Equipa', 'Eventos'].forEach((section) => {
-          const target = permissionsMap[section]?.find((p: Permission) => p.code === permCode);
+          const target = permissionsMap[section]?.find((p) => p.code === permCode);
           if (target) target.checked = true;
         });
       }
     });
-
-    role.associatedActivities.forEach((assoc: AssociatedActivityPayload) => {
+    role.associatedActivities.forEach((assoc: any) => {
       const matchingCategory = Object.keys(permissionsMap).find(
         (key) =>
           assoc.activity &&
@@ -188,14 +176,12 @@
       );
       if (matchingCategory && permissionsMap[matchingCategory]) {
         assoc.permissions.forEach((permCode: string) => {
-          const target = permissionsMap[matchingCategory].find(
-            (p: Permission) => p.code === permCode
-          );
+          const target = permissionsMap[matchingCategory].find((p) => p.code === permCode);
           if (target) target.checked = true;
         });
       }
     });
-  });
+  }
 
   async function handleToggle(permission: Permission, isChecked: boolean) {
     const isGlobal =
@@ -203,14 +189,9 @@
       selectedOption === 'Equipa' ||
       selectedOption === 'Eventos';
     const activityTitle = isGlobal ? null : selectedOption;
-
     let activityId: number | null = null;
-
     if (!isGlobal && activityTitle) {
-      const assoc = role.associatedActivities.find(
-        (a: AssociatedActivityPayload) => a.activity.title === activityTitle
-      );
-
+      const assoc = role.associatedActivities.find((a: any) => a.activity.title === activityTitle);
       if (assoc) {
         activityId = assoc.activity.id as number;
       } else {
@@ -221,7 +202,6 @@
               )
             : null;
         activityId = matchedProject ? matchedProject.id : null;
-
         if (!activityId) {
           alert(`Erro: ID da atividade '${activityTitle}' não encontrado!`);
           permission.checked = !isChecked;
@@ -229,22 +209,18 @@
         }
       }
     }
-
     const payload = {
       permission: permission.code,
       action: isChecked ? 'grant' : 'revoke',
       activityId: activityId
     };
-
     try {
       const res = await fetch(`/api/roles/${role.id}/permissions`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-
       if (!res.ok) throw new Error('Failed to update permission');
-
       if (isGlobal) {
         if (isChecked) {
           role.permissions.push(permission.code);
@@ -252,19 +228,23 @@
           role.permissions = role.permissions.filter((p: string) => p !== permission.code);
         }
       } else {
-        let assoc = role.associatedActivities.find(
-          (a: AssociatedActivityPayload) => a.activity.title === activityTitle
-        );
-
+        let assoc = role.associatedActivities.find((a: any) => a.activity.title === activityTitle);
         if (!assoc && isChecked) {
           assoc = {
             id: Date.now(),
             permissions: [],
-            activity: { title: activityTitle as string, id: activityId as number }
-          } as unknown as AssociatedActivityPayload;
+            activity: {
+              id: activityId as number,
+              title: activityTitle as string,
+              description: '',
+              teamMembers: [],
+              slug: '',
+              image: '',
+              gallery: []
+            }
+          };
           role.associatedActivities.push(assoc);
         }
-
         if (assoc) {
           if (isChecked) {
             assoc.permissions.push(permission.code);
@@ -318,7 +298,6 @@
       </div>
     </div>
   </div>
-
   <div class="mb-2 h-px w-full bg-white/10"></div>
   <div
     class="mb-6 mt-2 flex w-full flex-col gap-4 sm:mb-8 sm:flex-row sm:items-center sm:justify-between"
@@ -334,7 +313,6 @@
       />
     </div>
   </div>
-
   <div class="flex flex-col gap-y-3">
     {#each permissions as permission (permission.title)}
       <div
