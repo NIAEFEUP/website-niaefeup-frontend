@@ -191,7 +191,12 @@
     const activityTitle = isGlobal ? null : selectedOption;
     let activityId: number | null = null;
     if (!isGlobal && activityTitle) {
-      const assoc = role.associatedActivities.find((a: any) => a.activity.title === activityTitle);
+      const assoc = role.associatedActivities.find(
+        (a: any) =>
+          a.activity &&
+          a.activity.title &&
+          a.activity.title.trim().toLowerCase() === activityTitle.trim().toLowerCase()
+      );
       if (assoc) {
         activityId = assoc.activity.id as number;
       } else {
