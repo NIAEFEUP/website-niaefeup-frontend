@@ -64,7 +64,7 @@
       return async ({ result, update }) => {
         submitError =
           result.type === 'failure' ||
-          (result.type === 'success' && ((result.data as unknown) === false))
+          (result.type === 'success' && (result.data as unknown) === false)
             ? 'Não foi possível guardar as alterações. Verifica os campos e tenta novamente.'
             : '';
         await update({ reset: false });
