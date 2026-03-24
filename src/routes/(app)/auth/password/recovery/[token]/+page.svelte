@@ -1,49 +1,52 @@
 <script lang="ts">
-    import type {PageData} from './$types';
+    import type { PageData, ActionData } from './$types';
     import { enhance } from '$app/forms';
-    import { page } from '$app/state';
-    import { server } from 'typescript';
-    let {data}: {data:PageData} = $props();
+    import { goto } from '$app/navigation';
+    let { data, form }: { data: PageData; form: ActionData } = $props();
 
     const token: string = data.token;
 
     let password = $state('');
     let confirmpassword = $state('');
-    
+
+    $effect(() => {
+        if (form?.success) {
+            goto('/login');
+        }
+    });
+
 </script>
 
 <p>Recovery token: {token}</p>
 
 <section>
-    
-    <form
-        method="POST"
-        action="?/submitRecovery"
-        
-    >
+    <form method="POST" action="?/submitRecovery" use:enhance>
         <div>
             <h2>New Password</h2>
             <input
-                type = "text"
-                name= "password"
+                type="password"
+                name="password"
                 placeholder="New Password"
                 bind:value={password}
                 id="password"
-            >
+            />
         </div>
         <div>
             <h2>Confirm Password</h2>
             <input
-                type = "text"
+                type="password"
                 name="confirmpassword"
-                placeholder = "Confirm Password"
+                placeholder="Confirm Password"
                 bind:value={confirmpassword}
                 id="confirmpassword"
-            >
+            />
         </div>
-        <input type='hidden' name="token" value={token}>
-        <button type='submit'>submit</button>
-    </form>
+        <input type="hidden" name="token" value={token} />
 
-    
+        {#if form?.err}
+            <p>{form.err}</p>
+        {/if}
+
+        <button type="submit">Submit</button>
+    </form>
 </section>
