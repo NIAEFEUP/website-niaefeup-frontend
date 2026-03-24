@@ -84,7 +84,7 @@
         class="full-opacity mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {#if teamMember.roles && teamMember.roles.length > 0}
-          {#each teamMember.roles as role}
+          {#each teamMember.roles as role (role)}
             <div>{role}</div>
           {/each}
         {:else if teamMember.role}
