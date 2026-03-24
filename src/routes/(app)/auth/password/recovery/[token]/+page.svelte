@@ -17,8 +17,6 @@
 
 </script>
 
-<p>Recovery token: {token}</p>
-
 <section>
     <form method="POST" action="?/submitRecovery" use:enhance>
         <div>
