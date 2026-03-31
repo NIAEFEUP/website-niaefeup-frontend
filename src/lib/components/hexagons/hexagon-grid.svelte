@@ -15,6 +15,9 @@
 
   let { items, cols, gap = 'medium', orientation, component }: Props = $props();
 
+  cols=Math.min(items.length,cols);
+
+
   const gridColumnsStyle =
     orientation === 'horizontal'
       ? `grid-template-columns: 0.2425fr repeat(${cols}, 0.4805fr 0.2425fr); grid-auto-rows: 0.5fr 0.5fr;`
@@ -42,6 +45,7 @@
 </ul>
 
 <style>
+
   .gap-horizontal-small {
     column-gap: 1.25rem;
     row-gap: 0.75rem;
