@@ -1,10 +1,28 @@
 <script lang="ts">
+  import { createNotification } from '@/routes/(app)/_components/layout/notifications';
+  import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
+
+  const DEFAULT_MAX_FILE_BYTES = 5 * 1024 * 1024;
+  const DEFAULT_MAX_FILES = 30;
+
   interface Props {
     name?: string;
     value?: (string | File)[];
+    /** Passed to the file input; validated client-side when possible (e.g. image/*). */
+    accept?: string;
+    /** Max size per new file in bytes (client-side). */
+    maxFileSizeBytes?: number;
+    /** Max total entries (existing URLs + new files). */
+    maxFiles?: number;
   }
 
-  let { name = '', value = $bindable([]) }: Props = $props();
+  let {
+    name = '',
+    value = $bindable([]),
+    accept = 'image/*',
+    maxFileSizeBytes = DEFAULT_MAX_FILE_BYTES,
+    maxFiles = DEFAULT_MAX_FILES
+  }: Props = $props();
 
   let inputElement: HTMLInputElement;
   let filesDeleted: string[] = $state([]);
@@ -24,6 +42,21 @@
     return `${file.name}\0${file.size}\0${file.lastModified}`;
   }
 
+  function isAcceptedFileType(file: File): boolean {
+    const tokens = accept.split(',').map((s) => s.trim()).filter(Boolean);
+    if (tokens.length === 0) return true;
+    for (const token of tokens) {
+      if (token === 'image/*' && file.type.startsWith('image/')) return true;
+      if (token.endsWith('/*')) {
+        const prefix = token.slice(0, -1);
+        if (file.type.startsWith(prefix)) return true;
+      } else if (token.startsWith('.')) {
+        if (file.name.toLowerCase().endsWith(token.toLowerCase())) return true;
+      } else if (file.type === token) return true;
+    }
+    return false;
+  }
+
   function appendFile(event: Event) {
     const target = event.target as HTMLInputElement;
     if (target.files) {
@@ -38,7 +71,37 @@
         seenInSelection.add(key);
         return true;
       });
-      value = [...value, ...uniqueNew];
+      const slotsLeft = maxFiles - value.length;
+      if (slotsLeft <= 0) {
+        createNotification(notificationMessages.MAX_FILES_REACHED);
+        target.value = '';
+        return;
+      }
+
+      let hadTypeReject = false;
+      let hadSizeReject = false;
+      const vetted: File[] = [];
+      for (const file of uniqueNew) {
+        if (vetted.length >= slotsLeft) break;
+        if (!isAcceptedFileType(file)) {
+          hadTypeReject = true;
+          continue;
+        }
+        if (file.size > maxFileSizeBytes) {
+          hadSizeReject = true;
+          continue;
+        }
+        vetted.push(file);
+      }
+
+      if (hadTypeReject) {
+        createNotification(notificationMessages.NOT_AN_IMAGE);
+      }
+      if (hadSizeReject) {
+        createNotification(notificationMessages.FILE_TOO_LARGE);
+      }
+
+      value = [...value, ...vetted];
       updateInputElement();
     }
     target.value = '';
@@ -71,6 +134,7 @@
     id="file-upload-{name}"
     type="file"
     {name}
+    {accept}
     multiple
     onchange={appendFile}
     class="hidden"
