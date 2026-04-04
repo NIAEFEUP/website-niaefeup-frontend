@@ -20,13 +20,28 @@
     inputElement.files = dataTransfer.files;
   }
 
+  function fileIdentityKey(file: File): string {
+    return `${file.name}\0${file.size}\0${file.lastModified}`;
+  }
+
   function appendFile(event: Event) {
     const target = event.target as HTMLInputElement;
     if (target.files) {
       const newFiles = Array.from(target.files);
-      value = [...value, ...newFiles];
+      const existingKeys = new Set(
+        value.filter((f): f is File => f instanceof File).map(fileIdentityKey)
+      );
+      const seenInSelection = new Set<string>();
+      const uniqueNew = newFiles.filter((file) => {
+        const key = fileIdentityKey(file);
+        if (existingKeys.has(key) || seenInSelection.has(key)) return false;
+        seenInSelection.add(key);
+        return true;
+      });
+      value = [...value, ...uniqueNew];
       updateInputElement();
     }
+    target.value = '';
   }
 
   function removeFile(fileToRemove: string | File) {
