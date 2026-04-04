@@ -8,11 +8,8 @@
   interface Props {
     name?: string;
     value?: (string | File)[];
-    /** Passed to the file input; validated client-side when possible (e.g. image/*). */
     accept?: string;
-    /** Max size per new file in bytes (client-side). */
     maxFileSizeBytes?: number;
-    /** Max total entries (existing URLs + new files). */
     maxFiles?: number;
   }
 
