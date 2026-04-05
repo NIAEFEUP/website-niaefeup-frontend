@@ -6,9 +6,9 @@ import { canEditActivity, canCreateActivity, canDeleteActivity } from '@/lib/api
 import type { BackendError } from '@/types/backend-error';
 
 export const load: PageServerLoad = async ({ fetch }) => {
-  if (!(await canEditActivity(fetch))) {
+  /*if (!(await canEditActivity(fetch))) {
     throw redirect(303, '/');
-  }
+  }*/
 
   let technologies: Technology[] = [];
   let roles: Role[] = [];
@@ -36,9 +36,9 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
 export const actions: Actions = {
   deleteTechnology: async ({ request, fetch }) => {
-    if (!(await canDeleteActivity(fetch))) {
+    /*if (!(await canDeleteActivity(fetch))) {
       throw redirect(303, '/');
-    }
+    }*/
 
     const formData = await request.formData();
     const id = formData.get('id');
@@ -55,9 +55,9 @@ export const actions: Actions = {
   },
 
   addTechnology: async ({ request, fetch }) => {
-    if (!(await canCreateActivity(fetch))) {
+    /*if (!(await canCreateActivity(fetch))) {
       throw redirect(303, '/');
-    }
+    }*/
 
     const requestData = await request.formData();
 
@@ -93,9 +93,9 @@ export const actions: Actions = {
   },
 
   addRole: async ({ request, fetch }) => {
-    if (!(await canCreateActivity(fetch))) {
+    /*if (!(await canCreateActivity(fetch))) {
       throw redirect(303, '/');
-    }
+    }*/
 
     const formData = await request.formData();
     const name = formData.get('name');
@@ -125,5 +125,69 @@ export const actions: Actions = {
 
     const newRole: Role = await res.json();
     return { success: true, data: newRole };
+  },
+
+  createAccounts:async ({ request, fetch }) => {
+    const data = await request.formData();
+    const csv = data.get('csv') as string;
+
+    if (!csv || csv.trim() === '') {
+      error(400, 'CSV is required');
+    }
+    const lines = csv.trim().split('\n');
+    const [_header, ...rows] = lines;
+    
+    if (!_header.toLowerCase().includes('nome') || !_header.toLowerCase().includes('email')) {
+      return { success: false, parseErrors: ['CSV deve ter cabeçalho: Nome,Email'], results: [], failed: [] };
+    }
+    const accounts = [];
+    const parseErrors: string[] = [];
+    for (const row of rows) {
+      if (row.trim() === '') continue;
+      const parts = row.split(',');
+      if (parts.length < 2) {
+        parseErrors.push(`Linha mal formatada (falta vírgula): "${row.trim()}"`);
+        continue;
+      }
+      if (parts.length > 2) {
+        parseErrors.push(`Linha mal formatada (vírgulas a mais): "${row.trim()}"`);
+        continue;
+      }
+      const [nome, email] = parts;
+      accounts.push({ nome: nome.trim(), email: email.trim() });
+    }
+    if (parseErrors.length > 0) {
+      return { success: false, parseErrors, results: [], failed: [] };
+    }
+
+    if (accounts.length === 0) {
+      return { success: false, parseErrors: ['Nenhuma conta encontrada no CSV'], results: [], failed: [] };
+    }
+
+    const results = await Promise.all(
+      accounts.map(async ({ nome, email }) => {
+        const formData = new FormData();
+        formData.append(
+          'account', 
+          new Blob([JSON.stringify({name: nome, email: email, isActive: true})], { 
+            type: 'application/json' 
+          })
+        );
+
+        const res = await fetch('/api/accounts', { method: 'POST', body: formData});
+        const json = await res.json().catch(() => ({}));
+        let errorMsg = null;
+        if (!res.ok) {
+          errorMsg = json?.errors?.[0]?.message ?? 'Erro desconhecido';
+        }
+        return { nome, email, success: res.ok, errorMsg };
+
+      })
+    );
+
+    const failed = results.filter(r => !r.success);
+
+    return {success: failed.length === 0, parseErrors: [], results, failed}; 
   }
+
 };

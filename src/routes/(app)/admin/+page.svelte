@@ -2,6 +2,7 @@
   import type { PageData } from './$types';
   import Technologies from './_components/technologies.svelte';
   import Roles from './_components/roles.svelte';
+  import CreateAccounts from './_components/create-accounts.svelte';
   import * as Tabs from '$lib/components/ui/tabs/index.js';
 
   let { data }: { data: PageData } = $props();
@@ -22,12 +23,21 @@
       >
         Tecnologias
       </Tabs.Trigger>
+      <Tabs.Trigger
+        class="relative bg-transparent p-0 text-2xl font-bold transition-all duration-300 after:absolute after:bottom-[-5px] after:left-0 after:h-[0.2em] after:bg-red-500 after:content-[''] data-[state=active]:after:w-full"
+        value="createAccounts"
+      >
+        Criar Contas
+      </Tabs.Trigger>
     </Tabs.List>
     <Tabs.Content value="technologies">
       <Technologies technologies={data.technologies} />
     </Tabs.Content>
     <Tabs.Content value="roles">
       <Roles roles={data.roles} />
+    </Tabs.Content>
+    <Tabs.Content value="createAccounts">
+      <CreateAccounts/>
     </Tabs.Content>
   </Tabs.Root>
 </section>
