@@ -16,7 +16,7 @@
     "test-vite": "vitest --run",
     "test-vite:coverage": "npm run test-vite -- --coverage",
     "test-vite:watch": "vitest --watch",
-    "test-storybook": "vitest --project=storybook --run",
+    "test-storybook": "vitest --config vitest.storybook.config.ts --run",
     "test-storybook:coverage": "npm run test-storybook -- --coverage",
     "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server storybook-static --port 6006 --silent\" \"npx wait-on tcp:127.0.0.1:6006 && npm run test-storybook:coverage\"",
     "lint": "prettier --check . && eslint .",
