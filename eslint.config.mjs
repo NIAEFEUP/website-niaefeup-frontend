@@ -79,7 +79,9 @@ export default [
       }
     },
     rules: {
-      'no-undef': 'off'
+      'no-undef': 'off',
+      // TODO: Re-enable after https://github.com/sveltejs/eslint-plugin-svelte/issues/1314 is resolved
+      'svelte/no-navigation-without-resolve': 'off'
     }
   }
 ];
