@@ -1,5 +1,4 @@
-import { userEvent, waitFor, waitForElementToBeRemoved, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { userEvent, waitFor, waitForElementToBeRemoved, within, expect } from 'storybook/test';
 import Layout from './+layout.svelte';
 import NotificationMessages from './_components/layout/notifications/notification-messages';
 import LayoutDecorator from '$lib/storybook-utils/layout-decorator.svelte';

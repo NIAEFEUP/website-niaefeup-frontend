@@ -1,5 +1,5 @@
 import { Layout } from 'lucide-svelte';
-import { userEvent, within } from '@storybook/testing-library';
+import { userEvent, within } from 'storybook/test';
 import { http, HttpResponse } from 'msw';
 import Page from './+page.svelte';
 import LayoutDecorator from '@/lib/storybook-utils/layout-decorator.svelte';

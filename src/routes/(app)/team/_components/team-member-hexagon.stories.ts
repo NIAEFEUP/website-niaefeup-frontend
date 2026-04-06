@@ -1,5 +1,4 @@
-import { fireEvent, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { fireEvent, within, expect } from 'storybook/test';
 import TeamMemberHexagon from './team-member-hexagon.svelte';
 
 export default {

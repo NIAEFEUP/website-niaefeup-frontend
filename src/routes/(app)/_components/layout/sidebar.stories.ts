@@ -1,5 +1,4 @@
-import { userEvent, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { userEvent, within, expect } from 'storybook/test';
 import Sidebar from './sidebar.svelte';
 import SidebarItems from './sidebar-items';
 
