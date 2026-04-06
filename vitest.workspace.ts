@@ -12,22 +12,28 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 export default mergeConfig(
   viteConfig,
   defineConfig({
-    projects: [
-      {
-        name: 'storybook',
-        plugins: [
-          storybookTest({
-            configDir: path.join(dirname, '.storybook'),
-            storybookScript: 'npm run storybook -- --ci'
-          })
-        ],
-        browser: {
-          enabled: true,
-          provider: playwright({}),
-          headless: true
-        },
-        setupFiles: ['./.storybook/vitest.setup.ts']
-      }
-    ]
+    test: {
+      projects: [
+        {
+          extends: true,
+          test: {
+            name: 'storybook',
+            include: ['src/**/*.stories.ts'],
+            browser: {
+              enabled: true,
+              provider: playwright({}),
+              headless: true
+            },
+            setupFiles: ['./.storybook/vitest.setup.ts']
+          },
+          plugins: [
+            storybookTest({
+              configDir: path.join(dirname, '.storybook'),
+              storybookScript: 'npm run storybook -- --ci'
+            })
+          ]
+        }
+      ]
+    }
   })
 );
