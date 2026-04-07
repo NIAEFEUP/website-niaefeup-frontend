@@ -4,11 +4,18 @@
   import FileInput from '@/lib/components/forms/file-input.svelte';
   import PictureInput from '@/lib/components/forms/picture-input.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
-  import type { Project } from '@/types/project';
   import { enhance } from '$app/forms';
 
   let { data }: { data: PageData } = $props();
-  let project: Project = data.project;
+  const project = $derived(data.project);
+
+  let galleryValue = $state<(string | File)[]>([]);
+
+  $effect(() => {
+    void JSON.stringify(data.project.gallery);
+    galleryValue = [...data.project.gallery];
+  });
+
   let submitError = $state('');
 
   function validateForm(event: SubmitEvent) {
@@ -125,7 +132,7 @@
 
         <div class="flex flex-col gap-2 md:flex-row">
           <p class="w-1/6 font-bold">Fotos</p>
-          <FileInput name="gallery" multiple value={project.gallery} />
+          <FileInput name="gallery" bind:value={galleryValue} />
         </div>
 
         <ProjectFormsInput

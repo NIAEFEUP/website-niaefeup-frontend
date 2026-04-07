@@ -61,35 +61,32 @@ export const actions = {
     }
 
     const imagesToDelete = formData.getAll('gallery_to_delete');
-    const deletePromises = imagesToDelete.map((imageUrl) => {
-      if (typeof imageUrl === 'string' && imageUrl.length > 0) {
-        const deleteFormData = new FormData();
-        deleteFormData.append('imageUrl', imageUrl);
+    for (const imageUrl of imagesToDelete) {
+      if (typeof imageUrl !== 'string' || imageUrl.length === 0) continue;
 
-        return fetch(`/api/projects/${id}/gallery`, {
-          method: 'DELETE',
-          body: deleteFormData
-        });
-      }
-    });
-    await Promise.all(deletePromises);
+      const deleteFormData = new FormData();
+      deleteFormData.append('imageUrl', imageUrl);
+
+      const deleteRes = await fetch(`/api/projects/${id}/gallery`, {
+        method: 'DELETE',
+        body: deleteFormData
+      });
+      if (!deleteRes.ok) return false;
+    }
 
     const galleryFiles = formData.getAll('gallery');
-    const uploadPromises = galleryFiles.map((galleryFile) => {
-      if (galleryFile instanceof File && galleryFile.size > 0) {
-        const uploadFormData = new FormData();
-        uploadFormData.append('image', galleryFile);
+    for (const galleryFile of galleryFiles) {
+      if (!(galleryFile instanceof File) || galleryFile.size === 0) continue;
 
-        return fetch(`/api/projects/${id}/gallery`, {
-          method: 'PUT',
-          body: uploadFormData
-        }).then((res) => {
-          if (!res.ok) throw new Error(`Upload failed: ${res.statusText}`);
-          return res.json();
-        });
-      }
-    });
-    await Promise.all(uploadPromises);
+      const uploadFormData = new FormData();
+      uploadFormData.append('image', galleryFile);
+
+      const uploadRes = await fetch(`/api/projects/${id}/gallery`, {
+        method: 'PUT',
+        body: uploadFormData
+      });
+      if (!uploadRes.ok) return false;
+    }
 
     const response = await fetch(`/api/projects/${id}`, {
       method: 'PUT',

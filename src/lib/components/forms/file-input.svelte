@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Icon from '$lib/components/icons/icon.svelte';
+  import Icons from '$lib/components/icons/icons';
   import { createNotification } from '@/routes/(app)/_components/layout/notifications';
   import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
 
@@ -21,18 +23,25 @@
     maxFiles = DEFAULT_MAX_FILES
   }: Props = $props();
 
-  let inputElement: HTMLInputElement;
+  let inputElement = $state<HTMLInputElement | undefined>(undefined);
   let filesDeleted: string[] = $state([]);
 
+  $effect(() => {
+    void value;
+    void inputElement;
+    updateInputElement();
+  });
+
   function updateInputElement() {
-    if (!inputElement) return;
+    const el = inputElement;
+    if (!el) return;
     const dataTransfer = new DataTransfer();
     value.forEach((file) => {
       if (file instanceof File) {
         dataTransfer.items.add(file);
       }
     });
-    inputElement.files = dataTransfer.files;
+    el.files = dataTransfer.files;
   }
 
   function fileIdentityKey(file: File): string {
@@ -42,6 +51,13 @@
   function isAcceptedFileType(file: File): boolean {
     const tokens = accept.split(',').map((s) => s.trim()).filter(Boolean);
     if (tokens.length === 0) return true;
+    if (
+      tokens.includes('image/*') &&
+      (!file.type || file.type === 'application/octet-stream') &&
+      /\.(jpe?g|png|gif|webp|bmp|svg)$/i.test(file.name)
+    ) {
+      return true;
+    }
     for (const token of tokens) {
       if (token === 'image/*' && file.type.startsWith('image/')) return true;
       if (token.endsWith('/*')) {
@@ -98,7 +114,9 @@
         createNotification(notificationMessages.FILE_TOO_LARGE);
       }
 
-      value = [...value, ...vetted];
+      if (vetted.length > 0) {
+        value = [...value, ...vetted];
+      }
       updateInputElement();
     }
     target.value = '';
@@ -149,10 +167,11 @@
           <span class="text-sm font-bold text-rose-950">{getFileName(file)}</span>
           <button
             type="button"
+            aria-label="Remover ficheiro"
             onclick={() => removeFile(file)}
-            class="rounded bg-red-200 px-2 font-bold text-black hover:bg-red-500"
+            class="flex items-center justify-center rounded bg-red-200 p-1.5 text-black hover:bg-red-500"
           >
-            X
+            <Icon src={Icons.Close} size="16" className="shrink-0" />
           </button>
         </div>
       {/each}
