@@ -1,6 +1,7 @@
 import { error, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import type { Technology } from '@/types/technology';
+import type { Role } from '@/types/role';
 import { canEditActivity, canCreateActivity, canDeleteActivity } from '@/lib/api/permissions';
 import type { BackendError } from '@/types/backend-error';
 
@@ -9,18 +10,28 @@ export const load: PageServerLoad = async ({ fetch }) => {
     throw redirect(303, '/');
   }
 
+  let technologies: Technology[] = [];
+  let roles: Role[] = [];
+
   const tech = await fetch('/api/technologies');
   if (!tech.ok) {
-    if (tech.status === 404) {
-      return { technologies: [] };
-    } else {
+    if (tech.status !== 404) {
       error(tech.status, 'Failed to load technologies');
     }
+  } else {
+    technologies = await tech.json();
   }
 
-  const technologies: Technology[] = await tech.json();
+  const role = await fetch('/api/roles');
+  if (!role.ok) {
+    if (role.status !== 404) {
+      error(role.status, 'Failed to load roles');
+    }
+  } else {
+    roles = await role.json();
+  }
 
-  return { technologies };
+  return { technologies, roles };
 };
 
 export const actions: Actions = {
@@ -79,5 +90,40 @@ export const actions: Actions = {
       await res.json();
 
     return { success: res.ok, data: json };
+  },
+
+  addRole: async ({ request, fetch }) => {
+    if (!(await canCreateActivity(fetch))) {
+      throw redirect(303, '/');
+    }
+
+    const formData = await request.formData();
+    const name = formData.get('name');
+
+    if (!name || typeof name !== 'string' || name.trim() === '') {
+      error(400, 'O nome da role é obrigatório');
+    }
+
+    const res = await fetch('/api/roles', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name.trim(),
+        permissions: [],
+        isSection: false,
+        associatedActivities: []
+      })
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      const message = errorData.message || errorData.errors?.[0]?.message || 'Erro ao criar role';
+      return { success: false, error: message };
+    }
+
+    const newRole: Role = await res.json();
+    return { success: true, data: newRole };
   }
 };
