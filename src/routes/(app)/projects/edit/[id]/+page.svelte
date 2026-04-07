@@ -146,8 +146,14 @@
         />
 
         <div class="flex w-[50vw] gap-10">
-          <Button type="submit" color="secondary" hoverColor="red" text="Guardar Alterações" />
-          <Button type="reset" color="secondary" hoverColor="red" text="Cancelar" />
+          <Button
+            type="submit"
+            width="medium"
+            color="secondary"
+            hoverColor="red"
+            text="Guardar Alterações"
+          />
+          <Button type="reset" width="medium" color="secondary" hoverColor="red" text="Cancelar" />
         </div>
         {#if submitError}
           <p class="text-sm font-semibold text-red-300">{submitError}</p>

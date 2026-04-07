@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { SvelteSet } from 'svelte/reactivity';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
   import { createNotification } from '@/routes/(app)/_components/layout/notifications';
@@ -49,7 +50,10 @@
   }
 
   function isAcceptedFileType(file: File): boolean {
-    const tokens = accept.split(',').map((s) => s.trim()).filter(Boolean);
+    const tokens = accept
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
     if (tokens.length === 0) return true;
     if (
       tokens.includes('image/*') &&
@@ -74,10 +78,10 @@
     const target = event.target as HTMLInputElement;
     if (target.files) {
       const newFiles = Array.from(target.files);
-      const existingKeys = new Set(
+      const existingKeys = new SvelteSet(
         value.filter((f): f is File => f instanceof File).map(fileIdentityKey)
       );
-      const seenInSelection = new Set<string>();
+      const seenInSelection = new SvelteSet<string>();
       const uniqueNew = newFiles.filter((file) => {
         const key = fileIdentityKey(file);
         if (existingKeys.has(key) || seenInSelection.has(key)) return false;
