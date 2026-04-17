@@ -24,6 +24,11 @@ export default {
 };
 
 export const Default = {
+  args: {
+    data: {
+      user: null
+    }
+  },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
