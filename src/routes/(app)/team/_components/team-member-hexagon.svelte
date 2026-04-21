@@ -87,8 +87,6 @@
           {#each teamMember.roles as role (role)}
             <div>{role}</div>
           {/each}
-        {:else if teamMember.role}
-          <div>{teamMember.role}</div>
         {/if}
       </div>
       <div class="relative mt-1">
