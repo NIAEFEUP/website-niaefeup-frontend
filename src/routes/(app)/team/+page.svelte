@@ -75,8 +75,8 @@
     if (!containerRef || orderedSections.length === 0) return;
 
     const centerBtn = buttonRefs[CAROUSEL_CENTER_INDEX];
-    const prevBtn = buttonRefs[1];
-    const nextBtn = buttonRefs[3];
+    const prevBtn = buttonRefs[CAROUSEL_CENTER_INDEX - 1];
+    const nextBtn = buttonRefs[CAROUSEL_CENTER_INDEX + 1];
 
     if (centerBtn) {
       const buttonCenter = centerBtn.offsetLeft + centerBtn.offsetWidth / 2;
