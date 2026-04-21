@@ -109,11 +109,21 @@
       indices = [4, 0, 1, 2, 3]; // no extra cycling
     }
 
+    // count occurrences once
+    const duplicateIndices = new Set<number>();
+    const indexCount = new Map<number, number>();
+    for (const idx of indices) {
+      indexCount.set(idx, (indexCount.get(idx) ?? 0) + 1);
+    }
+    for (const [idx, count] of indexCount) {
+      if (count > 1) duplicateIndices.add(idx);
+    }
+
     const carouselIds = ['buf-left', 'prev', 'curr', 'next', 'buf-right'];
 
     return indices.map((idx, pos) => {
       const section = orderedSections[idx];
-      const isDuplicate = indices.filter((i) => i === idx).length > 1;
+      const isDuplicate = duplicateIndices.has(idx); 
 
       return {
         ...section,
@@ -250,6 +260,12 @@
     <div class="w-full md:hidden">
       <div
         class="relative mb-6 mt-2 h-12 w-full touch-pan-y overflow-hidden"
+        role="slider"
+        tabindex="0"
+        aria-label="Team section carousel"
+        aria-valuenow={groupedSections.findIndex((s) => s.name === openSection)}
+        aria-valuemin="0"
+        aria-valuemax={groupedSections.length - 1}
         ontouchstart={handleTouchStart}
         ontouchmove={handleTouchMove}
         ontouchend={handleTouchEnd}
