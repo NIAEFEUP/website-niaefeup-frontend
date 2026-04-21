@@ -155,11 +155,14 @@
 
   $: isSuperUser = superuserPermission.checked;
 
-  $: if (role) {
+  $: if (role && role.id) {
+    // Reset all permissions when role changes
     Object.keys(permissionsMap).forEach((category) => {
       permissionsMap[category].forEach((p) => (p.checked = false));
     });
     superuserPermission.checked = false;
+
+    // Load global permissions
     role.permissions.forEach((permCode: string) => {
       if (permCode === 'SUPERUSER') {
         superuserPermission.checked = true;
@@ -170,6 +173,8 @@
         });
       }
     });
+
+    // Load activity-specific permissions
     role.associatedActivities.forEach(
       (assoc: import('@/types/peractivityrole').PerActivityRole) => {
         const matchingCategory = Object.keys(permissionsMap).find(
