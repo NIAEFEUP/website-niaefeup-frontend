@@ -291,18 +291,24 @@
           bind:checked={superuserPermission.checked}
           onchange={async () => {
             await handleToggle(superuserPermission, superuserPermission.checked);
-            for (const [, perms] of Object.entries(permissionsMap)) {
-              for (const perm of perms) {
-                if (perm.code !== 'SUPERUSER') {
-                  if (superuserPermission.checked && !perm.checked) {
-                    perm.checked = true;
-                    await handleToggle(perm, true);
-                  } else if (!superuserPermission.checked && perm.checked) {
-                    perm.checked = false;
-                    await handleToggle(perm, false);
+            const previousSelectedOption = selectedOption;
+            try {
+              for (const [category, perms] of Object.entries(permissionsMap)) {
+                selectedOption = category;
+                for (const perm of perms) {
+                  if (perm.code !== 'SUPERUSER') {
+                    if (superuserPermission.checked && !perm.checked) {
+                      perm.checked = true;
+                      await handleToggle(perm, true);
+                    } else if (!superuserPermission.checked && perm.checked) {
+                      perm.checked = false;
+                      await handleToggle(perm, false);
+                    }
                   }
                 }
               }
+            } finally {
+              selectedOption = previousSelectedOption;
             }
           }}
         />
