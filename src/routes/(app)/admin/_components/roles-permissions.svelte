@@ -193,12 +193,15 @@
 
   $: isSuperUser = role && role.id ? superuserPermission.checked : false;
 
-  async function handleToggle(permission: Permission, isChecked: boolean) {
+  async function handleToggle(
+    permission: Permission,
+    isChecked: boolean,
+    optionContext: string | null = null
+  ) {
+    const context = optionContext ?? selectedOption;
     const isGlobal =
-      permission.code === 'SUPERUSER' ||
-      selectedOption === 'Equipa' ||
-      selectedOption === 'Eventos';
-    const activityTitle = isGlobal ? null : selectedOption;
+      permission.code === 'SUPERUSER' || context === 'Equipa' || context === 'Eventos';
+    const activityTitle = isGlobal ? null : context;
     let activityId: number | null = null;
     if (!isGlobal && activityTitle) {
       const assoc = role.associatedActivities.find(
@@ -297,24 +300,18 @@
           bind:checked={superuserPermission.checked}
           onchange={async () => {
             await handleToggle(superuserPermission, superuserPermission.checked);
-            const previousSelectedOption = selectedOption;
-            try {
-              for (const [category, perms] of Object.entries(permissionsMap)) {
-                selectedOption = category;
-                for (const perm of perms) {
-                  if (perm.code !== 'SUPERUSER') {
-                    if (superuserPermission.checked && !perm.checked) {
-                      perm.checked = true;
-                      await handleToggle(perm, true);
-                    } else if (!superuserPermission.checked && perm.checked) {
-                      perm.checked = false;
-                      await handleToggle(perm, false);
-                    }
+            for (const [category, perms] of Object.entries(permissionsMap)) {
+              for (const perm of perms) {
+                if (perm.code !== 'SUPERUSER') {
+                  if (superuserPermission.checked && !perm.checked) {
+                    perm.checked = true;
+                    await handleToggle(perm, true, category);
+                  } else if (!superuserPermission.checked && perm.checked) {
+                    perm.checked = false;
+                    await handleToggle(perm, false, category);
                   }
                 }
               }
-            } finally {
-              selectedOption = previousSelectedOption;
             }
           }}
         />
