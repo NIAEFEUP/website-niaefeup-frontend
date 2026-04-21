@@ -4,7 +4,7 @@
 
   const logo = {
     type: 'logo',
-    image: '/images/ni_logo.png'   
+    image: '/images/logo_2018_watermark.svg'   
   };
 
   const departments = [
