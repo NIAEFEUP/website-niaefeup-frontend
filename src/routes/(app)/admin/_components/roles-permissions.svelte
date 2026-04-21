@@ -153,8 +153,6 @@
 
   $: permissions = getPermissionsForOption(selectedOption);
 
-  $: isSuperUser = superuserPermission.checked;
-
   $: if (role && role.id) {
     // Reset all permissions when role changes
     Object.keys(permissionsMap).forEach((category) => {
@@ -192,6 +190,8 @@
       }
     );
   }
+
+  $: isSuperUser = role && role.id ? superuserPermission.checked : false;
 
   async function handleToggle(permission: Permission, isChecked: boolean) {
     const isGlobal =
