@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { SvelteMap, SvelteSet } from 'svelte/reactivity';
   import type { PageData } from './$types';
   import TeamSectionGrid from './_components/team-section-grid.svelte';
   import type { TeamMember } from '@/types/team-member';
@@ -110,8 +111,8 @@
     }
 
     // count occurrences once
-    const duplicateIndices = new Set<number>();
-    const indexCount = new Map<number, number>();
+    const duplicateIndices = new SvelteSet<number>();
+    const indexCount = new SvelteMap<number, number>();
     for (const idx of indices) {
       indexCount.set(idx, (indexCount.get(idx) ?? 0) + 1);
     }
@@ -123,7 +124,7 @@
 
     return indices.map((idx, pos) => {
       const section = orderedSections[idx];
-      const isDuplicate = duplicateIndices.has(idx); 
+      const isDuplicate = duplicateIndices.has(idx);
 
       return {
         ...section,
