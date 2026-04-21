@@ -235,7 +235,7 @@
         } else {
           role.permissions = role.permissions.filter((p: string) => p !== permission.code);
         }
-       } else {
+      } else {
         let assoc = role.associatedActivities.find(
           (a: import('@/types/peractivityrole').PerActivityRole) =>
             activityTitle &&
