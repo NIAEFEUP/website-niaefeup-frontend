@@ -1,10 +1,7 @@
 <script lang="ts">
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
-  import {
-    getFileDisplayName,
-    processAppendFiles
-  } from '$lib/components/forms/file-input-logic';
+  import { getFileDisplayName, processAppendFiles } from '$lib/components/forms/file-input-logic';
   import { createNotification } from '@/routes/(app)/_components/layout/notifications';
   import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
 
@@ -89,7 +86,6 @@
     value = value.filter((file) => file !== fileToRemove);
     updateInputElement();
   }
-
 </script>
 
 <div class="relative flex flex-col items-start gap-4">
