@@ -1,7 +1,10 @@
 <script lang="ts">
-  import { SvelteSet } from 'svelte/reactivity';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
+  import {
+    getFileDisplayName,
+    processAppendFiles
+  } from '$lib/components/forms/file-input-logic';
   import { createNotification } from '@/routes/(app)/_components/layout/notifications';
   import notificationMessages from '@/routes/(app)/_components/layout/notifications/notification-messages';
 
@@ -45,81 +48,33 @@
     el.files = dataTransfer.files;
   }
 
-  function fileIdentityKey(file: File): string {
-    return `${file.name}\0${file.size}\0${file.lastModified}`;
-  }
-
-  function isAcceptedFileType(file: File): boolean {
-    const tokens = accept
-      .split(',')
-      .map((s) => s.trim())
-      .filter(Boolean);
-    if (tokens.length === 0) return true;
-    if (
-      tokens.includes('image/*') &&
-      (!file.type || file.type === 'application/octet-stream') &&
-      /\.(jpe?g|png|gif|webp|bmp|svg)$/i.test(file.name)
-    ) {
-      return true;
-    }
-    for (const token of tokens) {
-      if (token === 'image/*' && file.type.startsWith('image/')) return true;
-      if (token.endsWith('/*')) {
-        const prefix = token.slice(0, -1);
-        if (file.type.startsWith(prefix)) return true;
-      } else if (token.startsWith('.')) {
-        if (file.name.toLowerCase().endsWith(token.toLowerCase())) return true;
-      } else if (file.type === token) return true;
-    }
-    return false;
-  }
-
   function appendFile(event: Event) {
     const target = event.target as HTMLInputElement;
     if (target.files) {
       const newFiles = Array.from(target.files);
-      const existingKeys = new SvelteSet(
-        value.filter((f): f is File => f instanceof File).map(fileIdentityKey)
-      );
-      const seenInSelection = new SvelteSet<string>();
-      const uniqueNew = newFiles.filter((file) => {
-        const key = fileIdentityKey(file);
-        if (existingKeys.has(key) || seenInSelection.has(key)) return false;
-        seenInSelection.add(key);
-        return true;
+      const result = processAppendFiles({
+        newFiles,
+        value,
+        accept,
+        maxFiles,
+        maxFileSizeBytes
       });
-      const slotsLeft = maxFiles - value.length;
-      if (slotsLeft <= 0) {
+
+      if (result.outcome === 'max_files') {
         createNotification(notificationMessages.MAX_FILES_REACHED);
         target.value = '';
         return;
       }
 
-      let hadTypeReject = false;
-      let hadSizeReject = false;
-      const vetted: File[] = [];
-      for (const file of uniqueNew) {
-        if (vetted.length >= slotsLeft) break;
-        if (!isAcceptedFileType(file)) {
-          hadTypeReject = true;
-          continue;
-        }
-        if (file.size > maxFileSizeBytes) {
-          hadSizeReject = true;
-          continue;
-        }
-        vetted.push(file);
-      }
-
-      if (hadTypeReject) {
+      if (result.hadTypeReject) {
         createNotification(notificationMessages.NOT_AN_IMAGE);
       }
-      if (hadSizeReject) {
+      if (result.hadSizeReject) {
         createNotification(notificationMessages.FILE_TOO_LARGE);
       }
 
-      if (vetted.length > 0) {
-        value = [...value, ...vetted];
+      if (result.vetted.length > 0) {
+        value = [...value, ...result.vetted];
       }
       updateInputElement();
     }
@@ -135,10 +90,6 @@
     updateInputElement();
   }
 
-  function getFileName(file: string | File) {
-    if (file instanceof File) return file.name;
-    return typeof file === 'string' ? file.split('/').pop() : file;
-  }
 </script>
 
 <div class="relative flex flex-col items-start gap-4">
@@ -168,7 +119,7 @@
     <div class="flex flex-wrap gap-2">
       {#each value as file (file)}
         <div class="file-item flex min-w-0 items-center gap-2 rounded bg-taupe-200 px-2 py-2">
-          <span class="text-sm font-bold text-rose-950">{getFileName(file)}</span>
+          <span class="text-sm font-bold text-rose-950">{getFileDisplayName(file)}</span>
           <button
             type="button"
             aria-label="Remover ficheiro"
