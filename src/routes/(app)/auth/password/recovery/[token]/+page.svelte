@@ -2,6 +2,10 @@
   import type { PageData, ActionData } from './$types';
   import { enhance } from '$app/forms';
   import { goto } from '$app/navigation';
+  import LabelInput from '$lib/components/forms/label-input.svelte';
+  import Button from '$lib/components/buttons/button.svelte';
+  import { createNotification } from '@/routes/(app)/_components/layout/notifications';
+
   let { data, form }: { data: PageData; form: ActionData } = $props();
 
   const token: string = data.token;
@@ -9,41 +13,85 @@
   let password = $state('');
   let confirmpassword = $state('');
 
+  let loading = $state(false);
+  let success = $state(false);
+  let error = $state(false);
+
+  let buttonText = $derived(
+    success ? 'Enviado' : error ? 'Erro' : loading ? 'A enviar...' : 'Enviar'
+  );
+
   $effect(() => {
     if (form?.success) {
-      goto('/login');
+      success = true;
+      createNotification('Password atualizada com sucesso!');
+      setTimeout(() => goto('/login'), 2000);
+    } else if (form?.err) {
+      error = true;
+      createNotification(form.err);
+      setTimeout(() => {
+        error = false;
+      }, 2000);
     }
   });
 </script>
 
 <section>
-  <form method="POST" action="?/submitRecovery" use:enhance>
+  <form
+    method="POST"
+    action="?/submitRecovery"
+    use:enhance={() => {
+      if (loading) return ({ cancel }) => cancel();
+
+      loading = true;
+      error = false;
+      success = false;
+
+      return async ({ update, result }) => {
+        loading = false;
+
+        if (result.type === 'failure') {
+          error = true;
+        }
+
+        await update();
+      };
+    }}
+  >
     <div>
+      <input type="text" name="username" autocomplete="username" class="hidden" />
       <h2>New Password</h2>
-      <input
+      <LabelInput
+        style="width: 35%;"
         type="password"
+        autocomplete="new-password"
         name="password"
-        placeholder="New Password"
         bind:value={password}
-        id="password"
+        required={true}
       />
     </div>
+
     <div>
       <h2>Confirm Password</h2>
-      <input
+      <LabelInput
+        style="width: 35%;"
         type="password"
+        autocomplete="new-password"
         name="confirmpassword"
-        placeholder="Confirm Password"
         bind:value={confirmpassword}
-        id="confirmpassword"
+        required={true}
       />
     </div>
+
     <input type="hidden" name="token" value={token} />
 
-    {#if form?.err}
-      <p>{form.err}</p>
-    {/if}
-
-    <button type="submit">Submit</button>
+    <Button
+      type="submit"
+      text={buttonText}
+      color="primary"
+      hoverColor="secondary"
+      width="medium"
+      disabled={loading || success}
+    />
   </form>
 </section>

@@ -36,8 +36,6 @@ export const actions: Actions = {
       return { success: false, err: message };
     }
 
-    console.log(await res.text());
-
     return { success: true, err: '' };
   }
 };
