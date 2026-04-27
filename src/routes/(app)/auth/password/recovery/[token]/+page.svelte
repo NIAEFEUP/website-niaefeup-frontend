@@ -60,7 +60,7 @@
   >
     <div>
       <input type="text" name="username" autocomplete="username" class="hidden" />
-      <h2>New Password</h2>
+      <h2>Nova Password</h2>
       <LabelInput
         style="width: 35%;"
         type="password"
@@ -72,7 +72,7 @@
     </div>
 
     <div>
-      <h2>Confirm Password</h2>
+      <h2>Confirmar Password</h2>
       <LabelInput
         style="width: 35%;"
         type="password"
