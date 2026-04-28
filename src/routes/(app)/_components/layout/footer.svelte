@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import MemberButton from './member-button.svelte';
-  import LogoutButton from '@/lib/components/buttons/logout-button.svelte';
   import { createNotification } from './notifications';
   import NotificationMessages from './notifications/notification-messages';
+  import LogoutButton from '@/lib/components/buttons/logout-button.svelte';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
   import { goto, invalidateAll } from '$app/navigation';
