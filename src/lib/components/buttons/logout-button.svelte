@@ -10,10 +10,6 @@
   let { ariaLabel = 'Logout', type = 'button' }: Props = $props();
 </script>
 
-<button
-  {type}
-  aria-label={ariaLabel}
-  class="w-10 rounded-md bg-muted-red-500 p-2.5 lg:w-10 xl:w-9"
->
+<button {type} aria-label={ariaLabel} class="w-10 rounded-md bg-muted-red-500 p-2.5 lg:w-10 xl:w-9">
   <Icon src={Icons.Logout} color="white" size="18px" />
 </button>
