@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import MemberButton from './member-button.svelte';
+  import LogoutButton from '@/lib/components/buttons/logout-button.svelte';
   import { createNotification } from './notifications';
   import NotificationMessages from './notifications/notification-messages';
   import Icon from '@/lib/components/icons/icon.svelte';
@@ -207,12 +208,7 @@
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
       {#if user}
-        <button
-          class="w-10 rounded-md bg-muted-red-500 p-2.5 lg:w-10 xl:w-9"
-          onclick={() => logout()}
-        >
-          <Icon src={Icons.Logout} color="white" size="18px" />
-        </button>
+        <LogoutButton on:click={() => logout()} />
       {/if}
       <MemberButton userId={user?.id} />
     </div>
