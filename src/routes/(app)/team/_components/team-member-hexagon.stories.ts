@@ -143,7 +143,22 @@ export const MultipleRolesHexagon = {
     data: {
       name: 'Bruno Rosendo',
       email: 'brunorosendo@gmail.com',
-      roles: ['Presidente', 'Co-Gestor de Projetos'],
+      roles: [
+        {
+          id: 1,
+          name: 'Presidente',
+          permissions: [],
+          isSection: true,
+          associatedActivities: []
+        },
+        {
+          id: 2,
+          name: 'Co-Gestor de Projetos',
+          permissions: [],
+          isSection: false,
+          associatedActivities: []
+        }
+      ],
       linkedin: 'https://pt.linkedin.com/',
       github: 'https://github.com/'
     }
