@@ -1,8 +1,8 @@
 <script>
   import { onMount } from 'svelte';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
-  let currentPage = $derived($page.url.pathname ?? '/');
+  let currentPage = $derived(page.url.pathname ?? '/');
   const links = [
     { href: '#', label: 'Equipa', pageComp: '/team' },
     { href: '/projects', label: 'Projetos', pageComp: '/projects' },
@@ -30,7 +30,7 @@
 </script>
 
 <nav
-  class="bg-ni-navbar fixed z-30 hidden h-min w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
+  class="bg-ni-navbar fixed top-0 z-30 hidden w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
   class:isScrolled
   aria-label="Navigation Bar"
 >
