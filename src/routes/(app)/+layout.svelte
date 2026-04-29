@@ -51,17 +51,13 @@
 
 <style>
   :global(html) {
-    height: 100%;
     min-height: 100vh;
-    overflow: auto;
   }
 
   :global(body) {
-    height: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: auto;
   }
 
   /*
