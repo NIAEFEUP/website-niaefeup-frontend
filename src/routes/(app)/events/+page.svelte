@@ -13,8 +13,8 @@
 
   let screenSizeThreshold = 768;
   let windowWidth: number = $state(0);
-
 </script>
+
 <svelte:window bind:innerWidth={windowWidth} />
 <section>
   <div class="flex w-full flex-col items-center">

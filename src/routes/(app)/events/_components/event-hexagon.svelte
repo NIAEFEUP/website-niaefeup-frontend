@@ -24,9 +24,10 @@
     const end = parseDate(event.dateInterval.endDate);
 
     const fmt = (d: Date) =>
-      d.toLocaleDateString('pt', { day: 'numeric', month: 'short' })
-       .replace(/\./g, '')
-       .replace(/ de /g, ' ');
+      d
+        .toLocaleDateString('pt', { day: 'numeric', month: 'short' })
+        .replace(/\./g, '')
+        .replace(/ de /g, ' ');
 
     return `${fmt(start)} – ${fmt(end)}`;
   };
@@ -37,20 +38,26 @@
     class="group relative box-content flex h-full w-full justify-center md:shadow-black/[.58] md:text-shadow"
     data-testid="event-hexagon"
   >
-  <div class="flex w-full flex-col content-center justify-center">
+    <div class="flex w-full flex-col content-center justify-center">
+      <p
+        class="z-20 mx-auto w-full max-w-[80%] overflow-hidden text-ellipsis whitespace-nowrap text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
+      >
+        {getDateDisplay()}
+      </p>
 
-  <p class="z-20 w-full max-w-[80%] mx-auto whitespace-nowrap text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg overflow-hidden text-ellipsis">
-    {getDateDisplay()}
-  </p>
+      <p
+        class="z-20 my-1.5 w-full overflow-hidden break-words bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl"
+      >
+        {event.title}
+      </p>
 
-  <p class="z-20 my-1.5 w-full text-center text-sm font-semibold bg-taupe-200 text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl break-words overflow-hidden">
-    {event.title}
-  </p>
-
-  <p class="z-20 w-full max-w-[80%] mx-auto text-center text-xs text-gray-100 truncate" title={event.location}>
-    {event.location}
-  </p>
-</div>
+      <p
+        class="z-20 mx-auto w-full max-w-[80%] truncate text-center text-xs text-gray-100"
+        title={event.location}
+      >
+        {event.location}
+      </p>
+    </div>
     <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/[.62] text-lg"></div>
     <img
       src={event.image}
@@ -59,4 +66,3 @@
     />
   </div>
 </Hexagon>
-
