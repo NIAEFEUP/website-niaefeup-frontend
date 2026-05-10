@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { browser } from '$app/environment';
   import type { PageData } from './$types';
   import HexagonTile from './_components/event-hexagon.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
