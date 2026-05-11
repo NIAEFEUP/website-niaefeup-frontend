@@ -36,7 +36,7 @@
   });
 </script>
 
-<section>
+<section class="flex h-full w-full flex-col items-center justify-center font-raleway text-base font-[700] sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
   <form
     method="POST"
     action="?/submitRecovery"
@@ -58,40 +58,40 @@
       };
     }}
   >
-    <div>
-      <input type="text" name="username" autocomplete="username" class="hidden" />
-      <h2>Nova Password</h2>
-      <LabelInput
-        style="width: 35%;"
-        type="password"
-        autocomplete="new-password"
-        name="password"
-        bind:value={password}
-        required={true}
+    <div class="grid justify-center rounded-[15px] bg-muted-red-500 p-[5dvh] lg:min-w-[60%]">
+      <div>
+        <input type="text" name="username" autocomplete="username" class="hidden" />
+        <h2>Nova Password</h2>
+        <LabelInput
+          type="password"
+          autocomplete="new-password"
+          name="password"
+          bind:value={password}
+          required={true}
+        />
+      </div>
+
+      <div>
+        <h2>Confirmar Password</h2>
+        <LabelInput
+          type="password"
+          autocomplete="new-password"
+          name="confirmpassword"
+          bind:value={confirmpassword}
+          required={true}
+        />
+      </div>
+
+      <input type="hidden" name="token" value={token} />
+
+      <Button
+        type="submit"
+        text={buttonText}
+        color="primary"
+        hoverColor="secondary"
+        width="medium"
+        disabled={loading || success}
       />
     </div>
-
-    <div>
-      <h2>Confirmar Password</h2>
-      <LabelInput
-        style="width: 35%;"
-        type="password"
-        autocomplete="new-password"
-        name="confirmpassword"
-        bind:value={confirmpassword}
-        required={true}
-      />
-    </div>
-
-    <input type="hidden" name="token" value={token} />
-
-    <Button
-      type="submit"
-      text={buttonText}
-      color="primary"
-      hoverColor="secondary"
-      width="medium"
-      disabled={loading || success}
-    />
   </form>
 </section>
