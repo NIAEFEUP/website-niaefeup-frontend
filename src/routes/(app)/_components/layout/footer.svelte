@@ -6,26 +6,12 @@
   import LogoutButton from '@/lib/components/buttons/logout-button.svelte';
   import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
-  import { goto, invalidateAll } from '$app/navigation';
 
   interface Props {
     user: { id: string | number } | null;
   }
 
   let { user }: Props = $props();
-
-  async function logout() {
-    const response = await fetch('/api/auth/logout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    if (response.ok) {
-      await invalidateAll();
-      goto('/');
-    }
-  }
 
   function copyToClipboard(content: string) {
     navigator.clipboard.writeText(content);
@@ -120,16 +106,11 @@
     </div>
     <div class="flex flex-col items-center gap-1">
       <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
-      <p class="text-sm">NIAEFEUP &copy; 2022</p>
+      <p class="text-sm">NIAEFEUP &copy; 2026</p>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
       {#if user}
-        <button
-          class="w-10 rounded-md bg-muted-red-500 p-2.5 lg:w-10 xl:w-9"
-          onclick={() => logout()}
-        >
-          <Icon src={Icons.Logout} color="white" size="18px" />
-        </button>
+        <LogoutButton />
       {/if}
       <MemberButton userId={user?.id} />
       <div class="text-right text-sm">
@@ -208,7 +189,7 @@
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
       {#if user}
-        <LogoutButton on:click={() => logout()} />
+        <LogoutButton />
       {/if}
       <MemberButton userId={user?.id} />
     </div>
