@@ -60,7 +60,9 @@
       };
     }}
   >
-    <div class="grid justify-center rounded-[15px] bg-muted-red-500 p-[5dvh] lg:min-w-[60%]">
+    <div
+      class="grid h-[90%] justify-center rounded-[15px] bg-muted-red-500 p-[5dvh] lg:min-w-[60%]"
+    >
       <div>
         <input type="text" name="username" autocomplete="username" class="hidden" />
         <h2>Nova Password</h2>
@@ -85,13 +87,15 @@
       </div>
 
       <input type="hidden" name="token" value={token} />
+    </div>
 
+    <div class="flex h-[10dvh] flex-col items-center justify-center lg:text-lg">
       <Button
         type="submit"
         text={buttonText}
         color="primary"
         hoverColor="secondary"
-        width="medium"
+        width="large"
         disabled={loading || success}
       />
     </div>
