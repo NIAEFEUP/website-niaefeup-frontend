@@ -79,12 +79,16 @@
       >
         {teamMember.name}
       </p>
-      <p
+      <div
         data-testid="role"
         class="full-opacity mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
-        {teamMember.role}
-      </p>
+        {#if teamMember.roles && teamMember.roles.length > 0}
+          {#each teamMember.roles as role (role.id)}
+            <p>{role.name}</p>
+          {/each}
+        {/if}
+      </div>
       <div class="relative mt-1">
         <div class="absolute flex w-full justify-center gap-1 md:gap-2">
           {#if teamMember.linkedin}
