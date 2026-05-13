@@ -10,7 +10,7 @@
       selectedDescription = defaultDescription;
     }
   };
- 
+
   const departments = [
     {
       name: 'Eventos',
@@ -138,9 +138,8 @@
       position: relative;
       margin-top: -15rem;
       margin-left: 240%;
-      transform:  translateX(-50%)  scale(0.45);
+      transform: translateX(-50%) scale(0.45);
       transform-origin: center;
     }
   }
 </style>
-
