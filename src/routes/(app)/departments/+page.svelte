@@ -1,6 +1,6 @@
 <script lang="ts">
-  import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
   import DepartmentHexagon from './_components/DepartmentHexagon.svelte';
+  import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
 
   const logo = {
     type: 'logo',
@@ -57,7 +57,6 @@
     { ...departments[2], onselect: handleSelect },
     { ...departments[3], onselect: handleSelect }
   ];
-
 </script>
 
 <section class="departments">
@@ -68,7 +67,7 @@
 
   <div class="grid">
     <HexagonGrid
-      items={items}
+      {items}
       cols={2}
       orientation="horizontal"
       gap="big"
