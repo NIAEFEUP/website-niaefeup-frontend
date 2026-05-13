@@ -10,7 +10,7 @@
       selectedDescription = defaultDescription;
     }
   };
-
+ 
   const departments = [
     {
       name: 'Eventos',
@@ -117,12 +117,12 @@
     margin-right: 15%;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 932px) {
     .departments {
       flex-direction: column;
       text-align: center;
-      gap: 3rem;
-      padding: 5rem 2.5rem;
+      gap: 0;
+      padding: 3rem 2.5rem 2rem;
     }
 
     .text {
@@ -134,7 +134,13 @@
     }
 
     .grid {
-      width: 107%;
+      width: clamp(200%, calc(910px / 100vw * 100%), 260%);
+      position: relative;
+      margin-top: -15rem;
+      margin-left: 240%;
+      transform:  translateX(-50%)  scale(0.45);
+      transform-origin: center;
     }
   }
 </style>
+

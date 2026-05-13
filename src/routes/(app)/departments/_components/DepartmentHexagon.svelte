@@ -10,7 +10,7 @@
     }
   }
 </script>
-
+ 
 {#if item.type === 'logo'}
   <div class="logo-only">
     <button class="logo-btn" onclick={() => item.onselect && item.onselect(item)} type="button">
