@@ -39,6 +39,10 @@
 <section
   class="flex h-full w-full flex-col items-center justify-center font-raleway text-base font-[700] sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
 >
+  <div class="flex h-[10dvh] flex-col items-center justify-center lg:text-lg">
+    <h1 class="text-3xl">Alterar Password</h1>
+  </div>
+
   <form
     method="POST"
     action="?/submitRecovery"
