@@ -117,29 +117,33 @@
     margin-right: 15%;
   }
 
-  @media (max-width: 932px) {
-    .departments {
-      flex-direction: column;
-      text-align: center;
-      gap: 0;
-      padding: 3rem 2.5rem 2rem;
-    }
-
-    .text {
-      max-width: 100%;
-    }
-
-    .text h2 {
-      font-size: 2.45rem;
-    }
-
-    .grid {
-      width: clamp(200%, calc(910px / 100vw * 100%), 260%);
-      position: relative;
-      margin-top: -15rem;
-      margin-left: 240%;
-      transform: translateX(-50%) scale(0.45);
-      transform-origin: center;
-    }
+  @media (max-width: 1024px) {
+  .departments {
+    flex-direction: column;
+    text-align: center;
+    gap: 0;
+    padding: 3rem 2.5rem 2rem;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
   }
+
+  .text {
+    max-width: 100%;
+  }
+
+  .text h2 {
+    font-size: 2.45rem;
+  }
+
+  .grid {
+    width: 900px;
+    /* zoom proporcional à largura do ecrã: 900px é a largura base da grid,
+       queremos que caiba em 100vw, então zoom = 100vw / 900px = 0.111vw por px */
+    zoom: calc(100vw / 900px * 0.85);
+    margin: -4rem auto 0;
+    transform: none;
+    margin-top: 3rem;
+  }
+}
 </style>
