@@ -118,32 +118,32 @@
   }
 
   @media (max-width: 1024px) {
-  .departments {
-    flex-direction: column;
-    text-align: center;
-    gap: 0;
-    padding: 3rem 2.5rem 2rem;
-    overflow: hidden;
-    width: 100%;
-    box-sizing: border-box;
-  }
+    .departments {
+      flex-direction: column;
+      text-align: center;
+      gap: 0;
+      padding: 3rem 2.5rem 2rem;
+      overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-  .text {
-    max-width: 100%;
-  }
+    .text {
+      max-width: 100%;
+    }
 
-  .text h2 {
-    font-size: 2.45rem;
-  }
+    .text h2 {
+      font-size: 2.45rem;
+    }
 
-  .grid {
-    width: 900px;
-    /* zoom proporcional à largura do ecrã: 900px é a largura base da grid,
+    .grid {
+      width: 900px;
+      /* zoom proporcional à largura do ecrã: 900px é a largura base da grid,
        queremos que caiba em 100vw, então zoom = 100vw / 900px = 0.111vw por px */
-    zoom: calc(100vw / 900px * 0.85);
-    margin: -4rem auto 0;
-    transform: none;
-    margin-top: 3rem;
+      zoom: calc(100vw / 900px * 0.85);
+      margin: -4rem auto 0;
+      transform: none;
+      margin-top: 3rem;
+    }
   }
-}
 </style>
