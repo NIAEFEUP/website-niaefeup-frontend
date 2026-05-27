@@ -137,3 +137,33 @@ export const HoveredDefaultProfilePicHexagon = {
     pseudo: { hover: true }
   }
 };
+
+export const MultipleRolesHexagon = {
+  args: {
+    data: {
+      name: 'Bruno Rosendo',
+      email: 'brunorosendo@gmail.com',
+      roles: [
+        {
+          id: 1,
+          name: 'Presidente',
+          permissions: [],
+          isSection: true,
+          associatedActivities: []
+        },
+        {
+          id: 2,
+          name: 'Co-Gestor de Projetos',
+          permissions: [],
+          isSection: false,
+          associatedActivities: []
+        }
+      ],
+      linkedin: 'https://pt.linkedin.com/',
+      github: 'https://github.com/'
+    }
+  },
+  parameters: {
+    pseudo: { hover: true }
+  }
+};
