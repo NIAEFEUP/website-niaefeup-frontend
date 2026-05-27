@@ -44,6 +44,7 @@
 </ul>
 
 <style>
+
   .gap-horizontal-small {
     column-gap: 1.25rem;
     row-gap: 0.75rem;

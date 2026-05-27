@@ -10,15 +10,16 @@
   const hasPerms: boolean = data.hasPerms;
   const events: Event[] = data.events;
 
-  let screenSizeThreshold = 768;
-  let windowWidth: number = $state(0);
+  const MOBILE_BREAKPOINT = 768;
+  let windowWidth = $state(0);
+  let cols = $derived( windowWidth < MOBILE_BREAKPOINT ? 1 : 4);
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
 <section>
   <div class="flex w-full flex-col items-center">
     <h1 class="my-2 text-center font-source_code text-xl text-white md:my-4 md:text-3xl">
-      &lt&nbsp<strong>Eventos</strong>&nbsp/&gt
+       <span>&lt;</span> <strong>Eventos</strong> <span>/&gt;</span>
     </h1>
 
     {#if hasPerms}
@@ -29,26 +30,14 @@
       </div>
     {/if}
 
-    {#if windowWidth < screenSizeThreshold}
       <div class="w-full max-w-7xl px-4 md:px-20 lg:px-32">
         <HexagonGrid
           items={events}
-          cols={1}
+          {cols}
           orientation="vertical"
-          gap="medium"
+          gap=""
           component={HexagonTile}
         />
       </div>
-    {:else}
-      <div class="w-full max-w-7xl px-4 md:px-20 lg:px-32">
-        <HexagonGrid
-          items={events}
-          cols={4}
-          orientation="vertical"
-          gap="medium"
-          component={HexagonTile}
-        />
-      </div>
-    {/if}
   </div>
 </section>
