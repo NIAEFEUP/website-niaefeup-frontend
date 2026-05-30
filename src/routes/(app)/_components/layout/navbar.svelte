@@ -4,7 +4,7 @@
 
   let currentPage = $derived(page.url.pathname ?? '/');
   const links = [
-    { href: '#', label: 'Equipa', pageComp: '/team' },
+    { href: '/team', label: 'Equipa', pageComp: '/team' },
     { href: '/projects', label: 'Projetos', pageComp: '/projects' },
     { href: '/events', label: 'Eventos', pageComp: '/events' },
     { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
