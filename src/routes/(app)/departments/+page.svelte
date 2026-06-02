@@ -81,7 +81,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 565px;
+    height: 568px;
     color: white;
     min-height: 565px;
     padding: 4rem 0 4rem 10%;
