@@ -36,6 +36,7 @@
     width: 100%;
     height: 100%;
   }
+  
 
   .link {
     position: relative;
@@ -48,7 +49,12 @@
     border: none;
     padding: 0;
     cursor: pointer;
+    outline: none;
   }
+
+  .link:focus {
+  outline: none;
+}
 
   .content {
     position: absolute;

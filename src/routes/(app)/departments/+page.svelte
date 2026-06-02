@@ -81,13 +81,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 565px;
     color: white;
-    min-height: 520px;
+    min-height: 565px;
     padding: 4rem 0 4rem 10%;
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
   }
+  
 
   .text {
     max-width: 38%;
