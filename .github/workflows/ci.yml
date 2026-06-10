@@ -40,10 +40,7 @@ jobs:
         run: npm run build
 
       - name: Test
-        run: CI=true npm run test-vite:coverage
-
-      - name: Upload code coverage to Codecov
-        uses: codecov/codecov-action@v3
+        run: CI=true npm run test-vite
 
   test-storybook:
     runs-on: ubuntu-latest
@@ -81,9 +78,6 @@ jobs:
 
       - name: Test
         run: npm run test-storybook:ci
-
-      - name: Upload code coverage to Codecov
-        uses: codecov/codecov-action@v3
 
   lint:
     runs-on: ubuntu-latest
