@@ -27,7 +27,7 @@
       value={option}
     />
     <label
-      class="m-1 justify-self-start rounded-lg bg-taupe-200 px-5 py-1 font-bold text-rose-950"
+      class="m-1 justify-self-start rounded-lg bg-taupe-200 px-10 py-2 font-bold text-rose-950"
       for="radio-{label.toLowerCase()}-{option.toLowerCase()}"
     >
       {option}
