@@ -34,7 +34,7 @@ To run the development environment using Docker do:
 ./dev.sh
 ```
 
-This will build the Docker image the first time you run and start the development server at port `3000` and storybook at port `6006`.
+This will build the Docker image the first time you run and start the development server at port `3000`.
 
 To stop press Ctrl-C and it will remove all related containers.
 
@@ -83,22 +83,6 @@ Alternatively you can use npm (or other package managers already mentioned) and 
 ```bash
 npm run test
 ```
-
-### Storybook
-
-We use [Storybook](https://storybook.js.org/) as a way to interactively preview widgets in isolation.
-
-Storybook should be already running on port `6006` if you started `dev.sh` script.
-
-Alternatively you can use npm (or other package managers already mentioned) and do:
-
-```bash
-npm run storybook
-```
-
-To write new stories refer to the [official documentation](https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction).
-
-If you only want to check our current stories, you can do it on the [Storybook Preview](https://develop--niaefeup-frontend-storybook.netlify.app/) (also available in your pull requests).
 
 ## Building
 

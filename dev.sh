@@ -8,7 +8,6 @@ if [ $? -ne 0 ]; then
 fi
 
 docker compose up website-niaefeup-frontend-dev
-docker compose up website-niaefeup-frontend-storybook
 
 trap_ctrl_c() {
     docker compose down

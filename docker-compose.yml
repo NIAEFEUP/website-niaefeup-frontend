@@ -12,18 +12,6 @@ services:
       - PORT=3000
     network_mode: 'host' # do not add this to prod!
 
-  website-niaefeup-frontend-storybook:
-    build:
-      context: .
-      dockerfile: Dockerfile.storybook
-    ports:
-      - 6006:6006
-    volumes:
-      - ./src:/usr/src/website-niaefeup-frontend/src
-      - ./static:/usr/src/website-niaefeup-frontend/static
-    environment:
-      - PORT=6006
-
   website-niaefeup-frontend-test:
     build:
       context: .
