@@ -23,7 +23,6 @@ export default [
       '**/.env',
       '**/.env.*',
       '!**/.env.example',
-      '**/storybook-static',
       '**/pnpm-lock.yaml',
       '**/package-lock.json',
       '**/yarn.lock',
