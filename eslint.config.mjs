@@ -62,7 +62,7 @@ export default [
     },
     settings: {
       'svelte/typescript': () => ts,
-      'import/extensions': ['.js', '.ts', '.svelte', '.stories.ts'],
+      'import/extensions': ['.js', '.ts', '.svelte'],
       'import/resolver': {
         typescript: { alwaysTryTypes: true }
       }
