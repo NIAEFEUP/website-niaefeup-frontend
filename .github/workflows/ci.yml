@@ -42,7 +42,6 @@ jobs:
       - name: Test
         run: CI=true npm run test-vite:coverage
 
-
   test-storybook:
     runs-on: ubuntu-latest
     name: Test Storybook
@@ -79,7 +78,6 @@ jobs:
 
       - name: Test
         run: npm run test-storybook:ci
-
 
   lint:
     runs-on: ubuntu-latest
