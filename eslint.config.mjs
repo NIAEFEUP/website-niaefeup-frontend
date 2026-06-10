@@ -28,7 +28,10 @@ export default [
       '**/package-lock.json',
       '**/yarn.lock',
       'src/lib/components/ui/dialog',
-      'src/lib/components/ui/tabs'
+      'src/lib/components/ui/tabs',
+      'src/lib/components/carousel.svelte',
+      'src/lib/components/ui/carousel',
+      'src/lib/components/ui/card'
     ]
   },
   {

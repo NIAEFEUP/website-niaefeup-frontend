@@ -5,9 +5,10 @@
     hoverColor: keyof typeof colorList;
     width: keyof typeof widthList;
     text: string;
+    onClick?: (() => void) | undefined;
   }
 
-  let { type = 'button', color, hoverColor, width, text }: Props = $props();
+  let { type = 'button', color, hoverColor, width, text, onClick = () => null }: Props = $props();
   const colorList = {
     primary: { main: 'bg-muted-red-700', hover: 'hover:bg-muted-red-500' },
     secondary: { main: 'bg-muted-red-500', hover: 'hover:bg-muted-red-500' },
@@ -26,7 +27,10 @@
   {type}
   class="flex {colorList[color]['main']} {colorList[hoverColor][
     'hover'
-  ]} justify-center font-raleway font-bold text-white {widthList[width]} min-w-0 rounded px-4 py-2"
+  ]} items-center justify-center font-raleway font-bold text-white {widthList[
+    width
+  ]} min-w-0 rounded-lg px-4 py-2"
+  onclick={() => onClick()}
 >
   <p class="px-5">{text}</p>
 </button>
