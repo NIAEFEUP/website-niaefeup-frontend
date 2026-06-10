@@ -3,8 +3,15 @@
   import MemberButton from './member-button.svelte';
   import { createNotification } from './notifications';
   import NotificationMessages from './notifications/notification-messages';
-  import Icon from '$lib/components/icons/icon.svelte';
-  import Icons from '$lib/components/icons/icons';
+  import LogoutButton from '@/lib/components/buttons/logout-button.svelte';
+  import Icon from '@/lib/components/icons/icon.svelte';
+  import Icons from '@/lib/components/icons/icons';
+
+  interface Props {
+    user: { id: string | number } | null;
+  }
+
+  let { user }: Props = $props();
 
   function copyToClipboard(content: string) {
     navigator.clipboard.writeText(content);
@@ -99,10 +106,13 @@
     </div>
     <div class="flex flex-col items-center gap-1">
       <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
-      <p class="text-sm">NIAEFEUP &copy; 2022</p>
+      <p class="text-sm">NIAEFEUP &copy; 2026</p>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
-      <MemberButton />
+      {#if user}
+        <LogoutButton />
+      {/if}
+      <MemberButton userId={user?.id} />
       <div class="text-right text-sm">
         <p class="font-bold">FEUP</p>
         <p>Sala B315</p>
@@ -178,7 +188,10 @@
       </div>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
-      <MemberButton />
+      {#if user}
+        <LogoutButton />
+      {/if}
+      <MemberButton userId={user?.id} />
     </div>
   </footer>
 </div>

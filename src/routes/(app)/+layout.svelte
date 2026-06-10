@@ -5,6 +5,7 @@
   import Navbar from './_components/layout/navbar.svelte';
   import Sidebar from './_components/layout/sidebar.svelte';
   import SnackbarList from './_components/layout/notifications/snackbar-list.svelte';
+  import type { LayoutData } from './$types';
   import GlobalLoader from '@/lib/components/layout/global-loader.svelte';
   import { isGlobalLoading } from '@/lib/stores/loader';
   import { navigating } from '$app/stores';
@@ -12,9 +13,10 @@
 
   interface Props {
     children?: import('svelte').Snippet;
+    data: LayoutData;
   }
 
-  let { children }: Props = $props();
+  let { children, data }: Props = $props();
 
   let isLoadingState = $derived($navigating !== null || $isGlobalLoading);
 
@@ -45,8 +47,7 @@
   <BackgroundHexagon position="right" />
   {@render children?.()}
 </main>
-
-<Footer />
+<Footer user={data.user} />
 <SnackbarList />
 
 <style>

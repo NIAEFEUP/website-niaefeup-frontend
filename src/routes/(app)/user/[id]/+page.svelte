@@ -3,27 +3,13 @@
   import IsActiveBadge from '../_components/is-active-badge.svelte';
   import type { PageData } from './$types';
   import type { TeamMember } from '@/types/team-member';
-  import Icon from '@/lib/components/icons/icon.svelte';
   import Icons from '@/lib/components/icons/icons';
   import EditButton from '$lib/components/buttons/edit-button.svelte';
-  import { goto } from '$app/navigation';
 
   let { data }: { data: PageData } = $props();
 
   const teamMember: TeamMember = data.teamMember;
   const canEdit: boolean = data.canEdit;
-
-  async function logout() {
-    const response = await fetch('/api/auth/logout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    if (response.ok) {
-      goto('/');
-    }
-  }
 </script>
 
 {#await teamMember}
@@ -37,12 +23,6 @@
           {#if canEdit}
             <EditButton size="small" link="https://lipsum.com" />
           {/if}
-          <button
-            class="w-12 rounded-md bg-muted-red-500 p-3 lg:w-12 xl:w-12"
-            onclick={() => logout()}
-          >
-            <Icon src={Icons.Logout} color="white" size="100%" />
-          </button>
         </div>
         <div class="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
           <img

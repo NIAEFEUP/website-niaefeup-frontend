@@ -1,6 +1,6 @@
 <script lang="ts">
   import VariableVisibilityInput from './_components/variable-visibility-input.svelte';
-  import { goto } from '$app/navigation';
+  import { goto, invalidateAll } from '$app/navigation';
 
   let email = $state('');
   let password = $state('');
@@ -20,6 +20,7 @@
 
     message = success ? 'Login successful' : 'Login failed';
     if (success == true) {
+      await invalidateAll();
       goto('/');
     }
   }

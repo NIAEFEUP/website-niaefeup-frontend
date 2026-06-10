@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { invalidateAll } from '$app/navigation';
+
   interface Props {
     data: { info: string };
   }
@@ -14,6 +16,9 @@
       }
     });
     logoutMessage = response.ok ? 'Logout successful' : 'Logout failed';
+    if (response.ok) {
+      await invalidateAll();
+    }
   }
 </script>
 
