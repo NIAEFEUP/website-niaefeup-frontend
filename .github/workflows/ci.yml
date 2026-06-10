@@ -11,9 +11,9 @@ on:
       - develop
 
 jobs:
-  test-vite:
+  test:
     runs-on: ubuntu-latest
-    name: Test Vite
+    name: Test
 
     strategy:
       matrix:
@@ -40,7 +40,7 @@ jobs:
         run: npm run build
 
       - name: Test
-        run: CI=true npm run test-vite
+        run: CI=true npm run test
 
   lint:
     runs-on: ubuntu-latest

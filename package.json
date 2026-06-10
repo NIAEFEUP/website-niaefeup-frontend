@@ -11,8 +11,8 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "test-vite": "vitest --run",
-    "test-vite:watch": "vitest --watch",
+    "test": "vitest --run",
+    "test:watch": "vitest --watch",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write ."
   },
