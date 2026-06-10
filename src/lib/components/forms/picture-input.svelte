@@ -13,7 +13,7 @@
   let image: string | undefined = $state();
   let fileInput: HTMLInputElement | undefined = $state();
 
-  const onFileSelected = (e) => {
+  const onFileSelected = (e: any) => {
     const file = e.target.files[0];
 
     // ensure the file is an image
@@ -45,7 +45,7 @@
     aria-label="Upload image"
     class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-400 text-center"
     onclick={() => {
-      fileInput.click();
+      fileInput?.click();
     }}
   >
     {#if image}
@@ -68,7 +68,8 @@
     aria-label="Remove image"
     class="{image ? 'visible' : 'invisible'} text-sm font-bold text-white hover:underline"
     onclick={() => {
-      fileInput.value = image = '';
+      if (fileInput) fileInput.value = '';
+      image = undefined;
     }}
   >
     Remover imagem

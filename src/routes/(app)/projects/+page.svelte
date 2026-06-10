@@ -6,8 +6,8 @@
 
   let { data }: { data: PageData } = $props();
 
-  const projects: Project[] = data.projects;
-  const hasPerms: boolean = data.hasPerms;
+  let projects: Project[] = $derived(data.projects);
+  let hasPerms: boolean = $derived(data.hasPerms);
 </script>
 
 <section>
@@ -18,7 +18,7 @@
     {#if hasPerms}
       <div class="my-8 flex w-5/6 justify-end sm:my-6 md:my-6 lg:mb-12 xl:mb-12 2xl:mb-12">
         <a href="/projects/create">
-          <Button color="secondary" hoverColor="red" width="12" text="Novo Projeto"></Button>
+          <Button color="secondary" hoverColor="red" width="medium" text="Novo Projeto"></Button>
         </a>
       </div>
     {/if}

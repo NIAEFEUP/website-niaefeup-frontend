@@ -10,8 +10,8 @@
 
   let { data }: { data: PageData } = $props();
 
-  const teamMember: TeamMember = data.teamMember;
-  const canEdit: boolean = data.canEdit;
+  let teamMember: TeamMember = $derived(data.teamMember);
+  let canEdit: boolean = $derived(data.canEdit);
 
   async function logout() {
     const response = await fetch('/api/auth/logout', {

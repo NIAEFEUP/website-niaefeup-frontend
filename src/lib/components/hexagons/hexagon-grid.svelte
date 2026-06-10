@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type EventHexagon from './EventHexagon.svelte';
   import type TeamMemberHexagon from '@/routes/(app)/team/_components/team-member-hexagon.svelte';
+  import type { Component } from 'svelte';
 
   // Inspired by https://github.com/sveltejs/svelte-virtual-list/blob/master/VirtualList.svelte
   type T = $$Generic;
@@ -10,15 +10,16 @@
     cols: number;
     gap?: 'small' | 'medium' | 'big';
     orientation: 'horizontal' | 'vertical';
-    component: typeof TeamMemberHexagon | typeof EventHexagon;
+    component: Component<any>;
   }
 
   let { items, cols, gap = 'medium', orientation, component }: Props = $props();
 
-  const gridColumnsStyle =
+  const gridColumnsStyle = $derived(
     orientation === 'horizontal'
       ? `grid-template-columns: 0.2425fr repeat(${cols}, 0.4805fr 0.2425fr); grid-auto-rows: 0.5fr 0.5fr;`
-      : `grid-template-columns: 0.5fr repeat(${cols}, 0.505fr 0.5fr); grid-auto-rows: 0.251fr 0.5fr;`;
+      : `grid-template-columns: 0.5fr repeat(${cols}, 0.505fr 0.5fr); grid-auto-rows: 0.251fr 0.5fr;`
+  );
 </script>
 
 <!-- The grid column sizes used are magic numbers that look good with the Hexagon component -->
