@@ -6,9 +6,14 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
-  function copyToClipboard(content: string) {
-    navigator.clipboard.writeText(content);
-    createNotification(NotificationMessages.COPY_EMAIL);
+  async function copyToClipboard(content: string) {
+    try {
+      await navigator.clipboard.writeText(content);
+      createNotification(NotificationMessages.COPY_EMAIL);
+    } catch (err) {
+      console.error('Clipboard write failed:', err);
+      createNotification('Failed to copy email.');
+    }
   }
 
   const iconHoverOpacity = (

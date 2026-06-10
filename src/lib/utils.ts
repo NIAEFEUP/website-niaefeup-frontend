@@ -60,6 +60,28 @@ export const flyAndScale = (
   };
 };
 
+export function toISOLocal(date: Date | string): string {
+  const written = typeof date === 'string' ? date : date.toString();
+  const parts = written.match(/(\d+)/g);
+  if (!parts || parts.length < 5) return '';
+  const adate = new Date(
+    Number(parts[2]),
+    Number(parts[1]) - 1,
+    Number(parts[0]),
+    Number(parts[3]),
+    Number(parts[4])
+  );
+  const localdt = new Date(adate.getTime() - adate.getTimezoneOffset() * 60000);
+  // Return format without seconds: YYYY-MM-DDTHH:mm
+  return localdt.toISOString().slice(0, 16);
+}
+
+export function guidGenerator() {
+  const S4 = function () {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  };
+  return S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4();
+}
 export function sentenceFirstLetterToUpperCase(sentence: string) {
   return sentence.charAt(0).toUpperCase() + sentence.slice(1);
 }

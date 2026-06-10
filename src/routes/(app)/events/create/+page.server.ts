@@ -1,0 +1,71 @@
+import { fail } from '@sveltejs/kit';
+import type { RequestEvent } from '@sveltejs/kit';
+
+export const actions = {
+  default: async ({ request, fetch }: RequestEvent) => {
+    const data = await request.formData();
+
+    const title = data.get('Title');
+    const slug = data.get('Slug');
+    const description = data.get('Description');
+    const start = new Date(data.get('DateStart') as string);
+    const end = new Date(data.get('DateEnd') as string);
+
+    //the following start.getMonth()+1 is because getMonth() actually returns month index :(
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
+
+    const startJson = `${start.getDate()}-${start.getMonth() + 1}-${start.getFullYear()} ${start.getHours()}:${start.getMinutes()}`;
+    const endJson = `${end.getDate()}-${end.getMonth() + 1}-${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`;
+    const signUp = data.get('SignUp');
+    const place = data.get('Place');
+    const image = data.get('image') as File;
+
+    const value: {
+      title: (string | File) | null;
+      description: (string | File) | null;
+      slug: (string | File) | null;
+      dateInterval: { startDate: string; endDate: string };
+      registerUrl?: (string | File) | null;
+      location?: (string | File) | null;
+    } = {
+      title,
+      description,
+      slug,
+      dateInterval: { startDate: startJson, endDate: endJson }
+    };
+
+    if (signUp) value.registerUrl = signUp;
+    if (place) value.location = place;
+
+    const json = JSON.stringify(value);
+    const blob = new Blob([json], { type: 'application/json' });
+    const form = new FormData();
+    form.append('event', blob);
+    form.append('image', image, image.name);
+    try {
+      const res = await fetch('/api/events', {
+        method: 'POST',
+        body: form
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        let messages: string[] = [];
+
+        if (Array.isArray(errorData.errors)) {
+          messages = errorData.errors.map((error: { message: string }) => error.message);
+        } else if (errorData.message) {
+          messages = [errorData.message];
+        } else {
+          messages = ['Failed to create event.'];
+        }
+
+        return fail(res.status, { errorMessage: messages });
+      }
+
+      return { success: true };
+    } catch (err) {
+      return fail(500, { errorMessage: 'Server error. Please try again.' });
+    }
+  }
+};

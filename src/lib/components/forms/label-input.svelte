@@ -11,7 +11,20 @@
     required?: boolean;
     minlength?: number | undefined;
     maxlength?: number | undefined;
+    class?: string;
     [key: string]: unknown;
+  }
+  function changeColor() {
+    const input = document.getElementById(id) as HTMLInputElement | null;
+    if (!input) return;
+    const inputValue = input.value;
+    if (inputValue) {
+      input.classList.add('text-primary');
+      input.classList.remove('text-secondary');
+      return;
+    }
+    input.classList.remove('text-primary');
+    input.classList.add('text-secondary');
   }
 
   let {
@@ -22,17 +35,28 @@
     type = 'text',
     placeholder = '',
     isTextArea = false,
-    horizontal = false,
     required = false,
     minlength = undefined,
     maxlength = undefined,
+    class: className = '',
     ...rest
   }: Props = $props();
 </script>
 
-<div class="flex flex-{horizontal ? 'row' : 'col'}">
+<div class="flex} {className}">
   {#if label}
-    <label class="m-1 font-source_code font-bold text-white" for={id}>{label}</label>
+    <div style="width: 20em">
+      <label
+        class="m-1 flex flex-row font-source_code font-bold text-white"
+        class:flex-row={required}
+        for={id}
+      >
+        {label}
+        {#if required}
+          <span class="text-sm">*</span>
+        {/if}
+      </label>
+    </div>
   {/if}
   {#if isTextArea}
     <textarea
@@ -40,8 +64,8 @@
       class="mb-2 min-h-[100px] w-full rounded-lg bg-white p-2 font-source_code text-primary placeholder-primary"
       rows="4"
       {id}
-      {placeholder}
       {name}
+      {placeholder}
       {required}
       {minlength}
       {maxlength}
@@ -50,12 +74,13 @@
     ></textarea>
   {:else}
     <input
+      oninput={changeColor}
       aria-label="text-input"
-      class="mb-2 w-full rounded-lg bg-white p-2 text-primary placeholder-primary"
+      class="w-full rounded-lg bg-white p-2 text-primary placeholder-secondary"
       {type}
       {id}
-      {placeholder}
       {name}
+      {placeholder}
       {required}
       {minlength}
       {maxlength}
