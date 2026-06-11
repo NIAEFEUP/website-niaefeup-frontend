@@ -8,18 +8,18 @@
   let { data }: { data: PageData } = $props();
 
   const hasPerms: boolean = $derived(data.hasPerms);
-  const events: Event[] =$derived(data.events);
+  const events: Event[] = $derived(data.events);
 
   const MOBILE_BREAKPOINT = 768;
   let windowWidth = $state(0);
-  let cols = $derived( windowWidth < MOBILE_BREAKPOINT ? 1 : 4);
+  let cols = $derived(windowWidth < MOBILE_BREAKPOINT ? 1 : 4);
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
 <section>
   <div class="flex w-full flex-col items-center">
     <h1 class="my-2 text-center font-source_code text-xl text-white md:my-4 md:text-3xl">
-       <span>&lt;</span> <strong>Eventos</strong> <span>/&gt;</span>
+      <span>&lt;</span> <strong>Eventos</strong> <span>/&gt;</span>
     </h1>
 
     {#if hasPerms}
@@ -30,21 +30,20 @@
       </div>
     {/if}
 
-      <div class="w-full max-w-7xl px-4 md:px-20 lg:px-32">
-        {#if events.length === 0}
-          <div class="py-12 text-center">
-            <p class="text-gray-400">Nenhum evento encontrado</p>
-         </div>
-        {:else}
-
+    <div class="w-full max-w-7xl px-4 md:px-20 lg:px-32">
+      {#if events.length === 0}
+        <div class="py-12 text-center">
+          <p class="text-gray-400">Nenhum evento encontrado</p>
+        </div>
+      {:else}
         <HexagonGrid
           items={events}
-          cols={cols}
+          {cols}
           orientation="vertical"
           gap="medium"
           component={HexagonTile}
         />
-        {/if}
-      </div>
+      {/if}
+    </div>
   </div>
 </section>
