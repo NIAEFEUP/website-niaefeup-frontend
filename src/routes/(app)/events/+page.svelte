@@ -31,6 +31,12 @@
     {/if}
 
       <div class="w-full max-w-7xl px-4 md:px-20 lg:px-32">
+        {#if events.length === 0}
+          <div class="py-12 text-center">
+            <p class="text-gray-400">Nenhum evento encontrado</p>
+         </div>
+        {:else}
+
         <HexagonGrid
           items={events}
           cols={cols}
@@ -38,6 +44,7 @@
           gap="medium"
           component={HexagonTile}
         />
+        {/if}
       </div>
   </div>
 </section>
