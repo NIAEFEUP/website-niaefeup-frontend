@@ -7,8 +7,8 @@
 
   let { data }: { data: PageData } = $props();
 
-  const hasPerms: boolean = data.hasPerms;
-  const events: Event[] = data.events;
+  const hasPerms: boolean = $derived(data.hasPerms);
+  const events: Event[] =$derived(data.events);
 
   const MOBILE_BREAKPOINT = 768;
   let windowWidth = $state(0);
@@ -33,9 +33,9 @@
       <div class="w-full max-w-7xl px-4 md:px-20 lg:px-32">
         <HexagonGrid
           items={events}
-          {cols}
+          cols={cols}
           orientation="vertical"
-          gap=""
+          gap="medium"
           component={HexagonTile}
         />
       </div>

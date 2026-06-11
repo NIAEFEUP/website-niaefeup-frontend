@@ -13,17 +13,17 @@
     component: typeof TeamMemberHexagon | typeof EventHexagon;
   }
 
-  let { items, cols, gap = 'medium', orientation, component }: Props = $props();
+  let { items, cols:propcols, gap = 'medium', orientation, component }: Props = $props();
 
-  cols = Math.min(items.length, cols);
+  let cols = $derived(Math.min(items.length, propcols));
 
-  const gridColumnsStyle =
+  let gridColumnsStyle = $derived(
     orientation === 'horizontal'
       ? `grid-template-columns: 0.2425fr repeat(${cols}, 0.4805fr 0.2425fr); grid-auto-rows: 0.5fr 0.5fr;`
-      : `grid-template-columns: 0.5fr repeat(${cols}, 0.505fr 0.5fr); grid-auto-rows: 0.251fr 0.5fr;`;
+      : `grid-template-columns: 0.5fr repeat(${cols}, 0.505fr 0.5fr); grid-auto-rows: 0.251fr 0.5fr;`);
 </script>
 
-<!-- The grid column sizes used are magic numbers that look good with the Hexagon component -->
+<!-- The grid column sizes used are magic numbers that look good with the Hexagon component -->t
 <ul class="grid gap-{orientation}-{gap}" style={gridColumnsStyle}>
   {#each items as item, index (index)}
     {@const isHorizontal = orientation === 'horizontal'}
