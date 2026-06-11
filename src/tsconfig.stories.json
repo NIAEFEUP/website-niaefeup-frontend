@@ -1,8 +1,0 @@
-// tsconfig for storybook
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "noImplicitAny": false
-  },
-  "include": ["./**/*.stories.ts"]
-}
