@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type TeamMemberHexagon from '@/routes/(app)/team/_components/team-member-hexagon.svelte';
   import type { Component } from 'svelte';
 
   // Inspired by https://github.com/sveltejs/svelte-virtual-list/blob/master/VirtualList.svelte
@@ -10,7 +9,7 @@
     cols: number;
     gap?: 'small' | 'medium' | 'big';
     orientation: 'horizontal' | 'vertical';
-    component: Component<any>;
+    component: Component<Record<string, never>>;
   }
 
   let { items, cols, gap = 'medium', orientation, component }: Props = $props();

@@ -13,7 +13,7 @@
   let image: string | undefined = $state();
   let fileInput: HTMLInputElement | undefined = $state();
 
-  const onFileSelected = (e: any) => {
+  const onFileSelected = (e: Event) => {
     const file = e.target.files[0];
 
     // ensure the file is an image
