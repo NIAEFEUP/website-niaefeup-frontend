@@ -10,10 +10,7 @@
     [key: string]: any;
   }
 
-  let {
-    class: className = undefined,
-    ...rest
-  }: Props = $props();
+  let { class: className = undefined, ...rest }: Props = $props();
 </script>
 
 <DialogPrimitive.Overlay {...rest}>

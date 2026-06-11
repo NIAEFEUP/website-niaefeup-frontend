@@ -12,11 +12,7 @@
     [key: string]: any;
   }
 
-  let {
-    class: className = undefined,
-    children,
-    ...rest
-  }: Props = $props();
+  let { class: className = undefined, children, ...rest }: Props = $props();
 </script>
 
 <Dialog.Portal>
