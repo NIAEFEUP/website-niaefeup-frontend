@@ -72,7 +72,7 @@
   >
     <div
       data-testid="container"
-      class="container absolute bottom-0 z-20 w-full px-4 duration-500 group-hover:bottom-1/2 group-hover:translate-y-1/3"
+      class="group-hover:bottom-1/2 group-hover:translate-y-1/3 container absolute bottom-0 z-20 w-full px-4 duration-500"
     >
       <p
         class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl"
@@ -81,7 +81,7 @@
       </p>
       <div
         data-testid="role"
-        class="full-opacity mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
+        class="full-opacity group-hover:opacity-100 mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {#if teamMember.roles && teamMember.roles.length > 0}
           {#each teamMember.roles as role (role.id)}
@@ -94,7 +94,7 @@
           {#if teamMember.linkedin}
             <a
               href={teamMember.linkedin}
-              class="full-opacity h-6 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="full-opacity group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s LinkedIn"
             >
               <Icon src={Icons.Linkedin} color="white" size="100%" /></a
@@ -103,7 +103,7 @@
           {#if teamMember.github}
             <a
               href={teamMember.github}
-              class="full-opacity h-6 opacity-0 transition-all duration-500 ease-out group-hover:static group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="full-opacity group-hover:static group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="{teamMember.name}'s GitHub"
               ><Icon src={Icons.Github} color="white" size="100%" /></a
             >
@@ -112,7 +112,7 @@
             {#each teamMember.websites as customWebsite (customWebsite.url)}
               <a
                 href={customWebsite.url}
-                class="full-opacity h-5 opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+                class="full-opacity group-hover:opacity-100 h-5 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
                 aria-label="{teamMember.name}'s custom website"
               >
                 {#if customWebsite.iconPath}
@@ -131,7 +131,7 @@
       </div>
     </div>
     <div
-      class="variable-opacity absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-30"
+      class="variable-opacity group-hover:opacity-30 absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500"
     ></div>
     <img
       src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
