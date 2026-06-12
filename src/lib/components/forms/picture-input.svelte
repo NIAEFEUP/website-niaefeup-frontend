@@ -14,7 +14,7 @@
   let fileInput: HTMLInputElement | undefined = $state();
 
   const onFileSelected = (e: Event) => {
-    const file = e.target.files[0];
+    const file = (e.currentTarget as HTMLInputElement).files?.[0];
 
     // ensure the file is an image
     if (file?.type?.split('/')[0] !== 'image') {
