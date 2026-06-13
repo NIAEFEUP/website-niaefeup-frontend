@@ -14,7 +14,7 @@ import {
 
 describe('Permissions', () => {
   beforeEach(() => {
-    global.fetch = vi.fn();
+    vi.stubGlobal('fetch', vi.fn());
   });
 
   afterEach(() => {

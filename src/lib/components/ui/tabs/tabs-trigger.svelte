@@ -24,7 +24,6 @@
   )}
   {value}
   {...rest}
-  on:click
 >
   {@render children?.()}
 </TabsPrimitive.Trigger>

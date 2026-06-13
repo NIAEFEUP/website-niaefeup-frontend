@@ -23,7 +23,6 @@ export default [
       '**/.env',
       '**/.env.*',
       '!**/.env.example',
-      '**/storybook-static',
       '**/pnpm-lock.yaml',
       '**/package-lock.json',
       '**/yarn.lock',
@@ -63,7 +62,7 @@ export default [
     },
     settings: {
       'svelte/typescript': () => ts,
-      'import/extensions': ['.js', '.ts', '.svelte', '.stories.ts'],
+      'import/extensions': ['.js', '.ts', '.svelte'],
       'import/resolver': {
         typescript: { alwaysTryTypes: true }
       }
@@ -79,7 +78,8 @@ export default [
       }
     },
     rules: {
-      'no-undef': 'off'
+      'no-undef': 'off',
+      'svelte/no-navigation-without-resolve': 'off'
     }
   }
 ];

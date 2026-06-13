@@ -7,8 +7,8 @@
 
   let { data }: { data: PageData } = $props();
 
-  const project: Project = data.project;
-  const hasPerms: boolean = data.hasPerms;
+  let project: Project = $derived(data.project);
+  let hasPerms: boolean = $derived(data.hasPerms);
 
   let screenSizeThreshold = 768;
   let windowWidth: number = $state(0);

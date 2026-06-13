@@ -11,4 +11,3 @@ docker-compose.yml
 Dockerfile*
 *.md
 *.sh
-storybook-static/
