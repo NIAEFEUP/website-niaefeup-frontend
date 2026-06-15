@@ -18,13 +18,19 @@
     </button>
   </div>
 {:else}
-  <div class="hex-wrapper">
+  <div class="h-full w-full">
     <Hexagon {orientation}>
-      <button class="link" onclick={handleClick} type="button">
-        <img src={item.image} alt={item.name} class="bg" />
-        <div class="overlay"></div>
-        <div class="content">
-          <p class="label">{item.name}</p>
+      <button
+        class="group relative block h-full w-full cursor-pointer border-none bg-transparent p-0 text-white outline-none"
+        onclick={handleClick}
+        type="button"
+      >
+        <img src={item.image} alt={item.name} class="absolute inset-0 h-full w-full object-cover" />
+        <div
+          class="absolute inset-0 z-10 bg-[rgba(80,0,0,0.45)] transition-colors duration-200 group-hover:bg-[rgba(80,0,0,0.65)]"
+        ></div>
+        <div class="absolute inset-0 z-20 flex items-center justify-center text-[2rem] font-bold">
+          <p class="text-center">{item.name}</p>
         </div>
       </button>
     </Hexagon>
@@ -32,65 +38,6 @@
 {/if}
 
 <style>
-  .hex-wrapper {
-    width: 100%;
-    height: 100%;
-  }
-  
-
-  .link {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    color: white;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline: none;
-  }
-
-  .link:focus {
-  outline: none;
-}
-
-  .content {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: 700;
-    z-index: 20;
-  }
-
-  .label {
-    text-align: center;
-  }
-
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(80, 0, 0, 0.45);
-    z-index: 10;
-    transition: background 0.2s;
-  }
-
-  .link:hover .overlay {
-    background: rgba(80, 0, 0, 0.65);
-  }
-
-  .bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   .logo-only {
     width: 100%;
     height: 100%;

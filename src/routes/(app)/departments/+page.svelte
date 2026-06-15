@@ -59,13 +59,21 @@
   ];
 </script>
 
-<section class="departments">
-  <div class="text">
-    <h2>{selectedTitle}</h2>
-    <p>{selectedDescription}</p>
+<section
+  class="box-border flex min-h-[568px] w-full items-center justify-between overflow-hidden py-16 pl-[10%] text-white max-lg:flex-col max-lg:gap-0 max-lg:px-10 max-lg:py-12 max-lg:text-center"
+>
+  <div class="ml-[5%] max-w-[38%] max-lg:max-w-full">
+    <h2
+      class="mb-6 text-[2.9rem] font-extrabold leading-[1.05] transition-opacity duration-200 max-lg:text-[2.45rem]"
+    >
+      {selectedTitle}
+    </h2>
+    <p class="text-[1.2rem] leading-[1.6] opacity-95 transition-opacity duration-200">
+      {selectedDescription}
+    </p>
   </div>
 
-  <div class="grid">
+  <div class="grid-container">
     <HexagonGrid
       {items}
       cols={2}
@@ -81,45 +89,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 568px;
     color: white;
-    min-height: 565px;
+    min-height: 568px;
     padding: 4rem 0 4rem 10%;
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
   }
-  
 
-  .text {
-    max-width: 38%;
-    margin-left: 5%;
-  }
-
-  .text h2 {
-    font-size: 2.9rem;
-    line-height: 1.05;
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-    transition: opacity 0.2s;
-  }
-
-  .text p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    opacity: 0.95;
-    transition: opacity 0.2s;
-  }
-
-  .grid {
+  .grid-container {
     width: 55%;
     flex-shrink: 0;
     transform: scale(0.55);
     transform-origin: right center;
     margin-right: 15%;
+    margin-top: -16rem;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1025px) {
     .departments {
       flex-direction: column;
       text-align: center;
@@ -138,12 +125,10 @@
       font-size: 2.45rem;
     }
 
-    .grid {
+    .grid-container {
       width: 900px;
-      /* zoom proporcional à largura do ecrã: 900px é a largura base da grid,
-       queremos que caiba em 100vw, então zoom = 100vw / 900px = 0.111vw por px */
       zoom: calc(100vw / 900px * 0.85);
-      margin: -4rem auto 0;
+      margin: 3rem auto 0;
       transform: none;
       margin-top: 3rem;
     }
