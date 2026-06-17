@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&display=swap')
 layer(base);
 @import 'tailwindcss';
-
-@config '../tailwind.config.cjs';
+@import './styles/theme.css';
+@import './styles/utilities.css';
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -43,11 +43,7 @@ layer(base);
   }
 
   .bg-ni-navbar {
-    background-image: linear-gradient(
-      180deg,
-      rgba(155, 47, 48, 1) 0%,
-      rgba(145, 42, 44, 1) 100%
-    );
+    background-image: linear-gradient(180deg, rgba(155, 47, 48, 1) 0%, rgba(145, 42, 44, 1) 100%);
   }
 
   .footer-icons svg,
