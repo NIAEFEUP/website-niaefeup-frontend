@@ -13,3 +13,13 @@
 @utility text-shadow-lg {
   text-shadow: 0 8px 16px var(--tw-shadow-color, transparent);
 }
+
+@utility bg-ni-sidebar {
+  background:
+    -12rem 0 / cover no-repeat,
+    linear-gradient(180deg, rgba(56, 0, 2, 1), rgba(97, 14, 17, 1));
+}
+
+@utility bg-ni-navbar {
+  background-image: linear-gradient(180deg, rgba(155, 47, 48, 1) 0%, rgba(145, 42, 44, 1) 100%);
+}
