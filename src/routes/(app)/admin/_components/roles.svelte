@@ -20,13 +20,13 @@
 <Dialog.Root bind:open={dialogOpen}>
   <div class="flex flex-col md:flex-row md:py-12">
     <header
-      class="from-muted-red-900/95 to-muted-red-900/80 sticky top-0 z-20 border-b border-white/10 bg-gradient-to-b backdrop-blur-md md:hidden"
+      class="from-muted-red-900/95 to-muted-red-900/80 sticky top-0 z-20 border-b border-white/10 bg-linear-to-b backdrop-blur-md md:hidden"
     >
       <div class="flex items-center justify-between gap-3 px-8 py-4">
         <div class="flex-1">
           <select
             class="w-full appearance-none rounded-xl border border-white/20 bg-gray-500/40 px-4 py-3
-                   text-base font-medium text-white focus:border-muted-red-400 focus:outline-none"
+                   text-base font-medium text-white focus:border-muted-red-400 focus:outline-hidden"
             bind:value={selectedRole}
             aria-label="Selecionar role"
           >
@@ -40,7 +40,7 @@
         </div>
 
         <Dialog.Trigger
-          class="flex flex-shrink-0 items-center gap-2 rounded-xl bg-gray-500/40 px-4 py-3 text-white transition hover:bg-white/25"
+          class="flex shrink-0 items-center gap-2 rounded-xl bg-gray-500/40 px-4 py-3 text-white transition hover:bg-white/25"
           aria-label="Adicionar nova role"
         >
           <Icon src={Icons.Add} color="white" size="22px" />

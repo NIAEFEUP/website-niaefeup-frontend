@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-200"
+  class="fixed inset-0 z-9999 flex items-center justify-center bg-black/60 backdrop-blur-xs transition-all duration-200"
 >
   <div class="custom-scaler">
     <div class="custom-spinner">
