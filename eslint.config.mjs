@@ -6,7 +6,7 @@ import importPlugin from 'eslint-plugin-import-x';
 import globals from 'globals';
 import svelteParser from 'svelte-eslint-parser';
 import sveltePlugin from 'eslint-plugin-svelte';
-import prettierConfig from 'eslint-config-prettier';
+import prettierConfig from 'eslint-config-prettier/flat';
 import ts from 'typescript';
 
 export default [
