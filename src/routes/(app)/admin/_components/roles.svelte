@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Permissions from './roles-permissions.svelte';
   import type { Role } from '@/types/role';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
@@ -7,61 +8,64 @@
   import { enhance, applyAction } from '$app/forms';
   import { sentenceFirstLetterToUpperCase } from '$lib/utils';
   import type { BackendError } from '@/types/backend-error';
+  import type { Project } from '@/types/project';
 
   interface Props {
     roles: Role[];
+    projects: Project[];
   }
-  let { roles = $bindable() }: Props = $props();
+  let { roles = $bindable(), projects }: Props = $props();
   let selectedRole: Role | null = $state(roles[0] ?? null);
   let dialogOpen = $state(false);
   let errorMessage: BackendError | null = $state(null);
 </script>
 
-<Dialog.Root bind:open={dialogOpen}>
-  <div class="flex flex-col md:flex-row md:py-12">
-    <header
-      class="from-muted-red-900/95 to-muted-red-900/80 sticky top-0 z-20 border-b border-white/10 bg-gradient-to-b backdrop-blur-md md:hidden"
-    >
-      <div class="flex items-center justify-between gap-3 px-8 py-4">
-        <div class="flex-1">
-          <select
-            class="w-full appearance-none rounded-xl border border-white/20 bg-gray-500/40 px-4 py-3
-                   text-base font-medium text-white focus:border-muted-red-400 focus:outline-none"
-            bind:value={selectedRole}
-            aria-label="Selecionar role"
-          >
-            {#if !selectedRole}
-              <option value={null} disabled selected>Selecione uma role...</option>
-            {/if}
-            {#each roles as role (role.id)}
-              <option value={role}>{role.name}</option>
-            {/each}
-          </select>
-        </div>
-
-        <Dialog.Trigger
-          class="flex flex-shrink-0 items-center gap-2 rounded-xl bg-gray-500/40 px-4 py-3 text-white transition hover:bg-white/25"
-          aria-label="Adicionar nova role"
+<div class="flex w-full flex-col md:flex-row md:py-12">
+  <header
+    class="from-muted-red-900/95 to-muted-red-900/80 sticky top-0 z-20 w-full border-b border-white/10 bg-gradient-to-b px-4 py-4 backdrop-blur-md md:hidden"
+  >
+    <div class="flex w-full items-center justify-between gap-3">
+      <div class="min-w-0 flex-1">
+        <select
+          class="w-full appearance-none truncate rounded-xl border border-white/20 bg-gray-500/40 px-4 py-3
+                 text-base font-medium text-white focus:border-muted-red-400 focus:outline-none"
+          bind:value={selectedRole}
+          aria-label="Selecionar role"
         >
-          <Icon src={Icons.Add} color="white" size="22px" />
-        </Dialog.Trigger>
+          {#if !selectedRole}
+            <option value={null} disabled selected>Selecione uma role...</option>
+          {/if}
+          {#each roles as role (role.id)}
+            <option value={role}>{role.name}</option>
+          {/each}
+        </select>
       </div>
-    </header>
 
-    <aside class="hidden w-80 flex-col gap-y-4 pr-12 md:flex">
-      {#each roles as role (role.id)}
-        <button
-          class="rounded-2xl px-8 py-3 text-center text-xl font-bold transition-all duration-200
-                 {selectedRole?.id === role.id
-            ? ' bg-muted-red-500 text-white shadow-lg'
-            : 'bg-white/10 text-white hover:bg-white/20'}"
-          onclick={() => (selectedRole = role)}
-          aria-label={`Selecionar role ${role.name}`}
-        >
-          {role.name}
-        </button>
-      {/each}
+      <button
+        class="flex flex-shrink-0 items-center gap-2 rounded-xl bg-gray-500/40 px-4 py-3 text-white transition hover:bg-white/25"
+        onclick={() => (dialogOpen = true)}
+        aria-label="Adicionar nova role"
+      >
+        <Icon src={Icons.Add} color="white" size="22px" />
+      </button>
+    </div>
+  </header>
 
+  <aside class="hidden w-80 flex-shrink-0 flex-col gap-y-4 pr-12 md:flex">
+    {#each roles as role (role.id)}
+      <button
+        class="rounded-2xl px-8 py-3 text-center text-xl font-bold transition-all duration-200
+               {selectedRole?.id === role.id
+          ? ' bg-muted-red-500 text-white shadow-lg'
+          : 'bg-white/10 text-white hover:bg-white/20'}"
+        onclick={() => (selectedRole = role)}
+        aria-label={`Selecionar role ${role.name}`}
+      >
+        {role.name}
+      </button>
+    {/each}
+
+    <Dialog.Root bind:open={dialogOpen}>
       <Dialog.Trigger
         class="mt-4 flex items-center gap-3 rounded-xl bg-gray-500/40 px-6 py-3.5 text-left text-xl font-medium text-white transition hover:bg-white/20"
       >
@@ -70,102 +74,102 @@
         </div>
         Adicionar Role
       </Dialog.Trigger>
-    </aside>
 
-    <Dialog.Content class="rounded-3xl bg-muted-red-500 p-0">
-      <form
-        method="POST"
-        action="?/addRole"
-        use:enhance={({ formData }) => {
-          errorMessage = null;
+      <Dialog.Content class="rounded-3xl bg-muted-red-500 p-0">
+        <form
+          method="POST"
+          action="?/addRole"
+          use:enhance={({ formData }) => {
+            errorMessage = null;
 
-          const name = formData.get('name')?.toString().trim();
+            const name = formData.get('name')?.toString().trim();
 
-          if (name && roles.some((r) => r.name.toLowerCase() === name.toLowerCase())) {
-            errorMessage = { message: 'Role já existente!' };
-            return;
-          }
-          return async ({ result }) => {
-            if (result.type === 'success') {
-              if (result.data?.success) {
-                const newRole = result.data.data as Role;
-                roles = [...roles, newRole];
-                selectedRole = newRole;
-                dialogOpen = false;
+            if (name && roles.some((r) => r.name.toLowerCase() === name.toLowerCase())) {
+              errorMessage = { message: 'Role já existente!' };
+              return;
+            }
 
-                await applyAction(result);
-              } else {
+            return async ({ result }) => {
+              if (result.type === 'success') {
+                if (result.data?.success) {
+                  const newRole = result.data.data as Role;
+                  roles = [...roles, newRole];
+                  selectedRole = newRole;
+                  dialogOpen = false;
+                } else {
+                  errorMessage = {
+                    message:
+                      typeof result.data?.error === 'string'
+                        ? result.data.error
+                        : 'Erro ao criar a role'
+                  };
+                }
+              } else if (result.type === 'failure') {
                 errorMessage = {
                   message:
-                    typeof result.data?.error === 'string'
-                      ? result.data.error
-                      : 'Erro ao criar a role'
+                    typeof result.data?.error === 'string' ? result.data.error : 'Erro de validação'
                 };
+              } else {
+                errorMessage = { message: 'Erro inesperado' };
               }
-            } else if (result.type === 'failure') {
-              errorMessage = {
-                message:
-                  typeof result.data?.error === 'string' ? result.data.error : 'Erro de validação'
-              };
-            } else {
-              errorMessage = { message: 'Erro inesperado' };
-            }
-          };
-        }}
-      >
-        <Dialog.Header class="flex flex-col gap-y-6 p-8">
-          <Dialog.Title class="text-xl">Adicionar nova role</Dialog.Title>
+              await applyAction(result);
+            };
+          }}
+        >
+          <Dialog.Header class="flex flex-col gap-y-6 p-8">
+            <Dialog.Title class="text-xl text-white">Adicionar nova role</Dialog.Title>
 
-          <Dialog.Description>
-            <div class="flex flex-col gap-y-6">
-              <LabelInput
-                label="Nome"
-                id="name"
-                name="name"
-                type="text"
-                required={true}
-                class="rounded-lg bg-white px-4 py-3 text-black"
-              />
+            <Dialog.Description>
+              <div class="flex flex-col gap-y-6">
+                <LabelInput
+                  label="Nome"
+                  id="name"
+                  name="name"
+                  type="text"
+                  required={true}
+                  class="rounded-lg bg-white px-4 py-3 text-black"
+                />
 
-              {#if errorMessage}
-                <p class="text-center font-medium text-red-300">
-                  {sentenceFirstLetterToUpperCase(errorMessage.message)}
-                </p>
-              {/if}
+                {#if errorMessage}
+                  <p class="text-center font-medium text-red-300">
+                    {sentenceFirstLetterToUpperCase(errorMessage.message)}
+                  </p>
+                {/if}
+              </div>
+            </Dialog.Description>
+          </Dialog.Header>
+
+          <Dialog.Footer class="flex flex-col rounded-b-3xl bg-white p-4 sm:flex-col">
+            <div class="flex flex-row justify-end gap-6">
+              <button
+                type="button"
+                class="text-lg text-muted-red-700"
+                onclick={() => (dialogOpen = false)}
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                class="rounded-xl bg-muted-red-700 p-4 text-lg text-white shadow-xl transition-colors hover:bg-muted-red-800"
+              >
+                Adicionar
+              </button>
             </div>
-          </Dialog.Description>
-        </Dialog.Header>
+          </Dialog.Footer>
+        </form>
+      </Dialog.Content>
+    </Dialog.Root>
+  </aside>
 
-        <Dialog.Footer class="flex flex-col rounded-md bg-white p-4 sm:flex-col">
-          <div class="flex flex-row justify-end gap-6">
-            <button
-              type="button"
-              class="text-lg text-muted-red-700"
-              onclick={() => (dialogOpen = false)}
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              class="rounded-xl bg-muted-red-700 p-4 text-lg text-white shadow-xl"
-            >
-              Adicionar
-            </button>
-          </div>
-        </Dialog.Footer>
-      </form>
-    </Dialog.Content>
+  <div class="hidden w-px bg-red-500 md:block"></div>
 
-    <div class="w-px bg-red-500"></div>
-
-    <section class="flex-1 px-10 py-6 md:py-0 md:pl-12">
-      <div class="mb-12 flex items-center justify-between">
-        <h2 class="text-3xl font-bold text-white">Atividade</h2>
-      </div>
-
-      <div class="mt-20 text-gray-400">
+  <section class="min-w-0 flex-1 px-4 py-8 md:px-0 md:py-0 md:pl-12">
+    {#if selectedRole}
+      <Permissions role={selectedRole} {projects} />
+    {:else}
+      <div class="mt-20 text-center text-gray-400 md:text-left">
         <p>Seleciona uma role e uma atividade para ver/editar permissões.</p>
       </div>
-    </section>
-  </div>
-</Dialog.Root>
+    {/if}
+  </section>
+</div>

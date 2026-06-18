@@ -3,6 +3,7 @@ import type { CustomWebsite } from './custom-website';
 import type { TimelineEvent } from './timeline-event';
 
 export type Project = {
+  id: number;
   title: string;
   description: string;
   teamMemberIds: bigint[];

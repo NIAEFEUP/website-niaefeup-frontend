@@ -7,7 +7,7 @@
   let { data }: { data: PageData } = $props();
 </script>
 
-<section class="flex w-full items-center justify-center">
+<section class="flex w-full items-center justify-center px-4">
   <Tabs.Root value="technologies">
     <Tabs.List class="mb-8 flex w-full flex-row gap-x-16 bg-transparent md:gap-x-32">
       <Tabs.Trigger
@@ -27,7 +27,7 @@
       <Technologies technologies={data.technologies} />
     </Tabs.Content>
     <Tabs.Content value="roles">
-      <Roles roles={data.roles} />
+      <Roles roles={data.roles} projects={data.projects} />
     </Tabs.Content>
   </Tabs.Root>
 </section>

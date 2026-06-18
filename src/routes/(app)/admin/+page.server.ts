@@ -5,10 +5,12 @@ import type { Role } from '@/types/role';
 import { canEditActivity, canCreateActivity, canDeleteActivity } from '@/lib/api/permissions';
 import type { BackendError } from '@/types/backend-error';
 
+// TODO REMOVE PERMISSIONS CHECKS COMMENTS
+
 export const load: PageServerLoad = async ({ fetch }) => {
-  if (!(await canEditActivity(fetch))) {
-    throw redirect(303, '/');
-  }
+  // if (!(await canEditActivity(fetch))) {
+  //   throw redirect(303, '/');
+  // }
 
   let technologies: Technology[] = [];
   let roles: Role[] = [];
@@ -31,14 +33,19 @@ export const load: PageServerLoad = async ({ fetch }) => {
     roles = await role.json();
   }
 
-  return { technologies, roles };
+  let projects = [];
+  const projectsRes = await fetch('/api/projects');
+  if (projectsRes.ok) {
+    projects = await projectsRes.json();
+  }
+  return { technologies, roles, projects };
 };
 
 export const actions: Actions = {
   deleteTechnology: async ({ request, fetch }) => {
-    if (!(await canDeleteActivity(fetch))) {
-      throw redirect(303, '/');
-    }
+    // if (!(await canDeleteActivity(fetch))) {
+    //   throw redirect(303, '/');
+    // }
 
     const formData = await request.formData();
     const id = formData.get('id');
@@ -55,9 +62,9 @@ export const actions: Actions = {
   },
 
   addTechnology: async ({ request, fetch }) => {
-    if (!(await canCreateActivity(fetch))) {
-      throw redirect(303, '/');
-    }
+    // if (!(await canCreateActivity(fetch))) {
+    //   throw redirect(303, '/');
+    // }
 
     const requestData = await request.formData();
 
