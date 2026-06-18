@@ -46,8 +46,7 @@
       {minlength}
       {maxlength}
       {...rest}
-      bind:value
-    ></textarea>
+      bind:value></textarea>
   {:else}
     <input
       aria-label="text-input"
