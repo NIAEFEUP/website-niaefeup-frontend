@@ -55,7 +55,7 @@
       height={iconSize + 2}
     >
       {#if socials[index].url.startsWith('https')}
-        <div class="flex h-full w-full items-center justify-center rounded bg-white bg-opacity-30">
+        <div class="flex h-full w-full items-center justify-center rounded bg-white/30">
           <Icon
             src={socials[index].icon}
             color="white"
@@ -66,7 +66,7 @@
         </div>
       {:else}
         <div
-          class="flex h-full w-full items-center justify-center rounded bg-white bg-opacity-30"
+          class="flex h-full w-full items-center justify-center rounded bg-white/30"
           onclick={() => copyToClipboard(socials[index].url)}
           onkeydown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
