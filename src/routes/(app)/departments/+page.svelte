@@ -73,7 +73,9 @@
     </p>
   </div>
 
-  <div class="grid-container">
+  <div
+    class="mr-[15%] mt-[-15rem] w-[57%] shrink-0 origin-right scale-[0.55] max-lg:mx-auto max-lg:mb-0 max-lg:mt-12 max-lg:w-[900px] max-lg:scale-100 max-lg:[zoom:calc(100vw_/_900px_*_0.85)]"
+  >
     <HexagonGrid
       {items}
       cols={2}
@@ -83,54 +85,3 @@
     />
   </div>
 </section>
-
-<style>
-  .departments {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    min-height: 568px;
-    padding: 4rem 0 4rem 10%;
-    overflow: hidden;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .grid-container {
-    width: 55%;
-    flex-shrink: 0;
-    transform: scale(0.55);
-    transform-origin: right center;
-    margin-right: 15%;
-    margin-top: -16rem;
-  }
-
-  @media (max-width: 1025px) {
-    .departments {
-      flex-direction: column;
-      text-align: center;
-      gap: 0;
-      padding: 3rem 2.5rem 2rem;
-      overflow: hidden;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .text {
-      max-width: 100%;
-    }
-
-    .text h2 {
-      font-size: 2.45rem;
-    }
-
-    .grid-container {
-      width: 900px;
-      zoom: calc(100vw / 900px * 0.85);
-      margin: 3rem auto 0;
-      transform: none;
-      margin-top: 3rem;
-    }
-  }
-</style>

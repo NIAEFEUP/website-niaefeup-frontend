@@ -13,8 +13,12 @@
 
 {#if item.type === 'logo'}
   <div class="logo-only">
-    <button class="logo-btn" onclick={() => item.onselect && item.onselect(item)} type="button">
-      <img src={item.image} alt="NIAEFEUP" class="logo-img" />
+    <button
+      class="logo-btn flex h-full w-[81%] items-center justify-center border-none bg-transparent p-0"
+      onclick={() => item.onselect && item.onselect(item)}
+      type="button"
+    >
+      <img src={item.image} alt="NIAEFEUP" class="logo-img h-full w-full object-contain" />
     </button>
   </div>
 {:else}
@@ -46,9 +50,7 @@
     justify-content: center;
   }
 
-  .logo-img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+  .logo-btn {
+    cursor: pointer;
   }
 </style>
