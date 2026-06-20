@@ -1,7 +1,8 @@
 <script lang="ts">
   import Hexagon from '@/lib/components/hexagons/hexagon.svelte';
 
-  let { data, orientation = 'horizontal' } = $props();
+  export const orientation = 'horizontal';
+  let { data } = $props();
   const item = data || {};
 
   function handleClick() {
