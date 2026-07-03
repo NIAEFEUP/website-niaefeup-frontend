@@ -151,7 +151,7 @@
                   <span>{formatWeekdayTime(parsedEventDate)}</span>
                   <span class="flex min-w-0 flex-nowrap items-center gap-2">
                     <Icon src={Icons.Calendar} size="18" />
-                    <span class="block break-words">
+                    <span class="block wrap-break-word">
                       <b>{d.day}</b> de <b>{d.month}</b> <b>{d.year}</b>
                     </span>
                   </span>
@@ -160,7 +160,7 @@
                 {/if}
                 <span class="flex min-w-0 flex-nowrap items-center gap-2">
                   <Icon src={Icons.Location} size="18" />
-                  <span class="block break-words">{event.location}</span>
+                  <span class="block wrap-break-word">{event.location}</span>
                 </span>
               </div>
             {/if}

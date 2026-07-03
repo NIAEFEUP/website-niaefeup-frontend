@@ -26,7 +26,7 @@
 </script>
 
 <section
-  class="flex h-full w-full flex-col items-center justify-center font-raleway text-base font-[700] sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
+  class="flex h-full w-full flex-col items-center justify-center font-raleway text-base font-bold sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
 >
   <form method="POST" action="">
     <div class="grid justify-center rounded-[15px] bg-muted-red-500 p-[5dvh] lg:min-w-[60%]">
@@ -36,14 +36,14 @@
         name="email"
         placeholder="email"
         bind:value={email}
-        class="my-[2dvh] rounded-[15px] bg-taupe-100 p-[2dvh] text-sm text-rose-950/[.54] placeholder-rose-950/[.54] drop-shadow-lg placeholder:capitalize sm:text-sm lg:text-base xl:text-lg 2xl:text-xl"
+        class="my-[2dvh] rounded-[15px] bg-taupe-100 p-[2dvh] text-sm text-rose-950/54 placeholder-rose-950/54 drop-shadow-lg placeholder:capitalize sm:text-sm lg:text-base xl:text-lg 2xl:text-xl"
       />
       <br />
       <VariableVisibilityInput
         name="password"
         placeholder="password"
         bind:value={password}
-        class="rounded-[15px] bg-taupe-100 p-[2dvh] text-sm text-rose-950/[.54] placeholder-rose-950/[.54] drop-shadow-lg placeholder:capitalize sm:text-sm lg:text-base xl:text-lg 2xl:text-xl"
+        class="rounded-[15px] bg-taupe-100 p-[2dvh] text-sm text-rose-950/54 placeholder-rose-950/54 drop-shadow-lg placeholder:capitalize sm:text-sm lg:text-base xl:text-lg 2xl:text-xl"
       />
       <br />
     </div>
