@@ -9,7 +9,7 @@
     cols: number;
     gap?: 'small' | 'medium' | 'big';
     orientation: 'horizontal' | 'vertical';
-    component: Component<{ orientation: string; data: T }>;
+    component: Component<{ orientation: 'horizontal' | 'vertical'; data: T }>;
   }
 
   let { items, cols: propcols, gap = 'medium', orientation, component }: Props = $props();
