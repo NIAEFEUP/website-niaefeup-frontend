@@ -2,65 +2,59 @@
   import Hexagon from '@/lib/components/hexagons/hexagon.svelte';
   import type { Event } from '@/types/event.ts';
 
-  interface Props {
-    data: Event;
-    orientation?: 'horizontal' | 'vertical';
-  }
-
-  let { data: event, orientation = 'vertical' }: Props = $props();
-
-  const parseDate = (d: string | Date): Date => {
-    if (d instanceof Date) return d;
-    const match = d.match(/^(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2})$/);
-    if (match) {
-      const [, day, month, year, hour, minute] = match;
-      return new Date(`${year}-${month}-${day}T${hour}:${minute}`);
-    }
-    return new Date(d.replace(' ', 'T'));
-  };
-
-  const getDateDisplay = (): string => {
-    const start = parseDate(event.dateInterval.startDate);
-    const end = parseDate(event.dateInterval.endDate);
-
-    const fmt = (d: Date) =>
-      d
-        .toLocaleDateString('pt', { day: 'numeric', month: 'short' })
-        .replace(/\./g, '')
-        .replace(/ de /g, ' ');
-
-    return `${fmt(start)} – ${fmt(end)}`;
-  };
+  export const orientation = 'vertical';
+  let { data, event = data as Event } = $props();
 </script>
 
-<Hexagon {orientation}>
+<Hexagon orientation="vertical">
   <div
     class="group relative box-content flex h-full w-full justify-center md:shadow-black/[.58] md:text-shadow"
     data-testid="event-hexagon"
   >
-    <div class="flex w-full flex-col content-center justify-center">
+    <div class="flex w-fit flex-col content-center justify-center">
       <p
-        class="z-20 mx-auto w-full max-w-[80%] overflow-hidden text-ellipsis whitespace-nowrap text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
+        class="z-20 w-full whitespace-nowrap px-8 text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
-        {getDateDisplay()}
+        {#if !event.dateInterval.endDate}
+          {event.dateInterval.startDate
+            .toLocaleString('pt', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            })
+            .replaceAll(/(de\s)|(\.)/gi, '')}
+        {:else}
+          {event.dateInterval.startDate
+            .toLocaleString('pt', {
+              day: 'numeric',
+              month: 'short',
+              year: '2-digit'
+            })
+            .replaceAll(/(de\s)|(\.)/gi, '') +
+            ' - ' +
+            event.dateInterval.endDate
+              .toLocaleDateString('pt', {
+                day: 'numeric',
+                month: 'short',
+                year: '2-digit'
+              })
+              .replaceAll(/(de\s)|(\.)/gi, '')}
+        {/if}
       </p>
-
       <p
-        class="z-20 my-1.5 w-full overflow-hidden break-words bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl"
+        class="group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none z-20 my-1.5 w-full bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline-solid outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl"
       >
         {event.title}
       </p>
-
       <p
-        class="z-20 mx-auto w-full max-w-[80%] truncate text-center text-xs text-gray-100"
-        title={event.location}
+        class="z-20 w-full whitespace-nowrap text-center text-xs text-gray-100 transition-all sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {event.location}
       </p>
     </div>
     <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
     <img
-      src={event.image}
+      src={event.thumbnailPath}
       alt="Event thumbnail"
       class="absolute inset-0 z-0 h-full w-full object-cover"
     />
