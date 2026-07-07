@@ -106,13 +106,13 @@
 <svelte:window onkeydown={handleKeydown} onresize={onResize} />
 
 {#if photos.length === 0}
-  <div class="aspect-[21/9] w-full rounded-3xl bg-gray-200"></div>
+  <div class="aspect-21/9 w-full rounded-3xl bg-gray-200"></div>
 {:else if photos.length === 1}
   <div class="flex w-full justify-center">
     <img
       src={photos[0]}
       alt="Gallery 1"
-      class="aspect-[21/9] w-full rounded-3xl object-cover shadow"
+      class="aspect-21/9 w-full rounded-3xl object-cover shadow-sm"
       loading="lazy"
     />
   </div>
@@ -127,7 +127,7 @@
         style="scrollbar-width: none; -ms-overflow-style: none;"
       >
         {#each photos as photo, i (i)}
-          <div class="relative aspect-[21/9] min-w-full snap-center">
+          <div class="relative aspect-21/9 min-w-full snap-center">
             <button
               onclick={() => openLightbox(i)}
               class="h-full w-full cursor-pointer"
@@ -136,7 +136,7 @@
               <img
                 src={photo}
                 alt={`Gallery photo ${i + 1}`}
-                class="pointer-events-none h-full w-full select-none rounded-3xl object-cover shadow"
+                class="pointer-events-none h-full w-full select-none rounded-3xl object-cover shadow-sm"
                 loading="lazy"
                 draggable="false"
               />
@@ -146,7 +146,7 @@
       </div>
 
       <button
-        class="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0 group-hover:opacity-100"
+        class="group-hover:opacity-100 absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow-sm transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0"
         onclick={prev}
         disabled={current === 0}
         aria-label="Previous photo"
@@ -155,7 +155,7 @@
       </button>
 
       <button
-        class="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0 group-hover:opacity-100"
+        class="group-hover:opacity-100 absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow-sm transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0"
         onclick={next}
         disabled={current === photos.length - 1}
         aria-label="Next photo"
@@ -167,7 +167,7 @@
     <div class="mt-3 flex gap-2">
       {#each photos as photo, i (photo)}
         <button
-          class="h-3 w-3 rounded-full transition-colors focus:outline-none {current === i
+          class="h-3 w-3 rounded-full transition-colors focus:outline-hidden {current === i
             ? 'bg-muted-red-700'
             : 'bg-[#d9d9d9]/50 hover:bg-[#d9d9d9] '}"
           aria-label={`Go to photo ${i + 1}`}
@@ -190,7 +190,7 @@
     tabindex="-1"
   >
     <button
-      class="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
+      class="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-xs transition-all hover:bg-black/40"
       onclick={closeLightbox}
       aria-label="Close lightbox"
     >
@@ -198,7 +198,7 @@
     </button>
 
     <div
-      class="absolute left-1/2 top-4 z-20 -translate-x-1/2 rounded-full bg-black/20 px-4 py-2 text-sm text-white backdrop-blur-sm"
+      class="absolute left-1/2 top-4 z-20 -translate-x-1/2 rounded-full bg-black/20 px-4 py-2 text-sm text-white backdrop-blur-xs"
     >
       {lightboxIndex + 1} / {photos.length}
     </div>
@@ -218,7 +218,7 @@
 
       {#if photos.length > 1}
         <button
-          class="absolute left-2 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
+          class="absolute left-2 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-xs transition-all hover:bg-black/40"
           onclick={(e) => {
             e.stopPropagation();
             prevLightbox();
@@ -229,7 +229,7 @@
         </button>
 
         <button
-          class="absolute right-2 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-sm transition-all hover:bg-black/40"
+          class="absolute right-2 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-xs transition-all hover:bg-black/40"
           onclick={(e) => {
             e.stopPropagation();
             nextLightbox();

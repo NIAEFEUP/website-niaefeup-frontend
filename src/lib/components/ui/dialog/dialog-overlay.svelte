@@ -7,24 +7,18 @@
 
   interface Props {
     class?: $$Props['class'];
-    transition?: $$Props['transition'];
-    transitionConfig?: $$Props['transitionConfig'];
     [key: string]: any;
   }
 
-  let {
-    class: className = undefined,
-    transition = fade,
-    transitionConfig = {
-      duration: 150
-    },
-    ...rest
-  }: Props = $props();
+  let { class: className = undefined, ...rest }: Props = $props();
 </script>
 
-<DialogPrimitive.Overlay
-  {transition}
-  {transitionConfig}
-  class={cn('fixed inset-0 z-50 bg-background/80 backdrop-blur-sm', className)}
-  {...rest}
-/>
+<DialogPrimitive.Overlay {...rest}>
+  {#snippet child({ props })}
+    <div
+      {...props}
+      transition:fade={{ duration: 150 }}
+      class={cn('fixed inset-0 z-50 bg-background/80 backdrop-blur-xs', className)}
+    ></div>
+  {/snippet}
+</DialogPrimitive.Overlay>

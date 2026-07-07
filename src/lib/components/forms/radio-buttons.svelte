@@ -37,7 +37,7 @@
 
 <style>
   input:checked + label {
-    background-color: theme('colors.muted-red.400');
-    color: theme('colors.taupe.100');
+    background-color: var(--color-muted-red-400);
+    color: var(--color-taupe-100);
   }
 </style>

@@ -2,11 +2,11 @@
 import js from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import importPlugin from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import-x';
 import globals from 'globals';
 import svelteParser from 'svelte-eslint-parser';
 import sveltePlugin from 'eslint-plugin-svelte';
-import prettierConfig from 'eslint-config-prettier';
+import prettierConfig from 'eslint-config-prettier/flat';
 import ts from 'typescript';
 
 export default [
@@ -46,24 +46,24 @@ export default [
     },
     plugins: {
       '@typescript-eslint': typescriptEslint,
-      import: importPlugin
+      'import-x': importPlugin
     },
     rules: {
       ...typescriptEslint.configs['eslint-recommended'].rules,
       ...typescriptEslint.configs['recommended'].rules,
-      'import/export': 'error',
-      'import/no-empty-named-blocks': 'error',
-      'import/no-absolute-path': 'error',
-      'import/no-self-import': 'error',
-      'import/no-useless-path-segments': 'error',
-      'import/newline-after-import': 'error',
-      'import/no-duplicates': 'error',
-      'import/order': 'error'
+      'import-x/export': 'error',
+      'import-x/no-empty-named-blocks': 'error',
+      'import-x/no-absolute-path': 'error',
+      'import-x/no-self-import': 'error',
+      'import-x/no-useless-path-segments': 'error',
+      'import-x/newline-after-import': 'error',
+      'import-x/no-duplicates': 'error',
+      'import-x/order': 'error'
     },
     settings: {
       'svelte/typescript': () => ts,
-      'import/extensions': ['.js', '.ts', '.svelte'],
-      'import/resolver': {
+      'import-x/extensions': ['.js', '.ts', '.svelte'],
+      'import-x/resolver': {
         typescript: { alwaysTryTypes: true }
       }
     }
@@ -78,7 +78,8 @@ export default [
       }
     },
     rules: {
-      'no-undef': 'off'
+      'no-undef': 'off',
+      'svelte/no-navigation-without-resolve': 'off'
     }
   }
 ];
