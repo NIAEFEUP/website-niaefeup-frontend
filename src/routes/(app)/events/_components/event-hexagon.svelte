@@ -58,7 +58,7 @@
         {event.location}
       </p>
     </div>
-    <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/[.62] text-lg"></div>
+    <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
     <img
       src={event.image}
       alt="Event thumbnail"

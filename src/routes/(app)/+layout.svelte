@@ -41,7 +41,7 @@
 <Sidebar />
 <Navbar />
 
-<main class="bg-ni-primary my-20 flex-grow">
+<main class="bg-ni-primary my-20 grow">
   <BackgroundHexagon position="right" />
   {@render children?.()}
 </main>
@@ -51,17 +51,13 @@
 
 <style>
   :global(html) {
-    height: 100%;
     min-height: 100vh;
-    overflow: auto;
   }
 
   :global(body) {
-    height: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: auto;
   }
 
   /*
@@ -75,7 +71,7 @@
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active
   ) {
-    -webkit-box-shadow: 0 0 0px 1000px rgb(255 233 233 / var(--tw-bg-opacity)) inset; /*Since we can't alter the browsers background change on autofill fields we add an inner shadow with the desired color*/
+    -webkit-box-shadow: 0 0 0px 1000px rgb(255 233 233 / 1) inset; /*Since we can't alter the browsers background change on autofill fields we add an inner shadow with the desired color*/
     -webkit-text-fill-color: rgb(65 19 21 / 0.54);
   }
 </style>

@@ -12,8 +12,8 @@
 
   let { data }: { data: PageData } = $props();
 
-  const event: Event = data.event;
-  const hasPerms: boolean = data.hasPerms;
+  let event: Event = $derived(data.event);
+  let hasPerms: boolean = $derived(data.hasPerms);
 
   let activeTab = $state<'evento' | 'equipa'>('evento');
 
@@ -44,10 +44,11 @@
     return { day, month, year };
   }
 
-  let parsedEventDate =
+  let parsedEventDate = $derived(
     typeof event?.dateInterval?.startDate === 'string'
       ? parseCustomDate(event.dateInterval.startDate)
-      : null;
+      : null
+  );
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
@@ -150,7 +151,7 @@
                   <span>{formatWeekdayTime(parsedEventDate)}</span>
                   <span class="flex min-w-0 flex-nowrap items-center gap-2">
                     <Icon src={Icons.Calendar} size="18" />
-                    <span class="block break-words">
+                    <span class="block wrap-break-word">
                       <b>{d.day}</b> de <b>{d.month}</b> <b>{d.year}</b>
                     </span>
                   </span>
@@ -159,7 +160,7 @@
                 {/if}
                 <span class="flex min-w-0 flex-nowrap items-center gap-2">
                   <Icon src={Icons.Location} size="18" />
-                  <span class="block break-words">{event.location}</span>
+                  <span class="block wrap-break-word">{event.location}</span>
                 </span>
               </div>
             {/if}

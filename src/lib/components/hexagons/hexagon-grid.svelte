@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type EventHexagon from './EventHexagon.svelte';
-  import type TeamMemberHexagon from '@/routes/(app)/team/_components/team-member-hexagon.svelte';
+  import type { Component } from 'svelte';
 
   // Inspired by https://github.com/sveltejs/svelte-virtual-list/blob/master/VirtualList.svelte
   type T = $$Generic;
@@ -10,7 +9,7 @@
     cols: number;
     gap?: 'small' | 'medium' | 'big';
     orientation: 'horizontal' | 'vertical';
-    component: typeof TeamMemberHexagon | typeof EventHexagon;
+    component: Component<{ orientation: string; data: T }>;
   }
 
   let { items, cols: propcols, gap = 'medium', orientation, component }: Props = $props();

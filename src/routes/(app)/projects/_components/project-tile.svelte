@@ -28,7 +28,7 @@ md:justify-between md:gap-4 md:px-0 md:py-0 {isOdd ? 'flex-row' : 'flex-row-reve
   >
     <a href="/projects/{project.slug}">
       <img
-        class="h-20 rounded-xl shadow-lg md:h-min md:max-h-80 md:shadow-none"
+        class="h-20 rounded-xl shadow-lg md:h-auto md:max-h-80 md:shadow-none"
         src={windowWidth < screenSizeThreshold ? project.image : project.thumbnail}
         alt="{project.title}'s thumbnail"
       />
