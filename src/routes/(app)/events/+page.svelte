@@ -9,13 +9,8 @@
 
   const hasPerms: boolean = $derived(data.hasPerms);
   const events: Event[] = $derived(data.events);
-
-  const MOBILE_BREAKPOINT = 768;
-  let windowWidth = $state(0);
-  let cols = $derived(windowWidth < MOBILE_BREAKPOINT ? 1 : 4);
 </script>
 
-<svelte:window bind:innerWidth={windowWidth} />
 <section>
   <div class="flex w-full flex-col items-center">
     <h1 class="my-2 text-center font-source_code text-xl text-white md:my-4 md:text-3xl">
@@ -36,13 +31,25 @@
           <p class="text-gray-400">Nenhum evento encontrado</p>
         </div>
       {:else}
-        <HexagonGrid
-          items={events}
-          {cols}
-          orientation="vertical"
-          gap="medium"
-          component={HexagonTile}
-        />
+        <div class="w-full md:hidden">
+          <HexagonGrid
+            items={events}
+            cols={1}
+            orientation="vertical"
+            gap="medium"
+            component={HexagonTile}
+          />
+        </div>
+
+        <div class="hidden w-full md:block">
+          <HexagonGrid
+            items={events}
+            cols={4}
+            orientation="vertical"
+            gap="medium"
+            component={HexagonTile}
+          />
+        </div>
       {/if}
     </div>
   </div>
