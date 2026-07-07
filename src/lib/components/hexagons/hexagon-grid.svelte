@@ -9,12 +9,14 @@
     cols: number;
     gap?: 'small' | 'medium' | 'big';
     orientation: 'horizontal' | 'vertical';
-    component: Component<{ orientation: string; data: T }>;
+    component: Component<{ orientation: 'horizontal' | 'vertical'; data: T }>;
   }
 
-  let { items, cols, gap = 'medium', orientation, component }: Props = $props();
+  let { items, cols: propcols, gap = 'medium', orientation, component }: Props = $props();
 
-  const gridColumnsStyle = $derived(
+  let cols = $derived(Math.min(items.length, propcols));
+
+  let gridColumnsStyle = $derived(
     orientation === 'horizontal'
       ? `grid-template-columns: 0.2425fr repeat(${cols}, 0.4805fr 0.2425fr); grid-auto-rows: 0.5fr 0.5fr;`
       : `grid-template-columns: 0.5fr repeat(${cols}, 0.505fr 0.5fr); grid-auto-rows: 0.251fr 0.5fr;`
