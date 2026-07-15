@@ -13,9 +13,9 @@ const config = {
       '@': './src',
       '@/*': './src/*'
     },
-    prerender: {
-      handleUnseenRoutes: 'ignore'
-    }
+    // prerender: {
+    //   handleUnseenRoutes: 'ignore'
+    // }
   }
 };
 
