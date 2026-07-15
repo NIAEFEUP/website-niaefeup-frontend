@@ -12,6 +12,9 @@ const config = {
     alias: {
       '@': './src',
       '@/*': './src/*'
+    },
+    prerender: {
+      handleUnseenRoutes: 'ignore'
     }
   }
 };

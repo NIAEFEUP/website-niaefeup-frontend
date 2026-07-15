@@ -3,7 +3,7 @@ import type { PageLoad } from './$types';
 import { canCreateActivity } from '@/lib/api/permissions';
 
 export const load: PageLoad = async ({ fetch }) => {
-  let res = await fetch(`/api/projects`);
+  let res = await fetch(`/api/projects/__list`);
   if (!res.ok) {
     if (res.status === 404) {
       error(404, 'No projects found');

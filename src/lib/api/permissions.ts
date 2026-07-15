@@ -12,13 +12,14 @@ enum Permission {
 }
 
 async function hasPermission(fetch: typeof globalThis.fetch, number: number) {
-  const perms = await fetch(`/api/auth/hasPermission/${number}`);
+  // const perms = await fetch(`/api/auth/hasPermission/${number}`);
 
-  if (!perms.ok) {
-    return false;
-  }
+  // if (!perms.ok) {
+  //   return false;
+  // }
 
-  return !(await perms.json()).error;
+  // return !(await perms.json()).error;
+  return false;
 }
 export async function canCreateAccount(fetch: typeof globalThis.fetch) {
   return hasPermission(fetch, Permission.CREATE_ACCOUNT);
