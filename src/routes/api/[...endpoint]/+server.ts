@@ -19,9 +19,9 @@ const dispatchToBackend: RequestHandler = async (event) => {
 };
 
 export const GET: RequestHandler = dispatchToBackend;
-export const POST: RequestHandler = dispatchToBackend;
-export const PUT: RequestHandler = dispatchToBackend;
-export const DELETE: RequestHandler = dispatchToBackend;
-export const PATCH: RequestHandler = dispatchToBackend;
-export const OPTIONS: RequestHandler = dispatchToBackend;
-export const HEAD: RequestHandler = dispatchToBackend;
+// export const POST: RequestHandler = dispatchToBackend;
+// export const PUT: RequestHandler = dispatchToBackend;
+// export const DELETE: RequestHandler = dispatchToBackend;
+// export const PATCH: RequestHandler = dispatchToBackend;
+// export const OPTIONS: RequestHandler = dispatchToBackend;
+// export const HEAD: RequestHandler = dispatchToBackend;
