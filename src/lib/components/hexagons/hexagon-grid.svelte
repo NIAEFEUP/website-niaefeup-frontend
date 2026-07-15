@@ -16,10 +16,16 @@
 
   let cols = $derived(Math.min(items.length, propcols));
 
+  let widthRatio = $derived(
+    orientation === 'horizontal'
+      ? (0.2425 + cols * 0.723) / (0.2425 + propcols * 0.723)
+      : (0.5 + cols * 1.005) / (0.5 + propcols * 1.005)
+  );
+
   let gridColumnsStyle = $derived(
     orientation === 'horizontal'
-      ? `grid-template-columns: 0.2425fr repeat(${cols}, 0.4805fr 0.2425fr); grid-auto-rows: 0.5fr 0.5fr;`
-      : `grid-template-columns: 0.5fr repeat(${cols}, 0.505fr 0.5fr); grid-auto-rows: 0.251fr 0.5fr;`
+      ? `grid-template-columns: 0.2425fr repeat(${cols}, 0.4805fr 0.2425fr); grid-auto-rows: 0.5fr 0.5fr; width: ${widthRatio * 100}%; margin-inline: auto;`
+      : `grid-template-columns: 0.5fr repeat(${cols}, 0.505fr 0.5fr); grid-auto-rows: 0.251fr 0.5fr; width: ${widthRatio * 100}%; margin-inline: auto;`
   );
 </script>
 
