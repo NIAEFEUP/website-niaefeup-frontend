@@ -11,6 +11,7 @@ enum Permission {
   SUPER_USER = 9
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function hasPermission(fetch: typeof globalThis.fetch, number: number) {
   // const perms = await fetch(`/api/auth/hasPermission/${number}`);
 

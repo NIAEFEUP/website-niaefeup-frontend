@@ -1,4 +1,3 @@
-import { PUBLIC_API_URL } from '$env/static/public';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { canCreateActivity } from '$lib/api/permissions';
