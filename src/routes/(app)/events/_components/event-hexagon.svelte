@@ -65,5 +65,5 @@
       alt="Event thumbnail"
       class="absolute inset-0 z-0 h-full w-full object-cover"
     />
-    </a>
+  </a>
 </Hexagon>
