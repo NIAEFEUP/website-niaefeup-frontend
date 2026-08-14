@@ -37,7 +37,7 @@ jobs:
         run: npm install
 
       # - name: Build site
-      #   run: npm run build 
+      #   run: npm run build
       # doesnt work anymore (static adapter needs the backend running to grab info while building)
 
       - name: Sync SvelteKit
@@ -72,7 +72,7 @@ jobs:
         run: npm install
 
       # - name: Build site
-      #   run: npm run build 
+      #   run: npm run build
       # doesnt work anymore (static adapter needs the backend running to grab info while building)
 
       - name: Sync SvelteKit
