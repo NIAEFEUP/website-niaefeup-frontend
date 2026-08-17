@@ -7,7 +7,12 @@ type Section = {
   accounts: TeamMember[];
 };
 
+import latestData from '$lib/data/api/generations/latest.json';
+
 export const load: PageLoad = async ({ fetch }) => {
+  // Legacy fetch: We used to fetch data from the backend. 
+  // This is now commented out because we are using local JSON data for a completely static build.
+  /*
   const res = await fetch(`/api/generations/latest`);
   if (!res.ok) {
     if (res.status === 404) {
@@ -18,6 +23,8 @@ export const load: PageLoad = async ({ fetch }) => {
   }
 
   const sections: Section[] = await res.json();
+  */
+  const sections: Section[] = latestData;
 
   return { sections };
 };

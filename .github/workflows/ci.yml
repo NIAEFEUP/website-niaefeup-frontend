@@ -36,12 +36,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # - name: Build site
-      #   run: npm run build
-      # doesnt work anymore (static adapter needs the backend running to grab info while building)
-
-      - name: Sync SvelteKit
-        run: npx svelte-kit sync #to make the  necessary .svelte-kit folder
+      - name: Build site
+        run: npm run build
 
       - name: Test
         run: CI=true npm run test
@@ -71,12 +67,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # - name: Build site
-      #   run: npm run build
-      # doesnt work anymore (static adapter needs the backend running to grab info while building)
-
-      - name: Sync SvelteKit
-        run: npx svelte-kit sync #to make the  necessary .svelte-kit folder
+      - name: Build site
+        run: npm run build
 
       - name: Lint Code
         run: npm run lint
