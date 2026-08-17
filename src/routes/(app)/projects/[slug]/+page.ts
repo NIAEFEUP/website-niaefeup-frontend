@@ -11,12 +11,12 @@ export const load: PageLoad = async ({ fetch, params }) => {
 
   const project = await res.json();
   */
-  
+
   let project;
   try {
     const module = await import(`../../../../lib/data/api/projects/${params.slug}.json`);
     project = module.default;
-  } catch (e) {
+  } catch {
     error(404, 'Project not found');
   }
 

@@ -1,4 +1,3 @@
-import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import type { TeamMember } from '@/types/team-member';
 
@@ -9,8 +8,8 @@ type Section = {
 
 import latestData from '$lib/data/api/generations/latest.json';
 
-export const load: PageLoad = async ({ fetch }) => {
-  // Legacy fetch: We used to fetch data from the backend. 
+export const load: PageLoad = async () => {
+  // Legacy fetch: We used to fetch data from the backend.
   // This is now commented out because we are using local JSON data for a completely static build.
   /*
   const res = await fetch(`/api/generations/latest`);

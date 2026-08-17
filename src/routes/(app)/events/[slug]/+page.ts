@@ -11,12 +11,12 @@ export const load: PageLoad = async ({ fetch, params }) => {
 
   const event = await res.json();
   */
-  
+
   let event;
   try {
     const module = await import(`../../../../lib/data/api/events/${params.slug}.json`);
     event = module.default;
-  } catch (e) {
+  } catch {
     error(404, 'Event not found');
   }
 

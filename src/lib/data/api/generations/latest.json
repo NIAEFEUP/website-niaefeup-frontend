@@ -1,1 +1,290 @@
-[{"section":"President","accounts":[{"name":"Leopoldo Mueller III","email":"kathrine.fay@hotmail.com","bio":"Libero numquam magnam.","birthDate":"23-05-2003 12:55","websites":[],"isActive":true,"id":69,"roles":[]}]},{"section":"Board","accounts":[{"name":"Bruce Schinner","email":"maya.kessler@gmail.com","bio":"Modi commodi cumque ducimus.","birthDate":"14-02-2003 08:46","websites":[],"isActive":true,"id":70,"roles":[]},{"name":"Eugene Olson","email":"cheryle.goldner@hotmail.com","bio":"Perferendis reiciendis est qui accusamus quam esse quidem.","birthDate":"03-05-2004 15:27","websites":[],"isActive":true,"id":71,"roles":[]}]},{"section":"Coordinator","accounts":[{"name":"Raymond Okuneva","email":"wade.hickle@gmail.com","bio":"Labore animi pariatur rerum quae neque quas odit.","birthDate":"09-12-2003 18:39","websites":[],"isActive":true,"id":72,"roles":[]},{"name":"Deja Reichert Jr.","email":"anya.johnson@hotmail.com","bio":"Tempora vel dignissimos rerum.","birthDate":"18-05-2000 23:20","websites":[],"isActive":true,"id":73,"roles":[]}]},{"section":"Member","accounts":[{"name":"Maia Hintz V","email":"charlie.walker@hotmail.com","bio":"Iusto qui sit. Nobis cum minus cupiditate beatae inventore ratione pariatur. Tenetur soluta consequatur magnam. Dolorem minus impedit doloremque sunt eveniet neque minima. Minus esse quas. Similique fugit illum. Praesentium ducimus laudantium fuga ipsum.","birthDate":"23-04-1989 08:53","photo":"https://picsum.photos/320/200","linkedin":"https://www.rosalie-carroll.name:13290/?quis=sint&voluptates=molestiae","github":"https://www.buddy-rau.info:31222/harum#rerum","websites":[],"isActive":false,"id":5,"roles":[]},{"name":"Terrence Mraz MD","email":"guy.yost@yahoo.com","bio":"Saepe labore enim.","birthDate":"04-07-2007 02:28","websites":[],"isActive":true,"id":74,"roles":[]},{"name":"Raul Leannon","email":"jina.hettinger@hotmail.com","bio":"Nemo quidem in quos.","birthDate":"04-02-2003 11:48","websites":[],"isActive":true,"id":75,"roles":[]},{"name":"Mrs. Bernardina Bernier","email":"naoma.cormier@gmail.com","bio":"Omnis aspernatur inventore illum.","birthDate":"29-04-2000 09:52","websites":[],"isActive":true,"id":76,"roles":[]},{"name":"Jules Kautzer","email":"sue.harvey@gmail.com","bio":"Quis excepturi reprehenderit.","birthDate":"02-05-1997 01:49","websites":[],"isActive":true,"id":77,"roles":[]},{"name":"Dave Bruen","email":"danilo.gislason@gmail.com","bio":"Tenetur atque culpa fugiat odio.","birthDate":"04-07-1999 14:10","websites":[],"isActive":true,"id":78,"roles":[]},{"name":"Adah Lang","email":"matha.kihn@gmail.com","bio":"Labore explicabo eveniet excepturi.","birthDate":"17-10-1999 06:51","websites":[],"isActive":true,"id":79,"roles":[]},{"name":"Brittney Huels","email":"ellsworth.kuhn@yahoo.com","bio":"Qui quasi dicta.","birthDate":"30-09-1999 20:50","websites":[],"isActive":true,"id":80,"roles":[]},{"name":"Mr. Bethany Kuhn","email":"isabelle.mckenzie@gmail.com","bio":"Tempore harum esse atque at enim dolores eum.","birthDate":"11-12-1996 22:30","websites":[],"isActive":true,"id":81,"roles":[]},{"name":"Pierre Lockman","email":"reyes.purdy@yahoo.com","bio":"Rem facere repellendus libero cumque eligendi.","birthDate":"19-02-1998 10:39","websites":[],"isActive":true,"id":82,"roles":[]},{"name":"Brendan Jerde","email":"darwin.labadie@gmail.com","bio":"Nulla architecto consequuntur eius beatae libero illo qui.","birthDate":"01-09-2005 03:00","websites":[],"isActive":true,"id":83,"roles":[]}]},{"section":"Recruit","accounts":[{"name":"Alejandro Mraz","email":"bettina.leuschke@hotmail.com","bio":"Quibusdam esse voluptatibus dolorem corporis reiciendis.","birthDate":"23-01-2004 01:02","websites":[],"isActive":true,"id":84,"roles":[]},{"name":"Keith Hane","email":"wallace.parisian@gmail.com","bio":"Vero ratione adipisci.","birthDate":"24-07-1999 01:16","websites":[],"isActive":true,"id":85,"roles":[]},{"name":"Darcey Cronin","email":"ilona.ferry@gmail.com","bio":"Quidem in tempore blanditiis molestiae.","birthDate":"04-07-2000 00:01","websites":[],"isActive":true,"id":86,"roles":[]},{"name":"Florence Jast","email":"willie.ullrich@yahoo.com","bio":"Dolorum consequuntur eius.","birthDate":"26-07-2000 11:14","websites":[],"isActive":true,"id":87,"roles":[]},{"name":"Lyman Langosh","email":"carlee.harber@gmail.com","bio":"Minima aperiam quidem explicabo.","birthDate":"19-08-2006 00:21","websites":[],"isActive":true,"id":88,"roles":[]},{"name":"Phillip Hickle","email":"enid.simonis@yahoo.com","bio":"Assumenda delectus porro esse sint.","birthDate":"22-12-2000 10:02","websites":[],"isActive":true,"id":89,"roles":[]},{"name":"Felicitas Brakus","email":"idalia.weber@hotmail.com","bio":"Itaque autem eius voluptates.","birthDate":"26-11-1996 12:59","websites":[],"isActive":true,"id":90,"roles":[]},{"name":"Pat Lemke I","email":"edward.beier@yahoo.com","bio":"Suscipit harum veniam in maxime maiores veniam distinctio.","birthDate":"27-04-2005 07:51","websites":[],"isActive":true,"id":91,"roles":[]},{"name":"Ivory Kuhic","email":"val.mante@gmail.com","bio":"Ipsam quod itaque.","birthDate":"12-05-2007 19:30","websites":[],"isActive":true,"id":92,"roles":[]},{"name":"Felipe McKenzie","email":"dawne.macejkovic@yahoo.com","bio":"Explicabo cupiditate adipisci aperiam eveniet fugiat odit.","birthDate":"31-07-2004 14:59","websites":[],"isActive":true,"id":93,"roles":[]}]}]
+[
+  {
+    "section": "President",
+    "accounts": [
+      {
+        "name": "Leopoldo Mueller III",
+        "email": "kathrine.fay@hotmail.com",
+        "bio": "Libero numquam magnam.",
+        "birthDate": "23-05-2003 12:55",
+        "websites": [],
+        "isActive": true,
+        "id": 69,
+        "roles": []
+      }
+    ]
+  },
+  {
+    "section": "Board",
+    "accounts": [
+      {
+        "name": "Bruce Schinner",
+        "email": "maya.kessler@gmail.com",
+        "bio": "Modi commodi cumque ducimus.",
+        "birthDate": "14-02-2003 08:46",
+        "websites": [],
+        "isActive": true,
+        "id": 70,
+        "roles": []
+      },
+      {
+        "name": "Eugene Olson",
+        "email": "cheryle.goldner@hotmail.com",
+        "bio": "Perferendis reiciendis est qui accusamus quam esse quidem.",
+        "birthDate": "03-05-2004 15:27",
+        "websites": [],
+        "isActive": true,
+        "id": 71,
+        "roles": []
+      }
+    ]
+  },
+  {
+    "section": "Coordinator",
+    "accounts": [
+      {
+        "name": "Raymond Okuneva",
+        "email": "wade.hickle@gmail.com",
+        "bio": "Labore animi pariatur rerum quae neque quas odit.",
+        "birthDate": "09-12-2003 18:39",
+        "websites": [],
+        "isActive": true,
+        "id": 72,
+        "roles": []
+      },
+      {
+        "name": "Deja Reichert Jr.",
+        "email": "anya.johnson@hotmail.com",
+        "bio": "Tempora vel dignissimos rerum.",
+        "birthDate": "18-05-2000 23:20",
+        "websites": [],
+        "isActive": true,
+        "id": 73,
+        "roles": []
+      }
+    ]
+  },
+  {
+    "section": "Member",
+    "accounts": [
+      {
+        "name": "Maia Hintz V",
+        "email": "charlie.walker@hotmail.com",
+        "bio": "Iusto qui sit. Nobis cum minus cupiditate beatae inventore ratione pariatur. Tenetur soluta consequatur magnam. Dolorem minus impedit doloremque sunt eveniet neque minima. Minus esse quas. Similique fugit illum. Praesentium ducimus laudantium fuga ipsum.",
+        "birthDate": "23-04-1989 08:53",
+        "photo": "https://picsum.photos/320/200",
+        "linkedin": "https://www.rosalie-carroll.name:13290/?quis=sint&voluptates=molestiae",
+        "github": "https://www.buddy-rau.info:31222/harum#rerum",
+        "websites": [],
+        "isActive": false,
+        "id": 5,
+        "roles": []
+      },
+      {
+        "name": "Terrence Mraz MD",
+        "email": "guy.yost@yahoo.com",
+        "bio": "Saepe labore enim.",
+        "birthDate": "04-07-2007 02:28",
+        "websites": [],
+        "isActive": true,
+        "id": 74,
+        "roles": []
+      },
+      {
+        "name": "Raul Leannon",
+        "email": "jina.hettinger@hotmail.com",
+        "bio": "Nemo quidem in quos.",
+        "birthDate": "04-02-2003 11:48",
+        "websites": [],
+        "isActive": true,
+        "id": 75,
+        "roles": []
+      },
+      {
+        "name": "Mrs. Bernardina Bernier",
+        "email": "naoma.cormier@gmail.com",
+        "bio": "Omnis aspernatur inventore illum.",
+        "birthDate": "29-04-2000 09:52",
+        "websites": [],
+        "isActive": true,
+        "id": 76,
+        "roles": []
+      },
+      {
+        "name": "Jules Kautzer",
+        "email": "sue.harvey@gmail.com",
+        "bio": "Quis excepturi reprehenderit.",
+        "birthDate": "02-05-1997 01:49",
+        "websites": [],
+        "isActive": true,
+        "id": 77,
+        "roles": []
+      },
+      {
+        "name": "Dave Bruen",
+        "email": "danilo.gislason@gmail.com",
+        "bio": "Tenetur atque culpa fugiat odio.",
+        "birthDate": "04-07-1999 14:10",
+        "websites": [],
+        "isActive": true,
+        "id": 78,
+        "roles": []
+      },
+      {
+        "name": "Adah Lang",
+        "email": "matha.kihn@gmail.com",
+        "bio": "Labore explicabo eveniet excepturi.",
+        "birthDate": "17-10-1999 06:51",
+        "websites": [],
+        "isActive": true,
+        "id": 79,
+        "roles": []
+      },
+      {
+        "name": "Brittney Huels",
+        "email": "ellsworth.kuhn@yahoo.com",
+        "bio": "Qui quasi dicta.",
+        "birthDate": "30-09-1999 20:50",
+        "websites": [],
+        "isActive": true,
+        "id": 80,
+        "roles": []
+      },
+      {
+        "name": "Mr. Bethany Kuhn",
+        "email": "isabelle.mckenzie@gmail.com",
+        "bio": "Tempore harum esse atque at enim dolores eum.",
+        "birthDate": "11-12-1996 22:30",
+        "websites": [],
+        "isActive": true,
+        "id": 81,
+        "roles": []
+      },
+      {
+        "name": "Pierre Lockman",
+        "email": "reyes.purdy@yahoo.com",
+        "bio": "Rem facere repellendus libero cumque eligendi.",
+        "birthDate": "19-02-1998 10:39",
+        "websites": [],
+        "isActive": true,
+        "id": 82,
+        "roles": []
+      },
+      {
+        "name": "Brendan Jerde",
+        "email": "darwin.labadie@gmail.com",
+        "bio": "Nulla architecto consequuntur eius beatae libero illo qui.",
+        "birthDate": "01-09-2005 03:00",
+        "websites": [],
+        "isActive": true,
+        "id": 83,
+        "roles": []
+      }
+    ]
+  },
+  {
+    "section": "Recruit",
+    "accounts": [
+      {
+        "name": "Alejandro Mraz",
+        "email": "bettina.leuschke@hotmail.com",
+        "bio": "Quibusdam esse voluptatibus dolorem corporis reiciendis.",
+        "birthDate": "23-01-2004 01:02",
+        "websites": [],
+        "isActive": true,
+        "id": 84,
+        "roles": []
+      },
+      {
+        "name": "Keith Hane",
+        "email": "wallace.parisian@gmail.com",
+        "bio": "Vero ratione adipisci.",
+        "birthDate": "24-07-1999 01:16",
+        "websites": [],
+        "isActive": true,
+        "id": 85,
+        "roles": []
+      },
+      {
+        "name": "Darcey Cronin",
+        "email": "ilona.ferry@gmail.com",
+        "bio": "Quidem in tempore blanditiis molestiae.",
+        "birthDate": "04-07-2000 00:01",
+        "websites": [],
+        "isActive": true,
+        "id": 86,
+        "roles": []
+      },
+      {
+        "name": "Florence Jast",
+        "email": "willie.ullrich@yahoo.com",
+        "bio": "Dolorum consequuntur eius.",
+        "birthDate": "26-07-2000 11:14",
+        "websites": [],
+        "isActive": true,
+        "id": 87,
+        "roles": []
+      },
+      {
+        "name": "Lyman Langosh",
+        "email": "carlee.harber@gmail.com",
+        "bio": "Minima aperiam quidem explicabo.",
+        "birthDate": "19-08-2006 00:21",
+        "websites": [],
+        "isActive": true,
+        "id": 88,
+        "roles": []
+      },
+      {
+        "name": "Phillip Hickle",
+        "email": "enid.simonis@yahoo.com",
+        "bio": "Assumenda delectus porro esse sint.",
+        "birthDate": "22-12-2000 10:02",
+        "websites": [],
+        "isActive": true,
+        "id": 89,
+        "roles": []
+      },
+      {
+        "name": "Felicitas Brakus",
+        "email": "idalia.weber@hotmail.com",
+        "bio": "Itaque autem eius voluptates.",
+        "birthDate": "26-11-1996 12:59",
+        "websites": [],
+        "isActive": true,
+        "id": 90,
+        "roles": []
+      },
+      {
+        "name": "Pat Lemke I",
+        "email": "edward.beier@yahoo.com",
+        "bio": "Suscipit harum veniam in maxime maiores veniam distinctio.",
+        "birthDate": "27-04-2005 07:51",
+        "websites": [],
+        "isActive": true,
+        "id": 91,
+        "roles": []
+      },
+      {
+        "name": "Ivory Kuhic",
+        "email": "val.mante@gmail.com",
+        "bio": "Ipsam quod itaque.",
+        "birthDate": "12-05-2007 19:30",
+        "websites": [],
+        "isActive": true,
+        "id": 92,
+        "roles": []
+      },
+      {
+        "name": "Felipe McKenzie",
+        "email": "dawne.macejkovic@yahoo.com",
+        "bio": "Explicabo cupiditate adipisci aperiam eveniet fugiat odit.",
+        "birthDate": "31-07-2004 14:59",
+        "websites": [],
+        "isActive": true,
+        "id": 93,
+        "roles": []
+      }
+    ]
+  }
+]

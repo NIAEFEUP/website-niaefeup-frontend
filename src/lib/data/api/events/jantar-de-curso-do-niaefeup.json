@@ -1,1 +1,45 @@
-{"title":"Jantar de Curso do NIAEFEUP","description":"Um momento de convívio para todos os membros e estudantes.","teamMembers":[{"name":"Maia Hintz V","email":"charlie.walker@hotmail.com","bio":"Iusto qui sit. Nobis cum minus cupiditate beatae inventore ratione pariatur. Tenetur soluta consequatur magnam. Dolorem minus impedit doloremque sunt eveniet neque minima. Minus esse quas. Similique fugit illum. Praesentium ducimus laudantium fuga ipsum.","birthDate":"23-04-1989 08:53","photo":"https://picsum.photos/320/200","linkedin":"https://www.rosalie-carroll.name:13290/?quis=sint&voluptates=molestiae","github":"https://www.buddy-rau.info:31222/harum#rerum","websites":[],"isActive":false,"id":5},{"name":"Zoë Löwe Dinis Canas","email":"donnell.friesen@hotmail.com","bio":"Minus sequi minima ea perferendis vitae iste.","birthDate":"09-02-1990 20:18","photo":"https://picsum.photos/1920/1200","linkedin":"https://www.ahmed-olson.info/delectus/blanditiisnemo?tempora=porro&distinctio=numquam","github":"https://www.julie-friesen.com:33515/suscipit/eaque#sapiente","websites":[],"isActive":true,"id":8},{"name":"Benjamin Cronin","email":"ema.grimes@gmail.com","websites":[],"isActive":true,"id":7}],"slug":"jantar-de-curso-do-niaefeup","image":"http://localhost:8080/static/events/jantar_de_curso_1.png","gallery":["http://localhost:8080/static/events/gallery/jantar_de_curso_2.png"],"registerUrl":"https://jantar-de-curso-do-niaefeup.com/register","dateInterval":{"startDate":"15-08-2026 10:21","endDate":"17-08-2026 10:21"},"location":"Restaurante O Convívio","category":"Social","id":7}
+{
+  "title": "Jantar de Curso do NIAEFEUP",
+  "description": "Um momento de convívio para todos os membros e estudantes.",
+  "teamMembers": [
+    {
+      "name": "Maia Hintz V",
+      "email": "charlie.walker@hotmail.com",
+      "bio": "Iusto qui sit. Nobis cum minus cupiditate beatae inventore ratione pariatur. Tenetur soluta consequatur magnam. Dolorem minus impedit doloremque sunt eveniet neque minima. Minus esse quas. Similique fugit illum. Praesentium ducimus laudantium fuga ipsum.",
+      "birthDate": "23-04-1989 08:53",
+      "photo": "https://picsum.photos/320/200",
+      "linkedin": "https://www.rosalie-carroll.name:13290/?quis=sint&voluptates=molestiae",
+      "github": "https://www.buddy-rau.info:31222/harum#rerum",
+      "websites": [],
+      "isActive": false,
+      "id": 5
+    },
+    {
+      "name": "Zoë Löwe Dinis Canas",
+      "email": "donnell.friesen@hotmail.com",
+      "bio": "Minus sequi minima ea perferendis vitae iste.",
+      "birthDate": "09-02-1990 20:18",
+      "photo": "https://picsum.photos/1920/1200",
+      "linkedin": "https://www.ahmed-olson.info/delectus/blanditiisnemo?tempora=porro&distinctio=numquam",
+      "github": "https://www.julie-friesen.com:33515/suscipit/eaque#sapiente",
+      "websites": [],
+      "isActive": true,
+      "id": 8
+    },
+    {
+      "name": "Benjamin Cronin",
+      "email": "ema.grimes@gmail.com",
+      "websites": [],
+      "isActive": true,
+      "id": 7
+    }
+  ],
+  "slug": "jantar-de-curso-do-niaefeup",
+  "image": "http://localhost:8080/static/events/jantar_de_curso_1.png",
+  "gallery": ["http://localhost:8080/static/events/gallery/jantar_de_curso_2.png"],
+  "registerUrl": "https://jantar-de-curso-do-niaefeup.com/register",
+  "dateInterval": { "startDate": "15-08-2026 10:21", "endDate": "17-08-2026 10:21" },
+  "location": "Restaurante O Convívio",
+  "category": "Social",
+  "id": 7
+}

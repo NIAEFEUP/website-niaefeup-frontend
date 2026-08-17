@@ -1,1 +1,132 @@
-{"title":" TimeTable Selector","description":"A clássica ferramenta de seleção de horários do NIAEFEUP teve um facelift! Experimenta já em ni.fe.up.pt/tts","teamMembers":[{"name":"Ashley Kub II","email":"bennett.rice@hotmail.com","bio":"User with only one role.","birthDate":"08-07-2004 11:26","photo":"https://picsum.photos/1366/768","linkedin":"https://www.doreatha-erdman.net/corrupti/quosreiciendis#tenetur","github":"http://www.lucien-jacobs.info/","websites":[{"url":"http://www.myrle-kessler.name:42019/doloremque?in=libero&consequatur=ratione#magni","iconPath":"https://picsum.photos/1920/1200","label":"Maxime ipsa commodi.","id":10},{"url":"https://www.jina-kuphal.net/quam/minus?tenetur=exercitationem&esse=molestias","iconPath":"https://picsum.photos/320/200","label":"Mollitia labore voluptatem sed voluptatem facilis.","id":6}],"isActive":false,"id":6},{"name":"Royal Douglas","email":"sharleen.mann@yahoo.com","bio":"Libero cupiditate itaque. Qui dignissimos rem laboriosam deserunt rerum sapiente.","birthDate":"30-11-1997 12:29","photo":"https://picsum.photos/720/348","linkedin":"https://www.merissa-greenholt.io:45733/et/iuresoluta?velit=nisi&nostrum=minima#earum","github":"https://www.pam-tremblay.io:28798/natus/distinctio?tempora=architecto&neque=odio#nesciunt","websites":[{"url":"https://www.jamaal-bayer.biz/ut/voluptatem#magnam","iconPath":"https://picsum.photos/1366/768","label":"Vel reiciendis quaerat.","id":2}],"isActive":true,"id":1},{"name":"Corey McKenzie Jr.","email":"hui.wiza@gmail.com","bio":"Quod ducimus itaque aspernatur magnam dolore.","birthDate":"30-08-1993 21:40","linkedin":"http://www.tania-orn.biz:26329/a/nesciuntrem?dolorem=atque&impedit=deleniti","github":"http://www.shirley-robel.io:50716/officiis/aut","websites":[],"isActive":false,"id":2}],"slug":"-timetable-selector","image":"http://localhost:8080/static/projects/project_7.png","gallery":[],"thumbnail":"http://localhost:8080/static/projects/project_2.png","isArchived":true,"technologies":[{"name":"bfcezq","image":"http://localhost:8080/static/technologies/technology_9.png","url":"https://example.com/technology/9","id":9}],"slogan":"Planeia o teu semestre perfeito.","targetAudience":"Estudantes da FEUP","github":"https://github.com/-timetable-selector","links":[{"url":"http://www.marcene-mckenzie.name:52420/vero/repellendusblanditiis?iure=reiciendis&laborum=nostrum#corporis","iconPath":"https://picsum.photos/320/200","label":"Molestiae voluptatibus esse.","id":8},{"url":"http://www.debrah-langosh.biz/?doloribus=suscipit&rem=culpa#accusantium","iconPath":"https://picsum.photos/1280/1024","label":"Quos sequi sint accusamus veritatis sequi.","id":1}],"hallOfFame":[{"name":"Royal Douglas","email":"sharleen.mann@yahoo.com","bio":"Libero cupiditate itaque. Qui dignissimos rem laboriosam deserunt rerum sapiente.","birthDate":"30-11-1997 12:29","photo":"https://picsum.photos/720/348","linkedin":"https://www.merissa-greenholt.io:45733/et/iuresoluta?velit=nisi&nostrum=minima#earum","github":"https://www.pam-tremblay.io:28798/natus/distinctio?tempora=architecto&neque=odio#nesciunt","websites":[{"url":"https://www.jamaal-bayer.biz/ut/voluptatem#magnam","iconPath":"https://picsum.photos/1366/768","label":"Vel reiciendis quaerat.","id":2}],"isActive":true,"id":1},{"name":"Maia Hintz V","email":"charlie.walker@hotmail.com","bio":"Iusto qui sit. Nobis cum minus cupiditate beatae inventore ratione pariatur. Tenetur soluta consequatur magnam. Dolorem minus impedit doloremque sunt eveniet neque minima. Minus esse quas. Similique fugit illum. Praesentium ducimus laudantium fuga ipsum.","birthDate":"23-04-1989 08:53","photo":"https://picsum.photos/320/200","linkedin":"https://www.rosalie-carroll.name:13290/?quis=sint&voluptates=molestiae","github":"https://www.buddy-rau.info:31222/harum#rerum","websites":[],"isActive":false,"id":5}],"timeline":[{"date":"09-11-2020 00:00","description":"Suscipit occaecati eveniet in architecto explicabo dolorum.","id":2}],"id":2}
+{
+  "title": " TimeTable Selector",
+  "description": "A clássica ferramenta de seleção de horários do NIAEFEUP teve um facelift! Experimenta já em ni.fe.up.pt/tts",
+  "teamMembers": [
+    {
+      "name": "Ashley Kub II",
+      "email": "bennett.rice@hotmail.com",
+      "bio": "User with only one role.",
+      "birthDate": "08-07-2004 11:26",
+      "photo": "https://picsum.photos/1366/768",
+      "linkedin": "https://www.doreatha-erdman.net/corrupti/quosreiciendis#tenetur",
+      "github": "http://www.lucien-jacobs.info/",
+      "websites": [
+        {
+          "url": "http://www.myrle-kessler.name:42019/doloremque?in=libero&consequatur=ratione#magni",
+          "iconPath": "https://picsum.photos/1920/1200",
+          "label": "Maxime ipsa commodi.",
+          "id": 10
+        },
+        {
+          "url": "https://www.jina-kuphal.net/quam/minus?tenetur=exercitationem&esse=molestias",
+          "iconPath": "https://picsum.photos/320/200",
+          "label": "Mollitia labore voluptatem sed voluptatem facilis.",
+          "id": 6
+        }
+      ],
+      "isActive": false,
+      "id": 6
+    },
+    {
+      "name": "Royal Douglas",
+      "email": "sharleen.mann@yahoo.com",
+      "bio": "Libero cupiditate itaque. Qui dignissimos rem laboriosam deserunt rerum sapiente.",
+      "birthDate": "30-11-1997 12:29",
+      "photo": "https://picsum.photos/720/348",
+      "linkedin": "https://www.merissa-greenholt.io:45733/et/iuresoluta?velit=nisi&nostrum=minima#earum",
+      "github": "https://www.pam-tremblay.io:28798/natus/distinctio?tempora=architecto&neque=odio#nesciunt",
+      "websites": [
+        {
+          "url": "https://www.jamaal-bayer.biz/ut/voluptatem#magnam",
+          "iconPath": "https://picsum.photos/1366/768",
+          "label": "Vel reiciendis quaerat.",
+          "id": 2
+        }
+      ],
+      "isActive": true,
+      "id": 1
+    },
+    {
+      "name": "Corey McKenzie Jr.",
+      "email": "hui.wiza@gmail.com",
+      "bio": "Quod ducimus itaque aspernatur magnam dolore.",
+      "birthDate": "30-08-1993 21:40",
+      "linkedin": "http://www.tania-orn.biz:26329/a/nesciuntrem?dolorem=atque&impedit=deleniti",
+      "github": "http://www.shirley-robel.io:50716/officiis/aut",
+      "websites": [],
+      "isActive": false,
+      "id": 2
+    }
+  ],
+  "slug": "-timetable-selector",
+  "image": "http://localhost:8080/static/projects/project_7.png",
+  "gallery": [],
+  "thumbnail": "http://localhost:8080/static/projects/project_2.png",
+  "isArchived": true,
+  "technologies": [
+    {
+      "name": "bfcezq",
+      "image": "http://localhost:8080/static/technologies/technology_9.png",
+      "url": "https://example.com/technology/9",
+      "id": 9
+    }
+  ],
+  "slogan": "Planeia o teu semestre perfeito.",
+  "targetAudience": "Estudantes da FEUP",
+  "github": "https://github.com/-timetable-selector",
+  "links": [
+    {
+      "url": "http://www.marcene-mckenzie.name:52420/vero/repellendusblanditiis?iure=reiciendis&laborum=nostrum#corporis",
+      "iconPath": "https://picsum.photos/320/200",
+      "label": "Molestiae voluptatibus esse.",
+      "id": 8
+    },
+    {
+      "url": "http://www.debrah-langosh.biz/?doloribus=suscipit&rem=culpa#accusantium",
+      "iconPath": "https://picsum.photos/1280/1024",
+      "label": "Quos sequi sint accusamus veritatis sequi.",
+      "id": 1
+    }
+  ],
+  "hallOfFame": [
+    {
+      "name": "Royal Douglas",
+      "email": "sharleen.mann@yahoo.com",
+      "bio": "Libero cupiditate itaque. Qui dignissimos rem laboriosam deserunt rerum sapiente.",
+      "birthDate": "30-11-1997 12:29",
+      "photo": "https://picsum.photos/720/348",
+      "linkedin": "https://www.merissa-greenholt.io:45733/et/iuresoluta?velit=nisi&nostrum=minima#earum",
+      "github": "https://www.pam-tremblay.io:28798/natus/distinctio?tempora=architecto&neque=odio#nesciunt",
+      "websites": [
+        {
+          "url": "https://www.jamaal-bayer.biz/ut/voluptatem#magnam",
+          "iconPath": "https://picsum.photos/1366/768",
+          "label": "Vel reiciendis quaerat.",
+          "id": 2
+        }
+      ],
+      "isActive": true,
+      "id": 1
+    },
+    {
+      "name": "Maia Hintz V",
+      "email": "charlie.walker@hotmail.com",
+      "bio": "Iusto qui sit. Nobis cum minus cupiditate beatae inventore ratione pariatur. Tenetur soluta consequatur magnam. Dolorem minus impedit doloremque sunt eveniet neque minima. Minus esse quas. Similique fugit illum. Praesentium ducimus laudantium fuga ipsum.",
+      "birthDate": "23-04-1989 08:53",
+      "photo": "https://picsum.photos/320/200",
+      "linkedin": "https://www.rosalie-carroll.name:13290/?quis=sint&voluptates=molestiae",
+      "github": "https://www.buddy-rau.info:31222/harum#rerum",
+      "websites": [],
+      "isActive": false,
+      "id": 5
+    }
+  ],
+  "timeline": [
+    {
+      "date": "09-11-2020 00:00",
+      "description": "Suscipit occaecati eveniet in architecto explicabo dolorum.",
+      "id": 2
+    }
+  ],
+  "id": 2
+}

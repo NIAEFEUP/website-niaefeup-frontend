@@ -1,1 +1,131 @@
-{"title":"uni","description":"uni é uma aplicação desenvolvida pelos estudantes do Núcleo de Informática da Associação de Estudantes da Faculdade de Engenharia da Universidade do Porto. Pretende facilitar e tornar mais rápido o acesso a informações da plataforma da faculdade, bem como de outros serviços que possam interessar aos estudantes da mesma.","teamMembers":[{"name":"Royal Douglas","email":"sharleen.mann@yahoo.com","bio":"Libero cupiditate itaque. Qui dignissimos rem laboriosam deserunt rerum sapiente.","birthDate":"30-11-1997 12:29","photo":"https://picsum.photos/720/348","linkedin":"https://www.merissa-greenholt.io:45733/et/iuresoluta?velit=nisi&nostrum=minima#earum","github":"https://www.pam-tremblay.io:28798/natus/distinctio?tempora=architecto&neque=odio#nesciunt","websites":[{"url":"https://www.jamaal-bayer.biz/ut/voluptatem#magnam","iconPath":"https://picsum.photos/1366/768","label":"Vel reiciendis quaerat.","id":2}],"isActive":true,"id":1},{"name":"Santiago Kuvalis","email":"arleen.little@gmail.com","birthDate":"16-01-2000 14:11","photo":"https://picsum.photos/720/348","linkedin":"https://www.sharita-wisozk.info:45451/natus","github":"https://www.rolanda-brown.biz:64141/?est=nam&nemo=odio","websites":[{"url":"https://www.ollie-bruen.info:6338/consectetur","iconPath":"https://picsum.photos/1280/1024","label":"Odit veritatis quo.","id":7},{"url":"http://www.marcene-mckenzie.name:52420/vero/repellendusblanditiis?iure=reiciendis&laborum=nostrum#corporis","iconPath":"https://picsum.photos/320/200","label":"Molestiae voluptatibus esse.","id":8}],"isActive":false,"id":3},{"name":"Maia Hintz V","email":"charlie.walker@hotmail.com","bio":"Iusto qui sit. Nobis cum minus cupiditate beatae inventore ratione pariatur. Tenetur soluta consequatur magnam. Dolorem minus impedit doloremque sunt eveniet neque minima. Minus esse quas. Similique fugit illum. Praesentium ducimus laudantium fuga ipsum.","birthDate":"23-04-1989 08:53","photo":"https://picsum.photos/320/200","linkedin":"https://www.rosalie-carroll.name:13290/?quis=sint&voluptates=molestiae","github":"https://www.buddy-rau.info:31222/harum#rerum","websites":[],"isActive":false,"id":5}],"slug":"uni","image":"http://localhost:8080/static/projects/project_10.png","gallery":[],"thumbnail":"http://localhost:8080/static/projects/project_5.png","isArchived":true,"technologies":[{"name":"yjbswun","image":"http://localhost:8080/static/technologies/technology_10.png","url":"https://example.com/technology/10","id":10},{"name":"pqmytm","image":"http://localhost:8080/static/technologies/technology_1.png","url":"https://example.com/technology/1","id":1},{"name":"krsdedbrh","image":"http://localhost:8080/static/technologies/technology_8.png","url":"https://example.com/technology/8","id":8}],"slogan":"A FEUP no teu bolso.","targetAudience":"Estudantes da FEUP","github":"https://github.com/uni","links":[{"url":"https://www.luann-roob.org/?aspernatur=odit&nemo=illo","iconPath":"https://picsum.photos/640/480","label":"Incidunt sit veritatis consequatur sint maxime.","id":5},{"url":"https://www.edwardo-pfannerstill.info/#modi","iconPath":"https://picsum.photos/640/350","label":"Ducimus sunt odit.","id":12}],"hallOfFame":[{"name":"Benjamin Cronin","email":"ema.grimes@gmail.com","websites":[],"isActive":true,"id":7},{"name":"Corey McKenzie Jr.","email":"hui.wiza@gmail.com","bio":"Quod ducimus itaque aspernatur magnam dolore.","birthDate":"30-08-1993 21:40","linkedin":"http://www.tania-orn.biz:26329/a/nesciuntrem?dolorem=atque&impedit=deleniti","github":"http://www.shirley-robel.io:50716/officiis/aut","websites":[],"isActive":false,"id":2}],"timeline":[{"date":"03-04-2020 01:00","description":"Voluptas voluptatum vitae est reiciendis molestiae minus.","id":4}],"id":5}
+{
+  "title": "uni",
+  "description": "uni é uma aplicação desenvolvida pelos estudantes do Núcleo de Informática da Associação de Estudantes da Faculdade de Engenharia da Universidade do Porto. Pretende facilitar e tornar mais rápido o acesso a informações da plataforma da faculdade, bem como de outros serviços que possam interessar aos estudantes da mesma.",
+  "teamMembers": [
+    {
+      "name": "Royal Douglas",
+      "email": "sharleen.mann@yahoo.com",
+      "bio": "Libero cupiditate itaque. Qui dignissimos rem laboriosam deserunt rerum sapiente.",
+      "birthDate": "30-11-1997 12:29",
+      "photo": "https://picsum.photos/720/348",
+      "linkedin": "https://www.merissa-greenholt.io:45733/et/iuresoluta?velit=nisi&nostrum=minima#earum",
+      "github": "https://www.pam-tremblay.io:28798/natus/distinctio?tempora=architecto&neque=odio#nesciunt",
+      "websites": [
+        {
+          "url": "https://www.jamaal-bayer.biz/ut/voluptatem#magnam",
+          "iconPath": "https://picsum.photos/1366/768",
+          "label": "Vel reiciendis quaerat.",
+          "id": 2
+        }
+      ],
+      "isActive": true,
+      "id": 1
+    },
+    {
+      "name": "Santiago Kuvalis",
+      "email": "arleen.little@gmail.com",
+      "birthDate": "16-01-2000 14:11",
+      "photo": "https://picsum.photos/720/348",
+      "linkedin": "https://www.sharita-wisozk.info:45451/natus",
+      "github": "https://www.rolanda-brown.biz:64141/?est=nam&nemo=odio",
+      "websites": [
+        {
+          "url": "https://www.ollie-bruen.info:6338/consectetur",
+          "iconPath": "https://picsum.photos/1280/1024",
+          "label": "Odit veritatis quo.",
+          "id": 7
+        },
+        {
+          "url": "http://www.marcene-mckenzie.name:52420/vero/repellendusblanditiis?iure=reiciendis&laborum=nostrum#corporis",
+          "iconPath": "https://picsum.photos/320/200",
+          "label": "Molestiae voluptatibus esse.",
+          "id": 8
+        }
+      ],
+      "isActive": false,
+      "id": 3
+    },
+    {
+      "name": "Maia Hintz V",
+      "email": "charlie.walker@hotmail.com",
+      "bio": "Iusto qui sit. Nobis cum minus cupiditate beatae inventore ratione pariatur. Tenetur soluta consequatur magnam. Dolorem minus impedit doloremque sunt eveniet neque minima. Minus esse quas. Similique fugit illum. Praesentium ducimus laudantium fuga ipsum.",
+      "birthDate": "23-04-1989 08:53",
+      "photo": "https://picsum.photos/320/200",
+      "linkedin": "https://www.rosalie-carroll.name:13290/?quis=sint&voluptates=molestiae",
+      "github": "https://www.buddy-rau.info:31222/harum#rerum",
+      "websites": [],
+      "isActive": false,
+      "id": 5
+    }
+  ],
+  "slug": "uni",
+  "image": "http://localhost:8080/static/projects/project_10.png",
+  "gallery": [],
+  "thumbnail": "http://localhost:8080/static/projects/project_5.png",
+  "isArchived": true,
+  "technologies": [
+    {
+      "name": "yjbswun",
+      "image": "http://localhost:8080/static/technologies/technology_10.png",
+      "url": "https://example.com/technology/10",
+      "id": 10
+    },
+    {
+      "name": "pqmytm",
+      "image": "http://localhost:8080/static/technologies/technology_1.png",
+      "url": "https://example.com/technology/1",
+      "id": 1
+    },
+    {
+      "name": "krsdedbrh",
+      "image": "http://localhost:8080/static/technologies/technology_8.png",
+      "url": "https://example.com/technology/8",
+      "id": 8
+    }
+  ],
+  "slogan": "A FEUP no teu bolso.",
+  "targetAudience": "Estudantes da FEUP",
+  "github": "https://github.com/uni",
+  "links": [
+    {
+      "url": "https://www.luann-roob.org/?aspernatur=odit&nemo=illo",
+      "iconPath": "https://picsum.photos/640/480",
+      "label": "Incidunt sit veritatis consequatur sint maxime.",
+      "id": 5
+    },
+    {
+      "url": "https://www.edwardo-pfannerstill.info/#modi",
+      "iconPath": "https://picsum.photos/640/350",
+      "label": "Ducimus sunt odit.",
+      "id": 12
+    }
+  ],
+  "hallOfFame": [
+    {
+      "name": "Benjamin Cronin",
+      "email": "ema.grimes@gmail.com",
+      "websites": [],
+      "isActive": true,
+      "id": 7
+    },
+    {
+      "name": "Corey McKenzie Jr.",
+      "email": "hui.wiza@gmail.com",
+      "bio": "Quod ducimus itaque aspernatur magnam dolore.",
+      "birthDate": "30-08-1993 21:40",
+      "linkedin": "http://www.tania-orn.biz:26329/a/nesciuntrem?dolorem=atque&impedit=deleniti",
+      "github": "http://www.shirley-robel.io:50716/officiis/aut",
+      "websites": [],
+      "isActive": false,
+      "id": 2
+    }
+  ],
+  "timeline": [
+    {
+      "date": "03-04-2020 01:00",
+      "description": "Voluptas voluptatum vitae est reiciendis molestiae minus.",
+      "id": 4
+    }
+  ],
+  "id": 5
+}
