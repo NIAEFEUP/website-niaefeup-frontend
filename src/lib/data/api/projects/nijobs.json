@@ -82,20 +82,20 @@
     }
   ],
   "slug": "nijobs",
-  "image": "http://localhost:8080/static/projects/project_8.png",
+  "image": "/api_images/projects/project_8.png",
   "gallery": [],
-  "thumbnail": "http://localhost:8080/static/projects/project_3.png",
+  "thumbnail": "/api_images/projects/project_3.png",
   "isArchived": false,
   "technologies": [
     {
       "name": "vmymwo",
-      "image": "http://localhost:8080/static/technologies/technology_2.png",
+      "image": "/api_images/technologies/technology_2.png",
       "url": "https://example.com/technology/2",
       "id": 2
     },
     {
       "name": "slmvcjcm",
-      "image": "http://localhost:8080/static/technologies/technology_5.png",
+      "image": "/api_images/technologies/technology_5.png",
       "url": "https://example.com/technology/5",
       "id": 5
     }

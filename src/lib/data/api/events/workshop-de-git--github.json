@@ -61,13 +61,16 @@
     }
   ],
   "slug": "workshop-de-git--github",
-  "image": "http://localhost:8080/static/events/workshop_1.png",
+  "image": "/api_images/events/workshop_1.png",
   "gallery": [
-    "http://localhost:8080/static/events/gallery/workshop_2.png",
-    "http://localhost:8080/static/events/gallery/workshop_3.png"
+    "/api_images/events/gallery/workshop_2.png",
+    "/api_images/events/gallery/workshop_3.png"
   ],
   "registerUrl": "https://workshop-de-git--github.com/register",
-  "dateInterval": { "startDate": "21-08-2026 10:21", "endDate": "23-08-2026 10:21" },
+  "dateInterval": {
+    "startDate": "21-08-2026 10:21",
+    "endDate": "23-08-2026 10:21"
+  },
   "location": "B001, FEUP",
   "category": "Technology",
   "id": 6

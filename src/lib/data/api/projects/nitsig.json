@@ -69,14 +69,14 @@
     }
   ],
   "slug": "nitsig",
-  "image": "http://localhost:8080/static/projects/project_6.png",
+  "image": "/api_images/projects/project_6.png",
   "gallery": [],
-  "thumbnail": "http://localhost:8080/static/projects/project_1.png",
+  "thumbnail": "/api_images/projects/project_1.png",
   "isArchived": false,
   "technologies": [
     {
       "name": "bnimupxfh",
-      "image": "http://localhost:8080/static/technologies/technology_7.png",
+      "image": "/api_images/technologies/technology_7.png",
       "url": "https://example.com/technology/7",
       "id": 7
     }

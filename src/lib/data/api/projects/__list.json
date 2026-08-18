@@ -70,14 +70,14 @@
       }
     ],
     "slug": "nitsig",
-    "image": "http://localhost:8080/static/projects/project_6.png",
+    "image": "/api_images/projects/project_6.png",
     "gallery": [],
-    "thumbnail": "http://localhost:8080/static/projects/project_1.png",
+    "thumbnail": "/api_images/projects/project_1.png",
     "isArchived": false,
     "technologies": [
       {
         "name": "bnimupxfh",
-        "image": "http://localhost:8080/static/technologies/technology_7.png",
+        "image": "/api_images/technologies/technology_7.png",
         "url": "https://example.com/technology/7",
         "id": 7
       }
@@ -203,14 +203,14 @@
       }
     ],
     "slug": "-timetable-selector",
-    "image": "http://localhost:8080/static/projects/project_7.png",
+    "image": "/api_images/projects/project_7.png",
     "gallery": [],
-    "thumbnail": "http://localhost:8080/static/projects/project_2.png",
+    "thumbnail": "/api_images/projects/project_2.png",
     "isArchived": true,
     "technologies": [
       {
         "name": "bfcezq",
-        "image": "http://localhost:8080/static/technologies/technology_9.png",
+        "image": "/api_images/technologies/technology_9.png",
         "url": "https://example.com/technology/9",
         "id": 9
       }
@@ -358,20 +358,20 @@
       }
     ],
     "slug": "nijobs",
-    "image": "http://localhost:8080/static/projects/project_8.png",
+    "image": "/api_images/projects/project_8.png",
     "gallery": [],
-    "thumbnail": "http://localhost:8080/static/projects/project_3.png",
+    "thumbnail": "/api_images/projects/project_3.png",
     "isArchived": false,
     "technologies": [
       {
         "name": "vmymwo",
-        "image": "http://localhost:8080/static/technologies/technology_2.png",
+        "image": "/api_images/technologies/technology_2.png",
         "url": "https://example.com/technology/2",
         "id": 2
       },
       {
         "name": "slmvcjcm",
-        "image": "http://localhost:8080/static/technologies/technology_5.png",
+        "image": "/api_images/technologies/technology_5.png",
         "url": "https://example.com/technology/5",
         "id": 5
       }
@@ -469,20 +469,20 @@
       }
     ],
     "slug": "-novo-website",
-    "image": "http://localhost:8080/static/projects/project_9.png",
+    "image": "/api_images/projects/project_9.png",
     "gallery": [],
-    "thumbnail": "http://localhost:8080/static/projects/project_4.png",
+    "thumbnail": "/api_images/projects/project_4.png",
     "isArchived": false,
     "technologies": [
       {
         "name": "tmmnbi",
-        "image": "http://localhost:8080/static/technologies/technology_4.png",
+        "image": "/api_images/technologies/technology_4.png",
         "url": "https://example.com/technology/4",
         "id": 4
       },
       {
         "name": "rtasxf",
-        "image": "http://localhost:8080/static/technologies/technology_3.png",
+        "image": "/api_images/technologies/technology_3.png",
         "url": "https://example.com/technology/3",
         "id": 3
       }
@@ -629,26 +629,26 @@
       }
     ],
     "slug": "uni",
-    "image": "http://localhost:8080/static/projects/project_10.png",
+    "image": "/api_images/projects/project_10.png",
     "gallery": [],
-    "thumbnail": "http://localhost:8080/static/projects/project_5.png",
+    "thumbnail": "/api_images/projects/project_5.png",
     "isArchived": true,
     "technologies": [
       {
         "name": "yjbswun",
-        "image": "http://localhost:8080/static/technologies/technology_10.png",
+        "image": "/api_images/technologies/technology_10.png",
         "url": "https://example.com/technology/10",
         "id": 10
       },
       {
         "name": "pqmytm",
-        "image": "http://localhost:8080/static/technologies/technology_1.png",
+        "image": "/api_images/technologies/technology_1.png",
         "url": "https://example.com/technology/1",
         "id": 1
       },
       {
         "name": "krsdedbrh",
-        "image": "http://localhost:8080/static/technologies/technology_8.png",
+        "image": "/api_images/technologies/technology_8.png",
         "url": "https://example.com/technology/8",
         "id": 8
       }

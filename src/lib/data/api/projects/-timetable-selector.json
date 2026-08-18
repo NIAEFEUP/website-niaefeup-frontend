@@ -59,14 +59,14 @@
     }
   ],
   "slug": "-timetable-selector",
-  "image": "http://localhost:8080/static/projects/project_7.png",
+  "image": "/api_images/projects/project_7.png",
   "gallery": [],
-  "thumbnail": "http://localhost:8080/static/projects/project_2.png",
+  "thumbnail": "/api_images/projects/project_2.png",
   "isArchived": true,
   "technologies": [
     {
       "name": "bfcezq",
-      "image": "http://localhost:8080/static/technologies/technology_9.png",
+      "image": "/api_images/technologies/technology_9.png",
       "url": "https://example.com/technology/9",
       "id": 9
     }

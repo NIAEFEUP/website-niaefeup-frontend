@@ -52,10 +52,15 @@
     }
   ],
   "slug": "sesso-de-dvidas-kotlin",
-  "image": "http://localhost:8080/static/events/workshop_2.png",
-  "gallery": ["http://localhost:8080/static/events/gallery/workshop_1.png"],
+  "image": "/api_images/events/workshop_2.png",
+  "gallery": [
+    "/api_images/events/gallery/workshop_1.png"
+  ],
   "registerUrl": "https://sesso-de-dvidas-kotlin.com/register",
-  "dateInterval": { "startDate": "15-08-2026 10:21", "endDate": "16-08-2026 10:21" },
+  "dateInterval": {
+    "startDate": "15-08-2026 10:21",
+    "endDate": "16-08-2026 10:21"
+  },
   "location": "Online (Discord)",
   "category": "Education",
   "id": 8

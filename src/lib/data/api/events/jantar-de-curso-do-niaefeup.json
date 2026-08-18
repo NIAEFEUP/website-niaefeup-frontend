@@ -35,10 +35,15 @@
     }
   ],
   "slug": "jantar-de-curso-do-niaefeup",
-  "image": "http://localhost:8080/static/events/jantar_de_curso_1.png",
-  "gallery": ["http://localhost:8080/static/events/gallery/jantar_de_curso_2.png"],
+  "image": "/api_images/events/jantar_de_curso_1.png",
+  "gallery": [
+    "/api_images/events/gallery/jantar_de_curso_2.png"
+  ],
   "registerUrl": "https://jantar-de-curso-do-niaefeup.com/register",
-  "dateInterval": { "startDate": "15-08-2026 10:21", "endDate": "17-08-2026 10:21" },
+  "dateInterval": {
+    "startDate": "15-08-2026 10:21",
+    "endDate": "17-08-2026 10:21"
+  },
   "location": "Restaurante O Convívio",
   "category": "Social",
   "id": 7

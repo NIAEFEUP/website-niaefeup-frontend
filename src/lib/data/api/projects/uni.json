@@ -59,26 +59,26 @@
     }
   ],
   "slug": "uni",
-  "image": "http://localhost:8080/static/projects/project_10.png",
+  "image": "/api_images/projects/project_10.png",
   "gallery": [],
-  "thumbnail": "http://localhost:8080/static/projects/project_5.png",
+  "thumbnail": "/api_images/projects/project_5.png",
   "isArchived": true,
   "technologies": [
     {
       "name": "yjbswun",
-      "image": "http://localhost:8080/static/technologies/technology_10.png",
+      "image": "/api_images/technologies/technology_10.png",
       "url": "https://example.com/technology/10",
       "id": 10
     },
     {
       "name": "pqmytm",
-      "image": "http://localhost:8080/static/technologies/technology_1.png",
+      "image": "/api_images/technologies/technology_1.png",
       "url": "https://example.com/technology/1",
       "id": 1
     },
     {
       "name": "krsdedbrh",
-      "image": "http://localhost:8080/static/technologies/technology_8.png",
+      "image": "/api_images/technologies/technology_8.png",
       "url": "https://example.com/technology/8",
       "id": 8
     }

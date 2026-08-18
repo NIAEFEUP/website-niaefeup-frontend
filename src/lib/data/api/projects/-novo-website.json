@@ -57,20 +57,20 @@
     }
   ],
   "slug": "-novo-website",
-  "image": "http://localhost:8080/static/projects/project_9.png",
+  "image": "/api_images/projects/project_9.png",
   "gallery": [],
-  "thumbnail": "http://localhost:8080/static/projects/project_4.png",
+  "thumbnail": "/api_images/projects/project_4.png",
   "isArchived": false,
   "technologies": [
     {
       "name": "tmmnbi",
-      "image": "http://localhost:8080/static/technologies/technology_4.png",
+      "image": "/api_images/technologies/technology_4.png",
       "url": "https://example.com/technology/4",
       "id": 4
     },
     {
       "name": "rtasxf",
-      "image": "http://localhost:8080/static/technologies/technology_3.png",
+      "image": "/api_images/technologies/technology_3.png",
       "url": "https://example.com/technology/3",
       "id": 3
     }
