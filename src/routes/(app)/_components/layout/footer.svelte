@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
   import MemberButton from './member-button.svelte';
   import { createNotification } from './notifications';
   import NotificationMessages from './notifications/notification-messages';
