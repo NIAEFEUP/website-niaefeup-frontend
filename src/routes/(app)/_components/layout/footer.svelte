@@ -102,7 +102,8 @@
       <p class="text-sm">NIAEFEUP &copy; 2022</p>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
-      <MemberButton />
+      <!-- Disabled while the site is fully static / backend is offline -->
+      <!-- <MemberButton /> -->
       <div class="text-right text-sm">
         <p class="font-bold">FEUP</p>
         <p>Sala B315</p>
@@ -178,7 +179,8 @@
       </div>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
-      <MemberButton />
+      <!-- Disabled while the site is fully static / backend is offline -->
+      <!-- <MemberButton /> -->
     </div>
   </footer>
 </div>
