@@ -53,9 +53,7 @@
   ],
   "slug": "sesso-de-dvidas-kotlin",
   "image": "/api_images/events/workshop_2.png",
-  "gallery": [
-    "/api_images/events/gallery/workshop_1.png"
-  ],
+  "gallery": ["/api_images/events/gallery/workshop_1.png"],
   "registerUrl": "https://sesso-de-dvidas-kotlin.com/register",
   "dateInterval": {
     "startDate": "15-08-2026 10:21",

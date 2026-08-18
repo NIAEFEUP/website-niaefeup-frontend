@@ -36,9 +36,7 @@
   ],
   "slug": "jantar-de-curso-do-niaefeup",
   "image": "/api_images/events/jantar_de_curso_1.png",
-  "gallery": [
-    "/api_images/events/gallery/jantar_de_curso_2.png"
-  ],
+  "gallery": ["/api_images/events/gallery/jantar_de_curso_2.png"],
   "registerUrl": "https://jantar-de-curso-do-niaefeup.com/register",
   "dateInterval": {
     "startDate": "15-08-2026 10:21",
