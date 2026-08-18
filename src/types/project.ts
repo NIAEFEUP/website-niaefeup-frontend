@@ -5,7 +5,7 @@ import type { TimelineEvent } from './timeline-event';
 export type Project = {
   title: string;
   description: string;
-  teamMemberIds: bigint[];
+  teamMembers: import('./team-member').TeamMember[];
   slug: string;
   image: string;
   gallery: string[];
@@ -16,6 +16,6 @@ export type Project = {
   targetAudience: string;
   github: string;
   links: CustomWebsite[];
-  hallOfFame: bigint[];
+  hallOfFame: import('./team-member').TeamMember[];
   timeline: TimelineEvent[];
 };

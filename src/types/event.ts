@@ -11,6 +11,5 @@ export type Event = {
   dateInterval: DateInterval;
   location?: string;
   category?: string;
-  thumbnailPath: string;
   slug?: string;
 };

@@ -4,8 +4,8 @@ import type { Role } from './role';
 export type TeamMember = {
   name: string;
   email: string;
-  bio: string;
-  birthDate: Date;
+  bio?: string;
+  birthDate?: string;
   roles?: Role[];
   isActive?: boolean;
   photo?: string;
