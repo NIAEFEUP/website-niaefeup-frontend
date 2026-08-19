@@ -1,5 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   import EventEnrollButton from '../_components/event-enroll-button.svelte';
   import type { PageData } from './$types';
   import Carousel from '$lib/components/gallery/Carousel.svelte';
@@ -135,12 +136,13 @@
               />
 
               <div class="hidden md:block">
-                <EventEnrollButton
+                <!-- Disabled for static site since updating the link requires a redeploy -->
+                <!-- <EventEnrollButton
                   registerUrl={event.registerUrl}
                   onClick={() => {
                     if (event.registerUrl) window.open(event.registerUrl, '_blank');
                   }}
-                />
+                /> -->
               </div>
             </div>
 
@@ -167,12 +169,13 @@
           </div>
 
           <div class="mx-auto block w-fit md:hidden">
-            <EventEnrollButton
+            <!-- Disabled for static site since updating the link requires a redeploy -->
+            <!-- <EventEnrollButton
               registerUrl={event.registerUrl}
               onClick={() => {
                 if (event.registerUrl) window.open(event.registerUrl, '_blank');
               }}
-            />
+            /> -->
           </div>
         </div>
       </header>
