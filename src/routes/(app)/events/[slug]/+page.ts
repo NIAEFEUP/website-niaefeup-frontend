@@ -1,8 +1,10 @@
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { EntryGenerator, PageLoad } from './$types';
 import { canEditActivity } from '$lib/api/permissions';
 import type { Event } from '@/types/event';
-import events from '$lib/data/api/events/__list.json';
+import events from '$lib/data/api/events/list.json';
+
+export const entries: EntryGenerator = () => events.map((e) => ({ slug: e.slug }));
 
 export const load: PageLoad = async ({ fetch, params }) => {
   const event: Event | undefined = events.find((e) => e.slug === params.slug);

@@ -1,8 +1,10 @@
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { EntryGenerator, PageLoad } from './$types';
 import { canDeleteActivity } from '@/lib/api/permissions';
 import type { Project } from '@/types/project';
-import projects from '$lib/data/api/projects/__list.json';
+import projects from '$lib/data/api/projects/list.json';
+
+export const entries: EntryGenerator = () => projects.map((p) => ({ slug: p.slug }));
 
 export const load: PageLoad = async ({ fetch, params }) => {
   const project: Project | undefined = projects.find((p) => p.slug === params.slug);
