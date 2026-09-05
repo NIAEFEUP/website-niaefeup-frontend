@@ -5,6 +5,7 @@ node_modules
 /.svelte-kit
 /package
 .env.local
+.env
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
