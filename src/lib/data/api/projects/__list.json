@@ -206,7 +206,7 @@
     "image": "/api_images/projects/project_7.png",
     "gallery": [],
     "thumbnail": "/api_images/projects/project_2.png",
-    "isArchived": true,
+    "isArchived": false,
     "technologies": [
       {
         "name": "bfcezq",
@@ -632,7 +632,7 @@
     "image": "/api_images/projects/project_10.png",
     "gallery": [],
     "thumbnail": "/api_images/projects/project_5.png",
-    "isArchived": true,
+    "isArchived": false,
     "technologies": [
       {
         "name": "yjbswun",
