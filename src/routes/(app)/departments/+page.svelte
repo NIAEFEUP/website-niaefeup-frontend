@@ -1,5 +1,6 @@
 <script lang="ts">
-  import DepartmentHexagon from './_components/DepartmentHexagon.svelte';
+  import { onMount } from 'svelte';
+  import DepartmentHexagon from './_components/department-hexagon.svelte';
   import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
 
   const logo = {
@@ -57,6 +58,30 @@
     { ...departments[2], onselect: handleSelect },
     { ...departments[3], onselect: handleSelect }
   ];
+
+  // --- Mobile scaling ---------------------------------------------------
+  // `zoom` was used before to shrink the 900px grid to fit the viewport,
+  // but Firefox's implementation of `zoom` is buggy with elements that use
+  // `clip-path` (which is how the hexagons are drawn), so it never scaled
+  // there. We replace it with `transform: scale()`, which is a standard,
+  // well supported property in every browser. The trade-off is that
+  // `transform` doesn't shrink the element's footprint in the layout like
+  // `zoom` did, so we measure the grid's real (unscaled) height and use it
+  // to size the wrapper explicitly, keeping the surrounding layout tidy.
+  let intrinsicWidth = $state(0);
+  let intrinsicHeight = $state(0);
+  let mobileScale = $state(1);
+
+  function updateMobileScale() {
+    if (typeof window === 'undefined') return;
+    mobileScale = Math.min(1, (window.innerWidth / 900) * 0.85);
+  }
+
+  onMount(() => {
+    updateMobileScale();
+    window.addEventListener('resize', updateMobileScale);
+    return () => window.removeEventListener('resize', updateMobileScale);
+  });
 </script>
 
 <section
@@ -74,14 +99,40 @@
   </div>
 
   <div
-    class="mr-[15%] mt-[-15rem] w-[57%] shrink-0 origin-right scale-[0.55] max-lg:mx-auto max-lg:mb-0 max-lg:mt-12 max-lg:w-[900px] max-lg:scale-100 max-lg:[zoom:calc(100vw_/_900px_*_0.85)]"
+    class="hex-outer mr-[15%] mt-[-15rem] w-[57%] shrink-0 origin-right scale-[0.55] max-lg:mx-auto max-lg:mb-0 max-lg:mt-12 max-lg:w-[900px] max-lg:scale-100"
+    style="--mobile-scale: {mobileScale}; --intrinsic-width: {intrinsicWidth}px; --intrinsic-height: {intrinsicHeight}px;"
   >
-    <HexagonGrid
-      {items}
-      cols={2}
-      orientation="horizontal"
-      gap="big"
-      component={DepartmentHexagon}
-    />
+    <div class="hex-inner" bind:clientWidth={intrinsicWidth} bind:clientHeight={intrinsicHeight}>
+      <HexagonGrid
+        {items}
+        cols={2}
+        orientation="horizontal"
+        gap="big"
+        component={DepartmentHexagon}
+      />
+    </div>
   </div>
 </section>
+
+<style>
+  /* Only kicks in below the `lg` breakpoint (matches Tailwind's default
+     1024px). Keep this in sync if your tailwind.config changes the `lg`
+     breakpoint. */
+  @media (max-width: 1023.98px) {
+    .hex-outer {
+      /* Width must also shrink, otherwise the 900px box is wider than the
+         screen and `margin: auto` can't center it (auto margins collapse
+         to 0 when the box is bigger than its container), pushing the
+         visible content off to the right. */
+      width: calc(var(--intrinsic-width, 900px) * var(--mobile-scale, 1));
+      height: calc(var(--intrinsic-height, 0px) * var(--mobile-scale, 1));
+      overflow: hidden;
+    }
+
+    .hex-inner {
+      width: var(--intrinsic-width, 900px);
+      transform: scale(var(--mobile-scale, 1));
+      transform-origin: top left;
+    }
+  }
+</style>
