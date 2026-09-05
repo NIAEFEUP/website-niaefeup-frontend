@@ -7,10 +7,8 @@ export type Event = {
   gallery: string[] | undefined;
   title: string;
   description: string;
-  registerUrl: string;
   dateInterval: DateInterval;
   location?: string;
   category?: string;
-  thumbnailPath: string;
   slug?: string;
 };

@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import MemberButton from './member-button.svelte';
   import { createNotification } from './notifications';
   import NotificationMessages from './notifications/notification-messages';
   import Icon from '$lib/components/icons/icon.svelte';
@@ -102,7 +101,6 @@
       <p class="text-sm">NIAEFEUP &copy; 2022</p>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
-      <MemberButton />
       <div class="text-right text-sm">
         <p class="font-bold">FEUP</p>
         <p>Sala B315</p>
@@ -176,9 +174,6 @@
       >
         <Icon src={Icons.Mail} color="white" size="24px" />
       </div>
-    </div>
-    <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
-      <MemberButton />
     </div>
   </footer>
 </div>

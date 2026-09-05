@@ -1,4 +1,4 @@
 export type TimelineEvent = {
-  date: Date;
+  date: string;
   description: string;
 };

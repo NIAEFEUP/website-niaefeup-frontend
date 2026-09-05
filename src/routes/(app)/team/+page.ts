@@ -1,4 +1,3 @@
-import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import type { TeamMember } from '@/types/team-member';
 
@@ -7,17 +6,10 @@ type Section = {
   accounts: TeamMember[];
 };
 
-export const load: PageLoad = async ({ fetch }) => {
-  const res = await fetch(`/api/generations/latest`);
-  if (!res.ok) {
-    if (res.status === 404) {
-      error(404, 'No team members found');
-    } else {
-      error(res.status, 'Failed to load team members');
-    }
-  }
+import latestData from '$lib/data/api/generations/latest.json';
 
-  const sections: Section[] = await res.json();
+export const load: PageLoad = async () => {
+  const sections: Section[] = latestData;
 
   return { sections };
 };
