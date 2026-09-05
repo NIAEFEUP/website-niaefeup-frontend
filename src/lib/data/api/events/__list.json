@@ -64,7 +64,6 @@
     "slug": "workshop-de-git--github",
     "image": "/api_images/events/workshop_1.png",
     "gallery": ["/api_images/events/workshop_2.png", "/api_images/events/gallery/workshop_3.png"],
-    "registerUrl": "https://workshop-de-git--github.com/register",
     "dateInterval": {
       "startDate": "21-08-2026 10:21",
       "endDate": "23-08-2026 10:21"
@@ -112,7 +111,6 @@
     "slug": "jantar-de-curso-do-niaefeup",
     "image": "/api_images/events/jantar_de_curso_1.png",
     "gallery": ["/api_images/events/gallery/jantar_de_curso_2.png"],
-    "registerUrl": "https://jantar-de-curso-do-niaefeup.com/register",
     "dateInterval": {
       "startDate": "15-08-2026 10:21",
       "endDate": "17-08-2026 10:21"
@@ -177,7 +175,6 @@
     "slug": "sesso-de-dvidas-kotlin",
     "image": "/api_images/events/workshop_2.png",
     "gallery": ["/api_images/events/workshop_1.png"],
-    "registerUrl": "https://sesso-de-dvidas-kotlin.com/register",
     "dateInterval": {
       "startDate": "15-08-2026 10:21",
       "endDate": "16-08-2026 10:21"
