@@ -1,10 +1,11 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { canDeleteActivity } from '@/lib/api/permissions';
+import type { Project } from '@/types/project';
 import projects from '$lib/data/api/projects/__list.json';
 
 export const load: PageLoad = async ({ fetch, params }) => {
-  const project = projects.find((p) => p.slug === params.slug);
+  const project: Project | undefined = projects.find((p) => p.slug === params.slug);
   if (!project) {
     error(404, 'Project not found');
   }
