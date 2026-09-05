@@ -202,7 +202,7 @@
         "id": 2
       }
     ],
-    "slug": "-timetable-selector",
+    "slug": "timetable-selector",
     "image": "/api_images/projects/project_7.png",
     "gallery": [],
     "thumbnail": "/api_images/projects/project_2.png",
@@ -217,7 +217,7 @@
     ],
     "slogan": "Planeia o teu semestre perfeito.",
     "targetAudience": "Estudantes da FEUP",
-    "github": "https://github.com/-timetable-selector",
+    "github": "https://github.com/timetable-selector",
     "links": [
       {
         "url": "http://www.marcene-mckenzie.name:52420/vero/repellendusblanditiis?iure=reiciendis&laborum=nostrum#corporis",
@@ -468,7 +468,7 @@
         "id": 7
       }
     ],
-    "slug": "-novo-website",
+    "slug": "novo-website",
     "image": "/api_images/projects/project_9.png",
     "gallery": [],
     "thumbnail": "/api_images/projects/project_4.png",
@@ -489,7 +489,7 @@
     ],
     "slogan": "A nossa nova cara na web.",
     "targetAudience": "Publico em geral",
-    "github": "https://github.com/-novo-website",
+    "github": "https://github.com/novo-website",
     "links": [
       {
         "url": "https://www.jina-kuphal.net/quam/minus?tenetur=exercitationem&esse=molestias",
