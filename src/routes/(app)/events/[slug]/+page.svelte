@@ -1,6 +1,5 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import EventEnrollButton from '../_components/event-enroll-button.svelte';
   import type { PageData } from './$types';
   import Carousel from '$lib/components/gallery/Carousel.svelte';
   import HexagonGrid from '$lib/components/hexagons/hexagon-grid.svelte';
@@ -133,15 +132,6 @@
                 alt="{event.title}'s image"
                 class="aspect-square h-36 w-36 rounded-xl object-cover md:h-60 md:w-60"
               />
-
-              <div class="hidden md:block">
-                <EventEnrollButton
-                  registerUrl={event.registerUrl}
-                  onClick={() => {
-                    if (event.registerUrl) window.open(event.registerUrl, '_blank');
-                  }}
-                />
-              </div>
             </div>
 
             {#if windowWidth < screenSizeThreshold}
@@ -164,15 +154,6 @@
                 </span>
               </div>
             {/if}
-          </div>
-
-          <div class="mx-auto block w-fit md:hidden">
-            <EventEnrollButton
-              registerUrl={event.registerUrl}
-              onClick={() => {
-                if (event.registerUrl) window.open(event.registerUrl, '_blank');
-              }}
-            />
           </div>
         </div>
       </header>

@@ -58,7 +58,8 @@ export default [
       'import-x/no-useless-path-segments': 'error',
       'import-x/newline-after-import': 'error',
       'import-x/no-duplicates': 'error',
-      'import-x/order': 'error'
+      'import-x/order': 'error',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
     },
     settings: {
       'svelte/typescript': () => ts,

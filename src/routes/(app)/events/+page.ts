@@ -1,20 +1,11 @@
-import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { canCreateActivity } from '$lib/api/permissions';
+import type { Event } from '@/types/event';
+import eventsData from '$lib/data/api/events/list.json';
 
 export const load: PageLoad = async ({ fetch }) => {
-  let res = await fetch(`/api/events`);
-  if (!res.ok) {
-    if (res.status === 404) {
-      error(404, 'No events found');
-    } else {
-      error(res.status, 'Failed to load events');
-    }
-  }
-
-  const events = await res.json();
-
   const hasPerms = await canCreateActivity(fetch);
+  const events: Event[] = eventsData;
 
   return { events, hasPerms };
 };

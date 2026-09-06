@@ -1,20 +1,11 @@
-import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { canCreateActivity } from '@/lib/api/permissions';
+import type { Project } from '@/types/project';
+import projectsData from '$lib/data/api/projects/list.json';
 
 export const load: PageLoad = async ({ fetch }) => {
-  let res = await fetch(`/api/projects`);
-  if (!res.ok) {
-    if (res.status === 404) {
-      error(404, 'No projects found');
-    } else {
-      error(res.status, 'Failed to load projects');
-    }
-  }
-
-  const projects = await res.json();
-
   const hasPerms = await canCreateActivity(fetch);
+  const projects: Project[] = projectsData;
 
   return { projects, hasPerms };
 };

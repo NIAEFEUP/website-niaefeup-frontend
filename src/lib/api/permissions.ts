@@ -11,15 +11,12 @@ enum Permission {
   SUPER_USER = 9
 }
 
-async function hasPermission(fetch: typeof globalThis.fetch, number: number) {
-  const perms = await fetch(`/api/auth/hasPermission/${number}`);
-
-  if (!perms.ok) {
-    return false;
-  }
-
-  return !(await perms.json()).error;
+// Permissions are disabled until the backend is available.
+// Once the API exists, implement this against /api/auth/hasPermission.
+async function hasPermission(_fetch: typeof globalThis.fetch, _permission: number) {
+  return false;
 }
+
 export async function canCreateAccount(fetch: typeof globalThis.fetch) {
   return hasPermission(fetch, Permission.CREATE_ACCOUNT);
 }
