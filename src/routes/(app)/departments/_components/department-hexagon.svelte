@@ -13,13 +13,13 @@
 </script>
 
 {#if item.type === 'logo'}
-  <div class="logo-only">
+  <div class="flex h-full w-full items-center justify-center">
     <button
-      class="logo-btn flex h-full w-[81%] items-center justify-center border-none bg-transparent p-0"
+      class="flex h-full w-[81%] cursor-pointer items-center justify-center border-none bg-transparent p-0"
       onclick={() => item.onselect && item.onselect(item)}
       type="button"
     >
-      <img src={item.image} alt="NIAEFEUP" class="logo-img h-full w-full object-contain" />
+      <img src={item.image} alt="NIAEFEUP" class="h-full w-full object-contain" />
     </button>
   </div>
 {:else}
@@ -41,17 +41,3 @@
     </Hexagon>
   </div>
 {/if}
-
-<style>
-  .logo-only {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .logo-btn {
-    cursor: pointer;
-  }
-</style>

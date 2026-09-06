@@ -86,10 +86,14 @@
   </div>
 
   <div
-    class="hex-outer mr-[15%] mt-[-15rem] w-[57%] shrink-0 origin-right scale-[0.55] max-lg:mx-auto max-lg:mb-0 max-lg:mt-12 max-lg:w-[900px] max-lg:scale-100"
+    class="mr-[15%] mt-[-15rem] w-[57%] shrink-0 origin-right scale-[0.55] max-lg:mx-auto max-lg:mb-0 max-lg:mt-12 max-lg:h-[calc(var(--intrinsic-height,0px)*var(--mobile-scale,1))] max-lg:w-[calc(var(--intrinsic-width,900px)*var(--mobile-scale,1))] max-lg:overflow-hidden max-lg:scale-100"
     style="--mobile-scale: {mobileScale}; --intrinsic-width: {intrinsicWidth}px; --intrinsic-height: {intrinsicHeight}px;"
   >
-    <div class="hex-inner" bind:clientWidth={intrinsicWidth} bind:clientHeight={intrinsicHeight}>
+    <div
+      class="max-lg:w-[var(--intrinsic-width,900px)] max-lg:origin-top-left max-lg:scale-[var(--mobile-scale,1)]"
+      bind:clientWidth={intrinsicWidth}
+      bind:clientHeight={intrinsicHeight}
+    >
       <HexagonGrid
         {items}
         cols={2}
@@ -100,19 +104,3 @@
     </div>
   </div>
 </section>
-
-<style>
-  @media (max-width: 1023.98px) {
-    .hex-outer {
-      width: calc(var(--intrinsic-width, 900px) * var(--mobile-scale, 1));
-      height: calc(var(--intrinsic-height, 0px) * var(--mobile-scale, 1));
-      overflow: hidden;
-    }
-
-    .hex-inner {
-      width: var(--intrinsic-width, 900px);
-      transform: scale(var(--mobile-scale, 1));
-      transform-origin: top left;
-    }
-  }
-</style>
