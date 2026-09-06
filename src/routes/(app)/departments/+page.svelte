@@ -1,0 +1,106 @@
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import DepartmentHexagon from './_components/department-hexagon.svelte';
+  import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
+
+  const logo = {
+    type: 'logo',
+    image: '/images/logo_2018_watermark.svg',
+    onselect: () => {
+      selectedTitle = defaultTitle;
+      selectedDescription = defaultDescription;
+    }
+  };
+
+  const departments = [
+    {
+      name: 'Eventos',
+      description:
+        'O departamento de Eventos organiza e dinamiza todas as iniciativas da associação — desde workshops e palestras a convívios e competições. É aqui que as ideias ganham vida e a comunidade se une.'
+    },
+    {
+      name: 'Imagem',
+      description:
+        'O departamento de Imagem é responsável pela identidade visual da NIAEFEUP. Cria conteúdos gráficos, fotografa os momentos mais marcantes e garante que a nossa presença é reconhecida em todo o lado.'
+    },
+    {
+      name: 'Projetos',
+      description:
+        'O departamento de Projetos desenvolve soluções tecnológicas para a comunidade académica. Das aplicações web às ferramentas internas, transformamos código em impacto real.'
+    },
+    {
+      name: 'Comunicação',
+      description:
+        'O departamento de Comunicação é a voz da NIAEFEUP. Gere as redes sociais, redige conteúdos e assegura que a informação chega a toda a comunidade de forma clara e apelativa.'
+    }
+  ];
+
+  const defaultTitle = 'Os Nossos Departamentos';
+  const defaultDescription =
+    'Conheça as equipas dedicadas por trás de cada departamento: Comunicação, Imagem, Projetos e Eventos';
+
+  let selectedTitle = $state(defaultTitle);
+  let selectedDescription = $state(defaultDescription);
+
+  function handleSelect(item: (typeof departments)[0]) {
+    selectedTitle = item.name;
+    selectedDescription = item.description;
+  }
+
+  const items = [
+    logo,
+    { ...departments[0], onselect: handleSelect },
+    { ...departments[1], onselect: handleSelect },
+    { ...departments[2], onselect: handleSelect },
+    { ...departments[3], onselect: handleSelect }
+  ];
+
+  let intrinsicWidth = $state(0);
+  let intrinsicHeight = $state(0);
+  let mobileScale = $state(1);
+
+  function updateMobileScale() {
+    if (typeof window === 'undefined') return;
+    mobileScale = Math.min(1, (window.innerWidth / 900) * 0.85);
+  }
+
+  onMount(() => {
+    updateMobileScale();
+    window.addEventListener('resize', updateMobileScale);
+    return () => window.removeEventListener('resize', updateMobileScale);
+  });
+</script>
+
+<section
+  class="box-border flex min-h-[568px] w-full items-center justify-between overflow-hidden py-16 pl-[10%] text-white max-lg:flex-col max-lg:gap-0 max-lg:px-10 max-lg:py-12 max-lg:text-center"
+>
+  <div class="ml-[5%] max-w-[38%] max-lg:max-w-full">
+    <h2
+      class="mb-6 text-[2.9rem] font-extrabold leading-[1.05] transition-opacity duration-200 max-lg:text-[2.45rem]"
+    >
+      {selectedTitle}
+    </h2>
+    <p class="text-[1.2rem] leading-[1.6] opacity-95 transition-opacity duration-200">
+      {selectedDescription}
+    </p>
+  </div>
+
+  <div
+    class="mr-[15%] mt-[-15rem] w-[57%] shrink-0 origin-right scale-[0.55] max-lg:mx-auto max-lg:mb-0 max-lg:mt-12 max-lg:h-[calc(var(--intrinsic-height,0px)*var(--mobile-scale,1))] max-lg:w-[calc(var(--intrinsic-width,900px)*var(--mobile-scale,1))] max-lg:overflow-hidden max-lg:scale-100"
+    style="--mobile-scale: {mobileScale}; --intrinsic-width: {intrinsicWidth}px; --intrinsic-height: {intrinsicHeight}px;"
+  >
+    <div
+      class="max-lg:w-[var(--intrinsic-width,900px)] max-lg:origin-top-left max-lg:scale-[var(--mobile-scale,1)]"
+      bind:clientWidth={intrinsicWidth}
+      bind:clientHeight={intrinsicHeight}
+    >
+      <HexagonGrid
+        {items}
+        cols={2}
+        orientation="horizontal"
+        gap="big"
+        component={DepartmentHexagon}
+      />
+    </div>
+  </div>
+</section>
