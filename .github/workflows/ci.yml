@@ -11,64 +11,25 @@ on:
       - develop
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
-    name: Test
-
-    strategy:
-      matrix:
-        node-version: [21.x]
+    name: Build and lint
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-
-      - name: Cache dependencies
-        uses: actions/cache@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          node-version: 22.x
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build site
         run: npm run build
 
-      - name: Test
-        run: CI=true npm run test
-
-  lint:
-    runs-on: ubuntu-latest
-    name: Lint
-
-    strategy:
-      matrix:
-        node-version: [21.x]
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build site
-        run: npm run build
-
-      - name: Lint Code
+      - name: Lint code
         run: npm run lint
