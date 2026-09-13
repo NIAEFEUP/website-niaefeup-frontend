@@ -2,16 +2,8 @@
   text-shadow: 0 0 0 transparent;
 }
 
-@utility text-shadow-sm {
-  text-shadow: 0 2px 4px rgb(0 0 0 / 0.5);
-}
-
 @utility text-shadow {
   text-shadow: 0 4px 6px rgb(0 0 0 / 0.5);
-}
-
-@utility text-shadow-lg {
-  text-shadow: 0 8px 16px rgb(0 0 0 / 0.5);
 }
 
 @utility bg-ni-sidebar {
