@@ -34,11 +34,17 @@
   <div class="h-full w-full">
     <Hexagon {orientation}>
       <button
-        class="group relative block h-full w-full cursor-pointer border-none bg-transparent p-0 text-white outline-none"
+        class="group relative block h-full w-full cursor-pointer border-none bg-muted-red-700 p-0 text-white outline-none"
         onclick={handleClick}
         type="button"
       >
-        <img src={data.image} alt={data.name} class="absolute inset-0 h-full w-full object-cover" />
+        {#if data.image}
+          <img
+            src={data.image}
+            alt={data.name}
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        {/if}
         <div
           class="absolute inset-0 z-10 bg-[rgba(80,0,0,0.45)] transition-colors duration-200 group-hover:bg-[rgba(80,0,0,0.65)]"
         ></div>
