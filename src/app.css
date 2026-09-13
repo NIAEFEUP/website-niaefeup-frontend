@@ -24,12 +24,7 @@ layer(base);
 
 @layer base {
   body {
-    background-image: linear-gradient(
-      180deg,
-      rgba(155, 47, 48, 1) 0%,
-      rgba(120, 36, 38, 1) 15%,
-      rgba(65, 19, 21, 1) 100%
-    );
+    background-color: #2f1313;
     @apply bg-no-repeat;
     @apply bg-top-right;
     background-size: cover;
