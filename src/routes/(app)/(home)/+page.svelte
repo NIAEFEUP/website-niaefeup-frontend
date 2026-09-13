@@ -5,14 +5,6 @@
   import StatsSection from './_components/stats-section.svelte';
 </script>
 
-<svelte:head>
-  <title>NIAEFEUP - Núcleo de Informática da AEFEUP</title>
-  <meta
-    name="description"
-    content="NIAEFEUP - Um grupo de estudantes a desenvolver para estudantes."
-  />
-</svelte:head>
-
 <div class="flex w-full flex-col">
   <HeroSection />
   <AboutSection />

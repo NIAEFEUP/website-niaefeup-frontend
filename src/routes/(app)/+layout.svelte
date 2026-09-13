@@ -7,7 +7,16 @@
   import GlobalLoader from '@/lib/components/layout/global-loader.svelte';
   import { isGlobalLoading } from '@/lib/stores/loader';
   import { navigating } from '$app/stores';
+  import { page } from '$app/state';
+  import { SITE_DESCRIPTION, OG_IMAGE_PATH, SITE_NAME, canonicalUrl } from '@/lib/config/site';
   import '@/app.css';
+
+  let currentPath = $derived(page.url.pathname);
+  let pageTitle = $derived.by(() => {
+    if (currentPath === '/') return SITE_NAME;
+    const segment = currentPath.split('/').filter(Boolean)[0];
+    return `${segment.toUpperCase()} | ${SITE_NAME}`;
+  });
 
   interface Props {
     children?: import('svelte').Snippet;
@@ -35,6 +44,23 @@
 {#if showLoader}
   <GlobalLoader />
 {/if}
+
+<svelte:head>
+  <title>{pageTitle}</title>
+  <meta name="description" content={SITE_DESCRIPTION} />
+  <link rel="canonical" href={canonicalUrl(currentPath)} />
+  <meta property="og:url" content={canonicalUrl(currentPath)} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={SITE_DESCRIPTION} />
+  <meta property="og:image" content={canonicalUrl(OG_IMAGE_PATH)} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={SITE_DESCRIPTION} />
+  <meta name="twitter:image" content={canonicalUrl(OG_IMAGE_PATH)} />
+</svelte:head>
 
 <ModeWatcher defaultMode="dark" />
 <Sidebar />
