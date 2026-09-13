@@ -56,7 +56,7 @@
     {#if windowWidth < screenSizeThreshold}
       <div class="flex flex-col items-center">
         <p
-          class="mb-6 text-center font-source_code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
+          class="mb-6 text-center font-source-code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
         >
           &lt; {event.title} /&gt;
         </p>
@@ -198,7 +198,7 @@
       <div class="mt-12">
         <div class="flex flex-col items-center">
           <p
-            class="mb-12 text-center font-source_code text-xl font-bold text-white md:text-2xl lg:text-3xl xl:text-4xl"
+            class="mb-12 text-center font-source-code text-xl font-bold text-white md:text-2xl lg:text-3xl xl:text-4xl"
           >
             &lt; Equipa /&gt;
           </p>

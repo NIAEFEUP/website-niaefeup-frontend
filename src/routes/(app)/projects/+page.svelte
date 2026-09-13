@@ -12,7 +12,7 @@
 
 <section>
   <div class="flex w-full flex-col items-center">
-    <h1 class="my-2 text-center font-source_code text-xl text-white md:my-4 md:text-3xl">
+    <h1 class="my-2 text-center font-source-code text-xl text-white md:my-4 md:text-3xl">
       &lt&nbsp<strong>Projetos</strong>&nbsp/&gt
     </h1>
     {#if hasPerms}

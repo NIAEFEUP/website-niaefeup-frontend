@@ -11,7 +11,7 @@
 <fieldset class="flex flex-row align-middle">
   {#if label}
     <legend
-      class="mx-1 font-source_code font-bold text-white"
+      class="mx-1 font-source-code font-bold text-white"
       class:float-left={horizontal}
       class:self-center={horizontal}
     >
