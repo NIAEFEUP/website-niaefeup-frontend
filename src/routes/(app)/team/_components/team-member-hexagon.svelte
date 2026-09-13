@@ -81,7 +81,7 @@
       class="group-hover:bottom-1/2 group-hover:translate-y-1/3 container absolute bottom-0 z-20 w-full px-4 duration-500"
     >
       <p
-        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl"
+        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl text-shadow-lg"
       >
         {teamMember.name}
       </p>
