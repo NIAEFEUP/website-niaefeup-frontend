@@ -39,9 +39,7 @@
         class="h-auto w-full object-contain pointer-events-none select-none"
       />
     {:else}
-      <div
-        class="flex min-h-45 sm:min-h-70 md:min-h-95 w-full items-center justify-center"
-      ></div>
+      <div class="flex min-h-45 sm:min-h-70 md:min-h-95 w-full items-center justify-center"></div>
     {/if}
   </div>
 </section>

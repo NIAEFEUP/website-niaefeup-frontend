@@ -112,9 +112,7 @@
 </div>
 
 <div class="hidden w-full bg-transparent p-3 max-sm:block">
-  <footer
-    class="flex flex-col justify-between border-t-2 border-white/90 p-2 text-sm text-white"
-  >
+  <footer class="flex flex-col justify-between border-t-2 border-white/90 p-2 text-sm text-white">
     <div class="flex w-full flex-row items-center justify-between self-center p-3">
       <span>NIAEFEUP</span>
       <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
@@ -130,7 +128,7 @@
         src={Icons.Instagram}
         color="white"
         size="24px"
-        href="https://www.instagram.com/niaefeup/"
+        href="https://instagram.com/niaefeup/"
         ariaLabel="Instagram"
       />
       <Icon
@@ -144,7 +142,7 @@
         src={Icons.Facebook}
         color="white"
         size="24px"
-        href="https://www.facebook.com/NIAEFEUP"
+        href="https://facebook.com/NIAEFEUP"
         ariaLabel="Facebook"
       />
       <Icon

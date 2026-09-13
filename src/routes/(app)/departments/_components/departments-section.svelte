@@ -75,9 +75,7 @@
       </p>
     </div>
 
-    <div
-      class="flex w-full max-w-165 shrink-0 items-center justify-center max-lg:max-w-125"
-    >
+    <div class="flex w-full max-w-165 shrink-0 items-center justify-center max-lg:max-w-125">
       <div class="w-full">
         <HexagonGrid
           {items}
