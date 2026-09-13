@@ -9,6 +9,4 @@ services:
     volumes:
       - ./src:/app/src
       - ./static:/app/static
-    environment:
-      - PORT=3000
     network_mode: 'host'
