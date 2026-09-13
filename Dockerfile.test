@@ -1,9 +1,0 @@
-FROM node:19.5.0-alpine
-
-RUN mkdir -p /usr/src/website-niaefeup-frontend
-WORKDIR /usr/src/website-niaefeup-frontend
-
-COPY . .
-RUN npm install
-
-CMD ["npm", "run", "test"]
