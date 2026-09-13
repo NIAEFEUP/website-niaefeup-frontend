@@ -1,289 +1,1453 @@
 [
   {
-    "section": "President",
+    "section": "Direção",
     "accounts": [
       {
-        "name": "Leopoldo Mueller III",
-        "email": "kathrine.fay@hotmail.com",
-        "bio": "Libero numquam magnam.",
-        "birthDate": "23-05-2003 12:55",
-        "websites": [],
+        "id": "671fe3838e94700027d0f071",
+        "name": "Maria Silva",
+        "photo": "/api_images/members/6a10e96928b8990053791dd6.jpg",
         "isActive": true,
-        "id": 69,
-        "roles": []
+        "roles": [
+          {
+            "name": "Presidente",
+            "permissions": [],
+            "isSection": false,
+            "id": 1,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe1ba24549c002e73e489",
+        "name": "Guilherme Nunes",
+        "email": "nunes.guicardoso@gmail.com",
+        "photo": "/api_images/members/6a204553eee1b7010a7011a8.jpg",
+        "linkedin": "https://www.linkedin.com/in/guilherme-nunes-685768330",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Vice-Presidente",
+            "permissions": [],
+            "isSection": false,
+            "id": 2,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e256cc4fefc0020a713fa",
+        "name": "Beatriz Afonso",
+        "photo": "/api_images/members/690ea08a2e5314003c94b957.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Coordenadora de Comunicação e Relações Externas",
+            "permissions": [],
+            "isSection": false,
+            "id": 3,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e2af9ccd09500b49cab73",
+        "name": "Dário Guimarães",
+        "photo": "/api_images/members/69220ffb59d1e5002e64cd8d.jpg",
+        "linkedin": "https://www.linkedin.com/in/darguima/",
+        "github": "https://github.com/Darguima/",
+        "websites": [
+          {
+            "id": 1,
+            "url": "https://darguima.com"
+          }
+        ],
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Co-coordenador de Eventos",
+            "permissions": [],
+            "isSection": false,
+            "id": 4,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e262c4f37230035b57688",
+        "name": "José Ferreira",
+        "photo": "/api_images/members/6a107bc7dc27d20035b2b7c4.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Tesoureiro, Secretário e Responsável da Sala",
+            "permissions": [],
+            "isSection": false,
+            "id": 5,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe35f4b51f2003c4e1659",
+        "name": "Margarida Fonseca",
+        "photo": "/api_images/members/673763b7ba8257004f69f220.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Co-coordenadora de Eventos",
+            "permissions": [],
+            "isSection": false,
+            "id": 6,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe4045e645b0019b788d5",
+        "name": "Martim Cadilhe",
+        "photo": "/api_images/members/68a0f71259d1e5002e64cd80.jpg",
+        "linkedin": "https://www.linkedin.com/in/martim-cadilhe-b1a4b5334/",
+        "github": "https://github.com/martim07833",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Coordenador de Imagem",
+            "permissions": [],
+            "isSection": false,
+            "id": 7,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe4858e94700027d0f072",
+        "name": "Pedro Castro",
+        "photo": "/api_images/members/671ffef017752500207e6e1c.jpg",
+        "linkedin": "https://www.linkedin.com/in/peucastro/",
+        "github": "https://github.com/peucastro/",
+        "websites": [
+          {
+            "id": 2,
+            "url": "https://peucastro.pages.dev/"
+          }
+        ],
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Co-coordenador de Projetos",
+            "permissions": [],
+            "isSection": false,
+            "id": 8,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe4a45e645b0019b788d7",
+        "name": "Pedro Monteiro",
+        "photo": "/api_images/members/671ff338f5a9a4003579c37d.jpg",
+        "linkedin": "https://www.linkedin.com/in/pedro10monteiro",
+        "github": "https://github.com/pedroafmonteiro",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Co-coordenador de Projetos",
+            "permissions": [],
+            "isSection": false,
+            "id": 9,
+            "associatedActivities": []
+          }
+        ]
       }
     ]
   },
   {
-    "section": "Board",
+    "section": "Membros",
     "accounts": [
       {
-        "name": "Bruce Schinner",
-        "email": "maya.kessler@gmail.com",
-        "bio": "Modi commodi cumque ducimus.",
-        "birthDate": "14-02-2003 08:46",
-        "websites": [],
+        "id": "65452edd9bf1141111f485d3",
+        "name": "Adriano Machado",
+        "email": "adriano.alexandre.machado1@gmail.com",
+        "photo": "/api_images/members/656635699bf1141111f48611.jpg",
+        "linkedin": "https://www.linkedin.com/in/adriano-alexandre-machado/",
+        "github": "https://github.com/Adriano-7",
         "isActive": true,
-        "id": 70,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 10,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Eugene Olson",
-        "email": "cheryle.goldner@hotmail.com",
-        "bio": "Perferendis reiciendis est qui accusamus quam esse quidem.",
-        "birthDate": "03-05-2004 15:27",
-        "websites": [],
+        "id": "690e2667dea85900275da499",
+        "name": "Alexandra Madureira",
+        "photo": "/api_images/members/6921ee9659d1e5002e64cd8c.jpg",
         "isActive": true,
-        "id": 71,
-        "roles": []
-      }
-    ]
-  },
-  {
-    "section": "Coordinator",
-    "accounts": [
-      {
-        "name": "Raymond Okuneva",
-        "email": "wade.hickle@gmail.com",
-        "bio": "Labore animi pariatur rerum quae neque quas odit.",
-        "birthDate": "09-12-2003 18:39",
-        "websites": [],
-        "isActive": true,
-        "id": 72,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 11,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Deja Reichert Jr.",
-        "email": "anya.johnson@hotmail.com",
-        "bio": "Tempora vel dignissimos rerum.",
-        "birthDate": "18-05-2000 23:20",
-        "websites": [],
+        "id": "671fd841ca3d6300121b2a36",
+        "name": "Ana Bilhoto",
+        "photo": "/api_images/members/6728c297e6dd9605ee6f4069.jpg",
         "isActive": true,
-        "id": 73,
-        "roles": []
-      }
-    ]
-  },
-  {
-    "section": "Member",
-    "accounts": [
-      {
-        "name": "Maia Hintz V",
-        "email": "charlie.walker@hotmail.com",
-        "bio": "Iusto qui sit. Nobis cum minus cupiditate beatae inventore ratione pariatur. Tenetur soluta consequatur magnam. Dolorem minus impedit doloremque sunt eveniet neque minima. Minus esse quas. Similique fugit illum. Praesentium ducimus laudantium fuga ipsum.",
-        "birthDate": "23-04-1989 08:53",
-        "photo": "https://picsum.photos/320/200",
-        "linkedin": "https://www.rosalie-carroll.name:13290/?quis=sint&voluptates=molestiae",
-        "github": "https://www.buddy-rau.info:31222/harum#rerum",
-        "websites": [],
-        "isActive": false,
-        "id": 5,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 12,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Terrence Mraz MD",
-        "email": "guy.yost@yahoo.com",
-        "bio": "Saepe labore enim.",
-        "birthDate": "04-07-2007 02:28",
-        "websites": [],
+        "id": "671fde1b17752500207e6e0e",
+        "name": "Ana Silva",
+        "email": "acdfsilva.96@gmail.com",
+        "photo": "/api_images/members/6722808a8e94700027d0f081.jpg",
         "isActive": true,
-        "id": 74,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 13,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Raul Leannon",
-        "email": "jina.hettinger@hotmail.com",
-        "bio": "Nemo quidem in quos.",
-        "birthDate": "04-02-2003 11:48",
-        "websites": [],
+        "id": "690e2a802e5314003c94b952",
+        "name": "Ana Alves",
+        "photo": "/api_images/members/69136ecd4f37230035b57699.jpg",
         "isActive": true,
-        "id": 75,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 14,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Mrs. Bernardina Bernier",
-        "email": "naoma.cormier@gmail.com",
-        "bio": "Omnis aspernatur inventore illum.",
-        "birthDate": "29-04-2000 09:52",
-        "websites": [],
+        "id": "61ba4e3acb45aa2397157dd5",
+        "name": "André Lima",
+        "photo": "/api_images/members/66f2748e654dfb0027c59d99.jpg",
+        "linkedin": "https://www.linkedin.com/in/limwa/",
+        "github": "https://github.com/limwa",
+        "websites": [
+          {
+            "id": 3,
+            "url": "https://limwa.pt"
+          }
+        ],
         "isActive": true,
-        "id": 76,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 15,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Jules Kautzer",
-        "email": "sue.harvey@gmail.com",
-        "bio": "Quis excepturi reprehenderit.",
-        "birthDate": "02-05-1997 01:49",
-        "websites": [],
+        "id": "671fde40ca3d6300121b2a37",
+        "name": "André Butuc",
+        "photo": "/api_images/members/67202161f5a9a4003579c384.jpg",
+        "linkedin": "https://www.linkedin.com/in/andr%C3%A9-butuc/",
+        "github": "https://github.com/abutuc",
+        "websites": [
+          {
+            "id": 4,
+            "url": "https://www.andrebutuc.me/"
+          }
+        ],
         "isActive": true,
-        "id": 77,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 16,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Dave Bruen",
-        "email": "danilo.gislason@gmail.com",
-        "bio": "Tenetur atque culpa fugiat odio.",
-        "birthDate": "04-07-1999 14:10",
-        "websites": [],
+        "id": "690e2715ccd09500b49cab69",
+        "name": "André Cerqueira",
+        "photo": "/api_images/members/6935ad88dea85900275da4ab.jpg",
         "isActive": true,
-        "id": 78,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 17,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Adah Lang",
-        "email": "matha.kihn@gmail.com",
-        "bio": "Labore explicabo eveniet excepturi.",
-        "birthDate": "17-10-1999 06:51",
-        "websites": [],
+        "id": "671fded224549c002e73e488",
+        "name": "Athos Freitas",
+        "photo": "/api_images/members/671ff8bf24549c002e73e48d.jpg",
+        "linkedin": "https://www.linkedin.com/in/athos-coghi-07983a225/",
+        "github": "https://github.com/athoscf",
         "isActive": true,
-        "id": 79,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 18,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Brittney Huels",
-        "email": "ellsworth.kuhn@yahoo.com",
-        "bio": "Qui quasi dicta.",
-        "birthDate": "30-09-1999 20:50",
-        "websites": [],
+        "id": "635128ab9edfa60024b6d74a",
+        "name": "Bruno Oliveira",
+        "photo": "/api_images/members/697519b1fad4930a3004289a.jpg",
+        "linkedin": "https://www.linkedin.com/in/brunool/",
+        "github": "https://github.com/Process-ing/",
+        "websites": [
+          {
+            "id": 5,
+            "url": "https://www.processing.pt/"
+          }
+        ],
         "isActive": true,
-        "id": 80,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 19,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Mr. Bethany Kuhn",
-        "email": "isabelle.mckenzie@gmail.com",
-        "bio": "Tempore harum esse atque at enim dolores eum.",
-        "birthDate": "11-12-1996 22:30",
-        "websites": [],
+        "id": "690e2883dea85900275da49b",
+        "name": "Carolina Roque",
+        "email": "carolina.roque.005@gmail.com",
+        "photo": "/api_images/members/690f3a692e5314003c94b958.jpg",
+        "linkedin": "https://www.linkedin.com/in/carolina-roque-8634b6386/",
+        "github": "https://github.com/carolinaroquee",
         "isActive": true,
-        "id": 81,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 20,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Pierre Lockman",
-        "email": "reyes.purdy@yahoo.com",
-        "bio": "Rem facere repellendus libero cumque eligendi.",
-        "birthDate": "19-02-1998 10:39",
-        "websites": [],
+        "id": "6545321d9bf1141111f485e2",
+        "name": "Clara Sousa",
+        "photo": "/api_images/members/697244b6880b330a80695ae6.jpg",
         "isActive": true,
-        "id": 82,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 21,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Brendan Jerde",
-        "email": "darwin.labadie@gmail.com",
-        "bio": "Nulla architecto consequuntur eius beatae libero illo qui.",
-        "birthDate": "01-09-2005 03:00",
-        "websites": [],
+        "id": "671ff185f5a9a4003579c37c",
+        "name": "Dalton Djoesman",
+        "photo": "/api_images/members/6720f09317752500207e6e23.jpg",
+        "linkedin": "https://www.linkedin.com/in/dalton-djoesman-kld2502/",
+        "github": "https://github.com/DaltonDjoesman",
         "isActive": true,
-        "id": 83,
-        "roles": []
-      }
-    ]
-  },
-  {
-    "section": "Recruit",
-    "accounts": [
-      {
-        "name": "Alejandro Mraz",
-        "email": "bettina.leuschke@hotmail.com",
-        "bio": "Quibusdam esse voluptatibus dolorem corporis reiciendis.",
-        "birthDate": "23-01-2004 01:02",
-        "websites": [],
-        "isActive": true,
-        "id": 84,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 22,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Keith Hane",
-        "email": "wallace.parisian@gmail.com",
-        "bio": "Vero ratione adipisci.",
-        "birthDate": "24-07-1999 01:16",
-        "websites": [],
+        "id": "671fe0865e645b0019b788d0",
+        "name": "Daniel Soares",
+        "email": "dacbvs@gmail.com",
+        "photo": "/api_images/members/672004ca15df930043c316fa.jpg",
         "isActive": true,
-        "id": 85,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 23,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Darcey Cronin",
-        "email": "ilona.ferry@gmail.com",
-        "bio": "Quidem in tempore blanditiis molestiae.",
-        "birthDate": "04-07-2000 00:01",
-        "websites": [],
+        "id": "690e28e0ccd09500b49cab6a",
+        "name": "Daniel Rama",
+        "email": "daniel.morais.rama@gmail.com",
+        "photo": "/api_images/members/692385fe59d1e5002e64cd8f.jpg",
+        "github": "https://github.com/danielramaa",
         "isActive": true,
-        "id": 86,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 24,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Florence Jast",
-        "email": "willie.ullrich@yahoo.com",
-        "bio": "Dolorum consequuntur eius.",
-        "birthDate": "26-07-2000 11:14",
-        "websites": [],
+        "id": "690e2b21c4fefc0020a713ff",
+        "name": "Daniel Lobo",
+        "photo": "/api_images/members/69387ffb0a7f47004388d0d1.jpg",
         "isActive": true,
-        "id": 87,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 25,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Lyman Langosh",
-        "email": "carlee.harber@gmail.com",
-        "bio": "Minima aperiam quidem explicabo.",
-        "birthDate": "19-08-2006 00:21",
-        "websites": [],
+        "id": "690e2517455b5f0012b386df",
+        "name": "David Ferreira",
         "isActive": true,
-        "id": 88,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 26,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Phillip Hickle",
-        "email": "enid.simonis@yahoo.com",
-        "bio": "Assumenda delectus porro esse sint.",
-        "birthDate": "22-12-2000 10:02",
-        "websites": [],
+        "id": "635129cba562ee003e69000b",
+        "name": "Diogo Fernandes",
+        "email": "diogotvf7@gmail.com",
+        "photo": "/api_images/members/661e57165696432d36a307a9.jpg",
+        "linkedin": "https://www.linkedin.com/in/diogo-fernandes-172374255/",
+        "github": "https://github.com/diogotvf7",
         "isActive": true,
-        "id": 89,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 27,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Felicitas Brakus",
-        "email": "idalia.weber@hotmail.com",
-        "bio": "Itaque autem eius voluptates.",
-        "birthDate": "26-11-1996 12:59",
-        "websites": [],
+        "id": "690e249d2e5314003c94b950",
+        "name": "Diogo Martins",
+        "photo": "/api_images/members/690f44f3ccd09500b49cab7e.jpg",
         "isActive": true,
-        "id": 90,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 28,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Pat Lemke I",
-        "email": "edward.beier@yahoo.com",
-        "bio": "Suscipit harum veniam in maxime maiores veniam distinctio.",
-        "birthDate": "27-04-2005 07:51",
-        "websites": [],
+        "id": "654530c59bf1141111f485db",
+        "name": "Eduarda Magno",
+        "photo": "/api_images/members/69210e3c4f37230035b5769a.jpg",
+        "linkedin": "https://www.linkedin.com/in/eduardagmagno/",
+        "github": "https://github.com/bellblex",
+        "websites": [
+          {
+            "id": 6,
+            "url": "https://www.eduardagmagno.com/"
+          }
+        ],
         "isActive": true,
-        "id": 91,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 29,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Ivory Kuhic",
-        "email": "val.mante@gmail.com",
-        "bio": "Ipsam quod itaque.",
-        "birthDate": "12-05-2007 19:30",
-        "websites": [],
+        "id": "690e2a614f37230035b5768d",
+        "name": "Filipe Esteves",
+        "github": "https://github.com/FrozenHart",
         "isActive": true,
-        "id": 92,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 30,
+            "associatedActivities": []
+          }
+        ]
       },
       {
-        "name": "Felipe McKenzie",
-        "email": "dawne.macejkovic@yahoo.com",
-        "bio": "Explicabo cupiditate adipisci aperiam eveniet fugiat odit.",
-        "birthDate": "31-07-2004 14:59",
-        "websites": [],
+        "id": "690e24ca0a7f47004388d0c1",
+        "name": "Francisca Portugal",
+        "photo": "/api_images/members/6912de1f4f37230035b57698.jpg",
+        "linkedin": "https://linkedin.com/in/franciscaportugal",
+        "github": "https://github.com/franpts2",
         "isActive": true,
-        "id": 93,
-        "roles": []
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 31,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "635129cba562ee003e69000a",
+        "name": "Francisco Cardoso",
+        "email": "franciscocardoso.3003@gmail.com",
+        "photo": "/api_images/members/6703eacf8c597c004f722066.jpg",
+        "github": "https://github.com/FranciscoCardoso913",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 32,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "654533179bf1141111f485e8",
+        "name": "Félix Martins",
+        "photo": "/api_images/members/657db88f9bf1141111f48622.jpg",
+        "linkedin": "https://www.linkedin.com/in/felix-martins/",
+        "github": "https://github.com/Minipoloalex",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 33,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe12a5e645b0019b788d1",
+        "name": "Gonçalo Pinto",
+        "email": "gpinnto@icloud.com",
+        "photo": "/api_images/members/6751ed32dd04490019f82e3c.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 34,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe15515df930043c316ea",
+        "name": "Gonçalo Sampaio",
+        "photo": "/api_images/members/671ff4705e645b0019b788dc.jpg",
+        "linkedin": "https://www.linkedin.com/in/gonçalo-sampaio27/",
+        "github": "https://github.com/goncalosamp27/",
+        "websites": [
+          {
+            "id": 7,
+            "url": "https://goncalos-world.vercel.app/"
+          }
+        ],
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 35,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e2938ccd09500b49cab6c",
+        "name": "Guilherme Reis",
+        "photo": "/api_images/members/691212bec4fefc0020a71404.jpg",
+        "linkedin": "https://www.linkedin.com/in/guilherme-j-o-reis",
+        "github": "https://github.com/Blueg00d",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 36,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe1e2f5a9a4003579c375",
+        "name": "Henrique Fernandes",
+        "photo": "/api_images/members/6845dde1ce642500bd9eb340.jpg",
+        "linkedin": "https://www.linkedin.com/in/-henriquesfernandes/",
+        "github": "https://github.com/HenriqueSFernandes/",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 37,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e2475c4fefc0020a713f9",
+        "name": "Irís Xu",
+        "photo": "/api_images/members/690e32582e5314003c94b953.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 38,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe205ca3d6300121b2a39",
+        "name": "Isaac Santos",
+        "photo": "/api_images/members/671ff126f5a9a4003579c37b.jpg",
+        "github": "https://github.com/Isaac3105",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 39,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe22717752500207e6e0f",
+        "name": "Jaime Fonseca",
+        "email": "jaimefrfonseca03@gmail.com",
+        "photo": "/api_images/members/687699a67878f8002ee409ac.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 40,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "61ba4e3acb45aa2397157ddb",
+        "name": "José Martins",
+        "photo": "/api_images/members/6481b192a3b3e4988c8b545e.jpg",
+        "linkedin": "https://www.linkedin.com/in/josé-martins-35a809241/",
+        "github": "https://github.com/ZeAntonioM",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 41,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "654531399bf1141111f485dd",
+        "name": "José Sousa",
+        "photo": "/api_images/members/656623569bf1141111f4860f.jpg",
+        "linkedin": "https://www.linkedin.com/in/jos%C3%A9-sousa-70b048212?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "github": "https://github.com/jose-carlos-sousa",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 42,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe2975e645b0019b788d2",
+        "name": "José Granja",
+        "email": "ze.diogo.granja@gmail.com",
+        "photo": "/api_images/members/67c393a2d7a4ab0027f536e3.jpg",
+        "linkedin": "https://www.linkedin.com/in/granja/",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 43,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "61ba4e3acb45aa2397157de2",
+        "name": "João Torre Pereira",
+        "photo": "/api_images/members/64674bcba3b3e4988c8b545a.jpg",
+        "linkedin": "https://www.linkedin.com/in/jo%C3%A3o-torre-pereira/",
+        "github": "https://github.com/thePeras",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 44,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "63512b139edfa60024b6d751",
+        "name": "João Pereira",
+        "photo": "/api_images/members/65660f029bf1141111f4860e.jpg",
+        "linkedin": "https://www.linkedin.com/in/jo%C3%A3o-pereira-543b26217/",
+        "github": "https://github.com/ttoino",
+        "websites": [
+          {
+            "id": 8,
+            "url": "https://toino.pt"
+          }
+        ],
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 45,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "654531b19bf1141111f485e0",
+        "name": "João Silva",
+        "photo": "/api_images/members/65af958ed093541803de11c4.jpg",
+        "linkedin": "https://www.linkedin.com/in/jo%C3%A3o-silva-690273197/",
+        "github": "https://github.com/joaoslva",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 46,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe247f5a9a4003579c376",
+        "name": "João Vicente",
+        "photo": "/api_images/members/673f474fdd04490019f82e3a.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 47,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe26a8e94700027d0f070",
+        "name": "João Cova",
+        "photo": "/api_images/members/6721014b5e645b0019b788e8.jpg",
+        "github": "https://github.com/jcovaa",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 48,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e28a1c4fefc0020a713fc",
+        "name": "João Lopes",
+        "photo": "/api_images/members/692dcb70dea85900275da4aa.jpg",
+        "linkedin": "https://www.linkedin.com/in/jlopes15",
+        "github": "https://github.com/joaolopes15",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 49,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e2a3dccd09500b49cab6f",
+        "name": "Jéssica Costa",
+        "email": "jessica.coutocosta@gmail.com",
+        "photo": "/api_images/members/6927729b2e5314003c94b95c.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 50,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "61ba4e3acb45aa2397157de3",
+        "name": "Luís Sousa",
+        "email": "luis.m.sousa103@gmail.com",
+        "photo": "/api_images/members/633339b036158ea3da615698.jpg",
+        "github": "https://github.com/2002luis",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 51,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "61ba4e3bcb45aa2397157ded",
+        "name": "Madalena Ye",
+        "photo": "/api_images/members/6332dd9136158ea3da615689.jpg",
+        "github": "https://github.com/madalenaye",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 52,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "635129cba562ee003e690011",
+        "name": "Marco Vilas Boas",
+        "photo": "/api_images/members/642ffe96761165048311eb4c.jpg",
+        "linkedin": "https://www.linkedin.com/in/marco-vilas-boas-848811250/",
+        "github": "https://github.com/marco-vb",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 53,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e2ad2ccd09500b49cab72",
+        "name": "Maria Cabral",
+        "photo": "/api_images/members/690e655cdea85900275da4a0.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 54,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e254a0a7f47004388d0c2",
+        "name": "Maria Luiza Vieira",
+        "photo": "/api_images/members/690e2b27455b5f0012b386e2.jpg",
+        "linkedin": "https://www.linkedin.com/in/marialuizahvieira",
+        "github": "https://github.com/maluviieira",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 55,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "5fcfd0122c12d28b88982f99",
+        "name": "Mariana Rocha",
+        "photo": "/api_images/members/656f197d9bf1141111f48619.jpg",
+        "linkedin": "https://www.linkedin.com/in/mariana-rocha-599807200/",
+        "github": "https://github.com/golangis",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 56,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe3db4b51f2003c4e165a",
+        "name": "Mariana Almeida",
+        "photo": "/api_images/members/67cb2c1ad7a4ab0027f536e5.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 57,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "654536349bf1141111f485f7",
+        "name": "Martim Moniz",
+        "photo": "/api_images/members/67d5c0cad8b2f3002eea2ef1.jpg",
+        "linkedin": "https://www.linkedin.com/in/martim-teixeira-el%C3%B3i-moniz-30aa13356/",
+        "github": "https://github.com/Eloymtm",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 58,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e2773455b5f0012b386e1",
+        "name": "Matilde Torres",
+        "photo": "/api_images/members/6919bef5455b5f0012b386e7.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 59,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e28630a7f47004388d0c4",
+        "name": "Matilde Sousa",
+        "photo": "/api_images/members/690e2c12ccd09500b49cab75.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 60,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "61ba4e3bcb45aa2397157de7",
+        "name": "Miguel Garrido",
+        "photo": "/api_images/members/633340c036158ea3da6156a5.jpg",
+        "github": "https://github.com/sirkotal",
+        "websites": [
+          {
+            "id": 9,
+            "url": "http://sirkotal.github.io/"
+          }
+        ],
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 61,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "654535f59bf1141111f485f5",
+        "name": "Miguel Moita",
+        "email": "miguelmoita2004@gmail.com",
+        "photo": "/api_images/members/6581c7cc9bf1141111f48625.jpg",
+        "github": "https://github.com/MiguelMoita",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 62,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e2b48ccd09500b49cab74",
+        "name": "Miguel Marques",
+        "photo": "/api_images/members/69276c1ddea85900275da4a8.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 63,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "635129cba562ee003e690010",
+        "name": "Mª Rita Lopes",
+        "photo": "/api_images/members/642034caa66bfa049a382d61.jpg",
+        "github": "https://github.com/MRita443",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 64,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe4605e645b0019b788d6",
+        "name": "Nuno Gonçalves",
+        "email": "nunogonbraga@gmail.com",
+        "photo": "/api_images/members/67c86f1fa4fe190053509b84.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 65,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e29590a7f47004388d0c5",
+        "name": "Nuno Carvalho",
+        "email": "nunojpc10@gmail.com",
+        "photo": "/api_images/members/690e6e884f37230035b57691.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 66,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "654531db9bf1141111f485e1",
+        "name": "Pedro Vidal",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 67,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe4d115df930043c316ef",
+        "name": "Pedro Oliveira",
+        "photo": "/api_images/members/673fa5084683bc003d388dee.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 68,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e238cc4fefc0020a713f8",
+        "name": "Pedro Moreira",
+        "photo": "/api_images/members/692b28622e5314003c94b95d.jpg",
+        "github": "https://github.com/Pedr0-Moreira",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 69,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e25bf4f37230035b57687",
+        "name": "Pedro Lunet",
+        "photo": "/api_images/members/690e2609dea85900275da498.jpg",
+        "linkedin": "https://www.linkedin.com/in/pedrolunet/",
+        "github": "https://github.com/PedroLunet",
+        "websites": [
+          {
+            "id": 10,
+            "url": "https://www.pedrolunet.dev/"
+          }
+        ],
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 70,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe53c4b51f2003c4e165b",
+        "name": "Rafael Silva",
+        "photo": "/api_images/members/676ee7c8bcc880003d0d7b3c.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 71,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e269159d1e5002e64cd82",
+        "name": "Raquel Silva",
+        "email": "raquelsilva2206@gmail.com",
+        "photo": "/api_images/members/69242342dea85900275da4a7.jpg",
+        "github": "https://github.com/raquelvs226",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 72,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "635129cba562ee003e69000f",
+        "name": "Rita Cachaldora",
+        "photo": "/api_images/members/65660e3c9bf1141111f4860d.jpg",
+        "linkedin": "https://linkedin.com/in/rita-cachaldora",
+        "github": "https://github.com/rcachaldora",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 73,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "635128ab9edfa60024b6d748",
+        "name": "Rubem Neto",
+        "photo": "/api_images/members/643000d2761165048311eb4e.jpg",
+        "github": "https://github.com/rubuy-74",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 74,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "65452e249bf1141111f485d1",
+        "name": "Ruben Esteves",
+        "photo": "/api_images/members/654823cb9bf1141111f48601.jpg",
+        "linkedin": "https://www.linkedin.com/in/ruben-esteves-56b527292/",
+        "github": "https://github.com/Ruben38Esteves",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 75,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "654532cc9bf1141111f485e6",
+        "name": "Rui Silveira",
+        "photo": "/api_images/members/657b23ad9bf1141111f4861f.jpg",
+        "linkedin": "https://www.linkedin.com/in/ruisilveira8403/",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 76,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe5c115df930043c316f0",
+        "name": "Rui Soares",
+        "photo": "/api_images/members/671ff06617752500207e6e12.jpg",
+        "linkedin": "https://www.linkedin.com/in/rui-soares333",
+        "github": "https://github.com/RuiSoares333",
+        "websites": [
+          {
+            "id": 11,
+            "url": "https://ruisoares333.github.io/"
+          }
+        ],
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 77,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe61a24549c002e73e48b",
+        "name": "Simão Barbosa",
+        "email": "simaopsbarbosa@gmail.com",
+        "photo": "/api_images/members/672000ff24549c002e73e493.jpg",
+        "linkedin": "https://www.linkedin.com/in/simaopsbarbosa/",
+        "github": "https://github.com/simaopsbarbosa/",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 78,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e2817dea85900275da49a",
+        "name": "Simão Marta",
+        "photo": "/api_images/members/69237c6b59d1e5002e64cd8e.jpg",
+        "github": "https://github.com/SIMAOMARTA",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 79,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "671fe3b95e645b0019b788d4",
+        "name": "Sofia Minnemann",
+        "email": "sofiminnemann@gmail.com",
+        "photo": "/api_images/members/6887947c0a7f47004388d0c0.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 80,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "635129cba562ee003e690012",
+        "name": "Tomás Palma",
+        "photo": "/api_images/members/67222080f5a9a4003579c387.jpg",
+        "github": "https://github.com/tomaspalma",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 81,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "6545352d9bf1141111f485f1",
+        "name": "Tomás Ramos",
+        "photo": "/api_images/members/656e34269bf1141111f48617.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 82,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e2aa6ccd09500b49cab70",
+        "name": "Tomás Oliveira",
+        "email": "up202507178@g.uporto.pt",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 83,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "635129cba562ee003e690016",
+        "name": "Wallen Ribeiro",
+        "photo": "/api_images/members/6431638d761165048311eb52.jpg",
+        "github": "https://github.com/Wallen-Ribeiro",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 84,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "690e29fe0a7f47004388d0c6",
+        "name": "Ye Sun",
+        "photo": "/api_images/members/690f33ccccd09500b49cab7c.jpg",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Membro",
+            "permissions": [],
+            "isSection": false,
+            "id": 85,
+            "associatedActivities": []
+          }
+        ]
       }
     ]
   }
