@@ -1,8 +1,14 @@
 import type { CustomWebsite } from './custom-website';
 import type { Role } from './role';
 
+export type TeamSection = {
+  id: string;
+  name: string;
+  accounts: TeamMember[];
+};
+
 export type TeamMember = {
-  id?: string | number;
+  id: string | number;
   name: string;
   email?: string;
   bio?: string;

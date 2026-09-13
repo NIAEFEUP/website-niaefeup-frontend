@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import Hexagon from '$lib/components/hexagons/hexagon.svelte';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
@@ -43,8 +42,10 @@
     target.dataset.state = 'closed';
   };
 
-  onMount(() => {
-    const target = document.getElementById(String(teamMember.id));
+  let root: HTMLElement | undefined = $state();
+
+  $effect(() => {
+    const target = root;
 
     if (!target) return;
 
@@ -53,7 +54,7 @@
       target.querySelectorAll('.full-opacity');
     const variableOpacityContainer: HTMLElement | null = target.querySelector('.variable-opacity');
 
-    target.addEventListener('touchstart', () => {
+    const handleTouchStart = () => {
       if (container && fullOpacityContainers && variableOpacityContainer) {
         if (target.dataset.state == 'closed') {
           openHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
@@ -61,13 +62,16 @@
           closeHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
         }
       }
-    });
+    };
+
+    target.addEventListener('touchstart', handleTouchStart);
+    return () => target.removeEventListener('touchstart', handleTouchStart);
   });
 </script>
 
 <Hexagon {orientation}>
   <div
-    id={teamMember.id?.toString()}
+    bind:this={root}
     class="group relative h-full w-full"
     data-testid="hexagon"
     data-state="closed"

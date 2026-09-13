@@ -2,7 +2,7 @@
   import { SvelteMap, SvelteSet } from 'svelte/reactivity';
   import type { PageData } from './$types';
   import TeamSectionGrid from './_components/team-section-grid.svelte';
-  import type { TeamMember } from '@/types/team-member';
+  import type { TeamSection } from '@/types/team-member';
 
   let { data }: { data: PageData } = $props();
 
@@ -20,7 +20,7 @@
   let slidePosition = $state(0);
   let transitionDuration = $state(0);
 
-  let orderedSections: { id: string; name: string; accounts: TeamMember[] }[] = $state([]);
+  let orderedSections: TeamSection[] = $state([]);
   let slidingNext = $state(false);
   let slidingPrev = $state(false);
 
@@ -133,13 +133,7 @@
         isDuplicate,
         carouselId: carouselIds[pos]
       };
-    }) as Array<{
-      id: string;
-      name: string;
-      accounts: TeamMember[];
-      isDuplicate?: boolean;
-      carouselId?: string;
-    }>;
+    }) as Array<TeamSection & { isDuplicate?: boolean; carouselId?: string }>;
   });
 
   let recenterTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -158,10 +152,7 @@
     };
   });
 
-  const handleSectionClick = (
-    clickedSection: { id: string; name: string; accounts: TeamMember[] },
-    index: number
-  ) => {
+  const handleSectionClick = (clickedSection: TeamSection, index: number) => {
     if (clickedSection.name === openSection) return;
     if (index === CAROUSEL_CENTER_INDEX) return; // Center
     if (slidingNext || slidingPrev) return;
