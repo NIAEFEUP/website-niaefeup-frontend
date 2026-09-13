@@ -75,11 +75,12 @@ If you wish, you can activate the formatter to run automatically on save by addi
 To create a production version of your app:
 
 ```bash
-docker build -t {IMAGE_NAME} -f Dockerfile.prod .
+docker build --target prod -t {IMAGE_NAME} .
 docker run -p {YOUR_PORT}:80 {IMAGE_NAME}
 ```
 
 The production image builds the static site and serves it with nginx.
+The `dev` target (`docker build --target dev`) runs the development server.
 
 Or with npm:
 
