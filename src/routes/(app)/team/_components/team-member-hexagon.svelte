@@ -44,7 +44,9 @@
   };
 
   onMount(() => {
-    const target: HTMLElement = document.getElementById(teamMember.email) as HTMLElement;
+    const target = document.getElementById(String(teamMember.id));
+
+    if (!target) return;
 
     const container: HTMLElement | null = target.querySelector('.container');
     const fullOpacityContainers: NodeListOf<HTMLElement> | null =
@@ -65,7 +67,7 @@
 
 <Hexagon {orientation}>
   <div
-    id={teamMember.email}
+    id={teamMember.id?.toString()}
     class="group relative h-full w-full"
     data-testid="hexagon"
     data-state="closed"

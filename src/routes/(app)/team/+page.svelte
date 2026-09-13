@@ -102,7 +102,9 @@
 
     let indices: number[];
 
-    if (orderedSections.length === 3) {
+    if (orderedSections.length === 2) {
+      indices = [0, 0, 1, 0, 0]; // [A, A, B, A, A]
+    } else if (orderedSections.length === 3) {
       indices = [2, 0, 1, 2, 0]; // [C, A, B, C, A]
     } else if (orderedSections.length === 4) {
       indices = [2, 0, 1, 2, 3]; // [C, A, B, C, D]
