@@ -78,7 +78,7 @@
       {#if project.technologies && project.technologies.length > 0}
         <div class="flex flex-col items-center md:w-1/3">
           <p
-            class="mb-6 font-source_code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
+            class="mb-6 font-source-code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
           >
             &lt; Tecnologias /&gt;
           </p>
@@ -108,7 +108,7 @@
           : 'md:w-full md:justify-center'}"
       >
         <p
-          class="mb-6 font-source_code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
+          class="mb-6 font-source-code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
         >
           &lt; Público Alvo /&gt;
         </p>

@@ -30,7 +30,7 @@
 </script>
 
 <nav
-  class="bg-ni-navbar fixed top-0 z-30 hidden w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white sm:grid sm:text-base"
+  class="bg-ni-navbar fixed top-0 z-30 hidden w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white/90 sm:grid sm:text-base"
   class:isScrolled
   aria-label="Navigation Bar"
 >
@@ -43,7 +43,7 @@
   <div class="flex items-center justify-end gap-7">
     {#each links as { href, label, pageComp } (label)}
       {#if currentPage.startsWith(pageComp)}
-        <a {href} class="rounded bg-muted-red-400 p-2" data-testid={label.toLowerCase()}>
+        <a {href} class="rounded bg-white/90 text-ni-bg p-2" data-testid={label.toLowerCase()}>
           <p class="font-bold">{label}</p>
         </a>
       {:else}

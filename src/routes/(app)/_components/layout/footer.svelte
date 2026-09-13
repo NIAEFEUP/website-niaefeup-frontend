@@ -5,6 +5,8 @@
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
 
+  let currentYear = new Date().getFullYear();
+
   function copyToClipboard(content: string) {
     navigator.clipboard.writeText(content);
     createNotification(NotificationMessages.COPY_EMAIL);
@@ -42,7 +44,7 @@
 </script>
 
 <div class="z-10 w-full bg-transparent p-3 max-sm:hidden">
-  <footer class="grid grid-cols-3 justify-between border-t-2 border-muted-red-500 p-2 text-white">
+  <footer class="grid grid-cols-3 justify-between border-t-2 border-white/90 p-2 text-white">
     <div class="footer-icons grid w-fit grid-cols-6 gap-4 self-center p-3">
       <Icon
         src={Icons.Instagram}
@@ -98,7 +100,7 @@
     </div>
     <div class="flex flex-col items-center gap-1">
       <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
-      <p class="text-sm">NIAEFEUP &copy; 2022</p>
+      <p class="text-sm">NIAEFEUP &copy; {currentYear}</p>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
       <div class="text-right text-sm">
@@ -110,9 +112,7 @@
 </div>
 
 <div class="hidden w-full bg-transparent p-3 max-sm:block">
-  <footer
-    class="flex flex-col justify-between border-t-2 border-muted-red-500 p-2 text-sm text-white"
-  >
+  <footer class="flex flex-col justify-between border-t-2 border-white/90 p-2 text-sm text-white">
     <div class="flex w-full flex-row items-center justify-between self-center p-3">
       <span>NIAEFEUP</span>
       <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
@@ -128,7 +128,7 @@
         src={Icons.Instagram}
         color="white"
         size="24px"
-        href="https://www.instagram.com/niaefeup/"
+        href="https://instagram.com/niaefeup/"
         ariaLabel="Instagram"
       />
       <Icon
@@ -142,7 +142,7 @@
         src={Icons.Facebook}
         color="white"
         size="24px"
-        href="https://www.facebook.com/NIAEFEUP"
+        href="https://facebook.com/NIAEFEUP"
         ariaLabel="Facebook"
       />
       <Icon

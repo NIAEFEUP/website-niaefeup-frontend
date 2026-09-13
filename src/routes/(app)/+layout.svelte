@@ -1,6 +1,5 @@
 <script lang="ts">
   import { ModeWatcher } from 'mode-watcher';
-  import BackgroundHexagon from './_components/layout/background-hexagon.svelte';
   import Footer from './_components/layout/footer.svelte';
   import Navbar from './_components/layout/navbar.svelte';
   import Sidebar from './_components/layout/sidebar.svelte';
@@ -42,7 +41,6 @@
 <Navbar />
 
 <main class="bg-ni-primary my-20 grow">
-  <BackgroundHexagon position="right" />
   {@render children?.()}
 </main>
 

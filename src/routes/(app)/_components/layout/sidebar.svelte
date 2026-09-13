@@ -39,7 +39,7 @@
       <Icon src={Icons.Close} color="white" size="31px" />
     </button>
     <ul
-      class="col-span-2 col-start-1 flex w-full flex-col items-start gap-10 pt-12 font-source_code text-3xl text-white"
+      class="col-span-2 col-start-1 flex w-full flex-col items-start gap-10 pt-12 font-source-code text-3xl text-white"
     >
       {#each SidebarItems as item, i (i)}
         <NavItem selected={selectedIndex === i}>
