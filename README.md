@@ -59,8 +59,11 @@ We strongly recommend the use of the [VSCode extension for Prettier](https://mar
 Alternatively, you can run the linters manually:
 
 ```bash
-npm run lint
-npm run format
+npm run lint          # ESLint (code conventions)
+npm run lint:fix      # auto-fix ESLint issues
+npm run format        # format the code with Prettier
+npm run format:check  # verify formatting without changing files
+npm run ci            # formatting check + lint + type check (same as CI)
 ```
 
 If you wish, you can activate the formatter to run automatically on save by adding the following fields to your VSCode settings:
