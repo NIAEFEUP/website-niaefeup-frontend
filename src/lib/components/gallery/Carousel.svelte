@@ -131,7 +131,7 @@
             <button
               onclick={() => openLightbox(i)}
               class="h-full w-full cursor-pointer"
-              aria-label={`View photo ${i + 1} in full screen`}
+              aria-label={`Ver foto ${i + 1} em ecrã inteiro`}
             >
               <img
                 src={photo}
@@ -170,7 +170,7 @@
           class="h-3 w-3 rounded-full transition-colors focus:outline-hidden {current === i
             ? 'bg-muted-red-700'
             : 'bg-[#d9d9d9]/50 hover:bg-[#d9d9d9] '}"
-          aria-label={`Go to photo ${i + 1}`}
+          aria-label={`Ir para a foto ${i + 1}`}
           aria-current={current === i ? 'true' : undefined}
           onclick={() => to(i)}
         ></button>
