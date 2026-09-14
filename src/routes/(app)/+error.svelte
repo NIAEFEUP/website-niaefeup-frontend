@@ -5,9 +5,9 @@
 
 <ErrorPage
   status={page.status}
-  title="Error"
-  heading="What went wrong?"
-  text={page.error?.message ?? 'Unknown error'}
+  title="Erro"
+  heading="O que correu mal?"
+  text={page.error?.message ?? 'Erro desconhecido'}
   buttonText="Voltar"
   buttonWidth="medium"
 />

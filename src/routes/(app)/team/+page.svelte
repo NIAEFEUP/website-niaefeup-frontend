@@ -256,7 +256,7 @@
         class="relative mb-6 mt-2 h-12 w-full touch-pan-y overflow-hidden"
         role="slider"
         tabindex="0"
-        aria-label="Team section carousel"
+        aria-label="Carrossel de secções da equipa"
         aria-valuenow={groupedSections.findIndex((s) => s.name === openSection)}
         aria-valuemin="0"
         aria-valuemax={groupedSections.length - 1}

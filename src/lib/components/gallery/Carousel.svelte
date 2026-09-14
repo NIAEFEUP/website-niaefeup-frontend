@@ -111,7 +111,7 @@
   <div class="flex w-full justify-center">
     <img
       src={photos[0]}
-      alt="Gallery 1"
+      alt="Galeria 1"
       class="aspect-21/9 w-full rounded-3xl object-cover shadow-sm"
       loading="lazy"
     />
@@ -135,7 +135,7 @@
             >
               <img
                 src={photo}
-                alt={`Gallery photo ${i + 1}`}
+                alt={`Foto da galeria ${i + 1}`}
                 class="pointer-events-none h-full w-full select-none rounded-3xl object-cover shadow-sm"
                 loading="lazy"
                 draggable="false"
@@ -149,7 +149,7 @@
         class="group-hover:opacity-100 absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow-sm transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0"
         onclick={prev}
         disabled={current === 0}
-        aria-label="Previous photo"
+        aria-label="Foto anterior"
       >
         <Icon src={Icons.ChevronLeft} size="14" />
       </button>
@@ -158,7 +158,7 @@
         class="group-hover:opacity-100 absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-muted-red-700/70 text-[#d9d9d9]/70 opacity-0 shadow-sm transition-all duration-300 hover:scale-105 hover:bg-muted-red-700/90 hover:text-[#d9d9d9]/90 disabled:opacity-0"
         onclick={next}
         disabled={current === photos.length - 1}
-        aria-label="Next photo"
+        aria-label="Foto seguinte"
       >
         <Icon src={Icons.ChevronRight} size="14" />
       </button>
@@ -186,13 +186,13 @@
     onkeydown={(e) => e.key === 'Enter' && closeLightbox()}
     role="dialog"
     aria-modal="true"
-    aria-label="Photo lightbox"
+    aria-label="Galeria de fotos"
     tabindex="-1"
   >
     <button
       class="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-xs transition-all hover:bg-black/40"
       onclick={closeLightbox}
-      aria-label="Close lightbox"
+      aria-label="Fechar galeria"
     >
       <Icon src={Icons.Close} size="24" />
     </button>
@@ -211,7 +211,7 @@
     >
       <img
         src={photos[lightboxIndex]}
-        alt={`Gallery photo ${lightboxIndex + 1}`}
+        alt={`Foto da galeria ${lightboxIndex + 1}`}
         class="max-h-full max-w-full select-none object-contain"
         draggable="false"
       />
@@ -223,7 +223,7 @@
             e.stopPropagation();
             prevLightbox();
           }}
-          aria-label="Previous photo"
+          aria-label="Foto anterior"
         >
           <Icon src={Icons.ChevronLeft} size="32" />
         </button>
@@ -234,7 +234,7 @@
             e.stopPropagation();
             nextLightbox();
           }}
-          aria-label="Next photo"
+          aria-label="Foto seguinte"
         >
           <Icon src={Icons.ChevronRight} size="32" />
         </button>

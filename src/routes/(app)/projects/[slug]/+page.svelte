@@ -89,11 +89,7 @@
                 target="_blank"
                 class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
               >
-                <img
-                  src={technology.image}
-                  alt="Technology {technology.name}'s logo"
-                  class="max-h-12"
-                />
+                <img src={technology.image} alt="Logótipo de {technology.name}" class="max-h-12" />
                 {#if windowWidth > screenSizeThreshold}
                   <p class="text-xl text-white">{technology.name}</p>
                 {/if}
@@ -121,5 +117,5 @@
     </div>
   </section>
 {:else}
-  <p>Loading project details...</p>
+  <p>A carregar os detalhes do projeto...</p>
 {/if}

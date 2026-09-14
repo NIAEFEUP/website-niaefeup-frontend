@@ -24,7 +24,7 @@
     <button
       class="rounded-lg p-1.5 hover:bg-muted-red-500"
       onclick={() => notification.close()}
-      aria-label="Close"
+      aria-label="Fechar"
     >
       <Icon src={Icons.Close} color="white" size="18px" />
     </button>

@@ -65,7 +65,7 @@
   >
     <img
       src="/images/landing_feup_buildings_2.svg"
-      alt="FEUP Building Outline"
+      alt="Contorno do edifício da FEUP"
       class="pointer-events-none h-auto w-full select-none object-contain"
     />
   </div>

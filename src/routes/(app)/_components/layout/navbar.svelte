@@ -32,7 +32,7 @@
 <nav
   class="bg-ni-navbar fixed top-0 z-30 hidden w-full grid-cols-2 items-center justify-center px-7 py-2 font-raleway text-xs text-white/90 sm:grid sm:text-base"
   class:isScrolled
-  aria-label="Navigation Bar"
+  aria-label="Barra de navegação"
 >
   <div class="flex w-full justify-start">
     <a href="/" class="flex items-center gap-4">

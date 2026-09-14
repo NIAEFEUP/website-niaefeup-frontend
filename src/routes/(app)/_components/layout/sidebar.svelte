@@ -21,7 +21,7 @@
     <button
       class="col-start-2 h-fit w-1/2 sm:invisible"
       onclick={toggleSidebar}
-      aria-label="Open sidebar"
+      aria-label="Abrir menu lateral"
     >
       <Icon src={Icons.Bars} color="white" size="31px" />
     </button>
@@ -34,7 +34,7 @@
     <button
       class="col-start-2 h-fit w-1/2 text-white"
       onclick={toggleSidebar}
-      aria-label="Close sidebar"
+      aria-label="Fechar menu lateral"
     >
       <Icon src={Icons.Close} color="white" size="31px" />
     </button>

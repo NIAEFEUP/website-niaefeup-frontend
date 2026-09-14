@@ -101,7 +101,7 @@
             <a
               href={teamMember.linkedin}
               class="full-opacity group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
-              aria-label="{teamMember.name}'s LinkedIn"
+              aria-label="LinkedIn de {teamMember.name}"
             >
               <Icon src={Icons.Linkedin} color="white" size="100%" /></a
             >
@@ -110,7 +110,7 @@
             <a
               href={teamMember.github}
               class="full-opacity group-hover:static group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
-              aria-label="{teamMember.name}'s GitHub"
+              aria-label="GitHub de {teamMember.name}"
               ><Icon src={Icons.Github} color="white" size="100%" /></a
             >
           {/if}
@@ -119,12 +119,12 @@
               <a
                 href={customWebsite.url}
                 class="full-opacity group-hover:opacity-100 h-5 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
-                aria-label="{teamMember.name}'s custom website"
+                aria-label="Website de {teamMember.name}"
               >
                 {#if customWebsite.iconPath}
                   <img
                     src={customWebsite.iconPath}
-                    alt="Icon of {teamMember.name}'s custom website"
+                    alt="Ícone do website de {teamMember.name}"
                     class="icon h-full w-full object-cover"
                   />
                 {:else}
@@ -141,7 +141,7 @@
     ></div>
     <img
       src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
-      alt="NIAFEUP member {teamMember.name}"
+      alt="Membro do NIAEFEUP {teamMember.name}"
       class="z-0 h-full w-full object-cover"
     />
   </div>

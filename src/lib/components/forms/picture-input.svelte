@@ -42,7 +42,7 @@
   />
   <button
     type="button"
-    aria-label="Upload image"
+    aria-label="Carregar imagem"
     class="relative flex h-[200px] w-[200px] items-center justify-center rounded-md bg-muted-red-400 text-center"
     onclick={() => {
       fileInput?.click();
@@ -52,7 +52,7 @@
       <img
         class="h-[200px] w-[200px] rounded-md object-cover"
         src={image}
-        alt="Selected {name.replace(/([A-Z])/g, ' $1').toLowerCase()}"
+        alt="Imagem {name.replace(/([A-Z])/g, ' $1').toLowerCase()}"
       />
     {:else}
       <p class="font-medium text-white">{text}<span class="text-2xl">*</span></p>
@@ -65,7 +65,7 @@
   </button>
   <button
     type="button"
-    aria-label="Remove image"
+    aria-label="Remover imagem"
     class="{image ? 'visible' : 'invisible'} text-sm font-bold text-white hover:underline"
     onclick={() => {
       if (fileInput) fileInput.value = '';
