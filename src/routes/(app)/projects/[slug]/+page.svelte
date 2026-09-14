@@ -56,7 +56,7 @@
               <img
                 src={link.iconPath}
                 alt="{project.title}'s custom website"
-                class="object-fit md:h-28 md:w-56"
+                class="object-contain md:h-28 md:w-56"
               />
             </a>
           </li>
