@@ -17,7 +17,7 @@
     if (currentPath === '/') return SITE_NAME;
     const item = navItems
       .filter(({ href }) => href !== '/')
-      .filter(({ href }) => currentPath.startsWith(href))
+      .filter(({ href }) => currentPath === href || currentPath.startsWith(`${href}/`))
       .sort((a, b) => b.href.length - a.href.length)[0];
     return `${item ? item.label : 'Erro'} | ${SITE_NAME}`;
   });
