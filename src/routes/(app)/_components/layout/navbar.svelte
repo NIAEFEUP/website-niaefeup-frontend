@@ -1,14 +1,12 @@
 <script>
   import { onMount } from 'svelte';
   import { page } from '$app/state';
+  import navItems from './sidebar-items';
 
   let currentPage = $derived(page.url.pathname ?? '/');
-  const links = [
-    { href: '/team', label: 'Equipa', pageComp: '/team' },
-    { href: '/projects', label: 'Projetos', pageComp: '/projects' },
-    { href: '/events', label: 'Eventos', pageComp: '/events' },
-    { href: '/contacts', label: 'Contactos', pageComp: '/contacts' }
-  ];
+  const links = navItems
+    .filter(({ href }) => href !== '/')
+    .map(({ label, href }) => ({ href, label, pageComp: href }));
 
   let isScrolled = $state(false);
   let y = 0;

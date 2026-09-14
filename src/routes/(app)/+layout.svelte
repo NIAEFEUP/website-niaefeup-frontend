@@ -9,13 +9,17 @@
   import { navigating } from '$app/stores';
   import { page } from '$app/state';
   import { SITE_DESCRIPTION, OG_IMAGE_PATH, SITE_NAME, canonicalUrl } from '@/lib/config/site';
+  import navItems from './_components/layout/sidebar-items';
   import '@/app.css';
 
   let currentPath = $derived(page.url.pathname);
   let pageTitle = $derived.by(() => {
     if (currentPath === '/') return SITE_NAME;
-    const segment = currentPath.split('/').filter(Boolean)[0];
-    return `${segment.toUpperCase()} | ${SITE_NAME}`;
+    const item = navItems
+      .filter(({ href }) => href !== '/')
+      .filter(({ href }) => currentPath.startsWith(href))
+      .sort((a, b) => b.href.length - a.href.length)[0];
+    return `${item ? item.label : 'Erro'} | ${SITE_NAME}`;
   });
 
   interface Props {
