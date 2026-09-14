@@ -4,12 +4,12 @@
   import Navbar from './_components/layout/navbar.svelte';
   import Sidebar from './_components/layout/sidebar.svelte';
   import SnackbarList from './_components/layout/notifications/snackbar-list.svelte';
+  import navItems from './_components/layout/sidebar-items';
   import GlobalLoader from '@/lib/components/layout/global-loader.svelte';
   import { isGlobalLoading } from '@/lib/stores/loader';
   import { navigating } from '$app/stores';
   import { page } from '$app/state';
   import { SITE_DESCRIPTION, OG_IMAGE_PATH, SITE_NAME, canonicalUrl } from '@/lib/config/site';
-  import navItems from './_components/layout/sidebar-items';
   import '@/app.css';
 
   let currentPath = $derived(page.url.pathname);

@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
-  import { page } from '$app/state';
   import navItems from './sidebar-items';
+  import { page } from '$app/state';
 
   let currentPage = $derived(page.url.pathname ?? '/');
   const links = navItems
