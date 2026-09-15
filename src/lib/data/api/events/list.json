@@ -1,152 +1,66 @@
 [
   {
     "id": 1,
-    "title": "Jantar de Curso 1",
-    "description": "Momento de convívio entre estudantes do curso.",
-    "teamMembers": [],
-    "slug": "jantar-de-curso-1",
-    "image": "/api_images/events/jantar_de_curso_1.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "17-09-2026 20:00",
-      "endDate": "17-09-2026 23:59"
-    },
-    "location": "A definir",
+    "title": "Jantar de Curso",
+    "description": "Momento de convívio entre estudantes do curso. Bebida à descrição, buffet e boas vibes.",
+    "slug": "jantar-de-curso",
+    "image": "/api_images/events/jantar_de_curso.png",
     "category": "Social"
   },
   {
     "id": 2,
     "title": "Churrasco de Informática",
-    "description": "Churrasco de Informática.",
-    "teamMembers": [],
+    "description": "Convívio e churrasco para os estudantes de Engenharia Informática.",
     "slug": "churrasco-de-informatica",
     "image": "/images/ni_logo.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "TBD",
-      "endDate": "TBD"
-    },
-    "location": "A definir",
     "category": "Social"
   },
   {
     "id": 3,
     "title": "SINF - Semana de Informática",
-    "description": "A Semana de Informática (SINF), organizada pelo Núcleo de Informática da Associação de Estudantes da Faculdade de Engenharia da Universidade do Porto (NIAEFEUP), foi criada com o intuito de permitir aos participantes desenvolver as suas capacidades nas diversas áreas da Informática, promovendo a sua interação com o mundo empresarial através de eventos sociais.",
-    "teamMembers": [],
+    "description": "A Semana de Informática (SINF), organizada pelo NI, foi criada com o intuito de permitir aos participantes desenvolver as suas capacidades nas diversas áreas da Informática, promovendo a sua interação com o mundo empresarial através de eventos sociais.",
     "slug": "sinf-semana-de-informatica",
     "image": "/images/ni_logo.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "16-11-2026 09:00",
-      "endDate": "19-11-2026 18:00"
-    },
-    "location": "FEUP",
-    "category": "Technology"
+    "category": "Tecnologia"
   },
   {
     "id": 4,
     "title": "Sessão Erasmus",
     "description": "Evento dedicado a explorar a experiência de outros colegas em Erasmus e esclarecimento de dúvidas.",
-    "teamMembers": [],
     "slug": "sessao-erasmus",
     "image": "/images/ni_logo.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "TBD",
-      "endDate": "TBD"
-    },
-    "location": "A definir",
-    "category": "Education"
+    "category": "Educação"
   },
   {
     "id": 5,
     "title": "Workshop Python",
-    "description": "Workshop de introdução e desenvolvimento com Python.",
-    "teamMembers": [],
+    "description": "Workshop prático focado em introdução e ferramentas de programação em Python com intuito de ajudar e orientar caloiros.",
     "slug": "workshop-python",
     "image": "/api_images/events/workshop_1.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "TBD",
-      "endDate": "TBD"
-    },
-    "location": "A definir",
-    "category": "Technology"
+    "category": "Tecnologia"
   },
   {
     "id": 6,
-    "title": "Jantar de Curso 2",
-    "description": "Momento de convívio entre estudantes do curso.",
-    "teamMembers": [],
-    "slug": "jantar-de-curso-2",
-    "image": "/api_images/events/jantar_de_curso_1.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "TBD",
-      "endDate": "TBD"
-    },
-    "location": "A definir",
-    "category": "Social"
+    "title": "Mostra Mestrados",
+    "description": "Evento onde os estudantes dos vários mestrados falam das suas experiências no curso e esclarecimento de dúvidas.",
+    "slug": "mostra-mestrados",
+    "image": "/images/ni_logo.png",
+    "category": "Educação"
   },
   {
     "id": 7,
-    "title": "Mostra Mestrados TBD",
-    "description": "Evento onde os estudantes dos vários mestrados falam das suas experiências no curso e esclarecimento de dúvidas.",
-    "teamMembers": [],
-    "slug": "mostra-mestrados-tbd",
+    "title": "Rally Tascas",
+    "description": "Rally das tascas tradicional do NIAEFEUP.",
+    "slug": "rally-tascas",
     "image": "/images/ni_logo.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "TBD",
-      "endDate": "TBD"
-    },
-    "location": "A definir",
-    "category": "Education"
+    "category": "Social"
   },
   {
     "id": 8,
-    "title": "Jantar de Curso 3",
-    "description": "Momento de convívio entre estudantes do curso.",
-    "teamMembers": [],
-    "slug": "jantar-de-curso-3",
-    "image": "/api_images/events/jantar_de_curso_1.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "TBD",
-      "endDate": "TBD"
-    },
-    "location": "A definir",
-    "category": "Social"
-  },
-  {
-    "id": 9,
-    "title": "Rally Tascas TBD",
-    "description": "Rally de tascas tradicional do NIAEFEUP.",
-    "teamMembers": [],
-    "slug": "rally-tascas-tbd",
-    "image": "/images/ni_logo.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "TBD",
-      "endDate": "TBD"
-    },
-    "location": "A definir",
-    "category": "Social"
-  },
-  {
-    "id": 10,
     "title": "Jantar de Gala",
-    "description": "Jantar de Gala do NIAEFEUP.",
-    "teamMembers": [],
+    "description": "Jantar de Gala do NIAEFEUP para celebrar o ano e a comunidade.",
     "slug": "jantar-de-gala",
     "image": "/api_images/events/jantar_de_curso_1.png",
-    "gallery": [],
-    "dateInterval": {
-      "startDate": "TBD",
-      "endDate": "TBD"
-    },
-    "location": "A definir",
     "category": "Social"
   }
 ]
