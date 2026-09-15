@@ -12,7 +12,7 @@
     "title": "Churrasco de Informática",
     "description": "Convívio e churrasco para os estudantes de Engenharia Informática.",
     "slug": "churrasco-de-informatica",
-    "image": "/images/ni_logo.png",
+    "image": "/api_images/events/churrasco.jpg",
     "category": "Social"
   },
   {
@@ -20,7 +20,7 @@
     "title": "SINF - Semana de Informática",
     "description": "A Semana de Informática (SINF), organizada pelo NI, foi criada com o intuito de permitir aos participantes desenvolver as suas capacidades nas diversas áreas da Informática, promovendo a sua interação com o mundo empresarial através de eventos sociais.",
     "slug": "sinf-semana-de-informatica",
-    "image": "/images/ni_logo.png",
+    "image": "/api_images/events/sinf_2025.jpg",
     "category": "Tecnologia"
   },
   {
@@ -28,7 +28,7 @@
     "title": "Sessão Erasmus",
     "description": "Evento dedicado a explorar a experiência de outros colegas em Erasmus e esclarecimento de dúvidas.",
     "slug": "sessao-erasmus",
-    "image": "/images/ni_logo.png",
+    "image": "/api_images/events/sessao_erasmus.jpg",
     "category": "Educação"
   },
   {
@@ -44,7 +44,7 @@
     "title": "Mostra Mestrados",
     "description": "Evento onde os estudantes dos vários mestrados falam das suas experiências no curso e esclarecimento de dúvidas.",
     "slug": "mostra-mestrados",
-    "image": "/images/ni_logo.png",
+    "image": "/api_images/events/mestrados.jpg",
     "category": "Educação"
   },
   {
@@ -52,7 +52,7 @@
     "title": "Rally Tascas",
     "description": "Rally das tascas tradicional do NIAEFEUP.",
     "slug": "rally-tascas",
-    "image": "/images/ni_logo.png",
+    "image": "/api_images/events/rally_tascas.jpg",
     "category": "Social"
   },
   {
