@@ -86,7 +86,7 @@
     <source media="(min-width: 767px)" srcset="/images/feup_buildings_md.svg" />
     <img
       src="/images/feup_buildings.svg"
-      alt="Feup Buildings Outline"
+      alt="Contorno dos edifícios da FEUP"
       class="align-center h-40 w-full justify-self-center object-none object-center sm:h-52"
     />
   </picture>

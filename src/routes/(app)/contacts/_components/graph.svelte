@@ -76,7 +76,7 @@
           }}
           role="button"
           tabindex="0"
-          aria-label="copy-mail"
+          aria-label="Copiar email"
         >
           <Icon src={socials[index].icon} color="white" size="{iconSize.toString()}px" />
         </div>

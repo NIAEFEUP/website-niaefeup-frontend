@@ -2,7 +2,7 @@
   import { SvelteMap, SvelteSet } from 'svelte/reactivity';
   import type { PageData } from './$types';
   import TeamSectionGrid from './_components/team-section-grid.svelte';
-  import type { TeamMember } from '@/types/team-member';
+  import type { TeamSection } from '@/types/team-member';
 
   let { data }: { data: PageData } = $props();
 
@@ -20,7 +20,7 @@
   let slidePosition = $state(0);
   let transitionDuration = $state(0);
 
-  let orderedSections: { id: string; name: string; accounts: TeamMember[] }[] = $state([]);
+  let orderedSections: TeamSection[] = $state([]);
   let slidingNext = $state(false);
   let slidingPrev = $state(false);
 
@@ -102,7 +102,9 @@
 
     let indices: number[];
 
-    if (orderedSections.length === 3) {
+    if (orderedSections.length === 2) {
+      indices = [0, 0, 1, 0, 0]; // [A, A, B, A, A]
+    } else if (orderedSections.length === 3) {
       indices = [2, 0, 1, 2, 0]; // [C, A, B, C, A]
     } else if (orderedSections.length === 4) {
       indices = [2, 0, 1, 2, 3]; // [C, A, B, C, D]
@@ -131,13 +133,7 @@
         isDuplicate,
         carouselId: carouselIds[pos]
       };
-    }) as Array<{
-      id: string;
-      name: string;
-      accounts: TeamMember[];
-      isDuplicate?: boolean;
-      carouselId?: string;
-    }>;
+    }) as Array<TeamSection & { isDuplicate?: boolean; carouselId?: string }>;
   });
 
   let recenterTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -156,10 +152,7 @@
     };
   });
 
-  const handleSectionClick = (
-    clickedSection: { id: string; name: string; accounts: TeamMember[] },
-    index: number
-  ) => {
+  const handleSectionClick = (clickedSection: TeamSection, index: number) => {
     if (clickedSection.name === openSection) return;
     if (index === CAROUSEL_CENTER_INDEX) return; // Center
     if (slidingNext || slidingPrev) return;
@@ -263,7 +256,7 @@
         class="relative mb-6 mt-2 h-12 w-full touch-pan-y overflow-hidden"
         role="slider"
         tabindex="0"
-        aria-label="Team section carousel"
+        aria-label="Carrossel de secções da equipa"
         aria-valuenow={groupedSections.findIndex((s) => s.name === openSection)}
         aria-valuemin="0"
         aria-valuemax={groupedSections.length - 1}

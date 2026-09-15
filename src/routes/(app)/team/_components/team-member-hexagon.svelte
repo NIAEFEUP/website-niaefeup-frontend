@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import Hexagon from '$lib/components/hexagons/hexagon.svelte';
   import Icon from '$lib/components/icons/icon.svelte';
   import Icons from '$lib/components/icons/icons';
@@ -43,15 +42,19 @@
     target.dataset.state = 'closed';
   };
 
-  onMount(() => {
-    const target: HTMLElement = document.getElementById(teamMember.email) as HTMLElement;
+  let root: HTMLElement | undefined = $state();
+
+  $effect(() => {
+    const target = root;
+
+    if (!target) return;
 
     const container: HTMLElement | null = target.querySelector('.container');
     const fullOpacityContainers: NodeListOf<HTMLElement> | null =
       target.querySelectorAll('.full-opacity');
     const variableOpacityContainer: HTMLElement | null = target.querySelector('.variable-opacity');
 
-    target.addEventListener('touchstart', () => {
+    const handleTouchStart = () => {
       if (container && fullOpacityContainers && variableOpacityContainer) {
         if (target.dataset.state == 'closed') {
           openHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
@@ -59,13 +62,16 @@
           closeHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
         }
       }
-    });
+    };
+
+    target.addEventListener('touchstart', handleTouchStart);
+    return () => target.removeEventListener('touchstart', handleTouchStart);
   });
 </script>
 
 <Hexagon {orientation}>
   <div
-    id={teamMember.email}
+    bind:this={root}
     class="group relative h-full w-full"
     data-testid="hexagon"
     data-state="closed"
@@ -75,7 +81,7 @@
       class="group-hover:bottom-1/2 group-hover:translate-y-1/3 container absolute bottom-0 z-20 w-full px-4 duration-500"
     >
       <p
-        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl"
+        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl text-shadow-lg"
       >
         {teamMember.name}
       </p>
@@ -95,7 +101,7 @@
             <a
               href={teamMember.linkedin}
               class="full-opacity group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
-              aria-label="{teamMember.name}'s LinkedIn"
+              aria-label="LinkedIn de {teamMember.name}"
             >
               <Icon src={Icons.Linkedin} color="white" size="100%" /></a
             >
@@ -104,7 +110,7 @@
             <a
               href={teamMember.github}
               class="full-opacity group-hover:static group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
-              aria-label="{teamMember.name}'s GitHub"
+              aria-label="GitHub de {teamMember.name}"
               ><Icon src={Icons.Github} color="white" size="100%" /></a
             >
           {/if}
@@ -113,12 +119,12 @@
               <a
                 href={customWebsite.url}
                 class="full-opacity group-hover:opacity-100 h-5 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
-                aria-label="{teamMember.name}'s custom website"
+                aria-label="Website de {teamMember.name}"
               >
                 {#if customWebsite.iconPath}
                   <img
                     src={customWebsite.iconPath}
-                    alt="Icon of {teamMember.name}'s custom website"
+                    alt="Ícone do website de {teamMember.name}"
                     class="icon h-full w-full object-cover"
                   />
                 {:else}
@@ -135,7 +141,7 @@
     ></div>
     <img
       src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
-      alt="NIAFEUP member {teamMember.name}"
+      alt="Membro do NIAEFEUP {teamMember.name}"
       class="z-0 h-full w-full object-cover"
     />
   </div>

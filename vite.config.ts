@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import adapter from '@sveltejs/adapter-static';
 import tailwindcss from '@tailwindcss/vite';
@@ -18,20 +18,5 @@ export default defineConfig({
           filename.split(/[/\\]/).includes('node_modules') ? undefined : true
       }
     })
-  ],
-  test: {
-    expect: { requireAssertions: true },
-    passWithNoTests: true,
-    projects: [
-      {
-        extends: './vite.config.ts',
-        test: {
-          name: 'server',
-          environment: 'node',
-          include: ['src/**/*.{test,spec}.{js,ts}'],
-          exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
-        }
-      }
-    ]
-  }
+  ]
 });

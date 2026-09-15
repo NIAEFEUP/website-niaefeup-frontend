@@ -14,7 +14,7 @@ The frontend of the website for NIAEFEUP, a student branch in FEUP.
 
 ### Prerequisites
 
-- [Node 19+](https://nodejs.org)
+- [Node 22+](https://nodejs.org)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://www.docker.com/)
 
@@ -52,15 +52,18 @@ npm run dev -- --open
 
 ### Linting
 
-We use [ESLint](https://eslint.org/) for code conventions and [Prettier](https://prettier.io/) for formatting, to ensure a consistent coding style. The respective configurations can be found in `.eslintrc.cjs` and `.prettierrc`.
+We use [ESLint](https://eslint.org/) for code conventions and [Prettier](https://prettier.io/) for formatting, to ensure a consistent coding style. The respective configurations can be found in `eslint.config.mjs` and `.prettierrc`.
 
 We strongly recommend the use of the [VSCode extension for Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and, optionally, the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
 Alternatively, you can run the linters manually:
 
 ```bash
-npm run lint
-npm run format
+npm run lint          # ESLint (code conventions)
+npm run lint:fix      # auto-fix ESLint issues
+npm run format        # format the code with Prettier
+npm run format:check  # verify formatting without changing files
+npm run ci            # formatting check + lint + type check (same as CI)
 ```
 
 If you wish, you can activate the formatter to run automatically on save by adding the following fields to your VSCode settings:
@@ -70,28 +73,17 @@ If you wish, you can activate the formatter to run automatically on save by addi
 "editor.formatOnSave": true,
 ```
 
-### Testing
-
-You can run the unit tests using Docker with:
-
-```bash
-./test.sh
-```
-
-Alternatively you can use npm (or other package managers already mentioned) and do:
-
-```bash
-npm run test
-```
-
 ## Building
 
 To create a production version of your app:
 
 ```bash
-docker build -t {IMAGE_NAME} -f Dockerfile.prod .
-docker run --env PORT=80 -p {YOUR_PORT}:80 {IMAGE_NAME}
+docker build --target prod -t {IMAGE_NAME} .
+docker run -p {YOUR_PORT}:80 {IMAGE_NAME}
 ```
+
+The production image builds the static site and serves it with nginx.
+The `dev` target (`docker build --target dev`) runs the development server.
 
 Or with npm:
 

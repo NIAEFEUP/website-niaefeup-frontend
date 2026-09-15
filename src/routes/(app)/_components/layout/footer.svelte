@@ -99,7 +99,7 @@
       </div>
     </div>
     <div class="flex flex-col items-center gap-1">
-      <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
+      <img src="/images/ni_negative_logo.svg" alt="Logótipo do NIAEFEUP" class="h-auto w-11" />
       <p class="text-sm">NIAEFEUP &copy; {currentYear}</p>
     </div>
     <div class="flex flex-row items-center justify-end gap-4 self-center p-3">
@@ -115,7 +115,7 @@
   <footer class="flex flex-col justify-between border-t-2 border-white/90 p-2 text-sm text-white">
     <div class="flex w-full flex-row items-center justify-between self-center p-3">
       <span>NIAEFEUP</span>
-      <img src="/images/ni_negative_logo.svg" alt="NIAFEUP logo" class="h-auto w-11" />
+      <img src="/images/ni_negative_logo.svg" alt="Logótipo do NIAEFEUP" class="h-auto w-11" />
       <div class="flex flex-row gap-1">
         <span class="font-bold">FEUP</span>
         <span>B315</span>
@@ -162,7 +162,7 @@
       <div
         role="button"
         tabindex="0"
-        aria-label="Copy"
+        aria-label="Copiar"
         onclick={() => copyToClipboard('ni@aefeup.pt')}
         onkeydown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {

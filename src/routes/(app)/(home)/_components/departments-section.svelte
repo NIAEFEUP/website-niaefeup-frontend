@@ -41,9 +41,9 @@
   let selectedTitle = $state(defaultTitle);
   let selectedDescription = $state(defaultDescription);
 
-  function handleSelect(item: (typeof departments)[0]) {
-    selectedTitle = item.name;
-    selectedDescription = item.description;
+  function handleSelect(item: { name?: string; description?: string }) {
+    selectedTitle = item.name ?? '';
+    selectedDescription = item.description ?? '';
   }
 
   const items = [

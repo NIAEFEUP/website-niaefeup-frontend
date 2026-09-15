@@ -214,5 +214,5 @@
     {/if}
   </section>
 {:else}
-  <p>Loading event details...</p>
+  <p>A carregar os detalhes do evento...</p>
 {/if}

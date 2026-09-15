@@ -35,7 +35,7 @@
     {#if buildingSrc}
       <img
         src={buildingSrc}
-        alt="FEUP Campus Outline"
+        alt="Contorno do campus da FEUP"
         class="h-auto w-full object-contain pointer-events-none select-none"
       />
     {:else}
