@@ -62,30 +62,32 @@
         </p>
       </div>
 
-      <div class="mb-6 flex justify-center">
-        <div class="relative flex w-fit rounded-2xl bg-transparent">
-          <div
-            class="absolute inset-y-0 left-0 w-1/2 rounded-3xl bg-rose-200/30 transition-all duration-300 ease-in-out"
-            class:translate-x-full={activeTab === 'equipa'}
-            class:translate-x-0={activeTab === 'evento'}
-          ></div>
+      {#if event.teamMembers && event.teamMembers.length > 0}
+        <div class="mb-6 flex justify-center">
+          <div class="relative flex w-fit rounded-2xl bg-transparent">
+            <div
+              class="absolute inset-y-0 left-0 w-1/2 rounded-3xl bg-rose-200/30 transition-all duration-300 ease-in-out"
+              class:translate-x-full={activeTab === 'equipa'}
+              class:translate-x-0={activeTab === 'evento'}
+            ></div>
 
-          <button
-            class="z-10 w-36 py-1 transition-colors duration-300
-            {activeTab === 'evento' ? 'font-bold text-white' : 'text-gray-400 hover:text-white'}"
-            onclick={() => (activeTab = 'evento')}
-          >
-            Evento
-          </button>
-          <button
-            class="z-10 w-36 py-1 transition-colors duration-300
-            {activeTab === 'equipa' ? 'font-bold text-white' : 'text-gray-400 hover:text-white'}"
-            onclick={() => (activeTab = 'equipa')}
-          >
-            Equipa
-          </button>
+            <button
+              class="z-10 w-36 py-1 transition-colors duration-300
+              {activeTab === 'evento' ? 'font-bold text-white' : 'text-gray-400 hover:text-white'}"
+              onclick={() => (activeTab = 'evento')}
+            >
+              Evento
+            </button>
+            <button
+              class="z-10 w-36 py-1 transition-colors duration-300
+              {activeTab === 'equipa' ? 'font-bold text-white' : 'text-gray-400 hover:text-white'}"
+              onclick={() => (activeTab = 'equipa')}
+            >
+              Equipa
+            </button>
+          </div>
         </div>
-      </div>
+      {/if}
     {/if}
 
     {#if hasPerms}
@@ -115,20 +117,20 @@
                         <b>{d.day}</b> de <b>{d.month}</b> <b>{d.year}</b>
                       </span>
                     </span>
-                  {:else}
-                    <span>Data inválida</span>
                   {/if}
-                  <span class="flex items-center gap-2">
-                    <Icon src={Icons.Location} size="18" />
-                    {event.location}
-                  </span>
+                  {#if event.location}
+                    <span class="flex items-center gap-2">
+                      <Icon src={Icons.Location} size="18" />
+                      {event.location}
+                    </span>
+                  {/if}
                 </div>
               </div>
             {/if}
 
             <div class="flex shrink-0 flex-col items-center gap-8">
               <img
-                src={event.image}
+                src={event.image || '/images/ni_logo.png'}
                 alt="{event.title}'s image"
                 class="aspect-square h-36 w-36 rounded-xl object-cover md:h-60 md:w-60"
               />
@@ -145,13 +147,13 @@
                       <b>{d.day}</b> de <b>{d.month}</b> <b>{d.year}</b>
                     </span>
                   </span>
-                {:else}
-                  <span>Data inválida</span>
                 {/if}
-                <span class="flex min-w-0 flex-nowrap items-center gap-2">
-                  <Icon src={Icons.Location} size="18" />
-                  <span class="block wrap-break-word">{event.location}</span>
-                </span>
+                {#if event.location}
+                  <span class="flex min-w-0 flex-nowrap items-center gap-2">
+                    <Icon src={Icons.Location} size="18" />
+                    <span class="block wrap-break-word">{event.location}</span>
+                  </span>
+                {/if}
               </div>
             {/if}
           </div>
@@ -166,9 +168,11 @@
             <div class="my-12 text-justify text-xl font-medium">
               <span>{event.description}</span>
             </div>
-            <div class="mt-16 flex justify-center">
-              <Carousel photos={event.gallery} />
-            </div>
+            {#if event.gallery && event.gallery.length > 0}
+              <div class="mt-16 flex justify-center">
+                <Carousel photos={event.gallery} />
+              </div>
+            {/if}
           </div>
         {:else if activeTab === 'equipa'}
           <div
@@ -187,30 +191,34 @@
         {/if}
       </div>
     {:else}
-      <div class="mt-16 flex justify-center">
-        <Carousel photos={event.gallery} />
-      </div>
+      {#if event.gallery && event.gallery.length > 0}
+        <div class="mt-16 flex justify-center">
+          <Carousel photos={event.gallery} />
+        </div>
+      {/if}
 
       <div class="my-12 text-justify text-xl font-medium">
         <span>{event.description}</span>
       </div>
 
-      <div class="mt-12">
-        <div class="flex flex-col items-center">
-          <p
-            class="mb-12 text-center font-source-code text-xl font-bold text-white md:text-2xl lg:text-3xl xl:text-4xl"
-          >
-            &lt; Equipa /&gt;
-          </p>
+      {#if event.teamMembers && event.teamMembers.length > 0}
+        <div class="mt-12">
+          <div class="flex flex-col items-center">
+            <p
+              class="mb-12 text-center font-source-code text-xl font-bold text-white md:text-2xl lg:text-3xl xl:text-4xl"
+            >
+              &lt; Equipa /&gt;
+            </p>
+          </div>
+          <HexagonGrid
+            items={event.teamMembers || []}
+            cols={5}
+            gap="small"
+            orientation="horizontal"
+            component={TeamMemberHexagon}
+          />
         </div>
-        <HexagonGrid
-          items={event.teamMembers || []}
-          cols={5}
-          gap="small"
-          orientation="horizontal"
-          component={TeamMemberHexagon}
-        />
-      </div>
+      {/if}
     {/if}
   </section>
 {:else}
