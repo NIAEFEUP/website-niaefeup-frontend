@@ -37,8 +37,7 @@
 </script>
 
 <Hexagon {orientation}>
-  <a
-    href={`/events/${event.slug}`}
+  <div
     class="group relative box-content flex h-full w-full justify-center md:shadow-black/[.58] md:text-shadow"
     data-testid="event-hexagon"
   >
@@ -72,5 +71,5 @@
       alt="Miniatura do evento"
       class="absolute inset-0 z-0 h-full w-full object-cover"
     />
-  </a>
+  </div>
 </Hexagon>
