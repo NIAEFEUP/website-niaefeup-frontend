@@ -163,7 +163,7 @@
       <div class="mt-8">
         {#if activeTab === 'evento'}
           <div in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }}>
-            <div class="my-12 text-justify text-lg font-medium">
+            <div class="my-12 text-justify text-xl font-medium">
               <span>{event.description}</span>
             </div>
             <div class="mt-16 flex justify-center">
