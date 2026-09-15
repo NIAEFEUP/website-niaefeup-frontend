@@ -25,7 +25,7 @@
       </div>
     {/if}
 
-    <div class="w-full max-w-7xl px-4 md:px-20 lg:px-32">
+    <div class="w-full max-w-7xl px-4 md:pt-10 md:px-20 lg:px-16">
       {#if events.length === 0}
         <div class="py-12 text-center">
           <p class="text-gray-400">Nenhum evento encontrado</p>
