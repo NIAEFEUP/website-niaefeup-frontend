@@ -3,11 +3,11 @@ import type { TeamMember } from './team-member.ts';
 
 export type Event = {
   image: string | null | undefined;
-  teamMembers: TeamMember[];
-  gallery: string[] | undefined;
+  teamMembers?: TeamMember[];
+  gallery?: string[] | undefined;
   title: string;
   description: string;
-  dateInterval: DateInterval;
+  dateInterval?: DateInterval;
   location?: string;
   category?: string;
   slug?: string;

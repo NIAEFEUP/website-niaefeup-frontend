@@ -20,8 +20,11 @@
   };
 
   const getDateDisplay = (): string => {
+    if (!event.dateInterval?.startDate || !event.dateInterval?.endDate) return '';
+    if (event.dateInterval.startDate === 'TBD') return '';
     const start = parseDate(event.dateInterval.startDate);
     const end = parseDate(event.dateInterval.endDate);
+    if (isNaN(start.getTime()) || isNaN(end.getTime())) return '';
 
     const fmt = (d: Date) =>
       d
@@ -34,17 +37,18 @@
 </script>
 
 <Hexagon {orientation}>
-  <a
-    href={`/events/${event.slug}`}
+  <div
     class="group relative box-content flex h-full w-full justify-center md:shadow-black/[.58] md:text-shadow"
     data-testid="event-hexagon"
   >
     <div class="flex w-full flex-col content-center justify-center">
-      <p
-        class="z-20 mx-auto w-full max-w-[80%] overflow-hidden text-ellipsis whitespace-nowrap text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
-      >
-        {getDateDisplay()}
-      </p>
+      {#if getDateDisplay()}
+        <p
+          class="z-20 mx-auto w-full max-w-[80%] overflow-hidden text-ellipsis whitespace-nowrap text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
+        >
+          {getDateDisplay()}
+        </p>
+      {/if}
 
       <p
         class="z-20 my-1.5 w-full overflow-hidden break-words bg-taupe-200 text-center text-sm font-semibold text-rose-950 outline outline-2 outline-offset-2 outline-taupe-200 transition-colors ease-in group-hover:bg-taupe-200 group-hover:text-rose-950 group-hover:outline-taupe-200 group-hover:text-shadow-none sm:bg-transparent sm:text-sm sm:text-gray-100 sm:outline-transparent md:text-base lg:text-lg xl:text-xl"
@@ -52,18 +56,20 @@
         {event.title}
       </p>
 
-      <p
-        class="z-20 mx-auto w-full max-w-[80%] truncate text-center text-xs text-gray-100"
-        title={event.location}
-      >
-        {event.location}
-      </p>
+      {#if event.location}
+        <p
+          class="z-20 mx-auto w-full max-w-[80%] truncate text-center text-xs text-gray-100"
+          title={event.location}
+        >
+          {event.location}
+        </p>
+      {/if}
     </div>
     <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
     <img
-      src={event.image}
+      src={event.image || '/images/ni_logo.png'}
       alt="Miniatura do evento"
       class="absolute inset-0 z-0 h-full w-full object-cover"
     />
-  </a>
+  </div>
 </Hexagon>

@@ -488,7 +488,7 @@
       {
         "id": "671fe1e2f5a9a4003579c375",
         "name": "Henrique Fernandes",
-        "photo": "/api_images/members/6845dde1ce642500bd9eb340.jpg",
+        "photo": "/api_images/members/671fe1e2f5a9a4003579c375.jpg",
         "linkedin": "https://www.linkedin.com/in/-henriquesfernandes/",
         "github": "https://github.com/HenriqueSFernandes/",
         "isActive": true,
@@ -915,6 +915,7 @@
         "id": "690e2aa6ccd09500b49cab70",
         "name": "Tomás Oliveira",
         "email": "up202507178@g.uporto.pt",
+        "photo": "/api_images/members/690e2aa6ccd09500b49cab70.jpg",
         "isActive": true,
         "roles": [
           {

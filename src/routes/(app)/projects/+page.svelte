@@ -24,10 +24,9 @@
     {/if}
 
     <div
-      class="mt-4 flex h-full w-full flex-col justify-evenly gap-4
-                md:mt-6 md:grid md:grid-cols-3 md:gap-x-1.5"
+      class="mt-4 flex w-full flex-col gap-5 md:mt-8 md:grid md:grid-cols-3 md:gap-8 lg:gap-10 max-w-6xl sm:px-6"
     >
-      {#each projects as project, index (index)}
+      {#each projects as project, index (project.slug ?? index)}
         <ProjectTile {project} isOdd={index % 2 === 1} />
       {/each}
     </div>
