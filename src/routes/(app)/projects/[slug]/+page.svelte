@@ -27,7 +27,7 @@
       <img
         src={project.image}
         alt="{project.title}'s image"
-        class="h-60 w-60 mx-auto rounded-2xl border-[3vw] border-solid border-white/20 order-2 md:order-1 md:w-1/5 md:max-w-md md:border-[2vw]"
+        class="h-60 w-60 rounded-2xl border-[3vw] border-solid border-white/20 order-2 md:order-1 md:w-1/5 md:max-w-md md:border-[2vw]"
       />
       <div class="my-auto flex flex-col items-center order-2  md:items-start md:order-1">
         <h1 class="mb-4 text-3xl font-semibold text-white md:text-6xl">{project.title}</h1>
