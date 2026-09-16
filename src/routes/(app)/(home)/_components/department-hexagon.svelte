@@ -48,7 +48,9 @@
         <div
           class="absolute inset-0 z-10 bg-[rgba(80,0,0,0.45)] transition-colors duration-200 group-hover:bg-[rgba(80,0,0,0.65)]"
         ></div>
-        <div class="absolute inset-0 z-20 flex items-center justify-center text-xl md:text-[2rem] font-bold">
+        <div
+          class="absolute inset-0 z-20 flex items-center justify-center text-xl md:text-[2rem] font-bold"
+        >
           <p class="text-center">{data.name}</p>
         </div>
       </button>
