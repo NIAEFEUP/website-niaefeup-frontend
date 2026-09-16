@@ -1,0 +1,22 @@
+@utility text-shadow-none {
+  text-shadow: 0 0 0 transparent;
+}
+
+@utility text-shadow {
+  text-shadow: 0 4px 6px rgb(0 0 0 / 0.5);
+}
+
+@utility bg-ni-sidebar {
+  background:
+    -12rem 0 / cover no-repeat,
+    linear-gradient(180deg, rgba(56, 0, 2, 1), rgba(97, 14, 17, 1));
+}
+
+@utility bg-ni-navbar {
+  background-color: #2f0a0c;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}

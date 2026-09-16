@@ -1,0 +1,59 @@
+@theme {
+  --color-taupe-100: #ffe9e9;
+  --color-taupe-200: #d7c0c0;
+  --color-taupe-300: #ab8586;
+
+  --color-vivid-red-400: #dc4f47;
+  --color-vivid-red-700: #a40202;
+  --color-vivid-red-900: #570000;
+  --color-vivid-red-950: #4d0000;
+
+  --color-muted-red-300: #df6363;
+  --color-muted-red-400: #c04343;
+  --color-muted-red-500: #b33636;
+  --color-muted-red-600: #9d2b2b;
+  --color-muted-red-700: #872020;
+  --color-muted-red-800: #740f0f;
+
+  --color-rose-200: #dab5b5;
+  --color-rose-400: #a46868;
+  --color-rose-600: #8d3739;
+  --color-rose-950: #411315;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-raleway: 'Raleway', sans-serif;
+  --font-source-code: 'Source Code Pro', sans-serif;
+  --font-sans: 'Raleway', sans-serif;
+
+  --text-huge: 10rem;
+}

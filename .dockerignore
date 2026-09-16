@@ -1,0 +1,14 @@
+.git/
+.github/
+.svelte-kit/
+build/
+node_modules/
+archived/
+.gitignore
+.npmrc
+.prettierignore
+.prettierrc
+docker-compose.yml
+Dockerfile*
+*.md
+*.sh

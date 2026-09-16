@@ -1,0 +1,44 @@
+import {
+  FaBrandsInstagram,
+  FaBrandsTwitter,
+  FaBrandsFacebook,
+  FaBrandsGithub,
+  FaBrandsLinkedin,
+  FaSolidBars,
+  FaSolidGlobe,
+  FaSolidLocationDot,
+  FaSolidCalendarDays,
+  FaSolidChevronRight,
+  FaSolidChevronLeft,
+  FaTrashCan,
+  FaSolidSquarePlus
+} from 'svelte-icons-pack/fa';
+import { BiMap } from 'svelte-icons-pack/bi';
+import { IoMail, IoClose, IoEye, IoEyeOff, IoSearch } from 'svelte-icons-pack/io';
+import { FiLogOut, FiEdit2 } from 'svelte-icons-pack/fi';
+
+const Icons = {
+  Instagram: FaBrandsInstagram,
+  Twitter: FaBrandsTwitter,
+  Facebook: FaBrandsFacebook,
+  Github: FaBrandsGithub,
+  Mail: IoMail,
+  Linkedin: FaBrandsLinkedin,
+  Bars: FaSolidBars,
+  Close: IoClose,
+  Globe: FaSolidGlobe,
+  Pin: BiMap,
+  Visible: IoEye,
+  Hidden: IoEyeOff,
+  Logout: FiLogOut,
+  Edit: FiEdit2,
+  Calendar: FaSolidCalendarDays,
+  Location: FaSolidLocationDot,
+  ChevronRight: FaSolidChevronRight,
+  ChevronLeft: FaSolidChevronLeft,
+  Add: FaSolidSquarePlus,
+  Search: IoSearch,
+  Trash: FaTrashCan
+};
+
+export default Icons;

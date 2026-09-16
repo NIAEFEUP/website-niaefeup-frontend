@@ -1,0 +1,12 @@
+services:
+  website-niaefeup-frontend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+      - ./static:/app/static
+    network_mode: 'host'
