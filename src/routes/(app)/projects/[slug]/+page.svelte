@@ -27,7 +27,7 @@
       <img
         src={project.image}
         alt="{project.title}'s image"
-        class="h-60 w-60 rounded-2xl border-[3vw] border-solid border-white/20 order-2 md:order-1 md:w-1/5 md:max-w-md md:border-[2vw]"
+        class="h-60 w-60 mx-auto object-cover md:mx-0 rounded-2xl border-[3vw] border-solid border-white/20 order-2 md:order-1 md:w-1/5 md:max-w-md md:border-[2vw]"
       />
       <div class="my-auto flex flex-col items-center order-2  md:items-start md:order-1">
         <h1 class="mb-4 text-3xl font-semibold text-white md:text-6xl">{project.title}</h1>
@@ -66,7 +66,7 @@
 
     <div class="mt-15 flex flex-col items-center justify-center gap-4 md:mt-20 md:flex-row">
       <img class="w-max-xl w-5/6 md:w-1/3" src={project.thumbnail} alt="{project.title}'s thumbnail" />
-      <p class="w-5/6 max-w-xl text-xl text-center text-gray-100 md:text-right md:w-1/3 md:text-4xl">
+      <p class="w-5/6 max-w-xl text-xl text-center text-gray-100 md:text-right md:w-1/3 md:text-2xl">
         {project.description}
       </p>
     </div>
