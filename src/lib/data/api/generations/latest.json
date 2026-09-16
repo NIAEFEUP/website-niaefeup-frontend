@@ -165,24 +165,6 @@
     "section": "Membros",
     "accounts": [
       {
-        "id": "65452edd9bf1141111f485d3",
-        "name": "Adriano Machado",
-        "email": "adriano.alexandre.machado1@gmail.com",
-        "photo": "/api_images/members/656635699bf1141111f48611.jpg",
-        "linkedin": "https://www.linkedin.com/in/adriano-alexandre-machado/",
-        "github": "https://github.com/Adriano-7",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 10,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
         "id": "690e2667dea85900275da499",
         "name": "Alexandra Madureira",
         "photo": "/api_images/members/6921ee9659d1e5002e64cd8c.jpg",
@@ -224,67 +206,6 @@
             "permissions": [],
             "isSection": false,
             "id": 13,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "690e2a802e5314003c94b952",
-        "name": "Ana Alves",
-        "photo": "/api_images/members/69136ecd4f37230035b57699.jpg",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 14,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "61ba4e3acb45aa2397157dd5",
-        "name": "André Lima",
-        "photo": "/api_images/members/66f2748e654dfb0027c59d99.jpg",
-        "linkedin": "https://www.linkedin.com/in/limwa/",
-        "github": "https://github.com/limwa",
-        "websites": [
-          {
-            "id": 3,
-            "url": "https://limwa.pt"
-          }
-        ],
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 15,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "671fde40ca3d6300121b2a37",
-        "name": "André Butuc",
-        "photo": "/api_images/members/67202161f5a9a4003579c384.jpg",
-        "linkedin": "https://www.linkedin.com/in/andr%C3%A9-butuc/",
-        "github": "https://github.com/abutuc",
-        "websites": [
-          {
-            "id": 4,
-            "url": "https://www.andrebutuc.me/"
-          }
-        ],
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 16,
             "associatedActivities": []
           }
         ]
@@ -363,21 +284,6 @@
         ]
       },
       {
-        "id": "6545321d9bf1141111f485e2",
-        "name": "Clara Sousa",
-        "photo": "/api_images/members/697244b6880b330a80695ae6.jpg",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 21,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
         "id": "671ff185f5a9a4003579c37c",
         "name": "Dalton Djoesman",
         "photo": "/api_images/members/6720f09317752500207e6e23.jpg",
@@ -445,6 +351,7 @@
       {
         "id": "690e2517455b5f0012b386df",
         "name": "David Ferreira",
+        "photo": "/api_images/members/690e2517455b5f0012b386df.jpg",
         "isActive": true,
         "roles": [
           {
@@ -490,31 +397,9 @@
         ]
       },
       {
-        "id": "654530c59bf1141111f485db",
-        "name": "Eduarda Magno",
-        "photo": "/api_images/members/69210e3c4f37230035b5769a.jpg",
-        "linkedin": "https://www.linkedin.com/in/eduardagmagno/",
-        "github": "https://github.com/bellblex",
-        "websites": [
-          {
-            "id": 6,
-            "url": "https://www.eduardagmagno.com/"
-          }
-        ],
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 29,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
         "id": "690e2a614f37230035b5768d",
         "name": "Filipe Esteves",
+        "photo": "/api_images/members/690e2a614f37230035b5768d.jpg",
         "github": "https://github.com/FrozenHart",
         "isActive": true,
         "roles": [
@@ -540,40 +425,6 @@
             "permissions": [],
             "isSection": false,
             "id": 31,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "635129cba562ee003e69000a",
-        "name": "Francisco Cardoso",
-        "email": "franciscocardoso.3003@gmail.com",
-        "photo": "/api_images/members/6703eacf8c597c004f722066.jpg",
-        "github": "https://github.com/FranciscoCardoso913",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 32,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "654533179bf1141111f485e8",
-        "name": "Félix Martins",
-        "photo": "/api_images/members/657db88f9bf1141111f48622.jpg",
-        "linkedin": "https://www.linkedin.com/in/felix-martins/",
-        "github": "https://github.com/Minipoloalex",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 33,
             "associatedActivities": []
           }
         ]
@@ -684,39 +535,6 @@
         ]
       },
       {
-        "id": "671fe22717752500207e6e0f",
-        "name": "Jaime Fonseca",
-        "email": "jaimefrfonseca03@gmail.com",
-        "photo": "/api_images/members/687699a67878f8002ee409ac.jpg",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 40,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "61ba4e3acb45aa2397157ddb",
-        "name": "José Martins",
-        "photo": "/api_images/members/6481b192a3b3e4988c8b545e.jpg",
-        "linkedin": "https://www.linkedin.com/in/josé-martins-35a809241/",
-        "github": "https://github.com/ZeAntonioM",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 41,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
         "id": "654531399bf1141111f485dd",
         "name": "José Sousa",
         "photo": "/api_images/members/656623569bf1141111f4860f.jpg",
@@ -746,63 +564,6 @@
             "permissions": [],
             "isSection": false,
             "id": 43,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "61ba4e3acb45aa2397157de2",
-        "name": "João Torre Pereira",
-        "photo": "/api_images/members/64674bcba3b3e4988c8b545a.jpg",
-        "linkedin": "https://www.linkedin.com/in/jo%C3%A3o-torre-pereira/",
-        "github": "https://github.com/thePeras",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 44,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "63512b139edfa60024b6d751",
-        "name": "João Pereira",
-        "photo": "/api_images/members/65660f029bf1141111f4860e.jpg",
-        "linkedin": "https://www.linkedin.com/in/jo%C3%A3o-pereira-543b26217/",
-        "github": "https://github.com/ttoino",
-        "websites": [
-          {
-            "id": 8,
-            "url": "https://toino.pt"
-          }
-        ],
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 45,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "654531b19bf1141111f485e0",
-        "name": "João Silva",
-        "photo": "/api_images/members/65af958ed093541803de11c4.jpg",
-        "linkedin": "https://www.linkedin.com/in/jo%C3%A3o-silva-690273197/",
-        "github": "https://github.com/joaoslva",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 46,
             "associatedActivities": []
           }
         ]
@@ -872,56 +633,6 @@
         ]
       },
       {
-        "id": "61ba4e3acb45aa2397157de3",
-        "name": "Luís Sousa",
-        "email": "luis.m.sousa103@gmail.com",
-        "photo": "/api_images/members/633339b036158ea3da615698.jpg",
-        "github": "https://github.com/2002luis",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 51,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "61ba4e3bcb45aa2397157ded",
-        "name": "Madalena Ye",
-        "photo": "/api_images/members/6332dd9136158ea3da615689.jpg",
-        "github": "https://github.com/madalenaye",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 52,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "635129cba562ee003e690011",
-        "name": "Marco Vilas Boas",
-        "photo": "/api_images/members/642ffe96761165048311eb4c.jpg",
-        "linkedin": "https://www.linkedin.com/in/marco-vilas-boas-848811250/",
-        "github": "https://github.com/marco-vb",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 53,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
         "id": "690e2ad2ccd09500b49cab72",
         "name": "Maria Cabral",
         "photo": "/api_images/members/690e655cdea85900275da4a0.jpg",
@@ -949,38 +660,6 @@
             "permissions": [],
             "isSection": false,
             "id": 55,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "5fcfd0122c12d28b88982f99",
-        "name": "Mariana Rocha",
-        "photo": "/api_images/members/656f197d9bf1141111f48619.jpg",
-        "linkedin": "https://www.linkedin.com/in/mariana-rocha-599807200/",
-        "github": "https://github.com/golangis",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 56,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "671fe3db4b51f2003c4e165a",
-        "name": "Mariana Almeida",
-        "photo": "/api_images/members/67cb2c1ad7a4ab0027f536e5.jpg",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 57,
             "associatedActivities": []
           }
         ]
@@ -1033,28 +712,6 @@
         ]
       },
       {
-        "id": "61ba4e3bcb45aa2397157de7",
-        "name": "Miguel Garrido",
-        "photo": "/api_images/members/633340c036158ea3da6156a5.jpg",
-        "github": "https://github.com/sirkotal",
-        "websites": [
-          {
-            "id": 9,
-            "url": "http://sirkotal.github.io/"
-          }
-        ],
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 61,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
         "id": "654535f59bf1141111f485f5",
         "name": "Miguel Moita",
         "email": "miguelmoita2004@gmail.com",
@@ -1087,22 +744,6 @@
         ]
       },
       {
-        "id": "635129cba562ee003e690010",
-        "name": "Mª Rita Lopes",
-        "photo": "/api_images/members/642034caa66bfa049a382d61.jpg",
-        "github": "https://github.com/MRita443",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 64,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
         "id": "671fe4605e645b0019b788d6",
         "name": "Nuno Gonçalves",
         "email": "nunogonbraga@gmail.com",
@@ -1130,20 +771,6 @@
             "permissions": [],
             "isSection": false,
             "id": 66,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "654531db9bf1141111f485e1",
-        "name": "Pedro Vidal",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 67,
             "associatedActivities": []
           }
         ]
@@ -1235,23 +862,6 @@
         ]
       },
       {
-        "id": "635129cba562ee003e69000f",
-        "name": "Rita Cachaldora",
-        "photo": "/api_images/members/65660e3c9bf1141111f4860d.jpg",
-        "linkedin": "https://linkedin.com/in/rita-cachaldora",
-        "github": "https://github.com/rcachaldora",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 73,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
         "id": "635128ab9edfa60024b6d748",
         "name": "Rubem Neto",
         "photo": "/api_images/members/643000d2761165048311eb4e.jpg",
@@ -1263,62 +873,6 @@
             "permissions": [],
             "isSection": false,
             "id": 74,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "65452e249bf1141111f485d1",
-        "name": "Ruben Esteves",
-        "photo": "/api_images/members/654823cb9bf1141111f48601.jpg",
-        "linkedin": "https://www.linkedin.com/in/ruben-esteves-56b527292/",
-        "github": "https://github.com/Ruben38Esteves",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 75,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "654532cc9bf1141111f485e6",
-        "name": "Rui Silveira",
-        "photo": "/api_images/members/657b23ad9bf1141111f4861f.jpg",
-        "linkedin": "https://www.linkedin.com/in/ruisilveira8403/",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 76,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "671fe5c115df930043c316f0",
-        "name": "Rui Soares",
-        "photo": "/api_images/members/671ff06617752500207e6e12.jpg",
-        "linkedin": "https://www.linkedin.com/in/rui-soares333",
-        "github": "https://github.com/RuiSoares333",
-        "websites": [
-          {
-            "id": 11,
-            "url": "https://ruisoares333.github.io/"
-          }
-        ],
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 77,
             "associatedActivities": []
           }
         ]
@@ -1358,53 +912,6 @@
         ]
       },
       {
-        "id": "671fe3b95e645b0019b788d4",
-        "name": "Sofia Minnemann",
-        "email": "sofiminnemann@gmail.com",
-        "photo": "/api_images/members/6887947c0a7f47004388d0c0.jpg",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 80,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "635129cba562ee003e690012",
-        "name": "Tomás Palma",
-        "photo": "/api_images/members/67222080f5a9a4003579c387.jpg",
-        "github": "https://github.com/tomaspalma",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 81,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "6545352d9bf1141111f485f1",
-        "name": "Tomás Ramos",
-        "photo": "/api_images/members/656e34269bf1141111f48617.jpg",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 82,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
         "id": "690e2aa6ccd09500b49cab70",
         "name": "Tomás Oliveira",
         "email": "up202507178@g.uporto.pt",
@@ -1415,22 +922,6 @@
             "permissions": [],
             "isSection": false,
             "id": 83,
-            "associatedActivities": []
-          }
-        ]
-      },
-      {
-        "id": "635129cba562ee003e690016",
-        "name": "Wallen Ribeiro",
-        "photo": "/api_images/members/6431638d761165048311eb52.jpg",
-        "github": "https://github.com/Wallen-Ribeiro",
-        "isActive": true,
-        "roles": [
-          {
-            "name": "Membro",
-            "permissions": [],
-            "isSection": false,
-            "id": 84,
             "associatedActivities": []
           }
         ]
