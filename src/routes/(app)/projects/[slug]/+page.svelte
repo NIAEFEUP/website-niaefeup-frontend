@@ -23,15 +23,15 @@
         <EditButton size="small" link="/projects/{project.slug}/edit" />
       </div>
     {/if}
-    <header class="flex flex-row justify-center gap-6">
+    <header class="flex flex-col md:flex-row justify-center gap-15">
       <img
         src={project.image}
         alt="{project.title}'s image"
-        class="h-full w-full rounded-2xl border-[3vw] border-solid border-white/20 md:w-1/5 md:max-w-md md:border-[2vw]"
+        class="h-60 w-60 mx-auto rounded-2xl border-[3vw] border-solid border-white/20 order-2 md:order-1 md:w-1/5 md:max-w-md md:border-[2vw]"
       />
-      <div class="my-auto flex flex-col items-center md:items-start">
+      <div class="my-auto flex flex-col items-center order-2  md:items-start md:order-1">
         <h1 class="mb-4 text-3xl font-semibold text-white md:text-6xl">{project.title}</h1>
-        <div class="flex w-full justify-start">
+        <div class="flex w-full justify-around md:justify-start">
           <Icon
             src={Icons.Github}
             href={project.github}
@@ -41,8 +41,8 @@
       </div>
     </header>
 
-    <div class="mt-14 text-center md:mt-28">
-      <strong class="text-4xl text-white">{project.slogan}</strong>
+    <div class="mt-10 text-center md:mt-28">
+      <strong class="text-white md:text-2xl">{project.slogan}</strong>
     </div>
 
     {#if project.links && project.links.length > 0}
@@ -51,7 +51,7 @@
           <li>
             <a
               href={link.url}
-              class="flex h-20 w-60 items-center justify-center overflow-hidden rounded-xl text-white md:h-28 md:w-56"
+              class="flex h-20 w-30 items-center justify-center overflow-hidden rounded-xl text-white md:h-28 md:w-56"
             >
               <img
                 src={link.iconPath}
@@ -64,19 +64,16 @@
       </ul>
     {/if}
 
-    <div class="mt-20 flex flex-col items-center justify-center gap-4 md:flex-row">
-      <img class="w-max-xl w-1/3" src={project.thumbnail} alt="{project.title}'s thumbnail" />
-      {#if windowWidth < screenSizeThreshold}
-        <p class="mt-4 w-5/6 text-left text-3xl font-bold">tem por objetivo...</p>
-      {/if}
-      <p class="w-5/6 max-w-xl text-right text-2xl text-gray-100 md:w-1/3 md:text-4xl">
+    <div class="mt-15 flex flex-col items-center justify-center gap-4 md:mt-20 md:flex-row">
+      <img class="w-max-xl w-5/6 md:w-1/3" src={project.thumbnail} alt="{project.title}'s thumbnail" />
+      <p class="w-5/6 max-w-xl text-xl text-center text-gray-100 md:text-right md:w-1/3 md:text-4xl">
         {project.description}
       </p>
     </div>
 
     <div class="mt-24 flex flex-col justify-evenly md:flex-row">
       {#if project.technologies && project.technologies.length > 0}
-        <div class="flex flex-col items-center md:w-1/3">
+        <div class="flex flex-col items-center md:w-1/2">
           <p
             class="mb-6 font-source-code text-2xl font-bold text-white md:text-3xl lg:text-4xl xl:text-5xl"
           >
@@ -100,7 +97,7 @@
       {/if}
       <div
         class="flex flex-col items-center {project.technologies && project.technologies.length > 0
-          ? 'md:w-1/3'
+          ? 'md:w-1/2'
           : 'md:w-full md:justify-center'}"
       >
         <p
