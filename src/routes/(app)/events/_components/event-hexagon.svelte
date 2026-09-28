@@ -51,12 +51,15 @@
       {/if}
 
       <div class="relative z-20 my-1.5 w-full">
-        <span
+        <div
           aria-hidden="true"
-          class="pointer-events-none absolute -inset-1 border-2 border-taupe-200 transition-colors ease-in sm:border-transparent sm:group-hover:border-taupe-200"
-        ></span>
+          class="pointer-events-none absolute -inset-1 opacity-100 transition-opacity duration-100 ease-out sm:opacity-0 sm:group-hover:opacity-100"
+        >
+          <span class="absolute inset-0 border-2 border-taupe-200"></span>
+          <span class="absolute inset-1 bg-taupe-200"></span>
+        </div>
         <p
-          class="relative overflow-hidden break-words bg-taupe-200 text-center text-sm font-semibold text-rose-950 transition-colors ease-in sm:bg-transparent sm:text-sm sm:text-gray-100 sm:group-hover:bg-taupe-200 sm:group-hover:text-rose-950 sm:group-hover:text-shadow-none md:text-base lg:text-lg xl:text-xl"
+          class="relative break-words text-center text-sm font-semibold text-rose-950 sm:text-sm sm:text-gray-100 sm:group-hover:text-rose-950 sm:group-hover:text-shadow-none md:text-base lg:text-lg xl:text-xl"
         >
           {event.title}
         </p>
