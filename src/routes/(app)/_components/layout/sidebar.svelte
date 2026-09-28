@@ -7,6 +7,28 @@
 
   let selectedIndex: number | null = $state(null);
   let sidebarClosed = $state(true);
+  let width = $state(0);
+
+  $effect(() => {
+    width = window.innerWidth;
+
+    const handleResize = () => {
+      width = window.innerWidth;
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  });
+
+  $effect(() => {
+    if (width >= 640) {
+      sidebarClosed = true;
+      document.body.classList.toggle('no-scroll', false);
+    }
+  });
 
   function toggleSidebar() {
     sidebarClosed = !sidebarClosed;
