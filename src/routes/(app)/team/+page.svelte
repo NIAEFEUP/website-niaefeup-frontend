@@ -100,17 +100,9 @@
   const visibleSections = $derived.by(() => {
     if (orderedSections.length === 0) return [];
 
-    let indices: number[];
-
-    if (orderedSections.length === 2) {
-      indices = [0, 0, 1, 0, 0]; // [A, A, B, A, A]
-    } else if (orderedSections.length === 3) {
-      indices = [2, 0, 1, 2, 0]; // [C, A, B, C, A]
-    } else if (orderedSections.length === 4) {
-      indices = [2, 0, 1, 2, 3]; // [C, A, B, C, D]
-    } else {
-      indices = [4, 0, 1, 2, 3]; // no extra cycling
-    }
+    // current section sits at orderedSections[1], wrap each slot's offset around the cycle
+    const count = orderedSections.length;
+    const indices = [-1, 0, 1, 2, 3].map((offset) => (offset + count) % count);
 
     // count occurrences once
     const duplicateIndices = new SvelteSet<number>();
