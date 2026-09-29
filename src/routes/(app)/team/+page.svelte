@@ -7,7 +7,7 @@
   let { data }: { data: PageData } = $props();
 
   // Carousel constants
-  const CAROUSEL_CENTER_INDEX = 2; // [Next, Prev, Curr, Next, Prev]
+  const CAROUSEL_CENTER_INDEX = 2; // [Prev of Prev, Prev, Curr, Next, Next of Next]
   const TRANSITION_DURATION_MS = 300; // animation duration
   const MASK_OFFSET_PX = 8; // additional offset for gradient mask calculations
   const MASK_THRESHOLD_PX = 50; // min measured distance before using fallback mask size
