@@ -385,6 +385,8 @@
         "id": "690e249d2e5314003c94b950",
         "name": "Diogo Martins",
         "photo": "/api_images/members/690f44f3ccd09500b49cab7e.jpg",
+        "linkedin": "https://www.linkedin.com/in/diogo-santos-martins-2oo7/",
+        "github": "https://github.com/muralhaplays",
         "isActive": true,
         "roles": [
           {
@@ -523,6 +525,12 @@
         "photo": "/api_images/members/671ff126f5a9a4003579c37b.jpg",
         "linkedin": "https://www.linkedin.com/in/isaac-santos31/",
         "github": "https://github.com/Isaac3105",
+        "websites": [
+          {
+            "id": 11,
+            "url": "https://isaac3105.pages.dev/"
+          }
+        ],
         "isActive": true,
         "roles": [
           {
