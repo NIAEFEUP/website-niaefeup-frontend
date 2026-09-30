@@ -30,9 +30,11 @@
 
   .mask-foreground {
     mask-image: url('/masks/hexagon/vertical/foreground.svg');
+    transform: translateZ(0);
   }
 
   .mask-background {
     mask-image: url('/masks/hexagon/vertical/background.svg');
+    transform: translateZ(0);
   }
 </style>
