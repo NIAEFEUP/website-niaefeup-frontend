@@ -525,6 +525,12 @@
         "photo": "/api_images/members/671ff126f5a9a4003579c37b.jpg",
         "linkedin": "https://www.linkedin.com/in/isaac-santos31/",
         "github": "https://github.com/Isaac3105",
+        "websites": [
+          {
+            "id": 11,
+            "url": "https://isaac3105.pages.dev/"
+          }
+        ],
         "isActive": true,
         "roles": [
           {

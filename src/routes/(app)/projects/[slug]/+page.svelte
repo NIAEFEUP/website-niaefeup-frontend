@@ -90,6 +90,7 @@
               <a
                 href={technology.url}
                 target="_blank"
+                rel="noopener noreferrer"
                 class="flex h-20 w-20 content-center items-center gap-4 rounded-full bg-white/20 px-4 py-4 md:w-64 md:px-8"
               >
                 <img src={technology.image} alt="Logótipo de {technology.name}" class="max-h-12" />
