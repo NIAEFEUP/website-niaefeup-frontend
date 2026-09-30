@@ -50,7 +50,7 @@
   </nav>
 {:else}
   <nav
-    class="bg-ni-sidebar absolute z-20 grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center overflow-scroll px-2 py-4 sm:invisible"
+    class="bg-ni-sidebar fixed inset-0 z-20 grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center overflow-scroll px-2 py-4 sm:invisible"
   >
     <BackgroundHexagon position="left" />
     <button
