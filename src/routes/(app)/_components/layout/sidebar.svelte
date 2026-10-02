@@ -38,7 +38,7 @@
 
 {#if sidebarClosed}
   <nav
-    class="fixed grid h-fit w-full grid-cols-[1fr_4em] grid-rows-1 justify-items-center px-2 py-4 text-white"
+    class="fixed z-50 grid h-fit w-full grid-cols-[1fr_4em] grid-rows-1 justify-items-center px-2 py-4 text-white"
   >
     <button
       class="col-start-2 h-fit w-1/2 sm:invisible"
