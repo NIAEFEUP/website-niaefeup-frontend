@@ -38,10 +38,10 @@
 
 {#if sidebarClosed}
   <nav
-    class="fixed z-50 grid h-fit w-full grid-cols-[1fr_4em] grid-rows-1 justify-items-center px-2 py-4 text-white"
+    class="pointer-events-none fixed z-50 grid h-fit w-full grid-cols-[1fr_4em] grid-rows-1 justify-items-center px-2 py-4 text-white"
   >
     <button
-      class="col-start-2 h-fit w-1/2 sm:invisible"
+      class="pointer-events-auto col-start-2 h-fit w-1/2 sm:invisible"
       onclick={toggleSidebar}
       aria-label="Abrir menu lateral"
     >
@@ -50,7 +50,7 @@
   </nav>
 {:else}
   <nav
-    class="bg-ni-sidebar fixed inset-0 z-20 grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center overflow-scroll px-2 py-4 sm:invisible"
+    class="bg-ni-sidebar fixed inset-0 z-50 grid h-screen w-screen grid-cols-[1fr_4em] grid-rows-[4em_1fr] justify-items-center overflow-scroll px-2 py-4 sm:invisible"
   >
     <BackgroundHexagon position="left" />
     <button
