@@ -9,4 +9,3 @@ services:
     volumes:
       - ./src:/app/src
       - ./static:/app/static
-    network_mode: 'host'
