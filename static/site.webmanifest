@@ -1,7 +1,7 @@
 {
-  "name": "NIFEUP",
+  "name": "NIFEUP - Núcleo de Estudantes de Engenharia Informática da Faculdade de Engenharia da Universidade do Porto",
   "short_name": "NIFEUP",
-  "description": "Núcleo de Informática da Faculdade de Engenharia da Universidade do Porto",
+  "description": "Núcleo de Estudantes de Engenharia Informática da Faculdade de Engenharia da Universidade do Porto",
   "icons": [
     {
       "src": "/favicon.ico",
