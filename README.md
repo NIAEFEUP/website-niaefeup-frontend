@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/NIAEFEUP/website-niaefeup-frontend/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/NIAEFEUP/website-niaefeup-frontend/actions/workflows/ci.yml)
 
-The frontend of the website for NIFEUP, a student branch in FEUP. Live at [nifeup.pt](https://nifeup.pt).
+The frontend of the website for NIFEUP, a student branch in FEUP. Live at [nifeup.com](https://nifeup.com).
 
 The site is currently fully **static**: every page is prerendered at build time and served by nginx. There is currently no backend; all content lives in JSON files in this repository (see [Editing content](#editing-content)).
 
