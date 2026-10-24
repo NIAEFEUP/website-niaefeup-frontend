@@ -4,7 +4,7 @@
 
   const logo = {
     type: 'logo',
-    image: '/images/logo_2018_watermark.svg',
+    image: '/images/logo_ni_white_no-background.svg',
     onselect: () => {
       selectedTitle = defaultTitle;
       selectedDescription = defaultDescription;
