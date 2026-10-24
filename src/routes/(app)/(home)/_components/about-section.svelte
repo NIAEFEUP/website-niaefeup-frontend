@@ -11,10 +11,10 @@
     <p
       class="font-raleway text-center text-base font-normal leading-relaxed text-white/90 sm:text-lg md:text-xl lg:text-2xl"
     >
-      O NIAEFEUP é constituído inteiramente por alunos do curso de Engenharia Informática e
-      Computação (L.EIC/M.EIC). A nossa principal motivação é ganhar experiência e competências
-      essenciais para o mundo do trabalho assim como cultivar nos nossos colegas a vontade de
-      aprender linguagens e novas tecnologias.
+      O NIFEUP é constituído inteiramente por alunos do curso de Engenharia Informática e Computação
+      (L.EIC/M.EIC). A nossa principal motivação é ganhar experiência e competências essenciais para
+      o mundo do trabalho assim como cultivar nos nossos colegas a vontade de aprender linguagens e
+      novas tecnologias.
     </p>
   </div>
 </section>

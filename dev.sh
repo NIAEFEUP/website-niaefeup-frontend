@@ -19,4 +19,4 @@ trap 'exit 130' INT TERM
 echo "Starting the dev server at http://localhost:3000 (press Ctrl-C to stop)"
 
 # --build rebuilds the image when package.json / package-lock.json change (cached otherwise)
-docker compose up --build website-niaefeup-frontend-dev
+docker compose up --build website-nifeup-frontend-dev

@@ -20,7 +20,7 @@
     {
       name: 'Imagem',
       description:
-        'O departamento de Imagem é responsável pela identidade visual da NIAEFEUP. Cria conteúdos gráficos, fotografa os momentos mais marcantes e garante que a nossa presença é reconhecida em todo o lado.'
+        'O departamento de Imagem é responsável pela identidade visual da NIFEUP. Cria conteúdos gráficos, fotografa os momentos mais marcantes e garante que a nossa presença é reconhecida em todo o lado.'
     },
     {
       name: 'Projetos',
@@ -30,7 +30,7 @@
     {
       name: 'Comunicação',
       description:
-        'O departamento de Comunicação é a voz da NIAEFEUP. Gere as redes sociais, redige conteúdos e assegura que a informação chega a toda a comunidade de forma clara e apelativa.'
+        'O departamento de Comunicação é a voz da NIFEUP. Gere as redes sociais, redige conteúdos e assegura que a informação chega a toda a comunidade de forma clara e apelativa.'
     }
   ];
 
