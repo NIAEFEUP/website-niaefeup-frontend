@@ -45,7 +45,7 @@
 
 <div class="z-10 w-full bg-transparent p-3 max-sm:hidden">
   <footer class="grid grid-cols-3 justify-between border-t-2 border-white/90 p-2 text-white">
-    <div class="footer-icons grid w-fit grid-cols-6 gap-4 self-center p-3">
+    <div class="footer-icons grid w-fit grid-cols-7 gap-4 self-center p-3">
       <Icon
         src={Icons.Instagram}
         color="white"
@@ -128,9 +128,7 @@
         <span>B315</span>
       </div>
     </div>
-    <div
-      class="footer-icons grid grid-cols-3 grid-rows-2 items-center justify-items-center gap-4 px-6 py-4"
-    >
+    <div class="footer-icons flex flex-wrap items-center justify-center gap-4 px-6 py-4">
       <Icon
         src={Icons.Instagram}
         color="white"
@@ -144,6 +142,13 @@
         size="24px"
         href="https://twitter.com/nifeup"
         ariaLabel="Twitter"
+      />
+      <Icon
+        src={Icons.TikTok}
+        color="white"
+        size="24px"
+        href="https://www.tiktok.com/@niaefeup"
+        ariaLabel="TikTok"
       />
       <Icon
         src={Icons.Facebook}
