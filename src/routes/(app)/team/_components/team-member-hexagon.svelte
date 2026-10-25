@@ -10,19 +10,23 @@
 
 <Hexagon {orientation}>
   <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-  <div class="group relative h-full w-full outline-none" data-testid="hexagon" tabindex="0">
+  <div
+    class="group @container relative h-full w-full outline-none"
+    data-testid="hexagon"
+    tabindex="0"
+  >
     <div
       data-testid="container"
-      class="absolute bottom-0 z-20 w-full px-4 duration-500 group-focus-within:bottom-1/2 group-focus-within:translate-y-1/2 group-hover:bottom-1/2 group-hover:translate-y-1/2"
+      class="absolute bottom-[12%] z-20 w-full px-[6cqw] duration-500 group-focus-within:bottom-1/2 group-focus-within:translate-y-1/2 group-hover:bottom-1/2 group-hover:translate-y-1/2"
     >
       <p
-        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl text-shadow-lg"
+        class="mx-auto w-[70%] text-center text-[max(0.75rem,8cqw)] font-bold leading-tight text-gray-100 transition-all text-shadow-lg"
       >
         {teamMember.name}
       </p>
       <div
         data-testid="role"
-        class="mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-focus-within:opacity-100 group-hover:opacity-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
+        class="mx-auto text-center text-[max(0.6875rem,6.5cqw)] leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
       >
         {#if teamMember.roles && teamMember.roles.length > 0}
           {#each teamMember.roles as role (role.id)}
@@ -34,12 +38,12 @@
         class="grid grid-rows-[0fr] transition-all duration-500 ease-out group-focus-within:grid-rows-[1fr] group-hover:grid-rows-[1fr]"
       >
         <div
-          class="flex min-h-0 justify-center gap-1 overflow-hidden opacity-0 transition-opacity duration-500 group-focus-within:opacity-100 group-hover:opacity-100 md:gap-2"
+          class="flex min-h-0 flex-row justify-center gap-x-[3cqw] overflow-hidden opacity-0 transition-opacity duration-500 group-focus-within:opacity-100 group-hover:opacity-100"
         >
           {#if teamMember.linkedin}
             <a
               href={teamMember.linkedin}
-              class="mt-1 h-6 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="mt-[2cqw] size-[14cqw]"
               aria-label="LinkedIn de {teamMember.name}"
             >
               <Icon src={Icons.Linkedin} color="white" size="100%" /></a
@@ -48,7 +52,7 @@
           {#if teamMember.github}
             <a
               href={teamMember.github}
-              class="mt-1 h-6 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="mt-[2cqw] size-[14cqw]"
               aria-label="GitHub de {teamMember.name}"
               ><Icon src={Icons.Github} color="white" size="100%" /></a
             >
@@ -57,7 +61,7 @@
             {#each teamMember.websites as customWebsite (customWebsite.url)}
               <a
                 href={customWebsite.url}
-                class="mt-1 h-5 sm:h-6 md:h-7 lg:h-8 xl:h-9"
+                class="mt-[2cqw] size-[14cqw]"
                 aria-label="Website de {teamMember.name}"
               >
                 {#if customWebsite.iconPath}
