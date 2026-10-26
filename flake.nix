@@ -1,5 +1,5 @@
 {
-  description = "A Nix flake for the development of NIAEFEUP's website frontend";
+  description = "A Nix flake for the development of NIFEUP's website frontend";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
