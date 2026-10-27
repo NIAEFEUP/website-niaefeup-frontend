@@ -84,7 +84,7 @@
     ></div>
     <img
       src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
-      alt="Membro do NIAEFEUP {teamMember.name}"
+      alt="Membro do NIFEUP {teamMember.name}"
       class="z-0 h-full w-full object-cover"
     />
   </div>
