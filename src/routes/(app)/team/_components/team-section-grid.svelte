@@ -8,9 +8,14 @@
     cols: number;
     gap?: 'small' | undefined;
     showTitle?: boolean;
+    onSelectMember?: (
+      member: TeamMember,
+      origin?: { x: number; y: number; width: number; height: number },
+      originEl?: HTMLElement
+    ) => void;
   }
 
-  let { section, cols, gap, showTitle = false }: Props = $props();
+  let { section, cols, gap, showTitle = false, onSelectMember }: Props = $props();
 </script>
 
 {#if section.accounts.length > 0}
@@ -26,6 +31,7 @@
       orientation="horizontal"
       component={TeamMemberHexagon}
       {gap}
+      {onSelectMember}
     />
   </div>
 {/if}

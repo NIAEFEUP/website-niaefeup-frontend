@@ -9,10 +9,30 @@
     cols: number;
     gap?: 'small' | 'medium' | 'big';
     orientation: 'horizontal' | 'vertical';
-    component: Component<{ orientation: 'horizontal' | 'vertical'; data: T }>;
+    component: Component<{
+      orientation: 'horizontal' | 'vertical';
+      data: T;
+      onSelect?: (
+        item: T,
+        origin?: { x: number; y: number; width: number; height: number },
+        originEl?: HTMLElement
+      ) => void;
+    }>;
+    onSelectMember?: (
+      item: T,
+      origin?: { x: number; y: number; width: number; height: number },
+      originEl?: HTMLElement
+    ) => void;
   }
 
-  let { items, cols: propcols, gap = 'medium', orientation, component }: Props = $props();
+  let {
+    items,
+    cols: propcols,
+    gap = 'medium',
+    orientation,
+    component,
+    onSelectMember
+  }: Props = $props();
 
   let cols = $derived(Math.min(items.length, propcols));
 
@@ -44,7 +64,7 @@
 
     {@const SvelteComponent = component}
     <li style="grid-column: {colStart} / {colEnd}; grid-row: {rowStart} / {rowEnd}">
-      <SvelteComponent {orientation} data={item} />
+      <SvelteComponent {orientation} data={item} onSelect={onSelectMember} />
     </li>
   {/each}
 </ul>

@@ -2,9 +2,30 @@
   import { SvelteMap, SvelteSet } from 'svelte/reactivity';
   import type { PageData } from './$types';
   import TeamSectionGrid from './_components/team-section-grid.svelte';
-  import type { TeamSection } from '@/types/team-member';
+  import TeamMemberExpanded from './_components/team-member-expanded.svelte';
+  import type { TeamSection, TeamMember } from '@/types/team-member';
 
   let { data }: { data: PageData } = $props();
+
+  let expandedMember: TeamMember | null = $state(null);
+  let expandedOrigin: { x: number; y: number; width: number; height: number } | null = $state(null);
+  let expandedOriginEl: HTMLElement | null = $state(null);
+
+  const openExpanded = (
+    member: TeamMember,
+    origin?: { x: number; y: number; width: number; height: number },
+    originEl?: HTMLElement
+  ) => {
+    expandedMember = member;
+    expandedOrigin = origin ?? null;
+    expandedOriginEl = originEl ?? null;
+  };
+
+  const closeExpanded = () => {
+    expandedMember = null;
+    expandedOrigin = null;
+    expandedOriginEl = null;
+  };
 
   // Carousel constants
   const CAROUSEL_CENTER_INDEX = 2; // [Prev of Prev, Prev, Curr, Next, Next of Next]
@@ -291,8 +312,17 @@
 
     {#each groupedSections as section (section.id)}
       <div class="hidden w-full md:block">
-        <TeamSectionGrid {section} cols={4} showTitle />
+        <TeamSectionGrid {section} cols={4} showTitle onSelectMember={openExpanded} />
       </div>
     {/each}
+  {/if}
+
+  {#if expandedMember}
+    <TeamMemberExpanded
+      member={expandedMember}
+      onClose={closeExpanded}
+      origin={expandedOrigin}
+      originEl={expandedOriginEl}
+    />
   {/if}
 </div>

@@ -5,7 +5,34 @@
   import type { TeamMember } from '@/types/team-member';
 
   export const orientation = 'horizontal';
-  let { data, teamMember = data as TeamMember } = $props();
+  let {
+    data,
+    teamMember = data as TeamMember,
+    onSelect
+  } = $props<{
+    data?: TeamMember;
+    teamMember?: TeamMember;
+    orientation?: 'horizontal' | 'vertical';
+    onSelect?: (
+      member: TeamMember,
+      origin?: { x: number; y: number; width: number; height: number },
+      originEl?: HTMLElement
+    ) => void;
+  }>();
+
+  const handleSelect = (e: MouseEvent) => {
+    // Clicking a social link inside the tile should follow the link, not open the spotlight
+    if ((e.target as HTMLElement).closest('a')) return;
+
+    const buttonEl = e.currentTarget as HTMLElement;
+    const rect = buttonEl.getBoundingClientRect();
+    const origin = { x: rect.left, y: rect.top, width: rect.width, height: rect.height };
+    // The whole grid item (not just the button) is hidden while the spotlight is open,
+    // otherwise the parent <Hexagon> shape stays visible as a white ghost.
+    const originEl = (buttonEl.closest('li') as HTMLElement | null) ?? buttonEl;
+
+    onSelect?.(teamMember, origin, originEl);
+  };
 
   const openHexagonAnimation = (
     target: HTMLElement,
@@ -70,24 +97,27 @@
 </script>
 
 <Hexagon {orientation}>
-  <div
+  <button
     bind:this={root}
-    class="group relative h-full w-full"
+    type="button"
+    class="group relative h-full w-full cursor-pointer text-left transition-opacity duration-200"
     data-testid="hexagon"
     data-state="closed"
+    onclick={handleSelect}
+    aria-label="Ver detalhes de {teamMember.name}"
   >
     <div
       data-testid="container"
       class="group-hover:bottom-1/2 group-hover:translate-y-1/3 container absolute bottom-0 z-20 w-full px-4 duration-500"
     >
       <p
-        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl text-shadow-lg"
+        class="hex-info mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-opacity duration-300 sm:text-sm md:text-base lg:text-lg xl:text-xl text-shadow-lg"
       >
         {teamMember.name}
       </p>
       <div
         data-testid="role"
-        class="full-opacity group-hover:opacity-100 mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out sm:text-xs md:text-sm lg:text-base xl:text-lg"
+        class="full-opacity group-hover:opacity-100 mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-opacity duration-400 ease-out sm:text-xs md:text-sm lg:text-base xl:text-lg"
       >
         {#if teamMember.roles && teamMember.roles.length > 0}
           {#each teamMember.roles as role (role.id)}
@@ -100,7 +130,7 @@
           {#if teamMember.linkedin}
             <a
               href={teamMember.linkedin}
-              class="full-opacity group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="full-opacity group-hover:opacity-100 h-6 opacity-0 transition-opacity duration-400 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="LinkedIn de {teamMember.name}"
             >
               <Icon src={Icons.Linkedin} color="white" size="100%" /></a
@@ -109,7 +139,7 @@
           {#if teamMember.github}
             <a
               href={teamMember.github}
-              class="full-opacity group-hover:static group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="full-opacity group-hover:opacity-100 h-6 opacity-0 transition-opacity duration-400 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
               aria-label="GitHub de {teamMember.name}"
               ><Icon src={Icons.Github} color="white" size="100%" /></a
             >
@@ -118,7 +148,7 @@
             {#each teamMember.websites as customWebsite (customWebsite.url)}
               <a
                 href={customWebsite.url}
-                class="full-opacity group-hover:opacity-100 h-5 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
+                class="full-opacity group-hover:opacity-100 h-5 opacity-0 transition-opacity duration-400 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
                 aria-label="Website de {teamMember.name}"
               >
                 {#if customWebsite.iconPath}
@@ -144,5 +174,5 @@
       alt="Membro do NIAEFEUP {teamMember.name}"
       class="z-0 h-full w-full object-cover"
     />
-  </div>
+  </button>
 </Hexagon>
