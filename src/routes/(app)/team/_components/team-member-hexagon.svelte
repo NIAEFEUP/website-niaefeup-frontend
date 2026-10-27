@@ -9,7 +9,7 @@
     data,
     teamMember = data as TeamMember,
     onSelect
-  } = $props<{
+  }: {
     data?: TeamMember;
     teamMember?: TeamMember;
     orientation?: 'horizontal' | 'vertical';
@@ -18,7 +18,7 @@
       origin?: { x: number; y: number; width: number; height: number },
       originEl?: HTMLElement
     ) => void;
-  }>();
+  } = $props();
 
   const handleSelect = (e: MouseEvent) => {
     // Clicking a social link inside the tile should follow the link, not open the spotlight
