@@ -18,7 +18,7 @@
     <h2 class="mb-10 mt-12 text-center text-lg font-bold md:text-2xl">
       {section.name}
     </h2>
-  {/if_ª}
+  {/if}
   <div class={showTitle ? 'mx-auto w-full max-w-5xl' : 'mx-auto w-full max-w-md'}>
     <HexagonGrid
       items={section.accounts}
