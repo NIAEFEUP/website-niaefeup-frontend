@@ -1,5 +1,5 @@
 services:
-  website-niaefeup-frontend-dev:
+  website-nifeup-frontend-dev:
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,4 +9,3 @@ services:
     volumes:
       - ./src:/app/src
       - ./static:/app/static
-    network_mode: 'host'

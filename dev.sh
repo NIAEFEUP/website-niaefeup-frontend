@@ -1,27 +1,22 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
-which docker &> /dev/null
-if [ $? -ne 0 ]; then
-    echo "Docker compose not installed"
+if ! docker compose version &> /dev/null; then
+    echo "Docker (with the Compose plugin) is not installed"
     echo "Please read the README at https://github.com/NIAEFEUP/website-niaefeup-frontend"
-    exit
+    exit 1
 fi
 
-docker compose up website-niaefeup-frontend-dev
-
-trap_ctrl_c() {
+cleanup() {
+    echo ""
+    echo "Removing containers..."
     docker compose down
-    clear
-
-    exit
 }
 
-trap "trap_ctrl_c" 2
+# Remove the containers however the script ends (Ctrl-C, error or normal exit)
+trap cleanup EXIT
+trap 'exit 130' INT TERM
 
-echo "Containers are up and running"
-echo ""
-echo "Press Ctrl-C to exit"
+echo "Starting the dev server at http://localhost:3000 (press Ctrl-C to stop)"
 
-while true; do
-    sleep 1
-done
+# --build rebuilds the image when package.json / package-lock.json change (cached otherwise)
+docker compose up --build website-nifeup-frontend-dev
