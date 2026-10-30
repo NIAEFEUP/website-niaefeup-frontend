@@ -53,7 +53,7 @@
       <div class="relative z-20 my-1.5 w-full">
         <div
           aria-hidden="true"
-          class="pointer-events-none absolute -inset-1 opacity-100 transition-opacity duration-100 ease-out sm:opacity-0 sm:group-hover:opacity-100"
+          class="pointer-events-none absolute -inset-1 opacity-100 transition-opacity duration-400 ease-out sm:opacity-0 sm:group-hover:opacity-100"
         >
           <span class="absolute inset-0 border-2 border-taupe-200"></span>
           <span class="absolute inset-1 bg-taupe-200"></span>
