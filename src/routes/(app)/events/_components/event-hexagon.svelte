@@ -38,7 +38,7 @@
 
 <Hexagon {orientation}>
   <div
-    class="group relative box-content flex h-full w-full justify-center md:shadow-black/[.58] md:text-shadow"
+    class="group relative box-content flex h-full w-full justify-center overflow-hidden md:shadow-black/[.58] md:text-shadow"
     data-testid="event-hexagon"
   >
     <div class="flex w-full flex-col content-center justify-center">
@@ -51,15 +51,8 @@
       {/if}
 
       <div class="relative z-20 my-1.5 w-full">
-        <div
-          aria-hidden="true"
-          class="pointer-events-none absolute -inset-1 opacity-100 transition-opacity duration-100 ease-out sm:opacity-0 sm:group-hover:opacity-100"
-        >
-          <span class="absolute inset-0 border-2 border-taupe-200"></span>
-          <span class="absolute inset-1 bg-taupe-200"></span>
-        </div>
         <p
-          class="relative break-words text-center text-sm font-semibold text-rose-950 sm:text-sm sm:text-gray-100 sm:group-hover:text-rose-950 sm:group-hover:text-shadow-none md:text-base lg:text-lg xl:text-xl"
+          class="relative break-words text-center text-sm font-semibold text-gray-100 md:text-base lg:text-lg xl:text-xl"
         >
           {event.title}
         </p>
@@ -75,6 +68,10 @@
       {/if}
     </div>
     <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 z-15 bg-linear-to-t from-black/90 via-black/50 to-transparent transition-transform duration-400 ease-out sm:translate-y-full sm:group-hover:translate-y-0"
+    ></div>
     <img
       src={event.image || '/images/ni_logo.png'}
       alt="Miniatura do evento"
