@@ -6,88 +6,27 @@
 
   export const orientation = 'horizontal';
   let { data, teamMember = data as TeamMember } = $props();
-
-  const openHexagonAnimation = (
-    target: HTMLElement,
-    container: HTMLElement,
-    fullOpacityContainers: NodeListOf<HTMLElement>,
-    variableOpacityContainer: HTMLElement
-  ) => {
-    container.style.top = '50%';
-    container.style.transform = 'translateY(-50%)';
-
-    fullOpacityContainers.forEach((i) => {
-      i.style.opacity = '100%';
-    });
-
-    variableOpacityContainer.style.opacity = '30%';
-
-    target.dataset.state = 'open';
-  };
-  const closeHexagonAnimation = (
-    target: HTMLElement,
-    container: HTMLElement,
-    fullOpacityContainers: NodeListOf<HTMLElement>,
-    variableOpacityContainer: HTMLElement
-  ) => {
-    container.style.top = '';
-    container.style.transform = '';
-
-    fullOpacityContainers.forEach((i) => {
-      i.style.opacity = '0%';
-    });
-
-    variableOpacityContainer.style.opacity = '0%';
-
-    target.dataset.state = 'closed';
-  };
-
-  let root: HTMLElement | undefined = $state();
-
-  $effect(() => {
-    const target = root;
-
-    if (!target) return;
-
-    const container: HTMLElement | null = target.querySelector('.container');
-    const fullOpacityContainers: NodeListOf<HTMLElement> | null =
-      target.querySelectorAll('.full-opacity');
-    const variableOpacityContainer: HTMLElement | null = target.querySelector('.variable-opacity');
-
-    const handleTouchStart = () => {
-      if (container && fullOpacityContainers && variableOpacityContainer) {
-        if (target.dataset.state == 'closed') {
-          openHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
-        } else {
-          closeHexagonAnimation(target, container, fullOpacityContainers, variableOpacityContainer);
-        }
-      }
-    };
-
-    target.addEventListener('touchstart', handleTouchStart);
-    return () => target.removeEventListener('touchstart', handleTouchStart);
-  });
 </script>
 
 <Hexagon {orientation}>
+  <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
   <div
-    bind:this={root}
-    class="group relative h-full w-full"
+    class="group @container relative h-full w-full outline-none"
     data-testid="hexagon"
-    data-state="closed"
+    tabindex="0"
   >
     <div
       data-testid="container"
-      class="group-hover:bottom-1/2 group-hover:translate-y-1/3 container absolute bottom-0 z-20 w-full px-4 duration-500"
+      class="absolute bottom-[12%] z-20 w-full px-[6cqw] duration-500 group-focus-within:bottom-1/2 group-focus-within:translate-y-1/2 group-hover:bottom-1/2 group-hover:translate-y-1/2"
     >
       <p
-        class="mx-auto w-[70%] text-center text-sm font-bold leading-tight text-gray-100 transition-all sm:text-sm md:text-base lg:text-lg xl:text-xl text-shadow-lg"
+        class="mx-auto w-[70%] text-center text-[max(0.75rem,8cqw)] font-bold leading-tight text-gray-100 transition-all text-shadow-lg"
       >
         {teamMember.name}
       </p>
       <div
         data-testid="role"
-        class="full-opacity group-hover:opacity-100 mx-auto text-center text-xs leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out sm:text-xs md:text-sm lg:text-base xl:text-lg"
+        class="mx-auto text-center text-[max(0.6875rem,6.5cqw)] leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
       >
         {#if teamMember.roles && teamMember.roles.length > 0}
           {#each teamMember.roles as role (role.id)}
@@ -95,12 +34,16 @@
           {/each}
         {/if}
       </div>
-      <div class="relative mt-1">
-        <div class="absolute flex w-full justify-center gap-1 md:gap-2">
+      <div
+        class="grid grid-rows-[0fr] transition-all duration-500 ease-out group-focus-within:grid-rows-[1fr] group-hover:grid-rows-[1fr]"
+      >
+        <div
+          class="flex min-h-0 flex-row justify-center gap-x-[3cqw] overflow-hidden opacity-0 transition-opacity duration-500 group-focus-within:opacity-100 group-hover:opacity-100"
+        >
           {#if teamMember.linkedin}
             <a
               href={teamMember.linkedin}
-              class="full-opacity group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="mt-[2cqw] size-[14cqw]"
               aria-label="LinkedIn de {teamMember.name}"
             >
               <Icon src={Icons.Linkedin} color="white" size="100%" /></a
@@ -109,7 +52,7 @@
           {#if teamMember.github}
             <a
               href={teamMember.github}
-              class="full-opacity group-hover:static group-hover:opacity-100 h-6 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
+              class="mt-[2cqw] size-[14cqw]"
               aria-label="GitHub de {teamMember.name}"
               ><Icon src={Icons.Github} color="white" size="100%" /></a
             >
@@ -118,7 +61,7 @@
             {#each teamMember.websites as customWebsite (customWebsite.url)}
               <a
                 href={customWebsite.url}
-                class="full-opacity group-hover:opacity-100 h-5 opacity-0 transition-all duration-500 ease-out sm:h-6 md:h-7 lg:h-8 xl:h-9"
+                class="mt-[2cqw] size-[14cqw]"
                 aria-label="Website de {teamMember.name}"
               >
                 {#if customWebsite.iconPath}
@@ -137,7 +80,7 @@
       </div>
     </div>
     <div
-      class="variable-opacity group-hover:opacity-30 absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500"
+      class="absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-focus-within:opacity-30 group-hover:opacity-30"
     ></div>
     <img
       src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
