@@ -951,5 +951,160 @@
         ]
       }
     ]
+  },
+  {
+    "section": "Mesa da Assembleia Geral",
+    "accounts": [
+      {
+        "id": "mag001",
+        "name": "Ana Costa",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Presidente da Assembleia Geral",
+            "permissions": [],
+            "isSection": false,
+            "id": 86,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "mag002",
+        "name": "Bruno Oliveira",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Vice-Presidente da Assembleia Geral",
+            "permissions": [],
+            "isSection": false,
+            "id": 87,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "mag003",
+        "name": "Carolina Marques",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Secretária da Assembleia Geral",
+            "permissions": [],
+            "isSection": false,
+            "id": 88,
+            "associatedActivities": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Conselho Fiscal",
+    "accounts": [
+      {
+        "id": "cf001",
+        "name": "Diogo Sousa",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Presidente do Conselho Fiscal",
+            "permissions": [],
+            "isSection": false,
+            "id": 89,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "cf002",
+        "name": "Inês Almeida",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Vogal do Conselho Fiscal",
+            "permissions": [],
+            "isSection": false,
+            "id": 90,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "cf003",
+        "name": "Ricardo Pereira",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Vogal do Conselho Fiscal",
+            "permissions": [],
+            "isSection": false,
+            "id": 91,
+            "associatedActivities": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Recrutas",
+    "accounts": [
+      {
+        "id": "rec001",
+        "name": "João Mendes",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Recruta",
+            "permissions": [],
+            "isSection": false,
+            "id": 92,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "rec002",
+        "name": "Sofia Ribeiro",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Recruta",
+            "permissions": [],
+            "isSection": false,
+            "id": 92,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "rec003",
+        "name": "Tiago Fernandes",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Recruta",
+            "permissions": [],
+            "isSection": false,
+            "id": 92,
+            "associatedActivities": []
+          }
+        ]
+      },
+      {
+        "id": "rec004",
+        "name": "Marta Lopes",
+        "isActive": true,
+        "roles": [
+          {
+            "name": "Recruta",
+            "permissions": [],
+            "isSection": false,
+            "id": 92,
+            "associatedActivities": []
+          }
+        ]
+      }
+    ]
   }
 ]
