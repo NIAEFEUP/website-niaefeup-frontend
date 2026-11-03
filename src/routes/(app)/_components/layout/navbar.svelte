@@ -34,8 +34,8 @@
 >
   <div class="flex w-full justify-start">
     <a href="/" class="flex items-center gap-4">
-      <img src="/images/ni_logo.png" alt="NIAEFEUP's logo" width="40" height="40" />
-      <span>NIAEFEUP</span>
+      <img src="/images/ni_logo.png" alt="NIFEUP's logo" width="40" height="40" />
+      <span>NIFEUP</span>
     </a>
   </div>
   <div class="flex items-center justify-end gap-7">

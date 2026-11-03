@@ -9,26 +9,30 @@
     [2, 5],
     [10, 6],
     [1, 8],
-    [7, 8]
+    [7, 8],
+    [9, 2]
   ];
   const lines = [
     [0, 2],
     [2, 1],
     [1, 5],
     [5, 3],
-    [2, 4]
+    [2, 4],
+    [1, 6],
+    [6, 3]
   ];
   let innerWidth = $state(0);
   let coefficient = 8;
   let iconSize = 8;
 
   const socials = [
-    { url: 'https://www.instagram.com/niaefeup/', icon: Icons.Instagram, label: 'Instagram' },
+    { url: 'https://www.instagram.com/ni.feup/', icon: Icons.Instagram, label: 'Instagram' },
     { url: 'https://github.com/NIAEFEUP', icon: Icons.Github, label: 'Github' },
     { url: 'https://www.facebook.com/NIAEFEUP', icon: Icons.Facebook, label: 'Facebook' },
     { url: 'ni@aefeup.pt', icon: Icons.Mail, label: 'Email' },
     { url: 'https://www.linkedin.com/company/nifeup', icon: Icons.Linkedin, label: 'Linkedin' },
-    { url: 'https://twitter.com/niaefeup', icon: Icons.Twitter, label: 'Twitter' }
+    { url: 'https://twitter.com/nifeup', icon: Icons.Twitter, label: 'Twitter' },
+    { url: 'https://www.tiktok.com/@niaefeup', icon: Icons.TikTok, label: 'TikTok' }
   ];
 </script>
 
