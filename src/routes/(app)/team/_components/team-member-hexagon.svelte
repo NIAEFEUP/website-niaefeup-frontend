@@ -6,14 +6,20 @@
 
   export const orientation = 'horizontal';
   let { data, teamMember = data as TeamMember } = $props();
+
+  let wasOpen = false;
 </script>
 
 <Hexagon {orientation}>
-  <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+  <!-- svelte-ignore a11y_no_noninteractive_tabindex, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
   <div
     class="group @container relative h-full w-full outline-none"
     data-testid="hexagon"
     tabindex="0"
+    onpointerdown={(e) => (wasOpen = e.currentTarget.contains(document.activeElement))}
+    onclick={(e) => {
+      if (wasOpen && !(e.target as Element).closest('a')) e.currentTarget.blur();
+    }}
   >
     <div
       data-testid="container"
