@@ -76,7 +76,7 @@
     </div>
     <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
     <enhanced:img
-      src={event.image || 'static/images/ni_logo.png'}
+      src={event.image || '/images/ni_logo.png'}
       alt="Miniatura do evento"
       class="absolute inset-0 z-0 h-full w-full object-cover"
     />
