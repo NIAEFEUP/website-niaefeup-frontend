@@ -32,7 +32,7 @@
     { url: 'ni@aefeup.pt', icon: Icons.Mail, label: 'Email' },
     { url: 'https://www.linkedin.com/company/nifeup', icon: Icons.Linkedin, label: 'Linkedin' },
     { url: 'https://twitter.com/nifeup', icon: Icons.Twitter, label: 'Twitter' },
-    { url: 'https://www.tiktok.com/@niaefeup', icon: Icons.TikTok, label: 'TikTok' }
+    { url: 'https://www.tiktok.com/@ni.feup', icon: Icons.TikTok, label: 'TikTok' }
   ];
 </script>
 

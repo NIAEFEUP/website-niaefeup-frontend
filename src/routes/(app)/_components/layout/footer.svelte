@@ -90,7 +90,7 @@
         src={Icons.TikTok}
         color="white"
         size="24px"
-        href="https://www.tiktok.com/@niaefeup"
+        href="https://www.tiktok.com/@ni.feup"
         ariaLabel="TikTok"
       />
       <Icon
