@@ -1,7 +1,7 @@
 [
   {
     "title": "uni",
-    "description": "A uni é uma aplicação móvel criada pelo NIAEFEUP para ajudar os estudantes da Universidade do Porto a gerir a vida académica num só sítio. A app agrega dados da plataforma da faculdade e de outros serviços, disponibilizando informações como horários, exames, notas e recursos do campus. Requer autenticação com conta académica.",
+    "description": "A uni é uma aplicação móvel criada pelo NIFEUP para ajudar os estudantes da Universidade do Porto a gerir a vida académica num só sítio. A app agrega dados da plataforma da faculdade e de outros serviços, disponibilizando informações como horários, exames, notas e recursos do campus. Requer autenticação com conta académica.",
     "teamMembers": [],
     "slug": "uni",
     "image": "/api_images/projects/uni_logo.png",
@@ -39,7 +39,7 @@
   },
   {
     "title": "TimeTable Selector",
-    "description": "O TimeTable Selector (TTS) é uma plataforma desenvolvida pelo NIAEFEUP onde os estudantes podem experimentar as possíveis combinações de horários que podem escolher no início de cada semestre. Com ele, podes explorar e planear o teu horário ideal antes de o oficializares.",
+    "description": "O TimeTable Selector (TTS) é uma plataforma desenvolvida pelo NIFEUP onde os estudantes podem experimentar as possíveis combinações de horários que podem escolher no início de cada semestre. Com ele, podes explorar e planear o teu horário ideal antes de o oficializares.",
     "teamMembers": [],
     "slug": "timetable-selector",
     "image": "/api_images/projects/tts_logo.png",
@@ -87,10 +87,10 @@
     "id": 2
   },
   {
-    "title": "Website NIAEFEUP",
-    "description": "O website do NIAEFEUP, desenvolvido pelo núcleo, apresenta a missão da associação, os seus membros, projetos, eventos, workshops e oportunidades.",
+    "title": "Website NIFEUP",
+    "description": "O website do NIFEUP, desenvolvido pelo núcleo, apresenta a missão da associação, os seus membros, projetos, eventos, workshops e oportunidades.",
     "teamMembers": [],
-    "slug": "niaefeup-website",
+    "slug": "nifeup-website",
     "image": "/api_images/projects/website_logo.png",
     "gallery": [],
     "thumbnail": "/api_images/projects/website_screenshot.png",
@@ -131,7 +131,7 @@
   },
   {
     "title": "NIployments",
-    "description": "A NIployments é a infraestrutura como código do cluster Kubernetes do NIAEFEUP. Configura os nós bare-metal, gere a rede e faz o deploy de todos os serviços do núcleo, garantindo que as aplicações do NIAEFEUP estão sempre disponíveis.",
+    "description": "A NIployments é a infraestrutura como código do cluster Kubernetes do NIFEUP. Configura os nós bare-metal, gere a rede e faz o deploy de todos os serviços do núcleo, garantindo que as aplicações do NIFEUP estão sempre disponíveis.",
     "teamMembers": [],
     "slug": "niployments",
     "image": "/api_images/technologies/kubernetes.png",
@@ -152,8 +152,8 @@
         "url": "https://www.ansible.com"
       }
     ],
-    "slogan": "A infraestrutura por detrás das aplicações do NIAEFEUP.",
-    "targetAudience": "Equipa de Infraestruturas do NIAEFEUP",
+    "slogan": "A infraestrutura por detrás das aplicações do NIFEUP.",
+    "targetAudience": "Equipa de Infraestruturas do NIFEUP",
     "github": "https://github.com/niaefeup/niployments",
     "links": [],
     "hallOfFame": [],
