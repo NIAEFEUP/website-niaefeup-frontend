@@ -45,7 +45,7 @@
           </button>
         </div>
         <div class="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-          <img
+          <enhanced:img
             src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
             alt="User pic"
             class="h-32 w-32 rounded-lg sm:h-52 sm:w-52"

@@ -71,7 +71,7 @@
                 aria-label="Website de {teamMember.name}"
               >
                 {#if customWebsite.iconPath}
-                  <img
+                  <enhanced:img
                     src={customWebsite.iconPath}
                     alt="Ícone do website de {teamMember.name}"
                     class="icon h-full w-full object-cover"
@@ -88,7 +88,7 @@
     <div
       class="absolute inset-0 z-10 bg-black text-lg opacity-0 transition-opacity duration-500 group-focus-within:opacity-30 group-hover:opacity-30"
     ></div>
-    <img
+    <enhanced:img
       src={teamMember.photo ? teamMember.photo : '/images/default_profile_pic.png'}
       alt="Membro do NIFEUP {teamMember.name}"
       class="z-0 h-full w-full object-cover"
