@@ -5,7 +5,7 @@
 
   let { buildingSrc = '/images/landing_feup_buildings_1.svg' }: Props = $props();
 
-  const titleLetters = ['n', 'i', 'a', 'e', 'f', 'e', 'u', 'p'];
+  const titleLetters = ['n', 'i', 'f', 'e', 'u', 'p'];
 </script>
 
 <section
