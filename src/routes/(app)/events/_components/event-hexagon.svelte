@@ -36,46 +36,51 @@
   };
 </script>
 
-<Hexagon {orientation}>
-  <div
-    class="group relative box-content flex h-full w-full justify-center overflow-hidden md:shadow-black/[.58] md:text-shadow"
-    data-testid="event-hexagon"
-  >
-    <div class="flex w-full flex-col content-center justify-center">
-      {#if getDateDisplay()}
-        <p
-          class="z-20 mx-auto w-full max-w-[80%] overflow-hidden text-ellipsis whitespace-nowrap text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
-        >
-          {getDateDisplay()}
-        </p>
-      {/if}
-
-      <div class="relative z-20 my-1.5 w-full">
-        <p
-          class="relative break-words text-center text-sm font-semibold text-gray-100 md:text-base lg:text-lg xl:text-xl"
-        >
-          {event.title}
-        </p>
-      </div>
-
-      {#if event.location}
-        <p
-          class="z-20 mx-auto w-full max-w-[80%] truncate text-center text-xs text-gray-100"
-          title={event.location}
-        >
-          {event.location}
-        </p>
-      {/if}
-    </div>
-    <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
+<div
+  class="event-tile relative h-full w-full transition-[transform,filter] duration-500 ease-out motion-reduce:transition-none"
+  style="transform: translate(var(--fisheye-x, 0px), var(--fisheye-y, 0px)) scale(var(--fisheye-scale, 1)); filter: brightness(var(--fisheye-brightness, 1));"
+>
+  <Hexagon {orientation}>
     <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-0 z-15 bg-linear-to-t from-black/90 via-black/50 to-transparent transition-transform duration-400 ease-out sm:translate-y-full sm:group-hover:translate-y-0"
-    ></div>
-    <img
-      src={event.image || '/images/ni_logo.png'}
-      alt="Miniatura do evento"
-      class="absolute inset-0 z-0 h-full w-full object-cover"
-    />
-  </div>
-</Hexagon>
+      class="group relative box-content flex h-full w-full justify-center overflow-hidden md:shadow-black/[.58] md:text-shadow"
+      data-testid="event-hexagon"
+    >
+      <div class="flex w-full flex-col content-center justify-center">
+        {#if getDateDisplay()}
+          <p
+            class="z-20 mx-auto w-full max-w-[80%] overflow-hidden text-ellipsis whitespace-nowrap text-center text-xs text-gray-100 sm:text-xs md:text-sm lg:text-base xl:text-lg"
+          >
+            {getDateDisplay()}
+          </p>
+        {/if}
+
+        <div class="relative z-20 my-1.5 w-full">
+          <p
+            class="relative break-words text-center text-sm font-semibold text-gray-100 md:text-base lg:text-lg xl:text-xl"
+          >
+            {event.title}
+          </p>
+        </div>
+
+        {#if event.location}
+          <p
+            class="z-20 mx-auto w-full max-w-[80%] truncate text-center text-xs text-gray-100"
+            title={event.location}
+          >
+            {event.location}
+          </p>
+        {/if}
+      </div>
+      <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 z-15 bg-linear-to-t from-ni-bg/100 via-ni-bg/70 to-transparent transition-transform duration-400 ease-out sm:translate-y-full sm:group-hover:translate-y-0"
+      ></div>
+      <img
+        src={event.image || '/images/ni_logo.png'}
+        alt="Miniatura do evento"
+        class="absolute inset-0 z-0 h-full w-full object-cover"
+      />
+    </div>
+  </Hexagon>
+</div>
