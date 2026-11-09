@@ -9,6 +9,12 @@
 
   const hasPerms: boolean = $derived(data.hasPerms);
   const events: Event[] = $derived(data.events);
+
+  const filteredEvents = $derived(
+    events.filter(
+      (event) => event.dateInterval?.startDate && event.dateInterval.startDate !== 'TBD'
+    )
+  );
 </script>
 
 <section>
@@ -26,14 +32,14 @@
     {/if}
 
     <div class="w-full max-w-7xl px-4 md:pt-10 md:px-20 lg:px-16">
-      {#if events.length === 0}
+      {#if filteredEvents.length === 0}
         <div class="py-12 text-center">
           <p class="text-gray-400">Nenhum evento encontrado</p>
         </div>
       {:else}
         <div class="w-full md:hidden">
           <HexagonGrid
-            items={events}
+            items={filteredEvents}
             cols={1}
             orientation="vertical"
             gap="medium"
@@ -43,7 +49,7 @@
 
         <div class="hidden w-full md:block">
           <HexagonGrid
-            items={events}
+            items={filteredEvents}
             cols={4}
             orientation="vertical"
             gap="medium"

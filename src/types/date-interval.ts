@@ -1,4 +1,4 @@
 export type DateInterval = {
-  startDate: string;
-  endDate: string;
+  startDate?: string;
+  endDate?: string;
 };

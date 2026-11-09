@@ -21,17 +21,36 @@
 
   function parseCustomDate(dateStr: string): Date | null {
     if (!dateStr) return null;
-    const match = dateStr.match(/(\d{2})-(\d{2})-(\d{4})[ T](\d{2})[:](\d{2})/);
+
+    const match = dateStr.match(/^(\d{2})-(\d{2})-(\d{4})(?:[ T](\d{2}):(\d{2}))?$/);
+
     if (!match) return null;
-    const [, day, month, year, hour, minute] = match;
-    return new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute));
+
+    const [, day, month, year, hour = '0', minute = '0'] = match;
+
+    const date = new Date(
+      Number(year),
+      Number(month) - 1,
+      Number(day),
+      Number(hour),
+      Number(minute)
+    );
+
+    return isNaN(date.getTime()) ? null : date;
   }
 
-  function formatWeekdayTime(date: Date): string {
-    let weekday = new Intl.DateTimeFormat('pt-PT', { weekday: 'long' }).format(date);
+  function formatWeekdayTime(date: Date, hasTime: boolean): string {
+    let weekday = new Intl.DateTimeFormat('pt-PT', {
+      weekday: 'long'
+    }).format(date);
+
     weekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+
+    if (!hasTime) return weekday;
+
     const hour = date.getHours().toString().padStart(2, '0');
     const minute = date.getMinutes().toString().padStart(2, '0');
+
     return `${weekday} - ${hour}h${minute}`;
   }
 
@@ -47,6 +66,11 @@
     typeof event?.dateInterval?.startDate === 'string'
       ? parseCustomDate(event.dateInterval.startDate)
       : null
+  );
+
+  let hasEventTime = $derived(
+    typeof event?.dateInterval?.startDate === 'string' &&
+      /\d{2}:\d{2}$/.test(event.dateInterval.startDate)
   );
 </script>
 
@@ -110,7 +134,7 @@
                 <div class="flex flex-1 flex-col justify-start gap-3 text-lg">
                   {#if parsedEventDate}
                     {@const d = formatDateExtense(parsedEventDate)}
-                    <span>{formatWeekdayTime(parsedEventDate)}</span>
+                    <span>{formatWeekdayTime(parsedEventDate, hasEventTime)}</span>
                     <span class="flex items-center gap-2">
                       <Icon src={Icons.Calendar} size="18" />
                       <span>
@@ -140,7 +164,7 @@
               <div class="ml-4 flex flex-1 flex-col justify-start gap-3 text-sm">
                 {#if parsedEventDate}
                   {@const d = formatDateExtense(parsedEventDate)}
-                  <span>{formatWeekdayTime(parsedEventDate)}</span>
+                  <span>{formatWeekdayTime(parsedEventDate, hasEventTime)}</span>
                   <span class="flex min-w-0 flex-nowrap items-center gap-2">
                     <Icon src={Icons.Calendar} size="18" />
                     <span class="block wrap-break-word">
@@ -159,6 +183,32 @@
           </div>
         </div>
       </header>
+    {/if}
+
+    {#if (event.registrationUrl || event.driveUrl) && (windowWidth >= screenSizeThreshold || activeTab === 'evento')}
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        {#if event.registrationUrl}
+          <a
+            href={event.registrationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex w-52 items-center justify-center rounded bg-muted-red-500 px-4 py-2 font-raleway font-bold text-white transition-colors hover:bg-muted-red-700"
+          >
+            Inscrever-me
+          </a>
+        {/if}
+
+        {#if event.driveUrl}
+          <a
+            href={event.driveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex w-52 items-center justify-center rounded bg-muted-red-500 px-4 py-2 font-raleway font-bold text-white transition-colors hover:bg-muted-red-700"
+          >
+            Ver fotografias
+          </a>
+        {/if}
+      </div>
     {/if}
 
     {#if windowWidth < screenSizeThreshold}

@@ -32,12 +32,17 @@
         .replace(/\./g, '')
         .replace(/ de /g, ' ');
 
+    if (start.toDateString() === end.toDateString()) {
+      return fmt(start);
+    }
+
     return `${fmt(start)} – ${fmt(end)}`;
   };
 </script>
 
 <Hexagon {orientation}>
-  <div
+  <a
+    href="/events/{event.slug}"
     class="group relative box-content flex h-full w-full justify-center md:shadow-black/[.58] md:text-shadow"
     data-testid="event-hexagon"
   >
@@ -80,5 +85,5 @@
       alt="Miniatura do evento"
       class="absolute inset-0 z-0 h-full w-full object-cover"
     />
-  </div>
+  </a>
 </Hexagon>

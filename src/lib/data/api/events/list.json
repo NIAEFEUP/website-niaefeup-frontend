@@ -2,65 +2,235 @@
   {
     "id": 1,
     "title": "Jantar de Curso",
-    "description": "Momento de convívio entre estudantes do curso. Bebida à descrição, buffet e boas vibes.",
+    "description": "O Jantar de Curso é um momento de convívio e confraternização entre estudantes de Engenharia Informática de diferentes anos curriculares. Esta iniciativa tem como objetivo promover a interação entre estudantes de vários anos, proporcionando-lhes a oportunidade de se conhecerem melhor e de partilharem experiências num ambiente descontraído e divertido. A última edição do Jantar de Curso realizou-se na Confeitaria Império e contou com a presença de 90 estudantes, reforçando o espírito académico e a união entre os diferentes anos do curso.",
     "slug": "jantar-de-curso",
     "image": "/api_images/events/jantar_de_curso_1.png",
-    "category": "Social"
+    "category": "Social",
+    "dateInterval": {
+      "startDate": "19-09-2026 20:00",
+      "endDate": "19-09-2026 23:59"
+    },
+    "location": "Confeitaria Império",
+    "registrationUrl": null,
+    "driveUrl": null
   },
   {
     "id": 2,
-    "title": "Churrasco de Informática",
-    "description": "Convívio e churrasco para os estudantes de Engenharia Informática.",
-    "slug": "churrasco-de-informatica",
-    "image": "/api_images/events/churrasco.jpg",
-    "category": "Social"
+    "title": "NI Open Day",
+    "description": "O NI Open Day é uma iniciativa dedicada à apresentação da estrutura e do funcionamento interno do Núcleo de Informática (NI) à comunidade estudantil. Durante este dia, os estudantes são convidados a visitar a sala do NI e a conversar com os membros dos diferentes departamentos, de forma a conhecerem melhor as suas responsabilidades, atividades e modo de funcionamento. No final do dia, os participantes têm ainda a oportunidade de assistir a uma reunião de um dos departamentos, ficando assim com uma visão mais próxima do trabalho desenvolvido pelo Núcleo.",
+    "slug": "ni-open-day",
+    "image": null,
+    "category": "Social",
+    "dateInterval": {
+      "startDate": "28-09-2026 16:00",
+      "endDate": "28-09-2026 23:59"
+    },
+    "location": "NIFEUP",
+    "registrationUrl": null,
+    "driveUrl": null
   },
   {
     "id": 3,
-    "title": "SINF - Semana de Informática",
-    "description": "A Semana de Informática (SINF), organizada pelo NI, foi criada com o intuito de permitir aos participantes desenvolver as suas capacidades nas diversas áreas da Informática, promovendo a sua interação com o mundo empresarial através de eventos sociais.",
-    "slug": "sinf-semana-de-informatica",
-    "image": "/api_images/events/sinf_2025.jpg",
-    "category": "Tecnologia"
+    "title": "Installation Party",
+    "description": "A Installation Party é uma iniciativa que tem como objetivo apoiar os estudantes na instalação e configuração das diferentes tecnologias necessárias ao longo do curso. Ao longo de uma tarde, os alunos mais experientes ajudam os colegas com maiores dificuldades, partilhando conhecimentos e promovendo a entreajuda entre estudantes de diferentes anos curriculares. Este ano, a iniciativa decorreu na sala I003 e contou com a presença de cerca de 70 participantes, reforçando o espírito de colaboração e a partilha de conhecimentos dentro do curso.",
+    "slug": "installation-party",
+    "image": null,
+    "category": "Social",
+    "dateInterval": {
+      "startDate": "29-09-2026 16:00",
+      "endDate": "29-09-2026 23:59"
+    },
+    "location": "FEUP",
+    "registrationUrl": null,
+    "driveUrl": null
   },
   {
     "id": 4,
-    "title": "Sessão Erasmus",
-    "description": "Evento dedicado a explorar a experiência de outros colegas em Erasmus e esclarecimento de dúvidas.",
-    "slug": "sessao-erasmus",
-    "image": "/api_images/events/sessao_erasmus.jpg",
-    "category": "Educação"
+    "title": "Churrasco de Informática",
+    "description": "O Churrasco de Informática é um momento de convívio e descontração que reúne os estudantes do curso, proporcionando-lhes a oportunidade de socializar e fortalecer os laços entre colegas. Durante o evento, são disponibilizados jantares volantes, bebidas e petiscos, bem como diversas atividades e jogos, como o Jogo do Prego e o Beer Pong, que contribuem para um ambiente animado e divertido. Nesta edição, o evento teve como tema a Oktoberfest, proporcionando aos participantes a oportunidade de desfrutar de iguarias típicas, como pretzels, e de participar em atividades como competições de penáltis. O Churrasco de Informática tem como principal objetivo dinamizar as interações entre os estudantes e promover o convívio e o espírito de comunidade entre os membros do curso, através de um ambiente informal e descontraído.",
+    "slug": "churrasco-de-informatica",
+    "image": "/api_images/events/churrasco.jpg",
+    "category": "Social",
+    "dateInterval": {
+      "startDate": "07-10-2026 16:00",
+      "endDate": "07-10-2026 23:59"
+    },
+    "location": "AEFEUP",
+    "registrationUrl": null,
+    "driveUrl": null
   },
   {
     "id": 5,
-    "title": "Workshop Python",
-    "description": "Workshop prático focado em introdução e ferramentas de programação em Python com intuito de ajudar e orientar caloiros.",
+    "title": "Workshop de Python",
+    "description": "Todos os anos, o Núcleo de Informática organiza um Workshop de Python destinado aos estudantes do primeiro ano, com o objetivo de os ajudar a consolidar os conhecimentos adquiridos nas aulas de Fundamentos de Programação e a prepararem-se para o primeiro teste prático. Durante a sessão, são revistos os conceitos fundamentais da linguagem Python e, com o apoio dos monitores presentes, os estudantes têm a oportunidade de resolver exercícios de testes de anos anteriores, esclarecer dúvidas e reforçar a sua preparação para a avaliação.",
     "slug": "workshop-python",
     "image": "/api_images/events/workshop_1.png",
-    "category": "Tecnologia"
+    "category": "Workshop",
+    "dateInterval": {
+      "startDate": "20-10-2026 16:00",
+      "endDate": "20-10-2026 16:00"
+    },
+    "location": "FEUP",
+    "registrationUrl": null,
+    "driveUrl": null
   },
   {
     "id": 6,
-    "title": "Mostra Mestrados",
-    "description": "Evento onde os estudantes dos vários mestrados falam das suas experiências no curso e esclarecimento de dúvidas.",
-    "slug": "mostra-mestrados",
-    "image": "/api_images/events/mestrados.jpg",
-    "category": "Educação"
+    "title": "Workshop de PFL",
+    "description": "O Workshop de PFL é uma iniciativa destinada aos estudantes do terceiro ano de Engenharia Informática, com o objetivo de consolidar os conhecimentos adquiridos nas aulas de Programação Funcional e Lógica (PFL) e de os preparar para o exame prático da unidade curricular. Durante a sessão, são revistos os conceitos fundamentais das linguagens Prolog e Haskell e, com o apoio dos monitores presentes, os estudantes têm a oportunidade de resolver exercícios de testes de anos anteriores, esclarecer dúvidas e reforçar a sua preparação para a avaliação. Na edição anterior, o workshop contou com a participação do professor Gonçalo Leão, docente da unidade curricular, que ficou responsável por conduzir a sessão e apoiar os estudantes na consolidação dos seus conhecimentos.",
+    "slug": "workshop-pfl",
+    "image": null,
+    "category": "Workshop",
+    "dateInterval": {
+      "startDate": "02-11-2026",
+      "endDate": "02-11-2026"
+    },
+    "location": "FEUP",
+    "registrationUrl": null,
+    "driveUrl": null
   },
   {
     "id": 7,
-    "title": "Rally Tascas",
-    "description": "Rally das tascas tradicional do NIFEUP.",
-    "slug": "rally-tascas",
-    "image": "/api_images/events/rally_tascas.jpg",
-    "category": "Social"
+    "title": "Workshop de Git",
+    "description": "O Workshop de Git é um evento destinado aos estudantes de Engenharia Informática, com o objetivo de os ajudar a compreender e a utilizar o Git e o GitHub no desenvolvimento de projetos em grupo, conhecimento necessário em várias cadeiras do curso. Durante a sessão, são revistos os conceitos fundamentais do controlo de versões, como commits, branches, merges, remotes e a resolução de conflitos, e, com o apoio dos monitores presentes, os estudantes têm a oportunidade de resolver exercícios práticos, esclarecer dúvidas e aprender a trabalhar com issues, pull requests e reviews de código.",
+    "slug": "workshop-git",
+    "image": null,
+    "category": "Workshop",
+    "dateInterval": {},
+    "location": "FEUP",
+    "registrationUrl": null,
+    "driveUrl": null
   },
   {
     "id": 8,
+    "title": "SINF - Semana de Informática",
+    "description": "A Semana de Informática é um evento com a duração de quatro dias, dedicado aos estudantes de Engenharia Informática, que procura complementar a sua formação académica e aproximá-los do mercado de trabalho. Ao longo destes dias, os participantes têm a oportunidade de participar em diversas atividades, incluindo workshops, talks, feiras de emprego, flash interviews, jantares de networking, coffee breaks e competições de programação, entre muitas outras iniciativas. Este evento pretende promover a aquisição de novos conhecimentos, o desenvolvimento de competências técnicas e interpessoais, bem como o contacto direto com empresas e profissionais da área, proporcionando aos estudantes oportunidades de aprendizagem, networking e desenvolvimento profissional.",
+    "slug": "sinf-semana-de-informatica",
+    "image": "/api_images/events/sinf_2025.jpg",
+    "category": "SINF",
+    "dateInterval": {
+      "startDate": "16-11-2026 00:00",
+      "endDate": "19-11-2026 23:59"
+    },
+    "location": "FEUP",
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 9,
+    "title": "Sessão de Erasmus",
+    "description": "A Sessão de Erasmus é uma iniciativa que pretende dar a conhecer as experiências dos estudantes de Engenharia Informática que se encontram a realizar um programa de mobilidade internacional. Através de uma transmissão em direto no YouTube, moderada por dois membros do Núcleo de Informática, os participantes partilham as suas vivências nos diferentes países, destacando os aspetos positivos e os desafios que encontraram ao longo da experiência. No final da sessão, os espectadores têm a oportunidade de colocar questões e esclarecer dúvidas, promovendo um momento de partilha de experiências e conhecimentos. Nos dias que antecedem a transmissão, são também publicados, nas redes sociais do NI, vídeos dos participantes a mostrar o seu quotidiano enquanto estudantes de Erasmus nos respetivos países, permitindo à comunidade estudantil conhecer melhor esta experiência.",
+    "slug": "sessao-erasmus",
+    "image": "/api_images/events/sessao_erasmus.jpg",
+    "category": "Informativo",
+    "dateInterval": {
+      "startDate": "21-12-2026 20:00",
+      "endDate": "21-12-2026 23:59"
+    },
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 10,
+    "title": "Jantar de Receção aos Recrutas",
+    "description": "todo",
+    "slug": "jantar-rececao-recrutas",
+    "image": null,
+    "category": "Social",
+    "dateInterval": {
+      "startDate": "22-10-2026 20:00",
+      "endDate": "22-10-2026 23:59"
+    },
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 11,
+    "title": "Jantar dos Amendoins",
+    "description": "todo",
+    "slug": "jantar-amendoins",
+    "image": null,
+    "category": "Social",
+    "dateInterval": {},
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 12,
+    "title": "Jantar de Natal Interno",
+    "description": "Este jantar tem como objetivo proporcionar aos membros do Núcleo de Informática e aos recrutras um momento de convívio e confraternização no final do ano, permitindo celebrar os momentos partilhados e encerrar o primeiro semestre de forma especial e nostálgica. A iniciativa conta habitualmente com a presença de antigos membros do Núcleo e inclui uma troca de prendas, que contribui para um ambiente descontraído, divertido e marcado pelo espírito de união. Mais do que um jantar, é uma oportunidade para fortalecer os laços entre os membros de diferentes gerações do NI, recordar experiências e criar novas memórias.",
+    "slug": "jantar-natal-interno",
+    "image": null,
+    "category": "Social",
+    "dateInterval": {},
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 13,
+    "title": "Rally das Tascas",
+    "description": "Esta atividade, na Semana das Noites de Engenharia, organizada pela AEFEUP, consiste num percurso por vários postos, no qual os participantes, organizados em equipas, passam por diferentes locais e participam em diversas atividades. Ao longo do percurso, têm a oportunidade de experimentar diferentes bebidas e enfrentar vários desafios, num ambiente descontraído, dinâmico e divertido. A iniciativa tem como principal objetivo promover o convívio e a interação entre os participantes, proporcionando momentos de diversão, partilha e confraternização ao longo da semana. Na edição anterior, o Rally das Tascas decorreu na Baixa do Porto, levando os participantes a percorrer diferentes zonas e tornando a experiência ainda mais dinâmica e enriquecedora.",
+    "slug": "rally-tascas",
+    "image": "/api_images/events/rally_tascas.jpg",
+    "category": "Social",
+    "dateInterval": {},
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 14,
+    "title": "Mostra de Mestrados",
+    "description": "A Mostra dos Mestrados é um lanche que pretende aproximar os estudantes da licenciatura dos alunos dos diferentes mestrados de continuidade na área da Informática. Num ambiente descontraído e informal, os participantes têm a oportunidade de conviver com estudantes de diferentes mestrados, esclarecer dúvidas e conhecer melhor as opções disponíveis para prosseguir os seus estudos. Nos dias que antecedem a iniciativa, são publicadas entrevistas a estudantes dos vários mestrados, com o objetivo de dar a conhecer os diferentes percursos académicos, partilhar experiências e ajudar os alunos da licenciatura a tomar decisões mais informadas relativamente ao seu futuro académico.",
+    "slug": "mostra-mestrados",
+    "image": "/api_images/events/mestrados.jpg",
+    "category": "Educação",
+    "dateInterval": {},
+    "location": "FEUP",
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 15,
+    "title": "Visitas a Empresas",
+    "description": "As Visitas a Empresas são uma iniciativa em que o Núcleo de Informática, em colaboração com empresas da área, organiza dias dedicados à visita dos respetivos escritórios, com o objetivo de aproximar os estudantes de Engenharia Informática do mercado de trabalho. Durante a visita, os participantes têm a oportunidade de conhecer as instalações, a equipa e o ambiente de trabalho da empresa e, num contacto direto com os recrutadores, esclarecer dúvidas e conhecer melhor o processo de entrevistas, ficando assim com uma visão mais próxima da realidade profissional.",
+    "slug": "visitas-empresas",
+    "image": null,
+    "category": "Profissional",
+    "dateInterval": {},
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 16,
+    "title": "Workshops com Empresas",
+    "description": "Os Workshops com Empresas são uma iniciativa em que o Núcleo de Informática, em parceria com empresas do mercado, define temas relevantes para o mundo do trabalho, procurando complementar a componente teórica do curso com conhecimentos e tecnologias realmente utilizados na indústria. Durante a sessão, as empresas fazem-se representar por profissionais com experiência prática na área e, com o seu apoio, os estudantes têm a oportunidade de aprender algo usado no mercado, esclarecer dúvidas diretamente com quem domina o tema e aproveitar o momento para alargar a sua rede de contactos.",
+    "slug": "workshops-empresas",
+    "image": null,
+    "category": "Workshop",
+    "dateInterval": {},
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 17,
     "title": "Jantar de Gala",
-    "description": "Jantar de Gala do NIFEUP para celebrar o ano e a comunidade.",
+    "description": "O Jantar de Gala é a grande celebração de final de ano organizada pelo Núcleo de Informática, um evento que reúne os estudantes de Engenharia Informática numa quinta, vestidos com os seus melhores fatos, para encerrar o ano letivo em grande estilo. Aberto a todos os estudantes do curso, que podem também trazer os seus acompanhantes, o jantar proporciona uma noite cheia de momentos marcantes, como a entrega de prémios, o corte do bolo e música pela noite dentro. Mais do que um jantar, é a oportunidade de celebrar as conquistas do ano, reunir colegas de diferentes anos e criar memórias que ficam muito para além do curso.",
     "slug": "jantar-de-gala",
     "image": "/api_images/events/jantar_de_gala.jpg",
-    "category": "Social"
+    "category": "Social",
+    "dateInterval": {},
+    "registrationUrl": null,
+    "driveUrl": null
+  },
+  {
+    "id": 18,
+    "title": "MiNI Férias",
+    "description": "As MiNI Férias são um evento interno do Núcleo de Informática que reúne os colaboradores depois da época de exames, com o objetivo de relaxar após um longo ano de curso, atividades e projetos do núcleo. Nos últimos anos, o grupo tem-se juntado para acampar em alguns dos melhores parques de Portugal, com tempo para banhos no rio, sol, jogos de vólei e de cartas, num ambiente descontraído e de convívio entre os membros do NI.",
+    "slug": "mini-ferias",
+    "image": null,
+    "category": "Social",
+    "dateInterval": {},
+    "registrationUrl": null,
+    "driveUrl": null
   }
 ]
