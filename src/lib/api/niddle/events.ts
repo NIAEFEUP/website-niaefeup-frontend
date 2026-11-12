@@ -1,3 +1,5 @@
+import type { DateInterval } from '@/types/date-interval';
+import type { Event } from '@/types/event';
 import type { NiddleEvent, NiddlePaginatedResponse } from '@/types/niddle';
 
 const PAGE_LIMIT = 100; // max allowed by NIddle
@@ -53,4 +55,27 @@ export async function fetchNiddleEvents(
   }
 
   return events;
+}
+
+function toDateInterval(event: NiddleEvent): DateInterval | undefined {
+  // Single-day events only have startDate and "until" events only have endDate,
+  // so the missing side reuses the other one. TBD events have neither.
+  const startDate = event.startDate ?? event.endDate;
+  const endDate = event.endDate ?? event.startDate;
+  if (!startDate || !endDate) return undefined;
+  return { startDate, endDate };
+}
+
+/**
+ * Converts a NIddle event into the website's `Event` shape.
+ * NIddle has no image, location or category, so those are left empty.
+ */
+export function mapNiddleEvent(event: NiddleEvent): Event {
+  return {
+    title: event.name,
+    description: event.description ?? '',
+    slug: event.id,
+    image: null,
+    dateInterval: toDateInterval(event)
+  };
 }
