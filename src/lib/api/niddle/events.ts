@@ -19,10 +19,32 @@ function getNiddleConfig(): NiddleConfig | null {
   return { apiUrl, associationId };
 }
 
+const isObject = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null;
+
+const isOptionalString = (value: unknown): boolean =>
+  value === undefined || value === null || typeof value === 'string';
+
+// Only checks the fields used by `mapNiddleEvent`.
+function isNiddleEvent(value: unknown): value is NiddleEvent {
+  return (
+    isObject(value) &&
+    typeof value.id === 'string' &&
+    typeof value.name === 'string' &&
+    isOptionalString(value.description) &&
+    isOptionalString(value.startDate) &&
+    isOptionalString(value.endDate)
+  );
+}
+
 function isPaginatedResponse(body: unknown): body is NiddlePaginatedResponse<NiddleEvent> {
-  if (typeof body !== 'object' || body === null) return false;
-  const { data, meta } = body as Partial<NiddlePaginatedResponse<NiddleEvent>>;
-  return Array.isArray(data) && typeof meta === 'object' && meta !== null;
+  return (
+    isObject(body) &&
+    Array.isArray(body.data) &&
+    body.data.every(isNiddleEvent) &&
+    isObject(body.meta) &&
+    typeof body.meta.hasNextPage === 'boolean'
+  );
 }
 
 /**
@@ -59,7 +81,7 @@ export async function fetchNiddleEvents(
     }
 
     events.push(...body.data);
-    hasNextPage = body.meta.hasNextPage === true;
+    hasNextPage = body.meta.hasNextPage;
     page++;
   }
 
