@@ -5,6 +5,7 @@ import type { Event } from '@/types/event';
 import type { NiddleEvent, NiddlePaginatedResponse } from '@/types/niddle';
 
 const PAGE_LIMIT = 100; // max allowed by NIddle
+const MAX_PAGES = 20; // safety bound: up to 2000 events
 const REQUEST_TIMEOUT_MS = 5000;
 
 type NiddleConfig = {
@@ -60,6 +61,10 @@ export async function fetchNiddleEvents(
   let hasNextPage = true;
 
   while (hasNextPage) {
+    if (page > MAX_PAGES) {
+      throw new Error(`NIddle pagination exceeded ${MAX_PAGES} pages`);
+    }
+
     const params = new URLSearchParams({
       page: String(page),
       limit: String(PAGE_LIMIT),
@@ -78,6 +83,10 @@ export async function fetchNiddleEvents(
     const body: unknown = await res.json();
     if (!isPaginatedResponse(body)) {
       throw new Error('Unexpected response shape from NIddle');
+    }
+
+    if (body.data.length === 0 && body.meta.hasNextPage) {
+      throw new Error('NIddle returned an empty page but reported more pages');
     }
 
     events.push(...body.data);
