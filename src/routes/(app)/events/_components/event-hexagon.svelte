@@ -37,7 +37,7 @@
         .replace(/\./g, '')
         .replace(/ de /g, ' ');
 
-    return isSameDay(start, end) ? fmt(start): `${fmt (start)} - ${fmt (end)}`;
+    return isSameDay(start, end) ? fmt(start) : `${fmt(start)} - ${fmt(end)}`;
   };
 </script>
 
