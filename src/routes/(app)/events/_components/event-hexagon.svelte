@@ -11,6 +11,11 @@
 
   const parseDate = (d: string | Date): Date => {
     if (d instanceof Date) return d;
+    const dateOnly = d.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (dateOnly) {
+      const [, year, month, day] = dateOnly;
+      return new Date(Number(year), Number(month) - 1, Number(day));
+    }
     const match = d.match(/^(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2})$/);
     if (match) {
       const [, day, month, year, hour, minute] = match;
