@@ -187,7 +187,7 @@
 
     {#if (event.registrationUrl || event.driveUrl) && (windowWidth >= screenSizeThreshold || activeTab === 'evento')}
       <div class="mt-8 flex flex-wrap justify-center gap-4">
-        {#if event.registrationUrl}
+        {#if event.registrationUrl && parsedEventDate && parsedEventDate > new Date()}
           <a
             href={event.registrationUrl}
             target="_blank"
