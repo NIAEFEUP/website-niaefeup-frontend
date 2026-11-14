@@ -19,6 +19,11 @@
     return new Date(d.replace(' ', 'T'));
   };
 
+  const isSameDay = (a: Date, b: Date): boolean =>
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate();
+
   const getDateDisplay = (): string => {
     if (!event.dateInterval?.startDate || !event.dateInterval?.endDate) return '';
     if (event.dateInterval.startDate === 'TBD') return '';
@@ -32,7 +37,7 @@
         .replace(/\./g, '')
         .replace(/ de /g, ' ');
 
-    return `${fmt(start)} – ${fmt(end)}`;
+    return isSameDay(start, end) ? fmt(start): `${fmt (start)} - ${fmt (end)}`;
   };
 </script>
 
