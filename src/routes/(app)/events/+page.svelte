@@ -1,14 +1,22 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import type { PageData } from './$types';
   import HexagonTile from './_components/event-hexagon.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Event } from '@/types/event';
   import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
+  import { getEvents } from '@/lib/api/niddle/events';
 
   let { data }: { data: PageData } = $props();
 
   const hasPerms: boolean = $derived(data.hasPerms);
-  const events: Event[] = $derived(data.events);
+  let events = $state<Event[]>([]);
+
+  onMount(() => {
+    getEvents().then((niddleEvents) => {
+      events = niddleEvents;
+    });
+  });
 </script>
 
 <section>
