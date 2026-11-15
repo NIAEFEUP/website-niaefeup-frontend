@@ -84,11 +84,15 @@
         </p>
       {/if}
     </div>
-    <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
-    <img
-      src={event.image || '/images/ni_logo.png'}
-      alt="Miniatura do evento"
-      class="absolute inset-0 z-0 h-full w-full object-cover"
-    />
+    {#if event.image}
+      <img
+        src={event.image}
+        alt="Miniatura do evento"
+        class="absolute inset-0 z-0 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
+    {:else}
+      <div class="absolute inset-0 z-0 h-full w-full bg-ni-navbar"></div>
+    {/if}
   </div>
 </Hexagon>
