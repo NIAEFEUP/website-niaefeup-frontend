@@ -70,6 +70,8 @@
         </div>
       </div>
     </div>
+  </footer>
+</div>
 
 <div class="hidden w-full bg-transparent p-3 max-sm:block">
   <footer class="flex flex-col justify-between border-t-2 border-white/90 p-2 text-sm text-white">
