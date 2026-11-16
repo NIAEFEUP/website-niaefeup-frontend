@@ -5,7 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 
 export default defineConfig({
-  plugins: [ enhancedImages(),
+  plugins: [
+    enhancedImages(),
     tailwindcss(),
     sveltekit({
       alias: {
