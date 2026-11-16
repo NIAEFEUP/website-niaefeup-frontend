@@ -63,7 +63,7 @@
     id="bottom-building-container"
     class="relative mt-12 flex w-full items-center justify-center sm:mt-16"
   >
-    <enhanced:img
+    <img
       src="/images/landing_feup_buildings_2.svg"
       alt="Contorno do edifício da FEUP"
       class="pointer-events-none h-auto w-full select-none object-contain"
