@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prepare": "svelte-kit sync || echo ''",
+    "prepare": "svelte-kit sync || echo ''; husky || echo ''",
     "dev": "vite dev --port 3000 --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --port 3000 --host 0.0.0.0",
@@ -14,7 +14,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "ci": "npm run format:check && npm run lint && npm run check"
+    "ci": "npm run format:check && npm run lint && npm run check",
+    "commit": "cz"
   },
   "engines": {
     "node": ">=22.12"
@@ -29,12 +30,15 @@
     "@typescript-eslint/eslint-plugin": "^8.61.0",
     "@typescript-eslint/parser": "^8.61.0",
     "bits-ui": "^2.18.1",
+    "commitizen": "^4.3.2",
+    "cz-git": "^1.14.0",
     "eslint": "^10.5.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-svelte": "^3.19.0",
     "globals": "^17.6.0",
+    "husky": "^9.1.7",
     "prettier": "^3.8.4",
     "prettier-plugin-svelte": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.8.0",
@@ -51,5 +55,10 @@
     "lucide-svelte": "^1.0.1",
     "mode-watcher": "^1.1.0",
     "tailwind-merge": "^3.6.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }
