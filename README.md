@@ -123,6 +123,19 @@ A few things to keep in mind:
 - **Images**: compress them before committing (prefer WebP, at most ~1600px wide, ideally < 300 KB). They are served as-is.
 - **Privacy**: everything in these JSON files ends up in the public JavaScript bundle. **Do not add personal data** (e.g. personal emails) that isn't meant to be shown on the site.
 
+### Events from NIddle
+
+Events can also be fetched in the browser from the [NIddle](https://github.com/NIAEFEUP/NIddle) API via `getEvents()` in `src/lib/api/niddle/events.ts`. It returns the NI's events mapped to the `Event` type, and falls back to `src/lib/data/api/events/list.json` when NIddle is not configured, unreachable, returns an error or has no events.
+
+It is configured with two public env vars (copy `.env.example` to `.env.local`; for the Docker image pass them as `--build-arg`):
+
+| Variable                       | Description                                              |
+| ------------------------------ | -------------------------------------------------------- |
+| `PUBLIC_NIDDLE_API_URL`        | Base URL of the NIddle API, e.g. `http://localhost:3001` |
+| `PUBLIC_NIDDLE_ASSOCIATION_ID` | UUID of the NI association in NIddle                     |
+
+> NIddle must allow CORS from the site's origin, otherwise the browser blocks the request and the local JSON is used.
+
 ## Project Details
 
 ### Project Structure
@@ -142,6 +155,7 @@ src/
 │       ├── 404/             # custom 404 page (served by nginx)
 │       └── _components/     # components used by the layout and error pages
 ├── lib/
+│   ├── api/                 # API clients (NIddle events, permissions)
 │   ├── components/          # reusable components (hexagons, buttons, forms, icons, ...)
 │   ├── config/site.ts       # site name, URL, description and OG image
 │   └── data/api/            # content JSON files (see "Editing content")

@@ -11,6 +11,11 @@
 
   const parseDate = (d: string | Date): Date => {
     if (d instanceof Date) return d;
+    const dateOnly = d.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (dateOnly) {
+      const [, year, month, day] = dateOnly;
+      return new Date(Number(year), Number(month) - 1, Number(day));
+    }
     const match = d.match(/^(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2})$/);
     if (match) {
       const [, day, month, year, hour, minute] = match;
@@ -18,6 +23,11 @@
     }
     return new Date(d.replace(' ', 'T'));
   };
+
+  const isSameDay = (a: Date, b: Date): boolean =>
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate();
 
   const getDateDisplay = (): string => {
     if (!event.dateInterval?.startDate || !event.dateInterval?.endDate) return '';
@@ -32,7 +42,7 @@
         .replace(/\./g, '')
         .replace(/ de /g, ' ');
 
-    return `${fmt(start)} – ${fmt(end)}`;
+    return isSameDay(start, end) ? fmt(start) : `${fmt(start)} - ${fmt(end)}`;
   };
 </script>
 
@@ -74,11 +84,15 @@
         </p>
       {/if}
     </div>
-    <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
-    <img
-      src={event.image || '/images/ni_logo.png'}
-      alt="Miniatura do evento"
-      class="absolute inset-0 z-0 h-full w-full object-cover"
-    />
+    {#if event.image}
+      <img
+        src={event.image}
+        alt="Miniatura do evento"
+        class="absolute inset-0 z-0 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 z-10 h-full w-full bg-vivid-red-950/62 text-lg"></div>
+    {:else}
+      <div class="absolute inset-0 z-0 h-full w-full bg-ni-navbar"></div>
+    {/if}
   </div>
 </Hexagon>

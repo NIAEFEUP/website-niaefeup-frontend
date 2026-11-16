@@ -1,14 +1,27 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import type { PageData } from './$types';
   import HexagonTile from './_components/event-hexagon.svelte';
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Event } from '@/types/event';
   import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
+  import { getEvents } from '@/lib/api/niddle/events';
 
   let { data }: { data: PageData } = $props();
 
   const hasPerms: boolean = $derived(data.hasPerms);
-  const events: Event[] = $derived(data.events);
+  let events = $state<Event[]>([]);
+  let loading = $state(true);
+
+  onMount(() => {
+    getEvents()
+      .then((niddleEvents) => {
+        events = niddleEvents;
+      })
+      .finally(() => {
+        loading = false;
+      });
+  });
 </script>
 
 <section>
@@ -26,7 +39,11 @@
     {/if}
 
     <div class="w-full max-w-7xl px-4 md:pt-10 md:px-20 lg:px-16">
-      {#if events.length === 0}
+      {#if loading}
+        <div class="py-12 text-center">
+          <p class="text-gray-400">A carregar eventos...</p>
+        </div>
+      {:else if events.length === 0}
         <div class="py-12 text-center">
           <p class="text-gray-400">Nenhum evento encontrado</p>
         </div>
