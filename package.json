@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prepare": "svelte-kit sync || echo ''; husky",
+    "prepare": "svelte-kit sync || echo ''; husky || echo ''",
     "dev": "vite dev --port 3000 --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --port 3000 --host 0.0.0.0",
