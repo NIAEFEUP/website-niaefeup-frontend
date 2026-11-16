@@ -109,7 +109,7 @@
   <div class="aspect-21/9 w-full rounded-3xl bg-gray-200"></div>
 {:else if photos.length === 1}
   <div class="flex w-full justify-center">
-    <img
+    <enhanced:img
       src={photos[0]}
       alt="Galeria 1"
       class="aspect-21/9 w-full rounded-3xl object-cover shadow-sm"
@@ -133,7 +133,7 @@
               class="h-full w-full cursor-pointer"
               aria-label={`Ver foto ${i + 1} em ecrã inteiro`}
             >
-              <img
+              <enhanced:img
                 src={photo}
                 alt={`Foto da galeria ${i + 1}`}
                 class="pointer-events-none h-full w-full select-none rounded-3xl object-cover shadow-sm"
@@ -209,7 +209,7 @@
       onkeydown={(e) => e.key === 'Enter' && e.stopPropagation()}
       role="presentation"
     >
-      <img
+      <enhanced:img
         src={photos[lightboxIndex]}
         alt={`Foto da galeria ${lightboxIndex + 1}`}
         class="max-h-full max-w-full select-none object-contain"

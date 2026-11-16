@@ -35,7 +35,7 @@
     <div
       class="flex h-14 w-14 sm:h-16 sm:w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/15 bg-black/25 p-2 shadow-inner"
     >
-      <img
+      <enhanced:img
         src={project.image}
         alt="Logótipo de {project.title}"
         class="h-full w-full object-contain"
@@ -64,7 +64,7 @@
     <div
       class="relative aspect-16/10 w-full overflow-hidden rounded-xl border border-white/10 bg-[#250d0f] shadow-md"
     >
-      <img
+      <enhanced:img
         src={project.thumbnail}
         alt="Thumbnail de {project.title}"
         class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"

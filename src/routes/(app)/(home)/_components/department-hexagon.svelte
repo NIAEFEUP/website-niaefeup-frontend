@@ -27,7 +27,7 @@
       onclick={() => data.onselect && data.onselect(data)}
       type="button"
     >
-      <img src={data.image} alt="NIFEUP" class="h-full w-full object-contain" />
+      <enhanced:img src={data.image} alt="NIFEUP" class="h-full w-full object-contain" />
     </button>
   </div>
 {:else}
@@ -39,7 +39,7 @@
         type="button"
       >
         {#if data.image}
-          <img
+          <enhanced:img
             src={data.image}
             alt={data.name}
             class="absolute inset-0 h-full w-full object-cover"

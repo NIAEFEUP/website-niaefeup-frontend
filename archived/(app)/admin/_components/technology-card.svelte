@@ -31,7 +31,7 @@
 >
   <div class="align-center mr-4 flex flex-row items-center gap-x-2">
     <div class="h-8 w-8 rounded-full">
-      <img src={tech.image} alt="Technology logo" class="h-full w-full object-cover" />
+      <enhanced:img src={tech.image} alt="Technology logo" class="h-full w-full object-cover" />
     </div>
     <p class="drop-shadow-xl">{tech.name}</p>
   </div>

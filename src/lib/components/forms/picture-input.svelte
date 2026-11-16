@@ -49,7 +49,7 @@
     }}
   >
     {#if image}
-      <img
+      <enhanced:img
         class="h-[200px] w-[200px] rounded-md object-cover"
         src={image}
         alt="Imagem {name.replace(/([A-Z])/g, ' $1').toLowerCase()}"

@@ -33,7 +33,7 @@
     class="relative mt-10 flex w-full items-center justify-center sm:-mt-16 md:-mt-24"
   >
     {#if buildingSrc}
-      <img
+      <enhanced:img
         src={buildingSrc}
         alt="Contorno do campus da FEUP"
         class="h-auto w-full object-contain pointer-events-none select-none"

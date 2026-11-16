@@ -129,7 +129,7 @@
             {/if}
 
             <div class="flex shrink-0 flex-col items-center gap-8">
-              <img
+              <enhanced:img
                 src={event.image || '/images/ni_logo.png'}
                 alt="{event.title}'s image"
                 class="aspect-square h-36 w-36 rounded-xl object-cover md:h-60 md:w-60"
