@@ -4,6 +4,7 @@
   import Button from '@/lib/components/buttons/button.svelte';
   import type { Event } from '@/types/event';
   import HexagonGrid from '@/lib/components/hexagons/hexagon-grid.svelte';
+  import { fisheye } from '@/lib/actions/fisheye';
 
   let { data }: { data: PageData } = $props();
 
@@ -41,7 +42,7 @@
           />
         </div>
 
-        <div class="hidden w-full md:block">
+        <div class="hidden w-full md:block" use:fisheye={{ selector: '.event-tile' }}>
           <HexagonGrid
             items={events}
             cols={4}
