@@ -19,7 +19,7 @@
     "title": "NI Open Day",
     "description": "O NI Open Day é uma iniciativa dedicada à apresentação da estrutura e do funcionamento interno do Núcleo de Informática (NI) à comunidade estudantil. Durante este dia, os estudantes são convidados a visitar a sala do NI e a conversar com os membros dos diferentes departamentos, de forma a conhecerem melhor as suas responsabilidades, atividades e modo de funcionamento. No final do dia, os participantes têm ainda a oportunidade de assistir a uma reunião de um dos departamentos, ficando assim com uma visão mais próxima do trabalho desenvolvido pelo Núcleo.",
     "slug": "ni-open-day",
-    "image": null,
+    "image": "/api_images/events/open_day.jpg",
     "category": "Social",
     "dateInterval": {
       "startDate": "28-09-2026 16:00",
@@ -34,7 +34,7 @@
     "title": "Installation Party",
     "description": "A Installation Party é uma iniciativa que tem como objetivo apoiar os estudantes na instalação e configuração das diferentes tecnologias necessárias ao longo do curso. Ao longo de uma tarde, os alunos mais experientes ajudam os colegas com maiores dificuldades, partilhando conhecimentos e promovendo a entreajuda entre estudantes de diferentes anos curriculares. Este ano, a iniciativa decorreu na sala I003 e contou com a presença de cerca de 70 participantes, reforçando o espírito de colaboração e a partilha de conhecimentos dentro do curso.",
     "slug": "installation-party",
-    "image": null,
+    "image": "/api_images/events/installation.jpg",
     "category": "Social",
     "dateInterval": {
       "startDate": "29-09-2026 16:00",
@@ -79,7 +79,7 @@
     "title": "Workshop de PFL",
     "description": "O Workshop de PFL é uma iniciativa destinada aos estudantes do terceiro ano de Engenharia Informática, com o objetivo de consolidar os conhecimentos adquiridos nas aulas de Programação Funcional e Lógica (PFL) e de os preparar para o exame prático da unidade curricular. Durante a sessão, são revistos os conceitos fundamentais das linguagens Prolog e Haskell e, com o apoio dos monitores presentes, os estudantes têm a oportunidade de resolver exercícios de testes de anos anteriores, esclarecer dúvidas e reforçar a sua preparação para a avaliação. Na edição anterior, o workshop contou com a participação do professor Gonçalo Leão, docente da unidade curricular, que ficou responsável por conduzir a sessão e apoiar os estudantes na consolidação dos seus conhecimentos.",
     "slug": "workshop-pfl",
-    "image": null,
+    "image": "/api_images/events/workshop_pfl.jpg",
     "category": "Workshop",
     "dateInterval": {
       "startDate": "02-11-2026",
@@ -135,7 +135,7 @@
     "title": "Jantar de Receção aos Recrutas",
     "description": "todo",
     "slug": "jantar-rececao-recrutas",
-    "image": null,
+    "image": "/api_images/events/rececao_recrutas.jpg",
     "category": "Social",
     "dateInterval": {
       "startDate": "22-10-2026 20:00",
