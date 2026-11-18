@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+if [ -z "$2" ]; then
+  npx cz --hook < /dev/tty || true
+fi
