@@ -11,4 +11,6 @@ export type Event = {
   location?: string;
   category?: string;
   slug?: string;
+  registrationUrl?: string | null | undefined;
+  driveUrl?: string | null | undefined;
 };
