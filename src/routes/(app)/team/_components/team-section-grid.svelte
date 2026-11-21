@@ -15,7 +15,7 @@
 
 {#if section.accounts.length > 0}
   {#if showTitle}
-    <h2 class="mb-10 mt-12 text-center text-lg font-bold md:text-2xl">
+    <h2 class="notranslate mb-10 mt-12 text-center text-lg font-bold md:text-2xl">
       {section.name}
     </h2>
   {/if}

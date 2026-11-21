@@ -273,7 +273,7 @@
                 {openSection === section.name ? 'opacity-100' : 'opacity-20'} 
                 {i === 0 || i === 4 ? 'pointer-events-none' : ''}"
               >
-                {section.name}
+                <span class="notranslate">{section.name}</span>
               </button>
             {/if}
           {/each}

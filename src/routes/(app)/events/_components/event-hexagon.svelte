@@ -61,7 +61,7 @@
         <p
           class="relative break-words text-center text-sm font-semibold text-rose-950 sm:text-sm sm:text-gray-100 sm:group-hover:text-rose-950 sm:group-hover:text-shadow-none md:text-base lg:text-lg xl:text-xl"
         >
-          {event.title}
+          <span class="notranslate">{event.title}</span>
         </p>
       </div>
 

@@ -51,7 +51,7 @@
         <div
           class="absolute inset-0 z-20 flex items-center justify-center text-xl md:text-[2rem] font-bold"
         >
-          <p class="text-center">{data.name}</p>
+          <p class="notranslate text-center">{data.name}</p>
         </div>
       </button>
     </Hexagon>
