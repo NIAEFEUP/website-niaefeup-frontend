@@ -45,7 +45,7 @@
 
     <div class="flex min-w-0 flex-1 flex-col justify-center">
       <h2 class="font-raleway text-lg font-bold leading-snug text-white truncate sm:text-xl">
-        {project.title}
+        <span class="notranslate">{project.title}</span>
       </h2>
       {#if project.slogan}
         <p class="font-source-code mt-0.5 line-clamp-1 text-xs font-medium text-rose-300">
@@ -76,7 +76,7 @@
       <h2
         class="font-raleway text-xl font-bold text-white transition-colors duration-200 group-hover:text-taupe-100 lg:text-2xl"
       >
-        {project.title}
+        <span class="notranslate">{project.title}</span>
       </h2>
       {#if project.slogan}
         <p class="font-source-code mt-1 text-xs font-medium text-rose-300/90 lg:text-sm">

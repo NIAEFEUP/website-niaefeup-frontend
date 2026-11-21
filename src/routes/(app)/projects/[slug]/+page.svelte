@@ -30,7 +30,7 @@
         class="h-60 w-60 mx-auto object-cover md:mx-0 rounded-2xl border-[3vw] border-solid border-white/20 order-2 md:order-1 md:w-1/5 md:max-w-md md:border-[2vw]"
       />
       <div class="my-auto flex flex-col items-center order-2 md:items-start md:order-1">
-        <h1 class="mb-4 text-3xl font-semibold text-white md:text-6xl">{project.title}</h1>
+        <h1 class="notranslate mb-4 text-3xl font-semibold text-white md:text-6xl">{project.title}</h1>
         <div class="flex w-full justify-around md:justify-start">
           <Icon
             src={Icons.Github}
@@ -95,7 +95,7 @@
               >
                 <img src={technology.image} alt="Logótipo de {technology.name}" class="max-h-12" />
                 {#if windowWidth > screenSizeThreshold}
-                  <p class="text-xl text-white">{technology.name}</p>
+                  <p class="notranslate text-xl text-white">{technology.name}</p>
                 {/if}
               </a>
             {/each}

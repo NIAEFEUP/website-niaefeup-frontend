@@ -26,13 +26,13 @@
       class="absolute bottom-[12%] z-20 w-full px-[6cqw] duration-500 group-focus-within:bottom-1/2 group-focus-within:translate-y-1/2 group-hover:bottom-1/2 group-hover:translate-y-1/2"
     >
       <p
-        class="mx-auto w-[70%] text-center text-[max(0.75rem,8cqw)] font-bold leading-tight text-gray-100 transition-all text-shadow-lg"
+        class="notranslate mx-auto w-[70%] text-center text-[max(0.75rem,8cqw)] font-bold leading-tight text-gray-100 transition-all text-shadow-lg"
       >
         {teamMember.name}
       </p>
       <div
         data-testid="role"
-        class="mx-auto text-center text-[max(0.6875rem,6.5cqw)] leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
+        class="notranslate mx-auto text-center text-[max(0.6875rem,6.5cqw)] leading-tight text-gray-100 opacity-0 transition-all duration-500 ease-out group-focus-within:opacity-100 group-hover:opacity-100"
       >
         {#if teamMember.roles && teamMember.roles.length > 0}
           {#each teamMember.roles as role (role.id)}

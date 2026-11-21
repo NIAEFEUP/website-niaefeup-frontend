@@ -54,7 +54,7 @@
         />
       </a>
       <div class="flex flex-col gap-1.5">
-        <p class="text-sm font-bold leading-snug sm:text-base">
+        <p class="notranslate text-sm font-bold leading-snug sm:text-base">
           NIFEUP - Núcleo de Estudantes de Engenharia Informática da Faculdade de Engenharia da
           Universidade do Porto
         </p>
